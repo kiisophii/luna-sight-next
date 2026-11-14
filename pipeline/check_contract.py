@@ -401,6 +401,38 @@ def check_korea(data, sites):
         print(f"korea: danuri {n_ok} sites with terrain, {n_pend} pending terrain")
 
 
+def check_hterrain(data):
+    """Section 14 (proposed): browser height tiles for user-defined sites (web/data/hterrain/)."""
+    d = data / "hterrain"
+    f = d / "index.json"
+    if not f.exists():
+        warn("hterrain", "index.json missing - custom sites cannot compute a horizon")
+        return
+    idx = load_json(f)
+    if idx is None:
+        return
+    if not need(idx, ["grids", "url", "radius_m", "mock"], "hterrain/index.json"):
+        return
+    if idx["radius_m"] != 1737400:
+        err("hterrain/index.json", f"radius_m {idx['radius_m']} != 1737400")
+    for name in ("near", "far"):
+        g = idx["grids"].get(name)
+        w = f"hterrain.{name}"
+        if not isinstance(g, dict) or not need(g, ["ppd", "tile_deg", "n", "nx", "ny", "to_km", "res_m"], w):
+            continue
+        if g["n"] != g["ppd"] * g["tile_deg"] + 1 or g["nx"] * g["tile_deg"] != 360 or g["ny"] * g["tile_deg"] != 180:
+            err(w, "tile geometry inconsistent (n = ppd*tile_deg + 1, nx*tile_deg = 360, ny*tile_deg = 180)")
+        tdir = d / "tiles" / name
+        have = {p.name for p in tdir.glob("*.i16.gz")} if tdir.exists() else set()
+        want = {f"{y}_{x}.i16.gz" for y in range(g["ny"]) for x in range(g["nx"])}
+        if want - have:
+            err(w, f"{len(want - have)} tiles missing, e.g. {sorted(want - have)[:3]}")
+    if idx["grids"].get("near", {}).get("to_km", 0) != 150 or idx["grids"].get("far", {}).get("to_km", 0) != 300:
+        err("hterrain/index.json", "near grid must reach 150 km and far grid 300 km (same chain as pipeline/horizon.py)")
+    check_mock_flag(idx, "hterrain/index.json")
+    print(f"hterrain: near {idx['grids']['near'].get('res_m')} m, far {idx['grids']['far'].get('res_m')} m")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(Path(__file__).resolve().parents[1] / "web" / "data"))
@@ -412,6 +444,7 @@ def main():
     check_validation(data, sites)
     check_relay(data, sites)
     check_korea(data, sites)
+    check_hterrain(data)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

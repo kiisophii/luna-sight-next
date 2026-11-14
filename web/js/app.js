@@ -46,6 +46,8 @@ const coordText = s => `${Math.abs(s.lat).toFixed(3)}°${s.lat >= 0 ? 'N' : 'S'}
 
 function siteTags(s, withFilter = true) {
   const out = [];
+  const hz = core.state.horizons.get(s.id);
+  if (hz && hz.browser) out.push(`<span class="tag" title="${esc(t('browserTerrainTip'))}">${t('browserTerrain')}</span>`);
   if (core.horizonMock(s)) out.push(`<span class="tag warn">${t('mockTerrain')}</span>`);
   else if (core.terrainPending(s)) out.push(`<span class="tag warn" title="${esc(t('terrainPendingTip'))}">${t('terrainPending')}</span>`);
   if (s.coord_quality && s.coord_quality !== 'primary') out.push(`<span class="tag">${esc(s.coord_quality)}</span>`);
@@ -272,6 +274,8 @@ function saveURL() {
     p.set('sites', compare.join(','));
     if (window.LLSN.focus) p.set('focus', window.LLSN.focus);
     p.set('d', isoDay(i0)); p.set('p', String(periodDays));
+    const user = core.state.sites.filter(s => s.group === 'custom' && s.user);
+    if (user.length) p.set('u', user.map(s => `${s.lat.toFixed(4)},${s.lon.toFixed(4)}`).join(';')); else p.delete('u');
     p.delete('t');
     history.replaceState(null, '', `${location.pathname}?${p.toString().replace(/%2C/g, ',')}${location.hash}`);
   }, 300);
@@ -323,6 +327,23 @@ async function main() {
   window.LLSN.setTime = setTime;
   window.LLSN.setTimeSoon = setTimeSoon;
   window.LLSN.pick = pick;                                 // globe marker click -> comparison + focus (globe_app.js)
+  window.LLSN.compare = () => compare.slice();
+  window.LLSN.initialParams = new URLSearchParams(params);       // URL at page load (before saveURL rewrites it)
+  /** Start the analysis period on day `startHour` (hour index), keeping the time of day; `days` = period length. */
+  window.LLSN.setPeriod = (startHour, days = periodDays) => { now = dayStart(startHour) + (now - dayStart(now)); setPeriod(startHour, days); };
+  /** Add (or replace) a site computed in the browser (custom_site.js): joins the picker, cards, tables and filters. */
+  window.LLSN.addSite = (site, horizon, { focus = true } = {}) => {
+    const k = core.state.sites.findIndex(x => x.id === site.id);
+    if (k >= 0) core.state.sites[k] = site; else core.state.sites.push(site);
+    core.state.horizons.set(site.id, horizon);
+    const w = window.LLSN.window;
+    if (w) w.metrics.set(site.id, core.metrics(site, w.i0, w.i1));
+    fillGroups();
+    if (focus) pick(site.id); else { buildCards(); renderPicker(); }
+    window.dispatchEvent(new CustomEvent('llsn:sites', { detail: { id: site.id } }));
+    if (w) window.dispatchEvent(new CustomEvent('llsn:window', { detail: w }));
+    saveURL();
+  };
   window.LLSN.focus = focus0;
   fillGroups();
   now = t0;

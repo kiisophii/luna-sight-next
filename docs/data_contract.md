@@ -218,3 +218,14 @@ Written by `python pipeline/korea_links.py`; tests `python -m pytest pipeline/te
 ### 13.5 `korea.json` — sites of Korean interest + ShadowCam links
 `{"sites_of_korean_interest": [<sites.json-style objects + "korea_link">], "shadowcam": {"terms": "...", "products": [{"target", "product_id", "label_url", "data_url", "browse_url", "size_bytes", "center_lat", "center_lon", "corners", "projection", ...}]}, "pending_questions": [...]}`
 - ShadowCam: **links and metadata only, no image files** in the repo until the Seoul ops/SME answer on redistribution.
+## 14. Proposed v1.2 — `web/data/hterrain/` browser height tiles for user-defined sites (2026-11-14, Sua) — NOT yet agreed; new section only (renumbered from 12 at merge; sections 0–13 unchanged)
+Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; read by `web/js/hterrain.js` (Web Worker `custom_horizon_worker.js`).
+| File | Content |
+|---|---|
+| `index.json` | `grids.near` = LDEM_64 block-mean 2×2 → 32 px/deg (947.6 m), 15° tiles, used to 150 km; `grids.far` = LDEM_16 (1895 m), 30° tiles, 150–300 km. Each grid: `ppd, tile_deg, n (= ppd·tile_deg + 1), nx, ny, res_m, to_km, source`. `url` = `tiles/{grid}/{ty}_{tx}.i16.gz`, `overview` = `overview.png`, `mock` |
+| `tiles/<grid>/<ty>_<tx>.i16.gz` | gzip of `n × n` int16 LE heights (m above 1737.4 km, rounded to 1 m), each row delta-coded along the row. Global pixel centres `lat = 90 − (r+0.5)/ppd`, `lon = −180 + (c+0.5)/ppd`; tile (ty, tx) = rows `ty·(n−1)…`, cols `tx·(n−1)…` (one shared row/column with the next tile; columns wrap at the dateline, the last row is clamped at the south pole) |
+| `overview.png` | 1024 × 512 grey shaded relief (from LDEM_16), display only (click-to-pick mini map) |
+| `validation.json` | summary written by `pipeline/validate_custom_horizon.py` (full report: `docs/custom_horizon_validation.json`), shown next to the resolution label |
+
+A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
+Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.

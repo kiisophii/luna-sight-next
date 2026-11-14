@@ -1,0 +1,45 @@
+{
+ "version": 1,
+ "frame": "MOON_ME",
+ "units": "m above R=1737.4 km",
+ "radius_m": 1737400.0,
+ "pixel_centres": "lat = 90 - (r+0.5)/ppd, lon = -180 + (c+0.5)/ppd",
+ "encoding": "gzip(int16 LE, each row delta-coded along the row, first value absolute), (n x n) samples, tile (ty,tx) = global rows ty*(n-1).., cols tx*(n-1).. (wrapping), last row clamped",
+ "url": "tiles/{grid}/{ty}_{tx}.i16.gz",
+ "overview": "overview.png",
+ "grids": {
+  "near": {
+   "ppd": 32,
+   "tile_deg": 15,
+   "res_m": 947.6,
+   "to_km": 150,
+   "source": "LDEM_64",
+   "nx": 24,
+   "ny": 12,
+   "n": 481,
+   "bytes": 78262795
+  },
+  "far": {
+   "ppd": 16,
+   "tile_deg": 30,
+   "res_m": 1895.2,
+   "to_km": 300,
+   "source": "LDEM_16",
+   "nx": 12,
+   "ny": 6,
+   "n": 481,
+   "bytes": 21636401
+  }
+ },
+ "mock": false,
+ "sources": [
+  {
+   "name": "LOLA LDEM_64 (block mean 2x2 -> 32 ppd)",
+   "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img"
+  },
+  {
+   "name": "LOLA LDEM_16",
+   "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img"
+  }
+ ]
+}

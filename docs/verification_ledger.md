@@ -49,6 +49,16 @@ Team: Minchul Kim, Jiyong Sung, Soyun Jeong, Dongju Kim, Sua Kim (integrator). A
 
 Only `date_slip/` was recomputed in full; the other independent checks are samples.
 
+## Cross-checks of the author-only products (added 2026-11-15)
+
+One row per check of the six "author-verified only" products, by a member who did not produce them, with
+their own code. The status column and the counts above are updated by the integrator once all six rows are in.
+
+| Product | Checker | Method | Sample | Max diff | Pass / fail |
+|---|---|---|---|---|---|
+| `sites.json` (Minchul) | Dongju Kim | Coordinates re-read from the original source pages (NSSDCA tables, LROC post, ACD-50044 Table A2-2 p. 58 PDF text, Frontiers article), compared with `sites.json`; `pipeline/crosscheck_sites_dongju.py` → `docs/crosscheck_sites_dongju.json` | 5 random sites (seed 20261114): APOLLO16, IM1, DE_GERLACHE_RIM1, IM3_REINER_GAMMA, LUNA24 | 0.0000° (5/5 identical to the published precision) | Pass |
+| `monthly/` (Sua) | Dongju Kim | Own plain-Python hourly loop over `ephem.bin` + `horizon/<ID>.json` (no `core.js`, `seasons.mjs` or `verify_seasons.py`); `pipeline/crosscheck_monthly_dongju.py` → `docs/crosscheck_monthly_dongju.json` | 3 random sites × 3 random months (seed 20261115): ARTEMIS_HAWORTH 2029-09, 2029-10, 2030-02; APOLLO12 2029-03, 2029-07, 2030-06; DE_GERLACHE_RIM1 2026-11, 2026-12, 2027-11 | 0 h in sun / Earth / both hours and longest dark; fractions 0 at 4 dp (9/9 identical) | Pass |
+
 ## Claim for the SI disclosure and validation text
 
 > Of our 18 published data products, 12 had a sample of their values independently recomputed with separate code

@@ -47,7 +47,11 @@ const coordText = s => `${Math.abs(s.lat).toFixed(3)}°${s.lat >= 0 ? 'N' : 'S'}
 function siteTags(s, withFilter = true) {
   const out = [];
   const hz = core.state.horizons.get(s.id);
-  if (hz && hz.browser) out.push(`<span class="tag" title="${esc(t('browserTerrainTip'))}">${t('browserTerrain')}</span>`);
+  if (hz && hz.browser) {
+    const res = Math.round(Math.min(...(hz.dem_sources || []).map(d => d.res_m).filter(isFinite), 948));
+    out.push(`<span class="tag" title="${esc(t(hz.polar ? 'browserTerrainPolarTip' : 'browserTerrainTip'))}">${t('browserTerrain').replace('{res}', res)}</span>`);
+    if (hz.accuracy && hz.accuracy.lower) out.push(`<span class="tag warn" title="${esc(hz.accuracy.text || '')}">${t('lowerAccuracy')}</span>`);
+  }
   if (core.horizonMock(s)) out.push(`<span class="tag warn">${t('mockTerrain')}</span>`);
   else if (core.terrainPending(s)) out.push(`<span class="tag warn" title="${esc(t('terrainPendingTip'))}">${t('terrainPending')}</span>`);
   if (s.coord_quality && s.coord_quality !== 'primary') out.push(`<span class="tag">${esc(s.coord_quality)}</span>`);

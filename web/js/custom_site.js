@@ -18,9 +18,14 @@ addStrings({
   cuBusy: 'Computing the terrain horizon in the background…', cuFetch: 'Fetching terrain tiles…',
   cuDone: 'Horizon ready', cuTiles: 'tiles', cuErr: 'Could not compute the horizon',
   cuBad: 'Latitude must be −90…90 and longitude −180…180.',
-  cuRes: 'Resolution: browser terrain from LOLA LDEM_64 at ~948 m to 150 km, then LDEM_16 (~1.9 km) to 300 km; curvature included, observer 2 m. This is coarser than the catalogue sites (5–240 m near the south pole).',
-  cuErrLbl: 'Expected error', cuErrTxt: 'against {n} south-polar catalogue horizons the mask differs by {med}° RMS (median, max {max}°); sunlight over 2026–2030 by {sun} pp (median, up to {sunmax} pp on peaks and rims). On plains a 474 m grid changes the mask by ≤ {full}°. Use it for screening, not for final siting.',
+  cuRes: 'Resolution north of 75°S: browser terrain from LOLA LDEM_64 at ~948 m to 150 km, then LDEM_16 (~1.9 km) to 300 km; curvature included, observer 2 m. This is coarser than the catalogue sites (5–240 m near the south pole).',
+  cuErrLbl: 'Expected error of that ~948 m grid', cuErrTxt: 'against {n} south-polar catalogue horizons the mask differs by {med}° RMS (median, max {max}°); sunlight over 2026–2030 by {sun} pp (median, up to {sunmax} pp on peaks and rims). On plains a 474 m grid changes the mask by ≤ {full}°. Use it for screening, not for final siting.',
   cuName0: 'Point',
+  cuResPolar: 'South-polar path (points at or south of {edge}): NASA PGDA terrain {levels}, then LDEM_64 (~948 m) to 150 km and LDEM_16 to 300 km; march starts 5 m from the observer (as the catalogue sites).',
+  cuAccPolar: 'measured against the catalogue method (PGDA 5–240 m terrain, horizon.py) at {n} test points in {band}: mask {med}° RMS (median, worst {max}°); sunlight 2026–2030 differs by {sun} pp (median, up to {sunmax} pp). Target: median ≤ {tr}° and every point ≤ {tp} pp.',
+  cuAccNorth: 'no high-resolution north-polar terrain in the browser: this point uses the ~948 m grid, which near the south pole differed from 5–240 m terrain by {med}° RMS (median, worst {max}°). Not validated in the north.',
+  cuKnownLimit: 'Known limit: at PEAK_NEAR_SHACKLETON (a sharp south-polar peak) the browser gives {pp} pp more sunlight than the catalogue method, over the {tp} pp target — treat sunlight on sharp peaks/rims above 85° S as approximate.',
+  cuAccLbl: 'Accuracy at this point', cuLow: 'Lower accuracy here', cuOk: 'Within target',
 }, {
   cuTitle: '내가 정한 착륙 지점', cuAria: '좌표로 착륙 지점 추가',
   cuLat: '위도 (°, 북 +)', cuLon: '경도 (°, 동 +)', cuName: '이름 (선택)', cuNamePh: '예: 대안 B',
@@ -29,9 +34,14 @@ addStrings({
   cuBusy: '뒤에서 지형 지평선을 계산하는 중…', cuFetch: '지형 타일 받는 중…',
   cuDone: '지평선 계산 끝', cuTiles: '타일', cuErr: '지평선을 계산하지 못함',
   cuBad: '위도는 −90…90, 경도는 −180…180 이어야 한다.',
-  cuRes: '해상도: 브라우저 지형은 150 km까지 LOLA LDEM_64 약 948 m, 300 km까지 LDEM_16(약 1.9 km). 곡률 포함, 관측자 2 m. 목록 착륙지(남극 근처 5–240 m)보다 거칠다.',
-  cuErrLbl: '예상 오차', cuErrTxt: '남극 목록 착륙지 {n}곳의 지평선과 비교하면 마스크 차이 {med}° RMS(중앙값, 최대 {max}°), 2026–2030 햇빛 비율 차이 {sun}%p(중앙값, 봉우리·능선에서는 최대 {sunmax}%p). 평지에서는 474 m 격자와의 차이가 {full}° 이하. 후보 거르기용이지 최종 착륙지 결정용이 아니다.',
+  cuRes: '남위 75° 북쪽 해상도: 브라우저 지형은 150 km까지 LOLA LDEM_64 약 948 m, 300 km까지 LDEM_16(약 1.9 km). 곡률 포함, 관측자 2 m. 목록 착륙지(남극 근처 5–240 m)보다 거칠다.',
+  cuErrLbl: '그 ~948 m 격자의 예상 오차', cuErrTxt: '남극 목록 착륙지 {n}곳의 지평선과 비교하면 마스크 차이 {med}° RMS(중앙값, 최대 {max}°), 2026–2030 햇빛 비율 차이 {sun}%p(중앙값, 봉우리·능선에서는 최대 {sunmax}%p). 평지에서는 474 m 격자와의 차이가 {full}° 이하. 후보 거르기용이지 최종 착륙지 결정용이 아니다.',
   cuName0: '지점',
+  cuResPolar: '남극 경로({edge} 이남 지점): 지점 근처는 NASA PGDA 지형 {levels}, 그다음 150 km까지 LDEM_64(~948 m), 300 km까지 LDEM_16. 목록 착륙지처럼 관측자 5 m 앞부터 계산.',
+  cuKnownLimit: '알려진 한계: 남극의 뾰족한 봉우리인 PEAK_NEAR_SHACKLETON에서는 브라우저 햇빛 비율이 목록 착륙지 방식보다 {pp}%p 높아 목표({tp}%p)를 넘는다. 85° S 이남의 뾰족한 봉우리·테두리 햇빛은 근사값으로 봐야 한다.',
+  cuAccPolar: '목록 착륙지 방식(PGDA 5–240 m 지형, horizon.py)과 {band} 시험 지점 {n}곳에서 비교: 마스크 차이 {med}° RMS(중앙값, 최악 {max}°), 2026–2030 햇빛 비율 차이 {sun}%p(중앙값, 최대 {sunmax}%p). 목표: 중앙값 ≤ {tr}°, 모든 지점 ≤ {tp}%p.',
+  cuAccNorth: '북극 고해상도 지형은 브라우저에 없다: 이 지점은 약 948 m 격자를 쓰고, 이 격자는 남극에서 5–240 m 지형과 {med}° RMS(중앙값, 최악 {max}°) 차이가 났다. 북극에서는 검증하지 않았다.',
+  cuAccLbl: '이 지점의 정확도', cuLow: '여기는 정확도 낮음', cuOk: '목표 안',
 });
 
 let sec, latIn, lonIn, nameIn, statusEl, canvas, img = null, worker = null, seq = 0, val = null;
@@ -56,6 +66,8 @@ function init() {
         <p class="cu-status" role="status" aria-live="polite"></p>
         <p class="hint cu-res" data-i18n="cuRes"></p>
         <p class="hint cu-err"></p>
+        <p class="hint cu-respolar"></p>
+        <p class="cu-acc" aria-live="polite"></p>
       </div>
       <figure class="cu-map">
         <canvas tabindex="0" role="img" data-i18n-aria="cuMapAria"></canvas>
@@ -77,7 +89,12 @@ function init() {
     #llsn-custom .cu-go:disabled { opacity: .5; cursor: progress; }
     #llsn-custom .cu-status { min-height: 1.4em; margin: .6em 0 0; font-family: var(--font-num); font-size: .9rem; }
     #llsn-custom .cu-status.err { color: var(--warn); }
-    #llsn-custom .cu-err b { color: var(--text); }
+    #llsn-custom .cu-err b, #llsn-custom .cu-acc b { color: var(--text); }
+    #llsn-custom .cu-acc { font-size: .85rem; color: var(--muted); margin: .4em 0 0; }
+    #llsn-custom .cu-acc:empty, #llsn-custom .cu-respolar:empty { display: none; }
+    #llsn-custom .cu-badge { display: inline-block; font-weight: 700; font-size: .78rem; padding: .05em .6em; margin-right: .4em;
+      border-radius: 999px; border: 1px solid var(--warn); color: var(--warn); }
+    #llsn-custom .cu-badge.ok { border-color: var(--relay); color: var(--relay); }
     #llsn-custom .cu-map { margin: 0; }
     #llsn-custom .cu-map canvas { display: block; width: 100%; aspect-ratio: 2 / 1; border-radius: 8px; border: 1px solid var(--border);
       background: var(--surface-2); cursor: crosshair; }
@@ -142,6 +159,39 @@ function showErr() {
     .replace('{sun}', c.abs_sun_pp_median.toFixed(1)).replace('{sunmax}', Math.round(c.abs_sun_pp_max))
     .replace('{full}', (val.full_ldem64_rms_deg_max ?? 0).toFixed(2));
   el.innerHTML = `<b>${t('cuErrLbl')}:</b> ${fill(t('cuErrTxt'))}`;
+  const P = val.polar, rp = sec.querySelector('.cu-respolar');
+  rp.textContent = P ? t('cuResPolar').replace('{edge}', Math.abs(P.lat_edge_deg) + '°S').replace('{levels}', P.levels.join(', ')) : '';
+  showAcc();
+}
+
+const BANDS = [['85-90S', -90, -85], ['80-85S', -85, -80], ['75-80S', -80, -75]];
+/** Measured accuracy for a computed point: {lower, text} from hterrain/validation.json (never invented). */
+function accuracyFor(lat, polar) {
+  if (!val) return null;
+  const P = val.polar, c = val.catalogue;
+  const f1 = x => x.toFixed(x < 1 ? 2 : 1);
+  if (polar && P) {
+    const b = BANDS.find(([, lo, hi]) => lat >= lo && lat <= hi), m = b && P.bands[b[0]];
+    if (!m) return null;
+    const band = b[0].replace('S', '°S');
+    const text = t('cuAccPolar').replace('{n}', m.n).replace('{band}', band).replace('{med}', f1(m.rms_deg_median))
+      .replace('{max}', f1(m.rms_deg_max)).replace('{sun}', m.abs_sun_pp_median.toFixed(1)).replace('{sunmax}', m.abs_sun_pp_max.toFixed(1))
+      .replace('{tr}', P.target.rms_deg_median).replace('{tp}', P.target.abs_sun_pp_per_point);
+    const known = m.meets_target ? '' : ' ' + t('cuKnownLimit').replace('{pp}', '+' + m.abs_sun_pp_max.toFixed(1)).replace('{tp}', P.target.abs_sun_pp_per_point);
+    return { lower: !m.meets_target, text: text + known, band: b[0] };
+  }
+  if (lat >= 75 && c) {
+    return { lower: true, text: t('cuAccNorth').replace('{med}', f1(c.rms_deg_median)).replace('{max}', f1(c.rms_deg_max)) };
+  }
+  return null;
+}
+let lastAcc = null;
+function showAcc() {
+  const el = sec.querySelector('.cu-acc');
+  if (!lastAcc) { el.textContent = ''; return; }
+  const a = accuracyFor(lastAcc.lat, lastAcc.polar);
+  if (!a) { el.textContent = ''; return; }
+  el.innerHTML = `<span class="cu-badge${a.lower ? '' : ' ok'}">${t(a.lower ? 'cuLow' : 'cuOk')}</span><b>${t('cuAccLbl')}:</b> ${a.text}`;
 }
 
 const wrapLon = x => ((((x + 180) % 360) + 360) % 360) - 180;
@@ -194,10 +244,13 @@ function compute(lat, lon, label, focus) {
         id, group: 'custom', user: true, lat, lon, elev_m: Math.round(msg.h0_m * 10) / 10,
         name: label || `Point ${c}`, name_ko: label || `내 지점 ${c}`, short: (label || c).slice(0, 14),
         source_url: '', coord_quality: 'primary',
-        note: 'User-defined point; horizon computed in the browser from LOLA LDEM_64 (~948 m) + LDEM_16.',
+        note: msg.polar ? 'User-defined point; horizon computed in the browser from NASA PGDA south-polar terrain + LOLA LDEM_64/16.'
+          : 'User-defined point; horizon computed in the browser from LOLA LDEM_64 (~948 m) + LDEM_16.',
       };
+      const acc = accuracyFor(lat, msg.polar);
       const hz = { id, lat, lon, h0_m: msg.h0_m, obs_height_m: 2, az_step_deg: 0.5, mask: msg.mask, max_range_km: 300,
-        dem_sources: msg.dem_sources, mock: false, browser: true };
+        dem_sources: msg.dem_sources, mock: false, browser: true, polar: !!msg.polar, accuracy: acc };
+      lastAcc = { lat, polar: !!msg.polar }; showAcc();
       window.LLSN.addSite(site, hz, { focus: typeof focus === 'function' ? focus(id) : focus });
       statusEl.className = 'cu-status';
       statusEl.textContent = `${t('cuDone')} · ${c} · h₀ ${Math.round(msg.h0_m)} m · ${(msg.ms / 1000).toFixed(1)} s · ${msg.tiles} ${t('cuTiles')}`;

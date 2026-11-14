@@ -263,6 +263,15 @@ Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; 
 A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
 Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.
 
+### 14b. Proposed v1.2 — `web/data/hterrain/polar_s/` south-polar levels for user-defined points (2026-11-14, Sua, s4) — NOT yet agreed; new subsection only
+Written by `python pipeline/build_polar_terrain.py`; read by `web/js/hterrain.js` when the point latitude ≤ `lat_edge_deg`.
+| File | Content |
+|---|---|
+| `polar_s/index.json` | `pole` = "south", `lat_edge_deg`, `projection` (PROJ string: spherical polar stereographic, lat_0 = −90, k0 = 1, R = 1737400 m — the PGDA / card-2 grid), `levels` finest first: `name, source, source_url, res_m, q_m, to_km` (used for samples up to this distance from the point), `lat_edge_deg` (level used only for points at or poleward of it), `x0_m, y0_m` (first pixel centre), `tile_px, n (= tile_px + 1), nt` (tiles per side), `tiles` (list of `"ty_tx"` that exist; others = no data), `bytes`, `url` = `polar_s/<name>/{ty}_{tx}.bin.gz`; `mock` |
+| `polar_s/<name>/<ty>_<tx>.bin.gz` | gzip of int32 LE base + `n × n` int16 LE residuals of `a = round(h / q_m)`: planar predictor `res[r,c] = a[r,c] − a[r,c−1] − a[r−1,c] + a[r−1,c−1]`, first row / column 1-D deltas, `res[0,0] = a[0,0] − base = 0`. Heights in m above 1737.4 km. Level pixel centre `x = x0_m + C·res_m`, `y = y0_m − R·res_m`; tile (ty, tx) = level rows `ty·tile_px … ty·tile_px + tile_px`, cols likewise |
+
+Sampling chain for a polar point (same rule as `horizon.sample_chain`): for a sample at distance s, the first level with `to_km ≥ s` that has a tile there, then `grids.near` (to 150 km), then `grids.far` (to 300 km). March: 5 m → 300 km, 8000 geometric steps (card-8 settings). The browser horizon object adds `"polar": true` and `"accuracy": {lower, text}` from `hterrain/validation.json` → `polar` (written by `pipeline/validate_custom_polar.py`).
+
 ## 15. Proposed — `web/data/local/<ID>.json` (Card 18, Jiyong, 2026-11-14)
 
 New optional data only; existing sections unchanged. Written by `pipeline/local_maps.py`.

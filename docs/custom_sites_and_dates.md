@@ -29,6 +29,11 @@ node pipeline/check_custom_horizon.mjs data/processed/custom_horizon/browser.jso
 python pipeline/validate_custom_horizon.py --browser data/processed/custom_horizon/browser.json --pipeline-dir <dir with horizon/<ID>.json> --ldem64 … --ldem16 … --full APOLLO17,CHANGE4,APOLLO15
 ```
 
+## 2b. South-polar path (s4)
+Since s4, points at or south of 75° S use NASA PGDA terrain (20 m / 60 m to 3 km, 240 m to 150 km) before the
+948 m grid. Before → after against the card-8 method: catalogue median RMS 0.975° → 0.085°, random points 0.652° →
+0.027°. Details, the full table and the "Lower accuracy here" badge rule: `docs/custom_polar.md`.
+
 ## 3. Landing-date scan (`web/js/landing_scan.js`)
 For the focused site, every landing day (00:00 UTC) from the chosen first date over 3/6/12/24 months: sunlight %, Earth %, both % and longest dark
 over the first N days (default 14, 1–120), hourly, same definitions as `core.metrics`. Best / worst = highest / lowest "Both" (ties: shorter longest dark).

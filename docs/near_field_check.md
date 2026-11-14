@@ -45,3 +45,9 @@ Native 12×12 pixel height patches and individual neighbour residuals are in the
 The 200 m / 8000-step control isolates distance-grid density from near-field inclusion; its metric differences are recorded per site. These results support retaining current main baselines until the team decides on a consistent recalculation.
 
 Reproduce: `python pipeline/near_field_check.py`; numerical evidence: `docs/near_field_check.json`. Terrain and code/ephemeris hashes are recorded there and in the existing dataset manifest.
+
+## Fresh recheck for the GPU-validation PR
+
+The existing five-site calculation was rerun on 2026-11-14: old/new values, step-only controls and native-pixel diagnostics remain unchanged. All four original PDS labels were fetched again (HTTP 200), with identical SHA256 values: [retrieval evidence](near_field_labels_recheck.json). Production horizon and metrics hashes still match the recorded baselines. PGDA centre and 300 m extrema remain **unavailable** because none of these discs has a valid address in those rasters. Real relief versus all possible DEM noise cannot be determined from this evidence alone.
+
+The refreshed JSON records this run's 9.594 s elapsed time and the local script's SHA256. Its script hash differs from the previous record only because this Windows checkout uses CRLF: normalizing it to LF reproduces the previous hash `1cbd27d2430e62e5c3624dbf8b06580a83c98901d7545d21df2bfc49800cf72e`. No numerical method changed.

@@ -1,0 +1,166 @@
+{
+ "source": "web/data/validation.json (named), web/data/uncertainty/<ID>.json, web/data/horizon/<ID>.json",
+ "named_sun_mae_pp": 3.67,
+ "sites": [
+  {
+   "id": "ARTEMIS_NOBILE_RIM1",
+   "ours_sun": 0.73298,
+   "pgda_sun": 0.5416,
+   "residual_pp": 19.137999999999998,
+   "pgda_300m": [
+    0.06328,
+    0.68276
+   ],
+   "ours_inside_pgda_300m": false,
+   "coord_300m_shifted": [
+    0.089063424607521,
+    0.73298
+   ],
+   "coord_500m_shifted": [
+    0.089063424607521,
+    0.8000893464768164
+   ],
+   "pgda_inside_coord_300m": true,
+   "centre_node_2026_2030": 0.7289156626506024,
+   "centre_is_local": "max",
+   "near_dem": "PGDA_LOLA_10M (10 m to 25 km)",
+   "pole_window_60m_sun": 0.7360660567605358,
+   "earth_any": 0.72994,
+   "earth_centre": 0.6735425568488778,
+   "pgda_earth": 0.664,
+   "pgda_earth_300m": [
+    0.41932,
+    0.75876
+   ],
+   "classification": "within PGDA/coordinate spread"
+  },
+  {
+   "id": "ARTEMIS_DE_GERLACHE_RIM2",
+   "ours_sun": 0.68369,
+   "pgda_sun": 0.60944,
+   "residual_pp": 7.425000000000004,
+   "pgda_300m": [
+    0.24748,
+    0.71908
+   ],
+   "ours_inside_pgda_300m": true,
+   "coord_300m_shifted": [
+    0.3212630193501278,
+    0.7013287367652428
+   ],
+   "coord_500m_shifted": [
+    2.351588170868002e-05,
+    0.7013287367652428
+   ],
+   "pgda_inside_coord_300m": true,
+   "centre_node_2026_2030": 0.6836664841182913,
+   "centre_is_local": "inside",
+   "near_dem": "PGDA_LOLA_5M (5 m to 3 km)",
+   "pole_window_60m_sun": 0.6970043955134664,
+   "earth_any": 0.59165,
+   "earth_centre": 0.5452580914493395,
+   "pgda_earth": 0.54084,
+   "pgda_earth_300m": [
+    0.0,
+    0.61812
+   ],
+   "classification": "within PGDA/coordinate spread"
+  },
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "ours_sun": 0.55078,
+   "pgda_sun": 0.49256,
+   "residual_pp": 5.8220000000000045,
+   "pgda_300m": [
+    0.0,
+    0.58692
+   ],
+   "ours_inside_pgda_300m": true,
+   "coord_300m_shifted": [
+    0.14689171960569555,
+    0.5623261847389559
+   ],
+   "coord_500m_shifted": [
+    0.14689171960569555,
+    0.5623261847389559
+   ],
+   "pgda_inside_coord_300m": true,
+   "centre_node_2026_2030": 0.547302847754655,
+   "centre_is_local": "inside",
+   "near_dem": "PGDA_LOLA_5M (5 m to 3 km)",
+   "pole_window_60m_sun": 0.5656345106627604,
+   "earth_any": 0.62587,
+   "earth_centre": 0.5777957860615883,
+   "pgda_earth": 0.64624,
+   "pgda_earth_300m": [
+    0.37188,
+    0.72308
+   ],
+   "classification": "within PGDA/coordinate spread"
+  },
+  {
+   "id": "CONNECTING_RIDGE",
+   "ours_sun": 0.47421,
+   "pgda_sun": 0.43872,
+   "residual_pp": 3.549000000000002,
+   "pgda_300m": [
+    0.0,
+    0.88444
+   ],
+   "ours_inside_pgda_300m": true,
+   "coord_300m_shifted": [
+    0.320504267981015,
+    0.8385537385907265
+   ],
+   "coord_500m_shifted": [
+    0.003623106973347945,
+    0.866460821467689
+   ],
+   "pgda_inside_coord_300m": true,
+   "centre_node_2026_2030": 0.4705868930266521,
+   "centre_is_local": "inside",
+   "near_dem": "PGDA_LOLA_5M (5 m to 3 km)",
+   "pole_window_60m_sun": 0.5698833076396823,
+   "earth_any": 0.47744,
+   "earth_centre": 0.4317567899415549,
+   "pgda_earth": 0.39052,
+   "pgda_earth_300m": [
+    0.0,
+    0.58164
+   ],
+   "classification": "within PGDA/coordinate spread"
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "ours_sun": 0.52434,
+   "pgda_sun": 0.48996,
+   "residual_pp": 3.4380000000000024,
+   "pgda_300m": [
+    0.09728,
+    0.72668
+   ],
+   "ours_inside_pgda_300m": true,
+   "coord_300m_shifted": [
+    0.22062514056224905,
+    0.6336180211756116
+   ],
+   "coord_500m_shifted": [
+    0.04480823658269446,
+    0.832139379335524
+   ],
+   "pgda_inside_coord_300m": true,
+   "centre_node_2026_2030": 0.5208105147864184,
+   "centre_is_local": "inside",
+   "near_dem": "PGDA_LOLA_5M (5 m to 3 km)",
+   "pole_window_60m_sun": 0.6354137039207264,
+   "earth_any": 0.61227,
+   "earth_centre": 0.5649771622218948,
+   "pgda_earth": 0.61264,
+   "pgda_earth_300m": [
+    0.38848,
+    0.61348
+   ],
+   "classification": "within PGDA/coordinate spread"
+  }
+ ]
+}

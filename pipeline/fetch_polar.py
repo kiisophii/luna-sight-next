@@ -168,7 +168,19 @@ def read_window(page, stream, bounds):
     return out
 
 
-def fetch(site, res, radius, root):
+def clip_window(bounds, shape, *, allow_partial=False):
+    """Keep only available source pixels when explicitly requested; never extrapolate."""
+    r0, r1, c0, c1 = bounds
+    nr, nc = shape
+    clipped = max(0, r0), min(nr, r1), max(0, c0), min(nc, c1)
+    if clipped[0] >= clipped[1] or clipped[2] >= clipped[3]:
+        raise ValueError('Requested window has no source coverage')
+    if clipped != tuple(bounds) and not allow_partial:
+        raise ValueError('Requested window exceeds source coverage')
+    return clipped
+
+
+def fetch(site, res, radius, root, *, allow_partial=False):
     url = BASE + SOURCES[res][0]
     dest = root / str(res) / (site['id'] + '.npz')
     x, y = project(site['lat'], site['lon'])
@@ -183,14 +195,17 @@ def fetch(site, res, radius, root):
         c1 = math.ceil((x+radius-(x0-step/2))/step)
         r0 = math.floor(((y0+step/2)-(y+radius))/step)
         r1 = math.ceil(((y0+step/2)-(y-radius))/step)
-        if not (0 <= r0 < r1 <= page.imagelength and 0 <= c0 < c1 <= page.imagewidth):
-            raise ValueError(f'{site["id"]}: requested {res} m window exceeds source coverage')
+        requested_bounds = [r0, r1, c0, c1]
+        r0, r1, c0, c1 = clip_window(requested_bounds, (page.imagelength, page.imagewidth),
+                                    allow_partial=allow_partial)
         meta = dict(site=site, source_url=url, source_size_bytes=stream.size,
                     etag=stream.etag, last_modified=stream.modified,
                     resolution_m=res, radius_m=radius, frame='MOON_ME_DE421',
                     reference_radius_m=RADIUS, projection=PROJ, bounds=[r0,r1,c0,c1],
                     pixel_registration='center', units='m',
                     source_geotiff=str(page.geotiff_tags))
+        if requested_bounds != [r0, r1, c0, c1]:
+            meta.update(requested_bounds=requested_bounds, coverage_clipped=True)
         if dest.exists():
             with np.load(dest, allow_pickle=False) as old:
                 if json.loads(str(old['metadata'])) == meta:
@@ -217,6 +232,8 @@ def main():
     p.add_argument('--res', type=int, nargs='+', choices=list(SOURCES), default=list(SOURCES))
     p.add_argument('--radius-m', type=float, help='Override radii for a small smoke test')
     p.add_argument('--output', type=Path, default=Path('data/raw/polar'))
+    p.add_argument('--clip-coverage', action='store_true',
+                   help='Keep available original pixels for partially covered windows; no extrapolation')
     args = p.parse_args()
     if args.radius_m is not None and (not math.isfinite(args.radius_m) or args.radius_m <= 0):
         p.error('radius must be positive and finite')
@@ -239,7 +256,8 @@ def main():
     for site in sites:
         for res in args.res:
             try:
-                fetch(site, res, args.radius_m or SOURCES[res][1], args.output)
+                fetch(site, res, args.radius_m or SOURCES[res][1], args.output,
+                      allow_partial=args.clip_coverage)
             except (ValueError, requests.RequestException) as e:
                 failures.append(str(e))
                 print(f'FAILED {site["id"]} {res}m: {e}', flush=True)

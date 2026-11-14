@@ -130,3 +130,17 @@ def test_point_registration_and_nodata():
         assert np.isnan(read_window(tif.pages[0],b,(0,1,0,1))[0,0])
         with pytest.raises(ValueError, match='window'):
             read_window(tif.pages[0],b,(-1,1,0,1))
+
+
+def test_opt_in_partial_coverage_retains_available_pixels():
+    from pipeline import fetch_polar as fp
+    assert fp.clip_window((-2, 8, 4, 12), (10, 10), allow_partial=True) == (0, 8, 4, 10)
+    with pytest.raises(ValueError, match='coverage'):
+        fp.clip_window((-2, 8, 4, 12), (10, 10))
+
+
+def test_partial_coverage_rejects_empty_intersection():
+    from pipeline import fetch_polar as fp
+    with pytest.raises(ValueError, match='coverage'):
+        fp.clip_window((12, 15, 1, 4), (10, 10), allow_partial=True)
+    assert fp.clip_window((0, 10, 0, 10), (10, 10)) == (0, 10, 0, 10)

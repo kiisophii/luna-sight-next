@@ -352,16 +352,16 @@
   },
   {
     "id": "SHACKLETON_RIM",
-    "name": "Shackleton Rim (R04)",
-    "name_ko": "섀클턴 가장자리 R04",
-    "short": "Shackleton R04",
+    "name": "Shackleton Rim (S)",
+    "name_ko": "섀클턴 테두리 연구 지점",
+    "short": "Shackleton Rim",
     "group": "polar_peak",
-    "lat": -89.7668,
-    "lon": -171.87,
+    "lat": -89.6866,
+    "lon": -162.81,
     "elev_m": null,
-    "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+    "source_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
     "coord_quality": "primary",
-    "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+    "note": "Published Shackleton crater rim research point (S), Table 2 first row; observer 2 m. Source longitude 197.19 E converted to -162.81 E. Replaces the old R04 regional polygon centre; not a landed vehicle or a claimed summit. Exact MOON_ME_DE421 datum unverified; terrain height and site results require recomputation."
   },
   {
     "id": "CONNECTING_RIDGE",

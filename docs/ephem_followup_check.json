@@ -1,0 +1,179 @@
+{
+  "generated_utc": "2026-11-14T01:20:39.959733+00:00",
+  "original_implementation_commit": "d89c42a065eea5d478f4e03b56e15585c02635b6",
+  "verification_owner": "Implementation assistant follow-up; separate from the user-reported independent review",
+  "production_hashes_before": {
+    "web\\data\\ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web\\data\\ephem.json": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8"
+  },
+  "production_hashes_after": {
+    "web\\data\\ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web\\data\\ephem.json": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8"
+  },
+  "production_unchanged": true,
+  "npz": {
+    "passed": true,
+    "sha256": "358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe",
+    "bytes": 1969747,
+    "shape": [
+      81444,
+      6
+    ],
+    "dtype": "little-endian float32",
+    "all_rows_finite": true,
+    "all_hour_indices_regular": true,
+    "sample_indices_recomputed": [
+      0,
+      1,
+      40722,
+      81442,
+      81443
+    ],
+    "sample_float32_mismatches": 0,
+    "note": "Actual saved NPZ checked; five rows recomputed, not the complete 18.6-year series"
+  },
+  "actual_engine_resume": {
+    "passed": true,
+    "fixture_hours": 12,
+    "chunk_rows": 3,
+    "checkpoint_rows_before_interrupt": 3,
+    "rows_computed_after_resume": 9,
+    "resumed_at_utc": "2026-01-01T03:00:00+00:00",
+    "float32_mismatches_vs_existing_binary": 0,
+    "scope": "Intentional exception between actual Skyfield chunks; not an OS kill, power loss or network interruption test"
+  },
+  "interpolation": {
+    "seed": 42,
+    "n_times": 240,
+    "window": "2026-2030",
+    "height_note": "Synthetic height test values, not surveyed site heights",
+    "criterion": "max 3D angular separation < 0.01 deg; azimuth singular at zenith",
+    "results": [
+      {
+        "lat": -89.5,
+        "lon": 0,
+        "terrain_height_m": 0,
+        "body": "sun",
+        "max_az_deg": 0.000003741436898963002,
+        "mean_az_deg": 0.000001086443313032722,
+        "max_el_deg": 0.000014981346548648133,
+        "mean_el_deg": 0.00000639130262441957,
+        "max_sky_deg": 0.000015264747233507066,
+        "mean_sky_deg": 0.000006584787143029429
+      },
+      {
+        "lat": -89.5,
+        "lon": 0,
+        "terrain_height_m": 0,
+        "body": "earth",
+        "max_az_deg": 0.0001006986201446125,
+        "mean_az_deg": 0.0000318452864894662,
+        "max_el_deg": 0.00010785816529779169,
+        "mean_el_deg": 0.00003707892231813917,
+        "max_sky_deg": 0.00013176342594160888,
+        "mean_sky_deg": 0.0000530588478316167
+      },
+      {
+        "lat": 20.1908,
+        "lon": 30.7717,
+        "terrain_height_m": -1800,
+        "body": "sun",
+        "max_az_deg": 0.000021594193157170594,
+        "mean_az_deg": 0.000007534415994570054,
+        "max_el_deg": 0.000013842437212474579,
+        "mean_el_deg": 0.0000034822526122579856,
+        "max_sky_deg": 0.00001530941517474294,
+        "mean_sky_deg": 0.000006685121655383317
+      },
+      {
+        "lat": 20.1908,
+        "lon": 30.7717,
+        "terrain_height_m": -1800,
+        "body": "earth",
+        "max_az_deg": 0.00021213811103848457,
+        "mean_az_deg": 0.00004962843114810767,
+        "max_el_deg": 0.00012917088640307384,
+        "mean_el_deg": 0.00003222365608011775,
+        "max_sky_deg": 0.00012935643814656226,
+        "mean_sky_deg": 0.0000502716494435125
+      },
+      {
+        "lat": -45.4446,
+        "lon": 177.5991,
+        "terrain_height_m": -5900,
+        "body": "sun",
+        "max_az_deg": 0.000012971653404747485,
+        "mean_az_deg": 0.000003887449129062285,
+        "max_el_deg": 0.000014747851729168815,
+        "mean_el_deg": 0.000005294462062353788,
+        "max_sky_deg": 0.00001535496461650538,
+        "mean_sky_deg": 0.00000660252452157633
+      },
+      {
+        "lat": -45.4446,
+        "lon": 177.5991,
+        "terrain_height_m": -5900,
+        "body": "earth",
+        "max_az_deg": 0.0001707658053931027,
+        "mean_az_deg": 0.0000449705104608474,
+        "max_el_deg": 0.00010289493348381029,
+        "mean_el_deg": 0.000034978052381558675,
+        "max_sky_deg": 0.00012538018658409713,
+        "mean_sky_deg": 0.0000511044748441571
+      },
+      {
+        "lat": 0,
+        "lon": 0,
+        "terrain_height_m": 1000,
+        "body": "sun",
+        "max_az_deg": 0.00030788558825634027,
+        "mean_az_deg": 0.00001993263204103831,
+        "max_el_deg": 0.000009762170321891972,
+        "mean_el_deg": 0.000001404734524286753,
+        "max_sky_deg": 0.000015197262730554654,
+        "mean_sky_deg": 0.00000665801283791519
+      },
+      {
+        "lat": 0,
+        "lon": 0,
+        "terrain_height_m": 1000,
+        "body": "earth",
+        "max_az_deg": 0.0009379979960044693,
+        "mean_az_deg": 0.00004911877144013014,
+        "max_el_deg": 0.00012740040305914135,
+        "mean_el_deg": 0.000048827831334049186,
+        "max_sky_deg": 0.00012749413340264743,
+        "mean_sky_deg": 0.000049296586575240654
+      }
+    ]
+  },
+  "browser": {
+    "status": "passed",
+    "passed": true,
+    "n_comparisons": 1452,
+    "loaded_ephem_rows": 43824,
+    "metadata_mock": false,
+    "max_az_deg": 0.00044475140953181835,
+    "max_el_deg": 0.00003392945949221016,
+    "threshold_deg": 0.01,
+    "actual_module": "web/js/core.js",
+    "reference": "Original cached Horizons tables, not a new independent query",
+    "terrain_height_m": 0,
+    "obs_height_m": 2,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36",
+    "observation": "PASS and JSON results read from actual Chrome page through browser UI",
+    "local_server_note": "Explicit text/javascript MIME needed for Windows HTTP server; core.js unchanged"
+  },
+  "user_reported_independent_review": {
+    "commit": "d89c42a065eea5d478f4e03b56e15585c02635b6",
+    "source": "Results supplied by user; distinct from these implementation-assistant checks",
+    "fresh_horizons_comparisons": 1452,
+    "max_az_deg": 0.000444751,
+    "max_el_deg": 0.000033929,
+    "full_production_regeneration_float32_mismatches": 0,
+    "required_threshold_deg": 0.01,
+    "required_threshold_passed": true,
+    "practice_threshold_deg": 0.0001,
+    "practice_az_threshold_passed": false
+  }
+}

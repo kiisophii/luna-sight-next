@@ -114,3 +114,7 @@ The polar uncertainty public schema now follows Sua branch s3-uncert-nonpolar-su
 ### Task F native near-field patches (Jiyong, 2026-11-15)
 
 Existing PGDA [5 m](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif) and [10 m](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF) source windows produce optional sparse browser p5/p10 levels around the 16 south-polar catalogue regions. Native pixels, MOON_ME DE421, R=1737400 m, 0.25 m encoding steps, only full-valid tiles. 210 tiles / 19,884,973 compressed bytes; detailed source/window/tile hashes in docs/task_f/results.json. These regional patches do not establish global accuracy. Original source citations above apply.
+
+### Task W assumption sensitivity (Jiyong, 2026-11-15)
+
+Reuses the cited PGDA 5/10/20/60/80/240 m polar windows, SLDEM2015 512 ppd windows and original LOLA LDEM_64/16 float rasters for all 33 catalogue coordinates; no new data product acquisition. Source metadata, direct URLs, raw-file and label hashes, and gates are retained per site in docs/task_w_sensitivity.json. Production NAIF-derived ephem.bin/ephem.json hashes and definitions are pinned there. All modified-height/near-field results are scenario calculations, not physical-error measurements.

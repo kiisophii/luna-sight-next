@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_HAWORTH",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.547302847754655,
+  "earth_frac": 0.5853641840087623,
+  "both_frac": 0.3140516611902154,
+  "longest_dark_h": 424,
+  "slope_deg": null
+}

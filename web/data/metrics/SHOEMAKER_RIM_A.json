@@ -1,0 +1,9 @@
+{
+  "id": "SHOEMAKER_RIM_A",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.19336436655713765,
+  "earth_frac": 0.43451077035414387,
+  "both_frac": 0.11596385542168675,
+  "longest_dark_h": 2819,
+  "slope_deg": null
+}

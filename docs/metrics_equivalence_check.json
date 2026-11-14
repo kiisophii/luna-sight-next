@@ -1,9 +1,26 @@
 {
   "passed": true,
-  "core_sha256": "a948dab15caf3acd6c2d4ec58b5d1a7e5112c31f792b45bde9d7216342a123a0",
+  "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
   "n_hours": 43824,
   "n_fixtures": 3,
-  "real_horizon_sites_checked": [],
+  "real_horizon_sites_checked": [
+    "IM1",
+    "IM2",
+    "ARTEMIS_CABEUS_B",
+    "ARTEMIS_HAWORTH",
+    "ARTEMIS_MALAPERT",
+    "ARTEMIS_MOUTON_PLATEAU",
+    "ARTEMIS_MOUTON",
+    "ARTEMIS_NOBILE_RIM1",
+    "ARTEMIS_NOBILE_RIM2",
+    "ARTEMIS_DE_GERLACHE_RIM2",
+    "ARTEMIS_SLATER_PLAIN",
+    "SHACKLETON_RIM",
+    "CONNECTING_RIDGE",
+    "PEAK_NEAR_SHACKLETON",
+    "DE_GERLACHE_RIM1",
+    "SHOEMAKER_RIM_A"
+  ],
   "fixture_scope": "Three synthetic terrains solely in a disposable test directory, plus every eligible real horizon currently available; real production ephemeris",
   "exact_metric_matches": true,
   "matches_to_four_decimals": true,
@@ -68,6 +85,438 @@
         "earth_frac": 1,
         "both_frac": 0.5021677619569186,
         "longest_dark_h": 355
+      }
+    },
+    {
+      "site": {
+        "id": "IM1",
+        "name": "IM-1 Odysseus",
+        "name_ko": "IM-1 오디세우스",
+        "short": "IM-1 Odysseus",
+        "group": "clps",
+        "lat": -80.13,
+        "lon": 1.44,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1360",
+        "coord_quality": "primary",
+        "note": "Historical landed location. Source publishes only two decimal places; do not infer metre-level accuracy."
+      },
+      "js": {
+        "sun_frac": 0.38887367652427896,
+        "earth_frac": 1,
+        "both_frac": 0.38887367652427896,
+        "longest_dark_h": 458
+      },
+      "python": {
+        "sun_frac": 0.38887367652427896,
+        "earth_frac": 1,
+        "both_frac": 0.38887367652427896,
+        "longest_dark_h": 458
+      }
+    },
+    {
+      "site": {
+        "id": "IM2",
+        "name": "IM-2 Athena",
+        "name_ko": "IM-2 아테나",
+        "short": "IM-2 Athena",
+        "group": "clps",
+        "lat": -84.7906,
+        "lon": 29.1957,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1408",
+        "coord_quality": "primary",
+        "note": "Historical actual surface location; lander ended on its side. Not the pre-landing target (-84.78, 29.13)."
+      },
+      "js": {
+        "sun_frac": 0.45027838627236216,
+        "earth_frac": 0.81421139101862,
+        "both_frac": 0.3738134355604235,
+        "longest_dark_h": 459
+      },
+      "python": {
+        "sun_frac": 0.45027838627236216,
+        "earth_frac": 0.81421139101862,
+        "both_frac": 0.3738134355604235,
+        "longest_dark_h": 459
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_CABEUS_B",
+        "name": "Peak near Cabeus B (region)",
+        "name_ko": "아르테미스 후보: 카베우스 B 인근 봉우리 (대표점)",
+        "short": "Cabeus B area",
+        "group": "artemis3_region",
+        "lat": -83.763,
+        "lon": -69.983,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS PCB01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.39505750273822565,
+        "earth_frac": 0.29636728733114276,
+        "both_frac": 0.10658543263964951,
+        "longest_dark_h": 485
+      },
+      "python": {
+        "sun_frac": 0.39505750273822565,
+        "earth_frac": 0.29636728733114276,
+        "both_frac": 0.10658543263964951,
+        "longest_dark_h": 485
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_HAWORTH",
+        "name": "Haworth (region)",
+        "name_ko": "아르테미스 후보: 하워스 (대표점)",
+        "short": "Haworth area",
+        "group": "artemis3_region",
+        "lat": -86.768,
+        "lon": -20.514,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS HW01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.547302847754655,
+        "earth_frac": 0.5853641840087623,
+        "both_frac": 0.3140516611902154,
+        "longest_dark_h": 424
+      },
+      "python": {
+        "sun_frac": 0.547302847754655,
+        "earth_frac": 0.5853641840087623,
+        "both_frac": 0.3140516611902154,
+        "longest_dark_h": 424
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MALAPERT",
+        "name": "Malapert Massif (region)",
+        "name_ko": "아르테미스 후보: 말라퍼트 산괴 (대표점)",
+        "short": "Malapert area",
+        "group": "artemis3_region",
+        "lat": -85.942,
+        "lon": -0.944,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMA01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.45043811610076673,
+        "earth_frac": 1,
+        "both_frac": 0.45043811610076673,
+        "longest_dark_h": 415
+      },
+      "python": {
+        "sun_frac": 0.45043811610076673,
+        "earth_frac": 1,
+        "both_frac": 0.45043811610076673,
+        "longest_dark_h": 415
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "name": "Mons Mouton Plateau (region)",
+        "name_ko": "아르테미스 후보: 무통산 고원 (대표점)",
+        "short": "Mouton Plateau",
+        "group": "artemis3_region",
+        "lat": -85.111,
+        "lon": 26.71,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMP01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.3758442862358525,
+        "earth_frac": 0.5836756115370573,
+        "both_frac": 0.23849945235487405,
+        "longest_dark_h": 516
+      },
+      "python": {
+        "sun_frac": 0.3758442862358525,
+        "earth_frac": 0.5836756115370573,
+        "both_frac": 0.23849945235487405,
+        "longest_dark_h": 516
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MOUTON",
+        "name": "Mons Mouton (region)",
+        "name_ko": "아르테미스 후보: 무통산 (대표점)",
+        "short": "Mons Mouton",
+        "group": "artemis3_region",
+        "lat": -85.416,
+        "lon": 31.851,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMO01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.7155896312522818,
+        "earth_frac": 0.5977774735304856,
+        "both_frac": 0.39218236582694416,
+        "longest_dark_h": 439
+      },
+      "python": {
+        "sun_frac": 0.7155896312522818,
+        "earth_frac": 0.5977774735304856,
+        "both_frac": 0.39218236582694416,
+        "longest_dark_h": 439
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "name": "Nobile Rim 1 (region)",
+        "name_ko": "아르테미스 후보: 노빌레 가장자리 1 (대표점)",
+        "short": "Nobile Rim 1",
+        "group": "artemis3_region",
+        "lat": -85.295,
+        "lon": 36.917,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS NR101, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.7289156626506024,
+        "earth_frac": 0.6797645125958379,
+        "both_frac": 0.43823019350127784,
+        "longest_dark_h": 411
+      },
+      "python": {
+        "sun_frac": 0.7289156626506024,
+        "earth_frac": 0.6797645125958379,
+        "both_frac": 0.43823019350127784,
+        "longest_dark_h": 411
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "name": "Nobile Rim 2 (region)",
+        "name_ko": "아르테미스 후보: 노빌레 가장자리 2 (대표점)",
+        "short": "Nobile Rim 2",
+        "group": "artemis3_region",
+        "lat": -84.054,
+        "lon": 56.481,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS NR201, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.4518300474625776,
+        "earth_frac": 0.7700575027382256,
+        "both_frac": 0.349990872581234,
+        "longest_dark_h": 407
+      },
+      "python": {
+        "sun_frac": 0.4518300474625776,
+        "earth_frac": 0.7700575027382256,
+        "both_frac": 0.349990872581234,
+        "longest_dark_h": 407
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "name": "de Gerlache Rim 2 (region)",
+        "name_ko": "아르테미스 후보: 드 제를라슈 가장자리 2 (대표점)",
+        "short": "deGerlache R2",
+        "group": "artemis3_region",
+        "lat": -88.389,
+        "lon": -68.865,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS dGR201, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.6836664841182913,
+        "earth_frac": 0.5526652062796641,
+        "both_frac": 0.38446969696969696,
+        "longest_dark_h": 349
+      },
+      "python": {
+        "sun_frac": 0.6836664841182913,
+        "earth_frac": 0.5526652062796641,
+        "both_frac": 0.38446969696969696,
+        "longest_dark_h": 349
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "name": "Slater Plain (region)",
+        "name_ko": "아르테미스 후보: 슬레이터 평원 (대표점)",
+        "short": "Slater Plain",
+        "group": "artemis3_region",
+        "lat": -87.478,
+        "lon": 124.521,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS SP01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.40404801022270903,
+        "earth_frac": 0.39770445418035777,
+        "both_frac": 0.15391109894121943,
+        "longest_dark_h": 552
+      },
+      "python": {
+        "sun_frac": 0.40404801022270903,
+        "earth_frac": 0.39770445418035777,
+        "both_frac": 0.15391109894121943,
+        "longest_dark_h": 552
+      }
+    },
+    {
+      "site": {
+        "id": "SHACKLETON_RIM",
+        "name": "Shackleton Rim (R04)",
+        "name_ko": "섀클턴 가장자리 R04",
+        "short": "Shackleton R04",
+        "group": "polar_peak",
+        "lat": -89.7668,
+        "lon": -171.87,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.086824571011318,
+        "earth_frac": 0.0493565169769989,
+        "both_frac": 0.004814713399050748,
+        "longest_dark_h": 5505
+      },
+      "python": {
+        "sun_frac": 0.086824571011318,
+        "earth_frac": 0.0493565169769989,
+        "both_frac": 0.004814713399050748,
+        "longest_dark_h": 5505
+      }
+    },
+    {
+      "site": {
+        "id": "CONNECTING_RIDGE",
+        "name": "Connecting Ridge (R01)",
+        "name_ko": "연결 능선 R01",
+        "short": "Connect Ridge",
+        "group": "polar_peak",
+        "lat": -89.4632,
+        "lon": -137.49,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.4705868930266521,
+        "earth_frac": 0.43889193136181087,
+        "both_frac": 0.2176661190215407,
+        "longest_dark_h": 553
+      },
+      "python": {
+        "sun_frac": 0.4705868930266521,
+        "earth_frac": 0.43889193136181087,
+        "both_frac": 0.2176661190215407,
+        "longest_dark_h": 553
+      }
+    },
+    {
+      "site": {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "name": "Peak Near Shackleton (R07)",
+        "name_ko": "섀클턴 인근 봉우리 R07",
+        "short": "Peak Shacklet",
+        "group": "polar_peak",
+        "lat": -88.811,
+        "lon": 123.6901,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.6678304125593282,
+        "earth_frac": 0.5532128514056225,
+        "both_frac": 0.37680266520627964,
+        "longest_dark_h": 612
+      },
+      "python": {
+        "sun_frac": 0.6678304125593282,
+        "earth_frac": 0.5532128514056225,
+        "both_frac": 0.37680266520627964,
+        "longest_dark_h": 612
+      }
+    },
+    {
+      "site": {
+        "id": "DE_GERLACHE_RIM1",
+        "name": "de Gerlache Rim 1 (R11)",
+        "name_ko": "드 제를라슈 가장자리 R11",
+        "short": "deGerlache R11",
+        "group": "polar_peak",
+        "lat": -88.6834,
+        "lon": -67.9321,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.5208105147864184,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.2880385177071924,
+        "longest_dark_h": 448
+      },
+      "python": {
+        "sun_frac": 0.5208105147864184,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.2880385177071924,
+        "longest_dark_h": 448
+      }
+    },
+    {
+      "site": {
+        "id": "SHOEMAKER_RIM_A",
+        "name": "Shoemaker Rim A (LM2)",
+        "name_ko": "슈메이커 가장자리 A",
+        "short": "Shoemaker A",
+        "group": "polar_peak",
+        "lat": -88.0792,
+        "lon": 11.88866,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.19336436655713765,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11596385542168675,
+        "longest_dark_h": 2819
+      },
+      "python": {
+        "sun_frac": 0.19336436655713765,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11596385542168675,
+        "longest_dark_h": 2819
       }
     }
   ]

@@ -1,0 +1,9 @@
+{
+  "id": "DE_GERLACHE_RIM1",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.5208105147864184,
+  "earth_frac": 0.5719925155166119,
+  "both_frac": 0.2880385177071924,
+  "longest_dark_h": 448,
+  "slope_deg": null
+}

@@ -1,0 +1,9 @@
+{
+  "id": "CONNECTING_RIDGE",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.4705868930266521,
+  "earth_frac": 0.43889193136181087,
+  "both_frac": 0.2176661190215407,
+  "longest_dark_h": 553,
+  "slope_deg": null
+}

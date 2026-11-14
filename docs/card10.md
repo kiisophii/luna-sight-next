@@ -5,6 +5,8 @@ Requirements: docs/2단계_분배.md, card 10; data contract v1.1, sections 0, 2
 
 ## Status and dependencies
 
+- **Update 2026-11-14 12:20 KST (Dongju Kim, taking over card 10):** branch s2-metrics-dongju = this branch + main after PRs #8/#10. The 16 south-polar sites now have real card 8 horizons, so `node pipeline/cache_metrics.mjs` wrote `web/data/metrics/<ID>.json` for those 16 (complete=false: 17 non-polar sites still wait for card 9). `node pipeline/test_metrics.mjs`: actual core.js and the Python port give identical metrics on the three fixtures and all 16 real sites. The validation NPZ was independently re-checked in PR #11 (docs/card10_npz_independent_check.json). When card 9 horizons are merged, rerun both commands; no code change needed.
+
 - The actual saved two-hour 2020-01-01T00Z inclusive through 2038-08-01T00Z exclusive NPZ exists and passes schema, times, finite-value, overlap and sample checks. It is reused without regenerating either the NPZ or production ephemeris.
 - The metrics runner is implemented and tested against a separate Python port. It directly executes the unchanged current web/js/core.js, rather than replacing its definitions.
 - This base main has 33 catalogue entries and ZERO horizon files. No real site metric cache can be produced yet. docs/metrics_cache_report.json lists every missing site and complete=false. This is an upstream card 8/9 dependency, not a claim that metrics are complete or that visibility is zero. No synthetic or flat-fallback metric files were added to web/data.

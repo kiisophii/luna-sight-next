@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_MOUTON",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.7155896312522818,
+  "earth_frac": 0.5977774735304856,
+  "both_frac": 0.39218236582694416,
+  "longest_dark_h": 439,
+  "slope_deg": null
+}

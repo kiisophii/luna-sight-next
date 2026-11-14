@@ -1,0 +1,220 @@
+[
+  {
+    "id": "ARTEMIS_DE_GERLACHE_RIM2",
+    "uniform_step_m": 2.5,
+    "refinement": "union of production and uniform grid",
+    "rows": [
+      {
+        "azimuth_deg": 0.0,
+        "elevation_deg": -1.1611342521276204,
+        "peak_distance_m": 83.59431135498212,
+        "stored_deg": -1.1611,
+        "same_grid_difference_deg": -3.425212762042662e-05,
+        "fine_grid_deg": -1.1611342521276204,
+        "fine_grid_difference_deg": -3.425212762042662e-05,
+        "fine_peak_distance_m": 83.59431135498212
+      },
+      {
+        "azimuth_deg": 36.0,
+        "elevation_deg": -1.2031839264894846,
+        "peak_distance_m": 86.04375826333502,
+        "stored_deg": -1.2032,
+        "same_grid_difference_deg": 1.607351051546857e-05,
+        "fine_grid_deg": -1.2031839264894846,
+        "fine_grid_difference_deg": 1.607351051546857e-05,
+        "fine_peak_distance_m": 86.04375826333502
+      },
+      {
+        "azimuth_deg": 72.0,
+        "elevation_deg": -0.49239359916346037,
+        "peak_distance_m": 122.52296003315014,
+        "stored_deg": -0.4924,
+        "same_grid_difference_deg": 6.400836539632859e-06,
+        "fine_grid_deg": -0.4918666808191536,
+        "fine_grid_difference_deg": 0.0005333191808464255,
+        "fine_peak_distance_m": 122.5
+      },
+      {
+        "azimuth_deg": 108.0,
+        "elevation_deg": -0.10922000150471263,
+        "peak_distance_m": 131.96841520337915,
+        "stored_deg": -0.1092,
+        "same_grid_difference_deg": -2.0001504712624518e-05,
+        "fine_grid_deg": -0.10922000150471263,
+        "fine_grid_difference_deg": -2.0001504712624518e-05,
+        "fine_peak_distance_m": 131.96841520337915
+      },
+      {
+        "azimuth_deg": 144.0,
+        "elevation_deg": 0.640484012773426,
+        "peak_distance_m": 1857.8819188374255,
+        "stored_deg": 0.6405,
+        "same_grid_difference_deg": -1.5987226573921376e-05,
+        "fine_grid_deg": 0.6407782803365907,
+        "fine_grid_difference_deg": 0.0002782803365907194,
+        "fine_peak_distance_m": 1857.5
+      },
+      {
+        "azimuth_deg": 180.0,
+        "elevation_deg": 1.5980769551128031,
+        "peak_distance_m": 8456.846404223277,
+        "stored_deg": 1.5981,
+        "same_grid_difference_deg": -2.3044887196954633e-05,
+        "fine_grid_deg": 1.598466703677083,
+        "fine_grid_difference_deg": 0.0003667036770829135,
+        "fine_peak_distance_m": 8440.0
+      },
+      {
+        "azimuth_deg": 216.0,
+        "elevation_deg": -0.77658537429586,
+        "peak_distance_m": 27634.84106576748,
+        "stored_deg": -0.7766,
+        "same_grid_difference_deg": 1.4625704139903384e-05,
+        "fine_grid_deg": -0.7765313097008045,
+        "fine_grid_difference_deg": 6.869029919542857e-05,
+        "fine_peak_distance_m": 27632.5
+      },
+      {
+        "azimuth_deg": 252.0,
+        "elevation_deg": -2.3020769004066186,
+        "peak_distance_m": 97.78345534899645,
+        "stored_deg": -2.3021,
+        "same_grid_difference_deg": 2.309959338120393e-05,
+        "fine_grid_deg": -2.3020769004066186,
+        "fine_grid_difference_deg": 2.309959338120393e-05,
+        "fine_peak_distance_m": 97.78345534899645
+      },
+      {
+        "azimuth_deg": 288.0,
+        "elevation_deg": -1.228474137474018,
+        "peak_distance_m": 116146.38827154208,
+        "stored_deg": -1.2285,
+        "same_grid_difference_deg": 2.58625259819123e-05,
+        "fine_grid_deg": -1.2282799117245982,
+        "fine_grid_difference_deg": 0.00022008827540176412,
+        "fine_peak_distance_m": 116182.5
+      },
+      {
+        "azimuth_deg": 324.0,
+        "elevation_deg": -1.110129980125716,
+        "peak_distance_m": 206.6234766793836,
+        "stored_deg": -1.1101,
+        "same_grid_difference_deg": -2.998012571597819e-05,
+        "fine_grid_deg": -1.110129980125716,
+        "fine_grid_difference_deg": -2.998012571597819e-05,
+        "fine_peak_distance_m": 206.6234766793836
+      }
+    ],
+    "max_same_grid_abs_deg": 3.425212762042662e-05,
+    "max_fine_grid_abs_deg": 0.0005333191808464255
+  },
+  {
+    "id": "SHACKLETON_RIM",
+    "uniform_step_m": 2.5,
+    "refinement": "union of production and uniform grid",
+    "rows": [
+      {
+        "azimuth_deg": 0.0,
+        "elevation_deg": 10.47569354231522,
+        "peak_distance_m": 4074.35300254534,
+        "stored_deg": 10.4757,
+        "same_grid_difference_deg": -6.457684779803685e-06,
+        "fine_grid_deg": 10.47569749065946,
+        "fine_grid_difference_deg": -2.5093405398024515e-06,
+        "fine_peak_distance_m": 4075.0
+      },
+      {
+        "azimuth_deg": 36.0,
+        "elevation_deg": 24.07983053130116,
+        "peak_distance_m": 271.2931999850006,
+        "stored_deg": 24.0798,
+        "same_grid_difference_deg": 3.053130116015268e-05,
+        "fine_grid_deg": 24.07983053130116,
+        "fine_grid_difference_deg": 3.053130116015268e-05,
+        "fine_peak_distance_m": 271.2931999850006
+      },
+      {
+        "azimuth_deg": 72.0,
+        "elevation_deg": 31.89749511574132,
+        "peak_distance_m": 180.07473077564288,
+        "stored_deg": 31.8975,
+        "same_grid_difference_deg": -4.884258679282993e-06,
+        "fine_grid_deg": 31.89749511574132,
+        "fine_grid_difference_deg": -4.884258679282993e-06,
+        "fine_peak_distance_m": 180.07473077564288
+      },
+      {
+        "azimuth_deg": 108.0,
+        "elevation_deg": 30.82466784571496,
+        "peak_distance_m": 119.69166516476335,
+        "stored_deg": 30.8247,
+        "same_grid_difference_deg": -3.215428504077522e-05,
+        "fine_grid_deg": 30.82466784571496,
+        "fine_grid_difference_deg": -3.215428504077522e-05,
+        "fine_peak_distance_m": 119.69166516476335
+      },
+      {
+        "azimuth_deg": 144.0,
+        "elevation_deg": 19.99143483159173,
+        "peak_distance_m": 42.78650049964373,
+        "stored_deg": 19.9914,
+        "same_grid_difference_deg": 3.483159173001127e-05,
+        "fine_grid_deg": 19.99143483159173,
+        "fine_grid_difference_deg": 3.483159173001127e-05,
+        "fine_peak_distance_m": 42.78650049964373
+      },
+      {
+        "azimuth_deg": 180.0,
+        "elevation_deg": 4.585290975686395,
+        "peak_distance_m": 6593.298996871567,
+        "stored_deg": 4.5853,
+        "same_grid_difference_deg": -9.024313604832912e-06,
+        "fine_grid_deg": 4.585721054885224,
+        "fine_grid_difference_deg": 0.00042105488522370393,
+        "fine_peak_distance_m": 6590.0
+      },
+      {
+        "azimuth_deg": 216.0,
+        "elevation_deg": 1.2398439478549652,
+        "peak_distance_m": 14760.543531571648,
+        "stored_deg": 1.2398,
+        "same_grid_difference_deg": 4.3947854965198374e-05,
+        "fine_grid_deg": 1.2402528860626596,
+        "fine_grid_difference_deg": 0.0004528860626595854,
+        "fine_peak_distance_m": 14762.5
+      },
+      {
+        "azimuth_deg": 252.0,
+        "elevation_deg": 0.70676188592475,
+        "peak_distance_m": 19194.672696993217,
+        "stored_deg": 0.7068,
+        "same_grid_difference_deg": -3.811407525000643e-05,
+        "fine_grid_deg": 0.7073149017890978,
+        "fine_grid_difference_deg": 0.0005149017890978547,
+        "fine_peak_distance_m": 19190.0
+      },
+      {
+        "azimuth_deg": 288.0,
+        "elevation_deg": 1.2237737327641696,
+        "peak_distance_m": 17771.891464473934,
+        "stored_deg": 1.2238,
+        "same_grid_difference_deg": -2.6267235830435e-05,
+        "fine_grid_deg": 1.2243093549715123,
+        "fine_grid_difference_deg": 0.0005093549715122769,
+        "fine_peak_distance_m": 17767.5
+      },
+      {
+        "azimuth_deg": 324.0,
+        "elevation_deg": 2.282522015642582,
+        "peak_distance_m": 10015.497303228796,
+        "stored_deg": 2.2825,
+        "same_grid_difference_deg": 2.201564258186295e-05,
+        "fine_grid_deg": 2.282522015642582,
+        "fine_grid_difference_deg": 2.201564258186295e-05,
+        "fine_peak_distance_m": 10015.497303228796
+      }
+    ],
+    "max_same_grid_abs_deg": 4.3947854965198374e-05,
+    "max_fine_grid_abs_deg": 0.0005149017890978547
+  }
+]

@@ -20,3 +20,8 @@ def test_independent_trace_rejects_uncovered_terrain():
         return np.where(d > 0.5, np.nan, 0.)
     with pytest.raises(ValueError,match='missing'):
         verify.trace(dict(lat=-89,lon=0), missing, [0], np.array([5.,1000.]))
+
+
+def test_refinement_keeps_dense_near_field_production_samples():
+    verify = importlib.import_module('pipeline.verify_card8_horizons')
+    assert verify.refined_distances(np.array([5.,5.1,7.3,10.]),2.5) == pytest.approx([5.,5.1,7.3,7.5,10.])

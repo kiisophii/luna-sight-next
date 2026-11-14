@@ -1,8 +1,8 @@
 """Independent card-8 check: PROJ geodesics, separate interpolation, ECEF sight lines.
 
 Does not import horizon.py or reuse its geometry/interpolation/early-stop code.
-Checks 10 directions at two sites on both the production distance grid and a
-uniform 2.5 m grid from 5 m to 300 km. This verifies computations against the
+Checks 10 directions at two sites on both the production distance grid and its
+union with a uniform 2.5 m grid from 5 m to 300 km. This verifies computations against the
 same DEMs, not the physical accuracy of the DEM products themselves.
 """
 import argparse
@@ -104,6 +104,11 @@ def trace(site, sample, azimuths, distance_m):
     return rows
 
 
+def refined_distances(production, step_m):
+    """Keep dense near-field samples and add samples where production is coarser."""
+    return np.unique(np.concatenate([production, np.arange(production[0], production[-1], step_m)]))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--raw',type=Path,default=ROOT/'data/raw')
@@ -123,7 +128,7 @@ def main():
         params=record['engine']
         same=1000*np.exp(np.linspace(math.log(params['min_km']),math.log(params['max_km']),params['n_steps']+1))
         same[0],same[-1]=params['min_km']*1000,params['max_km']*1000
-        fine=np.unique(np.append(np.arange(same[0],same[-1],args.step_m),same[-1]))
+        fine=refined_distances(same,args.step_m)
         dem=IndependentDEM(site,args.raw)
         azimuths=np.arange(10)*36.
         a=trace(site,dem,azimuths,same)
@@ -133,7 +138,7 @@ def main():
             exact.update(stored_deg=baseline,same_grid_difference_deg=exact['elevation_deg']-baseline,
                          fine_grid_deg=dense['elevation_deg'],fine_grid_difference_deg=dense['elevation_deg']-baseline,
                          fine_peak_distance_m=dense['peak_distance_m'])
-        item=dict(id=site['id'],uniform_step_m=args.step_m,rows=a,
+        item=dict(id=site['id'],uniform_step_m=args.step_m,refinement='union of production and uniform grid',rows=a,
                   max_same_grid_abs_deg=max(abs(x['same_grid_difference_deg']) for x in a),
                   max_fine_grid_abs_deg=max(abs(x['fine_grid_difference_deg']) for x in a))
         report.append(item)

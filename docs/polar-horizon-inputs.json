@@ -1,0 +1,1729 @@
+{
+  "catalog_sha256": "a3f0bde4f7020742798317cd6b7f40fffa43c2f4928623d8be704245aeb7bcc2",
+  "sites": [
+    {
+      "id": "IM1",
+      "lat": -80.13,
+      "lon": 1.44,
+      "finest_cached_resolution_m": 20,
+      "caches": [
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": true,
+          "bounds": [
+            0,
+            1454,
+            14326,
+            16827
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            9521,
+            11522,
+            14645,
+            16646
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": true,
+          "bounds": [
+            0,
+            801,
+            3144,
+            4645
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            1796,
+            3464,
+            3078,
+            4745
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ]
+    },
+    {
+      "id": "IM2",
+      "lat": -84.7906,
+      "lon": 29.1957,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            5340,
+            10341,
+            26850,
+            31851
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            7050,
+            9551,
+            17805,
+            20306
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12220,
+            14221,
+            15805,
+            17806
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1325,
+            2826,
+            4013,
+            5514
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2471,
+            4139,
+            3367,
+            5035
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "lat": -83.763,
+      "lon": -69.983,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            12659,
+            17660,
+            1352,
+            6353
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            10709,
+            13210,
+            5056,
+            7557
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            13439,
+            15440,
+            11555,
+            13556
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            2239,
+            3740,
+            826,
+            2327
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2776,
+            4444,
+            2305,
+            3973
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 24.96
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "lat": -86.768,
+      "lon": -20.514,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            1037,
+            2238,
+            12529,
+            13730
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            9958,
+            14959,
+            15704,
+            20705
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            9359,
+            11860,
+            12232,
+            14733
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12989,
+            14990,
+            13947,
+            15948
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1902,
+            3403,
+            2620,
+            4121
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2664,
+            4331,
+            2903,
+            4571
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "lat": -85.942,
+      "lon": -0.944,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            6831,
+            11832,
+            18937,
+            23938
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            7795,
+            10296,
+            13848,
+            16349
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12468,
+            14469,
+            14486,
+            16487
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1511,
+            3012,
+            3024,
+            4525
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2533,
+            4201,
+            3038,
+            4705
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "lat": -85.111,
+      "lon": 26.71,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            5888,
+            10889,
+            25807,
+            30808
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            7324,
+            9825,
+            17283,
+            19784
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12311,
+            14312,
+            15631,
+            17632
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1393,
+            2894,
+            3883,
+            5384
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2494,
+            4162,
+            3324,
+            4992
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 24.96
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 161.79
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "lat": -85.416,
+      "lon": 31.851,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            7326,
+            12327,
+            26479,
+            31480
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            8043,
+            10544,
+            17619,
+            20120
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12551,
+            14552,
+            15743,
+            17744
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1573,
+            3074,
+            3967,
+            5468
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2554,
+            4222,
+            3352,
+            5020
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "lat": -85.295,
+      "lon": 36.917,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            7726,
+            12727,
+            27714,
+            32715
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            8243,
+            10744,
+            18237,
+            20738
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12617,
+            14618,
+            15949,
+            17950
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1623,
+            3124,
+            4121,
+            5622
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2571,
+            4238,
+            3403,
+            5071
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "lat": -84.054,
+      "lon": 56.481,
+      "finest_cached_resolution_m": 10,
+      "caches": [
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            9174,
+            14175,
+            34185,
+            39186
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            8967,
+            11468,
+            21472,
+            23973
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            12859,
+            14860,
+            17027,
+            19028
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            1804,
+            3305,
+            4930,
+            6431
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2631,
+            4299,
+            3673,
+            5341
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "lat": -88.389,
+      "lon": -68.865,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            15876,
+            17077,
+            10286,
+            11487
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            17378,
+            22379,
+            14583,
+            19584
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            13069,
+            15570,
+            11671,
+            14172
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            14226,
+            16227,
+            13760,
+            15761
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            2829,
+            4330,
+            2480,
+            3981
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2973,
+            4640,
+            2856,
+            4524
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "lat": -87.478,
+      "lon": 124.521,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            28069,
+            29270,
+            32003,
+            33204
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            23474,
+            28475,
+            25441,
+            30442
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            16117,
+            18618,
+            17100,
+            19601
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            15242,
+            17243,
+            15570,
+            17571
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            3591,
+            5092,
+            3837,
+            5338
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            3227,
+            4894,
+            3309,
+            4976
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ]
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "lat": -89.7668,
+      "lon": -171.87,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            20800,
+            22001,
+            19199,
+            20400
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            19840,
+            24841,
+            19039,
+            24040
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            14300,
+            16801,
+            13899,
+            16400
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            14636,
+            16637,
+            14503,
+            16504
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            3137,
+            4638,
+            3037,
+            4538
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            3075,
+            4743,
+            3042,
+            4710
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ]
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "lat": -89.4632,
+      "lon": -137.49,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            21799,
+            23000,
+            17200,
+            18401
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            20339,
+            25340,
+            18040,
+            23041
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            14549,
+            17050,
+            13400,
+            15901
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            14719,
+            16720,
+            14336,
+            16337
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            3199,
+            4700,
+            2912,
+            4413
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            3096,
+            4764,
+            3000,
+            4668
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "lat": -88.811,
+      "lon": 123.6901,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            23400,
+            24601,
+            25400,
+            26601
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            21140,
+            26141,
+            22140,
+            27141
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            14950,
+            17451,
+            15450,
+            17951
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            14853,
+            16854,
+            15020,
+            17021
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            3300,
+            4801,
+            3425,
+            4926
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            3130,
+            4797,
+            3171,
+            4839
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "lat": -88.6834,
+      "lon": -67.9321,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            16399,
+            17600,
+            11999,
+            13200
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            17639,
+            22640,
+            15439,
+            20440
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            13199,
+            15700,
+            12099,
+            14600
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            14269,
+            16270,
+            13903,
+            15904
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            2862,
+            4363,
+            2587,
+            4088
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2984,
+            4651,
+            2892,
+            4560
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ]
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "lat": -88.0792,
+      "lon": 11.88866,
+      "finest_cached_resolution_m": 5,
+      "caches": [
+        {
+          "resolution_m": 5,
+          "radius_m": 3000,
+          "clipped": false,
+          "bounds": [
+            7999,
+            9200,
+            21800,
+            23001
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "source_etag": "W/\"ce8c1052-17c7ede95a8\""
+        },
+        {
+          "resolution_m": 10,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            13439,
+            18440,
+            20340,
+            25341
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "source_etag": "W/\"130facac0-189325a1dd0\""
+        },
+        {
+          "resolution_m": 20,
+          "radius_m": 25000,
+          "clipped": false,
+          "bounds": [
+            11099,
+            13600,
+            14550,
+            17051
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "source_etag": "W/\"a0b2f283-189327867b8\""
+        },
+        {
+          "resolution_m": 60,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            13569,
+            15570,
+            14720,
+            16721
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+          "source_etag": "W/\"b820144d-18932611310\""
+        },
+        {
+          "resolution_m": 80,
+          "radius_m": 60000,
+          "clipped": false,
+          "bounds": [
+            2337,
+            3838,
+            3200,
+            4701
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+          "source_etag": "W/\"b4653f8-189326141f0\""
+        },
+        {
+          "resolution_m": 240,
+          "radius_m": 200000,
+          "clipped": false,
+          "bounds": [
+            2809,
+            4476,
+            3096,
+            4764
+          ],
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+          "source_etag": "W/\"d0d148f-18932623038\""
+        }
+      ],
+      "used_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 230.06
+        }
+      ]
+    }
+  ],
+  "site_count": 16,
+  "cache_count": 87,
+  "note": "Absent 5 m sources and IM1 10 m are outside the source footprints; IM1 20/80 m retain available pixels. Resolution means terrain sampling, not absolute vertical accuracy."
+}

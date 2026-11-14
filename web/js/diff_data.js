@@ -2,7 +2,8 @@
 // Imported by relay_panel.js, korea_panel.js and story_arc.js (not listed in modules.json).
 // Formats: docs/data_contract.md section 12 (web/data/relay/) and section 13 (web/data/korea/).
 // Every number here is computed for an explicit hour range [i0, i1] (inclusive, UTC hour index).
-import { stationBits, danuriFor, koreaInfo } from './korea.js';
+import * as core from './core.js';
+import { stationBits, koreaInfo } from './korea.js';
 
 const cache = new Map();
 function getJSON(url) {
@@ -87,24 +88,24 @@ export async function kdsaWindows(i0, i1, t0ms) {
   return out;
 }
 
-/** Danuri record for a site + passes inside [i0, i1]; null if the site is not in danuri.json. */
-export async function danuriPeriod(id, i0, i1) {
-  const d = await getJSON('data/korea/danuri.json');
-  const s = await danuriFor(id);
-  if (!s) return null;
-  const span = d.window.map(x => (Date.parse(x) - Date.UTC(2026, 0, 1)) / 3600e3);
-  const base = { site: s, span, window: d.window, prediction_after: d.prediction_after, caveat: d.caveat, orbit: d.orbit };
-  if (s.status !== 'ok') return { ...base, pending: true };
-  const lo = Math.max(i0, span[0]), hi = Math.min(Math.floor(i1) + 1, span[1]);
-  if (hi <= lo) return { ...base, outside: true };
-  let n = 0, sec = 0;
-  const { start_i: st, dur_s: du } = s.passes;
-  for (let k = 0; k < st.length; k++) {
-    const e = st[k] + du[k] / 3600;
-    if (e <= lo || st[k] >= hi) continue;
-    n++; sec += (Math.min(e, hi) - Math.max(st[k], lo)) * 3600;
+/**
+ * Direct-to-Earth link from a lunar site to the ground stations, counted per hour in [i0, i1]:
+ * Earth CENTRE above the site's terrain horizon (core.earthVisible) AND the Moon >= 10 deg above the station.
+ * Returns {pending: true} while the site has no real terrain horizon (no flat-horizon result is shown).
+ */
+export async function siteStationLink(site, i0, i1) {
+  if (core.terrainPending(site) || core.horizonMock(site)) return { pending: true };
+  const bits = await bitsOnce();
+  const a = Math.max(0, Math.floor(i0)), b = Math.floor(i1);
+  let n = 0, earth = 0, kdsa = 0, dsn = 0;
+  for (let k = a; k <= b; k++) {
+    n++;
+    if (!core.earthVisible(site, k)) continue;
+    earth++;
+    if (bits.KDSA[k]) kdsa++;
+    if (bits.DSN_GOLDSTONE[k] | bits.DSN_MADRID[k] | bits.DSN_CANBERRA[k]) dsn++;
   }
-  return { ...base, overlapH: hi - lo, clipped: lo > i0 || hi < Math.floor(i1) + 1, passes: n, passHours: sec / 3600 };
+  return { hours: n, earth, kdsa, dsn };
 }
 
 export { koreaInfo };

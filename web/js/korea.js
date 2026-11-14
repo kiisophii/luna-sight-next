@@ -47,10 +47,4 @@ export async function kdsaTonight(dateKST) {
   return [...pm, ...am];
 }
 
-/** Danuri summary + passes for one site id (null if not computed). */
-export async function danuriFor(siteId) {
-  const d = await get('danuri.json');
-  return d.sites.find(s => s.id === siteId) || null;
-}
-
 export async function koreaInfo() { return get('korea.json'); }

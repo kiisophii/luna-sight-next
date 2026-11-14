@@ -158,7 +158,9 @@ export async function createGlobe(container, opts = {}) {
   const setColor = t => { t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; colorTex.value = t; };
   setColor(await texLoader.loadAsync(base + 'globe/moon_color_2k.jpg'));
   let baseTex = null;                       // LROC colour texture currently loaded (2k or 8k)
-  let layerTex = null, layerUrl = null;     // optional data layer drawn instead of the colour (setColorMap)
+  let layerTex = null, layerUrl = null;     // optional data layer drawn over the terrain (setColorMap)
+  const layerU = { value: null }, layerA = { value: 0 };   // layer texture + opacity (0 = off) for the moon shader
+  const LAYER_OPACITY = 0.72;               // layer colour share; the rest is a fixed-light LOLA hillshade so craters stay visible
   function loadHires() {
     if (hiresState !== 'none') return;
     hiresState = 'loading';
@@ -184,7 +186,7 @@ export async function createGlobe(container, opts = {}) {
     pending
       .then(t => {
         if (stopped) { t.dispose(); return; }
-        const old = baseTex || colorTex.value; setColor(t); baseTex = t; if (layerTex) colorTex.value = layerTex; if (old !== t) old.dispose(); dirty = true;   // a data layer (setColorMap) stays on top
+        const old = baseTex || colorTex.value; setColor(t); baseTex = t; if (old !== t) old.dispose(); dirty = true;   // a data layer (setColorMap) is a separate uniform, drawn on top
       })
       .catch(() => {})
       .finally(() => { hiresState = 'done'; });
@@ -193,12 +195,15 @@ export async function createGlobe(container, opts = {}) {
   function makeMaterial(kind, normalTex) {
     const m = new THREE.MeshLambertMaterial({ normalMap: normalTex, normalMapType: THREE.ObjectSpaceNormalMap });
     m.onBeforeCompile = sh => {
-      sh.uniforms.uColor = colorTex;
+      sh.uniforms.uColor = colorTex; sh.uniforms.uLayer = layerU; sh.uniforms.uLayerA = layerA;
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vMoonP;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMoonP = (modelMatrix * vec4(transformed, 1.0)).xyz;');
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
 varying vec3 vMoonP;
-uniform sampler2D uColor;`)
+uniform sampler2D uColor;
+uniform sampler2D uLayer;
+uniform float uLayerA;
+vec3 gLayer; float gLum;`)
         .replace('#include <map_fragment>', `{
   vec3 dd = normalize(vMoonP);
   ${kind === 'band' ? '' : `if (abs(dd.z) < ${SIN_CAP.toFixed(6)}) discard;`}
@@ -206,7 +211,25 @@ uniform sampler2D uColor;`)
   float v = asin(clamp(dd.z, -1.0, 1.0)) / 3.14159265359 + 0.5;
   float u2 = fract(u + 0.5) - 0.5;            // Tarini's seamless longitude trick
   float uu = fwidth(u) <= fwidth(u2) + 1e-6 ? u : u2;
-  diffuseColor.rgb *= texture2D(uColor, vec2(uu, v)).rgb;
+  vec3 base = texture2D(uColor, vec2(uu, v)).rgb;
+  diffuseColor.rgb *= base;
+  gLum = dot(base, vec3(0.2126, 0.7152, 0.0722));
+  gLayer = uLayerA > 0.0 ? texture2D(uLayer, vec2(uu, v)).rgb : vec3(0.0);
+}`)
+        .replace('#include <opaque_fragment>', `#include <opaque_fragment>
+if (uLayerA > 0.0) {
+  const float LAYER_DIM = 0.78;
+  // Data layer over a cartographic hillshade: light fixed from the local north-west, 45 deg up, independent of the
+  // selected time, so a long-term average is never darkened by tonight's shadow and the terrain stays readable.
+  vec3 up = normalize(vMoonP);
+  vec3 nW = normalize((vec4(normal, 0.0) * viewMatrix).xyz);
+  vec3 ea = cross(vec3(0.0, 0.0, 1.0), up);
+  ea = dot(ea, ea) < 1e-8 ? vec3(1.0, 0.0, 0.0) : normalize(ea);
+  vec3 no = cross(up, ea);
+  vec3 L = normalize(up * 0.70711 + (no - ea) * 0.5);
+  float relief = clamp(1.0 + 1.6 * (dot(nW, L) / 0.70711 - 1.0), 0.08, 1.8);   // 1 on level ground, steeper contrast on slopes
+  vec3 ground = vec3(clamp(0.05 + 1.6 * gLum, 0.04, 0.5)) * relief;
+  gl_FragColor.rgb = mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
 }`);
     };
     m.customProgramCacheKey = () => 'moon-' + (kind === 'band' ? 'b' : 'c');
@@ -846,21 +869,22 @@ uniform sampler2D uColor;`)
   raf = requestAnimationFrame(frame);
 
   /** Replace the surface colour by an equirectangular data map (lon -180 at the left edge, same as the colour kit),
-   *  e.g. the 2026-2030 mean-sunlight overview; null restores the LROC colour. `flat` lights the layer evenly
-   *  (ambient only) so a long-term average is not darkened by the selected time's night side. */
+   *  e.g. the 2026-2030 mean-sunlight overview; null restores the LROC colour. The layer is drawn at LAYER_OPACITY
+   *  over a fixed-light LOLA hillshade (shader above), so terrain stays visible and the selected time's night side
+   *  does not darken a long-term average. `flat` is kept for API compatibility. */
   async function setColorMap(url, { flat = true } = {}) {
     if (!baseTex) baseTex = colorTex.value;
     layerUrl = url || null;
     if (!url) {
+      layerA.value = 0; layerU.value = null;
       if (layerTex) { layerTex.dispose(); layerTex = null; }
-      colorTex.value = baseTex; ambient.intensity = 0.10; sun.intensity = 3.2; dirty = true; return;
+      colorTex.value = baseTex; dirty = true; return;
     }
     const t = typeof url === 'string' ? await texLoader.loadAsync(url) : new THREE.CanvasTexture(url);   // URL or a stitched canvas
     if (layerUrl !== url) { t.dispose(); return; }          // a newer call won
     t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.generateMipmaps = true;
     if (layerTex) layerTex.dispose();
-    layerTex = t; colorTex.value = t;
-    ambient.intensity = flat ? 1.25 : 0.10; sun.intensity = flat ? 0.45 : 3.2;   // darker so site names stay readable on top
+    layerTex = t; layerU.value = t; layerA.value = LAYER_OPACITY;
     dirty = true;
   }
 

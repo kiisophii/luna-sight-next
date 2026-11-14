@@ -1,0 +1,79 @@
+/* base.css — layout (card 6). Colours, fonts and spacing come ONLY from these custom properties.
+   Card 7 overrides any of them in web/css/theme.css (loaded after this file); no need to touch this file.
+   Variable list:
+     --bg --surface --surface-2 --border --text --muted
+     --sun --sun-ink --earth --earth-ink --relay --warn --off
+     --font --font-num --radius --gap --fs-base --fs-big --fs-huge          */
+:root {
+  --bg: #0D1118;
+  --surface: #161C27;
+  --surface-2: #1F2735;
+  --border: #2C3647;
+  --text: #ECEFF4;
+  --muted: #A3ADBF;
+  --sun: #FFC93C;        /* Sun = yellow */
+  --sun-ink: #1A1300;    /* text on --sun */
+  --earth: #3EA6FF;      /* Earth = blue */
+  --earth-ink: #001326;
+  --relay: #3DDC84;      /* relay = green */
+  --warn: #FF6B4A;
+  --off: #4A5466;
+  --font: system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
+  --font-num: ui-monospace, "SF Mono", Consolas, monospace;
+  --radius: 14px;
+  --gap: 16px;
+  --fs-base: 16px;
+  --fs-big: 2.4rem;
+  --fs-huge: 3.4rem;
+}
+html.tv { --fs-base: 26px; --gap: 24px; }
+
+* { box-sizing: border-box; }
+html { font-size: var(--fs-base); }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.4; }
+header.top, main, footer { max-width: 1400px; margin: 0 auto; padding: 0 var(--gap); }
+header.top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap); padding-top: var(--gap); }
+header.top h1 { margin: 0; font-size: 1.6rem; flex: 1 1 auto; }
+header.top .tagline { margin: 0; color: var(--muted); flex-basis: 100%; }
+button, select { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 999px; padding: .35em 1em; cursor: pointer; }
+button:hover { border-color: var(--text); }
+
+.mock-banner { display: none; margin: var(--gap) auto 0; max-width: 1400px; padding: .5em var(--gap);
+  background: var(--warn); color: #000; font-weight: 700; text-align: center; }
+body.is-mock .mock-banner { display: block; }
+
+.timebar { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: var(--gap);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--gap); margin-top: var(--gap); }
+.timebar input[type=range] { width: 100%; accent-color: var(--sun); }
+#time-label { font-family: var(--font-num); font-size: 1.2rem; white-space: nowrap; }
+
+#cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); margin: var(--gap) 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--gap);
+  display: flex; flex-direction: column; gap: calc(var(--gap) * .75); }
+.card h2 { margin: 0; font-size: 1.4rem; }
+.card .coords { margin: 0; color: var(--muted); font-family: var(--font-num); font-size: .85rem; }
+.big { display: flex; flex-direction: column; }
+.big .label { color: var(--muted); font-size: .9rem; text-transform: uppercase; letter-spacing: .04em; }
+.big .value { font-family: var(--font-num); font-size: var(--fs-big); font-weight: 700; line-height: 1.1; }
+.card > .big.sun .value { font-size: var(--fs-huge); }
+.big.sun .value { color: var(--sun); }
+.big.earth .value { color: var(--earth); }
+.big .value.na { font-family: var(--font); font-size: 1rem; font-weight: 600; color: var(--muted); padding-top: .4em; }
+.big .sub { color: var(--muted); font-family: var(--font-num); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.chips { display: flex; flex-wrap: wrap; gap: .5em; }
+.chip { border-radius: 999px; padding: .2em .8em; font-weight: 600; border: 2px solid var(--off); color: var(--muted); }
+.chip.on.sun { background: var(--sun); border-color: var(--sun); color: var(--sun-ink); }
+.chip.on.earth { background: var(--earth); border-color: var(--earth); color: var(--earth-ink); }
+.small { margin: 0; color: var(--muted); font-family: var(--font-num); font-size: .9rem; }
+.stats { margin: 0; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: .5em; }
+.stats dt { font-weight: 600; } .stats dd { margin: 0; }
+.error { color: var(--warn); }
+footer { color: var(--muted); font-size: .85rem; padding-bottom: calc(var(--gap) * 2); }
+footer a { color: var(--earth); }
+
+@media (max-width: 640px) {
+  .timebar { grid-template-columns: auto 1fr; }
+  .timebar input[type=range] { grid-column: 1 / -1; order: 5; }
+}

@@ -1,0 +1,126 @@
+{
+  "blank_raf_fps": 30.56591329934302,
+  "first_south": {
+    "name": "first_south",
+    "start_ms": 4472.300000011921,
+    "end_ms": 13185,
+    "duration_s": 8.712699999988079,
+    "raf_fps": 29.76428972101703,
+    "interval_median_ms": 32.600000000000364,
+    "interval_p95_ms": 33.59999999999864,
+    "interval_p99_ms": 33.9230000000008,
+    "interval_max_ms": 195.59999999999945,
+    "gaps_over_50ms": 2,
+    "gaps_over_100ms": 1,
+    "frames": 260,
+    "long_tasks": [
+      {
+        "start": 7853,
+        "duration": 219
+      }
+    ],
+    "actual_render_rate": 28.92329587846991,
+    "before": {
+      "fps": 30,
+      "tiles": 11,
+      "loaded": 11,
+      "triangles": 382976,
+      "geometries": 22,
+      "textures": 13,
+      "pending": 0,
+      "quality": 0,
+      "renders": 31,
+      "sunEl": -0.7805894305637505,
+      "earthEl": 54.15896529801935,
+      "horizon": {
+        "s": null,
+        "e": null
+      }
+    },
+    "after": {
+      "fps": 31,
+      "tiles": 114,
+      "loaded": 192,
+      "triangles": 2646016,
+      "geometries": 303,
+      "textures": 134,
+      "pending": 0,
+      "quality": 0,
+      "renders": 283,
+      "sunEl": 1.0416199163483268,
+      "earthEl": -3.167739885686071,
+      "horizon": {
+        "s": -0.24710139019525207,
+        "e": 1.9310587303213904
+      }
+    },
+    "view": {
+      "lat": -89.0000000000001,
+      "lon": 0,
+      "range": 419.99999999999994,
+      "tilt": 35,
+      "heading": 0,
+      "exaggeration": 3,
+      "hour": 7619
+    }
+  },
+  "repeat_south": {
+    "name": "repeat_south",
+    "start_ms": 15978.300000011921,
+    "end_ms": 18729.80000001192,
+    "duration_s": 2.7515,
+    "raf_fps": 30.678167971992647,
+    "interval_median_ms": 32.5,
+    "interval_p95_ms": 33.10000000000218,
+    "interval_p99_ms": 33.41600000000122,
+    "interval_max_ms": 33.5,
+    "gaps_over_50ms": 0,
+    "gaps_over_100ms": 0,
+    "frames": 85,
+    "long_tasks": [],
+    "actual_render_rate": 28.348173723423585,
+    "before": {
+      "fps": 31,
+      "tiles": 12,
+      "loaded": 233,
+      "triangles": 417792,
+      "geometries": 355,
+      "textures": 172,
+      "pending": 0,
+      "quality": 0,
+      "renders": 361,
+      "sunEl": -25.638417837759427,
+      "earthEl": 55.89320083112305,
+      "horizon": {
+        "s": null,
+        "e": null
+      }
+    },
+    "after": {
+      "fps": 31,
+      "tiles": 114,
+      "loaded": 240,
+      "triangles": 2646016,
+      "geometries": 417,
+      "textures": 200,
+      "pending": 0,
+      "quality": 0,
+      "renders": 439,
+      "sunEl": 1.0416199163483268,
+      "earthEl": -3.167739885686071,
+      "horizon": {
+        "s": null,
+        "e": null
+      }
+    },
+    "view": {
+      "lat": -89.0000000000001,
+      "lon": 0,
+      "range": 419.99999999999994,
+      "tilt": 35,
+      "heading": 0,
+      "exaggeration": 3,
+      "hour": 7619
+    }
+  }
+}

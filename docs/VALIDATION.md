@@ -1,4 +1,45 @@
-# Team validation table — Ginkgo Orbit (card 16)
+# Validation — Luna Sight — Lunar Landing Site Navigator (Team Ginkgo Orbit)
+
+How we know the numbers in the app are right, and where they stop being right.
+Status: 2026-11-14 22:10 KST, main version 23 (`19867c3`); updated at merge: PRs #41, #45, #46 and #47 are merged on main, and L6 / L7 now quote their numbers. The summary and the limits below only quote numbers from the files
+they cite; the full table further down is unchanged.
+
+## Summary — the 10 strongest checks
+
+| # | What is checked | Independent source | Size of the difference | Criterion | Pass | Source (file, PR) |
+|---|---|---|---|---|---|---|
+| S1 | Sun and Earth directions (ephemeris), 2020–2038 | NASA JPL Horizons (DE441), 34,296 comparisons at 4 sites | max 0.000041° | < 0.01° | ✅ | full table row 3; `docs/card10_npz_independent_check.json`; PR #11 |
+| S2 | Terrain horizons of the catalogue sites | our own brute-force re-march, no `horizon.py` | south-polar (2 sites × 10 azimuths, 2.5 m steps): max 0.00053°; non-polar (17 sites, all 720 azimuths): RMS ≤ 0.026°, max 0.012–0.219° (0.016° with 1 m steps) | ~0.02° (non-polar) | ✅ | rows 6–7; `docs/polar-horizon-verification.json`, `docs/card9_verification.md`; PR #8, #9 |
+| S3 | Sunlight and Earth visibility, 240 random points 85–90° S | NASA PGDA AVGVISIB 60 m, 18.6 years (Mazarico et al. 2011) | Sun MAE 1.66 pp (r 0.985); Earth with PGDA's any-part rule MAE 1.24 pp (r 0.990) | — (reported) | ✅ | rows 8–9; `web/data/validation.json`; PR #7 |
+| S4 | 948 m whole-Moon map, 400 random points 75–85° S, same Earth rule as PGDA | PGDA AVGVISIB_75S_120M | Sun MAE 2.61 pp (r 0.911); Earth any-part MAE 2.42 pp (r 0.985) (the map's stored Earth-centre value: 3.42 pp) | — (reported) | ✅ | row 22; `docs/card14_pgda_analysis.md` §3 run B4; PR #39 |
+| S5 | 948 m map: GPU (CUDA) cells vs the original CPU code, 600 latitude-stratified cells | unchanged CPU `pipeline/global_maps.py` | max 0.000003 pp (2.96 × 10⁻⁶); 0 at the same float32 precision | < 0.5 pp | ✅ 600/600 | `docs/gpu_cpu_300_check.md`; PR #41 |
+| S6 | The 5 largest named-site PGDA residuals (+3.4 to +19.1 pp sunlight) | PGDA's own ±300 m range and our ±300 m coordinate range | 5 of 5 inside the PGDA or coordinate spread | our value inside PGDA's ±300 m range, or PGDA inside our 300 m range | ✅ 5/5 | `docs/named_residuals.md`; PR #40 |
+| S7 | Coordinate-uncertainty grids (±500 m, 121 nodes per site) | our own brute-force horizons and hourly loop; existing metrics files | centre node = metrics file at 33/33 sites; 30 random nodes: non-polar max 0.021 pp, south-polar 0 pp | ≤ 1 pp | ✅ | row 20; `docs/coord_uncertainty_validation.json` (merge ed25936), `docs/coordinate_uncertainty_check.json` (PR #27) |
+| S8 | Real-mission hindcast: Sun elevation at the Apollo 11–17 landings; ephemeris 2019–2025 | NASA Apollo Lunar Surface Journal; JPL Horizons | Apollo max 0.05° (0.02° at the Journal's coordinates); ephemeris 0.00004° | Apollo < 0.1°; ephemeris < 0.01° | ✅ | row 21; `docs/hindcast.md`; PR #28 |
+| S9 | Moon direction from the ground stations (KDSA Yeoju, Goldstone, Madrid, Canberra) | JPL Horizons, 100 random hours per station | max 0.0012° | < 0.05° | ✅ | row 15; `docs/korea_links_check.json`; PR #13 |
+| S10 | Every number the live website shows vs the data (33 sites × 2 times × 10 panels) | data files + the actual `web/js/core.js` run in Node; page read by a headless browser | 5,520 values, 0 numeric mismatches (2 display issues opened: #43, #44) | shown text = reference formatted as the UI formats it | ✅ | `docs/ui_data_audit.md`; PR #45 |
+
+pp = percentage points. S3 and S4 are statistics over random points, so they give the mean absolute error (MAE) and
+the correlation r rather than a maximum; no pass threshold was set before those runs (the full table shows "—").
+
+## Limits & assumptions
+
+| # | Limit or assumption | Measured size | Source (file, PR) |
+|---|---|---|---|
+| L1 | Near field: at the 17 non-polar sites the terrain rays start 200 m from the site, so closer terrain is skipped (south-polar sites start at 5 m) | Including 5–200 m lowers sunlight by 0.12–0.80 pp at the 5 sites tested (Apollo 11 −0.28, Apollo 12 −0.25, Luna 20 −0.12, Chang'e 5 −0.80, IM-3 −0.37); Earth visibility unchanged (100 %). The terrain there is SLDEM2015 at ~59 m, so this adds no new 5 m relief. | `docs/near_field_comparison.md` (PR #27); re-run in `docs/near_field_check.md` (PR #41, open) |
+| L2 | Earth rule: the app counts Earth as visible when its **centre** is above the terrain; PGDA counts **any part** of the disc | The centre rule reads lower: 4.6–5.6 pp at the 5 named sites of S6; 240 PGDA points: MAE 3.87 pp (centre) vs 1.24 pp (any part); 948 m map: 3.42 pp vs 2.42 pp | `docs/named_residuals.md` (PR #40); row 9, `web/data/validation.json` (PR #7); `docs/card14_pgda_analysis.md` §3 B4 (PR #39) |
+| L3 | No PGDA truth north of 75° S | Every PGDA comparison uses points at 75–90° S (rows 8–11, 22). The 17 sites at latitude > −75° have no PGDA comparison; for 5 of them the original PGDA labels were read and the site and its whole 300 m disc lie outside both the north and south rasters. | rows 8–11, 22; `docs/near_field_check.md` (PR #27, updated in PR #41) |
+| L4 | The end of operations is only a proxy for sunset | Reported sleep / power-down vs our first sunset: Chandrayaan-3 3.8 h before, Chang'e 3 18.6 h before, IM-1 2 days before (date only), SLIM 1 day after (date only); Chang'e 4: no public time | `docs/hindcast.md`, row 21 (PR #28) |
+| L5 | Four south-polar points are DEM-region centres, not touchdown points: CONNECTING_RIDGE, PEAK_NEAR_SHACKLETON, DE_GERLACHE_RIM1, SHOEMAKER_RIM_A ("published DEM-polygon centre") | Sunlight within 300 m of the point: 31.69–83.49 %, 38.92–79.03 %, 21.71–63.01 %, 17.76–24.75 % (spans 51.80, 40.11, 41.30, 7.00 pp) | `docs/coordinate_uncertainty.md` (PR #27); notes in `web/data/sites.json` |
+| L6 | Hourly time step in the app | 1 h vs 10 min over 2026–2030 at 6 sites: sunlight changes by at most 0.029 pp (mean 0.013), Earth visibility by at most 0.008 pp (mean 0.002), longest dark by at most 0.5 h (mean 0.19 h); almost all of it is the hourly sampling, not the hourly ephemeris (≤ 0.0004 pp). Related: for the map engine at 400 points, a 3 h vs 2 h step gives Sun MAE 2.183 vs 2.182 pp. | `docs/timestep_sensitivity.md` (PR #46); `docs/card14_pgda_analysis.md` §3 B1/B2 (PR #39) |
+| L7 | Observer height 2 m | 1–10 m instead of 2 m at 6 sites changes sunlight by up to 10.69 pp, Earth visibility by up to 9.40 pp and the longest darkness by up to 273 h (largest at ARTEMIS_HAWORTH; 2 m → 1 m: sunlight 54.73 % → 44.04 %, longest dark 424 h → 697 h); non-polar sites ≤ 0.26 pp. Replacing the 59 m near-field DEM with ~237 m LDEM_128 at 3 non-polar sites changes sunlight by ≤ 0.13 pp. | `docs/assumption_sensitivity.md` (PR #47) |
+| L8 | Period: PGDA averages 18.6 years, the app shows 2026–2030 | 5 vs 18.6 years gives Sun MAE 2.183 vs 2.185 pp at 400 points. PGDA's exact dates and observer height are not stated. | `docs/card14_pgda_analysis.md` §3 B1/B3 (PR #39); "Not validated" list below |
+| L9 | Custom points the user adds at 85–90° S use the browser's 20 m / 60 m / 240 m polar terrain (card 8 uses 5 m near PEAK_NEAR_SHACKLETON) | PEAK_NEAR_SHACKLETON: sunlight +2.40 pp vs the card 8 chain (target 2 pp); the app shows "Lower accuracy here" | row 14 |
+| L10 | Coarse polar terrain (240 m) vs 5 m | heights differ by up to 8.99 m (10–80 m: ≤ 1.39 m) | row 5, `docs/polar-validation.md` (PR #1) |
+| L11 | No surface photographs compared; DEM height errors are not in the coordinate grids | not measured | "Not validated" list below; `docs/coordinate_uncertainty.md` |
+| L12 | Links are geometry only (no link budget, no antenna scheduling). KDSA station coordinates come from the publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested | not measured | "Not validated" list below |
+
+## Full validation table (card 16, all checks)
 
 Every check the team has run, in one place. Numbers are copied from the report file named in each row;
 "PR" is the pull request that merged the check into main. Status: 2026-11-14 15:20 KST (after card 15 moved SHACKLETON_RIM and card 13 finished).
@@ -34,7 +75,7 @@ Every check the team has run, in one place. Numbers are copied from the report f
 
 ## Not validated (stated limits)
 - No ground truth for site horizons beyond the DEMs themselves (no surface photographs compared).
-- Link windows are geometry only: no link budget, no antenna scheduling; permission to use KDSA coordinates is pending.
+- Link windows are geometry only: no link budget, no antenna scheduling. KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested.
 - SHACKLETON_RIM moved (card 15, PR #16) from the R04 DEM-centre point on the inner crater wall to the Gläser et al. (2017) rim point S (−89.6866, −162.81; datum alignment with MOON_ME unverified). Rows 10, 13, 17 use the new point; rows 1–2 and older reports keep the old point as historical records.
 - PGDA's exact 18.6-year dates and observer height are not stated (unverified).
 
@@ -42,9 +83,9 @@ Every check the team has run, in one place. Numbers are copied from the report f
 
 *Wording decided by Dongju Kim (team lead) on 2026-11-14 15:35 KST: "key numbers" instead of "every number", add the KDSA-only coverage figure, add the pending KDSA permission to the limits.*
 
-**Validation.** We checked the key numbers in the app against independent sources. Sun and Earth
-directions agree with NASA JPL Horizons to within 0.0005° in over 37,000 comparisons (2020–2038). Brute-force recomputation of the terrain horizons from NASA LOLA elevation models agrees
-to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight fractions at 240 random points differ by 1.7 percentage points on average (r = 0.985) and Earth visibility by
-1.2 points (r = 0.990); the largest errors lie on steep crater walls, where PGDA itself varies strongly. App metrics are identical in JavaScript and an independent Python port. Moon visibility from Yeoju KDSA and NASA's three DSN complexes matches Horizons to
-0.0012°; Yeoju adds direct-link hours that no DSN complex covers (0.3–0.4 % of Earth-visible time). Limits: geometry only (no link budget), coarser terrain away from the poles, and permission to use the KDSA
-coordinates is still pending.
+**Validation.** We checked the app's key numbers against independent sources. Sun and Earth
+directions agree with NASA JPL Horizons to within 0.0005° in over 37,000 comparisons (2020–2038). Brute-force recomputed terrain horizons from NASA LOLA elevation models agree
+to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight at 240 random points differs by 1.7 percentage points on average (r = 0.985) and Earth visibility (PGDA's any-part rule) by
+1.2 points; the largest errors lie on steep crater walls, where PGDA itself varies strongly. App metrics match an independent Python port exactly. Moon visibility from Yeoju KDSA and NASA's three DSN complexes matches Horizons to
+0.0012°; Yeoju adds direct-link hours that no DSN complex covers (0.3–0.4 % of Earth-visible time). Limits: geometry only (no link budget) and coarser terrain away from the poles. KDSA coordinates come from a publicly
+released NASA/JPL NAIF SPICE file, cited; no separate permission was requested.

@@ -6,6 +6,7 @@ import { addStrings, LLSN } from './ui_shared.js';
 import { headline, PGDA_URL, PAPER_URL } from './trust.js';
 import { hindcast, validation } from './values.js';
 import { RULE } from './compare_view.js';
+import { CREDITS } from './credits.js';
 
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
@@ -34,7 +35,7 @@ addStrings({
   abKorea: 'Korea links', abK1: 'ShadowCam on Danuri', abK1t: 'A NASA camera on Korea’s Danuri orbiter images inside permanently shadowed craters (NASA / KARI / ASU). Links only — Danuri does not relay for landers.',
   abK2: 'Yeoju deep-space antenna', abK2t: 'KDSA (35 m): for every site the decision brief counts the hours when the site sees the Earth and the Moon is ≥ 10° above Yeoju. Coordinates: KARI kdsa01.tf via NASA NAIF.',
   abK3: 'KASA partner', abK3t: 'The Korea AeroSpace Administration is a 2026 Space Apps partner.', abKMore: 'Ground-station block →',
-  abMore: 'Team, sources and AI use', abSrc: 'Data sources', abSrcLead: 'Every dataset and number on this site comes from these sources (full list with sizes and checks: data/DATASETS.md).',
+  abMore: 'Team, sources and AI use', abSrc: 'Data & credits', abSrcLead: 'Every dataset and number on this site comes from these sources (full list with sizes and checks: data/DATASETS.md in the repository).',
   sName: 'Data', sOrg: 'From', sUse: 'Used for', sLic: 'Terms',
   abLim: 'Assumptions and limits', abLimT: 'Observer 2 m above the ground · hourly steps · no atmosphere / refraction · link = geometric visibility · tower heights 5/15/30/50 m, up to 3 towers · data window 2026-01-01 to 2030-12-31 UTC · your own points use coarser browser terrain (~948 m north of 75°S; PGDA terrain near the south pole) · slope not computed.',
   abTeam: 'Team and SI (AI) use', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (Seoul).',
@@ -67,7 +68,7 @@ addStrings({
   abKorea: '한국과의 연결', abK1: '다누리의 ShadowCam', abK1t: '한국 다누리 궤도선에 실린 NASA 카메라가 영구음영 분화구 안을 찍습니다(NASA / KARI / ASU). 링크만 — 다누리는 착륙선을 중계하지 않습니다.',
   abK2: '여주 심우주 안테나', abK2t: 'KDSA(35 m): 선택 근거에서 착륙지가 지구를 보고 여주에서 달이 10° 이상인 시간을 셉니다. 좌표: KARI kdsa01.tf (NASA NAIF).',
   abK3: 'KASA 파트너', abK3t: '우주항공청(KASA)은 2026 Space Apps 파트너입니다.', abKMore: '지상국 블록 →',
-  abMore: '만든 사람 · 데이터 출처 · AI 사용', abSrc: '데이터 출처', abSrcLead: '이 사이트의 모든 자료와 숫자는 아래 출처에서 왔습니다 (크기·확인 포함 전체 목록: data/DATASETS.md).',
+  abMore: '만든 사람 · 데이터 출처 · AI 사용', abSrc: '데이터 출처와 표기 (Data & credits)', abSrcLead: '이 사이트의 모든 자료와 숫자는 아래 출처에서 왔습니다. 제공처 표기 원문이라 영어 그대로 둡니다 (전체 목록: 저장소 data/DATASETS.md).',
   sName: '자료', sOrg: '기관', sUse: '쓴 곳', sLic: '조건',
   abLim: '가정과 한계', abLimT: '관측 높이 2 m · 1시간 간격 · 대기·굴절 없음 · 교신 = 기하학적 가시성 · 탑 높이 5/15/30/50 m, 최대 3기 · 자료 기간 2026-01-01 ~ 2030-12-31 UTC · 사용자 지점은 더 거친 브라우저 지형(남위 75° 북쪽 약 948 m, 남극 근처는 PGDA 지형) · 경사 미계산.',
   abTeam: '팀과 SI(AI) 사용', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (서울).',
@@ -78,25 +79,9 @@ addStrings({
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const E = k => esc(t(k));
+/** the credits text uses *italics* only */
+const md = x => esc(x).replace(/\*([^*]+)\*/g, '<i>$1</i>');
 
-// [name, organisation, URL, terms, used for] — the same sources as data/DATASETS.md, shortened for reading
-const SOURCES = [
-  ['LOLA LDEM_16 / LDEM_64 global terrain, SLDEM2015 (LOLA + SELENE TC)', 'NASA LRO LOLA / PDS Geosciences', 'https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/', 'NASA PDS public archive', 'Terrain horizons, 3D Moon, whole-Moon 948 m maps'],
-  ['PGDA LOLA south-polar DEMs 5–240 m', 'NASA GSFC PGDA (Barker et al. 2021, 2023)', 'https://pgda.gsfc.nasa.gov/products/90', 'NASA public distribution, attribution requested', 'South-polar horizons, local grids, relay towers'],
-  ['PGDA average illumination / Earth visibility (AVGVISIB)', 'NASA GSFC PGDA (Mazarico et al. 2011)', 'https://pgda.gsfc.nasa.gov/products/69', 'NASA data, public domain', 'Validation'],
-  ['NAIF kernels de440s.bsp, moon_pa_de421, moon_080317.tf, naif0012.tls', 'NASA JPL NAIF', 'https://naif.jpl.nasa.gov/pub/naif/generic_kernels/', 'JPL/NAIF distribution terms', 'Sun / Earth positions (ephemeris)'],
-  ['JPL Horizons API', 'NASA JPL SSD', 'https://ssd.jpl.nasa.gov/api/horizons.api', 'JPL service terms', 'Ephemeris cross-check'],
-  ['CGI Moon Kit colour map (LROC)', 'NASA SVS 4720', 'https://svs.gsfc.nasa.gov/4720', 'NASA media guidelines', '3D Moon colour, mini map'],
-  ['Landing-site coordinates (NSSDCA, LROC posts, NASA data books, papers)', 'NASA NSSDCA / LROC (ASU) / NTRS', 'https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html', 'see each source (data/sites.json source_url)', 'Site catalogue'],
-  ['KDSA station kernel kdsa01.tf', 'KARI via NASA NAIF', 'https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf', 'NASA NAIF public file (coordinates cited as published)', 'Yeoju ground-station hours'],
-  ['DSN 810-005 module 301 (station coordinates)', 'NASA JPL DSN', 'https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf', 'NASA/JPL public document', 'Goldstone / Madrid / Canberra hours'],
-  ['BEACON lunar relay concept', 'NASA Glenn (NTRS 20240014584)', 'https://ntrs.nasa.gov/citations/20240014584', 'NASA NTRS', 'Relay-tower concept (15 m boom)'],
-  ['Apollo Lunar Surface Journal — Sun elevation at landing', 'NASA History (ALSJ)', 'https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html', 'public', 'Mission hindcast'],
-  ['ShadowCam data archive (doi:10.17189/y89z-kt98)', 'NASA / KARI / ASU (NASA PDS)', 'https://pds.shadowcam.asu.edu/', 'PDS public archive; links and label metadata only (no images copied)', 'Korea links (About)'],
-  ['Pretendard (UI font)', 'Kil Hyung-jin (orioncactus)', 'https://github.com/orioncactus/pretendard', 'SIL Open Font License 1.1', 'All UI text'],
-  ['Oxanium (number font)', 'Severin Meyer / Google Fonts', 'https://fonts.google.com/specimen/Oxanium', 'SIL Open Font License 1.1', 'Measured numbers'],
-  ['three.js 0.170', 'three.js authors', 'https://threejs.org/', 'MIT', '3D Moon rendering'],
-];
 const TEAM = [['Dongju Kim', 'team lead · validation'], ['Sua Kim', 'integrator · Korea links · custom points'], ['Minchul Kim', 'ephemeris · site catalogue'],
   ['Jiyong Sung', 'terrain · horizons · local grids'], ['Soyun Jeong', 'whole-Moon maps'], ['Chaei Oh', 'visual design']];
 
@@ -132,8 +117,7 @@ async function render() {
     <p><a href="#" data-gs>${E('abKMore')}</a></p></div></section>
   <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
     <details id="about-sources" open><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
-      <div style="overflow-x:auto"><table class="src-tbl"><thead><tr><th>${E('sName')}</th><th>${E('sOrg')}</th><th>${E('sLic')}</th><th>${E('sUse')}</th></tr></thead><tbody>${SOURCES.map(([n, o, u, l, us]) =>
-        `<tr><td><a href="${esc(u)}" target="_blank" rel="noopener">${esc(n)}</a></td><td>${esc(o)}</td><td>${esc(l)}</td><td>${esc(us)}</td></tr>`).join('')}</tbody></table></div></details>
+      <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li><span class="muted num">${id}.</span> ${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
     <details><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
       <p>${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>

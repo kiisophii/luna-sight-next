@@ -1,0 +1,112 @@
+{
+  "normal": {
+    "width": 8192,
+    "pixels": [
+      {
+        "area": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0,
+          0,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0.47,
+          0.92,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0.96,
+          0.45,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      }
+    ],
+    "restored_pixels": [
+      {
+        "area": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0,
+          0,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0.47,
+          0.92,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      },
+      {
+        "area": [
+          0.96,
+          0.45,
+          0.0625,
+          0.0625
+        ],
+        "max_channel_difference": 0,
+        "mean_channel_difference": 0,
+        "different_channels": 0
+      }
+    ]
+  },
+  "http_error": {
+    "width": 2048
+  },
+  "decode_error": {
+    "width": 2048
+  },
+  "dispose_during_decode": {
+    "worker_terminated": true
+  },
+  "legacy_fallback": {
+    "width": 8192
+  },
+  "texture_limit": {
+    "width": 4096
+  }
+}

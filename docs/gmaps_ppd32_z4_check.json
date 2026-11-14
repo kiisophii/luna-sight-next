@@ -1,0 +1,205 @@
+{
+ "z": 4,
+ "level": {
+  "z": 4,
+  "width": 16384,
+  "height": 8192,
+  "nx": 32,
+  "ny": 16
+ },
+ "problems": [],
+ "index_registered": true,
+ "layers": {
+  "sun": {
+   "tiles_expected": 512,
+   "tiles_missing": 0,
+   "bytes": 18756097,
+   "tile_px": [
+    [
+     512,
+     512
+    ]
+   ],
+   "value_nan": 0,
+   "value_min": 0.0,
+   "value_max": 0.7935303449630737,
+   "jpeg_vs_colorized_rgb": {
+    "mean_abs": 1.303,
+    "p99_abs": 9.0,
+    "max_abs": 79
+   },
+   "pixels_near_nodata_rgb": 3,
+   "ref_pixels_nodata_rgb": 0,
+   "seam_step_rgb": {
+    "across_tile_columns": 2.54,
+    "inside_columns": 1.282,
+    "across_tile_rows": 3.085,
+    "inside_rows": 1.762,
+    "before_jpeg_across_columns": 1.363,
+    "before_jpeg_inside_columns": 1.104,
+    "previous_level_across_columns": 3.549,
+    "previous_level_inside_columns": 2.485
+   },
+   "lon_wrap": {
+    "value_mean_abs_first_vs_last_col": 0.00767,
+    "value_mean_abs_adjacent_cols": 0.0044,
+    "rgb_mean_abs_first_vs_last_col": 3.111,
+    "grid_first_vs_last_col": 0.00819,
+    "grid_adjacent_cols": 0.00846,
+    "previous_level_first_vs_last_col": 0.00794,
+    "previous_level_adjacent_cols": 0.00946
+   },
+   "poles": {
+    "top_row_value_range": [
+     0.0,
+     0.551
+    ],
+    "bottom_row_value_range": [
+     0.0,
+     0.6977
+    ],
+    "top_bottom_rows_nan": 0
+   },
+   "vs_previous_level": {
+    "value_mean_abs": 0.00311,
+    "value_p99_abs": 0.03287,
+    "area_mean_this": 0.43512,
+    "area_mean_previous": 0.43512,
+    "rgb_mean_abs_decoded": 2.022
+   },
+   "vs_grid_at_cell_centres": {
+    "n": 43836,
+    "value_mean_abs": 0.00296,
+    "value_p99_abs": 0.03086
+   }
+  },
+  "earth": {
+   "tiles_expected": 512,
+   "tiles_missing": 0,
+   "bytes": 11335367,
+   "tile_px": [
+    [
+     512,
+     512
+    ]
+   ],
+   "value_nan": 0,
+   "value_min": 0.0,
+   "value_max": 1.0,
+   "jpeg_vs_colorized_rgb": {
+    "mean_abs": 1.01,
+    "p99_abs": 14.0,
+    "max_abs": 96
+   },
+   "pixels_near_nodata_rgb": 0,
+   "ref_pixels_nodata_rgb": 0,
+   "seam_step_rgb": {
+    "across_tile_columns": 2.361,
+    "inside_columns": 1.343,
+    "across_tile_rows": 2.671,
+    "inside_rows": 1.711,
+    "before_jpeg_across_columns": 1.446,
+    "before_jpeg_inside_columns": 1.241,
+    "previous_level_across_columns": 3.478,
+    "previous_level_inside_columns": 2.727
+   },
+   "lon_wrap": {
+    "value_mean_abs_first_vs_last_col": 0.00022,
+    "value_mean_abs_adjacent_cols": 0.00011,
+    "rgb_mean_abs_first_vs_last_col": 0.137,
+    "grid_first_vs_last_col": 0.00023,
+    "grid_adjacent_cols": 0.00021,
+    "previous_level_first_vs_last_col": 0.00022,
+    "previous_level_adjacent_cols": 0.00024
+   },
+   "poles": {
+    "top_row_value_range": [
+     0.0,
+     0.5265
+    ],
+    "bottom_row_value_range": [
+     0.0,
+     0.5209
+    ],
+    "top_bottom_rows_nan": 0
+   },
+   "vs_previous_level": {
+    "value_mean_abs": 0.00366,
+    "value_p99_abs": 0.07004,
+    "area_mean_this": 0.43502,
+    "area_mean_previous": 0.43501,
+    "rgb_mean_abs_decoded": 1.671
+   },
+   "vs_grid_at_cell_centres": {
+    "n": 43836,
+    "value_mean_abs": 0.00344,
+    "value_p99_abs": 0.06838
+   }
+  },
+  "both": {
+   "tiles_expected": 512,
+   "tiles_missing": 0,
+   "bytes": 10088616,
+   "tile_px": [
+    [
+     512,
+     512
+    ]
+   ],
+   "value_nan": 0,
+   "value_min": 0.0,
+   "value_max": 0.602410078048706,
+   "jpeg_vs_colorized_rgb": {
+    "mean_abs": 0.972,
+    "p99_abs": 10.0,
+    "max_abs": 100
+   },
+   "pixels_near_nodata_rgb": 0,
+   "ref_pixels_nodata_rgb": 0,
+   "seam_step_rgb": {
+    "across_tile_columns": 1.995,
+    "inside_columns": 0.881,
+    "across_tile_rows": 2.346,
+    "inside_rows": 1.151,
+    "before_jpeg_across_columns": 1.262,
+    "before_jpeg_inside_columns": 1.042,
+    "previous_level_across_columns": 2.756,
+    "previous_level_inside_columns": 1.68
+   },
+   "lon_wrap": {
+    "value_mean_abs_first_vs_last_col": 0.00011,
+    "value_mean_abs_adjacent_cols": 6e-05,
+    "rgb_mean_abs_first_vs_last_col": 0.058,
+    "grid_first_vs_last_col": 0.00013,
+    "grid_adjacent_cols": 0.00012,
+    "previous_level_first_vs_last_col": 0.00013,
+    "previous_level_adjacent_cols": 0.00012
+   },
+   "poles": {
+    "top_row_value_range": [
+     0.0,
+     0.2866
+    ],
+    "bottom_row_value_range": [
+     0.0,
+     0.3614
+    ],
+    "top_bottom_rows_nan": 0
+   },
+   "vs_previous_level": {
+    "value_mean_abs": 0.00232,
+    "value_p99_abs": 0.03388,
+    "area_mean_this": 0.20001,
+    "area_mean_previous": 0.2,
+    "rgb_mean_abs_decoded": 1.362
+   },
+   "vs_grid_at_cell_centres": {
+    "n": 43836,
+    "value_mean_abs": 0.00219,
+    "value_p99_abs": 0.03211
+   }
+  }
+ },
+ "bytes_total": 40180080,
+ "ok": true
+}

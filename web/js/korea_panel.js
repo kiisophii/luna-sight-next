@@ -2,7 +2,7 @@
 //   1. KDSA (Yeoju, 35 m) Moon visibility in KST for the analysis period, compared with the NASA DSN 70 m antennas.
 //   2. Direct link from the focused site: Earth visible from the site AND the Moon >= 10 deg above Yeoju (and NASA DSN 70 m).
 //      No Danuri relay: Danuri (KPLO) carries no lunar-surface relay payload; it is only mentioned as ShadowCam's host.
-//   3. ShadowCam context products: links + label metadata only (image redistribution question pending).
+//   3. ShadowCam context products: links + label metadata only (no images redistributed).
 // Reads web/data/korea/*.json (contract section 13) via diff_data.js / korea.js. Colours: CSS variables only.
 import * as core from './core.js';
 import { t } from './i18n.js';
@@ -25,7 +25,7 @@ addStrings({
   krScNote: 'Links and label metadata only — no ShadowCam images are copied or shown here. Credit: NASA/KARI/ASU.',
   krScCentre: 'centre', krScDates: 'acquired', krScPix: 'pixel', krScLabel: 'PDS label', krScData: 'data (COG)', krScReadme: 'readme',
   krPendingQ: 'Open questions to the organisers',
-  krSrc: 'Station coordinates: DSN 810-005 module 301 (NASA/JPL); KDSA from kdsa01.tf (KARI), a file publicly released by NASA NAIF — cited as published. Moon positions: NAIF DE440s via Skyfield.',
+  krSrc: 'Station coordinates: DSN 810-005 module 301 (NASA/JPL); KDSA from the publicly released NASA/JPL NAIF SPICE file kdsa01.tf (cited; no separate permission requested). Moon positions: NAIF DE440s via Skyfield.',
   krCP11: 'Korean payload on the Moon',
 }, {
   krTitle: '한국 연결 — 여주 안테나, 섀도캠', krAria: '한국 연결',
@@ -43,7 +43,7 @@ addStrings({
   krScNote: '링크와 라벨 정보만 — 섀도캠 이미지는 복사하거나 보여 주지 않는다. 출처: NASA/KARI/ASU.',
   krScCentre: '중심', krScDates: '촬영', krScPix: '픽셀', krScLabel: 'PDS 라벨', krScData: '데이터 (COG)', krScReadme: 'readme',
   krPendingQ: '운영진에게 보낸 질문',
-  krSrc: '지상국 좌표: DSN 810-005 모듈 301 (NASA/JPL), KDSA는 NASA NAIF가 공개한 kdsa01.tf(KARI) — 공개된 그대로 인용. 달 위치: NAIF DE440s, Skyfield.',
+  krSrc: '지상국 좌표: DSN 810-005 모듈 301 (NASA/JPL), KDSA는 NASA/JPL NAIF가 공개 배포한 SPICE 파일 kdsa01.tf (출처 표기, 별도 허가는 요청하지 않음). 달 위치: NAIF DE440s, Skyfield.',
   krCP11: '달에 가는 한국 장비',
 });
 
@@ -140,7 +140,7 @@ async function render() {
     <p class="hint">${esc(sc.citation)}</p>
     ${cp ? `<h3>${t('krCP11')}</h3><p>${esc(lang === 'ko' && cp.korea_link_ko ? cp.korea_link_ko : cp.korea_link)}
       <a href="${esc(cp.source_url)}" target="_blank" rel="noopener">NTRS 20230000531</a></p>` : ''}
-    `;   // internal questions to the organisers are kept in data/korea/korea.json, not shown on the submission screen
+    ${(info.pending_questions || []).length ? `<h3>${t('krPendingQ')}</h3><ul>${info.pending_questions.map(q => `<li>${esc(q)}</li>`).join('')}</ul>` : ''}`;
 }
 
 whenReady(() => {

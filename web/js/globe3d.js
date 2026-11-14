@@ -57,6 +57,27 @@ function makeLayout(idx) {
       const s = rho > 0 ? Math.sin(c) / rho : 0;
       return kind === 'south' ? out.set(s * py, s * px, -Math.cos(c)) : out.set(-s * py, s * px, Math.cos(c));
     },
+    directions(kind, z, x, y) {
+      const dirs = new Float32Array(P * P * 3), v = v3();
+      // Band longitude repeats down columns and latitude across rows. Keep
+      // trig values as doubles and the exact dir()/normalize arithmetic.
+      const cosLon = new Float64Array(P), sinLon = new Float64Array(P);
+      const step = band.root_deg / (1 << z) / N;
+      if (kind === 'band') for (let i = 0; i < P; i++) {
+        const lon = -180 + (x * N + i - B) * step;
+        cosLon[i] = Math.cos(lon * D2R); sinLon[i] = Math.sin(lon * D2R);
+      }
+      for (let j = 0; j < P; j++) {
+        const lat = Math.max(-90, Math.min(90, band.lat_max - (y * N + j - B) * step));
+        const cl = Math.cos(lat * D2R), sl = Math.sin(lat * D2R);
+        for (let i = 0; i < P; i++) {
+          if (kind === 'band') v.set(cl * cosLon[i], cl * sinLon[i], sl).normalize();
+          else this.dir(kind, z, x, y, i, j, v).normalize();
+          const o = 3 * (j * P + i); dirs[o] = v.x; dirs[o + 1] = v.y; dirs[o + 2] = v.z;
+        }
+      }
+      return dirs;
+    },
     spacing(kind, z) { return kind === 'band' ? band.root_deg / (1 << z) / N * D2R * R : 2 * half / (1 << z) / N; },
     // which tile at level z contains (lat, lon); returns [x, y, fi, fj] (fractional bordered sample coords) or null
     locate(kind, z, lat, lon) {
@@ -133,6 +154,7 @@ export async function createGlobe(container, opts = {}) {
   const texLoader = new THREE.TextureLoader();
   const colorTex = { value: null };
   let hiresState = 'none';                 // none | loading | done
+  let colorWorker = null;
   const setColor = t => { t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; colorTex.value = t; };
   setColor(await texLoader.loadAsync(base + 'globe/moon_color_2k.jpg'));
   let baseTex = null;                       // LROC colour texture currently loaded (2k or 8k)
@@ -140,8 +162,30 @@ export async function createGlobe(container, opts = {}) {
   function loadHires() {
     if (hiresState !== 'none') return;
     hiresState = 'loading';
-    texLoader.loadAsync(base + 'globe/moon_color_8k.jpg')
-      .then(t => { const old = baseTex || colorTex.value; setColor(t); baseTex = t; if (layerTex) colorTex.value = layerTex; if (old !== t) old.dispose(); dirty = true; })
+    // Decode, orient and unpack pixels off the render thread. Even an ImageBitmap
+    // upload can synchronously convert all 8K pixels; a transferable RGBA buffer
+    // avoids that conversion. Retain it on the texture for WebGL context restore.
+    const url = new URL(base + 'globe/moon_color_8k.jpg', document.baseURI).href;
+    const pending = typeof Worker === 'function' && typeof OffscreenCanvas === 'function'
+      ? new Promise((resolve, reject) => {
+        const worker = colorWorker = new Worker(new URL('./globe_color_worker.js', import.meta.url));
+        worker.onmessage = ({ data }) => {
+          worker.terminate(); colorWorker = null;
+          if (data.error) { reject(new Error(data.error)); return; }
+          const t = new THREE.DataTexture(new Uint8Array(data.pixels), data.width, data.height);
+          t.magFilter = THREE.LinearFilter; t.minFilter = THREE.LinearMipmapLinearFilter;
+          t.needsUpdate = true;
+          resolve(t);
+        };
+        worker.onerror = e => { worker.terminate(); colorWorker = null; reject(new Error(e.message)); };
+        worker.postMessage({ url, maxSize: renderer.capabilities.maxTextureSize });
+      })
+      : texLoader.loadAsync(url);
+    pending
+      .then(t => {
+        if (stopped) { t.dispose(); return; }
+        const old = baseTex || colorTex.value; setColor(t); baseTex = t; if (layerTex) colorTex.value = layerTex; if (old !== t) old.dispose(); dirty = true;   // a data layer (setColorMap) stays on top
+      })
       .catch(() => {})
       .finally(() => { hiresState = 'done'; });
   }
@@ -183,6 +227,7 @@ uniform sampler2D uColor;`)
   const queue = new Set();
   let loading = 0;
   const buildQueue = [];
+  let meshIndices = null;             // immutable CPU topology shared by this globe's tiles
   let frameNo = 0;
   const group = new THREE.Group(); scene.add(group);
 
@@ -253,14 +298,7 @@ uniform sampler2D uColor;`)
   // builds / rebuilds mesh + normal map from heights (also used when exaggeration changes)
   function buildMesh(t) {
     const P = L.P, B = L.B, N = L.N, S = MESH_STRIDE, M = N / S + 1;   // mesh vertices per side
-    if (!t.dirs) {
-      t.dirs = new Float32Array(P * P * 3);
-      const d = v3();
-      for (let j = 0; j < P; j++) for (let i = 0; i < P; i++) {
-        L.dir(t.kind, t.z, t.x, t.y, i, j, d).normalize();
-        const o = 3 * (j * P + i); t.dirs[o] = d.x; t.dirs[o + 1] = d.y; t.dirs[o + 2] = d.z;
-      }
-    }
+    if (!t.dirs) t.dirs = L.directions(t.kind, t.z, t.x, t.y);
     const D = t.dirs, H = t.h, e = exag / 1000;
     const c = t.centerDir.clone().multiplyScalar(R);
     // full-resolution positions (relative to centre) for normals
@@ -298,7 +336,7 @@ uniform sampler2D uColor;`)
     const skirt = Math.max(L.spacing(t.kind, t.z) * S * 4, (t.a.max - t.a.min) / 1000 * e * 0.05, 0.05);
     const g = (i, j) => j * M + i;
     const ix = [], skirtIx = [];
-    for (let j = 0; j < M - 1; j++) for (let i = 0; i < M - 1; i++) {
+    if (!meshIndices) for (let j = 0; j < M - 1; j++) for (let i = 0; i < M - 1; i++) {
       const a0 = g(i, j), a1 = g(i + 1, j), a2 = g(i, j + 1), a3 = g(i + 1, j + 1);
       ix.push(a0, a2, a1, a1, a2, a3);
     }
@@ -307,15 +345,20 @@ uniform sampler2D uColor;`)
       let prevG = -1, prevS = -1;
       for (let k = 0; k < M; k++) {
         const [i, j] = edgeFn(k), gi = g(i, j), si = put(i * S, j * S, skirt);
-        if (k) skirtIx.push(prevG, prevS, gi, gi, prevS, si, prevG, gi, prevS, gi, si, prevS);
+        if (k && !meshIndices) skirtIx.push(prevG, prevS, gi, gi, prevS, si, prevG, gi, prevS, gi, si, prevS);
         prevG = gi; prevS = si;
       }
+    }
+    if (!meshIndices) {
+      // Preserve Three's index-type selection; share arrays, not GPU attributes.
+      meshIndices = { surface: new THREE.BufferGeometry().setIndex(ix).index.array,
+                      skirt: new THREE.BufferGeometry().setIndex(skirtIx).index.array };
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(P3, 3));
     geo.setAttribute('normal', new THREE.BufferAttribute(NO, 3));
     geo.setAttribute('uv', new THREE.BufferAttribute(UV, 2));
-    geo.setIndex(ix);
+    geo.setIndex(new THREE.BufferAttribute(meshIndices.surface, 1));
     geo.computeBoundingSphere();
     const tex = new THREE.DataTexture(nm, N + 1, N + 1, THREE.RGBAFormat);
     tex.flipY = true; tex.magFilter = THREE.LinearFilter; tex.minFilter = THREE.LinearMipmapLinearFilter; tex.generateMipmaps = true; tex.needsUpdate = true;
@@ -327,7 +370,7 @@ uniform sampler2D uColor;`)
     // skirts (crack fillers between LOD levels) hang below the surface: never shadowed, never casting
     const sgeo = new THREE.BufferGeometry();
     for (const k of ['position', 'normal', 'uv']) sgeo.setAttribute(k, geo.getAttribute(k));
-    sgeo.setIndex(skirtIx); sgeo.boundingSphere = geo.boundingSphere;
+    sgeo.setIndex(new THREE.BufferAttribute(meshIndices.skirt, 1)); sgeo.boundingSphere = geo.boundingSphere;
     const smesh = new THREE.Mesh(sgeo, mat);
     smesh.castShadow = smesh.receiveShadow = false;
     mesh.add(smesh); smesh.updateMatrix(); smesh.matrixAutoUpdate = false;
@@ -860,7 +903,7 @@ uniform sampler2D uColor;`)
     sunDirection: () => sunDir.clone(), earthPosition: () => earthPos.clone(),
     waitIdle: async (timeout = 30000) => { const t0 = performance.now(); let calm = 0; while (performance.now() - t0 < timeout) { await new Promise(r => setTimeout(r, 100)); calm = stats.pending === 0 && !fly ? calm + 1 : 0; if (calm >= 5) return true; } return false; },
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter(f => f !== fn); }; },
-    dispose() { stopped = true; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
+    dispose() { stopped = true; colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
     _internal: { scene, camera, renderer, tiles },
   };
   return api;

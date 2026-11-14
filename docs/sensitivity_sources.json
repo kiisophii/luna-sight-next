@@ -1,0 +1,1157 @@
+{
+  "checked_utc": "2026-11-14T12:55:53.260569+00:00",
+  "sources": [
+    {
+      "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+      "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+      "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+      "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+      "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+      "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+      "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/global/ldem_64_float.img",
+      "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+      "name": "LDEM_64",
+      "res_m": 473.80235037733564,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img",
+      "frame": null,
+      "radius_m": null,
+      "radius_km": null,
+      "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+    },
+    {
+      "path": "data/raw/global/ldem_16_float.img",
+      "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+      "name": "LDEM_16",
+      "res_m": 1895.2094015093426,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img",
+      "frame": null,
+      "radius_m": null,
+      "radius_km": null,
+      "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+    },
+    {
+      "path": "data/raw/polar/5/ARTEMIS_HAWORTH.npz",
+      "sha256": "715d2fb5854b3255f97eef34f10e443babcfa278ab8f4a6368b938af4803c16d",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_HAWORTH.npz",
+      "sha256": "3fa6a21a2afeac47febbd9625559962ff39dd22ef9d53894c5701cbf6fadc064",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_HAWORTH.npz",
+      "sha256": "533fbcd804f5e15b48e791f79ce4165450997be98461b29fd3b00b994a4a53c3",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_HAWORTH.npz",
+      "sha256": "d652ceb5873298759479fece4447371aa223faee1570ef976b11b92f439b3b02",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_HAWORTH.npz",
+      "sha256": "2aac20fac72b9e6fe3f312da96a9bfaf30898411e7dd39df2174af271d024e06",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_HAWORTH.npz",
+      "sha256": "6dfc89e8464ebef45a600663557bf9479a2e436f2eb33fbf49edd2cb8ef23f1a",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_MALAPERT.npz",
+      "sha256": "54ecf890336c4473dd16dd1bea2b3417c47deb1a4ea97ff44a016beea7a552ca",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_MALAPERT.npz",
+      "sha256": "dcdf0071513e599a6cafaf11fcfe8889d839b56a893eee301091a2cc427ecd8c",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_MALAPERT.npz",
+      "sha256": "6ff2a430b6a48c7ef3396280bd9b1891891b4bb64b8325e6b1e9602599a1d380",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_MALAPERT.npz",
+      "sha256": "4b6477f75771d99dbff1760400acbcb5ae2e302327d3986940d53459bbe6a59f",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_MALAPERT.npz",
+      "sha256": "22d52a4eda63f7b39592121f4fa59ad9dcf3050b469ae8b9c46d9266f2a5a2f4",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/sldem/APOLLO17.npz",
+      "sha256": "06b22dcc5332e4812025673c695c6a62d2f64399b9e381b8d96e332fcb489ed8",
+      "name": "SLDEM2015",
+      "res_m": 59.225293797166955,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0
+    },
+    {
+      "path": "data/raw/sldem/CHANGE4.npz",
+      "sha256": "e217850a71524adfe4e3498dc8733d3e4ebb8a2b0d51850371297674077904f4",
+      "name": "SLDEM2015",
+      "res_m": 59.225293797166955,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0
+    },
+    {
+      "path": "data/raw/sldem/SLIM.npz",
+      "sha256": "48b830f53a7669d7f151b303d8700d4109318d86a580c2eb6853965237e76f47",
+      "name": "SLDEM2015",
+      "res_m": 59.225293797166955,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0
+    },
+    {
+      "path": "data/processed/assumptions/ldem128/APOLLO17.npz",
+      "sha256": "9a678888c0e7ae9330f4c9c78da00b4fdea80ff3843ff8eb0fd837425e191ca4",
+      "name": "LDEM_128",
+      "res_m": 236.90117518866782,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0,
+      "fetch_metadata": {
+        "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "validator": "\"8c7512ec2927d31:0\"",
+        "remote_bytes": 4246732800,
+        "label_sha256": "ba55755fedb0ebe509405490639b9951407fc400396e175021901322ec4f0fff",
+        "plan": [
+          8300,
+          9571,
+          3262,
+          4616
+        ],
+        "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "source_label_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.lbl",
+        "radius_km": 150.0,
+        "site_id": "APOLLO17",
+        "site_lat": 20.1911,
+        "site_lon": 30.7723,
+        "frame": "MOON_ME_DE421",
+        "native_unit": "km",
+        "unit": "m",
+        "res_m": 236.90117518866782,
+        "part_sha256": {
+          "8300-8428.npy": "77d4d5a2b5ce155156c6132ebb03a761398b0c71f95bebcfefb66b8ba0dbea0f",
+          "8428-8556.npy": "f15ef6b54ac8f7329cefe01f8440c4e90834047915c0394c5cd058dc2e16cd3d",
+          "8556-8684.npy": "4eb9d1761da5ad0041331f6ee268ebc78385f252445888ffe7e218544fe02993",
+          "8684-8812.npy": "a799ea3fa07e7c634883c97219f5a7628fbb5b59454f1c16c7bb7b700938d3a3",
+          "8812-8940.npy": "20ca198abc8f203223eb2d0dc66d6836536fd73c4c3082a522db19eb6e9cc81a",
+          "8940-9068.npy": "ef9d4528af61d0d0af1b8461fce2adc7e1246441efefbdafc24a468f6c285105",
+          "9068-9196.npy": "f1b7515398cb103408b2396cf29e74e673c0ca15abdcf95999754a1192ca130d",
+          "9196-9324.npy": "2bdfc1b550fb1851709f07cd661e018c3576ed0a643b6957e694303dbeb536f0",
+          "9324-9452.npy": "2eac7e459e63ff0e6cc62bd632b73e9b094374b1f80a9ee320f1569191cc59f6",
+          "9452-9571.npy": "3f1bcaf14c6ce3eaeb851559c846647b0fc171af9326ab904cf375ce77daab3c"
+        },
+        "elapsed_s": 8.235000000044238
+      }
+    },
+    {
+      "path": "data/processed/assumptions/ldem128/CHANGE4.npz",
+      "sha256": "a72fb83afe24e8ab07e8060ad0fe457d5434a5b59a7ba469eb42fdfa58518ec7",
+      "name": "LDEM_128",
+      "res_m": 236.90117518866782,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0,
+      "fetch_metadata": {
+        "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "validator": "\"8c7512ec2927d31:0\"",
+        "remote_bytes": 4246732800,
+        "label_sha256": "ba55755fedb0ebe509405490639b9951407fc400396e175021901322ec4f0fff",
+        "plan": [
+          16703,
+          17974,
+          21825,
+          23638
+        ],
+        "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "source_label_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.lbl",
+        "radius_km": 150.0,
+        "site_id": "CHANGE4",
+        "site_lat": -45.4562,
+        "site_lon": 177.5885,
+        "frame": "MOON_ME_DE421",
+        "native_unit": "km",
+        "unit": "m",
+        "res_m": 236.90117518866782,
+        "part_sha256": {
+          "16703-16831.npy": "bc924cca995480a6cc139873f1655780d35b97bf95bd85aee42a12dd24a9c831",
+          "16831-16959.npy": "aa7e43ad0424e1c7b27f704c4914173594e43d0f2ca54cc01c199e2460a72228",
+          "16959-17087.npy": "b258fb7b1b53d664f36c4bf41cf4b6cbc7691355354e5fb3ae2fe8a597ca640a",
+          "17087-17215.npy": "df61d707b8a4631f0edae21d1e871cc048d30c525313b6d348b1522644501b47",
+          "17215-17343.npy": "6c873a07892c435824e87535f3877baac1a4e77fcc200c003502e85cd8d8bed7",
+          "17343-17471.npy": "fc5a2b6dea3c194a9ee5327dcebfc0fc4093ab6c9c3280f1690ba9eb253f34ed",
+          "17471-17599.npy": "8c1588af32f2721466f65331d2d315691243fed49173ea9ff28b3d0c61465b81",
+          "17599-17727.npy": "a271ec3192442116cfa754563bc51f3cd28118c486e7090c1f7eff56f072ea96",
+          "17727-17855.npy": "285b3ce2104c7fad62b7b4a974023d61a0d312ee5276e628c5f31dd86f4ff12d",
+          "17855-17974.npy": "a585b1e5a6dd49f3e653f85e48099fcf447e262c96c485b2747134635f65b966"
+        },
+        "elapsed_s": 8.828000000037719
+      }
+    },
+    {
+      "path": "data/processed/assumptions/ldem128/SLIM.npz",
+      "sha256": "021f7cf8eeeb1742f4a58f84876f00243e81861d0620d15af7cc05ee15ba9962",
+      "name": "LDEM_128",
+      "res_m": 236.90117518866782,
+      "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+      "frame": "MOON_ME_DE421",
+      "radius_m": null,
+      "radius_km": 150.0,
+      "fetch_metadata": {
+        "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "validator": "\"8c7512ec2927d31:0\"",
+        "remote_bytes": 4246732800,
+        "label_sha256": "ba55755fedb0ebe509405490639b9951407fc400396e175021901322ec4f0fff",
+        "plan": [
+          12589,
+          13860,
+          2579,
+          3885
+        ],
+        "source_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.img",
+        "source_label_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_128_float.lbl",
+        "radius_km": 150.0,
+        "site_id": "SLIM",
+        "site_lat": -13.316,
+        "site_lon": 25.251,
+        "frame": "MOON_ME_DE421",
+        "native_unit": "km",
+        "unit": "m",
+        "res_m": 236.90117518866782,
+        "part_sha256": {
+          "12589-12717.npy": "1b1e333f96adb3827db2da98057dd7469718e454fc31968b019489ec0e497aa5",
+          "12717-12845.npy": "469bce8f2666b46a2f1f55d4e4b51ef2531b9331cfbc885cb00b66b6d2169ad5",
+          "12845-12973.npy": "cf211d5fcec190af7b07bfb62b7ba8a37b0a169bae269c41cf80dbbee2dc9330",
+          "12973-13101.npy": "69410a71993b7196d2679e55e0daaf66736eb222023fc793ae625b5a1f1f70f4",
+          "13101-13229.npy": "dafad8c6d40238963e0e552d458ce3b8ab517b10d961d4a4bf99f4220709720c",
+          "13229-13357.npy": "ce9b0c5fc4f836c97ff1c81093f5bd7a0eb26958933af6486a7d36e8c4b5b759",
+          "13357-13485.npy": "7b3c2c62eb6b6d93945b570c2f37efe3961f1ef2858b9dcf871a07947e69a6c7",
+          "13485-13613.npy": "c2bca60c7f454d3b016bc4e2266811180e4897a9d69192861d5eff536afd3afb",
+          "13613-13741.npy": "85ab3572fac6a47dae94d608b96d3b90ef8e4a5e7b78fe81149074116b648872",
+          "13741-13860.npy": "bda19b626bfc97123388f847eab638fc6207533ef8368f2baaf1f676c7ba8def"
+        },
+        "elapsed_s": 7.39100000000326
+      }
+    },
+    {
+      "path": "data/raw/polar/20/IM1.npz",
+      "sha256": "721d2aa880d767c9609a06fd33284e064cdc86a19aff3d523484d1ad685562d7",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/IM1.npz",
+      "sha256": "0322f9e725a0b28ee6329d0ce04a02df0c5f5588dec4e39aa00dd384436e2118",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/IM1.npz",
+      "sha256": "30ea26f4a2af3e1a0e7d9a322a911d8fc11bd5e37b1a0285a52768997464d607",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/IM1.npz",
+      "sha256": "47e565c9fd7de2f90e19435dafcf010e2c43df3feae136d9c237e5ad96644ddf",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/IM2.npz",
+      "sha256": "aa80eaf93ed67d9c9e9a2ea821be1b2569e16623fedc6c34445fa1be20271895",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/IM2.npz",
+      "sha256": "f94f3f4e5c5388011d00b6fc9ee78396b6c44b76ae2bf3f9b872d265dd1baab0",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/IM2.npz",
+      "sha256": "ff901710be00cf8df791df2c0a40fceff5d1e5c7981f4625cea926b2ed7ec3ef",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/IM2.npz",
+      "sha256": "29ea048c3d206a1d24ac6e26cd569e74300d08f9d7a5da7515e3c7ac04bef28e",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/IM2.npz",
+      "sha256": "4df037e8f0107b91d64165f79a5d25a81b0f4ee2ce8a0b9c47fe52892c2416b6",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_CABEUS_B.npz",
+      "sha256": "99b1fbee6e5180cfa6735ad273e5c740438429eb9878c87fad352f4653320518",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_CABEUS_B.npz",
+      "sha256": "de064f6db21c98a7bfbfa5ddea298355d3f3b4c4a590da9229f5e7320db5defe",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_CABEUS_B.npz",
+      "sha256": "ed487bfe4394d298c8a19732cc62b3d0a10b6b72e6683928d31de7ff8d9effd3",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_CABEUS_B.npz",
+      "sha256": "92587459140a3ac8b52287e1f364a35cd4bfd815d2b5e98be052fc89e3f31776",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_CABEUS_B.npz",
+      "sha256": "b6e370cd1000bdc98e04176667e308102994b4f1ecd113cd9bf4d209ad2ee81d",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_MOUTON_PLATEAU.npz",
+      "sha256": "d0387bba3552e7b776845c85194bd694834fb55247f9728052b64aa4ebedbe40",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_MOUTON_PLATEAU.npz",
+      "sha256": "9d6e6f998db4cb26dcd7945ce259c437774780a5b56fc037496ce4dc6f99a3a7",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_MOUTON_PLATEAU.npz",
+      "sha256": "13343af10cbca36d66a486c8fa5613a173851bd1b4140ecc49ad9c096652e306",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_MOUTON_PLATEAU.npz",
+      "sha256": "76adf6c587e5addba2df092a6880f8d6bdc2ca26f8cef0e3945edfa0eaa6bcc0",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_MOUTON_PLATEAU.npz",
+      "sha256": "8a661911858792bb1c62db3e3ea955ea0189be3afe73a2a70de01cd146943843",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_MOUTON.npz",
+      "sha256": "4c6afb738414b81ac325df633c146a8ae53ef91bad86dcff0fb80fa8107d484d",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_MOUTON.npz",
+      "sha256": "5e7c0c31a654783fd7c8a7861ed3f1af4a74aa11798ba38dd4055fb7e918c81c",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_MOUTON.npz",
+      "sha256": "174716c2e430004be5eb70106dc42cb9aa74965dabf2c8d98d264270cdf28935",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_MOUTON.npz",
+      "sha256": "da31d761375bf219488174e739ae28f5fef9211612b5413fc2294720610ac7c2",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_MOUTON.npz",
+      "sha256": "1b8e9ad5376482952f12037989047809d03b5891d2fa63b609fd128159b84494",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_NOBILE_RIM1.npz",
+      "sha256": "c41230f002603727cab435be2386db263abcd65162ad1013bdab524e92f7e157",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM1.npz",
+      "sha256": "20680e54f78998d21c720960b84ebb0c92be2bc82ab517006064369c369b17f2",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM1.npz",
+      "sha256": "c2d743672c0d5c05afb0469408c5cd5060bee71cd0f168ba7291f2cc16ca6729",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM1.npz",
+      "sha256": "7a1a88448eecc0767552206fea22890abfac692fecd816c1314586e61e7b1794",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM1.npz",
+      "sha256": "e1e5c8d50c8590a32a304b9099ebf7722d688749f6e5dc853d3096df200b02bf",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_NOBILE_RIM2.npz",
+      "sha256": "d4a60205b6c5ebc0ce3ba5e2cc40c32380f1613bbcf0f9f163d69dc7c515f751",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM2.npz",
+      "sha256": "4af36887c12aec79cc0d7fe9a4bcf83ac890b7aaa75caba13fa0de7424decbf3",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM2.npz",
+      "sha256": "9c1c80785aa890ff4c9bfdde220515405849ab1b88d78b96a81618872baac084",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM2.npz",
+      "sha256": "a161c9b5fe6603807e15ba6caa49a7914ea4afbd02c0ceb619e33c87df99f32e",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM2.npz",
+      "sha256": "b57f92c4c3e9ded0b6fb1343e57da5f0821f61a02667f3e689bc6b64a3c119f4",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "35f7f06e72e82134cc7247e3bdf40864bc5560d82c403145711450acdf137e25",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "bf42baee0173a4777daa7c0e7a90423d354b8c134b45e3e7b15626212aafaa79",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "0336626ba61da56d6e94b491b12092ed7f2d3989e48c5b6ea0fcf9b8cd66d47a",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "eaf217793660f2a704750666a7dcafd9981e21dfbfb10156565b6e700db1304f",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "e58920a6dba1c8383d3acbc26a42d0782642bf14f6d3f96149517fa8965e076b",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_DE_GERLACHE_RIM2.npz",
+      "sha256": "91de8fe26bf43813e3d050a7721faae5eac23b5d04b45072415b4e9693a799fc",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "eaa1cc3074d5455a1e0d18fdb4fd440b02676ff6860967c71259e7a3752cfa90",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "e1f7bc8690c85ecc6fb876211b59c331719d124c28bd00a5bc903342f9505053",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "2a1d5c80e1db3cde3b4edbae90362968ec177a102b12418dd2a9fb97968592e7",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "f215e456b5115338a87ccf803c7339a602bef16be977bc46e13afd41b65f3817",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "a705debb9afcbfbfbff0c88bf058265eadad207abb92f0b7b0b247797f61fc6a",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/ARTEMIS_SLATER_PLAIN.npz",
+      "sha256": "51528bba7cff6e519d2c170f4e7a6b604868afad5a1457cb3105e2b18ba6541d",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/CONNECTING_RIDGE.npz",
+      "sha256": "a39d75d48f85323ed37771f7197f460fa3233e901e1e2b165d70f8f52a5ed149",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/CONNECTING_RIDGE.npz",
+      "sha256": "1a8641c81c8d09c4caa2d945c5e85274a39ff7b8bee46a1459600d83828cc618",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/CONNECTING_RIDGE.npz",
+      "sha256": "435c8fe45a40af5bf1cf4ea35b5bf07539dbc2aac45687a79bf014eb933872a1",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/CONNECTING_RIDGE.npz",
+      "sha256": "e29656866e5f7ffb3138c5bf0dc94d25854e074f530fc224564e78fea1294379",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/CONNECTING_RIDGE.npz",
+      "sha256": "81fa5d653d56525cb21e555b8e8765b0848886ea0f2e99f517cc23ad007549f0",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/CONNECTING_RIDGE.npz",
+      "sha256": "7d3af2c15e801a1043468f8fe250b4c7e6c4ab3fe1f7bb5c51bf6d751f3afbdb",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "ff22cc292685b1d71f77f25aeb6bc6403d0bf924515a91e921a9b236001287a3",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "f0d6dc4bacd29e82454ad6bbecfbb521ebd28ef286b0d0e7949d6db7e1805916",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "abf2af84be1f86d72681fd1ae9990ffc08e00ac445b70c048410799e6e8fd2d8",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "73b7ee1d91a79b0c7363e6b496eb0f9223e560b25d2be22fd6bd57eb0f66a96c",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "a903217bf54581d453e57b3f1c131c2e38c6a23092c8e9007f0d6d0cccde4bdd",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/PEAK_NEAR_SHACKLETON.npz",
+      "sha256": "7358b2a0ed3fec5c886e38a51b6cfa4729c790458ee04b319bfacfd9e7dbd68d",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/DE_GERLACHE_RIM1.npz",
+      "sha256": "3c0cec7afcf9f3a9ccdc9607ab3ae5d32e01794409076bff6a2f4cb49b7debe7",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/DE_GERLACHE_RIM1.npz",
+      "sha256": "a1f86d67e73a51183c8fb0c039e3f3ddb7f42a1b8a886ed0884e362966744473",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/DE_GERLACHE_RIM1.npz",
+      "sha256": "b0580f62451d05c3806576cfcd3d6a79713ef422b3a0277c56ba685acc4e47cd",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/DE_GERLACHE_RIM1.npz",
+      "sha256": "80e0948345499558f084df2cf131c1b2297bef5898812f56db7418e43f1f9f3b",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/DE_GERLACHE_RIM1.npz",
+      "sha256": "fca29d95b685a5f26267ed8e9a19461895bd9349b5559808e0fa25a205b6610f",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/DE_GERLACHE_RIM1.npz",
+      "sha256": "beede03d341d8e83dc4c00c7579e4d302b440f0f269857acbc4c9761a552f5d0",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/5/SHOEMAKER_RIM_A.npz",
+      "sha256": "094fdbbfda9a55595cebd5e79437a89506350981fd0a21e5f489100a159a75a7",
+      "name": "PGDA_LOLA_5M",
+      "res_m": 5.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 3000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/10/SHOEMAKER_RIM_A.npz",
+      "sha256": "b73aa7c9d37c1ca9f2c2f42cbe96e6f7dbba16a3a0c2e67df2aa02569a111858",
+      "name": "PGDA_LOLA_10M",
+      "res_m": 10.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/20/SHOEMAKER_RIM_A.npz",
+      "sha256": "a3b6a485d186dd22d8827d3f254e4c91b893e299bbd3a6178e85504abfb566be",
+      "name": "PGDA_LOLA_20M",
+      "res_m": 20.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 25000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/60/SHOEMAKER_RIM_A.npz",
+      "sha256": "143eebb23eddb74d4d6ee754d177ddf9331a40350799a4d621d1d67367d22e26",
+      "name": "PGDA_LOLA_60M",
+      "res_m": 60.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/80/SHOEMAKER_RIM_A.npz",
+      "sha256": "725cedeb055801dc520e4818b60fc28bc303ed0e2380430c6e76b8367e427d38",
+      "name": "PGDA_LOLA_80M",
+      "res_m": 80.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 60000,
+      "radius_km": null
+    },
+    {
+      "path": "data/raw/polar/240/SHOEMAKER_RIM_A.npz",
+      "sha256": "d9c8282ac268381cb1d671cdd8d7461d4c5412665577edb51f733a9df2ce4dd9",
+      "name": "PGDA_LOLA_240M",
+      "res_m": 240.0,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "frame": "MOON_ME_DE421",
+      "radius_m": 200000,
+      "radius_km": null
+    }
+  ],
+  "production_baselines": {
+    "SHACKLETON_RIM": {
+      "horizon_sha256": "e58f5e53704a552774d49447ae575bf098031f3ea45f7f6763146ae27bc729b9",
+      "metrics_sha256": "55315d0d4b68c35facf5d7a53b5ecfbe1ca8834e70ecfece706f75c126fa92e7"
+    },
+    "ARTEMIS_HAWORTH": {
+      "horizon_sha256": "75051bf47e1625e387fba2267d75e776d3f0ede3ee64f44b655b2bb6ac8733f3",
+      "metrics_sha256": "a8079e03cc63db3218f1cef6f861f58c4b70b44d83706d76bd82ff89b08e19ac"
+    },
+    "ARTEMIS_MALAPERT": {
+      "horizon_sha256": "a274da886f22c9ac622d1819bfe6444f0647e94dd781d797fa5914e0aafc0ac1",
+      "metrics_sha256": "d9ba2595feb614c123abb8f09e5d189f05eadcfeb15f77c716b413f5a45294ff"
+    },
+    "APOLLO17": {
+      "horizon_sha256": "a4eac336dfbc703ba64fad76aa98fe423211a8935660738429fd151b54ab8dda",
+      "metrics_sha256": "54f2687610d7c1c7dd1f8c0636a540ce5fbce5778480236089b34fc415dc324d"
+    },
+    "CHANGE4": {
+      "horizon_sha256": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21",
+      "metrics_sha256": "12a53a093664fbae9b3fad3adf698254a29c2faf68bdc66c5359edacd05aaa4c"
+    },
+    "SLIM": {
+      "horizon_sha256": "25173b32dc20f8183b95c2f0b6d8e2c9bc62b1c3b08a350866d5470ef096e9fb",
+      "metrics_sha256": "cad52c1ff42802cdd30dc7dafebc8dd7b41c293380d03ed78458f6d45de45078"
+    },
+    "IM1": {
+      "horizon_sha256": "a38e0bd619d235f929532c9d0f8a5370b4cb9052d3a90017ce1b4274f634f06b",
+      "metrics_sha256": "299a68d3fb8d39d88c92f4b4263ffa0d24cd3fdb4689a8dc8bba94d8bd796394"
+    },
+    "IM2": {
+      "horizon_sha256": "9e341663e268fa31f0d35427e42c5f7606abb47a743f8dd1402fde527e68e281",
+      "metrics_sha256": "30f08ca70cb0b5dd8be93e080c9ee3b405d3b1f704cc7b07a79b51f0b61f5eea"
+    },
+    "ARTEMIS_CABEUS_B": {
+      "horizon_sha256": "145a651dc9df04ff9c942b854095d74b69f7f33408f89be0e29d956e3ad882e6",
+      "metrics_sha256": "ee1123277e036fe8b7227a63af030354d944330b9523dce130c2e61cf823a3c7"
+    },
+    "ARTEMIS_MOUTON_PLATEAU": {
+      "horizon_sha256": "9ee206cb92270145a529a4da19840486b31ea733001c1afb0898ab30f893d762",
+      "metrics_sha256": "6ba4226bf5d2842dbdc1084cd0ad2966d0b42586c80354a230cb63e94c6f26ae"
+    },
+    "ARTEMIS_MOUTON": {
+      "horizon_sha256": "42455df7850f8ccbf5d2615b060f921475ce7228b9f8c325caec5eeb4ec0bf71",
+      "metrics_sha256": "54dcb1fd7d8697b6adfad6b41f9ad01f816b9cf0e489127ed9b0acca19fa4c84"
+    },
+    "ARTEMIS_NOBILE_RIM1": {
+      "horizon_sha256": "5f64896417bb8bc27d41fd0b14c53dd87da816e97de68898ddf1e3956bdcbcd8",
+      "metrics_sha256": "dba916ab25c0af7d89ec84a070ed397312e63815b2cbd3e32d93fe6a992b84c8"
+    },
+    "ARTEMIS_NOBILE_RIM2": {
+      "horizon_sha256": "db3570a8e042fe44c939401f9dc1d9afdb09d2fa6809da22e032e8ea1438e216",
+      "metrics_sha256": "7149e58b08c7b52f3878dec830fd2308346cd21e2f3d69432b6fbcf167540b17"
+    },
+    "ARTEMIS_DE_GERLACHE_RIM2": {
+      "horizon_sha256": "c430f489e3dd711fcd52dbd67cdfd314291b8094db63cd5414de87da56fd8549",
+      "metrics_sha256": "639f2fdb6002f7307b3f8e9e7b449890b91e2172d5e28eea5bf8831ec8ec8950"
+    },
+    "ARTEMIS_SLATER_PLAIN": {
+      "horizon_sha256": "e890b5e6f08e5c81e431b9607c6e68674318aad59eca02aa0e1ce2f81e490796",
+      "metrics_sha256": "bcc338e6b58c08d19b46013852afd9b54b540cb26f312cd2666c6924fda992f2"
+    },
+    "CONNECTING_RIDGE": {
+      "horizon_sha256": "4a4f5be40df01e4410362fae8cdeebfc2d9f6a9b752968ace9edc5f1b488f3d7",
+      "metrics_sha256": "5aff066dd957b3db19a2d3708c6bd329527e7fabd97b7e97eb80262f0894172a"
+    },
+    "PEAK_NEAR_SHACKLETON": {
+      "horizon_sha256": "f96807381ecb0308de3160cd6a56ec6d664f4fa9fcb97c5dbf192571be58dbac",
+      "metrics_sha256": "40e77c799c800acb7f12c7ddd9e453133b6693ca22a8c0a52fd7802a739b7a9d"
+    },
+    "DE_GERLACHE_RIM1": {
+      "horizon_sha256": "7ccaf2875df71c0a312130f66fde9c65fb246471c288dd35195aa375bf41e470",
+      "metrics_sha256": "b74f15bfb62f62841a215c3268f60b2db4e5554d8d0523df16f7c221b289ef4f"
+    },
+    "SHOEMAKER_RIM_A": {
+      "horizon_sha256": "8730711877cb9ed376dd13166fc2eb7cdddddbbd0e700513ffc82d69985ce6f5",
+      "metrics_sha256": "98f01c3b0db8fb418dc634d9b82ef7de94e12b8e540f86a57bb7b8ff6bc32abe"
+    }
+  },
+  "code_sha256": {
+    "pipeline/horizon.py": "83f0ef54630961bd322e82a01baad74d368484987659d785cdfe9e6598ec24c4",
+    "pipeline/run_horizons.py": "698509fd45550bd260e509f0b177172705a6be914c2b56b7add709a4be7a5179",
+    "pipeline/local_maps.py": "493f87ea0c6d8778cc2bcbe9ed000129d138e4aa66ce212c21976d9a912ee53c",
+    "pipeline/local_metrics.mjs": "040546e604667f5ac7300f6ca0178bc2696d2467548152e900858c9ea55be5c6",
+    "web/js/core.js": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+    "web/data/ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web/data/ephem.json": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+    "web/data/sites.json": "fabf63bcfe2d33d556bb1e0c1f8934254600233fd65f0ecc7bb7d974d1ed7af0",
+    "pipeline/fetch_global.py": "d3035d752841c004787eb2c4f45b715a38c60e5605eb821217f017fa69aa2675",
+    "pipeline/cache_metrics.mjs": "c5e424ce994e70d5e2678ecc65e309742673cd564c93ae80558d978aee86ef91"
+  },
+  "diagnostic_code_sha256": {
+    "compute.py": "d76d735082efdb4e202565700bf1811b47a77fc73c6ed5388bc6a0f142d9e432",
+    "fetch_ldem128.py": "8ad29638166f685815f0034656d43c555c788864f7c639c976551bc79326a2f7"
+  },
+  "note": "Raw DEMs and all diagnostic checkpoints are ignored; this PR contains documentation only. Source citations are recorded here to preserve the requested docs-only scope."
+}

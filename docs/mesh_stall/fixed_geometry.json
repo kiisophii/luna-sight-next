@@ -1,0 +1,3522 @@
+[
+  {
+    "key": "band/0/0/0",
+    "exag": 3,
+    "buildMs": 12.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "f50ac6446cbb046e0b377841e1bf16b3e988bd44f9a6b476cbd94f6d27f7b063"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "27d25b48e50de5a937b9faf6e722ce595f626da80c25fc901e76432c4a39bf15"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7892493df2c84083c76cff31963dc803d9daf87c9c24f09dd00dbef0946b4ee9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "37653ca470820546ea86abdb81882c1da0a78559a30be3a1739c980e15968f1e"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      -826.1827957056001,
+      1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        184.6295166015625,
+        -4.621185302734375,
+        -193.20782470703125
+      ],
+      "radius": 1415.979126440538
+    }
+  },
+  {
+    "key": "band/0/0/0",
+    "exag": 1,
+    "buildMs": 23.099999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "f50ac6446cbb046e0b377841e1bf16b3e988bd44f9a6b476cbd94f6d27f7b063"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "dd87e9f12c9cfb123aef1d01d7e56ca4d493284eb146cee80344ef05879956d0"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "36005a27941bb07b4ee2478b02d9a578a1e362c8277b9706b8360db000be5445"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "37653ca470820546ea86abdb81882c1da0a78559a30be3a1739c980e15968f1e"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      -826.1827957056001,
+      1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        187.37667846679688,
+        -1.301544189453125,
+        -194.42611694335938
+      ],
+      "radius": 1411.7553368725448
+    }
+  },
+  {
+    "key": "band/0/0/0",
+    "exag": 5,
+    "buildMs": 4.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "f50ac6446cbb046e0b377841e1bf16b3e988bd44f9a6b476cbd94f6d27f7b063"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "139bfe161cff0b6a94558e6ee2da5b57cece8dd97089f36af05f9c37ecec3133"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ac48338eba8bd8a4d0cc0374d4fd21684febeca3dc6a1918417cfa515a9512d9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "37653ca470820546ea86abdb81882c1da0a78559a30be3a1739c980e15968f1e"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      -826.1827957056001,
+      1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        180.07192993164062,
+        -7.940826416015625,
+        -191.989501953125
+      ],
+      "radius": 1419.190728638846
+    }
+  },
+  {
+    "key": "band/0/0/0",
+    "exag": 3,
+    "buildMs": 4,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "f50ac6446cbb046e0b377841e1bf16b3e988bd44f9a6b476cbd94f6d27f7b063"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "27d25b48e50de5a937b9faf6e722ce595f626da80c25fc901e76432c4a39bf15"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7892493df2c84083c76cff31963dc803d9daf87c9c24f09dd00dbef0946b4ee9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "37653ca470820546ea86abdb81882c1da0a78559a30be3a1739c980e15968f1e"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      -826.1827957056001,
+      1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        184.6295166015625,
+        -4.621185302734375,
+        -193.20782470703125
+      ],
+      "radius": 1415.979126440538
+    }
+  },
+  {
+    "key": "band/0/4/1",
+    "exag": 3,
+    "buildMs": 4.599999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "94ea5452ba4e825dcf2b68d61efc21820137d9989ad9f63990fe54490a379703"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "2b21bc8ceb56e7d5e5aa91ace4a1c27c1ad2a5dd5851d6967083e4f614354933"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5fac08b6a37fac9114e2387a5d4c3490e9f1cfe81260c6b6c053cf40d758f3e7"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5b485f715cd5498104a295db4e2defdcab57f6cb06b318a68ab85451ec7f32bc"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      826.1827957056001,
+      -1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        182.78582763671875,
+        1.8076171875,
+        194.61514282226562
+      ],
+      "radius": 1412.4729280170784
+    }
+  },
+  {
+    "key": "band/0/4/1",
+    "exag": 1,
+    "buildMs": 3.900000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "94ea5452ba4e825dcf2b68d61efc21820137d9989ad9f63990fe54490a379703"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "98da50ca6ceff881718d0984d703a0953afda299f63a71515a378f0024a9cc6d"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ecf32ba5aba2fbf737810e7759d59befe79b2a60fc73ff072c452cf672343024"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5b485f715cd5498104a295db4e2defdcab57f6cb06b318a68ab85451ec7f32bc"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      826.1827957056001,
+      -1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        186.92861938476562,
+        0.496368408203125,
+        194.89523315429688
+      ],
+      "radius": 1410.7578252744345
+    }
+  },
+  {
+    "key": "band/0/4/1",
+    "exag": 5,
+    "buildMs": 4.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "94ea5452ba4e825dcf2b68d61efc21820137d9989ad9f63990fe54490a379703"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "329a54fca50120489bc835e48a84021eb7a432b94164d44fec7a64a8dda12e75"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "35fe2a6570013340dc2117e64c700447d0498871b04c9a10139636f5f5c685a8"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5b485f715cd5498104a295db4e2defdcab57f6cb06b318a68ab85451ec7f32bc"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      826.1827957056001,
+      -1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        178.25350952148438,
+        3.86602783203125,
+        194.33505249023438
+      ],
+      "radius": 1414.4085929376504
+    }
+  },
+  {
+    "key": "band/0/4/1",
+    "exag": 3,
+    "buildMs": 4.599999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "94ea5452ba4e825dcf2b68d61efc21820137d9989ad9f63990fe54490a379703"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "2b21bc8ceb56e7d5e5aa91ace4a1c27c1ad2a5dd5851d6967083e4f614354933"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5fac08b6a37fac9114e2387a5d4c3490e9f1cfe81260c6b6c053cf40d758f3e7"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5b485f715cd5498104a295db4e2defdcab57f6cb06b318a68ab85451ec7f32bc"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1137.1430630135167,
+      826.1827957056001,
+      -1021.2180973329429
+    ],
+    "bounds": {
+      "center": [
+        182.78582763671875,
+        1.8076171875,
+        194.61514282226562
+      ],
+      "radius": 1412.4729280170784
+    }
+  },
+  {
+    "key": "band/4/0/24",
+    "exag": 3,
+    "buildMs": 9.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c056458617be1aa951db23786c6af644d7b55feea5923770f7b90aaa926d7030"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "6ff5a1ad0a71cb97417938c9a1e2a6fbb61a596e20906c4456a8ca2c54f42269"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3104194af992dcd71682901879b629f066c32622cab8bdfbcf9a99469a68b1d9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "cddabf486309d198f038fcedfea9e58a319e62aae8fc62099c4256e64970d3c8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1363.357725330264,
+      -53.56647091795901,
+      -1075.6138275309058
+    ],
+    "bounds": {
+      "center": [
+        12.337003707885742,
+        -1.367715835571289,
+        9.40212631225586
+      ],
+      "radius": 87.86143501029738
+    }
+  },
+  {
+    "key": "band/4/0/24",
+    "exag": 1,
+    "buildMs": 4.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c056458617be1aa951db23786c6af644d7b55feea5923770f7b90aaa926d7030"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "de500b61a8492a8c35089923ecd25fd57e906e9f61221b1df75638f5b2f98492"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "d34c8f1d2f6d7611ee31b357177eaf8b3a72dc6ffe734252c98166755c7a1874"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "cddabf486309d198f038fcedfea9e58a319e62aae8fc62099c4256e64970d3c8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1363.357725330264,
+      -53.56647091795901,
+      -1075.6138275309058
+    ],
+    "bounds": {
+      "center": [
+        7.182994842529297,
+        -1.5052642822265625,
+        4.522373199462891
+      ],
+      "radius": 88.72870833097139
+    }
+  },
+  {
+    "key": "band/4/0/24",
+    "exag": 5,
+    "buildMs": 5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c056458617be1aa951db23786c6af644d7b55feea5923770f7b90aaa926d7030"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "e0fd3d78fe9ff8de841007d179af27d9f87d0ef49f0874a33898e5d0b6d30e9c"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "eaf999f0ecc7615a680309b7e1dfeaf88cc0ddaa303e9f801d480154dd1c4c78"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "cddabf486309d198f038fcedfea9e58a319e62aae8fc62099c4256e64970d3c8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1363.357725330264,
+      -53.56647091795901,
+      -1075.6138275309058
+    ],
+    "bounds": {
+      "center": [
+        17.87092876434326,
+        -1.2301654815673828,
+        14.28187370300293
+      ],
+      "radius": 87.4961230036471
+    }
+  },
+  {
+    "key": "band/4/0/24",
+    "exag": 3,
+    "buildMs": 4.799999952316284,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c056458617be1aa951db23786c6af644d7b55feea5923770f7b90aaa926d7030"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "6ff5a1ad0a71cb97417938c9a1e2a6fbb61a596e20906c4456a8ca2c54f42269"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3104194af992dcd71682901879b629f066c32622cab8bdfbcf9a99469a68b1d9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "cddabf486309d198f038fcedfea9e58a319e62aae8fc62099c4256e64970d3c8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1363.357725330264,
+      -53.56647091795901,
+      -1075.6138275309058
+    ],
+    "bounds": {
+      "center": [
+        12.337003707885742,
+        -1.367715835571289,
+        9.40212631225586
+      ],
+      "radius": 87.86143501029738
+    }
+  },
+  {
+    "key": "band/4/79/27",
+    "exag": 3,
+    "buildMs": 5.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "bfff5594f466b1c307bc695708aee6e954396ec9d983f088b308dbf8ca6331fd"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "c4b6e9aeb2c7e6c91584098691ede35dea4063b31ce7f9494686e6f7a3a99726"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c5b1ac6fb818a53fadcb217d346028961d324fa0f3329efb1a24e22cfc95a113"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "744826fca2705d46fcaa90c7c6e8fdd074d7221f275960b5f83faf8441d7af10"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1074.784568250902,
+      42.22840069676984,
+      -1364.4096357122064
+    ],
+    "bounds": {
+      "center": [
+        12.217767715454102,
+        1.6254730224609375,
+        12.145099639892578
+      ],
+      "radius": 83.03473767316055
+    }
+  },
+  {
+    "key": "band/4/79/27",
+    "exag": 1,
+    "buildMs": 4.300000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "bfff5594f466b1c307bc695708aee6e954396ec9d983f088b308dbf8ca6331fd"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "610b339ec0034b202a6def2e6be243e17fb76c1eabce861b8ed53b6a4e8d12cc"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "9f0d3cf41f67bfb134c58398d8de02e9ab8a658919a02f7f6387fbaa995f1c93"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "744826fca2705d46fcaa90c7c6e8fdd074d7221f275960b5f83faf8441d7af10"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1074.784568250902,
+      42.22840069676984,
+      -1364.4096357122064
+    ],
+    "bounds": {
+      "center": [
+        5.954919815063477,
+        1.8993568420410156,
+        5.830486297607422
+      ],
+      "radius": 82.60380293106918
+    }
+  },
+  {
+    "key": "band/4/79/27",
+    "exag": 5,
+    "buildMs": 4,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "bfff5594f466b1c307bc695708aee6e954396ec9d983f088b308dbf8ca6331fd"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "8a29ebe81d75d8cda2d66499c3bdaaacf47d20f9219eed1dc8846ee9f761e6d2"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "fd2bf45ad5f700cc6b42f55da3c4776dbef179edaa4129ef260ab0e28190d669"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "744826fca2705d46fcaa90c7c6e8fdd074d7221f275960b5f83faf8441d7af10"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1074.784568250902,
+      42.22840069676984,
+      -1364.4096357122064
+    ],
+    "bounds": {
+      "center": [
+        18.480615615844727,
+        1.3515892028808594,
+        18.45970916748047
+      ],
+      "radius": 83.47034443258087
+    }
+  },
+  {
+    "key": "band/4/79/27",
+    "exag": 3,
+    "buildMs": 4.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "bfff5594f466b1c307bc695708aee6e954396ec9d983f088b308dbf8ca6331fd"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "c4b6e9aeb2c7e6c91584098691ede35dea4063b31ce7f9494686e6f7a3a99726"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c5b1ac6fb818a53fadcb217d346028961d324fa0f3329efb1a24e22cfc95a113"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "744826fca2705d46fcaa90c7c6e8fdd074d7221f275960b5f83faf8441d7af10"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1074.784568250902,
+      42.22840069676984,
+      -1364.4096357122064
+    ],
+    "bounds": {
+      "center": [
+        12.217767715454102,
+        1.6254730224609375,
+        12.145099639892578
+      ],
+      "radius": 83.03473767316055
+    }
+  },
+  {
+    "key": "band/7/42/200",
+    "exag": 3,
+    "buildMs": 4,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "32e2adecabf6d8cbc25a837603e527abcdee0f2ba9c18e1462b7dfb26980060b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "8bd6d2f976aca4e129f154f1654b9ee3a100fc4ee7e8c7e37f713cb66e262ae0"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "65c5eddb813793d4dc8ffb19d09c36480e12c8f2705194d865defdb506af67a8"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3e99937eb59ddcf493ca67d47a0a175c5adbec80b4b15a2043373f11f476b7b8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1202.7111793134561,
+      -533.1251998053839,
+      -1134.8224973478918
+    ],
+    "bounds": {
+      "center": [
+        10.858993768692017,
+        4.846190929412842,
+        10.379601001739502
+      ],
+      "radius": 10.688918140082158
+    }
+  },
+  {
+    "key": "band/7/42/200",
+    "exag": 1,
+    "buildMs": 3.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "32e2adecabf6d8cbc25a837603e527abcdee0f2ba9c18e1462b7dfb26980060b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "625d502aa7c8ae849be9411a5ee0ff21c2ba379d0283c34fc59dc84054f244be"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "493f88daf6691e0e336a092e694c54967d35f97cb598472abffd1ad943b1359e"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3e99937eb59ddcf493ca67d47a0a175c5adbec80b4b15a2043373f11f476b7b8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1202.7111793134561,
+      -533.1251998053839,
+      -1134.8224973478918
+    ],
+    "bounds": {
+      "center": [
+        3.7538089752197266,
+        1.66096830368042,
+        3.584362506866455
+      ],
+      "radius": 10.688183386707419
+    }
+  },
+  {
+    "key": "band/7/42/200",
+    "exag": 5,
+    "buildMs": 4.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "32e2adecabf6d8cbc25a837603e527abcdee0f2ba9c18e1462b7dfb26980060b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "468e3b3956332f7a83cf1daf1361a272fe25f0ae974dbc4ace77d452c608eaf9"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "452db1087a41d44c054ce586170b8bb547c36b463c8e637c539fdf78d8b71926"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3e99937eb59ddcf493ca67d47a0a175c5adbec80b4b15a2043373f11f476b7b8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1202.7111793134561,
+      -533.1251998053839,
+      -1134.8224973478918
+    ],
+    "bounds": {
+      "center": [
+        17.96417808532715,
+        8.031413478776813,
+        17.17483949661255
+      ],
+      "radius": 10.692742073925011
+    }
+  },
+  {
+    "key": "band/7/42/200",
+    "exag": 3,
+    "buildMs": 3.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "32e2adecabf6d8cbc25a837603e527abcdee0f2ba9c18e1462b7dfb26980060b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "8bd6d2f976aca4e129f154f1654b9ee3a100fc4ee7e8c7e37f713cb66e262ae0"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "65c5eddb813793d4dc8ffb19d09c36480e12c8f2705194d865defdb506af67a8"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3e99937eb59ddcf493ca67d47a0a175c5adbec80b4b15a2043373f11f476b7b8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1202.7111793134561,
+      -533.1251998053839,
+      -1134.8224973478918
+    ],
+    "bounds": {
+      "center": [
+        10.858993768692017,
+        4.846190929412842,
+        10.379601001739502
+      ],
+      "radius": 10.688918140082158
+    }
+  },
+  {
+    "key": "band/7/639/209",
+    "exag": 3,
+    "buildMs": 3.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "38b295526ef5c48e5085aa07d88595a67cbfc4c9d5e3b40b32579d9ad6c7f820"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "1a06e8577147f15009ae872fb75715eaabb97ca7625f11e74d2eea479e6cf47b"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b30fe1fc4ffb28916ace588157be8ed098447726d3b88e0f5c158097825aefd0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8d430d687fd258a22b7d9f811dd455d1801325ac353c09fcc3d45938858277fa"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1210.2886281396416,
+      5.941038128688753,
+      -1246.4850182259788
+    ],
+    "bounds": {
+      "center": [
+        9.750113487243652,
+        -0.030752897262573242,
+        9.800519913434982
+      ],
+      "radius": 11.307230890085371
+    }
+  },
+  {
+    "key": "band/7/639/209",
+    "exag": 1,
+    "buildMs": 3.399999976158142,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "38b295526ef5c48e5085aa07d88595a67cbfc4c9d5e3b40b32579d9ad6c7f820"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "57b6c375c612030be61db7f3c6b81bb9bccc610cc619fd1440ee2d3212156f63"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ac6efbf62241a26b697d3f08e087046c735343d1404f567caba7b015987c5d18"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8d430d687fd258a22b7d9f811dd455d1801325ac353c09fcc3d45938858277fa"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1210.2886281396416,
+      5.941038128688753,
+      -1246.4850182259788
+    ],
+    "bounds": {
+      "center": [
+        3.392515778541565,
+        0.009676694869995117,
+        3.40373694896698
+      ],
+      "radius": 10.528974709088157
+    }
+  },
+  {
+    "key": "band/7/639/209",
+    "exag": 5,
+    "buildMs": 3.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "38b295526ef5c48e5085aa07d88595a67cbfc4c9d5e3b40b32579d9ad6c7f820"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "0d71fd40fb7d095927ae151666ad9c8369e427177eb69ff983bfb65f01babd16"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "65354f2dcc2e9d52dba677be6ca6b4a94dd85b670ca12429edf18c876d43dcb0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8d430d687fd258a22b7d9f811dd455d1801325ac353c09fcc3d45938858277fa"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1210.2886281396416,
+      5.941038128688753,
+      -1246.4850182259788
+    ],
+    "bounds": {
+      "center": [
+        16.10771131515503,
+        -0.0711822509765625,
+        16.197303771972656
+      ],
+      "radius": 12.646356295900967
+    }
+  },
+  {
+    "key": "band/7/639/209",
+    "exag": 3,
+    "buildMs": 3.300000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "38b295526ef5c48e5085aa07d88595a67cbfc4c9d5e3b40b32579d9ad6c7f820"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "1a06e8577147f15009ae872fb75715eaabb97ca7625f11e74d2eea479e6cf47b"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b30fe1fc4ffb28916ace588157be8ed098447726d3b88e0f5c158097825aefd0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8d430d687fd258a22b7d9f811dd455d1801325ac353c09fcc3d45938858277fa"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -1210.2886281396416,
+      5.941038128688753,
+      -1246.4850182259788
+    ],
+    "bounds": {
+      "center": [
+        9.750113487243652,
+        -0.030752897262573242,
+        9.800519913434982
+      ],
+      "radius": 11.307230890085371
+    }
+  },
+  {
+    "key": "north/0/0/0",
+    "exag": 3,
+    "buildMs": 9,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "230bdc62f0e46302c69bdb4e862a487cd7392aedd54c3439143525ae946befa0"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "e35b909d0f6b8609030b14a3edeed629c43b94e2862a3e4b6568fb4e24a65a4f"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7c54da69006ce52ff8ab89564b1aef5299653e25c3be16fc0b0ba467f19d1905"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "128287f73f1baa73ef0301874fc28ba788ba557e623a910498d9a9c824e38fd8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -0.0,
+      0,
+      1737.4
+    ],
+    "bounds": {
+      "center": [
+        -0.099822998046875,
+        0.175872802734375,
+        -102.16648894548416
+      ],
+      "radius": 758.132609642013
+    }
+  },
+  {
+    "key": "north/0/0/0",
+    "exag": 1,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "230bdc62f0e46302c69bdb4e862a487cd7392aedd54c3439143525ae946befa0"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "d40383af15198bfc91f884df196b2d416911962e41950b9a493e3d15ea3abb2b"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "63ae046750b1d7692b8511907d65e8aa9b373aaef173506d5ce2dfe50258a109"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "128287f73f1baa73ef0301874fc28ba788ba557e623a910498d9a9c824e38fd8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -0.0,
+      0,
+      1737.4
+    ],
+    "bounds": {
+      "center": [
+        -0.04339599609375,
+        -0.01824951171875,
+        -102.07622808776796
+      ],
+      "radius": 756.684248843323
+    }
+  },
+  {
+    "key": "north/0/0/0",
+    "exag": 5,
+    "buildMs": 8.599999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "230bdc62f0e46302c69bdb4e862a487cd7392aedd54c3439143525ae946befa0"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "310649371052d58870f15060c2e083cfaa2c173bdb7b965fc28c0d42a7d8004a"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "882e6b471a2de97becd1752bdb7839d14b8e38858f2bdbd90cd2deccd59ca66e"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "128287f73f1baa73ef0301874fc28ba788ba557e623a910498d9a9c824e38fd8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -0.0,
+      0,
+      1737.4
+    ],
+    "bounds": {
+      "center": [
+        -0.156219482421875,
+        0.450439453125,
+        -102.24811613559723
+      ],
+      "radius": 759.6565568143259
+    }
+  },
+  {
+    "key": "north/0/0/0",
+    "exag": 3,
+    "buildMs": 8.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "230bdc62f0e46302c69bdb4e862a487cd7392aedd54c3439143525ae946befa0"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "e35b909d0f6b8609030b14a3edeed629c43b94e2862a3e4b6568fb4e24a65a4f"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7c54da69006ce52ff8ab89564b1aef5299653e25c3be16fc0b0ba467f19d1905"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "128287f73f1baa73ef0301874fc28ba788ba557e623a910498d9a9c824e38fd8"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -0.0,
+      0,
+      1737.4
+    ],
+    "bounds": {
+      "center": [
+        -0.099822998046875,
+        0.175872802734375,
+        -102.16648894548416
+      ],
+      "radius": 758.132609642013
+    }
+  },
+  {
+    "key": "north/1/0/0",
+    "exag": 3,
+    "buildMs": 8.600000023841858,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c8e15f84e046d352dd28c068e79d8375a68f65c350d7f0c798f87169d497acf1"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "22d737a5e641d60633c3ab7c9e4f0df2526b2a722a16018431fe2a10144d0cd9"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "6fbb1a2948e395391b3f4f45c54674f758fc2c4253ab484c29ff19af6ff01613"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "296c6a3d0236fd61da7a044ea5b06057974abf380eba13b9c94f5bb78b16bff2"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -276.4104427911115,
+      -276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        2.693084716796875,
+        3.2936553955078125,
+        -45.641597747802734
+      ],
+      "radius": 397.004999019607
+    }
+  },
+  {
+    "key": "north/1/0/0",
+    "exag": 1,
+    "buildMs": 8.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c8e15f84e046d352dd28c068e79d8375a68f65c350d7f0c798f87169d497acf1"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "ee811a88ca43e72277938a8e0cfa1644b54fdfea3f37c0415c7b2cd3915e473c"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "eafdebfd49369bbcaa8ccbd1b0b232b44afc866ad4c290d8915bd2d58fbbf837"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "296c6a3d0236fd61da7a044ea5b06057974abf380eba13b9c94f5bb78b16bff2"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -276.4104427911115,
+      -276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        3.2301483154296875,
+        3.4306182861328125,
+        -48.28474998474121
+      ],
+      "radius": 397.1789229261442
+    }
+  },
+  {
+    "key": "north/1/0/0",
+    "exag": 5,
+    "buildMs": 8.399999976158142,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c8e15f84e046d352dd28c068e79d8375a68f65c350d7f0c798f87169d497acf1"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "e9bfe32758bc5a72b8045f10afcf3285931f6926b18aa9c6d28b99d64a26a720"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "dd2448bcae67a05a98b5e210da8af1aa40519e84690d70995813d2de10e1c44f"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "296c6a3d0236fd61da7a044ea5b06057974abf380eba13b9c94f5bb78b16bff2"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -276.4104427911115,
+      -276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        2.1560211181640625,
+        3.15667724609375,
+        -42.98356056213379
+      ],
+      "radius": 396.8478763897742
+    }
+  },
+  {
+    "key": "north/1/0/0",
+    "exag": 3,
+    "buildMs": 9.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c8e15f84e046d352dd28c068e79d8375a68f65c350d7f0c798f87169d497acf1"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "22d737a5e641d60633c3ab7c9e4f0df2526b2a722a16018431fe2a10144d0cd9"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "6fbb1a2948e395391b3f4f45c54674f758fc2c4253ab484c29ff19af6ff01613"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "296c6a3d0236fd61da7a044ea5b06057974abf380eba13b9c94f5bb78b16bff2"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -276.4104427911115,
+      -276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        2.693084716796875,
+        3.2936553955078125,
+        -45.641597747802734
+      ],
+      "radius": 397.004999019607
+    }
+  },
+  {
+    "key": "north/1/1/1",
+    "exag": 3,
+    "buildMs": 8.599999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c5cadf40f43689b840ec7489b60b8f4f893e9c481f1d720ed142372c297223d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "ac0638f146583846f6dd368c29a01e866d898314220160ab78d7b95b8b11d1de"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "faefaad15ccef2638250f5f4d63a07cc4a4b96935f7fa0aeff7ab7c197fa0daf"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "584609f87026ece2c22c3532fec8dc0b62d91b31622653223d240b5c46633322"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      276.4104427911115,
+      276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        -2.797149658203125,
+        -3.094207763671875,
+        -49.91690254211426
+      ],
+      "radius": 398.06127942311076
+    }
+  },
+  {
+    "key": "north/1/1/1",
+    "exag": 1,
+    "buildMs": 8.800000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c5cadf40f43689b840ec7489b60b8f4f893e9c481f1d720ed142372c297223d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "6e93237b3e813b925d9dc70cea3346c4eb1045b4bcc71751770702fbb7710b7f"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "1ba21b71caf0351e0c33fe31863c5f2688222cec5c5a5378413667697a53da70"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "584609f87026ece2c22c3532fec8dc0b62d91b31622653223d240b5c46633322"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      276.4104427911115,
+      276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        -3.27496337890625,
+        -3.525634765625,
+        -49.59686851501465
+      ],
+      "radius": 397.39138245856645
+    }
+  },
+  {
+    "key": "north/1/1/1",
+    "exag": 5,
+    "buildMs": 8.299999952316284,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c5cadf40f43689b840ec7489b60b8f4f893e9c481f1d720ed142372c297223d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "b4cb68ef9321abe80a1fdea431bd5b0fb99593f8086f1119688f8b62e371d737"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5a021daa2dbf126b83bb5c5521a748c1b3864977838a3df20cc471fbaa47a88d"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "584609f87026ece2c22c3532fec8dc0b62d91b31622653223d240b5c46633322"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      276.4104427911115,
+      276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        -2.3193359375,
+        -2.66278076171875,
+        -50.06418228149414
+      ],
+      "radius": 398.69029014100454
+    }
+  },
+  {
+    "key": "north/1/1/1",
+    "exag": 3,
+    "buildMs": 8.799999952316284,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c5cadf40f43689b840ec7489b60b8f4f893e9c481f1d720ed142372c297223d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "ac0638f146583846f6dd368c29a01e866d898314220160ab78d7b95b8b11d1de"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "faefaad15ccef2638250f5f4d63a07cc4a4b96935f7fa0aeff7ab7c197fa0daf"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "584609f87026ece2c22c3532fec8dc0b62d91b31622653223d240b5c46633322"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      276.4104427911115,
+      276.4104427911115,
+      1692.8535950376936
+    ],
+    "bounds": {
+      "center": [
+        -2.797149658203125,
+        -3.094207763671875,
+        -49.91690254211426
+      ],
+      "radius": 398.06127942311076
+    }
+  },
+  {
+    "key": "north/2/0/0",
+    "exag": 3,
+    "buildMs": 8.399999976158142,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c2d925bdcfd753a484657d62fca0ebd30ad415359383c5b8434ac400fd300614"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "d8d545fd24784d3eada5d9c8c1a2bb9f8d4e63e03b6d81b66dd167ae4a180023"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b467da4e50bff149a4ab1da32083f0de3b8344c1256ff4b56d7dbedf55580b06"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7f58241c0021f5402daf782e2097022f4ef66a37ecf303ff20fec3450503c1ea"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -408.0763191281708,
+      -408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        1.8758468627929688,
+        2.01513671875,
+        -11.71699333190918
+      ],
+      "radius": 194.68603623987363
+    }
+  },
+  {
+    "key": "north/2/0/0",
+    "exag": 1,
+    "buildMs": 8.399999976158142,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c2d925bdcfd753a484657d62fca0ebd30ad415359383c5b8434ac400fd300614"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "7ecd8006b975ca3bb874868fe27b7fbe0c7396688e2d5ce0fbcb2f17cd79e698"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "4cf2cfffe62e7df34ef8f53b680562845fd8dd36e6df0a657c098dfbf4ac1210"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7f58241c0021f5402daf782e2097022f4ef66a37ecf303ff20fec3450503c1ea"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -408.0763191281708,
+      -408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        1.949249267578125,
+        1.992919921875,
+        -12.812858581542969
+      ],
+      "radius": 195.16352318274772
+    }
+  },
+  {
+    "key": "north/2/0/0",
+    "exag": 5,
+    "buildMs": 9.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c2d925bdcfd753a484657d62fca0ebd30ad415359383c5b8434ac400fd300614"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "7090cfeb5e7031717b1fffa34884aa5a4449f3c3818e03f35ed2c49d4c10b80d"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "da1fe19337a1602dbd426582f630d52b0c9b6710de33f0edd29e9315f13a4302"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7f58241c0021f5402daf782e2097022f4ef66a37ecf303ff20fec3450503c1ea"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -408.0763191281708,
+      -408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        2.0702667236328125,
+        1.8343734741210938,
+        -10.512516021728516
+      ],
+      "radius": 194.1583922141558
+    }
+  },
+  {
+    "key": "north/2/0/0",
+    "exag": 3,
+    "buildMs": 8.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "c2d925bdcfd753a484657d62fca0ebd30ad415359383c5b8434ac400fd300614"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "d8d545fd24784d3eada5d9c8c1a2bb9f8d4e63e03b6d81b66dd167ae4a180023"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b467da4e50bff149a4ab1da32083f0de3b8344c1256ff4b56d7dbedf55580b06"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7f58241c0021f5402daf782e2097022f4ef66a37ecf303ff20fec3450503c1ea"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      -408.0763191281708,
+      -408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        1.8758468627929688,
+        2.01513671875,
+        -11.71699333190918
+      ],
+      "radius": 194.68603623987363
+    }
+  },
+  {
+    "key": "north/2/3/3",
+    "exag": 3,
+    "buildMs": 8.799999952316284,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d40b045563f015f8b0ec3dbe3ccda74d3ad80bced795db34b926e95307eb0360"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "3a7a6e5c71c59b06f92ecf58ff8b5a55e463655fb64ba173449291cf2d4c53f8"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "65de700c85537ca65c3eb87be9c819b2d22a772b8f0429862a582f992f7a16a0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "28a10ed6d61c9c6b9094cc426ddfb5cf127f46a716c27c171ee5cb346bbc5f9f"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      408.0763191281708,
+      408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        -2.5975799560546875,
+        -2.5737457275390625,
+        -15.35539436340332
+      ],
+      "radius": 195.2380804229665
+    }
+  },
+  {
+    "key": "north/2/3/3",
+    "exag": 1,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d40b045563f015f8b0ec3dbe3ccda74d3ad80bced795db34b926e95307eb0360"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "4d596d36611be46cf0f1d1b1dcb3257908b3bb0902b44ba769dbbaa24cdae9d2"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "729e304f20d657b378cd8aa4d349e916aef99a78b74d618ba2e45d30780adca0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "28a10ed6d61c9c6b9094cc426ddfb5cf127f46a716c27c171ee5cb346bbc5f9f"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      408.0763191281708,
+      408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        -2.1765975952148438,
+        -2.17437744140625,
+        -13.910470962524414
+      ],
+      "radius": 195.32484507061812
+    }
+  },
+  {
+    "key": "north/2/3/3",
+    "exag": 5,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d40b045563f015f8b0ec3dbe3ccda74d3ad80bced795db34b926e95307eb0360"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "b45c64356a1cb991c68d8fe8914d7b4dcc707e793f315315efc6e84534605a94"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "7f5f8523db254676f3d36fa2e0fe9e4ee07ad4ebce999d3a5201d379c89d4641"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "28a10ed6d61c9c6b9094cc426ddfb5cf127f46a716c27c171ee5cb346bbc5f9f"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      408.0763191281708,
+      408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        -3.0185623168945312,
+        -2.9162521362304688,
+        -16.88148307800293
+      ],
+      "radius": 195.22511206424653
+    }
+  },
+  {
+    "key": "north/2/3/3",
+    "exag": 3,
+    "buildMs": 8.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d40b045563f015f8b0ec3dbe3ccda74d3ad80bced795db34b926e95307eb0360"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "3a7a6e5c71c59b06f92ecf58ff8b5a55e463655fb64ba173449291cf2d4c53f8"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "65de700c85537ca65c3eb87be9c819b2d22a772b8f0429862a582f992f7a16a0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "28a10ed6d61c9c6b9094cc426ddfb5cf127f46a716c27c171ee5cb346bbc5f9f"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      408.0763191281708,
+      408.0763191281708,
+      1638.751413587066
+    ],
+    "bounds": {
+      "center": [
+        -2.5975799560546875,
+        -2.5737457275390625,
+        -15.35539436340332
+      ],
+      "radius": 195.2380804229665
+    }
+  },
+  {
+    "key": "south/0/0/0",
+    "exag": 3,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d25d5a900cf241870e1c0cf602599bae1b0f853e62a5c9f1affd019d4874781b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "50d83514b0bf773146f0649f5db834eaa1f122ef8ab9646de56ffc23547a9f6e"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b08f9240c7c73e7ba11495c3de5021aeadf7046ff829a4415103b9703d252868"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ba536317d6643bac7d8fba22e4ae99f5d0bcd737b7b842ee4e3c8dce1e614e52"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      0,
+      0,
+      -1737.4
+    ],
+    "bounds": {
+      "center": [
+        2.4420166015625,
+        -0.070220947265625,
+        101.38734865188599
+      ],
+      "radius": 758.9553412383044
+    }
+  },
+  {
+    "key": "south/0/0/0",
+    "exag": 1,
+    "buildMs": 8.600000023841858,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d25d5a900cf241870e1c0cf602599bae1b0f853e62a5c9f1affd019d4874781b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "9bc00c5915f094e9e6985ea086933f5057a053fd65ec8a0ed514e0467be63511"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "22b9e275269f30d53f0d0812449847e8828dfffab928072eab207937aceeecdb"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ba536317d6643bac7d8fba22e4ae99f5d0bcd737b7b842ee4e3c8dce1e614e52"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      0,
+      0,
+      -1737.4
+    ],
+    "bounds": {
+      "center": [
+        0.6907958984375,
+        0.1767578125,
+        103.09899199008942
+      ],
+      "radius": 756.6797111456704
+    }
+  },
+  {
+    "key": "south/0/0/0",
+    "exag": 5,
+    "buildMs": 8.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d25d5a900cf241870e1c0cf602599bae1b0f853e62a5c9f1affd019d4874781b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "dad159c5ae912b50755f6acd6ac47ca199d9352fbc50b797d81083e668098109"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "080056e4ecc1fc22783ca8a44b5d1518646c88c1c622a6b978d7b66eef0e47f9"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ba536317d6643bac7d8fba22e4ae99f5d0bcd737b7b842ee4e3c8dce1e614e52"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      0,
+      0,
+      -1737.4
+    ],
+    "bounds": {
+      "center": [
+        4.500701904296875,
+        -0.327056884765625,
+        99.21326923370361
+      ],
+      "radius": 761.4979031757874
+    }
+  },
+  {
+    "key": "south/0/0/0",
+    "exag": 3,
+    "buildMs": 8.600000023841858,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d25d5a900cf241870e1c0cf602599bae1b0f853e62a5c9f1affd019d4874781b"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "50d83514b0bf773146f0649f5db834eaa1f122ef8ab9646de56ffc23547a9f6e"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "b08f9240c7c73e7ba11495c3de5021aeadf7046ff829a4415103b9703d252868"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "ba536317d6643bac7d8fba22e4ae99f5d0bcd737b7b842ee4e3c8dce1e614e52"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      0,
+      0,
+      -1737.4
+    ],
+    "bounds": {
+      "center": [
+        2.4420166015625,
+        -0.070220947265625,
+        101.38734865188599
+      ],
+      "radius": 758.9553412383044
+    }
+  },
+  {
+    "key": "south/4/4/4",
+    "exag": 3,
+    "buildMs": 8.899999976158142,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "05a95cf02a73e0657e53e2cf1c69d7a60f5fdfa2291ded7eb97b0cd6e99990dc"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "c3e4bb09df8dc6389c558fdc2bb836710d85fe3484560aa2fd8c3cd464e220ff"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3f06616a9981ad3c383dd26b1a84401882f3ca3bc3199445203e729e9d531a64"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "03e3de702d055b03f2c6813bed1fd772e771f1193f382040b796d9b8daebc1af"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      242.58802997440839,
+      -242.58802997440839,
+      -1703.191373694181
+    ],
+    "bounds": {
+      "center": [
+        0.21160888671875,
+        -0.32401275634765625,
+        -0.03487682342529297
+      ],
+      "radius": 49.89958618089948
+    }
+  },
+  {
+    "key": "south/4/4/4",
+    "exag": 1,
+    "buildMs": 8.599999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "05a95cf02a73e0657e53e2cf1c69d7a60f5fdfa2291ded7eb97b0cd6e99990dc"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "857d09aed2ae3966afddd41fe0931d1b27e885599a566ad3994a9725d4400f23"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "1957cc7eec74e44b442bc8d63663f4d7e261a87d227525a5b7597c06de03ff49"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "03e3de702d055b03f2c6813bed1fd772e771f1193f382040b796d9b8daebc1af"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      242.58802997440839,
+      -242.58802997440839,
+      -1703.191373694181
+    ],
+    "bounds": {
+      "center": [
+        -0.0987701416015625,
+        0.08257865905761719,
+        2.1470234394073486
+      ],
+      "radius": 49.319709090554184
+    }
+  },
+  {
+    "key": "south/4/4/4",
+    "exag": 5,
+    "buildMs": 9.100000023841858,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "05a95cf02a73e0657e53e2cf1c69d7a60f5fdfa2291ded7eb97b0cd6e99990dc"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "2a57d78d13b477356656a226e4c2ca7f17a965db41acd6c28f9bd88a8a9de451"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "d4c566bddb2c76ae755f53b7887924580443ecab8fdc1dc091bb767e647dac80"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "03e3de702d055b03f2c6813bed1fd772e771f1193f382040b796d9b8daebc1af"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      242.58802997440839,
+      -242.58802997440839,
+      -1703.191373694181
+    ],
+    "bounds": {
+      "center": [
+        0.386444091796875,
+        -0.6921520233154297,
+        -4.622107028961182
+      ],
+      "radius": 51.22881808411434
+    }
+  },
+  {
+    "key": "south/4/4/4",
+    "exag": 3,
+    "buildMs": 8.200000047683716,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "05a95cf02a73e0657e53e2cf1c69d7a60f5fdfa2291ded7eb97b0cd6e99990dc"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "c3e4bb09df8dc6389c558fdc2bb836710d85fe3484560aa2fd8c3cd464e220ff"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3f06616a9981ad3c383dd26b1a84401882f3ca3bc3199445203e729e9d531a64"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "03e3de702d055b03f2c6813bed1fd772e771f1193f382040b796d9b8daebc1af"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      242.58802997440839,
+      -242.58802997440839,
+      -1703.191373694181
+    ],
+    "bounds": {
+      "center": [
+        0.21160888671875,
+        -0.32401275634765625,
+        -0.03487682342529297
+      ],
+      "radius": 49.89958618089948
+    }
+  },
+  {
+    "key": "south/4/13/1",
+    "exag": 3,
+    "buildMs": 8.400000035762787,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d03293bf6c6dd90ad893179b70373f151d822e6c4ebd3c73a75a822158408352"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "eeda2420e21e0cee606a3befca089fe2d7aee302b24e556f3334db7d56ad1ffd"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "77ef3a62d20bbd7f5fd38328399bc82f64528a9059ac126d1dc6049516d77cc0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3369f6a7ba198e6788bf234846477cbe5b054fd46d4ffa0000c92a8ac60ffe17"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      441.99553927778817,
+      373.9962255427439,
+      -1638.085933807601
+    ],
+    "bounds": {
+      "center": [
+        1.4523296356201172,
+        1.3926620483398438,
+        -3.105740547180176
+      ],
+      "radius": 49.170823646839786
+    }
+  },
+  {
+    "key": "south/4/13/1",
+    "exag": 1,
+    "buildMs": 8.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d03293bf6c6dd90ad893179b70373f151d822e6c4ebd3c73a75a822158408352"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "bb8899e74e4296044165d892c269a63a6f85f2a84f0cbab19866ab0a91b634a9"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8399f853fb3e73e853f837746a72bfacb0e2b185c9b3a15ef4835c19467057a5"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3369f6a7ba198e6788bf234846477cbe5b054fd46d4ffa0000c92a8ac60ffe17"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      441.99553927778817,
+      373.9962255427439,
+      -1638.085933807601
+    ],
+    "bounds": {
+      "center": [
+        0.323028564453125,
+        0.3313007354736328,
+        0.4167938232421875
+      ],
+      "radius": 48.81135907371658
+    }
+  },
+  {
+    "key": "south/4/13/1",
+    "exag": 5,
+    "buildMs": 8.699999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d03293bf6c6dd90ad893179b70373f151d822e6c4ebd3c73a75a822158408352"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "3d9600cfd6823a5db8451a2446ddf3412ad7598b948e3e09b907781857f001d4"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5e1b5dfe9f26dd8764c0eb323833bca42cb2daa19bb64238413927e66d16ab73"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3369f6a7ba198e6788bf234846477cbe5b054fd46d4ffa0000c92a8ac60ffe17"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      441.99553927778817,
+      373.9962255427439,
+      -1638.085933807601
+    ],
+    "bounds": {
+      "center": [
+        2.184476852416992,
+        2.452962875366211,
+        -6.178794860839844
+      ],
+      "radius": 49.440461098549925
+    }
+  },
+  {
+    "key": "south/4/13/1",
+    "exag": 3,
+    "buildMs": 8.800000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "d03293bf6c6dd90ad893179b70373f151d822e6c4ebd3c73a75a822158408352"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "eeda2420e21e0cee606a3befca089fe2d7aee302b24e556f3334db7d56ad1ffd"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "77ef3a62d20bbd7f5fd38328399bc82f64528a9059ac126d1dc6049516d77cc0"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "3369f6a7ba198e6788bf234846477cbe5b054fd46d4ffa0000c92a8ac60ffe17"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      441.99553927778817,
+      373.9962255427439,
+      -1638.085933807601
+    ],
+    "bounds": {
+      "center": [
+        1.4523296356201172,
+        1.3926620483398438,
+        -3.105740547180176
+      ],
+      "radius": 49.170823646839786
+    }
+  },
+  {
+    "key": "south/8/84/110",
+    "exag": 3,
+    "buildMs": 10.099999964237213,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "55ca996164466b6ad33f5cf35c4809bcd6066f477a425898bc9e1fc5fb80b6d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "66275164101354caaf30fdec337b0a23a62052b73bf83fb908d4f1d6eca0be9f"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "24ea30b9936fa25337239dbf59f626df145e99c5136dad94881b23f0cbd06bfe"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8cd7573fc5338e1b2d30ba7cbbcb494a2640e5f34a3dea4cdc4aa080fa398505"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      76.29659401661557,
+      -189.65153369844444,
+      -1725.3318189575282
+    ],
+    "bounds": {
+      "center": [
+        0.265209436416626,
+        -0.6914646029472351,
+        -6.421019077301025
+      ],
+      "radius": 4.150088329213769
+    }
+  },
+  {
+    "key": "south/8/84/110",
+    "exag": 1,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "55ca996164466b6ad33f5cf35c4809bcd6066f477a425898bc9e1fc5fb80b6d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "a429eefa0296d6f1d07026252ab75820c127c78a4e66113bcb2e775f4def9ed1"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "9b7f6ae01f52a9abf44e2d81244d08e5fd431b49f782499a68eb8c9f87e2cf30"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8cd7573fc5338e1b2d30ba7cbbcb494a2640e5f34a3dea4cdc4aa080fa398505"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      76.29659401661557,
+      -189.65153369844444,
+      -1725.3318189575282
+    ],
+    "bounds": {
+      "center": [
+        0.0864783525466919,
+        -0.2233930230140686,
+        -2.0835196375846863
+      ],
+      "radius": 3.2355030482787037
+    }
+  },
+  {
+    "key": "south/8/84/110",
+    "exag": 5,
+    "buildMs": 9.100000023841858,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "55ca996164466b6ad33f5cf35c4809bcd6066f477a425898bc9e1fc5fb80b6d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "2f3af331ba191e83b5fbca24d021a8d7d87725f9cda14cea1f413d4d9ff1decc"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "5c13be637b78d0bf1b942ab64cc42fa153947e7772e8dda1dce8ce35a5753635"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8cd7573fc5338e1b2d30ba7cbbcb494a2640e5f34a3dea4cdc4aa080fa398505"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      76.29659401661557,
+      -189.65153369844444,
+      -1725.3318189575282
+    ],
+    "bounds": {
+      "center": [
+        0.4439404010772705,
+        -1.159594088792801,
+        -10.760444164276123
+      ],
+      "radius": 5.516921269933862
+    }
+  },
+  {
+    "key": "south/8/84/110",
+    "exag": 3,
+    "buildMs": 8.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "55ca996164466b6ad33f5cf35c4809bcd6066f477a425898bc9e1fc5fb80b6d4"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "66275164101354caaf30fdec337b0a23a62052b73bf83fb908d4f1d6eca0be9f"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "24ea30b9936fa25337239dbf59f626df145e99c5136dad94881b23f0cbd06bfe"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "8cd7573fc5338e1b2d30ba7cbbcb494a2640e5f34a3dea4cdc4aa080fa398505"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      76.29659401661557,
+      -189.65153369844444,
+      -1725.3318189575282
+    ],
+    "bounds": {
+      "center": [
+        0.265209436416626,
+        -0.6914646029472351,
+        -6.421019077301025
+      ],
+      "radius": 4.150088329213769
+    }
+  },
+  {
+    "key": "south/8/165/107",
+    "exag": 3,
+    "buildMs": 9.199999988079071,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "a3a466ca36c0f1a6e7f8406ce163034debc39de4bb18fd6fdd38a0aa2d9fd4bb"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "f175ce5776ebc03302a69d835bb7231e32440ae14c45d90b75dff0ec02437d4e"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "9c0c6456150ec4a41be9eb5212569840e5b898ecdfa9a88bcc52ce09e6babeda"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c59bef3a786f82f4de9dd82d4e0316c79b0bf0acbcafecc64b6354d33e07a428"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      89.42856400719684,
+      163.5888365985308,
+      -1727.3679354671228
+    ],
+    "bounds": {
+      "center": [
+        -0.06663751602172852,
+        -0.1634894609451294,
+        1.3441682159900665
+      ],
+      "radius": 3.833053063276606
+    }
+  },
+  {
+    "key": "south/8/165/107",
+    "exag": 1,
+    "buildMs": 9.300000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "a3a466ca36c0f1a6e7f8406ce163034debc39de4bb18fd6fdd38a0aa2d9fd4bb"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "47d5e0f498ffbd9a60e9853f7243c1490e9c97f1796894f0e8ad3ecd4cd89721"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "74afcbd8b31dedc92ef12b3d88f11c9c4d7f7635babca5fabd510fd15dbd3ffa"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c59bef3a786f82f4de9dd82d4e0316c79b0bf0acbcafecc64b6354d33e07a428"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      89.42856400719684,
+      163.5888365985308,
+      -1727.3679354671228
+    ],
+    "bounds": {
+      "center": [
+        -0.02450728416442871,
+        -0.05895090103149414,
+        0.4951786696910858
+      ],
+      "radius": 3.1920430420164827
+    }
+  },
+  {
+    "key": "south/8/165/107",
+    "exag": 5,
+    "buildMs": 8.800000011920929,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "a3a466ca36c0f1a6e7f8406ce163034debc39de4bb18fd6fdd38a0aa2d9fd4bb"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "6c6b27a34d3d5c935c9ed36efb7aa95450bfb337fa3da41e7bdd65b3178a8608"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "0c345ef02ff03c90dffcc07b2fcd22b1176dda2ee672230517735946f13d4718"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c59bef3a786f82f4de9dd82d4e0316c79b0bf0acbcafecc64b6354d33e07a428"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      89.42856400719684,
+      163.5888365985308,
+      -1727.3679354671228
+    ],
+    "bounds": {
+      "center": [
+        -0.10876774787902832,
+        -0.2680279016494751,
+        2.1931577920913696
+      ],
+      "radius": 4.838632100633739
+    }
+  },
+  {
+    "key": "south/8/165/107",
+    "exag": 3,
+    "buildMs": 9.5,
+    "buffers": {
+      "height": {
+        "type": "Float32Array",
+        "length": 67081,
+        "sha256": "a3a466ca36c0f1a6e7f8406ce163034debc39de4bb18fd6fdd38a0aa2d9fd4bb"
+      },
+      "normalMap": {
+        "type": "Uint8Array",
+        "length": 264196,
+        "sha256": "f175ce5776ebc03302a69d835bb7231e32440ae14c45d90b75dff0ec02437d4e"
+      },
+      "index": {
+        "type": "Uint16Array",
+        "length": 98304,
+        "sha256": "540102cf8523c00637a0e756bb000473efb0637c00a68c07f34e653d78ffbf62"
+      },
+      "skirt": {
+        "type": "Uint16Array",
+        "length": 6144,
+        "sha256": "2c738152842ffe550c9b6c7ce52b8db59ec57889f2e1ef6c599a9cac6bf36c5d"
+      },
+      "position": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "9c0c6456150ec4a41be9eb5212569840e5b898ecdfa9a88bcc52ce09e6babeda"
+      },
+      "normal": {
+        "type": "Float32Array",
+        "length": 51471,
+        "sha256": "c59bef3a786f82f4de9dd82d4e0316c79b0bf0acbcafecc64b6354d33e07a428"
+      },
+      "uv": {
+        "type": "Float32Array",
+        "length": 34314,
+        "sha256": "18f4db1ad5e553d3f65e554b8a0ea111aff01f2e96f1c5322e825463999528c1"
+      }
+    },
+    "center": [
+      89.42856400719684,
+      163.5888365985308,
+      -1727.3679354671228
+    ],
+    "bounds": {
+      "center": [
+        -0.06663751602172852,
+        -0.1634894609451294,
+        1.3441682159900665
+      ],
+      "radius": 3.833053063276606
+    }
+  }
+]

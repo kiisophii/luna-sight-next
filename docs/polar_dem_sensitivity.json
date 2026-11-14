@@ -1,0 +1,3861 @@
+{
+  "created_utc": "2026-11-14T12:55:53.397598+00:00",
+  "window": "2026-01-01T00:00:00Z..2030-12-31T23:00:00Z",
+  "n_hours": 43824,
+  "records": [
+    {
+      "id": "IM1",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "6f78bc0a2addb4374d112ea798c1dc1444c25c722694f53b83f8bda56fddfe4b",
+      "metrics": {
+        "sun_frac": 0.38887367652427896,
+        "earth_frac": 1,
+        "both_frac": 0.38887367652427896,
+        "longest_dark_h": 458
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 2591.97,
+      "raw_dem_h0_m": 2591.9656707531312,
+      "adapter_h0_m": 2591.97,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5137664,
+      "elapsed_s": 1.449556500010658,
+      "computed_utc": "2026-11-14T12:50:33.853196+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/IM1.npz",
+          "sha256": "721d2aa880d767c9609a06fd33284e064cdc86a19aff3d523484d1ad685562d7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/IM1.npz",
+          "sha256": "0322f9e725a0b28ee6329d0ce04a02df0c5f5588dec4e39aa00dd384436e2118"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/IM1.npz",
+          "sha256": "30ea26f4a2af3e1a0e7d9a322a911d8fc11bd5e37b1a0285a52768997464d607"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/IM1.npz",
+          "sha256": "47e565c9fd7de2f90e19435dafcf010e2c43df3feae136d9c237e5ad96644ddf"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "744b8e94be12ddd6355393cd66540939f7161a573b6c802da274ff9aa6debefc",
+      "raw_mask_sha256_float64": "052df731bbfe58fd0715a1a0d6d9d1c4c34450dfc9df32c5fb275d381bfb5960"
+    },
+    {
+      "id": "IM1",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "11fc298694edd924451b9e00433c78e015ae112ed53be470ea2cf9e1ab9c6b35",
+      "metrics": {
+        "sun_frac": 0.38896495071193865,
+        "earth_frac": 1,
+        "both_frac": 0.38896495071193865,
+        "longest_dark_h": 458
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.009127418765969564,
+        "earth_frac": 0,
+        "both_frac": 0.009127418765969564,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 2591.97,
+      "raw_dem_h0_m": 2591.9656707531312,
+      "adapter_h0_m": 2591.97,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.003008857295090982,
+      "mask_max_abs_diff_deg": 0.021200000000000108,
+      "mask_mean_diff_deg": -0.0009105555555555556,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5137792,
+      "elapsed_s": 0.4491943000466563,
+      "computed_utc": "2026-11-14T12:50:34.303808+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/IM1.npz",
+          "sha256": "721d2aa880d767c9609a06fd33284e064cdc86a19aff3d523484d1ad685562d7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/IM1.npz",
+          "sha256": "0322f9e725a0b28ee6329d0ce04a02df0c5f5588dec4e39aa00dd384436e2118"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/IM1.npz",
+          "sha256": "30ea26f4a2af3e1a0e7d9a322a911d8fc11bd5e37b1a0285a52768997464d607"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/IM1.npz",
+          "sha256": "47e565c9fd7de2f90e19435dafcf010e2c43df3feae136d9c237e5ad96644ddf"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "bec356fd77ba126de8ffb06da9310adb00826a51d7e548fca654174ea9e36150",
+      "raw_mask_sha256_float64": "4251e9ff37b5ec1e2d675ba22e4f1a6d931d19255e328bb9d3eada69292fd926"
+    },
+    {
+      "id": "IM2",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "a63f1d7f6b7bed7783b7260aa8b02e2925b68bee632505f4ca89336ec00b19da",
+      "metrics": {
+        "sun_frac": 0.45027838627236216,
+        "earth_frac": 0.81421139101862,
+        "both_frac": 0.3738134355604235,
+        "longest_dark_h": 459
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 5321.75,
+      "raw_dem_h0_m": 5321.746206076943,
+      "adapter_h0_m": 5321.75,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5269632,
+      "elapsed_s": 0.5157207999727689,
+      "computed_utc": "2026-11-14T12:50:35.634214+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/IM2.npz",
+          "sha256": "aa80eaf93ed67d9c9e9a2ea821be1b2569e16623fedc6c34445fa1be20271895"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/IM2.npz",
+          "sha256": "f94f3f4e5c5388011d00b6fc9ee78396b6c44b76ae2bf3f9b872d265dd1baab0"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/IM2.npz",
+          "sha256": "ff901710be00cf8df791df2c0a40fceff5d1e5c7981f4625cea926b2ed7ec3ef"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/IM2.npz",
+          "sha256": "29ea048c3d206a1d24ac6e26cd569e74300d08f9d7a5da7515e3c7ac04bef28e"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/IM2.npz",
+          "sha256": "4df037e8f0107b91d64165f79a5d25a81b0f4ee2ce8a0b9c47fe52892c2416b6"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "18e58087355437f17106c45344a4f46f6974c0bba0af83e5f28f783497ae19bf",
+      "raw_mask_sha256_float64": "63cfbb80955dbcbbb1349323a08b281c5d8fd7f123084571f171f35a63e39948"
+    },
+    {
+      "id": "IM2",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "9daeb7998676ae3e617af9f99209a4d7202c00ce11a1201b48b5acadf44bba13",
+      "metrics": {
+        "sun_frac": 0.4506434830230011,
+        "earth_frac": 0.8146221248630887,
+        "both_frac": 0.37433826213946697,
+        "longest_dark_h": 459
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.03650967506389491,
+        "earth_frac": 0.041073384446876915,
+        "both_frac": 0.05248265790434581,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 5321.91,
+      "raw_dem_h0_m": 5321.905530307855,
+      "adapter_h0_m": 5321.91,
+      "dem_h0_delta_m": 0.15999999999985448,
+      "mask_rms_deg": 0.013105016533119416,
+      "mask_max_abs_diff_deg": 0.06219999999999981,
+      "mask_mean_diff_deg": -0.008250138888888882,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 192.93
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5270272,
+      "elapsed_s": 0.40148790000239387,
+      "computed_utc": "2026-11-14T12:50:36.040661+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/IM2.npz",
+          "sha256": "f94f3f4e5c5388011d00b6fc9ee78396b6c44b76ae2bf3f9b872d265dd1baab0"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/IM2.npz",
+          "sha256": "ff901710be00cf8df791df2c0a40fceff5d1e5c7981f4625cea926b2ed7ec3ef"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/IM2.npz",
+          "sha256": "29ea048c3d206a1d24ac6e26cd569e74300d08f9d7a5da7515e3c7ac04bef28e"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/IM2.npz",
+          "sha256": "4df037e8f0107b91d64165f79a5d25a81b0f4ee2ce8a0b9c47fe52892c2416b6"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "a02fee5c46b66de2100c5d942a7911841ffafe2e7b2d7c8a455751372ff92f92",
+      "raw_mask_sha256_float64": "a64744b4b36aa31c8e4a1aa7949c7be96b59eb453d8105c06ccf41973d94ad0f"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "1bf53e9f5cf0326070c36533537891689160bb220c6bc6438dfabdbcec03d800",
+      "metrics": {
+        "sun_frac": 0.39505750273822565,
+        "earth_frac": 0.29636728733114276,
+        "both_frac": 0.10658543263964951,
+        "longest_dark_h": 485
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 3626.87,
+      "raw_dem_h0_m": 3626.8735250474506,
+      "adapter_h0_m": 3626.87,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 24.96
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5432289,
+      "elapsed_s": 0.5519538000226021,
+      "computed_utc": "2026-11-14T12:50:37.369455+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_CABEUS_B.npz",
+          "sha256": "99b1fbee6e5180cfa6735ad273e5c740438429eb9878c87fad352f4653320518"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_CABEUS_B.npz",
+          "sha256": "de064f6db21c98a7bfbfa5ddea298355d3f3b4c4a590da9229f5e7320db5defe"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_CABEUS_B.npz",
+          "sha256": "ed487bfe4394d298c8a19732cc62b3d0a10b6b72e6683928d31de7ff8d9effd3"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_CABEUS_B.npz",
+          "sha256": "92587459140a3ac8b52287e1f364a35cd4bfd815d2b5e98be052fc89e3f31776"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_CABEUS_B.npz",
+          "sha256": "b6e370cd1000bdc98e04176667e308102994b4f1ecd113cd9bf4d209ad2ee81d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "2c0d154c67438f09235c38b5a3e4d66f086ee824c9cc5cfa4d5e650d106b8877",
+      "raw_mask_sha256_float64": "a002ff1e2d994841c7bc2b0e2c57ae78bda62d102a42a051fedc04c7185638ea"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "50c9c25f78cd08ddd8f1713e8105a722c9119f5febf343a0e089a675b952cfbe",
+      "metrics": {
+        "sun_frac": 0.3951259583789704,
+        "earth_frac": 0.2967552026286966,
+        "both_frac": 0.10674516246805403,
+        "longest_dark_h": 485
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.006845564074475785,
+        "earth_frac": 0.038791529755383136,
+        "both_frac": 0.015972982840452288,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 3626.78,
+      "raw_dem_h0_m": 3626.7835081772555,
+      "adapter_h0_m": 3626.78,
+      "dem_h0_delta_m": -0.08999999999969077,
+      "mask_rms_deg": 0.05625162849494522,
+      "mask_max_abs_diff_deg": 0.29860000000000003,
+      "mask_mean_diff_deg": -0.018404583333333318,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5432978,
+      "elapsed_s": 0.4355463999672793,
+      "computed_utc": "2026-11-14T12:50:37.818363+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_CABEUS_B.npz",
+          "sha256": "de064f6db21c98a7bfbfa5ddea298355d3f3b4c4a590da9229f5e7320db5defe"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_CABEUS_B.npz",
+          "sha256": "ed487bfe4394d298c8a19732cc62b3d0a10b6b72e6683928d31de7ff8d9effd3"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_CABEUS_B.npz",
+          "sha256": "92587459140a3ac8b52287e1f364a35cd4bfd815d2b5e98be052fc89e3f31776"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_CABEUS_B.npz",
+          "sha256": "b6e370cd1000bdc98e04176667e308102994b4f1ecd113cd9bf4d209ad2ee81d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "a58695454c8c389ea00501db438caf4ead5faf535e251ebda30e794e33b98ce8",
+      "raw_mask_sha256_float64": "d2bc33793bc9779ee3cb724c988aa95290435b2815b56de0dc86c01dec9ae901"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "1b13438d42bd5a148eb323d6195892f8dc80ab0e10da8810484b69121271dbb9",
+      "metrics": {
+        "sun_frac": 0.547302847754655,
+        "earth_frac": 0.5853641840087623,
+        "both_frac": 0.3140516611902154,
+        "longest_dark_h": 424
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1904.5,
+      "raw_dem_h0_m": 1904.4975755221549,
+      "adapter_h0_m": 1904.5,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5544064,
+      "elapsed_s": 0.5765761000220664,
+      "computed_utc": "2026-11-14T12:50:03.888330+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/ARTEMIS_HAWORTH.npz",
+          "sha256": "715d2fb5854b3255f97eef34f10e443babcfa278ab8f4a6368b938af4803c16d"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_HAWORTH.npz",
+          "sha256": "3fa6a21a2afeac47febbd9625559962ff39dd22ef9d53894c5701cbf6fadc064"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_HAWORTH.npz",
+          "sha256": "533fbcd804f5e15b48e791f79ce4165450997be98461b29fd3b00b994a4a53c3"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_HAWORTH.npz",
+          "sha256": "d652ceb5873298759479fece4447371aa223faee1570ef976b11b92f439b3b02"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_HAWORTH.npz",
+          "sha256": "2aac20fac72b9e6fe3f312da96a9bfaf30898411e7dd39df2174af271d024e06"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_HAWORTH.npz",
+          "sha256": "6dfc89e8464ebef45a600663557bf9479a2e436f2eb33fbf49edd2cb8ef23f1a"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "1c21f71e03e98678d483558b4ff8cda77a1e957e461922c4eb6f9dc5e57f0215",
+      "raw_mask_sha256_float64": "d6a60d6236a2e4c6bf6fc852e18ec889d6de51a08409993d48cd15142a54b13f"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "477058a24961c19952cb3052c0e0b2b61880e1d14ac50d14e7d41e5c117176eb",
+      "metrics": {
+        "sun_frac": 0.5509538152610441,
+        "earth_frac": 0.6123585250091275,
+        "both_frac": 0.3302756480467324,
+        "longest_dark_h": 423
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.3650967506389158,
+        "earth_frac": 2.699434100036513,
+        "both_frac": 1.6223986856516992,
+        "longest_dark_h": -1
+      },
+      "true_dem_h0_m": 1904.56,
+      "raw_dem_h0_m": 1904.5643526773172,
+      "adapter_h0_m": 1904.56,
+      "dem_h0_delta_m": 0.05999999999994543,
+      "mask_rms_deg": 0.15426913747661186,
+      "mask_max_abs_diff_deg": 0.7071,
+      "mask_mean_diff_deg": -0.07115166666666664,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5546496,
+      "elapsed_s": 0.448260199977085,
+      "computed_utc": "2026-11-14T12:50:39.163493+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_HAWORTH.npz",
+          "sha256": "533fbcd804f5e15b48e791f79ce4165450997be98461b29fd3b00b994a4a53c3"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_HAWORTH.npz",
+          "sha256": "d652ceb5873298759479fece4447371aa223faee1570ef976b11b92f439b3b02"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_HAWORTH.npz",
+          "sha256": "2aac20fac72b9e6fe3f312da96a9bfaf30898411e7dd39df2174af271d024e06"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_HAWORTH.npz",
+          "sha256": "6dfc89e8464ebef45a600663557bf9479a2e436f2eb33fbf49edd2cb8ef23f1a"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "796390c7bb70d968896c98c242313414ca12d4139394249ab42d388fc4e8e22e",
+      "raw_mask_sha256_float64": "e9d22002d28f4495507e7ed10f7ced901ee722f654ca7b52b5b59be9d09c590e"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "1cbd8f01fdfc85aeffd604fcebaa21096816e41f065c192aa907f3b029ab1040",
+      "metrics": {
+        "sun_frac": 0.45043811610076673,
+        "earth_frac": 1,
+        "both_frac": 0.45043811610076673,
+        "longest_dark_h": 415
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 4728.31,
+      "raw_dem_h0_m": 4728.307021563982,
+      "adapter_h0_m": 4728.31,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5304758,
+      "elapsed_s": 0.5165459000272676,
+      "computed_utc": "2026-11-14T12:50:06.480336+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_MALAPERT.npz",
+          "sha256": "54ecf890336c4473dd16dd1bea2b3417c47deb1a4ea97ff44a016beea7a552ca"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MALAPERT.npz",
+          "sha256": "dcdf0071513e599a6cafaf11fcfe8889d839b56a893eee301091a2cc427ecd8c"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MALAPERT.npz",
+          "sha256": "6ff2a430b6a48c7ef3396280bd9b1891891b4bb64b8325e6b1e9602599a1d380"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MALAPERT.npz",
+          "sha256": "4b6477f75771d99dbff1760400acbcb5ae2e302327d3986940d53459bbe6a59f"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MALAPERT.npz",
+          "sha256": "22d52a4eda63f7b39592121f4fa59ad9dcf3050b469ae8b9c46d9266f2a5a2f4"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "0f29c7776780cea223e6b9d013f701fd7c08653e4a0be80309884f6d06a9b634",
+      "raw_mask_sha256_float64": "35d0c0f41af6046cf29f6a08ad19172982319521d825b2a07bbb9c9ef99ed69f"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "7152fe7d118882fd7ee269530e468f91acf3d4576b17e72320220cb54133e5b9",
+      "metrics": {
+        "sun_frac": 0.45201259583789705,
+        "earth_frac": 1,
+        "both_frac": 0.45201259583789705,
+        "longest_dark_h": 410
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.15744797371303187,
+        "earth_frac": 0,
+        "both_frac": 0.15744797371303187,
+        "longest_dark_h": -5
+      },
+      "true_dem_h0_m": 4728.22,
+      "raw_dem_h0_m": 4728.223277724822,
+      "adapter_h0_m": 4728.22,
+      "dem_h0_delta_m": -0.09000000000014552,
+      "mask_rms_deg": 0.05503653773731693,
+      "mask_max_abs_diff_deg": 0.3500000000000001,
+      "mask_mean_diff_deg": 0.0003695833333333358,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5304431,
+      "elapsed_s": 0.3924510999931954,
+      "computed_utc": "2026-11-14T12:50:40.411764+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MALAPERT.npz",
+          "sha256": "dcdf0071513e599a6cafaf11fcfe8889d839b56a893eee301091a2cc427ecd8c"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MALAPERT.npz",
+          "sha256": "6ff2a430b6a48c7ef3396280bd9b1891891b4bb64b8325e6b1e9602599a1d380"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MALAPERT.npz",
+          "sha256": "4b6477f75771d99dbff1760400acbcb5ae2e302327d3986940d53459bbe6a59f"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MALAPERT.npz",
+          "sha256": "22d52a4eda63f7b39592121f4fa59ad9dcf3050b469ae8b9c46d9266f2a5a2f4"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "814f304a0ea7009ece71d8de50e1ad28246c51b39d97879855401d735771dcef",
+      "raw_mask_sha256_float64": "b52c8355f88d1ffcc8eb2efb9c70601453b9b91d45e7cf3cb053315ecfa6e485"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "32894561cb4ba9e028ca6414afbdfb8741433ca7a8fc4962bee6bf2cfec28b3e",
+      "metrics": {
+        "sun_frac": 0.3758442862358525,
+        "earth_frac": 0.5836756115370573,
+        "both_frac": 0.23849945235487405,
+        "longest_dark_h": 516
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 4928.45,
+      "raw_dem_h0_m": 4928.450019694797,
+      "adapter_h0_m": 4928.45,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 24.96
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 161.79
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5148416,
+      "elapsed_s": 0.5029622999718413,
+      "computed_utc": "2026-11-14T12:50:41.689758+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "d0387bba3552e7b776845c85194bd694834fb55247f9728052b64aa4ebedbe40"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "9d6e6f998db4cb26dcd7945ce259c437774780a5b56fc037496ce4dc6f99a3a7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "13343af10cbca36d66a486c8fa5613a173851bd1b4140ecc49ad9c096652e306"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "76adf6c587e5addba2df092a6880f8d6bdc2ca26f8cef0e3945edfa0eaa6bcc0"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "8a661911858792bb1c62db3e3ea955ea0189be3afe73a2a70de01cd146943843"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "775d603da2882a134482223091ef02fe6504a9e3edf878c715111b23faf7fb95",
+      "raw_mask_sha256_float64": "99854421a4f3d269cd0bc20d88c69992c56c2eab3b44ea9c4ebd41943eac0f23"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "16dadc8e338b12ab99b1ccc2f534717efa8aef7826fa683b1cebdaf8cdf9dbcb",
+      "metrics": {
+        "sun_frac": 0.37561610076670315,
+        "earth_frac": 0.5824205914567361,
+        "both_frac": 0.23802026286966046,
+        "longest_dark_h": 518
+      },
+      "difference_vs_production": {
+        "sun_frac": -0.022818546914932236,
+        "earth_frac": -0.12550200803211897,
+        "both_frac": -0.04791894852135825,
+        "longest_dark_h": 2
+      },
+      "true_dem_h0_m": 4928.36,
+      "raw_dem_h0_m": 4928.3611887743755,
+      "adapter_h0_m": 4928.36,
+      "dem_h0_delta_m": -0.09000000000014552,
+      "mask_rms_deg": 0.011811050616548328,
+      "mask_max_abs_diff_deg": 0.05040000000000022,
+      "mask_mean_diff_deg": -0.0005613888888888902,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 161.79
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5148160,
+      "elapsed_s": 0.36566439998568967,
+      "computed_utc": "2026-11-14T12:50:42.069857+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "9d6e6f998db4cb26dcd7945ce259c437774780a5b56fc037496ce4dc6f99a3a7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "13343af10cbca36d66a486c8fa5613a173851bd1b4140ecc49ad9c096652e306"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "76adf6c587e5addba2df092a6880f8d6bdc2ca26f8cef0e3945edfa0eaa6bcc0"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MOUTON_PLATEAU.npz",
+          "sha256": "8a661911858792bb1c62db3e3ea955ea0189be3afe73a2a70de01cd146943843"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "90d25b11fe957d37eb946948b701f4afb2acfaba869b11585dd6a73916fb11b8",
+      "raw_mask_sha256_float64": "b1d1caaee4941c34569bb231a9c0e422518664b5876f5b480db990552d8de31f"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "9e62a9c2128bd306f22021b5b061b96f8c35361c11539fdb2e416d3aeb677339",
+      "metrics": {
+        "sun_frac": 0.7155896312522818,
+        "earth_frac": 0.5977774735304856,
+        "both_frac": 0.39218236582694416,
+        "longest_dark_h": 439
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 6446.13,
+      "raw_dem_h0_m": 6446.129834837925,
+      "adapter_h0_m": 6446.13,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5456075,
+      "elapsed_s": 0.5150696999626234,
+      "computed_utc": "2026-11-14T12:50:43.347870+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_MOUTON.npz",
+          "sha256": "4c6afb738414b81ac325df633c146a8ae53ef91bad86dcff0fb80fa8107d484d"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MOUTON.npz",
+          "sha256": "5e7c0c31a654783fd7c8a7861ed3f1af4a74aa11798ba38dd4055fb7e918c81c"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MOUTON.npz",
+          "sha256": "174716c2e430004be5eb70106dc42cb9aa74965dabf2c8d98d264270cdf28935"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MOUTON.npz",
+          "sha256": "da31d761375bf219488174e739ae28f5fef9211612b5413fc2294720610ac7c2"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MOUTON.npz",
+          "sha256": "1b8e9ad5376482952f12037989047809d03b5891d2fa63b609fd128159b84494"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "5820ce238807bb14759861ec20c5bfc3e813d1fa282694ed58b0d720bf4ca9fa",
+      "raw_mask_sha256_float64": "a600e4e47ec858b581a852f4155ba20fa1365591eafad7e8a9da16dc2df2e457"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "18b22fac8e44818420e74201ab046925e9eae25c1df6fc8d684a00f80ac3acfa",
+      "metrics": {
+        "sun_frac": 0.7158634538152611,
+        "earth_frac": 0.596613727637824,
+        "both_frac": 0.39140653523183644,
+        "longest_dark_h": 439
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.027382256297925345,
+        "earth_frac": -0.11637458926615496,
+        "both_frac": -0.07758305951077182,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 6446.01,
+      "raw_dem_h0_m": 6446.014535713167,
+      "adapter_h0_m": 6446.01,
+      "dem_h0_delta_m": -0.11999999999989086,
+      "mask_rms_deg": 0.01697522213894907,
+      "mask_max_abs_diff_deg": 0.08099999999999996,
+      "mask_mean_diff_deg": 0.00032194444444443336,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5456075,
+      "elapsed_s": 0.43609630002174526,
+      "computed_utc": "2026-11-14T12:50:43.797232+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_MOUTON.npz",
+          "sha256": "5e7c0c31a654783fd7c8a7861ed3f1af4a74aa11798ba38dd4055fb7e918c81c"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_MOUTON.npz",
+          "sha256": "174716c2e430004be5eb70106dc42cb9aa74965dabf2c8d98d264270cdf28935"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_MOUTON.npz",
+          "sha256": "da31d761375bf219488174e739ae28f5fef9211612b5413fc2294720610ac7c2"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_MOUTON.npz",
+          "sha256": "1b8e9ad5376482952f12037989047809d03b5891d2fa63b609fd128159b84494"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "65f0a581f77436f15fd90abf765e529815b2c666626c9b95440d4ad590eedfbb",
+      "raw_mask_sha256_float64": "301ebfbf12dbd954798d8492daea8ae7b619426c3bc145b6b18157bb49a5a430"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "4e3caaec06d14cc1e1c6a8be356f579da14f4fbf15b77dd9f31e0c5700a89595",
+      "metrics": {
+        "sun_frac": 0.7289156626506024,
+        "earth_frac": 0.6797645125958379,
+        "both_frac": 0.43823019350127784,
+        "longest_dark_h": 411
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 6767.67,
+      "raw_dem_h0_m": 6767.67322491165,
+      "adapter_h0_m": 6767.67,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5460827,
+      "elapsed_s": 0.5372918000211939,
+      "computed_utc": "2026-11-14T12:50:45.120670+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "c41230f002603727cab435be2386db263abcd65162ad1013bdab524e92f7e157"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "20680e54f78998d21c720960b84ebb0c92be2bc82ab517006064369c369b17f2"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "c2d743672c0d5c05afb0469408c5cd5060bee71cd0f168ba7291f2cc16ca6729"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "7a1a88448eecc0767552206fea22890abfac692fecd816c1314586e61e7b1794"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "e1e5c8d50c8590a32a304b9099ebf7722d688749f6e5dc853d3096df200b02bf"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "8b9dde2347490cef688b88746353784b7f723f05d11b59e7206c2d1c1d472d72",
+      "raw_mask_sha256_float64": "434793f252e65a114554fc93731885adb4fee6850dbed065e847187d2e98d90f"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "8bb0e2fd6a4b716984ff775436a796bffc56028f06529c8f3a0990a428d80cfd",
+      "metrics": {
+        "sun_frac": 0.7294861263234758,
+        "earth_frac": 0.6782356699525374,
+        "both_frac": 0.4373859072654253,
+        "longest_dark_h": 410
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.05704636728733892,
+        "earth_frac": -0.15288426433005542,
+        "both_frac": -0.08442862358525316,
+        "longest_dark_h": -1
+      },
+      "true_dem_h0_m": 6767.59,
+      "raw_dem_h0_m": 6767.588731570634,
+      "adapter_h0_m": 6767.59,
+      "dem_h0_delta_m": -0.07999999999992724,
+      "mask_rms_deg": 0.053217170500798994,
+      "mask_max_abs_diff_deg": 0.32759999999999995,
+      "mask_mean_diff_deg": 0.017051527777777784,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5456668,
+      "elapsed_s": 0.42600650002714247,
+      "computed_utc": "2026-11-14T12:50:45.562723+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "20680e54f78998d21c720960b84ebb0c92be2bc82ab517006064369c369b17f2"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "c2d743672c0d5c05afb0469408c5cd5060bee71cd0f168ba7291f2cc16ca6729"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "7a1a88448eecc0767552206fea22890abfac692fecd816c1314586e61e7b1794"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM1.npz",
+          "sha256": "e1e5c8d50c8590a32a304b9099ebf7722d688749f6e5dc853d3096df200b02bf"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "ef7f4a0c66f6a74498b8fd01a4d2591c7333626317796382e1fea24bdf4567d2",
+      "raw_mask_sha256_float64": "6e1e3cf05af359beafedb380d3a0a6859f0b16eeb15d91b03ad63cd3d3e360e3"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "c5713a7e774ff1b2763027eb6628b9bbd70a06e31630d45320d0ba46248be30f",
+      "metrics": {
+        "sun_frac": 0.4518300474625776,
+        "earth_frac": 0.7700575027382256,
+        "both_frac": 0.349990872581234,
+        "longest_dark_h": 407
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1347.24,
+      "raw_dem_h0_m": 1347.2382692926456,
+      "adapter_h0_m": 1347.24,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5506432,
+      "elapsed_s": 0.572700199962128,
+      "computed_utc": "2026-11-14T12:50:46.882936+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "d4a60205b6c5ebc0ce3ba5e2cc40c32380f1613bbcf0f9f163d69dc7c515f751"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "4af36887c12aec79cc0d7fe9a4bcf83ac890b7aaa75caba13fa0de7424decbf3"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "9c1c80785aa890ff4c9bfdde220515405849ab1b88d78b96a81618872baac084"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "a161c9b5fe6603807e15ba6caa49a7914ea4afbd02c0ceb619e33c87df99f32e"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "b57f92c4c3e9ded0b6fb1343e57da5f0821f61a02667f3e689bc6b64a3c119f4"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "912dd3b8db99494938733108c7b575371418396d01e0e60be8cecab445899083",
+      "raw_mask_sha256_float64": "017b8d4c5a18d8a743650bf2841e578bcac7595233ac9c9ab99ec5e0e2f1dc01"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "11d38a4bfb2d18b8aa953db34a6acb446b4069b7e5474d45450a8f3a3d26c880",
+      "metrics": {
+        "sun_frac": 0.4519213216502373,
+        "earth_frac": 0.7677071924059876,
+        "both_frac": 0.3489184008762322,
+        "longest_dark_h": 407
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.009127418765969564,
+        "earth_frac": -0.23503103322379815,
+        "both_frac": -0.10724717050017984,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1347.19,
+      "raw_dem_h0_m": 1347.1906017116924,
+      "adapter_h0_m": 1347.19,
+      "dem_h0_delta_m": -0.049999999999954525,
+      "mask_rms_deg": 0.015762803437911106,
+      "mask_max_abs_diff_deg": 0.09780000000000011,
+      "mask_mean_diff_deg": 0.0010474999999999979,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5506432,
+      "elapsed_s": 0.44008369999937713,
+      "computed_utc": "2026-11-14T12:50:47.339099+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "4af36887c12aec79cc0d7fe9a4bcf83ac890b7aaa75caba13fa0de7424decbf3"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "9c1c80785aa890ff4c9bfdde220515405849ab1b88d78b96a81618872baac084"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "a161c9b5fe6603807e15ba6caa49a7914ea4afbd02c0ceb619e33c87df99f32e"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_NOBILE_RIM2.npz",
+          "sha256": "b57f92c4c3e9ded0b6fb1343e57da5f0821f61a02667f3e689bc6b64a3c119f4"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "734cc37460c4994cf1679f079933b65031f7a215afc5dd142d24f5ea12558895",
+      "raw_mask_sha256_float64": "7bc4e0f919961c654a38e5c49d6b9fee95a9b55f83e814b957019fdf0b015316"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "a66ed4f34ce83a4106aa661644f9379a135880b2b103af230d54bae063f26b1c",
+      "metrics": {
+        "sun_frac": 0.6836664841182913,
+        "earth_frac": 0.5526652062796641,
+        "both_frac": 0.38446969696969696,
+        "longest_dark_h": 349
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1513.66,
+      "raw_dem_h0_m": 1513.6555310624253,
+      "adapter_h0_m": 1513.66,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5596800,
+      "elapsed_s": 0.5772205999819562,
+      "computed_utc": "2026-11-14T12:50:48.712126+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "35f7f06e72e82134cc7247e3bdf40864bc5560d82c403145711450acdf137e25"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "bf42baee0173a4777daa7c0e7a90423d354b8c134b45e3e7b15626212aafaa79"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "0336626ba61da56d6e94b491b12092ed7f2d3989e48c5b6ea0fcf9b8cd66d47a"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "eaf217793660f2a704750666a7dcafd9981e21dfbfb10156565b6e700db1304f"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "e58920a6dba1c8383d3acbc26a42d0782642bf14f6d3f96149517fa8965e076b"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "91de8fe26bf43813e3d050a7721faae5eac23b5d04b45072415b4e9693a799fc"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "fcad7ddbdd778a07c4ccbfc1593d313a3e244957fcb567e2f1da1a22680e60f2",
+      "raw_mask_sha256_float64": "ecfd342bee7f1907441e64b5dc6a3898a1c50d7085aeaf28a34922d1f00e4a7d"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "6e4b1556550db116db1d2ce48bfa5aeb859f5e84211d5b628d7ac12df76a2408",
+      "metrics": {
+        "sun_frac": 0.6833470244614823,
+        "earth_frac": 0.5538061336254108,
+        "both_frac": 0.38517707192405987,
+        "longest_dark_h": 353
+      },
+      "difference_vs_production": {
+        "sun_frac": -0.0319459656809018,
+        "earth_frac": 0.11409273457466673,
+        "both_frac": 0.07073749543629049,
+        "longest_dark_h": 4
+      },
+      "true_dem_h0_m": 1513.64,
+      "raw_dem_h0_m": 1513.6377646115757,
+      "adapter_h0_m": 1513.64,
+      "dem_h0_delta_m": -0.01999999999998181,
+      "mask_rms_deg": 0.07154245301450973,
+      "mask_max_abs_diff_deg": 0.20510000000000006,
+      "mask_mean_diff_deg": -0.03597277777777778,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5601024,
+      "elapsed_s": 0.4729360999772325,
+      "computed_utc": "2026-11-14T12:50:49.201731+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "0336626ba61da56d6e94b491b12092ed7f2d3989e48c5b6ea0fcf9b8cd66d47a"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "eaf217793660f2a704750666a7dcafd9981e21dfbfb10156565b6e700db1304f"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "e58920a6dba1c8383d3acbc26a42d0782642bf14f6d3f96149517fa8965e076b"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_DE_GERLACHE_RIM2.npz",
+          "sha256": "91de8fe26bf43813e3d050a7721faae5eac23b5d04b45072415b4e9693a799fc"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "7e5edc375c15067dc7d4e7a7c92a8f90240c4b2e78819c067f3a3752e7406b7b",
+      "raw_mask_sha256_float64": "d37ed9ce16bcf503213bfdb66b14a598f9e5690235dd5cfe9680085bf9cb4a11"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "f24b26cbf354d749597668c156d32db6248dc0d9840d56467234cd555ca0f4fb",
+      "metrics": {
+        "sun_frac": 0.40404801022270903,
+        "earth_frac": 0.39770445418035777,
+        "both_frac": 0.15391109894121943,
+        "longest_dark_h": 552
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 67.05,
+      "raw_dem_h0_m": 67.05192944956849,
+      "adapter_h0_m": 67.05,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5486464,
+      "elapsed_s": 0.551759599999059,
+      "computed_utc": "2026-11-14T12:50:50.536843+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "eaa1cc3074d5455a1e0d18fdb4fd440b02676ff6860967c71259e7a3752cfa90"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "e1f7bc8690c85ecc6fb876211b59c331719d124c28bd00a5bc903342f9505053"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "2a1d5c80e1db3cde3b4edbae90362968ec177a102b12418dd2a9fb97968592e7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "f215e456b5115338a87ccf803c7339a602bef16be977bc46e13afd41b65f3817"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "a705debb9afcbfbfbff0c88bf058265eadad207abb92f0b7b0b247797f61fc6a"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "51528bba7cff6e519d2c170f4e7a6b604868afad5a1457cb3105e2b18ba6541d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "4d8867232ba54950908e9a3b6623af703443a3622b523ffbe9f2ec824380c851",
+      "raw_mask_sha256_float64": "587edb17d628b61766fcedbce4f58b9ad724e35e64b7b9fa3b677664e965bad3"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "871a98623031f0aab2ade8db502bcad01cf66ead900e221041cbb7ebd5669621",
+      "metrics": {
+        "sun_frac": 0.4045271997079226,
+        "earth_frac": 0.3976816356334429,
+        "both_frac": 0.15395673603504928,
+        "longest_dark_h": 552
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.04791894852135825,
+        "earth_frac": -0.0022818546914882276,
+        "both_frac": 0.004563709382984782,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 67.13,
+      "raw_dem_h0_m": 67.13086150171205,
+      "adapter_h0_m": 67.13,
+      "dem_h0_delta_m": 0.0799999999999983,
+      "mask_rms_deg": 0.037902695411335126,
+      "mask_max_abs_diff_deg": 0.20219999999999994,
+      "mask_mean_diff_deg": -0.016134861111111114,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 274.35
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5487104,
+      "elapsed_s": 0.4212722000083886,
+      "computed_utc": "2026-11-14T12:50:50.974886+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "2a1d5c80e1db3cde3b4edbae90362968ec177a102b12418dd2a9fb97968592e7"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "f215e456b5115338a87ccf803c7339a602bef16be977bc46e13afd41b65f3817"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "a705debb9afcbfbfbff0c88bf058265eadad207abb92f0b7b0b247797f61fc6a"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/ARTEMIS_SLATER_PLAIN.npz",
+          "sha256": "51528bba7cff6e519d2c170f4e7a6b604868afad5a1457cb3105e2b18ba6541d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "9672fc8f862f1333513c51c4ee2f0c4ee478c5b554f56b1b78598dc859cf36f4",
+      "raw_mask_sha256_float64": "c05f3a3f3921ab2c79484fd79a813faadaf33e3d1e26fb6f9cbda6ca3b2b580f"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "00700a81daf94b829417085652a6a7bd50e552c90dce80f7178c26394e92e9f5",
+      "metrics": {
+        "sun_frac": 0.8482566630156991,
+        "earth_frac": 0.49942953632712667,
+        "both_frac": 0.4436153705732019,
+        "longest_dark_h": 75
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1729.62,
+      "raw_dem_h0_m": 1729.615140964607,
+      "adapter_h0_m": 1729.62,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5654696,
+      "elapsed_s": 1.641900800052099,
+      "computed_utc": "2026-11-14T12:50:00.962413+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "3a936643f9cb1e47604ffb2d7298160f3c6a2a17b50df18a8ed61ae0a849c6a8",
+      "raw_mask_sha256_float64": "cab40a2e0069630356ae79d6d262ebb274bbba75f926e184e617bb4e98d6d251"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "74fd52c1a58bb8dd882e616d00af6ab647289b84d049a81bb64e90743f3618d1",
+      "metrics": {
+        "sun_frac": 0.8593692953632712,
+        "earth_frac": 0.49990872581234025,
+        "both_frac": 0.44783680175246443,
+        "longest_dark_h": 75
+      },
+      "difference_vs_production": {
+        "sun_frac": 1.1112632347572093,
+        "earth_frac": 0.04791894852135825,
+        "both_frac": 0.4221431179262547,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1729.96,
+      "raw_dem_h0_m": 1729.9638644633483,
+      "adapter_h0_m": 1729.96,
+      "dem_h0_delta_m": 0.3400000000001455,
+      "mask_rms_deg": 0.11076893548935299,
+      "mask_max_abs_diff_deg": 0.5197999999999998,
+      "mask_mean_diff_deg": -0.04877152777777778,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5661992,
+      "elapsed_s": 0.4492517999606207,
+      "computed_utc": "2026-11-14T12:50:52.304723+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "c5e8011d26ece260fa09e97fa3be804b4ca925036f149dfbb18578763d59fca3",
+      "raw_mask_sha256_float64": "72c422668f945a23accfa585ccbc635cbfd0785a7389cd85bfb27148186d29f4"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "8b580e97f71c2b87d7684a33b44139ff401add50c483ef53d66536303f3288b4",
+      "metrics": {
+        "sun_frac": 0.4705868930266521,
+        "earth_frac": 0.43889193136181087,
+        "both_frac": 0.2176661190215407,
+        "longest_dark_h": 553
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1944.93,
+      "raw_dem_h0_m": 1944.9284520896258,
+      "adapter_h0_m": 1944.93,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5519353,
+      "elapsed_s": 0.5721795999561436,
+      "computed_utc": "2026-11-14T12:50:53.668602+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/CONNECTING_RIDGE.npz",
+          "sha256": "a39d75d48f85323ed37771f7197f460fa3233e901e1e2b165d70f8f52a5ed149"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/CONNECTING_RIDGE.npz",
+          "sha256": "1a8641c81c8d09c4caa2d945c5e85274a39ff7b8bee46a1459600d83828cc618"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/CONNECTING_RIDGE.npz",
+          "sha256": "435c8fe45a40af5bf1cf4ea35b5bf07539dbc2aac45687a79bf014eb933872a1"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/CONNECTING_RIDGE.npz",
+          "sha256": "e29656866e5f7ffb3138c5bf0dc94d25854e074f530fc224564e78fea1294379"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/CONNECTING_RIDGE.npz",
+          "sha256": "81fa5d653d56525cb21e555b8e8765b0848886ea0f2e99f517cc23ad007549f0"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/CONNECTING_RIDGE.npz",
+          "sha256": "7d3af2c15e801a1043468f8fe250b4c7e6c4ab3fe1f7bb5c51bf6d751f3afbdb"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "a7efbca343472b076d2e1b145fa8fd23c1270f4f5f7c728c4ee4a281589f9204",
+      "raw_mask_sha256_float64": "3b9dd544429e9e1da6dc257bc0b69441373feca41151ad41d87064a1ac9bb715"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "3c5c6fd973b4fb2e61515246f5da5e529041e0e4e59e7adabc15f2aa3729433b",
+      "metrics": {
+        "sun_frac": 0.46515607886089816,
+        "earth_frac": 0.44274826579043447,
+        "both_frac": 0.21650237312887916,
+        "longest_dark_h": 553
+      },
+      "difference_vs_production": {
+        "sun_frac": -0.5430814165753917,
+        "earth_frac": 0.3856334428623598,
+        "both_frac": -0.11637458926615496,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1944.83,
+      "raw_dem_h0_m": 1944.8288239434514,
+      "adapter_h0_m": 1944.83,
+      "dem_h0_delta_m": -0.10000000000013642,
+      "mask_rms_deg": 0.07094246641939275,
+      "mask_max_abs_diff_deg": 0.26670000000000005,
+      "mask_mean_diff_deg": 0.030744027777777787,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5518457,
+      "elapsed_s": 0.46024909999687225,
+      "computed_utc": "2026-11-14T12:50:54.144618+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/CONNECTING_RIDGE.npz",
+          "sha256": "435c8fe45a40af5bf1cf4ea35b5bf07539dbc2aac45687a79bf014eb933872a1"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/CONNECTING_RIDGE.npz",
+          "sha256": "e29656866e5f7ffb3138c5bf0dc94d25854e074f530fc224564e78fea1294379"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/CONNECTING_RIDGE.npz",
+          "sha256": "81fa5d653d56525cb21e555b8e8765b0848886ea0f2e99f517cc23ad007549f0"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/CONNECTING_RIDGE.npz",
+          "sha256": "7d3af2c15e801a1043468f8fe250b4c7e6c4ab3fe1f7bb5c51bf6d751f3afbdb"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "5f955c9f33996c0985638e5a0c172f1e2e48400c83e9d1603e510df10e169435",
+      "raw_mask_sha256_float64": "f5d88e44977a6efd5cd045bde48dc4770da967a1cab95ba33cc39450e6fc3551"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "240f24ace91d37b910ea33b925ee57df59a7ff9a431a6f5ae67dae283b8a105c",
+      "metrics": {
+        "sun_frac": 0.6678304125593282,
+        "earth_frac": 0.5532128514056225,
+        "both_frac": 0.37680266520627964,
+        "longest_dark_h": 612
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1645.2,
+      "raw_dem_h0_m": 1645.1956184824835,
+      "adapter_h0_m": 1645.2,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5591249,
+      "elapsed_s": 0.5702497999882326,
+      "computed_utc": "2026-11-14T12:50:55.502479+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "ff22cc292685b1d71f77f25aeb6bc6403d0bf924515a91e921a9b236001287a3"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "f0d6dc4bacd29e82454ad6bbecfbb521ebd28ef286b0d0e7949d6db7e1805916"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "abf2af84be1f86d72681fd1ae9990ffc08e00ac445b70c048410799e6e8fd2d8"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "73b7ee1d91a79b0c7363e6b496eb0f9223e560b25d2be22fd6bd57eb0f66a96c"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "a903217bf54581d453e57b3f1c131c2e38c6a23092c8e9007f0d6d0cccde4bdd"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "7358b2a0ed3fec5c886e38a51b6cfa4729c790458ee04b319bfacfd9e7dbd68d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "dbfa7917b1d019a3676c67ca0d100d7c4fb0eaa9edf1e665725957954b9d6aa8",
+      "raw_mask_sha256_float64": "419e5012011c1b831e2842b9a4bc58be048b80c2b4f657241a292af17308f992"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "556d33df7a8e55dd0c48a75fd8f22ba28d5a3188c2c4083057a612add4cc3f96",
+      "metrics": {
+        "sun_frac": 0.6911737860533042,
+        "earth_frac": 0.5575711938663745,
+        "both_frac": 0.3938481197517342,
+        "longest_dark_h": 413
+      },
+      "difference_vs_production": {
+        "sun_frac": 2.334337349397597,
+        "earth_frac": 0.43583424607520627,
+        "both_frac": 1.7045454545454586,
+        "longest_dark_h": -199
+      },
+      "true_dem_h0_m": 1645.28,
+      "raw_dem_h0_m": 1645.2833313214019,
+      "adapter_h0_m": 1645.28,
+      "dem_h0_delta_m": 0.07999999999992724,
+      "mask_rms_deg": 0.1329911722216512,
+      "mask_max_abs_diff_deg": 0.3853000000000001,
+      "mask_mean_diff_deg": -0.08166777777777778,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5596241,
+      "elapsed_s": 0.4249536000424996,
+      "computed_utc": "2026-11-14T12:50:55.944314+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "abf2af84be1f86d72681fd1ae9990ffc08e00ac445b70c048410799e6e8fd2d8"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "73b7ee1d91a79b0c7363e6b496eb0f9223e560b25d2be22fd6bd57eb0f66a96c"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "a903217bf54581d453e57b3f1c131c2e38c6a23092c8e9007f0d6d0cccde4bdd"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "7358b2a0ed3fec5c886e38a51b6cfa4729c790458ee04b319bfacfd9e7dbd68d"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "5bc1bd84db4d29ce7c3e35fa08cd9f7925a75e89f90f6719fbd0698da8b4b08c",
+      "raw_mask_sha256_float64": "bc003ee56070e3ba747e9688a969bd54659db4b100295dd2f2ff2d737f4fc524"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "025ab970ac8e2783d2e8a6d3e27c21448b555c7c8b63039a3e21ecafe898f8ec",
+      "metrics": {
+        "sun_frac": 0.5208105147864184,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.2880385177071924,
+        "longest_dark_h": 448
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": 1793.63,
+      "raw_dem_h0_m": 1793.627862220282,
+      "adapter_h0_m": 1793.63,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5535579,
+      "elapsed_s": 0.5749851000146009,
+      "computed_utc": "2026-11-14T12:50:57.310149+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/DE_GERLACHE_RIM1.npz",
+          "sha256": "3c0cec7afcf9f3a9ccdc9607ab3ae5d32e01794409076bff6a2f4cb49b7debe7"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/DE_GERLACHE_RIM1.npz",
+          "sha256": "a1f86d67e73a51183c8fb0c039e3f3ddb7f42a1b8a886ed0884e362966744473"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/DE_GERLACHE_RIM1.npz",
+          "sha256": "b0580f62451d05c3806576cfcd3d6a79713ef422b3a0277c56ba685acc4e47cd"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/DE_GERLACHE_RIM1.npz",
+          "sha256": "80e0948345499558f084df2cf131c1b2297bef5898812f56db7418e43f1f9f3b"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/DE_GERLACHE_RIM1.npz",
+          "sha256": "fca29d95b685a5f26267ed8e9a19461895bd9349b5559808e0fa25a205b6610f"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/DE_GERLACHE_RIM1.npz",
+          "sha256": "beede03d341d8e83dc4c00c7579e4d302b440f0f269857acbc4c9761a552f5d0"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "1757e7d36c27ecf7746279176b602bc8e42057e78bff0125d3886958e69ac259",
+      "raw_mask_sha256_float64": "b053131d6fa7f40655564957a75ee9547ca43a747b12566355e180a0c26fd4f7"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "55e5b626ec6ae09966c08b5b1da20b28d0a7c8a6ae53e131ce02b3170bd25dfc",
+      "metrics": {
+        "sun_frac": 0.5250091274187659,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.28947608616283316,
+        "longest_dark_h": 449
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.41986126323475537,
+        "earth_frac": 0.0,
+        "both_frac": 0.14375684556407475,
+        "longest_dark_h": 1
+      },
+      "true_dem_h0_m": 1793.57,
+      "raw_dem_h0_m": 1793.5650369975774,
+      "adapter_h0_m": 1793.57,
+      "dem_h0_delta_m": -0.060000000000172804,
+      "mask_rms_deg": 0.09391901919561696,
+      "mask_max_abs_diff_deg": 0.5429000000000002,
+      "mask_mean_diff_deg": -0.034277777777777775,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 300.0
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5537883,
+      "elapsed_s": 0.42558920005103573,
+      "computed_utc": "2026-11-14T12:50:57.750880+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/DE_GERLACHE_RIM1.npz",
+          "sha256": "b0580f62451d05c3806576cfcd3d6a79713ef422b3a0277c56ba685acc4e47cd"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/DE_GERLACHE_RIM1.npz",
+          "sha256": "80e0948345499558f084df2cf131c1b2297bef5898812f56db7418e43f1f9f3b"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/DE_GERLACHE_RIM1.npz",
+          "sha256": "fca29d95b685a5f26267ed8e9a19461895bd9349b5559808e0fa25a205b6610f"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/DE_GERLACHE_RIM1.npz",
+          "sha256": "beede03d341d8e83dc4c00c7579e4d302b440f0f269857acbc4c9761a552f5d0"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "f08f8cf8998ae35f50fc264846f641f3131b8288d8b72d288ef73024dd2615a4",
+      "raw_mask_sha256_float64": "7a6313d760b65e45a25db745312454a8bce77ce13e53225152e1246476ac000b"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "variant": "production",
+      "height_m": 2,
+      "input_token": "3d82feff565b7778271a0aba761c91725ff7107ca0a0bfa6630fd5c5f4a838dd",
+      "metrics": {
+        "sun_frac": 0.19336436655713765,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11596385542168675,
+        "longest_dark_h": 2819
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": -619.54,
+      "raw_dem_h0_m": -619.5448537384532,
+      "adapter_h0_m": -619.54,
+      "dem_h0_delta_m": 0.0,
+      "mask_rms_deg": 0.0,
+      "mask_max_abs_diff_deg": 0.0,
+      "mask_mean_diff_deg": 0.0,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 25.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 230.06
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5374720,
+      "elapsed_s": 0.5438171999994665,
+      "computed_utc": "2026-11-14T12:50:59.099245+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "to_km": 3.0,
+          "res_m": 5.0,
+          "path": "data/raw/polar/5/SHOEMAKER_RIM_A.npz",
+          "sha256": "094fdbbfda9a55595cebd5e79437a89506350981fd0a21e5f489100a159a75a7"
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "to_km": 25.0,
+          "res_m": 10.0,
+          "path": "data/raw/polar/10/SHOEMAKER_RIM_A.npz",
+          "sha256": "b73aa7c9d37c1ca9f2c2f42cbe96e6f7dbba16a3a0c2e67df2aa02569a111858"
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 25.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/SHOEMAKER_RIM_A.npz",
+          "sha256": "a3b6a485d186dd22d8827d3f254e4c91b893e299bbd3a6178e85504abfb566be"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/SHOEMAKER_RIM_A.npz",
+          "sha256": "143eebb23eddb74d4d6ee754d177ddf9331a40350799a4d621d1d67367d22e26"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/SHOEMAKER_RIM_A.npz",
+          "sha256": "725cedeb055801dc520e4818b60fc28bc303ed0e2380430c6e76b8367e427d38"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/SHOEMAKER_RIM_A.npz",
+          "sha256": "d9c8282ac268381cb1d671cdd8d7461d4c5412665577edb51f733a9df2ce4dd9"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "ba6e75a7cc5f7e9a9b9744e5f604601dc53efc131dfa75c6aa758eb2d454ff42",
+      "raw_mask_sha256_float64": "79f34a60e93ca8e87a6fc29dc4f70d9fdb70522b4a8a187a3e3ce65dd13a7143"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "variant": "PGDA20_60_near",
+      "height_m": 2,
+      "input_token": "760a97341be95d76c5e00f0e20905033fac7f2dd2d9c59a88c0b80885a5b29da",
+      "metrics": {
+        "sun_frac": 0.19423147133990507,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11598667396860168,
+        "longest_dark_h": 2819
+      },
+      "difference_vs_production": {
+        "sun_frac": 0.08671047827674139,
+        "earth_frac": 0.0,
+        "both_frac": 0.0022818546914937787,
+        "longest_dark_h": 0
+      },
+      "true_dem_h0_m": -619.43,
+      "raw_dem_h0_m": -619.4323626189387,
+      "adapter_h0_m": -619.43,
+      "dem_h0_delta_m": 0.11000000000001364,
+      "mask_rms_deg": 0.0638643391842775,
+      "mask_max_abs_diff_deg": 0.2854000000000001,
+      "mask_mean_diff_deg": 0.015335138888888874,
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0,
+          "to_km": 3.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0,
+          "to_km": 59.94
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0,
+          "to_km": 199.95
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8,
+          "to_km": 230.06
+        }
+      ],
+      "n_missing_samples": 0,
+      "n_samples": 5374720,
+      "elapsed_s": 0.4024750999524258,
+      "computed_utc": "2026-11-14T12:50:59.519855+00:00",
+      "ray_parameters": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "chain": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "to_km": 3.0,
+          "res_m": 20.0,
+          "path": "data/raw/polar/20/SHOEMAKER_RIM_A.npz",
+          "sha256": "a3b6a485d186dd22d8827d3f254e4c91b893e299bbd3a6178e85504abfb566be"
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "to_km": 60.0,
+          "res_m": 60.0,
+          "path": "data/raw/polar/60/SHOEMAKER_RIM_A.npz",
+          "sha256": "143eebb23eddb74d4d6ee754d177ddf9331a40350799a4d621d1d67367d22e26"
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "to_km": 60.0,
+          "res_m": 80.0,
+          "path": "data/raw/polar/80/SHOEMAKER_RIM_A.npz",
+          "sha256": "725cedeb055801dc520e4818b60fc28bc303ed0e2380430c6e76b8367e427d38"
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "to_km": 200.0,
+          "res_m": 240.0,
+          "path": "data/raw/polar/240/SHOEMAKER_RIM_A.npz",
+          "sha256": "d9c8282ac268381cb1d671cdd8d7461d4c5412665577edb51f733a9df2ce4dd9"
+        },
+        {
+          "name": "LDEM_64",
+          "to_km": 300.0,
+          "res_m": 473.80235037733564,
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b"
+        },
+        {
+          "name": "LDEM_16",
+          "to_km": 300.0,
+          "res_m": 1895.2094015093426,
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432"
+        }
+      ],
+      "core": {
+        "ready": true,
+        "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+        "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+        "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+        "n": 43824
+      },
+      "mask_sha256_float64": "956cd4f7a70143bedda9b7c2a7866d2577e69c47d29b80c2124d2dc98ae77081",
+      "raw_mask_sha256_float64": "244252c7732272c2c7cec5a3c9edadd705f926581361c5c18821200509bb316d"
+    }
+  ],
+  "scope": "Controlled assumption/product sensitivity, not calibrated physical error or confidence limits."
+}

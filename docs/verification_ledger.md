@@ -157,3 +157,9 @@ With these two checks alone added to PR #53, **14/18 products have independent s
 and global hterrain tiles. Other team members' pending checks are not counted here. The custom-polar
 control verifies implementation agreement, **not high-resolution equivalence or a universal <1 pp accuracy**.
 All values above are sample results, not bounds on absolute physical accuracy. No production numbers changed.
+
+## Task F candidate development check — Jiyong, 2026-11-15
+
+| Product | Change and scope | Measured comparison | Status |
+|---|---|---|---|
+| hterrain/polar_s sparse p5/p10 | 16 centres + 32 fixed-seed nearby points versus original card-8 chain; 210 native tiles | Mean absolute Sun difference 0.494022 → 0.112429 pp, max 3.984118 → 0.588719 pp; Earth max 3.653249 → 0.502008 pp. SHACKLETON longest-dark difference worsens −2 → +14 h. [Full report and every regression](task_f_custom_polar.md) | Developer comparison, not another member's independent verification; integrator review required. Existing global validation/counts are unchanged. |

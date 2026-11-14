@@ -132,13 +132,36 @@ export async function createGlobe(container, opts = {}) {
   const texLoader = new THREE.TextureLoader();
   const colorTex = { value: null };
   let hiresState = 'none';                 // none | loading | done
+  let colorWorker = null;
   const setColor = t => { t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; colorTex.value = t; };
   setColor(await texLoader.loadAsync(base + 'globe/moon_color_2k.jpg'));
   function loadHires() {
     if (hiresState !== 'none') return;
     hiresState = 'loading';
-    texLoader.loadAsync(base + 'globe/moon_color_8k.jpg')
-      .then(t => { const old = colorTex.value; setColor(t); old.dispose(); dirty = true; })
+    // Decode, orient and unpack pixels off the render thread. Even an ImageBitmap
+    // upload can synchronously convert all 8K pixels; a transferable RGBA buffer
+    // avoids that conversion. Retain it on the texture for WebGL context restore.
+    const url = new URL(base + 'globe/moon_color_8k.jpg', document.baseURI).href;
+    const pending = typeof Worker === 'function' && typeof OffscreenCanvas === 'function'
+      ? new Promise((resolve, reject) => {
+        const worker = colorWorker = new Worker(new URL('./globe_color_worker.js', import.meta.url));
+        worker.onmessage = ({ data }) => {
+          worker.terminate(); colorWorker = null;
+          if (data.error) { reject(new Error(data.error)); return; }
+          const t = new THREE.DataTexture(new Uint8Array(data.pixels), data.width, data.height);
+          t.magFilter = THREE.LinearFilter; t.minFilter = THREE.LinearMipmapLinearFilter;
+          t.needsUpdate = true;
+          resolve(t);
+        };
+        worker.onerror = e => { worker.terminate(); colorWorker = null; reject(new Error(e.message)); };
+        worker.postMessage({ url, maxSize: renderer.capabilities.maxTextureSize });
+      })
+      : texLoader.loadAsync(url);
+    pending
+      .then(t => {
+        if (stopped) { t.dispose(); return; }
+        const old = colorTex.value; setColor(t); old.dispose(); dirty = true;
+      })
       .catch(() => {})
       .finally(() => { hiresState = 'done'; });
   }
@@ -807,7 +830,7 @@ uniform sampler2D uColor;`)
     sunDirection: () => sunDir.clone(), earthPosition: () => earthPos.clone(),
     waitIdle: async (timeout = 30000) => { const t0 = performance.now(); let calm = 0; while (performance.now() - t0 < timeout) { await new Promise(r => setTimeout(r, 100)); calm = stats.pending === 0 && !fly ? calm + 1 : 0; if (calm >= 5) return true; } return false; },
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter(f => f !== fn); }; },
-    dispose() { stopped = true; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
+    dispose() { stopped = true; colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
     _internal: { scene, camera, renderer, tiles },
   };
   return api;

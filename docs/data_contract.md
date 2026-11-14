@@ -275,7 +275,7 @@ Sampling chain for a polar point (same rule as `horizon.sample_chain`): for a sa
 ## 15. Proposed — `web/data/local/<ID>.json` (Card 18, Jiyong, 2026-11-14)
 
 New optional data only; existing sections unchanged. Written by `pipeline/local_maps.py`.
-Each of six files contains 441 sampled locations, **not area-averaged pixels**.
+Each file contains 441 sampled locations, **not area-averaged pixels**. Card 18 made six south-polar files; card 20 (Dongju) extended the same format to all 33 catalogue sites. Terrain chain by site: lat ≤ −75° PGDA polar 5–240 m (+ LDEM_64/16); |lat| < 60° SLDEM2015 59 m to 150 km (+ LDEM_64/16, as card 9); CHANDRAYAAN3 (69° S) LDEM_64/16 only. `dem_sources` and `ground_resolution_m` per node record what was used.
 
 - `id`, `center:{lat,lon}`, `frame:"MOON_ME_DE421"`, `radius_m:1737400`, `complete:true`, `mock:false`.
 - `grid:{rows:21,cols:21,spacing_m:1000,origin_e_m:-10000,origin_n_m:-10000,order}`.

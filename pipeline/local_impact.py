@@ -124,10 +124,22 @@ def location_report(web,docs):
         table(['Region','Ground source resolution: node count','Maximum centre fraction difference pp','Centre dark-run difference h'],[[r['id'],str(r['ground_resolution_counts']),f"{100*max(abs(r['centre_metric_difference'][k]) for k in METRICS[:3]):.6f}",r['centre_metric_difference']['longest_dark_h']] for r in records]),
         'Storage windows were expanded while keeping the same observer-centred 3/25/25/60/60/200 km gates. Original 5 m source coverage can still end within a region; the fallback resolution is disclosed rather than extrapolated. Grid spacing is not DEM resolution. A 1 km grid can miss smaller-scale features. Radial distributions reflect location variability, not prediction error. A low-resolution display is not interchangeable with a fine-resolution analysis.',
         'Independent verification: `python pipeline/verify_card18_local.py` → `docs/card18_validation.json`, five uniformly selected nodes using a fixed seed, no production geometry imports; fractions must match within 1 pp. This tests implementation against the same DEM, not physical terrain truth. The new Shackleton point retains the Card 15 unverified precise datum alignment.',
-        'Sources: [PGDA LOLA](https://pgda.gsfc.nasa.gov/products/90), [LOLA global terrain](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/), production `web/data/ephem.bin` and `web/js/core.js`. Exact hashes: [machine-readable evidence](location_sensitivity.json).',
-        'Reproduce: `python pipeline/local_maps.py --jobs 12` after expanded windows are available; `python pipeline/local_impact.py --locations`. No partial map is published.']
+        card20_validation_line(docs),
+        'Sources: [PGDA LOLA](https://pgda.gsfc.nasa.gov/products/90), [SLDEM2015](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/), [LOLA global terrain](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/), production `web/data/ephem.bin` and `web/js/core.js`. Exact hashes: [machine-readable evidence](location_sensitivity.json).',
+        'Reproduce: `python -I pipeline/local_fetch27.py` (card 20 terrain) and the card 18 fetch for the first six; then `python pipeline/local_maps.py --jobs 12`; `python pipeline/local_impact.py --locations`. No partial map is published.']
     (docs/'location_sensitivity.md').write_text('\n\n'.join(lines)+'\n',encoding='utf-8')
     return evidence
+
+
+def card20_validation_line(docs):
+    path=docs/'card20_validation.json'
+    if not path.exists():
+        return 'Card 20 independent verification: not run yet (`python pipeline/verify_card20_local.py`).'
+    v=read(path);worst=max(abs(p['comparison'][k]['difference_pp']) for p in v['points'] for k in METRICS[:3])
+    return (f"Card 20 independent verification: `python pipeline/verify_card20_local.py` → `docs/card20_validation.json`, "
+            f"{len(v['points'])} random nodes from {', '.join(v['sites'])} (south-polar, mid-latitude, equatorial), brute-force 720×8,001 rays "
+            f"with the independent card 13 DEM reader and an independent NumPy Sun/Earth loop: largest fraction difference {worst:.3f} pp "
+            f"(criterion 1 pp), {'all passed' if v['passed'] else 'NOT all passed'}.")
 
 
 def polar_vs_equatorial(records):

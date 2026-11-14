@@ -1,0 +1,334 @@
+{
+  "method": "Independent card 13 DEM reader, PROJ geodesics, ECEF brute-force rays (720 az x 8001 distances, no early stop), NumPy full-window metrics; no production geometry or core.js imports",
+  "criterion": "sun_frac, earth_frac, both_frac each within 1 percentage point; dark-run difference reported",
+  "sites": [
+    "ARTEMIS_NOBILE_RIM1",
+    "CHANGE4",
+    "APOLLO11"
+  ],
+  "seed": 20261120,
+  "points": [
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "index": 269,
+      "e_m": 7000,
+      "n_m": 2000,
+      "lat": -85.22347525384167,
+      "lon": 39.69033896064602,
+      "independent_ground_m": 4230.858052768154,
+      "reported_ground_m": 4230.86,
+      "sources": [
+        {
+          "kind": "polar",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\polar\\10\\ARTEMIS_NOBILE_RIM1.npz",
+          "max_km": 25
+        },
+        {
+          "kind": "polar",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\polar\\20\\ARTEMIS_NOBILE_RIM1.npz",
+          "max_km": 25
+        },
+        {
+          "kind": "polar",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\polar\\60\\ARTEMIS_NOBILE_RIM1.npz",
+          "max_km": 60
+        },
+        {
+          "kind": "polar",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\polar\\80\\ARTEMIS_NOBILE_RIM1.npz",
+          "max_km": 60
+        },
+        {
+          "kind": "polar",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\polar\\240\\ARTEMIS_NOBILE_RIM1.npz",
+          "max_km": 200
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_64_float.img",
+          "max_km": null
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_16_float.img",
+          "max_km": null
+        }
+      ],
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.32450255567725445,
+          "reported": 0.32450255567725445,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 539,
+          "reported": 539,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO11",
+      "index": 315,
+      "e_m": -10000,
+      "n_m": 5000,
+      "lat": 0.8390373528192546,
+      "lon": 23.143326229718248,
+      "independent_ground_m": -1823.2333914938736,
+      "reported_ground_m": -1823.23,
+      "sources": [
+        {
+          "kind": "sldem",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\sldem\\APOLLO11.npz",
+          "max_km": 150
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_64_float.img",
+          "max_km": null
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_16_float.img",
+          "max_km": null
+        }
+      ],
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4960523913837167,
+          "reported": 0.4960523913837167,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4960523913837167,
+          "reported": 0.4960523913837167,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 358,
+          "reported": 358,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO11",
+      "index": 181,
+      "e_m": 3000,
+      "n_m": -2000,
+      "lat": 0.6082032552854449,
+      "lon": 23.572079211057684,
+      "independent_ground_m": -1929.776656908835,
+      "reported_ground_m": -1929.78,
+      "sources": [
+        {
+          "kind": "sldem",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\sldem\\APOLLO11.npz",
+          "max_km": 150
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_64_float.img",
+          "max_km": null
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_16_float.img",
+          "max_km": null
+        }
+      ],
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4964174881343556,
+          "reported": 0.4964174881343556,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4964174881343556,
+          "reported": 0.4964174881343556,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 357,
+          "reported": 357,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE4",
+      "index": 350,
+      "e_m": 4000,
+      "n_m": 6000,
+      "lat": -45.25817910910192,
+      "lon": 177.77589721845715,
+      "independent_ground_m": -5917.750443858307,
+      "reported_ground_m": -5917.75,
+      "sources": [
+        {
+          "kind": "sldem",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\sldem\\CHANGE4.npz",
+          "max_km": 150
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_64_float.img",
+          "max_km": null
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_16_float.img",
+          "max_km": null
+        }
+      ],
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4803760496531581,
+          "reported": 0.4803760496531581,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 376,
+          "reported": 376,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE4",
+      "index": 160,
+      "e_m": 3000,
+      "n_m": -3000,
+      "lat": -45.55504667047432,
+      "lon": 177.72978865131913,
+      "independent_ground_m": -5926.966216565452,
+      "reported_ground_m": -5926.97,
+      "sources": [
+        {
+          "kind": "sldem",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\sldem\\CHANGE4.npz",
+          "max_km": 150
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_64_float.img",
+          "max_km": null
+        },
+        {
+          "kind": "global",
+          "path": "C:\\Users\\bewis\\lunar-landing-site-navigator\\data\\processed\\card18\\raw\\global\\ldem_16_float.img",
+          "max_km": null
+        }
+      ],
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.48300018254837535,
+          "reported": 0.48300018254837535,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 374,
+          "reported": 374,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "output_sha256": {
+    "ARTEMIS_NOBILE_RIM1": "7b739deb53047923cc7ffd31da63d4f6ccebc8ce4343f7ab53ad307dcf05264b",
+    "CHANGE4": "836ea8af0eeeb111621211b94b0e8fa61d0fa3ffbcd69d4e3328a7aa9f4ba122",
+    "APOLLO11": "567d879209188a109f4727d302c78ffe984eb305490ed4f00f3a1e362fa24bfc"
+  },
+  "generated_utc": "2026-11-14T10:04:04.123693+00:00"
+}

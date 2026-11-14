@@ -817,7 +817,7 @@ uniform sampler2D uColor;`)
     t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.generateMipmaps = true;
     if (layerTex) layerTex.dispose();
     layerTex = t; colorTex.value = t;
-    ambient.intensity = flat ? 2.2 : 0.10; sun.intensity = flat ? 0.6 : 3.2;
+    ambient.intensity = flat ? 1.25 : 0.10; sun.intensity = flat ? 0.45 : 3.2;   // darker so site names stay readable on top
     dirty = true;
   }
 

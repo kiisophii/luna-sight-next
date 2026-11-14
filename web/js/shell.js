@@ -14,7 +14,7 @@ addStrings({
   catNote: 'Values are for the ① analysis period; sites outside the conditions are dimmed.',
   pickOnMap: '⌖ Pick on the 3D Moon', coordNote: 'The point gets its own terrain horizon, computed in your browser from LOLA / PGDA terrain, then joins the list and the comparison. No flat-horizon numbers are ever shown.',
   introSkip: 'SKIP', introLoading: 'LOADING', introTouch: 'TOUCHDOWN', computing: 'Computing the terrain horizon for your point…',
-  loadFail: 'Data could not be loaded.',
+  loadFail: 'Data could not be loaded.', openTray: 'Open comparison',
 }, {
   skipBelow: '비교로 건너뛰기', footSources: '출처',
   footNote: '모든 시각은 UTC. 3D의 태양·지구 원반은 보기 쉽게 크게 그렸고, 고도 축은 과장했습니다.',
@@ -25,7 +25,7 @@ addStrings({
   catNote: '값은 ① 미션 조건의 분석 기간 기준이며, 조건 밖은 흐리게 보입니다.',
   pickOnMap: '⌖ 3D 달에서 찍기', coordNote: '그 지점의 지형 지평선을 LOLA / PGDA 지형으로 브라우저에서 계산한 뒤 목록과 비교에 넣습니다. 평평한 지평선 숫자는 보여 주지 않습니다.',
   introSkip: 'SKIP', introLoading: 'LOADING', introTouch: 'TOUCHDOWN', computing: '내 지점의 지형 지평선 계산 중…',
-  loadFail: '자료를 불러오지 못했습니다.',
+  loadFail: '자료를 불러오지 못했습니다.', openTray: '비교 열기',
 });
 
 const $ = s => document.querySelector(s);
@@ -105,15 +105,25 @@ document.addEventListener('click', e => {
 });
 
 // ------------------------------------------------------------ panel folding
+function foldLabel(b, open) {
+  const left = b.dataset.fold === 'ls-cond';
+  b.textContent = open ? (left ? '‹' : '›') : (left ? '›' : `‹ ${t('openTray')}`);
+  b.classList.toggle('wide', !open && !left);
+  b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : (left ? 'expand' : 'openTray')));
+}
+// ~1100–1279 px: the tray starts folded so it does not cover the Moon (≥ 1280 open; < 1100 it sits below the Moon)
+if (window.innerWidth >= 1100 && window.innerWidth < 1280) {
+  const tr = $('#ls-tray'), b = tr.querySelector('.ls-fold');
+  tr.classList.add('folded'); b.setAttribute('aria-expanded', 'false'); foldLabel(b, false);
+}
 document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', () => {
   const box = document.getElementById(b.dataset.fold);
   const phone = window.matchMedia('(max-width: 899px)').matches && box.id === 'ls-cond';
   const open = phone ? !box.classList.contains('unfolded') : box.classList.contains('folded');
   if (phone) box.classList.toggle('unfolded', open); else box.classList.toggle('folded', !open);
   b.setAttribute('aria-expanded', String(open));
-  const left = box.id === 'ls-cond';
-  b.textContent = open ? (left ? '‹' : '›') : (left ? '›' : '‹');
-  b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : 'expand'));
+  foldLabel(b, open);
+  if (open && box.id === 'ls-tray') window.dispatchEvent(new Event('resize'));   // scrubber canvas re-measures
 }));
 
 // ------------------------------------------------------------ popovers (sort help; trust.js reuses closeOnOutside)

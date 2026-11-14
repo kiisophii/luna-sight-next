@@ -26,7 +26,7 @@ addStrings({
   tlH: 'Timeline', tlDesc: 'Yellow = sunlit, blue = direct Earth link, green = gap filled via a relay tower, purple = Yeoju KDSA can receive. Click or drag to move the selected time.',
   sNextSet: 'Until sunset', sNextRise: 'Until sunrise', sNextESet: 'Until Earthset', sNextERise: 'Until Earthrise', sDark: 'Longest shadow',
   sRelayNeed: 'Longest direct-link gap', sTower: 'Via tower ({h} m)', sCut: 'Still no link with tower', sKdsa: 'Yeoju KDSA link',
-  vGood: '✓ No cautions', vCond: '! Conditional', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
+  vGood: '✓ No flags', vCond: '! Check conditions', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
   sumLine: '{n}: {s} strength(s), {c} caution(s) under the example rule.', allSites: 'All sites — period table',
   coordsH: '{c} · h {h} m',
 }, {
@@ -46,7 +46,7 @@ addStrings({
   tlH: '타임라인', tlDesc: '노랑 = 햇빛, 파랑 = 지구 직접 교신, 초록 = 중계탑으로 메운 구간, 보라 = 여주 KDSA로 교신 가능. 누르거나 끌어서 선택 시각을 옮깁니다.',
   sNextSet: '다음 일몰까지', sNextRise: '다음 일출까지', sNextESet: '다음 지구몰까지', sNextERise: '다음 지구돋이까지', sDark: '최장 연속 그늘',
   sRelayNeed: '직접 교신 최장 끊김', sTower: '탑 경유 ({h} m)', sCut: '탑 있어도 끊김', sKdsa: '여주 KDSA 교신',
-  vGood: '✓ 주의 없음', vCond: '! 조건부', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
+  vGood: '✓ 주의 없음', vCond: '! 조건 확인', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
   sumLine: '{n}: 예시 규칙으로 강점 {s}개, 주의 {c}개.', allSites: '전체 착륙지 — 기간 표',
   coordsH: '{c} · 높이 {h} m',
 });

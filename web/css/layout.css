@@ -50,6 +50,7 @@ body.ls { background: var(--bg); font-size: 14px; }
 .lsn-note.warn { color: var(--warn); }
 .ls-icon { width: 26px; height: 26px; padding: 0; border-radius: 999px; display: inline-grid; place-items: center; background: transparent; border: 1px solid var(--border); color: var(--muted); font-weight: 700; }
 .ls-icon:hover { color: var(--text); }
+.ls-icon.wide { width: auto; padding: 0 12px; border-radius: 999px; background: var(--text); color: var(--bg); font-weight: 600; font-size: 12px; }
 
 /* status chips (spec §3.0) */
 .chip-st { display: inline-flex; align-items: center; gap: .3em; padding: .05em .6em; border-radius: 999px; font-size: 11px; border: 1px solid var(--off); color: var(--muted); white-space: nowrap; }
@@ -154,7 +155,10 @@ body.ls { background: var(--bg); font-size: 14px; }
 
 /* ---------------------------------------------------------------- tray */
 .ls-tray { right: 16px; width: var(--tray-w); top: calc(var(--head-h) + 16px + 140px + 10px); background: var(--tray-bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; gap: 0; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
-.ls-tray.folded { bottom: auto; }
+.ls-tray.folded { bottom: auto; width: auto; max-width: var(--tray-w); }
+.ls-tray.folded .ls-card-head { gap: 12px; white-space: nowrap; }
+.ls-tray .ls-card-head h2 { white-space: nowrap; flex: none; flex-wrap: nowrap; }
+.val-badge { white-space: nowrap; }
 .ls-tray .ls-foldable { display: flex; flex-direction: column; gap: 10px; min-height: 0; flex: 1 1 auto; margin-top: 10px; }
 .tray-pin::before { content: ''; display: inline-block; width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
 .val-badge-slot { margin-left: auto; }

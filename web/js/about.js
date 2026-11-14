@@ -92,7 +92,7 @@ const SOURCES = [
   ['DSN 810-005 module 301 (station coordinates)', 'NASA JPL DSN', 'https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf', 'NASA/JPL public document', 'Goldstone / Madrid / Canberra hours'],
   ['BEACON lunar relay concept', 'NASA Glenn (NTRS 20240014584)', 'https://ntrs.nasa.gov/citations/20240014584', 'NASA NTRS', 'Relay-tower concept (15 m boom)'],
   ['Apollo Lunar Surface Journal — Sun elevation at landing', 'NASA History (ALSJ)', 'https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html', 'public', 'Mission hindcast'],
-  ['ShadowCam data archive (doi:10.17189/y89z-kt98)', 'NASA / KARI / ASU (NASA PDS)', 'https://pds.shadowcam.asu.edu/', 'PDS public archive; links only (image reuse terms pending)', 'Korea links (About)'],
+  ['ShadowCam data archive (doi:10.17189/y89z-kt98)', 'NASA / KARI / ASU (NASA PDS)', 'https://pds.shadowcam.asu.edu/', 'PDS public archive; links and label metadata only (no images copied)', 'Korea links (About)'],
   ['Pretendard (UI font)', 'Kil Hyung-jin (orioncactus)', 'https://github.com/orioncactus/pretendard', 'SIL Open Font License 1.1', 'All UI text'],
   ['Oxanium (number font)', 'Severin Meyer / Google Fonts', 'https://fonts.google.com/specimen/Oxanium', 'SIL Open Font License 1.1', 'Measured numbers'],
   ['three.js 0.170', 'three.js authors', 'https://threejs.org/', 'MIT', '3D Moon rendering'],

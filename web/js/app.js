@@ -87,7 +87,7 @@ const $ = sel => document.querySelector(sel);
 const params = new URLSearchParams(location.search);
 if (params.get('tv') === '1') document.documentElement.classList.add('tv');
 
-const DEFAULT_PINS = ['APOLLO17', 'SHACKLETON_RIM', 'CHANGE4'];   // first visit only; a comparison, not a recommendation
+const DEFAULT_PINS = ['SHACKLETON_RIM', 'ARTEMIS_HAWORTH', 'APOLLO17'];   // first visit only (team choice 11/14); a comparison, not a recommendation
 const PERIODS = [['7', 'p7'], ['29.5', 'p295'], ['90', 'p90'], ['365', 'p365']];
 const SORTS = ['both', 'sun', 'earth', 'dark', 'name'];
 const LIST_FIRST = 12;
@@ -402,6 +402,7 @@ async function main() {
   sortKey = SORTS.includes(params.get('sort')) ? params.get('sort') : (SORTS.includes(store.get('sort')) ? store.get('sort') : 'both');
   relayOn = params.get('relay') === '1' || (!params.has('sites') && store.get('relay', false) === true);
   const focus0 = ids.has(params.get('focus')) ? params.get('focus') : (pins[0]?.id || 'SHACKLETON_RIM');
+  savePins();                                                            // first visit: the defaults become this browser's pins
   const [a, b] = core.hourRange();
   let t0;
   const tp = params.get('t'), dp = params.get('d');

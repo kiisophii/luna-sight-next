@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-11-14T12:27:05.237431+00:00",
+  "products": [
+    {
+      "url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608.LBL",
+      "http_status": 200,
+      "sha256": "10b0d6d881713d6bd4d61a30cc64da6d53934e2c9a8cc702b36a5cd758751b03",
+      "matches_record": true
+    },
+    {
+      "url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608_EARTH.LBL",
+      "http_status": 200,
+      "sha256": "eb99d4e4a0bd3508e95dc87e0f65663452db0c20dcadaf272ebf27c7ce418913",
+      "matches_record": true
+    },
+    {
+      "url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608.LBL",
+      "http_status": 200,
+      "sha256": "ac839d42ea50ec34314d0c68bc3553d74a2719c88acca1ac7cf3b572a1742d71",
+      "matches_record": true
+    },
+    {
+      "url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608_EARTH.LBL",
+      "http_status": 200,
+      "sha256": "31fe6cb62853d076d0aac190dc2d886204211e658b783be243dd4cdd90bedb82",
+      "matches_record": true
+    }
+  ]
+}

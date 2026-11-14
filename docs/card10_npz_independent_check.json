@@ -1,0 +1,172 @@
+{
+  "generated_utc": "2026-11-14T02:59:28.118110+00:00",
+  "file": "ephem_2020-2038_2h.npz",
+  "sha256": "358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe",
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "A sha256",
+      "pass": true,
+      "detail": "358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe (expected 358526e031ba...)"
+    },
+    {
+      "check": "B schema",
+      "pass": true,
+      "detail": "keys ['columns', 'frame', 'hour_index', 'start', 'step_h', 'stop_exclusive', 'units', 'vectors'], float32 (81444, 6), frame MOON_ME_DE421, units km, 2020-01-01T00:00:00Z .. <2038-08-01T00:00:00Z, step 2 h"
+    },
+    {
+      "check": "C time axis",
+      "pass": true,
+      "detail": "n 81444 (expected 81444), first -52608, last 110278, steps {2}"
+    },
+    {
+      "check": "D values",
+      "pass": true,
+      "detail": "finite True; |sun| 1.4671e+08..1.5249e+08 km; |earth| 356444.8..406692.9 km; max deviation from neighbour extrapolation sun 6.15e-04 deg, earth 4.40e-03 deg"
+    },
+    {
+      "check": "E overlap with ephem.bin",
+      "pass": true,
+      "detail": "21912 even-hour rows 2026-01-01..2030-12-31 bit-identical: True"
+    },
+    {
+      "check": "F physics",
+      "pass": true,
+      "detail": "sub-Earth lat -6.86..6.86 deg, lon -8.05..8.08 deg (libration); sub-solar lat -1.588..1.586 deg; sub-solar drift -12.1908 deg/day (synodic -12.19)"
+    },
+    {
+      "check": "G JPL Horizons 2020-2038",
+      "pass": true,
+      "detail": "34296 comparisons (4 sites x Sun/Earth, every 38 h); max direction difference 0.000041 deg (< 0.01)"
+    }
+  ],
+  "horizons": [
+    {
+      "site": "EQ_0_0",
+      "lat": 0.0,
+      "lon": 0.0,
+      "body": "sun",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 1.7139386334714558e-05,
+      "mean_deg": 7.863023571969559e-06
+    },
+    {
+      "site": "EQ_0_0",
+      "lat": 0.0,
+      "lon": 0.0,
+      "body": "earth",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 2.2765518468793925e-05,
+      "mean_deg": 1.0310527828989085e-05
+    },
+    {
+      "site": "SOUTH_89.5_0",
+      "lat": -89.5,
+      "lon": 0.0,
+      "body": "sun",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 1.6968415613083328e-05,
+      "mean_deg": 7.83553990296557e-06
+    },
+    {
+      "site": "SOUTH_89.5_0",
+      "lat": -89.5,
+      "lon": 0.0,
+      "body": "earth",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 4.117632663548991e-05,
+      "mean_deg": 1.80403283486063e-05
+    },
+    {
+      "site": "MID_45N_120W",
+      "lat": 45.0,
+      "lon": -120.0,
+      "body": "sun",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 1.698988104306101e-05,
+      "mean_deg": 7.883722616482779e-06
+    },
+    {
+      "site": "MID_45N_120W",
+      "lat": 45.0,
+      "lon": -120.0,
+      "body": "earth",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 4.0181820609074006e-05,
+      "mean_deg": 1.789586323656605e-05
+    },
+    {
+      "site": "MID_30S_150E",
+      "lat": -30.0,
+      "lon": 150.0,
+      "body": "sun",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 1.7203062292734435e-05,
+      "mean_deg": 7.838665803731536e-06
+    },
+    {
+      "site": "MID_30S_150E",
+      "lat": -30.0,
+      "lon": 150.0,
+      "body": "earth",
+      "n": 4287,
+      "first": 2458849.5,
+      "last": 2465635.666666667,
+      "max_deg": 3.1334772288600964e-05,
+      "mean_deg": 1.409850320328977e-05
+    }
+  ],
+  "horizons_queries": [
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%270.0%2C0.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:17.959718+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%270.0%2C0.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:19.313553+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%270.0%2C-89.5%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:20.634172+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%270.0%2C-89.5%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:21.961395+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-120.0%2C45.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:23.296972+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-120.0%2C45.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:24.635717+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27150.0%2C-30.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:26.063014+00:00"
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27150.0%2C-30.0%2C0.002%27&START_TIME=%272020-01-01%27&STOP_TIME=%272038-07-31+22%3A00%27&STEP_SIZE=%2738+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "retrieved_utc": "2026-11-14T02:59:27.539044+00:00"
+    }
+  ],
+  "not_verified_here": [
+    "web/data/metrics/<ID>.json (card 10 site metrics): needs real horizon files for every site; only the 16 south-polar horizons (card 8) are on main, non-polar (card 9) pending",
+    "terrain heights at the test points (all at 0 m + 2 m observer)",
+    "Horizons uses DE441 and its own lunar orientation; agreement is to <0.01 deg, not bit level"
+  ]
+}

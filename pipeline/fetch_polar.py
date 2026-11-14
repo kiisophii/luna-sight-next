@@ -168,15 +168,19 @@ def read_window(page, stream, bounds):
     return out
 
 
+class SourceCoverageError(ValueError):
+    """Requested coordinates are outside this DEM's footprint."""
+
+
 def clip_window(bounds, shape, *, allow_partial=False):
     """Keep only available source pixels when explicitly requested; never extrapolate."""
     r0, r1, c0, c1 = bounds
     nr, nc = shape
     clipped = max(0, r0), min(nr, r1), max(0, c0), min(nc, c1)
     if clipped[0] >= clipped[1] or clipped[2] >= clipped[3]:
-        raise ValueError('Requested window has no source coverage')
+        raise SourceCoverageError('Requested window has no source coverage')
     if clipped != tuple(bounds) and not allow_partial:
-        raise ValueError('Requested window exceeds source coverage')
+        raise SourceCoverageError('Requested window exceeds source coverage')
     return clipped
 
 
@@ -234,6 +238,8 @@ def main():
     p.add_argument('--output', type=Path, default=Path('data/raw/polar'))
     p.add_argument('--clip-coverage', action='store_true',
                    help='Keep available original pixels for partially covered windows; no extrapolation')
+    p.add_argument('--skip-unavailable', action='store_true',
+                   help='Report out-of-coverage sources as unavailable; transport/data errors still fail')
     args = p.parse_args()
     if args.radius_m is not None and (not math.isfinite(args.radius_m) or args.radius_m <= 0):
         p.error('radius must be positive and finite')
@@ -258,6 +264,12 @@ def main():
             try:
                 fetch(site, res, args.radius_m or SOURCES[res][1], args.output,
                       allow_partial=args.clip_coverage)
+            except SourceCoverageError as e:
+                if args.skip_unavailable:
+                    print(f'UNAVAILABLE {site["id"]} {res}m: {e}', flush=True)
+                else:
+                    failures.append(str(e))
+                    print(f'FAILED {site["id"]} {res}m: {e}', flush=True)
             except (ValueError, requests.RequestException) as e:
                 failures.append(str(e))
                 print(f'FAILED {site["id"]} {res}m: {e}', flush=True)

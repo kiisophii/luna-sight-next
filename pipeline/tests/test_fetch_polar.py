@@ -144,3 +144,22 @@ def test_partial_coverage_rejects_empty_intersection():
     with pytest.raises(ValueError, match='coverage'):
         fp.clip_window((12, 15, 1, 4), (10, 10), allow_partial=True)
     assert fp.clip_window((0, 10, 0, 10), (10, 10)) == (0, 10, 0, 10)
+
+
+def test_batch_skip_only_source_coverage_not_transport_errors(tmp_path, monkeypatch, capsys):
+    import json
+    import sys
+    from pipeline import fetch_polar as fp
+    sites = tmp_path/'sites.json'
+    sites.write_text(json.dumps([dict(id='TEST',lat=-89,lon=0)]))
+    monkeypatch.setattr(sys,'argv',['fetch_polar','--sites',str(sites),'--res','5','--skip-unavailable'])
+    def uncovered(*args,**kwargs):
+        raise fp.SourceCoverageError('no source coverage')
+    monkeypatch.setattr(fp,'fetch',uncovered)
+    fp.main()
+    assert 'UNAVAILABLE TEST 5m' in capsys.readouterr().out
+    def broken(*args,**kwargs):
+        raise requests.ConnectionError('connection dropped')
+    monkeypatch.setattr(fp,'fetch',broken)
+    with pytest.raises(SystemExit,match='1 windows failed'):
+        fp.main()

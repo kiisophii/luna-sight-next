@@ -289,3 +289,16 @@ def test_network_records_clearance_to_actual_parent():
     assert second["parent"] == 0 and second["min_clear_m"] < 0
     assert second["parent_link"]["min_clear_m"] > 0
     assert second["parent_link"]["fresnel"]["S"] > 0
+
+
+@pytest.mark.parametrize("lat", [0., 20., -89.])
+def test_colocated_antenna_remains_linked_in_mixed_distance_batch(lat):
+    chain = [(hz.FunctionSampler(lambda a, b: np.zeros(a.shape)), 400.)]
+    la, lo = rt.local_offsets_to_latlon(lat, 30., np.array([0., 250.]), np.array([0., 0.]))
+    pr = rt.link_profiles(chain, lat, 30., 2., la, lo, [[15.], [15.]],
+                           bands={"S": 2.2e9, "Ka": 26e9}, step_m=5.)
+    assert rt.link_ok(pr, "los").all()
+    assert np.isposinf(pr["min_clear_m"][0, 0])
+    assert np.isfinite(pr["min_clear_m"][1, 0])
+    for band in ("S", "Ka"):
+        assert np.isposinf(pr["fresnel"][band][0, 0])

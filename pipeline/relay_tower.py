@@ -148,7 +148,11 @@ def link_profiles(chain, lat_a, lon_a, top_a_m, lat_b, lon_b, top_b_m, *, bands,
     out_clear = np.full((n, nh), np.inf)
     out_fr = {b: np.full((n, nh), np.inf) for b in bands}
     order = np.argsort(dist)
-    for i0 in range(0, n, block):
+    # Same surface position is a vertical antenna connection with no interior terrain path.
+    # A block's other, longer paths must not turn this into a zero-width chord calculation.
+    # 1 micrometre absorbs spherical-coordinate roundoff at the poles.
+    order = order[dist[order] > 1e-6]
+    for i0 in range(0, order.size, block):
         idx = order[i0:i0 + block]
         dmax = dist[idx].max()
         ns = int(math.ceil(dmax / step_m))

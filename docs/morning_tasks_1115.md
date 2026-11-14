@@ -1,6 +1,7 @@
 # 일요일 아침 할 일 — 온 사람부터 위에서 하나씩 가져가기
 
-> 빨리 끝낼수록 좋아요. 끝나면 다음 칸 바로 가져가기.
+> 일어나자마자 시작용. **노트북 있으면 💻 칸부터** 먼저 돌려 두고(오래 걸리는 계산), 기다리는 동안이나 **폰만 있으면 📱 칸**.
+> 💻 칸은 지형 파일 다운로드가 커서 와이파이에서. 끝나면 다음 칸 바로 가져가기.
 > 파일: `docs/morning_tasks_1115.md` (main). 가져갈 때 단톡에 "A 제가 할게요" 한 줄. 끝나면 PR → 수아가 합침. 각자 AI에 먼저:
 > `Pull the latest main, read docs/verification_ledger.md and docs/data_contract.md. I am <이름>, task <글자>.`
 > **규칙:** 자기가 만든 데이터는 자기가 검증 못 함(다른 사람 것만). 결과 숫자는 그대로 적고, 안 맞으면 숨기지 말고 그대로 보고. 각자 SI 기록 한 줄씩.
@@ -9,12 +10,12 @@
 
 | | 할 일 | 못 하는 사람 (자기 데이터) | 시간 |
 |---|---|---|---|
-| A | 지평선 33곳 독립 재계산 늘리기 (지금 1곳뿐) | 지용 | 1시간 |
-| B | 남극 밖 17곳 좌표 오차(uncertainty) 독립 확인 (지금 작성자=검증자) | 수아 | 40분 |
-| C | 한국 연결 분 단위 창·KDSA 일정표 대조 (지금 미대조) | 동주 | 40분 |
-| D | 3D 지구본 타일 빈칸: 띠 z4–z7, 남극 z3–z6 | 수아 (소윤님은 z8 말고 z4–z7·z3–z6만) | 1시간 |
-| E | #61 250 m 합친 뒤: 1 km 대비 차이표 + 무작위 점 재계산 | 지용 | 40분 |
-| F | 남극 사용자 지점 지형 +0.2–2.4 %p 오차 줄이기 (더 고운 타일) | — (GPU 있는 사람) | 2시간+, 선택 |
+| A | 💻 지평선 33곳 독립 재계산 늘리기 (지금 1곳뿐) | 지용 | 1시간 |
+| B | 💻 남극 밖 17곳 좌표 오차(uncertainty) 독립 확인 (지금 작성자=검증자) | 수아 | 40분 |
+| C | 💻 한국 연결 분 단위 창·KDSA 일정표 대조 (지금 미대조) | 동주 | 40분 |
+| D | 💻 3D 지구본 타일 빈칸: 띠 z4–z7, 남극 z3–z6 | 수아 (소윤님은 z8 말고 z4–z7·z3–z6만) | 1시간 |
+| E | 💻 #61 250 m 합친 뒤: 1 km 대비 차이표 + 무작위 점 재계산 | 지용 | 40분 |
+| F | 💻 GPU 남극 사용자 지점 지형 +0.2–2.4 %p 오차 줄이기 (더 고운 타일) | — (GPU 있는 사람) | 2시간+, 선택 |
 
 **A 프롬프트**: Pick 10 random sites from `web/data/horizons/` (not ones I produced). For each, choose 10 random azimuths and recompute the horizon elevation by brute force directly from the DEM listed in `docs/DATASETS`/the horizon file header (same observer height 2 m, curvature, near-field rule), with my own code, no imports from `pipeline/`. Report a table site × azimuth: stored vs mine, difference. Criterion ≤ 0.05°. Then recompute sun_frac for those 10 sites from ephem + my horizons; criterion ≤ 1 %p. Add a row to `docs/verification_ledger.md` (row `horizon/`) with my name and numbers.
 
@@ -32,12 +33,12 @@
 
 | | 할 일 | 비고 |
 |---|---|---|
-| G | 30초 영상 영어 자막 (초안 `제출자료/video_30s.md`) — 디자인 합친 뒤 녹화 | 녹화는 지용님 데스크톱 |
-| H | 슬라이드 7 "Next" 문장 — 팀이 직접 아이디어 내기 (AI로 아이디어 금지) | 다 같이 |
-| I | 라이브 사이트 최종 점검: 한 사람당 화면 하나 (휴대폰/1280/1920/한국어) — 이상한 것 Issue 한 칸에 하나 | 여러 명 가능 |
-| J | 출처 링크 깨진 것 고치기 (PGDA 폴더 2개, Wiley 1개) | — |
-| K | 각자 SI 기록 줄 다시 세기 + 빠진 것 추가 | 전원 |
-| L | 개인 체크인 설문 (일 06–12 / 15–20) | 전원 |
+| G | 💻 30초 영상 영어 자막 (초안 `제출자료/video_30s.md`) — 디자인 합친 뒤 녹화 | 녹화는 지용님 데스크톱 |
+| H | 📱 슬라이드 7 "Next" 문장 — 팀이 직접 아이디어 내기 (AI로 아이디어 금지) | 다 같이 |
+| I | 📱💻 라이브 사이트 최종 점검: 한 사람당 화면 하나 (휴대폰/1280/1920/한국어) — 이상한 것 Issue 한 칸에 하나 | 여러 명 가능 |
+| J | 📱 출처 링크 깨진 것 고치기 (PGDA 폴더 2개, Wiley 1개) | — |
+| K | 📱 각자 SI 기록 줄 다시 세기 + 빠진 것 추가 | 전원 |
+| L | 📱 개인 체크인 설문 (일 06–12 / 15–20) | 전원 |
 
 ## 수아(통합)
 - #61 독립 확인 → 합치기 → 남극 주변 지도 250 m 연결

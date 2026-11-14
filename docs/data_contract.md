@@ -323,3 +323,35 @@ Written by `node pipeline/date_slip.mjs` (actual `web/js/core.js`); human summar
 - `best` / `worst` = highest / lowest `both_frac` (ties: shorter / longer `longest_dark_h`), same as `web/js/landing_scan.js`.
 - `slip["+Nd"][m]`: Δ = metric(landing + N days) − metric(landing) for every landing with landing + N ≤ `last_landing`. `median_abs_change` = median |Δ|; `worst_change` = most unfavourable Δ (most negative for fractions, most positive for dark hours) with its dates; fractions in percentage points.
 - Only sites with a real horizon (section 3) get a file; no flat or mock fallback.
+
+## 17. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua non-polar part, 2026-11-14) — NOT yet agreed; new section only (sections 0–16 unchanged)
+
+Answers "if the catalogue coordinate is off by r metres, what range of values could the site have?".
+Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; the south-polar part
+(Jiyong) should use the **same keys** so the app reads one format. One file per catalogue site.
+
+- `id`, `center:{lat,lon}` (= `sites.json`), `frame:"MOON_ME_DE421"`, `radius_m:1737400`,
+  `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`, `complete:true`, `mock:false`,
+  `part` (free text: which pipeline wrote it).
+- `grid:{rows:11,cols:11,spacing_m:100,origin_e_m:-500,origin_n_m:-500,order}`. Node index =
+  row×11+column, rows south→north, columns west→east; offset (e,n) placed at geodesic bearing
+  atan2(e,n) and distance hypot(e,n) (same rule as section 15). Centre node index 60 uses the
+  exact catalogue lat/lon.
+- `params:{min_km,max_km,n_steps,obs_height_m}` = the parameters of the site's production horizon
+  (section 3), so node 60 reproduces `metrics/<ID>.json`. Non-polar: `{0.2,300,4000,2}`, chain
+  SLDEM2015 59 m to 150 km → LDEM_64 → LDEM_16 to 300 km (|lat| ≥ 60: LDEM_64 → LDEM_16), gates
+  measured from **each node**. 720 azimuths, curvature, observer 2 m.
+- `nodes`: 121 ordered `{index,e_m,n_m,lat,lon,h0_m,sun_frac,earth_frac,both_frac,longest_dark_h}`;
+  unrounded fractions = hourly counts / 43824 from the actual `web/js/core.js` (horizon rounded as
+  section 3 before the metrics, exactly like production).
+- `radius_rule`: radius r uses the nodes with hypot(e_m,n_m) ≤ r → 100 m: 5, 300 m: 29, 500 m: 81 nodes
+  (a disc, not the square).
+- `ranges:{"100"|"300"|"500": {n_nodes, sun_frac:{min,max,p10,median,p90}, earth_frac:{…},
+  both_frac:{…}, longest_dark_h:{…}}}`; quantiles = `numpy.percentile` linear interpolation
+  (`longest_dark_h` min/max are integers, its quantiles may be fractional).
+- `dem_sources`: `[{name,res_m,to_km_min,to_km_max}]` over all node rays.
+- `provenance:{terrain_sources:[{name,path,sha256,gate_km,resolution_m,(label_sha256|storage_radius_km)}],
+  files_sha256,center,params,input_key}`.
+
+Nodes are point samples, not area averages. The spread shows sensitivity to position on the
+same DEM; it does not include DEM height errors.

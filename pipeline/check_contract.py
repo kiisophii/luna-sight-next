@@ -483,6 +483,31 @@ def check_local(data, sites):
     print('local: six 21x21 maps checked')
 
 
+def check_uncertainty(data, sites):
+    """Optional section 17: coordinate-uncertainty ranges (121 nodes, radii 100/300/500 m)."""
+    directory = data / 'uncertainty'
+    if not directory.exists():
+        return
+    from coord_uncertainty import LAT_MIN, validate_record
+    n = 0
+    for path in sorted(directory.glob('*.json')):
+        where = f'uncertainty/{path.name}'
+        obj = load_json(path)
+        if obj is None:
+            continue
+        sid = path.stem
+        try:
+            if obj['id'] != sid or sid not in sites:
+                raise ValueError('id/file name not in catalogue')
+            if obj['center'] != {k: sites[sid][k] for k in ['lat', 'lon']}:
+                raise ValueError('Centre differs from catalogue')
+            validate_record(obj, sites[sid], strict_params=sites[sid]['lat'] > LAT_MIN)
+        except (ValueError, KeyError, TypeError) as exc:
+            err(where, str(exc))
+        n += 1
+    print(f'uncertainty: {n} site file(s) checked')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(Path(__file__).resolve().parents[1] / "web" / "data"))
@@ -496,6 +521,7 @@ def main():
     check_korea(data, sites)
     check_hterrain(data)
     check_local(data, sites)
+    check_uncertainty(data, sites)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

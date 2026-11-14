@@ -1,0 +1,9 @@
+{
+  "id": "APOLLO15",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.4720929171230376,
+  "earth_frac": 1,
+  "both_frac": 0.4720929171230376,
+  "longest_dark_h": 377,
+  "slope_deg": null
+}

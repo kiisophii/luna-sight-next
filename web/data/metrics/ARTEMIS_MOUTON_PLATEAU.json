@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_MOUTON_PLATEAU",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.3758442862358525,
+  "earth_frac": 0.5836756115370573,
+  "both_frac": 0.23849945235487405,
+  "longest_dark_h": 516,
+  "slope_deg": null
+}

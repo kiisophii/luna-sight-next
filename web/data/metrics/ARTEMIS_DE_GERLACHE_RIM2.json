@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_DE_GERLACHE_RIM2",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.6836664841182913,
+  "earth_frac": 0.5526652062796641,
+  "both_frac": 0.38446969696969696,
+  "longest_dark_h": 349,
+  "slope_deg": null
+}

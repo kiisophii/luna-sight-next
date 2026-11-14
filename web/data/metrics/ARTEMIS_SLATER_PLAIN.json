@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_SLATER_PLAIN",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.40404801022270903,
+  "earth_frac": 0.39770445418035777,
+  "both_frac": 0.15391109894121943,
+  "longest_dark_h": 552,
+  "slope_deg": null
+}

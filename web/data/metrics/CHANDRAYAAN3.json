@@ -1,0 +1,9 @@
+{
+  "id": "CHANDRAYAAN3",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.47941767068273095,
+  "earth_frac": 1,
+  "both_frac": 0.47941767068273095,
+  "longest_dark_h": 385,
+  "slope_deg": null
+}

@@ -1,0 +1,41 @@
+{
+  "generated_utc": "2026-11-14T02:03:12.933850+00:00",
+  "passed": true,
+  "file": "data/processed/ephem_2020-2038_2h.npz",
+  "sha256": "358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe",
+  "bytes": 1969747,
+  "shape": [
+    81444,
+    6
+  ],
+  "dtype": "little-endian float32",
+  "frame": "MOON_ME_DE421",
+  "columns": [
+    "sun_x",
+    "sun_y",
+    "sun_z",
+    "earth_x",
+    "earth_y",
+    "earth_z"
+  ],
+  "start": "2020-01-01T00:00:00Z",
+  "stop_exclusive": "2038-08-01T00:00:00Z",
+  "step_h": 2,
+  "overlap_rows_compared": 21912,
+  "overlap_float32_mismatches": 0,
+  "engine_sample_indices": [
+    0,
+    1,
+    40722,
+    81442,
+    81443
+  ],
+  "engine_sample_float32_mismatches": 0,
+  "note": "Reused existing generated file; all time/schema/finite checks and every overlapping 2026-2030 row checked. Only five rows independently recomputed with the same Skyfield engine; not complete external 18.6-year validation.",
+  "production_and_npz_unchanged": true,
+  "input_hashes": {
+    "data\\processed\\ephem_2020-2038_2h.npz": "358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe",
+    "web\\data\\ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web\\data\\ephem.json": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8"
+  }
+}

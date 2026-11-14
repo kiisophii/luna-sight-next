@@ -1,0 +1,999 @@
+{
+  "passed": true,
+  "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+  "n_hours": 43824,
+  "n_fixtures": 3,
+  "real_horizon_sites_checked": [
+    "APOLLO11",
+    "APOLLO12",
+    "APOLLO14",
+    "APOLLO15",
+    "APOLLO16",
+    "APOLLO17",
+    "LUNA16",
+    "LUNA20",
+    "LUNA24",
+    "CHANGE3",
+    "CHANGE4",
+    "CHANGE5",
+    "CHANGE6",
+    "CHANDRAYAAN3",
+    "SLIM",
+    "IM1",
+    "IM2",
+    "BLUE_GHOST1",
+    "ARTEMIS_CABEUS_B",
+    "ARTEMIS_HAWORTH",
+    "ARTEMIS_MALAPERT",
+    "ARTEMIS_MOUTON_PLATEAU",
+    "ARTEMIS_MOUTON",
+    "ARTEMIS_NOBILE_RIM1",
+    "ARTEMIS_NOBILE_RIM2",
+    "ARTEMIS_DE_GERLACHE_RIM2",
+    "ARTEMIS_SLATER_PLAIN",
+    "SHACKLETON_RIM",
+    "CONNECTING_RIDGE",
+    "PEAK_NEAR_SHACKLETON",
+    "DE_GERLACHE_RIM1",
+    "SHOEMAKER_RIM_A",
+    "IM3_REINER_GAMMA"
+  ],
+  "fixture_scope": "Three synthetic terrains solely in a disposable test directory, plus every eligible real horizon currently available; real production ephemeris",
+  "exact_metric_matches": true,
+  "matches_to_four_decimals": true,
+  "cache_resume_and_stale_removal_passed": true,
+  "mock_and_coordinate_mismatch_and_dem_gap_rejected": true,
+  "cases": [
+    {
+      "site": {
+        "id": "TEST_EQUATOR",
+        "lat": 0,
+        "lon": 0,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.4995208105147864,
+        "earth_frac": 1,
+        "both_frac": 0.4995208105147864,
+        "longest_dark_h": 355
+      },
+      "python": {
+        "sun_frac": 0.4995208105147864,
+        "earth_frac": 1,
+        "both_frac": 0.4995208105147864,
+        "longest_dark_h": 355
+      }
+    },
+    {
+      "site": {
+        "id": "TEST_POLAR",
+        "lat": -89.7668,
+        "lon": -171.87,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.36434373859072655,
+        "earth_frac": 0.3452217962760131,
+        "both_frac": 0.13134355604235123,
+        "longest_dark_h": 530
+      },
+      "python": {
+        "sun_frac": 0.36434373859072655,
+        "earth_frac": 0.3452217962760131,
+        "both_frac": 0.13134355604235123,
+        "longest_dark_h": 530
+      }
+    },
+    {
+      "site": {
+        "id": "TEST_WRAP",
+        "lat": 20.1911,
+        "lon": 30.7723,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.5021677619569186,
+        "earth_frac": 1,
+        "both_frac": 0.5021677619569186,
+        "longest_dark_h": 355
+      },
+      "python": {
+        "sun_frac": 0.5021677619569186,
+        "earth_frac": 1,
+        "both_frac": 0.5021677619569186,
+        "longest_dark_h": 355
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO11",
+        "name": "Apollo 11",
+        "name_ko": "아폴로 11호",
+        "short": "Apollo 11",
+        "group": "apollo",
+        "lat": 0.67416,
+        "lon": 23.47314,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      },
+      "python": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO12",
+        "name": "Apollo 12",
+        "name_ko": "아폴로 12호",
+        "short": "Apollo 12",
+        "group": "apollo",
+        "lat": -3.0128,
+        "lon": -23.4219,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      },
+      "python": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO14",
+        "name": "Apollo 14",
+        "name_ko": "아폴로 14호",
+        "short": "Apollo 14",
+        "group": "apollo",
+        "lat": -3.64589,
+        "lon": -17.47194,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4907813070463673,
+        "earth_frac": 1,
+        "both_frac": 0.4907813070463673,
+        "longest_dark_h": 362
+      },
+      "python": {
+        "sun_frac": 0.4907813070463673,
+        "earth_frac": 1,
+        "both_frac": 0.4907813070463673,
+        "longest_dark_h": 362
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO15",
+        "name": "Apollo 15",
+        "name_ko": "아폴로 15호",
+        "short": "Apollo 15",
+        "group": "apollo",
+        "lat": 26.13239,
+        "lon": 3.6333,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4720929171230376,
+        "earth_frac": 1,
+        "both_frac": 0.4720929171230376,
+        "longest_dark_h": 377
+      },
+      "python": {
+        "sun_frac": 0.4720929171230376,
+        "earth_frac": 1,
+        "both_frac": 0.4720929171230376,
+        "longest_dark_h": 377
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO16",
+        "name": "Apollo 16",
+        "name_ko": "아폴로 16호",
+        "short": "Apollo 16",
+        "group": "apollo",
+        "lat": -8.9734,
+        "lon": 15.5011,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.49552756480467325,
+        "earth_frac": 1,
+        "both_frac": 0.49552756480467325,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.49552756480467325,
+        "earth_frac": 1,
+        "both_frac": 0.49552756480467325,
+        "longest_dark_h": 359
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO17",
+        "name": "Apollo 17",
+        "name_ko": "아폴로 17호",
+        "short": "Apollo 17",
+        "group": "apollo",
+        "lat": 20.1911,
+        "lon": 30.7723,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4774780941949617,
+        "earth_frac": 1,
+        "both_frac": 0.4774780941949617,
+        "longest_dark_h": 371
+      },
+      "python": {
+        "sun_frac": 0.4774780941949617,
+        "earth_frac": 1,
+        "both_frac": 0.4774780941949617,
+        "longest_dark_h": 371
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA16",
+        "name": "Luna 16",
+        "name_ko": "루나 16호",
+        "short": "Luna 16",
+        "group": "luna",
+        "lat": -0.5137,
+        "lon": 56.3638,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.4932685286600949,
+        "earth_frac": 1,
+        "both_frac": 0.4932685286600949,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.4932685286600949,
+        "earth_frac": 1,
+        "both_frac": 0.4932685286600949,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA20",
+        "name": "Luna 20",
+        "name_ko": "루나 20호",
+        "short": "Luna 20",
+        "group": "luna",
+        "lat": 3.7863,
+        "lon": 56.6242,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      },
+      "python": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA24",
+        "name": "Luna 24",
+        "name_ko": "루나 24호",
+        "short": "Luna 24",
+        "group": "luna",
+        "lat": 12.7142,
+        "lon": 62.2129,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.4954819277108434,
+        "earth_frac": 1,
+        "both_frac": 0.4954819277108434,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.4954819277108434,
+        "earth_frac": 1,
+        "both_frac": 0.4954819277108434,
+        "longest_dark_h": 359
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE3",
+        "name": "Chang'e 3",
+        "name_ko": "창어 3호",
+        "short": "Chang'e 3",
+        "group": "change",
+        "lat": 44.1214,
+        "lon": -19.5116,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/637",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 340.4884 E converted to -19.5116 E."
+      },
+      "js": {
+        "sun_frac": 0.5008671047827674,
+        "earth_frac": 1,
+        "both_frac": 0.5008671047827674,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.5008671047827674,
+        "earth_frac": 1,
+        "both_frac": 0.5008671047827674,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE4",
+        "name": "Chang'e 4",
+        "name_ko": "창어 4호",
+        "short": "Chang'e 4",
+        "group": "change",
+        "lat": -45.4562,
+        "lon": 177.5885,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1168",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. Refined LROC lander position; source reports 13 m uncertainty at 95% confidence. Not the Chang'e-2-map coordinate used in some papers."
+      },
+      "js": {
+        "sun_frac": 0.4927437020810515,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 367
+      },
+      "python": {
+        "sun_frac": 0.4927437020810515,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 367
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE5",
+        "name": "Chang'e 5",
+        "name_ko": "창어 5호",
+        "short": "Chang'e 5",
+        "group": "change",
+        "lat": 43.0576,
+        "lon": -51.9161,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1172.2020",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 308.0839 E converted to -51.9161 E; reported horizontal accuracy +/-20 m."
+      },
+      "js": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE6",
+        "name": "Chang'e 6",
+        "name_ko": "창어 6호",
+        "short": "Chang'e 6",
+        "group": "change",
+        "lat": -41.6385,
+        "lon": -153.9852,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1374",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 206.0148 E converted to -153.9852 E; reported horizontal accuracy +/-30 m."
+      },
+      "js": {
+        "sun_frac": 0.49714768163563344,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 364
+      },
+      "python": {
+        "sun_frac": 0.49714768163563344,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 364
+      }
+    },
+    {
+      "site": {
+        "id": "CHANDRAYAAN3",
+        "name": "Chandrayaan-3",
+        "name_ko": "찬드라얀 3호",
+        "short": "Chandrayaan-3",
+        "group": "chandrayaan",
+        "lat": -69.3741,
+        "lon": 32.32,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1314",
+        "coord_quality": "primary",
+        "note": "Historical landing; post-landing LROC coordinates, not the pre-launch target ellipse."
+      },
+      "js": {
+        "sun_frac": 0.47941767068273095,
+        "earth_frac": 1,
+        "both_frac": 0.47941767068273095,
+        "longest_dark_h": 385
+      },
+      "python": {
+        "sun_frac": 0.47941767068273095,
+        "earth_frac": 1,
+        "both_frac": 0.47941767068273095,
+        "longest_dark_h": 385
+      }
+    },
+    {
+      "site": {
+        "id": "SLIM",
+        "name": "SLIM",
+        "name_ko": "슬림",
+        "short": "SLIM",
+        "group": "slim",
+        "lat": -13.316,
+        "lon": 25.251,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1358",
+        "coord_quality": "primary",
+        "note": "Historical JAXA lander position measured by LROC; not the intended landing point."
+      },
+      "js": {
+        "sun_frac": 0.4765197152245345,
+        "earth_frac": 1,
+        "both_frac": 0.4765197152245345,
+        "longest_dark_h": 372
+      },
+      "python": {
+        "sun_frac": 0.4765197152245345,
+        "earth_frac": 1,
+        "both_frac": 0.4765197152245345,
+        "longest_dark_h": 372
+      }
+    },
+    {
+      "site": {
+        "id": "IM1",
+        "name": "IM-1 Odysseus",
+        "name_ko": "IM-1 오디세우스",
+        "short": "IM-1 Odysseus",
+        "group": "clps",
+        "lat": -80.13,
+        "lon": 1.44,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1360",
+        "coord_quality": "primary",
+        "note": "Historical landed location. Source publishes only two decimal places; do not infer metre-level accuracy."
+      },
+      "js": {
+        "sun_frac": 0.38887367652427896,
+        "earth_frac": 1,
+        "both_frac": 0.38887367652427896,
+        "longest_dark_h": 458
+      },
+      "python": {
+        "sun_frac": 0.38887367652427896,
+        "earth_frac": 1,
+        "both_frac": 0.38887367652427896,
+        "longest_dark_h": 458
+      }
+    },
+    {
+      "site": {
+        "id": "IM2",
+        "name": "IM-2 Athena",
+        "name_ko": "IM-2 아테나",
+        "short": "IM-2 Athena",
+        "group": "clps",
+        "lat": -84.7906,
+        "lon": 29.1957,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1408",
+        "coord_quality": "primary",
+        "note": "Historical actual surface location; lander ended on its side. Not the pre-landing target (-84.78, 29.13)."
+      },
+      "js": {
+        "sun_frac": 0.45027838627236216,
+        "earth_frac": 0.81421139101862,
+        "both_frac": 0.3738134355604235,
+        "longest_dark_h": 459
+      },
+      "python": {
+        "sun_frac": 0.45027838627236216,
+        "earth_frac": 0.81421139101862,
+        "both_frac": 0.3738134355604235,
+        "longest_dark_h": 459
+      }
+    },
+    {
+      "site": {
+        "id": "BLUE_GHOST1",
+        "name": "Blue Ghost Mission 1",
+        "name_ko": "블루 고스트 1호",
+        "short": "Blue Ghost 1",
+        "group": "clps",
+        "lat": 18.562,
+        "lon": 61.81,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1406",
+        "coord_quality": "primary",
+        "note": "Historical landed location near Mons Latreille; use lander coordinates, not LRO's imaging position."
+      },
+      "js": {
+        "sun_frac": 0.4961436655713764,
+        "earth_frac": 1,
+        "both_frac": 0.4961436655713764,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.4961436655713764,
+        "earth_frac": 1,
+        "both_frac": 0.4961436655713764,
+        "longest_dark_h": 359
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_CABEUS_B",
+        "name": "Peak near Cabeus B (region)",
+        "name_ko": "아르테미스 후보: 카베우스 B 인근 봉우리 (대표점)",
+        "short": "Cabeus B area",
+        "group": "artemis3_region",
+        "lat": -83.763,
+        "lon": -69.983,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS PCB01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.39505750273822565,
+        "earth_frac": 0.29636728733114276,
+        "both_frac": 0.10658543263964951,
+        "longest_dark_h": 485
+      },
+      "python": {
+        "sun_frac": 0.39505750273822565,
+        "earth_frac": 0.29636728733114276,
+        "both_frac": 0.10658543263964951,
+        "longest_dark_h": 485
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_HAWORTH",
+        "name": "Haworth (region)",
+        "name_ko": "아르테미스 후보: 하워스 (대표점)",
+        "short": "Haworth area",
+        "group": "artemis3_region",
+        "lat": -86.768,
+        "lon": -20.514,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS HW01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.547302847754655,
+        "earth_frac": 0.5853641840087623,
+        "both_frac": 0.3140516611902154,
+        "longest_dark_h": 424
+      },
+      "python": {
+        "sun_frac": 0.547302847754655,
+        "earth_frac": 0.5853641840087623,
+        "both_frac": 0.3140516611902154,
+        "longest_dark_h": 424
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MALAPERT",
+        "name": "Malapert Massif (region)",
+        "name_ko": "아르테미스 후보: 말라퍼트 산괴 (대표점)",
+        "short": "Malapert area",
+        "group": "artemis3_region",
+        "lat": -85.942,
+        "lon": -0.944,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMA01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.45043811610076673,
+        "earth_frac": 1,
+        "both_frac": 0.45043811610076673,
+        "longest_dark_h": 415
+      },
+      "python": {
+        "sun_frac": 0.45043811610076673,
+        "earth_frac": 1,
+        "both_frac": 0.45043811610076673,
+        "longest_dark_h": 415
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "name": "Mons Mouton Plateau (region)",
+        "name_ko": "아르테미스 후보: 무통산 고원 (대표점)",
+        "short": "Mouton Plateau",
+        "group": "artemis3_region",
+        "lat": -85.111,
+        "lon": 26.71,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMP01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.3758442862358525,
+        "earth_frac": 0.5836756115370573,
+        "both_frac": 0.23849945235487405,
+        "longest_dark_h": 516
+      },
+      "python": {
+        "sun_frac": 0.3758442862358525,
+        "earth_frac": 0.5836756115370573,
+        "both_frac": 0.23849945235487405,
+        "longest_dark_h": 516
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_MOUTON",
+        "name": "Mons Mouton (region)",
+        "name_ko": "아르테미스 후보: 무통산 (대표점)",
+        "short": "Mons Mouton",
+        "group": "artemis3_region",
+        "lat": -85.416,
+        "lon": 31.851,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS MMO01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.7155896312522818,
+        "earth_frac": 0.5977774735304856,
+        "both_frac": 0.39218236582694416,
+        "longest_dark_h": 439
+      },
+      "python": {
+        "sun_frac": 0.7155896312522818,
+        "earth_frac": 0.5977774735304856,
+        "both_frac": 0.39218236582694416,
+        "longest_dark_h": 439
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "name": "Nobile Rim 1 (region)",
+        "name_ko": "아르테미스 후보: 노빌레 가장자리 1 (대표점)",
+        "short": "Nobile Rim 1",
+        "group": "artemis3_region",
+        "lat": -85.295,
+        "lon": 36.917,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS NR101, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.7289156626506024,
+        "earth_frac": 0.6797645125958379,
+        "both_frac": 0.43823019350127784,
+        "longest_dark_h": 411
+      },
+      "python": {
+        "sun_frac": 0.7289156626506024,
+        "earth_frac": 0.6797645125958379,
+        "both_frac": 0.43823019350127784,
+        "longest_dark_h": 411
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "name": "Nobile Rim 2 (region)",
+        "name_ko": "아르테미스 후보: 노빌레 가장자리 2 (대표점)",
+        "short": "Nobile Rim 2",
+        "group": "artemis3_region",
+        "lat": -84.054,
+        "lon": 56.481,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS NR201, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.4518300474625776,
+        "earth_frac": 0.7700575027382256,
+        "both_frac": 0.349990872581234,
+        "longest_dark_h": 407
+      },
+      "python": {
+        "sun_frac": 0.4518300474625776,
+        "earth_frac": 0.7700575027382256,
+        "both_frac": 0.349990872581234,
+        "longest_dark_h": 407
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "name": "de Gerlache Rim 2 (region)",
+        "name_ko": "아르테미스 후보: 드 제를라슈 가장자리 2 (대표점)",
+        "short": "deGerlache R2",
+        "group": "artemis3_region",
+        "lat": -88.389,
+        "lon": -68.865,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS dGR201, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.6836664841182913,
+        "earth_frac": 0.5526652062796641,
+        "both_frac": 0.38446969696969696,
+        "longest_dark_h": 349
+      },
+      "python": {
+        "sun_frac": 0.6836664841182913,
+        "earth_frac": 0.5526652062796641,
+        "both_frac": 0.38446969696969696,
+        "longest_dark_h": 349
+      }
+    },
+    {
+      "site": {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "name": "Slater Plain (region)",
+        "name_ko": "아르테미스 후보: 슬레이터 평원 (대표점)",
+        "short": "Slater Plain",
+        "group": "artemis3_region",
+        "lat": -87.478,
+        "lon": 124.521,
+        "elev_m": null,
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+        "coord_quality": "primary",
+        "note": "region representative point; research CLS SP01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set."
+      },
+      "js": {
+        "sun_frac": 0.40404801022270903,
+        "earth_frac": 0.39770445418035777,
+        "both_frac": 0.15391109894121943,
+        "longest_dark_h": 552
+      },
+      "python": {
+        "sun_frac": 0.40404801022270903,
+        "earth_frac": 0.39770445418035777,
+        "both_frac": 0.15391109894121943,
+        "longest_dark_h": 552
+      }
+    },
+    {
+      "site": {
+        "id": "SHACKLETON_RIM",
+        "name": "Shackleton Rim (R04)",
+        "name_ko": "섀클턴 가장자리 R04",
+        "short": "Shackleton R04",
+        "group": "polar_peak",
+        "lat": -89.7668,
+        "lon": -171.87,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.086824571011318,
+        "earth_frac": 0.0493565169769989,
+        "both_frac": 0.004814713399050748,
+        "longest_dark_h": 5505
+      },
+      "python": {
+        "sun_frac": 0.086824571011318,
+        "earth_frac": 0.0493565169769989,
+        "both_frac": 0.004814713399050748,
+        "longest_dark_h": 5505
+      }
+    },
+    {
+      "site": {
+        "id": "CONNECTING_RIDGE",
+        "name": "Connecting Ridge (R01)",
+        "name_ko": "연결 능선 R01",
+        "short": "Connect Ridge",
+        "group": "polar_peak",
+        "lat": -89.4632,
+        "lon": -137.49,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.4705868930266521,
+        "earth_frac": 0.43889193136181087,
+        "both_frac": 0.2176661190215407,
+        "longest_dark_h": 553
+      },
+      "python": {
+        "sun_frac": 0.4705868930266521,
+        "earth_frac": 0.43889193136181087,
+        "both_frac": 0.2176661190215407,
+        "longest_dark_h": 553
+      }
+    },
+    {
+      "site": {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "name": "Peak Near Shackleton (R07)",
+        "name_ko": "섀클턴 인근 봉우리 R07",
+        "short": "Peak Shacklet",
+        "group": "polar_peak",
+        "lat": -88.811,
+        "lon": 123.6901,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.6678304125593282,
+        "earth_frac": 0.5532128514056225,
+        "both_frac": 0.37680266520627964,
+        "longest_dark_h": 612
+      },
+      "python": {
+        "sun_frac": 0.6678304125593282,
+        "earth_frac": 0.5532128514056225,
+        "both_frac": 0.37680266520627964,
+        "longest_dark_h": 612
+      }
+    },
+    {
+      "site": {
+        "id": "DE_GERLACHE_RIM1",
+        "name": "de Gerlache Rim 1 (R11)",
+        "name_ko": "드 제를라슈 가장자리 R11",
+        "short": "deGerlache R11",
+        "group": "polar_peak",
+        "lat": -88.6834,
+        "lon": -67.9321,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.5208105147864184,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.2880385177071924,
+        "longest_dark_h": 448
+      },
+      "python": {
+        "sun_frac": 0.5208105147864184,
+        "earth_frac": 0.5719925155166119,
+        "both_frac": 0.2880385177071924,
+        "longest_dark_h": 448
+      }
+    },
+    {
+      "site": {
+        "id": "SHOEMAKER_RIM_A",
+        "name": "Shoemaker Rim A (LM2)",
+        "name_ko": "슈메이커 가장자리 A",
+        "short": "Shoemaker A",
+        "group": "polar_peak",
+        "lat": -88.0792,
+        "lon": 11.88866,
+        "elev_m": null,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "coord_quality": "primary",
+        "note": "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."
+      },
+      "js": {
+        "sun_frac": 0.19336436655713765,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11596385542168675,
+        "longest_dark_h": 2819
+      },
+      "python": {
+        "sun_frac": 0.19336436655713765,
+        "earth_frac": 0.43451077035414387,
+        "both_frac": 0.11596385542168675,
+        "longest_dark_h": 2819
+      }
+    },
+    {
+      "site": {
+        "id": "IM3_REINER_GAMMA",
+        "name": "IM-3 / Lunar Vertex target",
+        "name_ko": "IM-3 라이너 감마 목표점",
+        "short": "IM-3 target",
+        "group": "future",
+        "lat": 7.585,
+        "lon": -58.725,
+        "elev_m": null,
+        "source_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+        "coord_quality": "primary",
+        "note": "Planned science target, not an observed landing or a confirmed touchdown point. KASI associates LUSEM with IM-3/CP-11 at Reiner Gamma; https://pda.kasi.re.kr/lusem.php?lang=en ."
+      },
+      "js": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      },
+      "python": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      }
+    }
+  ]
+}

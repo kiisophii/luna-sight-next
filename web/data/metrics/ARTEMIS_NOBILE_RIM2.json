@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_NOBILE_RIM2",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.4518300474625776,
+  "earth_frac": 0.7700575027382256,
+  "both_frac": 0.349990872581234,
+  "longest_dark_h": 407,
+  "slope_deg": null
+}

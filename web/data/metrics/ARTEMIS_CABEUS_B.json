@@ -1,0 +1,9 @@
+{
+  "id": "ARTEMIS_CABEUS_B",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.39505750273822565,
+  "earth_frac": 0.29636728733114276,
+  "both_frac": 0.10658543263964951,
+  "longest_dark_h": 485,
+  "slope_deg": null
+}

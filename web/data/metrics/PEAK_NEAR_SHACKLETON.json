@@ -1,0 +1,9 @@
+{
+  "id": "PEAK_NEAR_SHACKLETON",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.6678304125593282,
+  "earth_frac": 0.5532128514056225,
+  "both_frac": 0.37680266520627964,
+  "longest_dark_h": 612,
+  "slope_deg": null
+}

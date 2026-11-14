@@ -1,0 +1,416 @@
+{
+  "generated_utc": "2026-11-14T02:04:01.994881+00:00",
+  "passed": true,
+  "threshold_deg": 0.01,
+  "n_sites": 6,
+  "n_times_per_body_site": 121,
+  "n_comparisons": 1452,
+  "window": "2026-01-01T00Z..2026-03-02T00Z inclusive, 12 h step",
+  "binary_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+  "sites_sha256": "a3f0bde4f7020742798317cd6b7f40fffa43c2f4928623d8be704245aeb7bcc2",
+  "notes": [
+    "Current catalogue coordinates, including revised Apollo 17 and Chang'e 4; Shackleton R04 is a published south-polar study point, not a landed vehicle.",
+    "Heights are unconfirmed; 0 m terrain + 2 m observer is a reference-sphere test, not measured terrain validation.",
+    "Horizons DE441 / high-precision MEAN_ME versus required DE440s / MOON_ME_DE421; exact datum of non-Apollo/Luna catalogue points remains unverified.",
+    "Sixty-day geometry test only; not independent five-year visibility or terrain-obstruction validation.",
+    "Moon-center apparent vector minus observer is an approximation; direct-topocentric reference also reported."
+  ],
+  "results": [
+    {
+      "id": "APOLLO17",
+      "lat": 20.1911,
+      "lon": 30.7723,
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 2.0074742963061e-05,
+        "mean_az_deg": 1.1247762843882915e-05,
+        "max_el_deg": 8.45699898377461e-06,
+        "mean_el_deg": 2.4894395299366986e-06,
+        "max_sky_deg": 1.5424602471034622e-05,
+        "mean_sky_deg": 8.902502529120332e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 2.0264139095615974e-05,
+        "mean_az_deg": 1.115794156946833e-05,
+        "max_el_deg": 8.057023791252504e-06,
+        "mean_el_deg": 2.433379964272199e-06,
+        "max_sky_deg": 1.5173133488177789e-05,
+        "mean_sky_deg": 8.820505423124465e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7723%2C20.1911%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "fd6b2fc5b4fcdef7b8ce8e4a55dfe99cf6de4394410d40d5a5d5b4b3516f460a",
+      "retrieved_utc": "2026-11-14T02:03:38.887Z",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "lat": 20.1911,
+      "lon": 30.7723,
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 1.802408769435715e-05,
+        "mean_az_deg": 1.448273817886767e-05,
+        "max_el_deg": 2.4398463260411063e-05,
+        "mean_el_deg": 1.085626527697059e-05,
+        "max_sky_deg": 2.6714749873511466e-05,
+        "mean_sky_deg": 1.4405994321771436e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 1.9487912140903063e-05,
+        "mean_az_deg": 1.5901925545515326e-05,
+        "max_el_deg": 6.818283864618024e-06,
+        "mean_el_deg": 3.507141321658163e-06,
+        "max_sky_deg": 1.3191673197847329e-05,
+        "mean_sky_deg": 1.0186388523556969e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7723%2C20.1911%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "45a065077b221ce2e2ac01eb3071b53f6e201276e26e1153a20d6c5de98592e3",
+      "retrieved_utc": "2026-11-14T02:03:38.875Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "lat": -45.4562,
+      "lon": 177.5885,
+      "source_url": "https://lroc.im-ldi.com/images/1168",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 1.3928604431612257e-05,
+        "mean_az_deg": 6.141475251453346e-06,
+        "max_el_deg": 1.3327365309123707e-05,
+        "mean_el_deg": 6.148497086616257e-06,
+        "max_sky_deg": 1.5750015336625043e-05,
+        "mean_sky_deg": 8.865719691356263e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 1.2289282096844545e-05,
+        "mean_az_deg": 6.062871396480201e-06,
+        "max_el_deg": 1.345612069769686e-05,
+        "mean_el_deg": 6.111619999115054e-06,
+        "max_sky_deg": 1.5172826959369151e-05,
+        "mean_sky_deg": 8.820460458320588e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "543a91b500cbc08dc7c5951995387e7286b6c16e6b0500ab10ef1a045927004e",
+      "retrieved_utc": "2026-11-14T02:03:59.803Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "lat": -45.4562,
+      "lon": 177.5885,
+      "source_url": "https://lroc.im-ldi.com/images/1168",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 7.968216380049853e-06,
+        "mean_az_deg": 5.13114276113698e-06,
+        "max_el_deg": 2.6380779360124507e-05,
+        "mean_el_deg": 1.2614564854004114e-05,
+        "max_sky_deg": 2.642722515183571e-05,
+        "mean_sky_deg": 1.372228878838942e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 5.78441091647619e-06,
+        "mean_az_deg": 3.3999423743157536e-06,
+        "max_el_deg": 1.275259788258154e-05,
+        "mean_el_deg": 9.736429068751921e-06,
+        "max_sky_deg": 1.3105290553873744e-05,
+        "mean_sky_deg": 1.0117699096367591e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "25967f060cbf2c62d50f2eb50285cf50db9795a0c4f0e717f246d3ab7b49922f",
+      "retrieved_utc": "2026-11-14T02:03:39.572Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "lat": -89.7668,
+      "lon": -171.87,
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 5.504308489889809e-06,
+        "mean_az_deg": 3.4748088710386567e-06,
+        "max_el_deg": 1.4988545779637263e-05,
+        "mean_el_deg": 7.819713308461975e-06,
+        "max_sky_deg": 1.5563851812640646e-05,
+        "mean_sky_deg": 8.884529713591768e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 4.091901757874439e-06,
+        "mean_az_deg": 3.3738972144724096e-06,
+        "max_el_deg": 1.4987674708866194e-05,
+        "mean_el_deg": 7.819468908181365e-06,
+        "max_sky_deg": 1.5172959699064658e-05,
+        "mean_sky_deg": 8.820496073510556e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-171.87%2C-89.7668%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "bebd9e693771a5c4d53fea5674d700749cacddaa1b8a6ca89d6611692e460988",
+      "retrieved_utc": "2026-11-14T02:03:39.571Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "lat": -89.7668,
+      "lon": -171.87,
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 4.036359001702294e-06,
+        "mean_az_deg": 2.9500301288656128e-06,
+        "max_el_deg": 3.390786164381154e-05,
+        "mean_el_deg": 1.6698189153008715e-05,
+        "max_sky_deg": 3.395617622494856e-05,
+        "mean_sky_deg": 1.7274968954441447e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 4.127448477220241e-06,
+        "mean_az_deg": 2.952959589220348e-06,
+        "max_el_deg": 1.2634141271838928e-05,
+        "mean_el_deg": 9.689771397728424e-06,
+        "max_sky_deg": 1.3149709236005275e-05,
+        "mean_sky_deg": 1.0149957137768765e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-171.87%2C-89.7668%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "1d180022760da24141f363a2ab6196cb0115f5c6fda5527724c848304b1d9a45",
+      "retrieved_utc": "2026-11-14T02:03:40.346Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "lat": -69.3741,
+      "lon": 32.32,
+      "source_url": "https://lroc.im-ldi.com/images/1314",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 5.566826786207457e-06,
+        "mean_az_deg": 2.1848748132439997e-06,
+        "max_el_deg": 1.5498133970837102e-05,
+        "mean_el_deg": 8.22765733750244e-06,
+        "max_sky_deg": 1.551061435234407e-05,
+        "mean_sky_deg": 8.886317054022978e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 4.229772315511582e-06,
+        "mean_az_deg": 2.0848518206154146e-06,
+        "max_el_deg": 1.4928004194558753e-05,
+        "mean_el_deg": 8.20443975161449e-06,
+        "max_sky_deg": 1.5172498173782342e-05,
+        "mean_sky_deg": 8.82050944914158e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "106a51b5e0e4c2f2dbfe6f49aef8ba58770b8fe50022b0e498b32753713529fe",
+      "retrieved_utc": "2026-11-14T02:03:40.856Z",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      }
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "lat": -69.3741,
+      "lon": 32.32,
+      "source_url": "https://lroc.im-ldi.com/images/1314",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 1.655041614867514e-06,
+        "mean_az_deg": 6.425556917251511e-07,
+        "max_el_deg": 3.332567025182698e-05,
+        "mean_el_deg": 1.6120945130529027e-05,
+        "max_sky_deg": 3.3326253684438025e-05,
+        "mean_sky_deg": 1.617262969834234e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 1.857713925801363e-06,
+        "mean_az_deg": 1.0337079968789006e-06,
+        "max_el_deg": 1.3127697897630242e-05,
+        "mean_el_deg": 1.0101170923953788e-05,
+        "max_sky_deg": 1.316862043599394e-05,
+        "mean_sky_deg": 1.0163887045153433e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "ba62b1b0efbce8a807dfbaffe60fc405043fe6cb4f87ea8d2eb20e2550c53e3a",
+      "retrieved_utc": "2026-11-14T02:03:40.855Z",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      }
+    },
+    {
+      "id": "SLIM",
+      "lat": -13.316,
+      "lon": 25.251,
+      "source_url": "https://lroc.im-ldi.com/images/1358",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 2.4134737714121002e-05,
+        "mean_az_deg": 1.0166727070015463e-05,
+        "max_el_deg": 1.0194495118298619e-05,
+        "mean_el_deg": 5.569013527879494e-06,
+        "max_sky_deg": 1.5401315002523564e-05,
+        "mean_sky_deg": 8.910137833843991e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 2.549198430301658e-05,
+        "mean_az_deg": 1.0242647133669034e-05,
+        "max_el_deg": 1.005763128603121e-05,
+        "mean_el_deg": 5.459817305407594e-06,
+        "max_sky_deg": 1.517256505853017e-05,
+        "mean_sky_deg": 8.820515039191946e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "89963a26e647a02fe10f8e7ed418f239ea02a27d525fa34eb903b8b194520f02",
+      "retrieved_utc": "2026-11-14T02:04:00.101Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "SLIM",
+      "lat": -13.316,
+      "lon": 25.251,
+      "source_url": "https://lroc.im-ldi.com/images/1358",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 2.9621078624586517e-05,
+        "mean_az_deg": 1.7485575667687354e-05,
+        "max_el_deg": 1.8189482020147807e-05,
+        "mean_el_deg": 8.914987049905441e-06,
+        "max_sky_deg": 1.894078696794026e-05,
+        "mean_sky_deg": 1.2978631933853929e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 2.7169663155746093e-05,
+        "mean_az_deg": 1.589828037625064e-05,
+        "max_el_deg": 8.844520266393374e-06,
+        "mean_el_deg": 7.021688849756009e-06,
+        "max_sky_deg": 1.3200151570213277e-05,
+        "mean_sky_deg": 1.0190420456679548e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "5ada9cbbf972c856580a1d8535f905aaa5aa4acb1dd3bec9180da6112d755cef",
+      "retrieved_utc": "2026-11-14T02:03:44.280Z",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      }
+    },
+    {
+      "id": "IM1",
+      "lat": -80.13,
+      "lon": 1.44,
+      "source_url": "https://lroc.im-ldi.com/images/1360",
+      "body": "sun",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 5.613884411559411e-06,
+        "mean_az_deg": 2.9002621597405516e-06,
+        "max_el_deg": 1.523330776542764e-05,
+        "mean_el_deg": 7.992711158903973e-06,
+        "max_sky_deg": 1.5521564330003022e-05,
+        "mean_sky_deg": 8.891438887680993e-06
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 4.3090574877169274e-06,
+        "mean_az_deg": 2.745918883861611e-06,
+        "max_el_deg": 1.5151391911771839e-05,
+        "mean_el_deg": 7.984272720116713e-06,
+        "max_sky_deg": 1.5172202839789622e-05,
+        "mean_sky_deg": 8.82046932174613e-06
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "bf1d4d383f4f23413081fd3cd48858e0759ed8d875f098538e7073d5ca461938",
+      "retrieved_utc": "2026-11-14T02:03:44.280Z",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      }
+    },
+    {
+      "id": "IM1",
+      "lat": -80.13,
+      "lon": 1.44,
+      "source_url": "https://lroc.im-ldi.com/images/1360",
+      "body": "earth",
+      "n": 121,
+      "terrain_height_m": 0,
+      "obs_height_m": 2,
+      "web_float32_vs_horizons": {
+        "max_az_deg": 3.8161457780461205e-06,
+        "mean_az_deg": 2.6547041165226687e-06,
+        "max_el_deg": 3.38489258009389e-05,
+        "mean_el_deg": 1.650706875703023e-05,
+        "max_sky_deg": 3.388794856734595e-05,
+        "mean_sky_deg": 1.6984543532821787e-05
+      },
+      "direct_topocentric_vs_horizons": {
+        "max_az_deg": 4.270656688731833e-06,
+        "mean_az_deg": 2.9738875849387504e-06,
+        "max_el_deg": 1.265912030845584e-05,
+        "mean_el_deg": 9.713027431470125e-06,
+        "max_sky_deg": 1.3160449754578364e-05,
+        "mean_sky_deg": 1.015806046384802e-05
+      },
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27399%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C0.002%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-03-02%27&STEP_SIZE=%2712+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27SECONDS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "response_sha256": "2020ac054f47d1ff6d8729f68fb8848e3501df970dffd019fd8def140dbfda66",
+      "retrieved_utc": "2026-11-14T02:03:42.813Z",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      }
+    }
+  ]
+}

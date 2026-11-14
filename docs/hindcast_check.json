@@ -1,0 +1,31 @@
+{
+ "method": "Card 21 verification: recompute 3 rows of web/data/hindcast.json independently, without\npipeline/ephem.py / Skyfield / pipeline/hindcast.py - using JPL Horizons observer tables directly.",
+ "rows": [
+  {
+   "id": "APOLLO11",
+   "check": "Sun elevation at landing",
+   "horizons_deg": 10.7032,
+   "ours_deg": 10.703,
+   "difference_deg": 0.0002,
+   "passed": true
+  },
+  {
+   "id": "APOLLO17",
+   "check": "Sun elevation at landing",
+   "horizons_deg": 13.3501,
+   "ours_deg": 13.35,
+   "difference_deg": 0.0001,
+   "passed": true
+  },
+  {
+   "id": "CHANDRAYAAN3",
+   "check": "first sunset after landing (core.js rule)",
+   "horizons_based_utc": "2023-09-04T06:17Z",
+   "ours_utc": "2023-09-04T06:17Z",
+   "difference_min": 0.0,
+   "passed": true
+  }
+ ],
+ "passed": true,
+ "generated_utc": "2026-11-14T10:32:19.587988+00:00"
+}

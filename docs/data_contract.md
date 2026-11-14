@@ -425,3 +425,21 @@ The snippet shows structure only, not computed coordinates or results. Each inte
 Every catalogue ID must appear exactly once in ids or skipped; ids match the actual <ID>.json files. The UI should use this index, treating skipped as unavailable rather than zero visibility. Tables/JSON in docs/windows_verification.md and docs/windows_verification.json record the Node edge checks. check_contract.py validates intervals, longest-gap complements, clipping, index coverage and input hashes via pipeline/check_windows.py.
 
 Section 19 validator detail: site_sha256 is recomputed by Node using exact JSON.stringify(site), not Python JSON serialization. producer_sha256 is recomputed from actual build_windows.mjs bytes. Node (or LLSN_NODE) is required when checking windows. See pipeline/test_windows_contract.py for zero-hash and missing-tile regressions; a present hterrain index with a missing required tile is an ERROR under section 14.
+
+## 20. Proposed v1.2 — `web/data/hindcast.json` real-mission hindcast (2026-11-14, Dongju, card 21) — NOT yet agreed; new section only (renumbered from 18 at merge; sections 0–19 unchanged)
+Written by `python pipeline/hindcast.py`; summary `docs/hindcast.md`; independent check `docs/hindcast_check.json`.
+```json
+{"contract": "...", "generated_utc": "...", "definitions": {"sun_elevation": "...", "sunset": "...", "ephemeris": "..."},
+ "ephemeris_check": {"file": "ephem_2019-2025_1h.npz", "rows": 61368, "sample_hours": 50, "checks": [{"site": "", "body": "", "n": 50, "max_deg": 0, "mean_deg": 0}], "max_deg": 0, "passed": true},
+ "apollo_sun_elevation": [{"id": "APOLLO11", "mission": "Apollo 11", "landing_utc": "1969-07-20T20:17:39Z", "reported_sun_el_deg": 10.65,
+     "reported_source": "https://...", "ours_sun_el_deg_catalogue_point": 10.703, "ours_sun_el_deg_alsj_point": 10.66,
+     "difference_deg_catalogue": 0.053, "difference_deg_alsj_point": 0.01, "terrain_mask_at_sun_az_deg": 0.0,
+     "catalogue_point": [0, 0], "alsj_point": [0, 0], "h0_m": 0}],
+ "robotic_sunset": [{"id": "CHANDRAYAAN3", "mission": "...", "landing_utc": "...", "landing_source": "...", "sunlit_at_landing": true,
+     "ours_first_sunset_utc": "2023-09-04T06:17Z", "reported_event": "...", "reported_utc": "ISO time | YYYY-MM-DD | null",
+     "reported_precision": "time ... | date only | null", "source_url": "https://... | null", "source_quote": "...", "source_kind": "...",
+     "difference_hours": 3.8, "difference_days": 0, "difference_text": "...", "proxy_note": "..."}],
+ "alsj_note": "...", "mock": false}
+```
+- `reported_*` are copied from the cited source only; `null` with `source_kind: "no public source"` when nothing was found (never estimated).
+- `ours_first_sunset_utc` = first minute after landing with < 50 % of the solar disc above the terrain mask (core.js sunlit rule). End-of-operations reports are a proxy for sunset, not a measurement.

@@ -1,0 +1,201 @@
+{
+ "contract": "v1.2 proposal (docs/data_contract.md section 10)",
+ "ppd": 32,
+ "grid_res_km": 0.948,
+ "projection": "equirectangular (plate carree), MOON_ME; image x: lon -180 (left edge) -> +180, y: lat +90 (top edge) -> -90; pixel edges span the whole globe",
+ "tiles": {
+  "size": 512,
+  "url": "tiles/{layer}/{z}/{x}_{y}.jpg",
+  "levels": [
+   {
+    "z": 0,
+    "width": 1024,
+    "height": 512,
+    "nx": 2,
+    "ny": 1
+   },
+   {
+    "z": 1,
+    "width": 2048,
+    "height": 1024,
+    "nx": 4,
+    "ny": 2
+   },
+   {
+    "z": 2,
+    "width": 4096,
+    "height": 2048,
+    "nx": 8,
+    "ny": 4
+   },
+   {
+    "z": 3,
+    "width": 8192,
+    "height": 4096,
+    "nx": 16,
+    "ny": 8
+   }
+  ],
+  "x0_y0": "north-west corner (lon -180, lat 90)"
+ },
+ "overview_size": [
+  4096,
+  2048
+ ],
+ "values_png": "8-bit grey, same size as the overview: value = DN / 250, DN 255 = no data",
+ "layers": [
+  {
+   "id": "sun",
+   "units": "fraction of time 0..1",
+   "definition": "mean visible fraction of the solar disk (radius 0.2666 deg)",
+   "colormap": [
+    [
+     0.0,
+     "#0a0a14"
+    ],
+    [
+     0.25,
+     "#4d3300"
+    ],
+    [
+     0.5,
+     "#c78a00"
+    ],
+    [
+     0.75,
+     "#ffd23f"
+    ],
+    [
+     1.0,
+     "#fff7cc"
+    ]
+   ],
+   "nodata_rgb": [
+    40,
+    40,
+    40
+   ],
+   "overview": "sun_overview.jpg",
+   "values_png": "sun_values.png",
+   "stats": {
+    "min": 0.0,
+    "max": 0.8790202140808105,
+    "area_mean": 0.46561914712419605
+   }
+  },
+  {
+   "id": "earth",
+   "units": "fraction of time 0..1",
+   "definition": "fraction of time the Earth centre is above the horizon mask",
+   "colormap": [
+    [
+     0.0,
+     "#0a0a14"
+    ],
+    [
+     0.25,
+     "#0b2f5c"
+    ],
+    [
+     0.5,
+     "#1f6fd1"
+    ],
+    [
+     0.75,
+     "#3fa9ff"
+    ],
+    [
+     1.0,
+     "#dff2ff"
+    ]
+   ],
+   "nodata_rgb": [
+    40,
+    40,
+    40
+   ],
+   "overview": "earth_overview.jpg",
+   "values_png": "earth_values.png",
+   "stats": {
+    "min": 0.0,
+    "max": 1.0,
+    "area_mean": 0.4631131330725815
+   }
+  },
+  {
+   "id": "both",
+   "units": "fraction of time 0..1",
+   "definition": "fraction of time sunlit (disk fraction >= 0.5) AND Earth visible",
+   "colormap": [
+    [
+     0.0,
+     "#0a0a14"
+    ],
+    [
+     0.25,
+     "#3b1d5c"
+    ],
+    [
+     0.5,
+     "#7b4dff"
+    ],
+    [
+     0.75,
+     "#b99bff"
+    ],
+    [
+     1.0,
+     "#f1eaff"
+    ]
+   ],
+   "nodata_rgb": [
+    40,
+    40,
+    40
+   ],
+   "overview": "both_overview.jpg",
+   "values_png": "both_values.png",
+   "stats": {
+    "min": 0.0,
+    "max": 0.619592010974884,
+    "area_mean": 0.22114444273633907
+   }
+  }
+ ],
+ "rows_done": 5760,
+ "rows_total": 5760,
+ "window": "whole ephemeris file",
+ "ephem": {
+  "file": "ephem.bin",
+  "step_h": 3,
+  "n_used": 14608,
+  "sha1_12": "4772740f1aed",
+  "start": "2026-01-01T00:00:00Z",
+  "mock": false
+ },
+ "dem_sources": [
+  {
+   "name": "LDEM_64",
+   "res_m": 473.8,
+   "to_km": 150.0
+  },
+  {
+   "name": "LDEM_16",
+   "res_m": 1895.2,
+   "to_km": 300.0
+  }
+ ],
+ "params": {
+  "naz": 360,
+  "near_km": 150.0,
+  "max_km": 300.0,
+  "step_frac": 0.01,
+  "n_steps": 283,
+  "obs_height_m": 2.0,
+  "sun_radius_deg": 0.2666,
+  "engine_version": 1
+ },
+ "computed_utc": "2026-11-14T12:00:04Z",
+ "exported_utc": "2026-11-14T12:01:15Z",
+ "mock": false
+}

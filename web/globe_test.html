@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moon 3D globe — test page</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { --sun: #ffd23f; --earth: #3b8cff; --bg: #05070c; --panel: #111722e6; --fg: #e8ecf3; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px system-ui, sans-serif; }
+  #app { position: fixed; inset: 0; }
+  .bar { position: fixed; top: 8px; left: 8px; right: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+         background: var(--panel); padding: 6px 8px; border-radius: 8px; z-index: 5; }
+  .bar button, .bar select { background: #222b3a; color: var(--fg); border: 1px solid #3a475c; border-radius: 6px; padding: 4px 8px; font: inherit; cursor: pointer; }
+  .bar button[aria-pressed="true"] { background: var(--sun); color: #111; border-color: var(--sun); }
+  .bar input[type=range] { flex: 1 1 180px; min-width: 120px; }
+  #when { font-family: ui-monospace, monospace; min-width: 140px; }
+  .help { position: fixed; right: 8px; bottom: 8px; background: var(--panel); padding: 6px 9px; border-radius: 6px; font-size: 12px; max-width: 320px; line-height: 1.4; }
+  .help small { color: #9aa7bb; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="bar" role="toolbar" aria-label="Globe controls">
+  <button id="whole" type="button">Whole Moon</button>
+  <button id="south" type="button">South pole</button>
+  <select id="site" aria-label="Fly to site"><option value="">Fly to site…</option></select>
+  <span>Vertical ×</span>
+  <button type="button" data-ex="1" aria-pressed="true">1</button>
+  <button type="button" data-ex="3" aria-pressed="false">3</button>
+  <button type="button" data-ex="6" aria-pressed="false">6</button>
+  <button id="play" type="button">Play</button>
+  <input id="time" type="range" min="0" max="43823" step="1" value="0" aria-label="Time (hours since 2026-01-01 UTC)">
+  <span id="when"></span>
+</div>
+<div class="help">
+  Drag: move · Right-drag / Shift-drag: rotate &amp; tilt · Wheel / pinch: zoom · Arrows (+Shift), +/−, N = north up, R = reset tilt<br>
+  <small>Terrain: LOLA LDEM_64, SLDEM2015, PGDA LOLA polar DEMs. Colour: NASA SVS CGI Moon Kit. Sun/Earth: NAIF ephemeris (ephem.bin). No atmosphere, no refraction. Sun/Earth icons are enlarged.</small>
+</div>
+<script type="module">
+import { createGlobe } from './js/globe3d.js';
+const q = new URLSearchParams(location.search);
+const T0 = Date.UTC(2026, 0, 1);
+const hour0 = q.has('t') ? (Date.parse(q.get('t')) - T0) / 3600e3 : Math.round((Date.now() - T0) / 3600e3);
+const g = await createGlobe(document.getElementById('app'), {
+  base: 'data/', hour: hour0, preserveDrawingBuffer: q.has('shot'),
+  exaggeration: +(q.get('exag') || 1),
+  view: { lat: +(q.get('lat') ?? 10), lon: +(q.get('lon') ?? 20), range: +(q.get('range') ?? 6500), tilt: +(q.get('tilt') ?? 0), heading: +(q.get('heading') ?? 0) },
+});
+window.globe = g;
+const slider = document.getElementById('time'), when = document.getElementById('when');
+const show = h => { when.textContent = new Date(T0 + h * 3600e3).toISOString().slice(0, 16).replace('T', ' ') + ' UTC'; };
+slider.value = hour0; show(hour0);
+slider.addEventListener('input', () => { g.setTime(+slider.value); show(+slider.value); });
+const sel = document.getElementById('site');
+for (const s of g.sites) sel.add(new Option(`${s.name} (${s.lat.toFixed(1)}, ${s.lon.toFixed(1)})`, s.id));
+sel.addEventListener('change', () => sel.value && g.focusSite(sel.value));
+g.on('siteclick', s => { sel.value = s.id; });
+document.getElementById('whole').onclick = () => g.flyTo({ range: 6500, tilt: 0, heading: 0 });
+document.getElementById('south').onclick = () => g.flyTo({ lat: -89.0, lon: 0, range: 420, tilt: 35, heading: 0 });
+for (const b of document.querySelectorAll('[data-ex]')) b.onclick = () => {
+  g.setExaggeration(+b.dataset.ex);
+  document.querySelectorAll('[data-ex]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+};
+document.querySelectorAll('[data-ex]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.ex === g.exaggeration)));
+let timer = 0;
+document.getElementById('play').onclick = e => {
+  if (timer) { clearInterval(timer); timer = 0; e.target.textContent = 'Play'; return; }
+  e.target.textContent = 'Pause';
+  timer = setInterval(() => { slider.value = (+slider.value + 2) % 43824; g.setTime(+slider.value); show(+slider.value); }, 50);
+};
+if (q.get('site')) g.focusSite(q.get('site'), { range: +(q.get('range') || 40), tilt: +(q.get('tilt') ?? 60), heading: +(q.get('heading') ?? 0) });
+</script>
+</body>
+</html>

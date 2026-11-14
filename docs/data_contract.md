@@ -128,3 +128,9 @@ Written by `python pipeline/global_maps.py export --ppd <P>` from the resumable 
 | `<layer>_values.png` | 8-bit grey, 4096 × 2048: value = DN / 250 (0…1), DN 255 = no data — for hover read-outs and legends (JPEG colours are lossy) |
 
 Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Earth centre above the mask), `both` (sunlit AND Earth visible). Colours: Sun = yellow ramp, Earth = blue ramp, both = violet ramp (stops in `index.json`; card 7 may change them, then re-export). No-data (rows not computed yet) = `nodata_rgb` grey.
+
+## 11. Proposed v1.2 — `web/data/horizon_index.json` (2026-11-14, Sua, integrator) — NOT yet agreed; sections 0–10 unchanged
+`{"ids": [<site IDs that have horizon/<ID>.json>], "note": "..."}`. The app fetches only the listed horizons (no 404s for missing ones);
+every other site uses a flat 0° mask labelled **"Terrain pending"** (not counted as mock). Written automatically at the end of
+`pipeline/run_horizons.py`; after merging horizon PRs run `python pipeline/run_horizons.py --index-only`.
+`check_contract.py` errors if the index and the files disagree. If the index is missing, the app tries every horizon file (old behaviour).

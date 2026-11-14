@@ -117,7 +117,7 @@ The 17 non-polar sites are unchanged: z7 66.6 m from SLDEM 59 m, which is about 
 - Tests: `pytest pipeline/tests pipeline/test_horizon.py pipeline/test_global_maps.py pipeline/test_relay_tower.py pipeline/test_run_relay.py pipeline/test_korea_links.py` → 80 passed. `python pipeline/check_contract.py` → PASS, 0 errors, 0 warnings.
 
 ## 3. Open items
-1. Done (2026-11-14 21:00 KST): rows 0–3103 (CPU, this laptop) and 3103–5759 (Jiyong; CPU 3103–3454, CUDA 3455–5759) merged and verified; exported to `web/data/gmaps_ppd32/` (32.3 MB, web tiles ≈ 1.33 km/px at z3); PGDA 400 points: Sun MAE 2.61 pp (r 0.911), Earth MAE 3.42 pp (r 0.984). See `docs/card14_split_merge.md` §6 and `docs/card14_pgda.json`. The web folder is still a proposal (contract §10 defines only `web/data/gmaps/`).
+1. Done (2026-11-14 21:00 KST): rows 0–3103 (CPU, this laptop) and 3103–5759 (Jiyong; CPU 3103–3454, CUDA 3455–5759) merged and verified; exported to `web/data/gmaps_ppd32/` (32.3 MB, web tiles ≈ 1.33 km/px at z3); PGDA 400 points: Sun MAE 2.61 pp (r 0.911), Earth MAE 3.42 pp (r 0.984). See `docs/card14_split_merge.md` §6 and `docs/card14_pgda.json`; why these differ from VALIDATION row 11: `docs/card14_pgda_analysis.md`. The web folder is still a proposal (contract §10 defines only `web/data/gmaps/`).
 2. IM1 has no 10 m / 20 m tiles. The PGDA 20 m 80° S product could add z7 there; not done.
 3. The z8 reach is 10.5–14 km minimum, not 30 km. Extending it would need wider 10 m windows and ~4× more tiles (web size).
 4. The north cap has no PGDA data in our cache (unchanged).

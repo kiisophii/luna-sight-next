@@ -1,0 +1,12 @@
+data/raw/
+data/processed/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
+*.bsp
+*.bpc
+*.tif
+*.TIF
+*.img

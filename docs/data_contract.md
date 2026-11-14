@@ -1,4 +1,4 @@
-# Data contract v1 (fixed 2026-11-14 09:40 KST)
+# Data contract v1.1 (fixed 2026-11-14 09:40 KST; v1.1 09:45 — Earth min/max fields added to validation, thanks Dongju)
 
 Every card writes or reads these files. **Do not change a format without telling the team** (post in chat + edit this file in a PR).
 Card 6 adds fake (mock) versions of every file by 09:40 (`"mock": true`), so UI work can start immediately. Real data overwrites them with the same names.
@@ -67,11 +67,14 @@ Array of objects:
   "sun":   {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 0},
   "earth": {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 0},
   "points": [{"lat": -86.1, "lon": 12.3, "ours_sun": 0.41, "pgda_sun": 0.43, "pgda_sun_min60": 0.40, "pgda_sun_max60": 0.47,
-              "ours_earth": 0.55, "pgda_earth": 0.56}],
-  "named": [{"id": "SHACKLETON_RIM", "ours_sun": 0.0, "pgda_sun": 0.0, "pgda_sun_min300": 0.0, "pgda_sun_max300": 0.0}],
+              "ours_earth": 0.55, "pgda_earth": 0.56, "pgda_earth_min60": 0.52, "pgda_earth_max60": 0.58}],
+  "named": [{"id": "SHACKLETON_RIM", "ours_sun": 0.0, "pgda_sun": 0.0, "pgda_sun_min300": 0.0, "pgda_sun_max300": 0.0,
+             "ours_earth": 0.0, "pgda_earth": 0.0, "pgda_earth_min300": 0.0, "pgda_earth_max300": 0.0}],
   "pgda_files": ["AVGVISIB_85S_060M_201608.TIF", "AVGVISIB_85S_060M_201608_EARTH.TIF"], "mock": false
 }
 ```
+
+- `within_pgda_60m_spread_pct` = share of points where our value lies within that point's PGDA min…max over ±60 m (sun uses `pgda_sun_min60/max60`, earth uses `pgda_earth_min60/max60`).
 
 ## 6. `web/js/core.js` API — owners: card 6 (+ card 1 checks the maths)
 | Function | Returns |

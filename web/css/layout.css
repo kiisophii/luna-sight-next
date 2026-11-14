@@ -439,3 +439,9 @@ body.on-about #view-app { display: none; }
   .ls-foot { padding: 16px 12px 28px; }
 }
 @media (max-width: 480px) { .ls-word { letter-spacing: .1em; font-size: 14px; } .c1-grid { grid-template-columns: 1fr; } }
+
+/* phone: wide detail tables scroll inside their own box (never the page) */
+@media (max-width: 600px) {
+  .ls-details .mini-tbl { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+.map-res { color: var(--muted); font-weight: 400; margin-right: 4px; }

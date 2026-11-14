@@ -100,3 +100,36 @@ export function getJSON(url) {
 export const siteFile = (dir, id) => getJSON(`${core.state.base}${dir}/${id}.json`).catch(() => null);
 export const validation = () => getJSON(`${core.state.base}validation.json`).catch(() => null);
 export const hindcast = () => getJSON(`${core.state.base}hindcast.json`).catch(() => null);
+
+// ------------------------------------------------------------ neighbourhood grid (local250 → local fallback)
+// Contract §22: web/data/local250/<ID>.json (41 x 41 nodes, 250 m apart, ±5 km) exists only for catalogue sites at
+// lat ≤ −75°. Everything else, or a failed/missing 250 m file, falls back to §15 web/data/local/<ID>.json
+// (21 x 21 nodes, 1 km apart, ±10 km). Same fields and metric definitions in both.
+export const LOCAL250_MAX_LAT = -75;
+const gridCache = new Map();
+/** {data, dir, spacing_m, half_km, fine, fellBack, ms} or null (no grid at all, e.g. a custom point). */
+export function localGrid(id) {
+  if (!gridCache.has(id)) gridCache.set(id, (async () => {
+    const site = core.state.sites?.find(s => s.id === id);
+    if (!site || site.user || site.group === 'custom') return null;
+    const want250 = site.lat <= LOCAL250_MAX_LAT;
+    const t0 = performance.now();
+    for (const dir of want250 ? ['local250', 'local'] : ['local']) {
+      try {
+        const r = await fetch(`${core.state.base}${dir}/${id}.json`, { cache: 'no-cache' });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data = await r.json();
+        if (!data?.grid || !Array.isArray(data.points) || data.points.length !== data.grid.rows * data.grid.cols) throw new Error('bad grid');
+        const ms = Math.round(performance.now() - t0);
+        const G = data.grid;
+        const out = { data, dir, spacing_m: G.spacing_m, half_km: -G.origin_e_m / 1000, fine: dir === 'local250', fellBack: want250 && dir !== 'local250', ms };
+        (window.__llsnGridLoads ||= []).push({ id, dir, ms, bytes: Number(r.headers.get('content-length')) || null });
+        return out;
+      } catch (e) { if (dir === 'local250') console.warn(`local250/${id}.json unavailable, using 1 km grid:`, e.message); }
+    }
+    return null;
+  })());
+  return gridCache.get(id);
+}
+/** "250 m" / "1 km" */
+export const spacingText = m => (m >= 1000 ? `${m / 1000} km` : `${m} m`);

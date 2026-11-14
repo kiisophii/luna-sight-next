@@ -464,12 +464,16 @@ def check_hterrain_polar(d):
 
 
 def check_local(data, sites):
-    """Optional section 15: complete six-region local node maps."""
+    """Optional section 15: complete local node maps (card 18 six + card 20 the rest)."""
     directory = data / 'local'
     if not directory.exists():
         return
-    from local_maps import IDS, validate_map
-    for sid in IDS:
+    from local_maps import validate_map
+    ids = sorted(p.stem for p in directory.glob('*.json'))
+    for sid in ids:
+        if sid not in sites:
+            err(f'local/{sid}.json', 'id not in sites.json')
+            continue
         where = f'local/{sid}.json'
         obj = load_json(directory / (sid+'.json'))
         if obj is None:
@@ -480,7 +484,7 @@ def check_local(data, sites):
                 raise ValueError('Centre differs from catalogue')
         except (ValueError, KeyError, TypeError) as exc:
             err(where, str(exc))
-    print('local: six 21x21 maps checked')
+    print(f'local: {len(ids)} 21x21 maps checked')
 
 
 def check_monthly(data, sites):

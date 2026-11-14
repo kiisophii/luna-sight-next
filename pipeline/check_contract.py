@@ -1,4 +1,4 @@
-"""Validate every file in web/data/ against docs/data_contract.md (v1).
+"""Validate every file in web/data/ against docs/data_contract.md (v1.1).
 
 Usage:  python pipeline/check_contract.py [--data web/data]
 Exit code 0 = all good, 1 = at least one ERROR. WARN lines do not fail the check.
@@ -233,8 +233,23 @@ def check_metrics(data, sites):
             err(w, "slope_deg must be null or 0..90")
 
 
-# ---------------------------------------------------------------- 5. validation
-def check_validation(data):
+# ---------------------------------------------------------------- 5. validation (contract v1.1)
+POINT_FRACS = ["ours_sun", "pgda_sun", "pgda_sun_min60", "pgda_sun_max60",
+               "ours_earth", "pgda_earth", "pgda_earth_min60", "pgda_earth_max60"]
+NAMED_FRACS = ["ours_sun", "pgda_sun", "pgda_sun_min300", "pgda_sun_max300",
+               "ours_earth", "pgda_earth", "pgda_earth_min300", "pgda_earth_max300"]
+
+
+def check_fracs(obj, keys, where):
+    ok = True
+    for f in keys:
+        if not is_num(obj[f]) or not 0 <= obj[f] <= 1:
+            err(where, f"{f} must be a fraction 0..1")
+            ok = False
+    return ok
+
+
+def check_validation(data, sites):
     p = data / "validation.json"
     if not p.exists():
         warn("validation.json", "file missing")
@@ -253,14 +268,40 @@ def check_validation(data):
     pts = v["points"] if isinstance(v["points"], list) else []
     if not isinstance(v["points"], list) or v["n_points"] != len(pts):
         err("validation.json", "n_points must equal len(points)")
+    inside = {"sun": 0, "earth": 0}
+    good_pts = 0
     for k, pt in enumerate(pts):
         w = f"validation.points[{k}]"
-        if need(pt, ["lat", "lon", "ours_sun", "pgda_sun", "ours_earth", "pgda_earth"], w):
-            for f in ("ours_sun", "pgda_sun", "ours_earth", "pgda_earth"):
-                if not is_num(pt[f]) or not 0 <= pt[f] <= 1:
-                    err(w, f"{f} must be a fraction 0..1")
+        if not need(pt, ["lat", "lon"] + POINT_FRACS, w):
+            continue
+        if not (is_num(pt["lat"]) and -90 <= pt["lat"] <= 90 and is_num(pt["lon"]) and -180 <= pt["lon"] <= 180):
+            err(w, "lat must be -90..90 and lon -180..180")
+        if not check_fracs(pt, POINT_FRACS, w):
+            continue
+        good_pts += 1
+        for body in ("sun", "earth"):
+            lo, hi = pt[f"pgda_{body}_min60"], pt[f"pgda_{body}_max60"]
+            if lo > hi:
+                err(w, f"pgda_{body}_min60 > pgda_{body}_max60")
+            if lo <= pt[f"ours_{body}"] <= hi:
+                inside[body] += 1
+    # v1.1: within_pgda_60m_spread_pct = % of points with ours inside that body's PGDA min60..max60
+    if good_pts and good_pts == len(pts):
+        for body in ("sun", "earth"):
+            got = v[body].get("within_pgda_60m_spread_pct") if isinstance(v[body], dict) else None
+            want = 100 * inside[body] / good_pts
+            if is_num(got) and abs(got - want) > 0.51:
+                err(f"validation.{body}", f"within_pgda_60m_spread_pct = {got}, but points give {want:.1f}")
     for k, nm in enumerate(v["named"] if isinstance(v["named"], list) else []):
-        need(nm, ["id", "ours_sun", "pgda_sun"], f"validation.named[{k}]")
+        w = f"validation.named[{k}]"
+        if not need(nm, ["id"] + NAMED_FRACS, w):
+            continue
+        if nm["id"] not in sites:
+            err(w, f"id {nm['id']} not in sites.json")
+        if check_fracs(nm, NAMED_FRACS, w):
+            for body in ("sun", "earth"):
+                if nm[f"pgda_{body}_min300"] > nm[f"pgda_{body}_max300"]:
+                    err(w, f"pgda_{body}_min300 > pgda_{body}_max300")
     if not isinstance(v["pgda_files"], list):
         err("validation.json", "pgda_files must be a list")
     check_mock_flag(v, "validation.json")
@@ -275,7 +316,7 @@ def main():
     check_ephem(data)
     check_horizons(data, sites)
     check_metrics(data, sites)
-    check_validation(data)
+    check_validation(data, sites)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

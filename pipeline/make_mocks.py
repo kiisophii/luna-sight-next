@@ -78,11 +78,18 @@ def main():
             "az_step_deg": 0.5, "mask": [0.0] * 720, "max_range_km": 0,
             "dem_sources": [], "mock": True})
 
+    # Contract v1.1 shape with one zero-valued placeholder row each (shape only, no meaning).
     write_json(DATA / "validation.json", {
-        "window": "2020-01-01..2038-08-01", "step_h": 2, "n_points": 0, "seed": 42,
-        "sun": {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 0},
-        "earth": {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 0},
-        "points": [], "named": [], "pgda_files": [], "mock": True})
+        "window": "2020-01-01..2038-08-01", "step_h": 2, "n_points": 1, "seed": 42,
+        "sun": {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 100},
+        "earth": {"mae_pp": 0, "rmse_pp": 0, "r": 0, "within_pgda_60m_spread_pct": 100},
+        "points": [{"lat": -89.9, "lon": 0.0,
+                    "ours_sun": 0.0, "pgda_sun": 0.0, "pgda_sun_min60": 0.0, "pgda_sun_max60": 0.0,
+                    "ours_earth": 0.0, "pgda_earth": 0.0, "pgda_earth_min60": 0.0, "pgda_earth_max60": 0.0}],
+        "named": [{"id": "SHACKLETON_RIM",
+                   "ours_sun": 0.0, "pgda_sun": 0.0, "pgda_sun_min300": 0.0, "pgda_sun_max300": 0.0,
+                   "ours_earth": 0.0, "pgda_earth": 0.0, "pgda_earth_min300": 0.0, "pgda_earth_max300": 0.0}],
+        "pgda_files": [], "mock": True})
     print("mock files written to", DATA)
 
 

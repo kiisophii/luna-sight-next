@@ -132,7 +132,10 @@ def fractions(vectors, lat, lon, h0_m, mask_deg, obs_height_m=hz.OBS_HEIGHT_M):
 
 
 def stats(ours, pgda, lo, hi):
-    return V._stats(ours, pgda, lo, hi)
+    """Same numbers compare() writes: ours rounded to 5 decimals exactly as stored in the JSON
+    points, so alt_definitions and the main sun/earth blocks agree (and check_contract can
+    recompute them from the points)."""
+    return V._stats([round(float(x), 5) for x in ours], pgda, lo, hi)
 
 
 def main(argv=None):

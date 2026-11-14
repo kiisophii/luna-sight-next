@@ -27,11 +27,14 @@ covers only 85–90°S.
 
 | Quantity | Definition (ours) | MAE (pp) | RMSE (pp) | r | inside PGDA ±60 m range |
 |---|---|---|---|---|---|
-| Sun (primary) | mean visible fraction of solar disc (r = 0.2666°) | 1.658 | 2.620 | 0.9846 | 58.8 % |
-| Sun (alt.) | any part of disc visible | 1.400 | 3.118 | 0.9834 | 76.3 % |
-| Sun (alt.) | ≥ 50 % of disc visible ("sunlit") | 1.668 | 2.630 | 0.9845 | 58.3 % |
-| Earth (primary) | any part of Earth disc visible (= PGDA) | 1.239 | 3.368 | 0.9896 | 82.9 % |
-| Earth (alt., app rule) | Earth centre above horizon | 3.874 | 5.092 | 0.9847 | 47.1 % |
+| Sun (primary) | mean visible fraction of solar disc (r = 0.2666°) | 1.658 | 2.620 | 0.9846 | 58.75 % |
+| Sun (alt.) | any part of disc visible | 1.400 | 3.118 | 0.9834 | 76.25 % |
+| Sun (alt.) | ≥ 50 % of disc visible ("sunlit") | 1.668 | 2.630 | 0.9845 | 58.33 % |
+| Earth (primary) | any part of Earth disc visible (= PGDA) | 1.239 | 3.368 | 0.9896 | 82.92 % |
+| Earth (alt., app rule) | Earth centre above horizon | 3.874 | 5.092 | 0.9847 | 47.08 % |
+
+All rows use the same rounding as `web/data/validation.json` (ours stored to 5 decimals), so the
+primary rows equal the JSON `sun` / `earth` blocks exactly.
 
 Mean bias (ours − PGDA): Sun −0.25 pp, Earth (any part) +1.11 pp, Earth (centre) −3.25 pp.
 DEM coverage: 0 % missing terrain samples for all 256 horizons.

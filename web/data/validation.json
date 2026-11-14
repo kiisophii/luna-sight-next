@@ -3118,7 +3118,7 @@
    "mae_pp": 1.239,
    "rmse_pp": 3.368,
    "r": 0.9896,
-   "within_pgda_60m_spread_pct": 82.5
+   "within_pgda_60m_spread_pct": 82.92
   }
  },
  "max_missing_dem_share": 0.0

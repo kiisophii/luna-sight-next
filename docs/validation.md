@@ -43,6 +43,8 @@ DEM coverage: 0 % missing terrain samples for all 256 horizons.
 - Horizons: `pipeline/horizon.py` with two PGDA LOLA windows centred on the pole fetched by
   `pipeline/fetch_polar.py` (LDEM_60S_60MPP_ADJ radius 220 km, LDEM_60S_240MPP_ADJ radius 520 km).
 - Ephemeris: `pipeline/ephem.py` validation series, `data/processed/ephem_2020-2038_2h.npz` (81,444 steps).
+  Checked against card 10's delivered file (Minchul): all 81,444 × 6 float32 values bit-identical, same
+  start / step / frame / columns, so the results above hold for card 10's file unchanged.
 - Named south-polar sites (16, from `web/data/sites.json` with lat ≤ −75°) are in `validation.json`
   `named` with the PGDA ±300 m range; peaks and rims show the largest local PGDA spread.
 

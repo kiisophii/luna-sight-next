@@ -1,0 +1,43 @@
+name: Independent task A horizons
+on:
+  push:
+    branches: [s5-a-horizons-minchul]
+    paths:
+      - 'verification/task_a/**'
+      - '.github/workflows/verify-task-a.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recompute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      LLSN_VERIFICATION_ROOT: ${{ github.workspace }}
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r verification/task_a/requirements-independent.txt
+      - name: Independent analytic and isolation controls
+        run: python -m unittest discover -s verification/task_a -p test_independent_geometry.py -v
+      - name: Recompute all 33 sites and all 720 azimuths per site
+        run: python verification/task_a/verify_horizons_independent.py --run
+      - name: Export all comparisons, including failures
+        if: always()
+        run: python verification/task_a/report_task_a.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task-a-horizons-full
+          retention-days: 7
+          path: |
+            docs/task_a_horizons/
+            data/processed/task_a/*.json
+      - name: Report completeness and numerical acceptance
+        if: always()
+        run: python -c "import json; s=json.load(open('docs/task_a_horizons/summary.json')); print(s); assert s['passed'], 'Incomplete run or reported numerical failures; inspect full artifact'"

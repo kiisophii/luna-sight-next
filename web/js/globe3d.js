@@ -20,7 +20,6 @@ const SIN_CAP = Math.sin(71.9 * D2R);   // polar caps draw only poleward of 71.9
 const MESH_STRIDE = 2;                  // geometry uses every 2nd height sample; normals use all of them
 const MAX_TILES = 420;                  // LRU cache size (meshes kept on the GPU)
 const MAX_LOADS = 6;                    // concurrent tile downloads
-const BUILDS_PER_FRAME = 3;
 
 // ------------------------------------------------------------------ small vector helpers
 const v3 = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
@@ -96,13 +95,14 @@ export async function createGlobe(container, opts = {}) {
   const listeners = {};
   const emit = (ev, data) => (listeners[ev] || []).forEach(f => f(data));
 
+  // opts.ephem (Float32Array) + opts.ephemMeta let the app share the ephemeris it already loaded (no second download)
   const [idx, ephemMeta, ephemBuf, sites] = await Promise.all([
     fetch(base + 'globe/index.json').then(r => r.json()),
-    fetch(base + 'ephem.json').then(r => r.json()),
-    fetch(base + 'ephem.bin').then(r => r.arrayBuffer()),
+    opts.ephemMeta ? Promise.resolve(opts.ephemMeta) : fetch(base + 'ephem.json').then(r => r.json()),
+    opts.ephem ? Promise.resolve(null) : fetch(base + 'ephem.bin').then(r => r.arrayBuffer()),
     opts.sites ? Promise.resolve(opts.sites) : fetch(base + 'sites.json').then(r => r.json()),
   ]);
-  const ephem = new Float32Array(ephemBuf);
+  const ephem = opts.ephem || new Float32Array(ephemBuf);
   const L = makeLayout(idx);
   const avail = new Map();                     // "kind/z/x/y" -> {min, max, fine}
   for (const [kind, arr] of Object.entries(idx.tiles)) for (const [z, x, y, mn, mx, fine] of arr) avail.set(`${kind}/${z}/${x}/${y}`, { min: mn, max: mx, fine });
@@ -124,15 +124,24 @@ export async function createGlobe(container, opts = {}) {
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
   scene.add(sun, sun.target);
-  const ambient = new THREE.AmbientLight(0x8899bb, 0.05);   // stand-in for earthshine so the night side is not pure black
+  const ambient = new THREE.AmbientLight(0x8899bb, 0.10);   // stand-in for earthshine so the night side reads as night, not as a blank screen
   scene.add(ambient);
 
-  // colour map: 2k first (fast), then 8k
+  // colour map: 2k first (0.4 MB), the 8k (6.6 MB) only once the camera comes closer than HIRES_RANGE km (lazy)
+  const HIRES_RANGE = 3000;
   const texLoader = new THREE.TextureLoader();
   const colorTex = { value: null };
+  let hiresState = 'none';                 // none | loading | done
   const setColor = t => { t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; colorTex.value = t; };
   setColor(await texLoader.loadAsync(base + 'globe/moon_color_2k.jpg'));
-  texLoader.loadAsync(base + 'globe/moon_color_8k.jpg').then(t => { const old = colorTex.value; setColor(t); old.dispose(); dirty = true; }).catch(() => {});
+  function loadHires() {
+    if (hiresState !== 'none') return;
+    hiresState = 'loading';
+    texLoader.loadAsync(base + 'globe/moon_color_8k.jpg')
+      .then(t => { const old = colorTex.value; setColor(t); old.dispose(); dirty = true; })
+      .catch(() => {})
+      .finally(() => { hiresState = 'done'; });
+  }
 
   function makeMaterial(kind, normalTex) {
     const m = new THREE.MeshLambertMaterial({ normalMap: normalTex, normalMapType: THREE.ObjectSpaceNormalMap });
@@ -344,7 +353,7 @@ uniform sampler2D uColor;`)
     lightFrustum.setFromProjectionMatrix(projView.clone().multiplyMatrices(sc.projectionMatrix, sc.matrixWorldInverse));
     const K = renderer.domElement.clientHeight / (2 * Math.tan(camera.fov * D2R / 2));
     const cam = camera.position, camD = cam.length(), camN = cam.clone().divideScalar(camD);
-    const thresh = opts.pixelError ?? 1.6;
+    const thresh = (opts.pixelError ?? 1.6) * (quality >= 3 ? 1.6 : 1);
     const out = [];
     const visit = (t) => {
       t.wanted = frameNo;
@@ -514,7 +523,7 @@ uniform sampler2D uColor;`)
     const toT = (x, y) => Math.abs(y - y0) < 0.5 ? x - x0 : Math.abs(x - x1) < 0.5 ? Wd + (y - y0) : Math.abs(y - y1) < 0.5 ? Wd + Hd + (x1 - x) : 2 * Wd + Hd + (y1 - y);
     const toP = t => { t = ((t % Ptot) + Ptot) % Ptot; if (t < Wd) return [x0 + t, y0]; t -= Wd; if (t < Hd) return [x1, y0 + t]; t -= Hd; if (t < Wd) return [x1 - t, y1]; t -= Wd; return [x0, y1 - t]; };
     const ob = avoidList().map(e => { if (!e.isConnected || e.offsetParent === null && getComputedStyle(e).position !== 'fixed') return null; const r = e.getBoundingClientRect(), o = overlay.getBoundingClientRect(); return r.width && r.height ? { x: r.left - o.left - 2, y: r.top - o.top - 2, w: r.width + 4, h: r.height + 4 } : null; }).filter(Boolean);
-    if (placed) ob.push(placed);
+    if (placed) ob.push({ x: placed.x - 4, y: placed.y - 4, w: placed.w + 8, h: placed.h + 8 });   // keep a gap between the two chips
     const t0 = toT(px, py);
     let best = null;
     for (let k = 0; k <= Ptot / 6 + 1 && !best; k++) for (const sgn of k ? [1, -1] : [1]) {
@@ -629,7 +638,7 @@ uniform sampler2D uColor;`)
   function zoom(f) { view.range = Math.max(0.05, Math.min(25000, view.range * f)); dirty = true; }
   el.addEventListener('contextmenu', e => e.preventDefault());
   el.addEventListener('pointerdown', e => {
-    el.focus(); fly = null;
+    el.focus({ preventScroll: true }); fly = null;
     el.setPointerCapture(e.pointerId);
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (ptrs.size === 2) {
@@ -658,7 +667,12 @@ uniform sampler2D uColor;`)
   });
   const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (!ptrs.size) { mode = null; last = null; emit('view', getView()); } else if (ptrs.size === 1) { const p = [...ptrs.values()][0]; last = { x: p.x, y: p.y }; mode = 'pan'; } };
   el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
-  el.addEventListener('wheel', e => { e.preventDefault(); fly = null; zoom(Math.exp(e.deltaY * (e.deltaMode ? 0.05 : 0.0015))); }, { passive: false });
+  // opts.wheelNeedsFocus: on a scrolling page the wheel zooms only after the globe was clicked / focused,
+  // otherwise the page scrolls and a 'wheelhint' event lets the page show "click the globe first".
+  el.addEventListener('wheel', e => {
+    if (opts.wheelNeedsFocus && document.activeElement !== el) { emit('wheelhint'); return; }
+    e.preventDefault(); fly = null; zoom(Math.exp(e.deltaY * (e.deltaMode ? 0.05 : 0.0015)));
+  }, { passive: false });
   el.addEventListener('keydown', e => {
     const k = e.key, step = 60;
     const rot = e.shiftKey;
@@ -677,18 +691,49 @@ uniform sampler2D uColor;`)
   }
   const ro = new ResizeObserver(resize); ro.observe(container); resize();
 
-  let raf = 0, fps = 0, fpsT = performance.now(), fpsN = 0, hudT = 0, stopped = false;
-  const stats = { fps: 0, tiles: 0, loaded: 0, triangles: 0, geometries: 0, textures: 0 };
-  function frame(now) {
+  // Pause completely while the globe is scrolled out of view (the page has panels below it).
+  let onScreen = true;
+  const io = new IntersectionObserver(es => { onScreen = es.some(e => e.isIntersecting); if (onScreen) dirty = true; });
+  io.observe(container);
+
+  // Adaptive quality: if continuous rendering runs below ~25 fps, step down
+  // (1: pixel ratio 1, 2: 2048² shadow map, 3: coarser terrain LOD).
+  let quality = 0, slowN = 0, lastRender = 0;
+  function adapt(now) {
+    const dt = now - lastRender; lastRender = now;
+    if (dt > 100 || document.hidden) return;              // not continuous (idle gap) -> no measurement
+    slowN = dt > 40 ? slowN + 1 : Math.max(0, slowN - 2);
+    if (slowN < 45 || quality >= 3) return;
+    slowN = 0; quality++;
+    if (quality === 1 && renderer.getPixelRatio() <= 1) quality = 2;
+    if (quality === 1) { renderer.setPixelRatio(1); resize(); }
+    else if (quality === 2) { sun.shadow.mapSize.set(2048, 2048); sun.shadow.map?.dispose(); sun.shadow.map = null; }
+    dirty = true; stats.quality = quality;
+  }
+
+  // Render on demand: only when something changed (camera, time, tiles, flight) plus a short tail so the HUD settles.
+  let raf = 0, fps = 0, fpsT = performance.now(), fpsN = 0, hudT = 0, stopped = false, tailUntil = 0;
+  const stats = { fps: 0, tiles: 0, loaded: 0, triangles: 0, geometries: 0, textures: 0, pending: 0, quality: 0, renders: 0 };
+  function frame(now, manual = false) {
     if (stopped) return;
     raf = requestAnimationFrame(frame);
-    frameNo++;
+    if (!onScreen && !manual) return;
+    pumpLoads();
+    // build decoded tiles within a time budget so streaming never blocks scrubbing for long
+    const tb = performance.now();
+    let built = 0;
+    while (buildQueue.length && (built === 0 || performance.now() - tb < 6)) { const t = buildQueue.shift(); if (t.state === 'decoded') { buildMesh(t); built++; } }
+    if (built) dirty = true;
+    stats.pending = queue.size + loading + buildQueue.length + (hiresState === 'loading' ? 1 : 0);
+    if (fly) dirty = true;
+    if (dirty) { tailUntil = now + 300; dirty = false; }
+    else if (now > tailUntil) { fpsN = 0; fpsT = now; return; }   // idle: nothing to draw
+    frameNo++; stats.renders++;
+    if (!manual) adapt(now);
     stepFly(now);
     placeCamera();
+    if (view.range < HIRES_RANGE) loadHires();
     select();
-    pumpLoads();
-    let built = 0;
-    while (buildQueue.length && built < BUILDS_PER_FRAME) { const t = buildQueue.shift(); if (t.state === 'decoded') { buildMesh(t); built++; } }
     if (frameNo % 30 === 0) evict();
     // overlays
     const w = el.clientWidth, h = el.clientHeight, camPos = camera.position;
@@ -726,11 +771,12 @@ uniform sampler2D uColor;`)
     if (now - fpsT > 1000) { stats.fps = fps = Math.round(fpsN * 1000 / (now - fpsT)); fpsN = 0; fpsT = now; }
     stats.tiles = selected.length; stats.loaded = [...tiles.values()].filter(t => t.state === 'ready').length;
     stats.triangles = renderer.info.render.triangles; stats.geometries = renderer.info.memory.geometries; stats.textures = renderer.info.memory.textures;
-    stats.pending = queue.size + loading + buildQueue.length;
   }
 
   function setTime(t) {
-    hour = t instanceof Date ? (t.getTime() - T0_MS) / 3600e3 : +t;
+    const hNew = t instanceof Date ? (t.getTime() - T0_MS) / 3600e3 : +t;
+    if (hNew === hour && hour !== 0) return;
+    hour = hNew;
     updateBodies(); dirty = true; emit('time', hour);
   }
   function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
@@ -746,13 +792,13 @@ uniform sampler2D uColor;`)
     async step(maxMs = 20000) {
       const t0 = performance.now(); let calm = 0;
       while (performance.now() - t0 < maxMs) {
-        frame(performance.now()); cancelAnimationFrame(raf);
+        frame(performance.now(), true); cancelAnimationFrame(raf);
         await new Promise(r => setTimeout(r, 16));
         calm = stats.pending === 0 && !fly ? calm + 1 : 0;
         if (calm >= 4) break;
       }
-      hudT = 0; view.hor = null;
-      for (let k = 0; k < 2; k++) { frame(performance.now()); cancelAnimationFrame(raf); }
+      hudT = 0; view.hor = null; dirty = true;
+      for (let k = 0; k < 2; k++) { frame(performance.now(), true); cancelAnimationFrame(raf); }
       raf = requestAnimationFrame(frame);
       return { ...stats, ms: Math.round(performance.now() - t0) };
     },
@@ -761,7 +807,7 @@ uniform sampler2D uColor;`)
     sunDirection: () => sunDir.clone(), earthPosition: () => earthPos.clone(),
     waitIdle: async (timeout = 30000) => { const t0 = performance.now(); let calm = 0; while (performance.now() - t0 < timeout) { await new Promise(r => setTimeout(r, 100)); calm = stats.pending === 0 && !fly ? calm + 1 : 0; if (calm >= 5) return true; } return false; },
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter(f => f !== fn); }; },
-    dispose() { stopped = true; cancelAnimationFrame(raf); ro.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
+    dispose() { stopped = true; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
     _internal: { scene, camera, renderer, tiles },
   };
   return api;

@@ -71,3 +71,19 @@ g.step();                              // manual frames until tiles are loaded (
 - Outside the site patches the finest terrain is 1.07 km (band) / 1.09 km (caps).
 - LDEM_64 is offset ~0.002–0.003° east of SLDEM2015 (`docs/global_terrain.md` §4); at patch borders this is < 1 tile pixel.
 - The north cap has no PGDA product in our cache, so it stays at LDEM_64 resolution.
+
+## 6. Integration into the live page (branch `s4-globe-integrate-sua`, 2026-11-14)
+- `index.html`: section `#llsn-globe` is the first panel; then picker → cards → horizon panorama → analysis window → filters (main's order).
+  Under the globe a mirrored time strip (Play + slider + selected time) drives the same `LLSN.setTime` as the analysis window.
+- `web/js/globe_app.js` (first entry of `modules.json`) imports `globe3d.js` dynamically, so if WebGL or the three.js CDN fails
+  the rest of the page still works and the panel shows a message.
+  - `llsn:time` → `globe.setTime(i)` (Sun light, shadows, Sun/Earth markers); picker / card click or `llsn:focus` → `focusSite` (one flight, deduplicated);
+    globe marker click → `LLSN.pick(id)` (comparison card + focus → horizon panorama + period table); `llsn:lang` → `setLang`.
+  - Buttons: Whole Moon, South pole, Focused site, +/−. `?gv=lat,lon,range,tilt,heading` sets the first view (read only). `?tv=1` enlarges the stage and labels.
+  - Chips avoid the zoom buttons, the progress pill, the hint, the site markers and the note/HUD (1,852 checks in TV mode, 0 overlaps).
+- `globe3d.js` performance changes: render on demand (idle = no GPU work), pause while scrolled off-screen (IntersectionObserver),
+  tile mesh builds limited to ~6 ms per frame, 8k colour map loaded only below 3,000 km range, adaptive quality below ~25 fps
+  (pixel ratio 1 → 2048² shadows → coarser LOD), `opts.ephem/ephemMeta/sites` share the app's data (no second download),
+  `wheelNeedsFocus` (the page scrolls until the globe is clicked; a hint explains it). Night side ambient 0.05 → 0.10 (display only).
+- `app.js`: slider input applied once per animation frame; "until sunset / Earthset" results reused while the selected time stays
+  before the cached flip (same values to the displayed precision, 600 checks). App-side scrub cost 13.4 ms → 0.1 ms median.

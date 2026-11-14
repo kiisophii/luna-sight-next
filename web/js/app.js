@@ -156,6 +156,20 @@ function setDur(node, h) {
   node.textContent = txt ?? t('notInWindow');
 }
 
+/** core.untilX scans hour by hour to the next flip (up to 5 years when Earth never sets). While the selected time
+ *  stays before that flip and in the same state, the flip time is unchanged, so remember its absolute hour per site
+ *  and kind. Exact: core.js bisects inside the hour of the flip independently of the start time. */
+const flipCache = new WeakMap();        // site object -> Map(kind -> { from, at })  (at = Infinity for "none")
+function untilCached(fn, kind, s, i) {
+  let m = flipCache.get(s); if (!m) flipCache.set(s, m = new Map());
+  const c = m.get(kind);
+  if (c && i >= c.from && i < c.at - 1e-6) return c.at === Infinity ? null : c.at - i;
+  const h = fn(s, i);
+  if (h === null) m.set(kind, { from: i, at: Infinity });
+  else if (h > 0) m.set(kind, { from: i, at: i + h });
+  return h;
+}
+
 /** Instant values at the selected time (cheap; runs every animation frame for ≤ 3 sites). */
 function renderInstant() {
   $('#time-label').textContent = fmtUTC(now);
@@ -168,9 +182,9 @@ function renderInstant() {
     el.querySelector('.v-sunel').textContent = fmtDeg(sun.el);
     el.querySelector('.v-sunaz').textContent = `${t('az')} ${sun.az.toFixed(0)}°`;
     el.querySelector('.v-sunlbl').textContent = t(lit ? 'untilSunset' : 'untilSunrise');
-    setDur(el.querySelector('.v-sunt'), lit ? core.untilSunset(s, now) : core.untilSunrise(s, now));
+    setDur(el.querySelector('.v-sunt'), lit ? untilCached(core.untilSunset, 'set', s, now) : untilCached(core.untilSunrise, 'rise', s, now));
     el.querySelector('.v-earthlbl').textContent = t(eUp ? 'untilEarthset' : 'untilEarthrise');
-    setDur(el.querySelector('.v-eartht'), eUp ? core.untilEarthset(s, now) : core.untilEarthrise(s, now));
+    setDur(el.querySelector('.v-eartht'), eUp ? untilCached(core.untilEarthset, 'eset', s, now) : untilCached(core.untilEarthrise, 'erise', s, now));
     const sc = el.querySelector('.v-sunchip'), ec = el.querySelector('.v-earthchip');
     sc.textContent = (lit ? '☀ ' : '◐ ') + t(lit ? 'sunlit' : 'dark'); sc.className = 'chip v-sunchip ' + (lit ? 'on sun' : 'off');
     ec.textContent = (eUp ? '● ' : '○ ') + t(eUp ? 'earthUp' : 'earthDown'); ec.className = 'chip v-earthchip ' + (eUp ? 'on earth' : 'off');
@@ -228,6 +242,13 @@ export function setTime(i) {
   if (document.activeElement !== $('#t-tod')) $('#t-tod').value = `${String(hh + (mm === 60 ? 1 : 0)).padStart(2, '0')}:${String(mm % 60).padStart(2, '0')}`;
   renderInstant();
   window.dispatchEvent(new CustomEvent('llsn:time', { detail: { i: now, date: core.hourToDate(now) } }));
+}
+
+/** Slider drags fire 'input' several times per frame: apply only the latest value once per animation frame. */
+let pendingTime = null;
+function setTimeSoon(i) {
+  if (pendingTime === null) requestAnimationFrame(() => { const x = pendingTime; pendingTime = null; setTime(x); });
+  pendingTime = i;
 }
 
 function setPlaying(on) {
@@ -300,6 +321,8 @@ async function main() {
 
   window.LLSN.now = () => now;
   window.LLSN.setTime = setTime;
+  window.LLSN.setTimeSoon = setTimeSoon;
+  window.LLSN.pick = pick;                                 // globe marker click -> comparison + focus (globe_app.js)
   window.LLSN.focus = focus0;
   fillGroups();
   now = t0;
@@ -325,7 +348,7 @@ async function main() {
   window.addEventListener('llsn:filter', () => { renderPicker(); renderPeriodCards(); });
 
   // time + period controls
-  $('#slider').addEventListener('input', e => setTime(Number(e.target.value)));
+  $('#slider').addEventListener('input', e => setTimeSoon(Number(e.target.value)));
   $('#t-date').addEventListener('change', e => {
     if (!e.target.value) return;
     const d = core.dateToHour(new Date(e.target.value + 'T00:00:00Z'));

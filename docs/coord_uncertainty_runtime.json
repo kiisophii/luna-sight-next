@@ -1,0 +1,110 @@
+{
+ "note": "Clean run after deleting all checkpoints, Sua PC (16 logical cores), 14 workers; excludes the SLDEM download (~10 min, 16 windows at 151 km).",
+ "jobs": 14,
+ "wall_s": 284.7,
+ "nodes": 2057,
+ "runs": [
+  {
+   "id": "APOLLO11",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.2
+  },
+  {
+   "id": "APOLLO12",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.6
+  },
+  {
+   "id": "APOLLO14",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.4
+  },
+  {
+   "id": "APOLLO15",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.8
+  },
+  {
+   "id": "APOLLO16",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.2
+  },
+  {
+   "id": "APOLLO17",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 17.4
+  },
+  {
+   "id": "LUNA16",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.7
+  },
+  {
+   "id": "LUNA20",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.7
+  },
+  {
+   "id": "LUNA24",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 15.8
+  },
+  {
+   "id": "CHANGE3",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 18.7
+  },
+  {
+   "id": "CHANGE4",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 18.5
+  },
+  {
+   "id": "CHANGE5",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.9
+  },
+  {
+   "id": "CHANGE6",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 17.2
+  },
+  {
+   "id": "CHANDRAYAAN3",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 15.2
+  },
+  {
+   "id": "SLIM",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 15.5
+  },
+  {
+   "id": "BLUE_GHOST1",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 17.2
+  },
+  {
+   "id": "IM3_REINER_GAMMA",
+   "computed": 121,
+   "resumed": 0,
+   "elapsed_s": 16.8
+  }
+ ]
+}

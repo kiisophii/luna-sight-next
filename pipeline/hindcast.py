@@ -238,7 +238,7 @@ def main(argv=None):
         robotic.append(row)
         print(f"  {r['mission']}: sunlit at landing {state0}, our sunset {row['ours_first_sunset_utc']} | {row['difference_text']}", flush=True)
 
-    out = dict(contract="docs/data_contract.md section 18 (proposal)", generated_utc=datetime.now(UTC).isoformat(),
+    out = dict(contract="docs/data_contract.md section 19 (proposal)", generated_utc=datetime.now(UTC).isoformat(),
                definitions=dict(sun_elevation="topocentric apparent Sun centre elevation, observer R + h0 + 2 m, no refraction",
                                 sunset="first minute after landing when < 50 % of the solar disc is above the real terrain mask (core.js sunlit rule)",
                                 ephemeris="card 1 pipeline (NAIF DE440s + MOON_ME DE421 via Skyfield)"),

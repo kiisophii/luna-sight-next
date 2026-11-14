@@ -1,5 +1,5 @@
 {
- "contract": "docs/data_contract.md section 18 (proposal)",
+ "contract": "docs/data_contract.md section 19 (proposal)",
  "generated_utc": "2026-11-14T10:31:51.563369+00:00",
  "definitions": {
   "sun_elevation": "topocentric apparent Sun centre elevation, observer R + h0 + 2 m, no refraction",

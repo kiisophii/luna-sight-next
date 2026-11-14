@@ -510,10 +510,17 @@ async function main() {
   loadExtraModules();
 }
 
+// Entry modules get ?v=<version.json> so a browser never keeps a stale copy after a deploy (module caches are per URL).
+// Modules that other modules also import statically (compare_view.js, trust.js) keep their plain URL: a second URL
+// would create a second instance with its own listeners.
+const SHARED_MODULES = new Set(['compare_view.js', 'trust.js']);
 async function loadExtraModules() {
   try {
-    const list = await (await fetch('js/modules.json', { cache: 'no-cache' })).json();
-    for (const m of list) import(`./${m}`).catch(e => console.error('module failed:', m, e));
+    const [list, ver] = await Promise.all([
+      fetch('js/modules.json', { cache: 'no-cache' }).then(r => r.json()),
+      fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => j.v).catch(() => ''),
+    ]);
+    for (const m of list) import(`./${m}${ver && !SHARED_MODULES.has(m) ? `?v=${ver}` : ''}`).catch(e => console.error('module failed:', m, e));
   } catch (e) { /* no extra modules */ }
 }
 

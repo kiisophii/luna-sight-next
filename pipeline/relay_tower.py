@@ -62,6 +62,7 @@ DEFAULTS = {
     "earth_el_cap_deg": 90.0,  # retained for compatibility; v2 does not bypass terrain above a cap
     "slope_box_m": 250.0, "max_slope_deg": 15.0,  # buildability
     "n_towers": 3, "sun_shortlist": 12,
+    "coverage_side_km": 0.0, "coverage_spacing_m": 250.0,
 }
 
 
@@ -434,6 +435,48 @@ def input_identity(chain, eph):
             "n": eph.n, "mock": eph.mock}
 
 
+def coverage_map(site, chain, best, p):
+    """Cell-centred local antenna reach; Earth visibility and receiver power are separate."""
+    side = p["coverage_side_km"]*1000
+    spacing = p["coverage_spacing_m"]
+    count = int(round(side/spacing))
+    if count < 1 or not np.isclose(count*spacing, side):
+        raise ValueError("coverage side must be a positive multiple of grid spacing")
+    offsets = -side/2 + (np.arange(count)+.5)*spacing
+    ee, nn = np.meshgrid(offsets, offsets)
+    lat, lon = local_offsets_to_latlon(site["lat"], site["lon"], ee.ravel(), nn.ravel())
+    ground = hz.sample_chain(chain, lat, lon, np.hypot(ee, nn).ravel()/1000)
+    valid = np.isfinite(ground)
+    cell_area = (spacing/1000)**2
+    layers = {}
+    for t in best:
+        # Use original DEM at the tower rather than its rounded JSON ground height.
+        ground_t = hz.sample_chain(chain, np.array([t["lat"]]), np.array([t["lon"]]),
+                                  np.array([t.get("dist_m", 0.)/1000]))[0]
+        pr = link_profiles(chain, t["lat"], t["lon"], ground_t+t["height_m"],
+                           lat[valid], lon[valid], (ground[valid]+LANDER_ANT_M)[:, None],
+                           bands=p["bands"], step_m=p["los_step_m"])
+        masks = {"los": link_ok(pr, "los")[:, 0]}
+        masks.update({f"fresnel60_{b}": link_ok(pr, f"fresnel60_{b}")[:, 0] for b in p["bands"]})
+        row = {"tower_idx": t["idx"], "tower_lat": t["lat"], "tower_lon": t["lon"],
+               "tower_height_m": t["height_m"]}
+        for name, values in masks.items():
+            values = values & (pr["dist_m"] <= p["radius_km"]*1000)
+            full = np.zeros(lat.size, np.uint8)
+            full[valid] = values
+            row[name] = full.tolist()
+            row[name+"_area_km2"] = round(float(full.sum()*cell_area), 6)
+        layers[f"{t['height_m']:g}"] = row
+    return {"rows": count, "cols": count, "spacing_m": spacing,
+            "origin_e_m": -side/2, "origin_n_m": -side/2,
+            "order": "row-major; rows south to north; cell centres are origin+(index+0.5)*spacing",
+            "receiver_height_m": LANDER_ANT_M, "max_link_range_km": p["radius_km"],
+            "area_km2": (side/1000)**2, "valid_area_km2": round(float(valid.sum()*cell_area), 6),
+            "valid_terrain": valid.astype(int).tolist(), "per_height": layers,
+            "meaning": "Local geometric reach of each best single tower, NOT end-to-end availability. "
+                       "No receiver sunlight, interference, antenna gain or station scheduling constraint."}
+
+
 def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
     """Full relay-tower analysis for one site. Returns the contract v1.2 section-10 object."""
     p = dict(DEFAULTS, **(params or {}))
@@ -571,18 +614,22 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
 
     log(f"  done in {time.time() - t0:.0f} s; best single-tower link "
         + ", ".join(f"{b['height_m']:g} m: {b['link_frac']:.1%}" for b in best))
-    return {
+    result = {
         "id": site["id"], "lat": lat0, "lon": lon0, "h0_m": round(h0, 2), "lander_antenna_m": LANDER_ANT_M,
         "window": {"start": eph.start, "step_h": 1, "n": int(N)},
         "params": {k: p[k] for k in ("radius_km", "spacing_m", "heights_m", "link_rule", "los_step_m",
                                      "min_km", "max_km", "n_steps", "earth_el_cap_deg", "slope_box_m",
-                                     "max_slope_deg", "n_towers")} | {
+                                     "max_slope_deg", "n_towers", "coverage_side_km", "coverage_spacing_m")} | {
             "bands_ghz": {b: f / 1e9 for b, f in bands.items()}, "engine_version": ENGINE_VERSION},
         "dem_sources": [{"name": s.name, "res_m": round(float(s.res_m), 1)} for s, _ in chain],
         "lander": {"earth_frac": round(float(direct.mean()), 4),
                    "longest_no_earth_h": int(longest_run_fast(~direct))},
         "candidates": cand,
         "best": best,
+        "height_curve": [{"height_m": b["height_m"], "single_link_frac": b["link_frac"],
+                          "network_link_frac": n["link_frac_by_n"][-1],
+                          "single_gain_pp": round(100*(b["link_frac"]-direct.mean()), 2)}
+                         for b, n in zip(best, networks)],
         "networks": networks,
         "link_budget": budget,
         "inputs_mock": {"ephem": bool(eph.mock), "site_coords": bool(site.get("mock", False))},
@@ -590,6 +637,9 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
         "mock": bool(eph.mock),
         "concept": "BEACON (NASA GRC, NTRS 20240014584): 15 m deployed boom, users up to ~10 km",
     }
+    if p["coverage_side_km"] > 0:
+        result["coverage"] = coverage_map(site, chain_r, best, p)
+    return result
 
 
 def _tower_record(i, j, h, E, Nn, clat, clon, ground, slope, prof, lander_link, tower_earth, link_frac,
@@ -612,6 +662,8 @@ def _greedy_network(j, h, p, chain_r, lat0, lon0, h0, E, Nn, clat, clon, ground,
     covered = direct_p.copy()
     reach = lander_link[:, j] & buildable           # reachable from the lander (directly or by hops)
     parent = np.where(reach, -1, -2)                # -1 = lander, k = tower k, -2 = unreachable
+    parent_clear = prof["min_clear_m"][:, j].copy()
+    parent_fr = {b: prof["fresnel"][b][:, j].copy() for b in bands}
     towers, fracs = [], [round(float(direct.mean()), 4)]
     for k in range(int(p["n_towers"])):
         cand = np.flatnonzero(reach)
@@ -626,6 +678,8 @@ def _greedy_network(j, h, p, chain_r, lat0, lon0, h0, E, Nn, clat, clon, ground,
         rec = _tower_record(i, j, h, E, Nn, clat, clon, ground, slope, prof, lander_link, tower_earth,
                             link_frac, bands, "LANDER" if parent[i] == -1 else int(parent[i]))
         rec["gain_pp"] = round(100.0 * g / N, 2)
+        rec["parent_link"] = {"min_clear_m": round(float(min(parent_clear[i], 1e6)), 2),
+                              "fresnel": {b: round(float(min(parent_fr[b][i], 999)), 3) for b in bands}}
         towers.append(rec)
         fracs.append(round(float(count_bits(covered) / N), 4))
         reach[i] = False                            # placed
@@ -638,6 +692,9 @@ def _greedy_network(j, h, p, chain_r, lat0, lon0, h0, E, Nn, clat, clon, ground,
             ok = link_ok(pr, rule)[:, 0]
             parent[others[ok]] = k
             reach[others[ok]] = True
+            parent_clear[others[ok]] = pr["min_clear_m"][ok, 0]
+            for b in bands:
+                parent_fr[b][others[ok]] = pr["fresnel"][b][ok, 0]
     bits = np.unpackbits(covered)[:N].astype(bool)
     codes = np.where(direct, 1, np.where(bits, 2, 0))
     return {"height_m": float(h), "towers": towers, "link_frac_by_n": fracs,
@@ -671,6 +728,22 @@ def validate_relay(obj):
         assert all(f[i] <= f[i + 1] + 1e-9 for i in range(len(f) - 1))
         assert 0 <= f[0] <= 1 and len(f) == len(net["towers"]) + 1
     assert obj["link_budget"]["estimate"] is True
+    if "height_curve" in obj:
+        assert len(obj["height_curve"]) == len(hs)
+        for row, best, net in zip(obj["height_curve"], obj["best"], obj["networks"]):
+            assert row["height_m"] == best["height_m"] == net["height_m"]
+            assert row["single_link_frac"] == best["link_frac"]
+            assert row["network_link_frac"] == net["link_frac_by_n"][-1]
+    if "coverage" in obj:
+        m = obj["coverage"]
+        size = m["rows"]*m["cols"]
+        assert len(m["valid_terrain"]) == size
+        assert sorted(m["per_height"]) == sorted(hs)
+        for layer in m["per_height"].values():
+            for key in ["los"] + [f"fresnel60_{b}" for b in obj["params"]["bands_ghz"]]:
+                assert len(layer[key]) == size
+                assert all(v in (0, 1) for v in layer[key])
+                assert abs(layer[key+"_area_km2"]-sum(layer[key])*(m["spacing_m"]/1000)**2) < 1e-5
 
 
 # ====================================================================== CLI

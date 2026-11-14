@@ -47,6 +47,7 @@ def same_run(path, site, params, identity):
 
 def run_one(site, raw, web_data, work, params, force):
     t0 = time.time()
+    params = dict(params, coverage_side_km=15. if site["id"].startswith("ARTEMIS_") else 0.)
     try:
         chain = rh.build_chain(site, raw, rt.DEFAULTS["max_km"])
     except rh.MissingDEM as e:
@@ -57,7 +58,8 @@ def run_one(site, raw, web_data, work, params, force):
         return site["id"], "PENDING", "ephemeris is mock"
     if not force and same_run(out, site, params, rt.input_identity(chain, eph)):
         return site["id"], "OK", "up to date (resume)"
-    obj = rt.compute_relay(site, chain, eph, params, work_dir=work / site["id"], log=lambda *a: None)
+    obj = rt.compute_relay(site, chain, eph, params, work_dir=work / site["id"],
+                           log=lambda msg: print(f"[{site['id']}] {msg}", flush=True))
     rt.validate_relay(obj)
     hz.write_json_atomic(out, obj)
     return site["id"], "OK", f"computed in {time.time() - t0:.0f} s"

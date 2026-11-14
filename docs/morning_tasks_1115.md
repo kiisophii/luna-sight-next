@@ -17,6 +17,15 @@
 | F | 남극 사용자 지점 지형 +0.2–2.4 %p 오차 줄이기 (더 고운 타일) | 수아 | 3시간+ |
 | M | 지표 33곳 **전부** 독립 재계산 (일조·지구·둘 다·최장 어둠, ephem + 지평선) | — | 1–2시간 |
 | N | 중계탑 33곳 **전부** 독립 재계산 (탑→착륙지 가시선, Fresnel, 탑 지구 가시) | 지용 | 3시간+ |
+| O | 948 m 달 전체 지도: 남극 75–90° 구역 셀 **전부** 독립 재계산 (지금 샘플) | 소윤 | 3시간+ |
+| P | 해·지구 보이는 구간(windows) **33곳 전부** (지금 3곳) | 만든 사람 | 1시간 |
+| Q | 월별 계절(monthly) **33곳 × 60개월 전부** (지금 3×3) | 만든 사람 | 1시간 |
+| R | 실제 임무 검증: 착륙한 임무 **전부**(창어 3·4·5, SLIM, IM-1, Blue Ghost, 찬드라얀 3 등) 착륙 시각 태양 고도 vs Horizons (지금 아폴로 2개) | 동주 | 1–2시간 |
+| S | 착륙지 좌표 **33곳 전부** 원 출처에서 다시 읽기 + 이름이 그 장소가 맞는지 (섀클턴 교훈, 지금 5곳) | 만든 사람 | 1시간 |
+| T | 3.8 km 지도 원본 float32 격자 공개 + 다른 사람이 원본끼리 비교 | 공개=만든 사람, 비교=다른 사람 | 1시간 |
+| U | 북극 75–90° N 사용자 지점 검증 (지금 '미검증' 배지) — PGDA 북극 DEM 30점 | 수아 | 2시간+ |
+| V | 지구 가시 기준을 PGDA와 같게(any-part) 바꿔 다시 비교 → 3.87 %p 차이가 정말 정의 차이인지 증명 | 만든 사람 | 1–2시간 |
+| W | 민감도 33곳 전부: 관측 높이 0/2/10 m, 200 m 안쪽 지형 포함/제외 → 한계 숫자 근거 | — | 2시간+ |
 
 **A 프롬프트**: Pick all 33 sites in `web/data/horizon/` (not ones I produced). For each, choose 10 random azimuths and recompute the horizon elevation by brute force directly from the DEM listed in `docs/DATASETS`/the horizon file header (same observer height 2 m, curvature, near-field rule), with my own code, no imports from `pipeline/`. Report a table site × azimuth: stored vs mine, difference. Criterion ≤ 0.05°. Then recompute sun_frac for those 10 sites from ephem + my horizons; criterion ≤ 1 %p. Add a row to `docs/verification_ledger.md` (row `horizon/`) with my name and numbers.
 
@@ -33,6 +42,8 @@
 **M 프롬프트**: For all 33 sites, recompute sun_frac, earth_frac, both_frac and longest_dark_h for the app's default window with my own loop over `web/data/ephem.bin` + `web/data/horizon/` (exact `web/js/core.js` definitions, no imports from the repo). Compare with `web/data/metrics/`; criterion ≤ 0.1 %p and ≤ 1 h. Full table in the PR, add a ledger row.
 
 **N 프롬프트**: For all 33 sites in `web/data/relay/`, recompute the best tower's tower→lander line of sight, first-Fresnel clearance and tower Earth visibility from the DEM with my own code at hourly steps, and the resulting link fractions. Criterion ≤ 1 %p. Full table in the PR, update the relay ledger row.
+
+**O–W 공통 프롬프트**: Read the row for this product in `docs/verification_ledger.md` and its producing script. Recompute it in FULL (every site / cell / interval listed in the task) with my own code, no imports from `pipeline/` or `web/js/` (definitions copied from `web/js/core.js` and `docs/data_contract.md`). Report a full table, max/median difference, the criterion I used (≤ 0.1 %p for fractions, ≤ 0.05° for angles, ≤ 2 min for interval edges, ≤ 1 h for durations), and every row that fails — do not drop or round away failures. Update the ledger row with my name, numbers and commit. Task-specific: R = landing times and coordinates from the cited mission sources, Sun elevation from JPL Horizons API at the landing coordinates; S = open each `source_url`, quote the coordinate text, and say whether the named place (rim / ridge / crater floor) is really at that point; U = compare the browser global path north of 75° N with a horizon built from the PGDA north-polar DEM at 30 random points (same criterion as VALIDATION row 14); V = recompute the app's Earth fraction with the any-part definition and compare with PGDA AVGVISIB at the same points; W = rerun the 33 sites' metrics for observer height 0, 2, 10 m and with/without the < 200 m near field, report the change per site.
 
 ## 제출물 (사람이 해야 하는 일)
 

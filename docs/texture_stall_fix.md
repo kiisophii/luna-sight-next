@@ -40,7 +40,7 @@ Diagnostic evidence and exact timing wrapper: [diagnostic.json](texture_stall/di
 ## Measurement protocol
 
 - Base module: main `64e3bee`; fixed module and worker SHA256 are recorded per result file. All other local app/data assets are identical for each comparison.
-- Latest main `7e7964e` was incorporated before the PR; its changes since the measured base are documentation, offline validation scripts and version 25. Globe modules, index.html, core.js and globe data are unchanged, so the measured application paths remain the same.
+- Main `7e7964e` was incorporated before the PR, followed by `115d285` to include the team's submission/documentation updates and resolve the appended SI-log conflict. Since the measured base, these are documentation, offline validation scripts and version metadata changes. Globe modules, index.html, core.js and globe data are unchanged, so the measured application paths remain the same.
 - Windows desktop: Ryzen 5 5600X / 32 GB / RTX 5060; installed Chrome, **headed**, hardware ANGLE D3D11 (full browser/GPU metadata in raw results).
 - Desktop: 1920×1080, DPR 1, native CPU/network. Laptop profile: 1366×768, DPR 1, **4× main-thread CPU slowdown**, 10 Mbps download / 1 Mbps upload / 70 ms latency.
 - The worker CPU and physical GPU are **not laptop hardware emulations**. Chrome does not support worker-target CPU throttling. Page network emulation does apply to worker fetches: [isolated check](texture_stall/network_check.json) measured the same 6,574,251-byte JPEG at 32 ms native versus 5,349.8 ms limited. Worker target network events and server payload accounting are included; a page-only CDP counter misses worker bytes.

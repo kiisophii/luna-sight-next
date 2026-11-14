@@ -36,4 +36,4 @@ Image orientation/colour/mipmaps and full resolution; cancellation during downlo
 - [x] Keep raw results, runnable benchmark, limitations and source references in docs/texture_stall/ and docs/texture_stall_fix.md.
 - [x] Independent read-only review found no production blockers; fixed worker-download accounting and documented main-thread-only CPU throttle. Incorporated main 7e7964e; relevant runtime/data unchanged. Browser correctness and JS syntax checks pass; data/index diff empty.
 - [x] Append SI log and final staged checks. Full unchanged contract passes with Git LF sources; raw Windows CRLF provenance mismatch documented, no checkout/data normalization.
-- [ ] Commit and open PR with measurement table. Do not merge.
+- [x] Commit and open [PR #52](https://github.com/kiisophii/lunar-landing-site-navigator/pull/52) with measurement table. PR remains unmerged for Sua. Main 115d285 incorporated, preserving all incoming SI rows plus this task's row; no measured runtime/data change.

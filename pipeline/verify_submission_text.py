@@ -39,16 +39,16 @@ CITES = [
     ("N9", "docs/date_slip.md", 9, "At 26 of 33 sites, a 14-day slip can turn the first two weeks on the surface from daylight into night: the longest darkness grows by up to 336 h."),
     ("N10 old", "docs/custom_horizon_validation.json", 455, '"catalogue_sun_pct": 8.7'),
     ("N10 old step", "docs/custom_horizon_validation.json", 16, "2 h step"),
-    ("N10 new", "docs/VALIDATION.md", 65, "Sun 0.848"),
+    ("N10 new", "docs/VALIDATION.md", 67, "Sun 0.848"),
     ("N11", "docs/relay_impact.md", 20, "| ARTEMIS_CABEUS_B | 29.64% / 489 h | 76.11% / 193 h | 85.73% / 130 h |"),
     ("N12", "docs/relay_impact.md", 9, "| All 33 catalogue sites | 7 | 3 | 3 | 3 | 3 |"),
     ("N13 share", "docs/korea_links.md", 46, "KDSA alone covers 0.3–0.4 % of"),
     ("N13 hours", "docs/korea_links.md", 47, "123 h in 5 years"),
-    ("N14", "docs/VALIDATION.md", 60, "MAE 1.66 pp, RMSE 2.62 pp, r 0.985"),
-    ("N15", "docs/VALIDATION.md", 87, "within 0.0005° in over 37,000 comparisons"),
-    ("N15 r1", "docs/VALIDATION.md", 53, "1,452 comparisons; sky-angle max 0.000016°; web float32 via `core.js` max az 0.00044°"),
-    ("N15 r2", "docs/VALIDATION.md", 54, "1,452 comparisons, max 0.000034°"),
-    ("N15 r3", "docs/VALIDATION.md", 55, "34,296 comparisons, max 0.000041°"),
+    ("N14", "docs/VALIDATION.md", 62, "MAE 1.66 pp, RMSE 2.62 pp, r 0.985"),
+    ("N15", "docs/VALIDATION.md", 89, "within 0.0005° in over 37,000 comparisons"),
+    ("N15 r1", "docs/VALIDATION.md", 55, "1,452 comparisons; sky-angle max 0.000016°; web float32 via `core.js` max az 0.00044°"),
+    ("N15 r2", "docs/VALIDATION.md", 56, "1,452 comparisons, max 0.000034°"),
+    ("N15 r3", "docs/VALIDATION.md", 57, "34,296 comparisons, max 0.000041°"),
     ("N16", "docs/hindcast.md", 7, "to within **0.05°** at our catalogue points"),
     ("N17", "docs/ui_data_audit.md", 17, "**5,520 values checked (33 sites × 2 times × 10 panels). 0 numeric mismatches.**"),
     ("Artemis III", "docs/sites.md", 17, "candidate-region list"),
@@ -123,7 +123,7 @@ ok((v["sun"]["mae_pp"], v["sun"]["r"], v["n_points"]) == (1.658, 0.9846, 240), "
 # N15: card10 JSON
 ok(1452 + 1452 + 34296 > 37000 and max(0.000016, 0.00044, 0.000034, 0.000041) < 0.0005, "N15 second: rows 1-3 sum to 37,200 comparisons, all maxima < 0.0005°")
 # N16: VALIDATION row 21
-ok("Apollo max Δ 0.05°" in line("docs/VALIDATION.md", 73), "N16 second: VALIDATION.md:73")
+ok("Apollo max Δ 0.05°" in line("docs/VALIDATION.md", 75), "N16 second: VALIDATION.md:75")
 # N17: findings.json
 f = json.load(open("docs/ui_audit/findings.json", encoding="utf-8"))
 ok(f.get("checks") == 5520, f"N17 second: ui_audit/findings.json checks = {f.get('checks')}")

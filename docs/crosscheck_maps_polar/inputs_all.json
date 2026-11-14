@@ -1,0 +1,274 @@
+{
+  "commit": "d70d69785c08a6cb924fdc686dea7c33c162938f",
+  "files": {
+    "web\\data\\gmaps\\index.json": {
+      "sha256": "b372643301832f13bd9ee3d2d54226f2826d5aa78b37d0e7b0734d0536a22c97",
+      "bytes": 3399
+    },
+    "web\\data\\ephem.bin": {
+      "sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+      "bytes": 1051776
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\global\\ldem_64_float.img": {
+      "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+      "bytes": 1061683200
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\global\\ldem_64_float.lbl": {
+      "sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18",
+      "bytes": 5150
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\global\\ldem_16_float.img": {
+      "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+      "bytes": 66355200
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\global\\ldem_16_float.lbl": {
+      "sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a",
+      "bytes": 5139
+    },
+    "web\\data\\gmaps\\sun_values.png": {
+      "sha256": "a1a3c4dbaed9a6684a0b11b3a78600a2ced05d38a5f4fe35d906f2fbe466ad15",
+      "bytes": 3410080
+    },
+    "web\\data\\gmaps\\earth_values.png": {
+      "sha256": "e3f8f4b73e977b7e750186cdb1eb6a257874f7e1857701f54e3065776f6822e3",
+      "bytes": 1692747
+    },
+    "web\\data\\gmaps\\both_values.png": {
+      "sha256": "90f7dbea3e1e1ebb6beb900fb8b4eb53d96a99311085feb61998b3bae3a3bf32",
+      "bytes": 2230183
+    },
+    "pipeline\\global_maps.py": {
+      "sha256": "64ec674b79ca1aa7426902c8eabc236ef62ddcca101b6933c7b00375839eb71d",
+      "bytes": 41459
+    },
+    "pipeline\\horizon.py": {
+      "sha256": "83f0ef54630961bd322e82a01baad74d368484987659d785cdfe9e6598ec24c4",
+      "bytes": 16668
+    },
+    "web\\data\\sites.json": {
+      "sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+      "bytes": 16271
+    },
+    "web\\js\\custom_horizon_worker.js": {
+      "sha256": "f680ee861d7fff443ef4427fcb3f2c3e58e09b327f1f57c1bf4cbb2a77375152",
+      "bytes": 3399
+    },
+    "web\\js\\hterrain.js": {
+      "sha256": "b07fab81b7a0ffc8644eac3db63c57e2e9dc0995bbc52b61c0f7bad7039f9b2a",
+      "bytes": 12028
+    },
+    "web\\js\\core.js": {
+      "sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+      "bytes": 10036
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\5\\SHACKLETON_RIM.npz": {
+      "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+      "bytes": 4907798
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\10\\SHACKLETON_RIM.npz": {
+      "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+      "bytes": 89857936
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\20\\SHACKLETON_RIM.npz": {
+      "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+      "bytes": 22582018
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\60\\SHACKLETON_RIM.npz": {
+      "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+      "bytes": 14528301
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\80\\SHACKLETON_RIM.npz": {
+      "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+      "bytes": 8183147
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\240\\SHACKLETON_RIM.npz": {
+      "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+      "bytes": 10061252
+    },
+    "web\\data\\hterrain\\index.json": {
+      "sha256": "5e63dfb21c5dfde998fe0ebe982dc0602452319d2de6e997e2c32266379be8b6",
+      "bytes": 1228
+    },
+    "web\\data\\hterrain\\polar_s\\index.json": {
+      "sha256": "00bdc77c828da6e12b88c96b53f690101af8fb2288280592861f1ecdd3e396bc",
+      "bytes": 22075
+    },
+    "web\\data\\hterrain\\polar_s\\p20\\14_13.bin.gz": {
+      "sha256": "3f0d7dac41e9a19790c260b36306eb1b9b48c638368539c68f34231afb7723c6",
+      "bytes": 159400
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\5_4.bin.gz": {
+      "sha256": "e40305e095a11e183ee84318c2cb2add6b112bf0ebceff1e6a89467b2d9dc730",
+      "bytes": 247162
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\6_4.bin.gz": {
+      "sha256": "ec6698bad2c17b475d270167bf2bb852040a20edd578bd5a37a88d8085437593",
+      "bytes": 242372
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_0.i16.gz": {
+      "sha256": "c7855dd7cb0812b433a936b08bf0c08192a33cd101c53330482f42e6864e99a4",
+      "bytes": 271720
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_1.i16.gz": {
+      "sha256": "e6942b27fd45eed3c502da33786c937832beaaa953aa8068cbc1d807cf8aa0ab",
+      "bytes": 270705
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\5_3.bin.gz": {
+      "sha256": "5976c32c726128f887d037b9158c328774704492b11466c5dd8627a03b45513c",
+      "bytes": 249092
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_2.i16.gz": {
+      "sha256": "8ff0f7f4d14cff275d3b30e79062dc9f7363f2df6407363f5cfcad3e2a3c7cbb",
+      "bytes": 276331
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\4_4.bin.gz": {
+      "sha256": "e77820f7c3a73609ee11a59b35a5324cc2e5f026cefd132eeefe74583d55841c",
+      "bytes": 247531
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\4_3.bin.gz": {
+      "sha256": "ced7f4bbdf5c393be1e46c85d2be31f2de189dea1097b663738412cc5a71f76b",
+      "bytes": 253532
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_3.i16.gz": {
+      "sha256": "8047c41bffa0950e9864894b2e44b69b17460ecff6c56ab944b4d9c305d2fd6d",
+      "bytes": 273345
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_4.i16.gz": {
+      "sha256": "4fc0514048a324168d6d3d7121754d65343f4cef127a7a50a04a5520a0b6d003",
+      "bytes": 272990
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\3_4.bin.gz": {
+      "sha256": "4b9c5c6f0a13a1e6280b430dea862baa369971264e71150250b54c02a405bbd0",
+      "bytes": 250319
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_5.i16.gz": {
+      "sha256": "603802934d4f02f1390b842ce040be3d04d7b278c9c48cb0e1ace0132740fc95",
+      "bytes": 271308
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\4_5.bin.gz": {
+      "sha256": "f7cebdbe051964670fff1c507382f708f5b50ab4f70f7ab6d9422f0fde217bee",
+      "bytes": 248828
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\3_5.bin.gz": {
+      "sha256": "30822e6cbfe20701b112b7a76fa3f734889c6cb77d3337e37fa33cfcc46f6f54",
+      "bytes": 254698
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_6.i16.gz": {
+      "sha256": "ff64fe7206bb6de39a2a26501570a17c653c5dc61a367ef6e581ee0857189113",
+      "bytes": 273712
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_7.i16.gz": {
+      "sha256": "46d3ede6b80fb73851a1bd20555c379c9ec452ea682e4035b8cdfb624c9265db",
+      "bytes": 271352
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_8.i16.gz": {
+      "sha256": "b6e5d49a1c3012b6bd8b8c358e67d9821d905970cd40855120035b2a16052c38",
+      "bytes": 274139
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\5_5.bin.gz": {
+      "sha256": "3d59d67827f13d6828d090b08da43c750424ffe3e486c1f5162c70b357230a9b",
+      "bytes": 250066
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\4_6.bin.gz": {
+      "sha256": "c2e78e3267698b82c4f286d96695ced438aa90ef064f7086f23fd1d9b3e22f03",
+      "bytes": 258453
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\5_6.bin.gz": {
+      "sha256": "482f2a89a0d2f044169a7caafc5c46c58ce77e72be4c1397a04a6dd934100352",
+      "bytes": 255770
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_9.i16.gz": {
+      "sha256": "e38f483c30ac18200f90593a5d182ed28243562e6304b91c26a31a1a89cf9c4c",
+      "bytes": 264245
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_10.i16.gz": {
+      "sha256": "bbac93557c6f38caa0b29864d9fcb89cc492fec4aa4ddecbc5def62da5b12c9c",
+      "bytes": 261800
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\6_5.bin.gz": {
+      "sha256": "1f6cb0be588b8a1441c84243b82dba72ce0aecdf985f7f8ac1af6e4e90ce653a",
+      "bytes": 250711
+    },
+    "web\\data\\hterrain\\tiles\\far\\5_11.i16.gz": {
+      "sha256": "2c51a54d7f0e52550744377cf798daf29ec6fc92118120d7fd2a525f0321304c",
+      "bytes": 267842
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\5\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "ff22cc292685b1d71f77f25aeb6bc6403d0bf924515a91e921a9b236001287a3",
+      "bytes": 4728255
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\10\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "f0d6dc4bacd29e82454ad6bbecfbb521ebd28ef286b0d0e7949d6db7e1805916",
+      "bytes": 89861117
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\20\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "abf2af84be1f86d72681fd1ae9990ffc08e00ac445b70c048410799e6e8fd2d8",
+      "bytes": 22606460
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\60\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "73b7ee1d91a79b0c7363e6b496eb0f9223e560b25d2be22fd6bd57eb0f66a96c",
+      "bytes": 14588833
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\80\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "a903217bf54581d453e57b3f1c131c2e38c6a23092c8e9007f0d6d0cccde4bdd",
+      "bytes": 8215796
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\240\\PEAK_NEAR_SHACKLETON.npz": {
+      "sha256": "7358b2a0ed3fec5c886e38a51b6cfa4729c790458ee04b319bfacfd9e7dbd68d",
+      "bytes": 10040233
+    },
+    "web\\data\\hterrain\\polar_s\\p20\\15_16.bin.gz": {
+      "sha256": "52a36d9dae802b710fae3db2447a89fc3465239a2cf98cdca48404cd68ce4c7a",
+      "bytes": 150102
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\6_6.bin.gz": {
+      "sha256": "d3ed2b40b1ff3c355f81c55a04a72d3125fa26fb46dc14e79d769f21dc71a81b",
+      "bytes": 260898
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\10\\ARTEMIS_MALAPERT.npz": {
+      "sha256": "54ecf890336c4473dd16dd1bea2b3417c47deb1a4ea97ff44a016beea7a552ca",
+      "bytes": 87456229
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\20\\ARTEMIS_MALAPERT.npz": {
+      "sha256": "dcdf0071513e599a6cafaf11fcfe8889d839b56a893eee301091a2cc427ecd8c",
+      "bytes": 22038820
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\60\\ARTEMIS_MALAPERT.npz": {
+      "sha256": "6ff2a430b6a48c7ef3396280bd9b1891891b4bb64b8325e6b1e9602599a1d380",
+      "bytes": 14495404
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\80\\ARTEMIS_MALAPERT.npz": {
+      "sha256": "4b6477f75771d99dbff1760400acbcb5ae2e302327d3986940d53459bbe6a59f",
+      "bytes": 8164352
+    },
+    "C:\\Users\\jy02s\\Documents\\lunar-card8-jiyong\\data\\raw\\polar\\240\\ARTEMIS_MALAPERT.npz": {
+      "sha256": "22d52a4eda63f7b39592121f4fa59ad9dcf3050b469ae8b9c46d9266f2a5a2f4",
+      "bytes": 10175105
+    },
+    "web\\data\\hterrain\\polar_s\\p20\\1_13.bin.gz": {
+      "sha256": "2c23fa0580b9d472c28ec5e5b91bd1bee4a3b687acccce65a9e22e42f255eaa7",
+      "bytes": 155823
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\2_4.bin.gz": {
+      "sha256": "2fba75d47d326526dac228c1384d30c6a2232d01f44827daf2b80ff2e4cafe8e",
+      "bytes": 254870
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\2_5.bin.gz": {
+      "sha256": "2d20224425219ed1e1521bab2edef50bbdd64f86cbbbefac85d2048367755057",
+      "bytes": 268151
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\3_6.bin.gz": {
+      "sha256": "b8b95db9bb00b301051249a1f14bb1850111635bc5e475b6f1e0426497ab59de",
+      "bytes": 250812
+    },
+    "web\\data\\hterrain\\polar_s\\p20\\2_13.bin.gz": {
+      "sha256": "f62ee9ddfcb7504e9f7b9b5570eb9b450ed16f399ef36e93e5e4721383ea034b",
+      "bytes": 159870
+    },
+    "web\\data\\hterrain\\polar_s\\p240\\3_3.bin.gz": {
+      "sha256": "47d447fcb13a244667567bbef854420a692de2f4d3316bed3bf83f270ad8c5cb",
+      "bytes": 251084
+    }
+  },
+  "verifier_sha256": "44f6db3607e2001cabb3c61413372a5edc30607a9914b0c7069d14f9e79326be"
+}

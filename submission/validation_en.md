@@ -51,20 +51,20 @@ in JavaScript and an independent Python port [^8].
 
 ---
 
-[^1]: `docs/VALIDATION.md:55` — row 3: "34,296 comparisons, max 0.000041°".
+[^1]: `docs/VALIDATION.md:57` — row 3: "34,296 comparisons, max 0.000041°".
 [^2]: `docs/hindcast.md:9` — "matches JPL Horizons to **0.00004°** at 50 random hours (criterion 0.01°)"; detail `docs/hindcast.md:13`.
-[^3]: `docs/VALIDATION.md:59` — row 7: "max 0.012–0.219° (0.016° with 1 m steps), RMS ≤ 0.026°", criterion "~0.02°", "same 0.2 km start".
-[^4]: `docs/VALIDATION.md:60` — row 8: "MAE 1.66 pp, RMSE 2.62 pp, r 0.985", 240 random points 85–90° S.
-[^5]: `docs/VALIDATION.md:61` — row 9: "MAE 1.24 pp, RMSE 3.37 pp, r 0.990".
+[^3]: `docs/VALIDATION.md:61` — row 7: "max 0.012–0.219° (0.016° with 1 m steps), RMS ≤ 0.026°", criterion "~0.02°", "same 0.2 km start".
+[^4]: `docs/VALIDATION.md:62` — row 8: "MAE 1.66 pp, RMSE 2.62 pp, r 0.985", 240 random points 85–90° S.
+[^5]: `docs/VALIDATION.md:63` — row 9: "MAE 1.24 pp, RMSE 3.37 pp, r 0.990".
 [^6]: `docs/hindcast.md:7` — "within **0.05°** at our catalogue points (0.02° at the Journal's own coordinates)"; per-mission values `docs/hindcast.md:21`–`26`.
 [^7]: `docs/hindcast.md:8` — Chandrayaan-3 3.8 h before, SLIM 1 day after, IM-1 2 days before, Chang'e 3 18.6 h before our sunset; table `docs/hindcast.md:36`–`40`.
-[^8]: `docs/VALIDATION.md:65` — row 13: "identical on 3 synthetic fixtures and all 33 real sites".
-[^9]: `docs/VALIDATION.md:54` — row 2: "1,452 comparisons, max 0.000034°".
-[^10]: `docs/VALIDATION.md:67` — row 15: "max 0.0012°", criterion "< 0.05°".
-[^11]: `docs/VALIDATION.md:63` — row 11: whole-Moon map, "75–85° S (400 points)".
+[^8]: `docs/VALIDATION.md:67` — row 13: "identical on 3 synthetic fixtures and all 33 real sites".
+[^9]: `docs/VALIDATION.md:56` — row 2: "1,452 comparisons, max 0.000034°".
+[^10]: `docs/VALIDATION.md:69` — row 15: "max 0.0012°", criterion "< 0.05°".
+[^11]: `docs/VALIDATION.md:65` — row 11: whole-Moon map, "75–85° S (400 points)".
 [^12]: `docs/hindcast.md:32` — "End of operations is an approximate proxy, not an exact measurement of sunset."
 [^13]: `docs/hindcast.md:40` — Chang'e 4 "no public source"; `docs/hindcast.md:60` — SLIM and Chang'e 3 from secondary news reports.
 [^14]: `docs/hindcast.md:59` — "Apollo reference values are a published computation (ALSJ), not an in-situ measurement."
-[^15]: `docs/VALIDATION.md:78` — "Link windows are geometry only: no link budget, no antenna scheduling. KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested."
-[^16]: `docs/VALIDATION.md:77` — "No ground truth for site horizons beyond the DEMs themselves".
-[^17]: `docs/VALIDATION.md:80` — "PGDA's exact 18.6-year dates and observer height are not stated (unverified)."
+[^15]: `docs/VALIDATION.md:80` — "Link windows are geometry only: no link budget, no antenna scheduling. KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested."
+[^16]: `docs/VALIDATION.md:79` — "No ground truth for site horizons beyond the DEMs themselves".
+[^17]: `docs/VALIDATION.md:82` — "PGDA's exact 18.6-year dates and observer height are not stated (unverified)."

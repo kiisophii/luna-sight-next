@@ -33,6 +33,6 @@ python -c "import re;t=open('submission/summary_final_en.md',encoding='utf-8').r
 | N8 | sunlight spread within 10 km (IQR): 17.2 pp polar vs 0.4 pp elsewhere (medians 17.16 / 0.40) | `docs/location_sensitivity.md:15–16`, `:19` | recomputed from the same grids (10 km circle, linear quartiles): 17.16 / 0.40 |
 | N9 | 26 of 33 sites; two-week delay turns the first two weeks into night; up to 336 h | `docs/date_slip.md:9` | `docs/date_slip_summary.json` (+14 d worst change of longest darkness): 26 sites ≥ 300 h, max 336 h |
 | N11 | Cabeus B Earth link 30% → 86% (29.64% → 85.73%), one 15 m tower, 2026–2030 | `docs/relay_impact.md:20` | `docs/card13_relay_report.md` states 85.7 |
-| N14 | Sunlight at 240 south-polar test spots (85–90° S) vs NASA PGDA maps: 1.7 points on average (MAE 1.66 pp), r = 0.985 | `docs/VALIDATION.md:60` | `web/data/validation.json`: 1.658 pp, r 0.9846, 240 points |
+| N14 | Sunlight at 240 south-polar test spots (85–90° S) vs NASA PGDA maps: 1.7 points on average (MAE 1.66 pp), r = 0.985 | `docs/VALIDATION.md:62` | `web/data/validation.json`: 1.658 pp, r 0.9846, 240 points |
 
 Both checks are automated in `python pipeline/verify_submission_text.py` (result: FAILURES: 0); each row was also read by hand against the file.

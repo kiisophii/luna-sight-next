@@ -1,0 +1,4 @@
+numpy==2.3.5
+skyfield==1.54
+jplephem==2.24
+sgp4==2.25

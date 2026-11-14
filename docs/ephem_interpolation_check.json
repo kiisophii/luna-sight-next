@@ -1,0 +1,105 @@
+{
+  "seed": 42,
+  "n_times": 240,
+  "window": "2026-2030",
+  "height_note": "Synthetic height test values, not surveyed site heights",
+  "criterion": "max 3D angular separation < 0.01 deg; azimuth singular at zenith",
+  "results": [
+    {
+      "lat": -89.5,
+      "lon": 0,
+      "terrain_height_m": 0,
+      "body": "sun",
+      "max_az_deg": 3.741436898963002e-06,
+      "mean_az_deg": 1.086443313032722e-06,
+      "max_el_deg": 1.4981346548648133e-05,
+      "mean_el_deg": 6.39130262441957e-06,
+      "max_sky_deg": 1.5264747233507066e-05,
+      "mean_sky_deg": 6.584787143029429e-06
+    },
+    {
+      "lat": -89.5,
+      "lon": 0,
+      "terrain_height_m": 0,
+      "body": "earth",
+      "max_az_deg": 0.0001006986201446125,
+      "mean_az_deg": 3.18452864894662e-05,
+      "max_el_deg": 0.00010785816529779169,
+      "mean_el_deg": 3.707892231813917e-05,
+      "max_sky_deg": 0.00013176342594160888,
+      "mean_sky_deg": 5.30588478316167e-05
+    },
+    {
+      "lat": 20.1908,
+      "lon": 30.7717,
+      "terrain_height_m": -1800,
+      "body": "sun",
+      "max_az_deg": 2.1594193157170594e-05,
+      "mean_az_deg": 7.534415994570054e-06,
+      "max_el_deg": 1.3842437212474579e-05,
+      "mean_el_deg": 3.4822526122579856e-06,
+      "max_sky_deg": 1.530941517474294e-05,
+      "mean_sky_deg": 6.685121655383317e-06
+    },
+    {
+      "lat": 20.1908,
+      "lon": 30.7717,
+      "terrain_height_m": -1800,
+      "body": "earth",
+      "max_az_deg": 0.00021213811103848457,
+      "mean_az_deg": 4.962843114810767e-05,
+      "max_el_deg": 0.00012917088640307384,
+      "mean_el_deg": 3.222365608011775e-05,
+      "max_sky_deg": 0.00012935643814656226,
+      "mean_sky_deg": 5.02716494435125e-05
+    },
+    {
+      "lat": -45.4446,
+      "lon": 177.5991,
+      "terrain_height_m": -5900,
+      "body": "sun",
+      "max_az_deg": 1.2971653404747485e-05,
+      "mean_az_deg": 3.887449129062285e-06,
+      "max_el_deg": 1.4747851729168815e-05,
+      "mean_el_deg": 5.294462062353788e-06,
+      "max_sky_deg": 1.535496461650538e-05,
+      "mean_sky_deg": 6.60252452157633e-06
+    },
+    {
+      "lat": -45.4446,
+      "lon": 177.5991,
+      "terrain_height_m": -5900,
+      "body": "earth",
+      "max_az_deg": 0.0001707658053931027,
+      "mean_az_deg": 4.49705104608474e-05,
+      "max_el_deg": 0.00010289493348381029,
+      "mean_el_deg": 3.4978052381558675e-05,
+      "max_sky_deg": 0.00012538018658409713,
+      "mean_sky_deg": 5.11044748441571e-05
+    },
+    {
+      "lat": 0,
+      "lon": 0,
+      "terrain_height_m": 1000,
+      "body": "sun",
+      "max_az_deg": 0.00030788558825634027,
+      "mean_az_deg": 1.993263204103831e-05,
+      "max_el_deg": 9.762170321891972e-06,
+      "mean_el_deg": 1.404734524286753e-06,
+      "max_sky_deg": 1.5197262730554654e-05,
+      "mean_sky_deg": 6.65801283791519e-06
+    },
+    {
+      "lat": 0,
+      "lon": 0,
+      "terrain_height_m": 1000,
+      "body": "earth",
+      "max_az_deg": 0.0009379979960044693,
+      "mean_az_deg": 4.911877144013014e-05,
+      "max_el_deg": 0.00012740040305914135,
+      "mean_el_deg": 4.8827831334049186e-05,
+      "max_sky_deg": 0.00012749413340264743,
+      "mean_sky_deg": 4.9296586575240654e-05
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "n_comparisons": 1452,
+  "max_az_deg": 0.00044475140953181835,
+  "max_el_deg": 0.000033929459492654246,
+  "threshold_deg": 0.01,
+  "passed": true,
+  "method": "Actual web/js/core.js sunAzEl/earthAzEl reading exported float32; 6 sites, 121 UTC samples, Sun and Earth"
+}

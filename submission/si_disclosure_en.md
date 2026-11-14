@@ -8,6 +8,10 @@ The solution ideas and design decisions came from our six team members. We used 
 
 ## Claim boundary before submission
 
+**Supported statement (verification ledger, updated 2026-11-15 after PRs #57–#59):** All 18 published data products were re-checked by someone other than their author, who recomputed a sample with separate code (site coordinates: re-read from the sources); on identical inputs, differences were at most 0.15 percentage points, 0.004° or 0.37 m (tiles, within encoding steps); known gaps are listed in docs/verification_ledger.md.
+
+The paragraph below records the earlier finding that the blanket "every numeric result" sentence is not supported; the statement above is the narrower claim the ledger does support.
+
 The requested blanket sentence, “every numeric result was independently re-verified before merging”, is **not established by the available log**. [docs/VALIDATION.md](../docs/VALIDATION.md) explicitly says “key numbers”, lists sampled checks and known unmet targets, and distinguishes independent implementations from empirical ground truth. Some log entries still say independent review PENDING. The publishable statement above therefore describes the supported scope. The integrator must confirm complete per-result/per-merge evidence before substituting the stronger sentence; this report does not certify it. A human reading an AI summary is not an independent human recalculation.
 
 ## Per-member logged use

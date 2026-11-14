@@ -6,6 +6,8 @@ they cite; the full table further down is unchanged.
 
 ## Summary — the 10 strongest checks
 
+**Independent re-checks.** All 18 published data products were re-checked by someone other than their author, who recomputed a sample with separate code (site coordinates: re-read from the sources); on identical inputs, differences were at most 0.15 percentage points, 0.004° or 0.37 m (tiles, within encoding steps); known gaps are listed in docs/verification_ledger.md.
+
 | # | What is checked | Independent source | Size of the difference | Criterion | Pass | Source (file, PR) |
 |---|---|---|---|---|---|---|
 | S1 | Sun and Earth directions (ephemeris), 2020–2038 | NASA JPL Horizons (DE441), 34,296 comparisons at 4 sites | max 0.000041° | < 0.01° | ✅ | full table row 3; `docs/card10_npz_independent_check.json`; PR #11 |

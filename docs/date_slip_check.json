@@ -1,0 +1,236 @@
+{
+ "independent_cells": {
+  "seed": 19,
+  "n": 10,
+  "all_match_4dp": true,
+  "cells": [
+   {
+    "id": "APOLLO14",
+    "landing_index": 532,
+    "ours": {
+     "sun_frac": 0.7887,
+     "earth_frac": 1,
+     "both_frac": 0.7887,
+     "longest_dark_h": 71
+    },
+    "stored": {
+     "sun_frac": 0.7887,
+     "earth_frac": 1,
+     "both_frac": 0.7887,
+     "longest_dark_h": 71
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "ARTEMIS_DE_GERLACHE_RIM2",
+    "landing_index": 523,
+    "ours": {
+     "sun_frac": 0.1964,
+     "earth_frac": 0.0923,
+     "both_frac": 0,
+     "longest_dark_h": 270
+    },
+    "stored": {
+     "sun_frac": 0.1964,
+     "earth_frac": 0.0923,
+     "both_frac": 0,
+     "longest_dark_h": 270
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "ARTEMIS_NOBILE_RIM1",
+    "landing_index": 402,
+    "ours": {
+     "sun_frac": 0.7589,
+     "earth_frac": 1,
+     "both_frac": 0.7589,
+     "longest_dark_h": 81
+    },
+    "stored": {
+     "sun_frac": 0.7589,
+     "earth_frac": 1,
+     "both_frac": 0.7589,
+     "longest_dark_h": 81
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "DE_GERLACHE_RIM1",
+    "landing_index": 541,
+    "ours": {
+     "sun_frac": 0,
+     "earth_frac": 0.7798,
+     "both_frac": 0,
+     "longest_dark_h": 336
+    },
+    "stored": {
+     "sun_frac": 0,
+     "earth_frac": 0.7798,
+     "both_frac": 0,
+     "longest_dark_h": 336
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "CHANGE4",
+    "landing_index": 598,
+    "ours": {
+     "sun_frac": 0.7917,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 70
+    },
+    "stored": {
+     "sun_frac": 0.7917,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 70
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "ARTEMIS_MALAPERT",
+    "landing_index": 609,
+    "ours": {
+     "sun_frac": 0.506,
+     "earth_frac": 1,
+     "both_frac": 0.506,
+     "longest_dark_h": 166
+    },
+    "stored": {
+     "sun_frac": 0.506,
+     "earth_frac": 1,
+     "both_frac": 0.506,
+     "longest_dark_h": 166
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "CHANDRAYAAN3",
+    "landing_index": 110,
+    "ours": {
+     "sun_frac": 0.9018,
+     "earth_frac": 1,
+     "both_frac": 0.9018,
+     "longest_dark_h": 33
+    },
+    "stored": {
+     "sun_frac": 0.9018,
+     "earth_frac": 1,
+     "both_frac": 0.9018,
+     "longest_dark_h": 33
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "CHANDRAYAAN3",
+    "landing_index": 421,
+    "ours": {
+     "sun_frac": 0,
+     "earth_frac": 1,
+     "both_frac": 0,
+     "longest_dark_h": 336
+    },
+    "stored": {
+     "sun_frac": 0,
+     "earth_frac": 1,
+     "both_frac": 0,
+     "longest_dark_h": 336
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "CHANGE6",
+    "landing_index": 274,
+    "ours": {
+     "sun_frac": 1,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 0
+    },
+    "stored": {
+     "sun_frac": 1,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 0
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "ARTEMIS_CABEUS_B",
+    "landing_index": 333,
+    "ours": {
+     "sun_frac": 0.8244,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 34
+    },
+    "stored": {
+     "sun_frac": 0.8244,
+     "earth_frac": 0,
+     "both_frac": 0,
+     "longest_dark_h": 34
+    },
+    "match_4dp": true
+   }
+  ]
+ },
+ "app_cells": {
+  "method": "actual web/js/core.js metrics(site, i0, i0 + 335)",
+  "all_match_4dp": true,
+  "cells": [
+   {
+    "id": "ARTEMIS_HAWORTH",
+    "landing": "2026-11-20",
+    "app": {
+     "sun_frac": 0.9018,
+     "earth_frac": 0.8185,
+     "both_frac": 0.7202,
+     "longest_dark_h": 33
+    },
+    "stored": {
+     "sun_frac": 0.9018,
+     "earth_frac": 0.8185,
+     "both_frac": 0.7202,
+     "longest_dark_h": 33
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "APOLLO17",
+    "landing": "2027-03-01",
+    "app": {
+     "sun_frac": 0.122,
+     "earth_frac": 1,
+     "both_frac": 0.122,
+     "longest_dark_h": 295
+    },
+    "stored": {
+     "sun_frac": 0.122,
+     "earth_frac": 1,
+     "both_frac": 0.122,
+     "longest_dark_h": 295
+    },
+    "match_4dp": true
+   },
+   {
+    "id": "SHACKLETON_RIM",
+    "landing": "2027-04-18",
+    "app": {
+     "sun_frac": 0.2143,
+     "earth_frac": 0.1577,
+     "both_frac": 0,
+     "longest_dark_h": 65
+    },
+    "stored": {
+     "sun_frac": 0.2143,
+     "earth_frac": 0.1577,
+     "both_frac": 0,
+     "longest_dark_h": 65
+    },
+    "match_4dp": true
+   }
+  ]
+ }
+}

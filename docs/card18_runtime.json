@@ -163,5 +163,8 @@
     "tests_passed": 137,
     "contract_errors": 0,
     "contract_warnings": 0
-  }
+  },
+  "ready_for_pr_utc": "2026-11-14T07:03:03.080645+00:00",
+  "elapsed_to_ready_for_pr_s": 1963.080645,
+  "total_elapsed_note": "Recorded tool start to review-complete PR preparation; excludes later push/PR service latency, not just computation."
 }

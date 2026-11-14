@@ -1,0 +1,849 @@
+{
+  "passed": true,
+  "tolerance_h": 0,
+  "requested_tolerance_h": 1,
+  "definition": "Actual core.js predicates re-evaluated at each reported edge and the preceding hour; clipped domain boundaries are not treated as transitions.",
+  "site_checks": [
+    {
+      "id": "APOLLO17",
+      "edges_checked": 20,
+      "max_edge_difference_h": 0,
+      "all_43824_hour_memberships_match_each_body": true,
+      "full_visible_lists_and_top10_gaps_and_clipping_match_each_body": true,
+      "metric_summary_matches": true,
+      "edges": [
+        {
+          "body": "sun",
+          "hour": 176,
+          "kind": "end",
+          "utc": "2026-01-08T08:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 2306,
+          "kind": "end",
+          "utc": "2026-04-07T02:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 4429,
+          "kind": "end",
+          "utc": "2026-07-04T13:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 6921,
+          "kind": "start",
+          "utc": "2026-10-16T09:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 9051,
+          "kind": "start",
+          "utc": "2027-01-13T03:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 11520,
+          "kind": "end",
+          "utc": "2027-04-26T00:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 13641,
+          "kind": "end",
+          "utc": "2027-07-23T09:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 16135,
+          "kind": "start",
+          "utc": "2027-11-04T07:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 18265,
+          "kind": "start",
+          "utc": "2028-02-01T01:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 20733,
+          "kind": "end",
+          "utc": "2028-05-13T21:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 22853,
+          "kind": "end",
+          "utc": "2028-08-10T05:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 25349,
+          "kind": "start",
+          "utc": "2028-11-22T05:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 27480,
+          "kind": "start",
+          "utc": "2029-02-19T00:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 29945,
+          "kind": "end",
+          "utc": "2029-06-01T17:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 32066,
+          "kind": "end",
+          "utc": "2029-08-29T02:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 34563,
+          "kind": "start",
+          "utc": "2029-12-11T03:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 36694,
+          "kind": "start",
+          "utc": "2030-03-09T22:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 39157,
+          "kind": "end",
+          "utc": "2030-06-20T13:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 41279,
+          "kind": "end",
+          "utc": "2030-09-16T23:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 43778,
+          "kind": "start",
+          "utc": "2030-12-30T02:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "CHANGE4",
+      "edges_checked": 20,
+      "max_edge_difference_h": 0,
+      "all_43824_hour_memberships_match_each_body": true,
+      "full_visible_lists_and_top10_gaps_and_clipping_match_each_body": true,
+      "metric_summary_matches": true,
+      "edges": [
+        {
+          "body": "sun",
+          "hour": 249,
+          "kind": "start",
+          "utc": "2026-01-11T09:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 2383,
+          "kind": "start",
+          "utc": "2026-04-10T07:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 4505,
+          "kind": "start",
+          "utc": "2026-07-07T17:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 6977,
+          "kind": "end",
+          "utc": "2026-10-18T17:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 9106,
+          "kind": "end",
+          "utc": "2027-01-15T10:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 11597,
+          "kind": "start",
+          "utc": "2027-04-29T05:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 13716,
+          "kind": "start",
+          "utc": "2027-07-26T12:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 15837,
+          "kind": "start",
+          "utc": "2027-10-22T21:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 18319,
+          "kind": "end",
+          "utc": "2028-02-03T07:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 20444,
+          "kind": "end",
+          "utc": "2028-05-01T20:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 22927,
+          "kind": "start",
+          "utc": "2028-08-13T07:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 25051,
+          "kind": "start",
+          "utc": "2028-11-09T19:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 27532,
+          "kind": "end",
+          "utc": "2029-02-21T04:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 29658,
+          "kind": "end",
+          "utc": "2029-05-20T18:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 31784,
+          "kind": "end",
+          "utc": "2029-08-17T08:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 34267,
+          "kind": "start",
+          "utc": "2029-11-28T19:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 36402,
+          "kind": "start",
+          "utc": "2030-02-25T18:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 38873,
+          "kind": "end",
+          "utc": "2030-06-08T17:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 40997,
+          "kind": "end",
+          "utc": "2030-09-05T05:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 43484,
+          "kind": "start",
+          "utc": "2030-12-17T20:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "edges_checked": 20,
+      "max_edge_difference_h": 0,
+      "all_43824_hour_memberships_match_each_body": true,
+      "full_visible_lists_and_top10_gaps_and_clipping_match_each_body": true,
+      "metric_summary_matches": true,
+      "edges": [
+        {
+          "body": "earth",
+          "hour": 188,
+          "kind": "end",
+          "utc": "2026-01-08T20:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 2253,
+          "kind": "end",
+          "utc": "2026-04-04T21:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 5131,
+          "kind": "start",
+          "utc": "2026-08-02T19:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 7076,
+          "kind": "start",
+          "utc": "2026-10-22T20:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 9218,
+          "kind": "start",
+          "utc": "2027-01-20T02:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 11653,
+          "kind": "end",
+          "utc": "2027-05-01T13:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 14178,
+          "kind": "start",
+          "utc": "2027-08-14T18:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 16247,
+          "kind": "end",
+          "utc": "2027-11-08T23:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 18285,
+          "kind": "end",
+          "utc": "2028-02-01T21:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 21281,
+          "kind": "start",
+          "utc": "2028-06-05T17:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 23379,
+          "kind": "start",
+          "utc": "2028-09-01T03:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 25668,
+          "kind": "start",
+          "utc": "2028-12-05T12:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 27884,
+          "kind": "start",
+          "utc": "2029-03-07T20:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 30642,
+          "kind": "start",
+          "utc": "2029-06-30T18:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 32966,
+          "kind": "end",
+          "utc": "2029-10-05T14:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 34818,
+          "kind": "end",
+          "utc": "2029-12-21T18:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 37693,
+          "kind": "start",
+          "utc": "2030-04-20T13:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 39598,
+          "kind": "start",
+          "utc": "2030-07-08T22:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 41564,
+          "kind": "start",
+          "utc": "2030-09-28T20:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 43588,
+          "kind": "start",
+          "utc": "2030-12-22T04:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "edges_checked": 20,
+      "max_edge_difference_h": 0,
+      "all_43824_hour_memberships_match_each_body": true,
+      "full_visible_lists_and_top10_gaps_and_clipping_match_each_body": true,
+      "metric_summary_matches": true,
+      "edges": [
+        {
+          "body": "earth",
+          "hour": 166,
+          "kind": "end",
+          "utc": "2026-01-07T22:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 2779,
+          "kind": "end",
+          "utc": "2026-04-26T19:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 3796,
+          "kind": "start",
+          "utc": "2026-06-08T04:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 5132,
+          "kind": "end",
+          "utc": "2026-08-02T20:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 10000,
+          "kind": "start",
+          "utc": "2027-02-21T16:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 11432,
+          "kind": "end",
+          "utc": "2027-04-22T08:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 12619,
+          "kind": "start",
+          "utc": "2027-06-10T19:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 14231,
+          "kind": "end",
+          "utc": "2027-08-16T23:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 18483,
+          "kind": "end",
+          "utc": "2028-02-10T03:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 19776,
+          "kind": "end",
+          "utc": "2028-04-04T00:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 20814,
+          "kind": "end",
+          "utc": "2028-05-17T06:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 23985,
+          "kind": "start",
+          "utc": "2028-09-26T09:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 27482,
+          "kind": "end",
+          "utc": "2029-02-19T02:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 28487,
+          "kind": "start",
+          "utc": "2029-04-01T23:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 29614,
+          "kind": "end",
+          "utc": "2029-05-18T22:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 34136,
+          "kind": "end",
+          "utc": "2029-11-23T08:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 36234,
+          "kind": "start",
+          "utc": "2030-02-18T18:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 37367,
+          "kind": "start",
+          "utc": "2030-04-06T23:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "earth",
+          "hour": 38698,
+          "kind": "end",
+          "utc": "2030-06-01T10:00:00Z",
+          "before": true,
+          "after": false,
+          "edge_difference_h": 0,
+          "passed": true
+        },
+        {
+          "body": "sun",
+          "hour": 43796,
+          "kind": "start",
+          "utc": "2030-12-30T20:00:00Z",
+          "before": false,
+          "after": true,
+          "edge_difference_h": 0,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "n_edges_checked": 80
+}

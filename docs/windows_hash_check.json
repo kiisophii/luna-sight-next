@@ -1,0 +1,30 @@
+{
+  "generated_utc": "2026-11-14T10:21:09.683377+00:00",
+  "passed": true,
+  "checker_sha256": "504f47057c17aa3d5fda41c8954e6eceec5612b9c8b1e8eb4675a607fbbd1f04",
+  "producer_sha256": "29b5476f6793ae9a2097691970ce6cdbb88070836ac79a9b5f2bc5a7890e66b9",
+  "scope": "Full contract checker against a disposable copy, including real hterrain index and tiles; production data never mutated",
+  "checks": {
+    "missing_terrain_tile": {
+      "exit_code": 1,
+      "rejected_as_error": true,
+      "error": "ERROR hterrain.near: 1 tiles missing, e.g. ['0_0.i16.gz']"
+    },
+    "normal_outputs": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "producer_sha256": {
+      "tampered_value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "exit_code": 1,
+      "rejected": true,
+      "error": "ERROR windows/SHACKLETON_RIM.json: input changed: producer_sha256 (actual build_windows.mjs bytes)"
+    },
+    "site_sha256": {
+      "tampered_value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "exit_code": 1,
+      "rejected": true,
+      "error": "ERROR windows/SHACKLETON_RIM.json: input changed: site_sha256 (exact JSON.stringify(site))"
+    }
+  }
+}

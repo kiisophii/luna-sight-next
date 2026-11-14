@@ -585,6 +585,8 @@ def main():
     check_ephem(data)
     check_horizons(data, sites)
     check_metrics(data, sites)
+    from check_windows import check_windows
+    check_windows(data, sites, err, warn)
     check_validation(data, sites)
     check_relay(data, sites)
     check_korea(data, sites)

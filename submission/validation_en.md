@@ -31,11 +31,11 @@ in JavaScript and an independent Python port [^8].
 
 ## (c) Backup-deck slide — "How do we know it is right?"
 
-- **Sky geometry = NASA JPL Horizons** to ≤ 0.00004° over 2019–2038 [^1][^2]
+- **Sky geometry = NASA JPL Horizons** to ≤ 0.000041° over 2019–2038 [^1][^2]
 - **Terrain horizons** re-derived by brute force: ~0.02° [^3]
 - **NASA PGDA 18.6-year maps**, 240 points 85–90° S: Sun 1.66 pp, Earth 1.24 pp mean difference [^4][^5]
 - **Apollo 11–17**: Sun elevation at landing within 0.05° of the Apollo Lunar Surface Journal [^6]
-- **Real landers** (Chandrayaan-3, Chang'e 3, IM-1, SLIM): shutdowns between 18.6 h before and 1 day after our sunset — a proxy [^7]
+- **Real landers** (Chandrayaan-3, Chang'e 3, IM-1, SLIM): shutdowns between 2 days before and 1 day after our sunset — a proxy [^7]
 - **App code**: JavaScript = independent Python port on all 33 sites [^8]
 - **Korea link**: Yeoju KDSA + DSN Moon visibility within 0.0012° of Horizons [^10]
 

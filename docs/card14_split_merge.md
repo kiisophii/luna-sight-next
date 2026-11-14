@@ -84,3 +84,47 @@ Either a store folder written by `global_maps.py` (same `meta.json` / `done.npy`
 - `pipeline/gmaps_split.py` (verify / pack / check / compare / merge); `pipeline/run_ppd32_rows.ps1` (row-range runner: pre-flight, refuses a second run, keeps the PC awake, log, 3 resumes, never exports, saves the overlap row).
 - `pipeline/tests/test_gmaps_split.py` (fake ppd-1 stores, 6 tests): verify catches NaN / out-of-range / mock; pack+check round trip and a corrupted byte; merge with overlap row = original values, refusal of an existing output folder; disagreeing overlap → refused, report counts the 10 changed columns, accepted only with a reason and without averaging; gap and signature refusals; compare at the tolerance boundary (1 sample).
 - `pipeline/run_ppd32_overnight.ps1` fixes (Windows PowerShell 5.1): UInt32 for `SetThreadExecutionState`, `Continue` for native stderr, `[string[]]` argument array. These were made after PR #15 was merged, so they are in this branch.
+
+## 6. Merge result (2026-11-14 21:00 KST) — done
+### GPU part received
+`Lunar_948m_전달용.zip` (391,331,679 bytes; ZIP CRC test OK) → `gmaps_ppd32_jiyong_rows3103-5760.zip` (SHA256 `70b04e98…2a613d` = the value in Jiyong's note) → extracted to `data/processed/incoming/jiyong_gpu/` (git-ignored; the ZIP is kept unchanged in Downloads).
+- Layout: a full `global_maps.py` store (`meta.json`, `done.npy`, 5 × (5760, 11520) float32, 1.33 GB uncompressed) + `handoff_manifest.json`, `gpu_final_verification.json`, `cpu_preservation.json`. All 7 store files match the SHA256 in Jiyong's manifest.
+- `done.npy`: rows 3103–5759 (2657 rows), 0 rows outside.
+- Per Jiyong's manifest, rows **3103–3454 (352) were computed by `global_maps.py` on the CPU** of his desktop and rows **3455–5759 (2305) by his CUDA FP64 port**. So row 3103 compares two CPU runs on two machines; the GPU rows were checked separately (below).
+
+### Compatibility
+- `meta.json` signature identical to ours (engine 1, 360 az, 150 / 300 km, step 0.01, 283 steps, observer 2 m, solar radius 0.2666°, LDEM_64 / LDEM_16 with the same byte sizes, `ephem.bin` step 3 h, 14,608 samples, sha1_12 `4772740f1aed`, start 2026-01-01, mock = false); same grid string and shape.
+- Input SHA256 in Jiyong's manifest = ours: `ldem_64_float.img` `4dd151f2…`, `ldem_16_float.img` `c6b790f1…`, `ephem.bin` `c0a22639…`, `ephem.json` `c6294c41…`.
+
+### Checks before merging
+| Check | Result |
+|---|---|
+| `gmaps_split.py verify --src <gpu>::3103:5760 --spot 24` | PASS: 0 NaN / Inf, all values in range, `both ≤ earth` 0 violations; 24 points (18 in GPU rows) recomputed with our CPU engine: identical at float32 |
+| extra recomputation, 24 points only in GPU rows 3455–5759 (seed 5759) | identical at float32 (max diff 0.0) |
+| row 3103, all 11,520 columns (`compare`) | **sun / earth / both / h0 / maskmax: max \|diff\| 0, mean \|diff\| 0, 11,520 / 11,520 identical, 0 NaN mismatches** |
+
+So 42 GPU-row points recomputed on this laptop agree exactly with the CUDA results.
+
+### Merge
+`gmaps_split.py merge --part data/processed/handoff/ppd32_rows_0_3104_soyun --part data/processed/incoming/jiyong_gpu/gmaps_ppd32::3103:5760 --out data/processed/gmaps_ppd32_merged` → 5760 / 5760 rows (rows 0–3103 from the CPU package, 3104–5759 from Jiyong's store; overlap row 3103 compared, equal).
+- Independent check: merged rows 0–3103 byte-identical to the CPU package, rows 3104–5759 to Jiyong's store, row 3103 also equal to Jiyong's.
+- Full verify of the merged store: PASS (0 NaN / Inf, 0 values out of range, `both ≤ earth` everywhere). sun 0–0.879 (mean 0.435), earth 0–1, both 0–0.620, h0 −9107.7…10755.5 m, maskmax −0.32…79.60°.
+- No seam: the mean change between neighbouring rows 3098–3109 is flat (sun 0.0045–0.0047 per row, h0 60–66 m).
+- Inputs kept: CPU store `data/processed/gmaps_ppd32/` still 3104 / 5760, CPU package `check` PASS, ZIP unchanged.
+
+### Export
+`global_maps.py export --ppd 32 --out data/processed/gmaps_ppd32_merged --web web/data/gmaps_ppd32` → 517 files, **32.3 MB** (tiles: sun 9.0 MB, earth 6.2 MB, both 5.2 MB; overviews + value PNGs 12.1 MB), `index.json` rows 5760 / 5760, `mock: false`.
+- Area means: sun 0.4656, earth 0.4631, both 0.2211, the same as the 3.8 km map to 4 decimals.
+- The exporter's finest tile level is z3 = 8192 × 4096 px, i.e. about 1.33 km per pixel. The web tiles therefore do not show the full 948 m grid (11520 columns); the full values stay in the store. `web/data/gmaps/` (3.8 km) is unchanged.
+
+### NASA PGDA, 400 points (`pipeline/validate_card14_pgda.py` → `docs/card14_pgda.json`)
+Same 400 points as card 9 (seed 42, uniform by area, 75–85° S). Map value = grid cell containing the point; PGDA = AVGVISIB_75S_120M, nearest 120 m pixel.
+
+| Map | Sun MAE (pp) | Sun RMSE | Sun bias | **Sun r** | Earth MAE (pp) | Earth RMSE | Earth bias | **Earth r** |
+|---|---|---|---|---|---|---|---|---|
+| **948 m (ppd 32)** | **2.609** | 5.353 | +0.971 | **0.9108** | **3.423** | 6.638 | −1.611 | **0.9837** |
+| 3.8 km (ppd 8) | 4.337 | 7.446 | +1.272 | 0.8232 | 5.327 | 10.519 | −1.232 | 0.9566 |
+| card 9 engine at the exact points, 2020–2038 (context) | 2.185 | 4.539 | +1.036 | 0.9379 | 3.137 | 5.890 | −1.918 | 0.9879 |
+
+- The 948 m map is closer to PGDA than the 3.8 km map: Sun MAE 4.34 → 2.61 pp, r 0.82 → 0.91. Our value is inside the PGDA 3 × 3 (±120 m) range at 53.8 % (Sun) / 63.5 % (Earth) of the points.
+- Why these differ from `docs/VALIDATION.md` row 11 (2.19 / 1.73 pp): measured factor by factor in **`docs/card14_pgda_analysis.md`**. In short: stored cell-centre value vs the exact point, and Earth centre vs any disc; period and step negligible; CPU = CUDA at all 400 cells. The original list of suspected causes was: our 5-year window (2026–2030) vs PGDA 18.6 years; Earth centre vs any part of the disc (negative Earth bias); a 948 m cell vs a point; LDEM_64 near terrain vs PGDA's finer terrain. The Sun error correlates with the local PGDA 3 × 3 spread (r = 0.61), not with the horizon height (−0.10). The largest errors are where PGDA itself changes by tens of percent within ±120 m.

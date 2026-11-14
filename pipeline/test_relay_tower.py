@@ -183,3 +183,53 @@ def test_candidate_grid():
     assert np.all(np.hypot(e, n) <= 20000.0 + 1e-6)
     assert ((e == 0) & (n == 0)).sum() == 1
     assert abs(e.size - math.pi * 80 ** 2) / e.size < 0.01     # ~20,100 candidates
+
+
+def test_missing_profile_terrain_is_not_clear():
+    chain = [(hz.FunctionSampler(lambda a, b: np.full(a.shape, np.nan)), 400)]
+    la, lo = rt.local_offsets_to_latlon(0, 0, np.array([1000.]), np.array([0.]))
+    with pytest.raises(ValueError, match="missing terrain"):
+        rt.link_profiles(chain, 0, 0, 2, la, lo, [[15]], bands={"S": 2.2e9})
+
+
+def test_shifted_tower_samples_fine_terrain_towards_lander():
+    fine = hz.FunctionSampler(lambda a, b: np.full(a.shape, 200.), "FINE")
+    far = hz.FunctionSampler(lambda a, b: np.zeros(a.shape), "FAR")
+    anchored = rt.anchored_chain([(fine, 3), (far, 300)], 0, 0)
+    # A ray starting 10 km east and returning to 1 km east must use the fine DEM.
+    la, lo = rt.local_offsets_to_latlon(0, 0, np.array([1000., 4000.]), np.array([0., 0.]))
+    values = hz.sample_chain(anchored, la, lo, np.array([19., 16.]))
+    assert values.tolist() == [200., 0.]
+
+
+def test_high_earth_is_not_assumed_visible_above_near_cliff():
+    chain = [(hz.FunctionSampler(lambda a, b: np.where(np.radians(a)*R > 10, 300., 0.)), 400)]
+    earth = np.array([[384400.*np.sin(np.radians(60)), 0, 384400.*np.cos(np.radians(60))]])
+    p = dict(rt.DEFAULTS, min_km=.005, n_steps=300)
+    assert not rt.earth_visibility(0, 0, chain, 0, [2], earth, p)[0, 0]
+
+
+def test_resume_rejects_changed_ephemeris(tmp_path):
+    site = {"id": "CACHE", "lat": 0., "lon": 0.}
+    chain = [(hz.FunctionSampler(lambda a, b: np.zeros(a.shape)), 400)]
+    p = dict(radius_km=0., spacing_m=250., n_steps=100)
+    e = synthetic_ephem(4)
+    first = rt.compute_relay(site, chain, e, p, work_dir=tmp_path, log=lambda *a: None)
+    e.earth[:] = -rt.unit(0, 0)*384400.
+    second = rt.compute_relay(site, chain, e, p, work_dir=tmp_path, log=lambda *a: None)
+    assert first["best"][0]["tower_earth_frac"] > 0
+    assert second["best"][0]["tower_earth_frac"] == 0
+
+
+def test_input_identity_detects_same_size_dem_replacement(tmp_path):
+    path = tmp_path / "terrain.npz"
+    path.write_bytes(b"abcd")
+    sampler = hz.FunctionSampler(lambda a, b: np.zeros(a.shape))
+    sampler.path = path
+    e = synthetic_ephem(2)
+    before = rt.input_identity([(sampler, 300)], e)
+    import os
+    old = path.stat().st_mtime_ns
+    path.write_bytes(b"efgh")
+    os.utime(path, ns=(old+1000, old+1000))
+    assert rt.input_identity([(sampler, 300)], e) != before

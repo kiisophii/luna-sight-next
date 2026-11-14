@@ -33,6 +33,7 @@ Quick look on a coarse grid:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -50,15 +51,15 @@ C_LIGHT = 299_792_458.0
 K_BOLTZ_DBW = -228.6                     # 10*log10(Boltzmann constant), dBW/K/Hz
 SUN_RADIUS_DEG = 0.2666                  # contract section 6
 LANDER_ANT_M = 2.0                       # contract section 0
-ENGINE_VERSION = 1
+ENGINE_VERSION = 2
 
 DEFAULTS = {
     "radius_km": 20.0, "spacing_m": 250.0, "heights_m": [5, 15, 30, 50],
     "bands": {"S": 2.2e9, "Ka": 26.0e9},          # Hz; lunar S / Ka bands (configurable)
     "link_rule": "los",                           # los | fresnel60_S | fresnel60_Ka
-    "los_step_m": 20.0,                           # terrain profile sample spacing
-    "min_km": 0.2, "max_km": 300.0, "n_steps": 1500,  # tower-top horizon march (horizon.py style)
-    "earth_el_cap_deg": 45.0,  # Earth higher than this is counted visible without a mask lookup
+    "los_step_m": 5.0,                            # resolve the finest 5 m terrain along local links
+    "min_km": 0.005, "max_km": 300.0, "n_steps": 8000,
+    "earth_el_cap_deg": 90.0,  # retained for compatibility; v2 does not bypass terrain above a cap
     "slope_box_m": 250.0, "max_slope_deg": 15.0,  # buildability
     "n_towers": 3, "sun_shortlist": 12,
 }
@@ -157,7 +158,9 @@ def link_profiles(chain, lat_a, lon_a, top_a_m, lat_b, lon_b, top_b_m, *, bands,
         la, lo = hz.destination(lat_a, lon_a, az[idx][:, None], phi * R_M)
         dk = phi * R_M / 1000.0 + dist_offset_km
         h = hz.sample_chain(chain, la.ravel(), lo.ravel(), dk.ravel()).reshape(la.shape)
-        rt = R_M + np.where(np.isfinite(h), h, -np.inf)   # missing DEM never blocks (flagged below)
+        if not np.isfinite(h).all():
+            raise ValueError("missing terrain in antenna link profile")
+        rt = R_M + h
         for j in range(nh):
             rB = (R_M + top_b[idx, j])[:, None]
             clear, d1, D = chord_clearance(rA, rB, th[idx][:, None], phi, rt)
@@ -199,6 +202,8 @@ def horizon_bins(lat, lon, chain, bins, ground_m, obs_heights_m, *, min_km=0.2, 
         la, lo = hz.destination(lat, lon, az[idx][:, None], s[None, :] * 1000.0)
         dk = np.broadcast_to(s[None, :] + dist_offset_km, la.shape)
         h = hz.sample_chain(chain, la.ravel(), lo.ravel(), dk.ravel()).reshape(la.shape)
+        if not np.isfinite(h).all():
+            raise ValueError("missing terrain in tower horizon")
         th = s / (R_M / 1000.0)
         rt = R_M + h
         for j, ro in enumerate(r_o):
@@ -247,7 +252,7 @@ def earth_visibility(lat, lon, chain, ground_m, heights_m, earth_km, p, dist_off
     """(nh, N) bool: Earth centre above the mask from heights above ground at (lat, lon)."""
     heights_m = np.atleast_1d(np.asarray(heights_m, float))
     vis = np.ones((heights_m.size, earth_km.shape[0]), bool)
-    cap = p["earth_el_cap_deg"]
+    cap = 90.000001  # every physical elevation, including zenith; no arbitrary clear-sky shortcut
     ae = [topo_az_el(lat, lon, ground_m + H, earth_km) for H in heights_m]
     bins = np.unique(np.concatenate([earth_bins(az, el, cap) for az, el in ae]))
     full = np.full((heights_m.size, hz.N_AZ), np.nan)
@@ -388,6 +393,47 @@ def relax_chain(chain, extra_km):
     return [(s, m + extra_km) for s, m in chain]
 
 
+class AnchoredTerrain:
+    """Select source resolution by distance from the cache's lander, for every tower ray."""
+    def __init__(self, chain, lat, lon):
+        self.chain, self.lat, self.lon = chain, lat, lon
+        self.name, self.res_m = "ANCHORED_DEM", chain[0][0].res_m
+
+    def sample(self, lat, lon):
+        la, lo = np.radians(lat), np.radians(lon)
+        la0, lo0 = np.radians([self.lat, self.lon])
+        a = np.sin((la-la0)/2)**2 + np.cos(la0)*np.cos(la)*np.sin((lo-lo0)/2)**2
+        dk = 2*R_M/1000*np.arcsin(np.sqrt(np.clip(a, 0, 1)))
+        # Global sources have no cache edge: cover the full 300 km march from a shifted tower.
+        chain = [(s, np.inf if isinstance(s, hz.GlobalCylSampler) else m) for s, m in self.chain]
+        return hz.sample_chain(chain, lat, lon, dk)
+
+
+def anchored_chain(chain, lat, lon):
+    return [(AnchoredTerrain(chain, lat, lon), np.inf)]
+
+
+def input_identity(chain, eph):
+    """DEM file identity (including sub-second writes) and content hash of both ephemeris arrays."""
+    sources = []
+    for sampler, radius in chain:
+        s = getattr(sampler, "sampler", sampler)
+        path = getattr(s, "path", None) or getattr(getattr(s, "data", None), "filename", None)
+        stat = Path(path).stat() if path else None
+        row = {"name": s.name, "radius_km": radius, "size": stat.st_size if stat else None,
+               "mtime_ns": stat.st_mtime_ns if stat else None}
+        if isinstance(s, hz.GlobalCylSampler):
+            row["label_sha256"] = hashlib.sha256(Path(path).with_suffix(".lbl").read_bytes()).hexdigest()
+        if hasattr(sampler, "near_km"):
+            row["outer_only_km"] = sampler.near_km
+        sources.append(row)
+    digest = hashlib.sha256()
+    for arr in (eph.sun, eph.earth):
+        digest.update(np.ascontiguousarray(arr, dtype="<f8").tobytes())
+    return {"dem": sources, "ephem_sha256": digest.hexdigest(), "start": eph.start,
+            "n": eph.n, "mock": eph.mock}
+
+
 def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
     """Full relay-tower analysis for one site. Returns the contract v1.2 section-10 object."""
     p = dict(DEFAULTS, **(params or {}))
@@ -397,7 +443,8 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
     nh, N = H.size, eph.n
     bands = p["bands"]
     rule = p["link_rule"]
-    chain_r = relax_chain(chain, p["radius_km"])
+    chain_r = anchored_chain(chain, lat0, lon0)
+    provenance = input_identity(chain, eph)
 
     # ---- lander (direct link)
     h0 = float(hz.sample_chain(chain, np.array([lat0]), np.array([lon0]), np.array([0.0]))[0])
@@ -427,9 +474,10 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
         work.mkdir(parents=True, exist_ok=True)
         key = json.dumps({k: p[k] for k in ("radius_km", "spacing_m", "heights_m", "min_km", "max_km",
                                             "n_steps", "earth_el_cap_deg")} | {"lat": lat0, "lon": lon0,
-                         "n": N, "v": ENGINE_VERSION, "eph_mock": eph.mock}, sort_keys=True)
+                         "inputs": provenance, "v": ENGINE_VERSION}, sort_keys=True)
         kf = work / "key.json"
-        fresh = not (kf.exists() and kf.read_text() == key)
+        fresh = not (kf.exists() and kf.read_text() == key and (work / "vis.npy").exists()
+                     and (work / "done.npy").exists())
         mode = "w+" if fresh else "r+"
         vis_p = np.lib.format.open_memmap(work / "vis.npy", mode=mode, dtype=np.uint8, shape=(nc, nh, nbytes))
         done = np.lib.format.open_memmap(work / "done.npy", mode=mode, dtype=np.bool_, shape=(nc,))
@@ -462,6 +510,8 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
     gain_bits = count_bits(vis_p & ~direct_p[None, None, :])              # Earth when direct is down
     link_frac = np.where(lander_link, (count_bits(direct_p) + gain_bits) / N, direct.mean())
     buildable = has_dem & (slope <= p["max_slope_deg"])
+    if not buildable.any():
+        raise ValueError("no buildable candidate with valid terrain and slope")
 
     # ---- best per height + sunlight for a shortlist
     best = []
@@ -478,6 +528,8 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
             res = hz.compute_horizon(clat[i], clon[i], chain_r, h0_m=float(ground[i]),
                                      obs_height_m=float(H[j]), min_km=p["min_km"], max_km=p["max_km"],
                                      n_steps=p["n_steps"])
+            if res["n_missing"]:
+                raise ValueError("missing terrain in tower sunlight horizon")
             az, el = topo_az_el(clat[i], clon[i], ground[i] + H[j], eph.sun)
             f = sun_fraction_series(res["mask"], az, el)
             sun_cache[(i, j)] = {"sun_frac": round(float((f >= 0.5).mean()), 4),
@@ -534,6 +586,7 @@ def compute_relay(site, chain, eph, params=None, work_dir=None, log=print):
         "networks": networks,
         "link_budget": budget,
         "inputs_mock": {"ephem": bool(eph.mock), "site_coords": bool(site.get("mock", False))},
+        "input_identity": provenance,
         "mock": bool(eph.mock),
         "concept": "BEACON (NASA GRC, NTRS 20240014584): 15 m deployed boom, users up to ~10 km",
     }

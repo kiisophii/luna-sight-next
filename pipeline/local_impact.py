@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from local_maps import ROOT, IDS, METRICS, sha_file, validate_map
+from local_maps import ROOT, IDS, METRICS, sha_file, validate_map, catalogue_ids
 
 
 def read(path):
@@ -75,22 +75,25 @@ def table(headers,rows):
 
 def location_report(web,docs):
     records=[]
-    for sid in IDS:
+    sites={s['id']:s for s in read(web/'sites.json')}
+    for sid in [s for s in catalogue_ids() if (web/'local'/f'{s}.json').exists()]:
         path=web/'local'/f'{sid}.json';record=read(path);validate_map(record)
         points=record['points']
         baseline=read(web/'metrics'/f'{sid}.json')
         centre=points[220]
         differences={k:centre[k]-baseline[k] for k in METRICS}
-        records.append(dict(id=sid,local_sha256=sha_file(path),
+        records.append(dict(id=sid,lat=sites[sid]['lat'],group=('south_polar' if sites[sid]['lat']<=-75 else 'low_mid_latitude' if abs(sites[sid]['lat'])<60 else 'high_latitude'),local_sha256=sha_file(path),
             radial=[radius_summary(points,r) for r in [1,3,5,10]],
             pairs={m:dict(extreme=striking_pair(points,m),adjacent=striking_pair(points,m,True)) for m in METRICS},
             ground_resolution_counts={str(v):sum(p['ground_resolution_m']==v for p in points) for v in sorted({p['ground_resolution_m'] for p in points})},
             centre_metric_difference=differences,centre_metrics_sha256=sha_file(web/'metrics'/f'{sid}.json')))
     evidence=dict(method='Sampled nodes, linear quartiles; spherical separation. Adjacent pairs share a grid edge.',sites=records)
     (docs/'location_sensitivity.json').write_text(json.dumps(evidence,indent=2)+'\n',encoding='utf-8')
-    lines=['# Card 18 — local location sensitivity','Owner: Jiyong. Computed 2026-11-14.',
-        'Six 21×21 grids, ±10 km east/north at 1 km spacing (2,646 nodes). All results use the actual production core.js over 43,824 hourly samples, 2026–2030. Earth visibility is geometric direct-to-Earth visibility, not station availability or guaranteed radio service.',
-        '![Six-region visibility maps](location_sensitivity.png)',
+    n=len(records)
+    lines=['# Cards 18 + 20 — local location sensitivity (all catalogue sites)','Owners: Jiyong (card 18, six south-polar regions) and Dongju (card 20, the other 27 sites). Computed 2026-11-14.',
+        f'{n} grids of 21×21 nodes, ±10 km east/north at 1 km spacing ({441*n:,} nodes). All results use the actual production core.js over 43,824 hourly samples, 2026–2030. Earth visibility is geometric direct-to-Earth visibility, not station availability or guaranteed radio service.',
+        '![Six-region visibility maps (card 18)](location_sensitivity.png)',
+        *polar_vs_equatorial(records),
         'Plot: `python pipeline/plot_local_maps.py`. Each square represents a sampled node; all regions share each metric\'s colour scale.',
         '## Nearby contrasts useful for the Impact story',
         'These pairs are adjacent grid nodes, approximately 1 km apart. Selection maximises the difference within each sampled region; it is not a representative average or an uncertainty bound. Coordinates and all source hashes are retained in location_sensitivity.json.']
@@ -125,6 +128,29 @@ def location_report(web,docs):
         'Reproduce: `python pipeline/local_maps.py --jobs 12` after expanded windows are available; `python pipeline/local_impact.py --locations`. No partial map is published.']
     (docs/'location_sensitivity.md').write_text('\n\n'.join(lines)+'\n',encoding='utf-8')
     return evidence
+
+
+def polar_vs_equatorial(records):
+    """Short comparison generated from the numbers only (card 20)."""
+    groups={'south_polar':'South-polar (lat ≤ −75°)','low_mid_latitude':'Low/mid latitude (|lat| < 60°)','high_latitude':'Other (Chandrayaan-3, 69° S)'}
+    rows=[];med={}
+    for g,label in groups.items():
+        rs=[r for r in records if r['group']==g]
+        if not rs:continue
+        iqr_sun=[100*next(x for x in r['radial'] if x['radius_km']==10)['sun_frac']['iqr'] for r in rs]
+        rng_both=[100*(next(x for x in r['radial'] if x['radius_km']==10)['both_frac']['max']-next(x for x in r['radial'] if x['radius_km']==10)['both_frac']['min']) for r in rs]
+        adj_both=[100*r['pairs']['both_frac']['adjacent']['difference'] for r in rs]
+        adj_sun=[100*r['pairs']['sun_frac']['adjacent']['difference'] for r in rs]
+        med[g]=dict(iqr_sun=float(np.median(iqr_sun)),adj_both=float(np.median(adj_both)),adj_sun=float(np.median(adj_sun)),rng_both=float(np.median(rng_both)),n=len(rs),
+                    max_adj_both=max(adj_both),max_site=rs[int(np.argmax(adj_both))]['id'])
+        rows.append([label,len(rs),f"{np.median(iqr_sun):.2f}",f"{np.median(rng_both):.2f}",f"{np.median(adj_sun):.2f}",f"{np.median(adj_both):.2f}",f"{max(adj_both):.2f} ({rs[int(np.argmax(adj_both))]['id']})"])
+    out=['## South pole vs the rest (card 20)',
+         'Medians over the sites in each group, within the 10 km circle. Adjacent = two grid nodes 1 km apart.',
+         table(['Group','Sites','Sunlight IQR pp','Both: max−min pp','Largest 1 km sunlight jump pp (median)','Largest 1 km both jump pp (median)','Largest 1 km both jump pp (max, site)'],rows)]
+    if 'south_polar' in med and 'low_mid_latitude' in med:
+        p,e=med['south_polar'],med['low_mid_latitude']
+        out.append(f"**From the numbers:** moving the landing point by just 1 km changes simultaneous Sun + Earth visibility by up to {p['adj_both']:.1f} percentage points at a typical south-polar site (median of {p['n']} sites; largest {p['max_adj_both']:.1f} pp at {p['max_site']}), but only {e['adj_both']:.1f} pp at a typical low/mid-latitude site (median of {e['n']} sites). Within 10 km the sunlight spread (IQR) is {p['iqr_sun']:.1f} pp near the pole versus {e['iqr_sun']:.1f} pp elsewhere: at the poles the exact spot decides the result, away from them the date does.")
+    return out
 
 
 def direct_bits(record):

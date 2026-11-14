@@ -57,7 +57,18 @@ class SourceSession(requests.Session):
         host = urlsplit(request.url).hostname
         if host not in {'pds-geosciences.wustl.edu','pgda.gsfc.nasa.gov'}:
             raise ValueError('Blocked non-source network destination: '+str(host))
-        return super().send(request, **kwargs)
+        for attempt in range(3):
+            response=super().send(request, **kwargs)
+            if response.status_code!=403 or host!='pgda.gsfc.nasa.gov' or attempt==2:
+                return response
+            # The canonical public product was independently observed returning
+            # 206; allow two bounded retries for transient provider responses.
+            retry_after=response.headers.get('Retry-After')
+            if retry_after and (not retry_after.isdigit() or int(retry_after)>10):
+                return response
+            delay=int(retry_after) if retry_after else 2*(attempt+1)
+            response.close()
+            time.sleep(delay)
 
 
 def session():

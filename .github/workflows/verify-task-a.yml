@@ -16,7 +16,7 @@ jobs:
     env:
       LLSN_VERIFICATION_ROOT: ${{ github.workspace }}
       PYTHONUNBUFFERED: '1'
-      LLSN_PREVIOUS_RUN_ID: '43651123822'
+      LLSN_PREVIOUS_RUN_ID: '43655358830'
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
     steps:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: task-a-horizons-full
-          run-id: 43651123822
+          run-id: 43655358830
           github-token: ${{ github.token }}
           path: .
       - name: Uniform near-field convergence at all 33 sites and all 720 rays

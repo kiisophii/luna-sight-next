@@ -45,3 +45,28 @@ Horizons reports DE441 and a high-precision MEAN_ME frame; the requested product
 - Skyfield planetary frames and lunar observers: https://rhodesmill.org/skyfield/planetary.html
 - JPL Horizons API: https://ssd-api.jpl.nasa.gov/doc/horizons.html
 - Individual kernels, coordinate sources and citations: `data/DATASETS.md`.
+
+## Independent review supplied by user (2026-11-14)
+The user reported independent review of commit d89c42a065eea5d478f4e03b56e15585c02635b6: 1,452 fresh Horizons observations passed 0.01 degrees (maximum azimuth 0.000444751 degrees; elevation 0.000033929 degrees), and full 43,824-row regeneration had zero float32 mismatches. These are user-supplied independent results, separate from the author's original cached comparisons. No required correction was found. The optional practice goal of 0.0001 degrees was NOT met in maximum azimuth.
+
+The exported az_el geometry is an approximation: subtract the observer position from a Moon-center apparent vector. It passed the stated direct observer comparison; it is not an exact topocentric apparent calculation. South pole and Shackleton coordinates are representative validation points with zero terrain elevation and a 2 m observer, not measured terrain-height validations.
+
+The independent review did not check the saved 18.6-year NPZ, interrupted generation/resume, fractional interpolation or real-browser core.js. The following author follow-up checks cover those items without changing the production implementation or regenerating production data; they do not expand the independent review's scope.
+
+## Supplemental checks (implementation assistant, 2026-11-14)
+See ephem_followup_check.json for exact hashes and results.
+- Actual saved 18.6-year NPZ: 81,444 x 6 float32, exact metadata and regular two-hour indices, all rows finite. Five rows including both ends were recomputed and matched exactly. This is not complete 18.6-year numerical revalidation.
+- Actual Skyfield interruption/resume: a disposable 12-hour fixture stopped after three flushed rows and resumed at hour 3, computing only nine more rows. All 12 rows matched the existing production binary. This controlled exception does not simulate power loss, OS termination or interrupted network downloads.
+- Fractional interpolation: the 240 seeded fractional hours across five years, four site/height cases and two bodies passed the 0.01-degree 3D angular criterion; maximum separation 0.00013176342594160888 degrees. Reference is direct topocentric Skyfield, not independent Horizons; heights are synthetic.
+- Actual Chrome 158 executed unchanged web/js/core.js, loaded 43,824 rows with mock=false ephemeris metadata, and passed 1,452 cached Horizons comparisons: maximum azimuth 0.00044475140953181835 degrees, elevation 0.00003392945949221016 degrees. These reuse original cached queries, not the independent review's fresh requests. Terrain and other mock app data are outside this ephemeris check.
+- Production ephem.bin and ephem.json SHA-256 hashes were identical before and after follow-up. No precision change or production data regeneration was performed.
+
+Reproduce supplemental checks with existing kernels, NPZ and Horizons cache:
+
+```sh
+python pipeline/check_ephem_remaining.py
+python pipeline/check_ephem_remaining.py --serve
+# Open http://127.0.0.1:8765/tmp/ephem-browser.html and read PASS/JSON.
+```
+
+The script writes the numerical report and prepares the browser harness. A rerun resets browser status to pending; record the actual browser result separately. The server binds only to localhost and sets an explicit JavaScript MIME type for Windows.

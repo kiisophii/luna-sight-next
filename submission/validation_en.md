@@ -45,7 +45,7 @@ in JavaScript and an independent Python port [^8].
 - **Near field < 200 m is not marched at non-polar sites** (horizons start at 0.2 km, as in card 9) [^3].
 - **End of operations is only a proxy for sunset**; operators often power down before nightfall, some reports give only a date, and SLIM / Chang'e 3 times come from secondary news reports. Chang'e 4 has no public first-night time and was not compared [^12][^13].
 - **Apollo reference values are a published computation** (ALSJ), not an in-situ measurement [^14].
-- **Geometry only**: no link budget or antenna scheduling; permission to use the KDSA coordinates is pending [^15].
+- **Geometry only**: no link budget or antenna scheduling; KDSA coordinates come from a publicly released NASA/JPL NAIF SPICE file, used with citation (no separate permission requested) [^15].
 - **No ground truth for horizons beyond the DEMs themselves** (no surface photographs compared) [^16].
 - **PGDA's exact 18.6-year dates and observer height are not stated** (unverified) [^17].
 
@@ -65,6 +65,6 @@ in JavaScript and an independent Python port [^8].
 [^12]: `docs/hindcast.md:32` — "End of operations is an approximate proxy, not an exact measurement of sunset."
 [^13]: `docs/hindcast.md:40` — Chang'e 4 "no public source"; `docs/hindcast.md:60` — SLIM and Chang'e 3 from secondary news reports.
 [^14]: `docs/hindcast.md:59` — "Apollo reference values are a published computation (ALSJ), not an in-situ measurement."
-[^15]: `docs/VALIDATION.md:36` — "geometry only: no link budget, no antenna scheduling; permission to use KDSA coordinates is pending."
+[^15]: `docs/VALIDATION.md:78` — "Link windows are geometry only: no link budget, no antenna scheduling. KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested."
 [^16]: `docs/VALIDATION.md:35` — "No ground truth for site horizons beyond the DEMs themselves".
 [^17]: `docs/VALIDATION.md:38` — "PGDA's exact 18.6-year dates and observer height are not stated (unverified)."

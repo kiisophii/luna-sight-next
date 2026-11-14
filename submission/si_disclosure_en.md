@@ -24,9 +24,13 @@ Counts include every dated row once, including repeated timestamps and administr
 | 오채이 (design member; English spelling not recorded) | Not recorded | Design role is in the team assignment, not an SI use claim | 0 | 0 |
 | **Total** | | | **98** | **72** |
 
+*Snapshot `64e3bee` counts; after the in-person confirmation recorded below, 0 human-check cells are pending in the current log.*
+
 The two administrative SI entries for preparing and refreshing this document are appended separately in this PR and are not part of the 98-row pinned-main snapshot. PR #42’s coordinate audit/provenance work is now included in main and counted; the still-unmerged PR #36 source-inventory records are not silently counted as main records. Refresh this inventory after those records or other team changes merge, before final submission.
 
 ## Human-check entries to complete
+
+> **Update 2026-11-14 23:01 KST (current main, after this snapshot).** The six members were asked in person whether every row under their own name was work they directed and whose results they reviewed; Sua relayed that all confirmed, and confirmed her own rows as integrator. Every `TO CHECK` human-check cell then in `docs/SI_USAGE.md` was filled with "Confirmed by <member> — in-person team confirmation relayed by Sua, 2026-11-14" (77 rows: Sua Kim 43, Jiyong 18, Dongju Kim 10, Soyun Jeong 6; Minchul Kim had none left), and their "Changed by human?" cell with "Not recorded". **Pending human-check cells in the current log: 0.** This records a relayed group confirmation, not a per-row written sign-off by each member. The counts and list below describe the pinned snapshot `64e3bee`.
 
 Literal empty human-check cells: **0**. Placeholder `TO CHECK` cells: **72**. Both mean unfinished; all are listed below. Non-empty cells may record only human review of AI findings, not a human rerun or exhaustive verification. The source log's `Changed by human?` column is separate and must also be completed truthfully by the owner.
 

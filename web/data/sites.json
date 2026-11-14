@@ -365,8 +365,8 @@
   },
   {
     "id": "CONNECTING_RIDGE",
-    "name": "Connecting Ridge (R01)",
-    "name_ko": "연결 능선 R01",
+    "name": "Connecting Ridge (DEM region centre, R01)",
+    "name_ko": "커넥팅 리지 (지형 구역 중심, R01)",
     "short": "Connect Ridge",
     "group": "polar_peak",
     "lat": -89.4632,
@@ -378,8 +378,8 @@
   },
   {
     "id": "PEAK_NEAR_SHACKLETON",
-    "name": "Peak Near Shackleton (R07)",
-    "name_ko": "섀클턴 인근 봉우리 R07",
+    "name": "Peak Near Shackleton (DEM region centre, R07)",
+    "name_ko": "섀클턴 인근 봉우리 (지형 구역 중심, R07)",
     "short": "Peak Shacklet",
     "group": "polar_peak",
     "lat": -88.811,
@@ -391,8 +391,8 @@
   },
   {
     "id": "DE_GERLACHE_RIM1",
-    "name": "de Gerlache Rim 1 (R11)",
-    "name_ko": "드 제를라슈 가장자리 R11",
+    "name": "de Gerlache Rim 1 (DEM region centre, R11)",
+    "name_ko": "드 제를라슈 가장자리 1 (지형 구역 중심, R11)",
     "short": "deGerlache R11",
     "group": "polar_peak",
     "lat": -88.6834,
@@ -404,8 +404,8 @@
   },
   {
     "id": "SHOEMAKER_RIM_A",
-    "name": "Shoemaker Rim A (LM2)",
-    "name_ko": "슈메이커 가장자리 A",
+    "name": "Shoemaker Rim A (DEM region centre, LM2)",
+    "name_ko": "슈메이커 가장자리 A (지형 구역 중심, LM2)",
     "short": "Shoemaker A",
     "group": "polar_peak",
     "lat": -88.0792,

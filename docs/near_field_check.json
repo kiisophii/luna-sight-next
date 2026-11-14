@@ -3003,12 +3003,12 @@
       }
     }
   ],
-  "elapsed_s": 13.875,
+  "elapsed_s": 9.594000000040978,
   "source_url": "https://pgda.gsfc.nasa.gov/products/69",
   "baseline_files_modified": false,
   "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
   "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
-  "script_sha256": "1cbd27d2430e62e5c3624dbf8b06580a83c98901d7545d21df2bfc49800cf72e",
+  "script_sha256": "4f82fbc05e23788c7c2d7723eb4f801d114abdc64c8ed329e9de69163b878d97",
   "horizon_sha256": "83f0ef54630961bd322e82a01baad74d368484987659d785cdfe9e6598ec24c4",
   "method": "Current production centre versus 5 m minimum distance/8000 steps; 200 m/8000 step-only control; native SLDEM pixel diagnostics. All use 2 m observer, 720 azimuths, curvature, actual hourly core.js 2026-2030."
 }

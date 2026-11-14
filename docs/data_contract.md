@@ -323,3 +323,22 @@ Written by `node pipeline/date_slip.mjs` (actual `web/js/core.js`); human summar
 - `best` / `worst` = highest / lowest `both_frac` (ties: shorter / longer `longest_dark_h`), same as `web/js/landing_scan.js`.
 - `slip["+Nd"][m]`: Δ = metric(landing + N days) − metric(landing) for every landing with landing + N ≤ `last_landing`. `median_abs_change` = median |Δ|; `worst_change` = most unfavourable Δ (most negative for fractions, most positive for dark hours) with its dates; fractions in percentage points.
 - Only sites with a real horizon (section 3) get a file; no flat or mock fallback.
+
+## 17. Proposed v1.2 — `web/data/monthly/<ID>.json` seasons 2026–2030 (2026-11-14, Sua, s4-seasons) — NOT yet agreed; new section only (sections 0–16 unchanged)
+Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent check `python pipeline/verify_seasons.py` → `docs/seasons_check.json`; human summary `python pipeline/seasons_doc.py` → `docs/seasons.md`; all-site summary `docs/seasons_summary.json`.
+```json
+{"id": "SHACKLETON_RIM", "first_month": "2026-01", "last_month": "2030-12", "n_months": 60, "step_h": 1,
+ "definition": "...", "lunation_definition": "...",
+ "months": ["2026-01", ..., "2030-12"],
+ "series": {"hours": [744, 672, ...], "sun_h": [ints], "earth_h": [ints], "both_h": [ints],
+            "sun_frac": [60 numbers], "earth_frac": [...], "both_frac": [...], "longest_dark_h": [60 ints]},
+ "lunation": {"window_h": 709, "sun_frac": [60], "earth_frac": [60], "both_frac": [60]},
+ "subsolar_lat_deg": {"min": [60], "max": [60]}, "subearth_lat_deg": {"min": [60], "max": [60]},
+ "total": {"hours": 43824, "sun_frac": 0.84.., "earth_frac": ..., "both_frac": ..., "longest_dark_h_max_month": 75},
+ "horizon_sha256": "...", "core_sha256": "...", "mock": false}
+```
+- Month k = calendar month (UTC) = hour indices `[i0, i1]` (section 0); the 60 months tile hours 0 … 43823 exactly. `series` = `core.metrics(site, i0, i1)`: `*_h` = hours sunlit / Earth visible / both (integers), `*_frac` = count / hours rounded half-up to 4 decimals, `longest_dark_h` = longest not-sunlit run **inside** the month (cut at month boundaries).
+- `lunation` = the same metrics over 709 h (≈ one synodic month, 29.54 d) centred on the month: centre `c = i0 + floor(hours / 2)`, window `[c − 354, c + 354]`. It removes the day/night aliasing of 28–31-day months (equatorial sites), so the line shows the real season.
+- `subsolar_lat_deg` / `subearth_lat_deg` = min/max over the month's hours of the selenographic latitude (MOON_ME) of the Sun / Earth direction from `ephem.bin`, 3 decimals; same for every site.
+- Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
+- Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.

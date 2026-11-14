@@ -2,7 +2,24 @@
 
 Audit date: 14 November 2026 (KST). Pinned main: [f4705c066774641dd27c101928ffddc9a3304ce2](https://github.com/kiisophii/lunar-landing-site-navigator/tree/f4705c066774641dd27c101928ffddc9a3304ce2). Catalogue SHA-256: `fabf63bcfe2d33d556bb1e0c1f8934254600233fd65f0ecc7bb7d974d1ed7af0`.
 
-## Result
+## Approved display-label follow-up — 2026-11-14
+
+The user relayed Sua's decision to keep the four ACD-50044 DEM-polygon centres and qualify their visible labels. Latest main `48a0ad087bdce595aa91fb55bba289581b9ecdfb` was merged first, preserving both branches' SI rows. The audit below and its JSON companion retain their original pinned snapshot; their former pending label decision is superseded by this section.
+
+| ID | English display label | Korean display label |
+|---|---|---|
+| CONNECTING_RIDGE | Connecting Ridge (DEM region centre, R01) | 커넥팅 리지 (지형 구역 중심, R01) |
+| PEAK_NEAR_SHACKLETON | Peak Near Shackleton (DEM region centre, R07) | 섀클턴 인근 봉우리 (지형 구역 중심, R07) |
+| DE_GERLACHE_RIM1 | de Gerlache Rim 1 (DEM region centre, R11) | 드 제를라슈 가장자리 1 (지형 구역 중심, R11) |
+| SHOEMAKER_RIM_A | Shoemaker Rim A (DEM region centre, LM2) | 슈메이커 가장자리 A (지형 구역 중심, LM2) |
+
+Only eight catalogue values changed: `name` and `name_ko` on these four records. Existing `short`, explanatory `note`, IDs, coordinates, heights, groups and every other field are unchanged. The notes still identify published DEM-polygon centres, not landed vehicles or claimed summits. No other scientific data file or application code was changed. This resolves the visible-label ambiguity by team decision; it does not establish physical crest/summit locations.
+
+AI-operated local Chrome inspection confirmed the English and Korean names in the picker and comparison cards. At 390 px viewport width all eight card labels wrap within a 265 px heading area (`scrollWidth == clientWidth`); English headings use two or three lines and Korean headings two lines. Desktop cards also wrap. Existing short labels remain 11–14 characters. No CSS changes were necessary. This is a focused label check, not a full UI or 3D marker verification; the local 3D preview was unavailable.
+
+**Contract result: not passing after labels-only edits.** Before editing, the full `python pipeline/check_contract.py` run passed with 0 errors and 0 warnings. The changed catalogue produces exactly four errors and 0 warnings: `windows/<ID>.json: input changed: site_sha256 (exact JSON.stringify(site))`, one per renamed ID. The check was repeated after updating to latest main. All remaining checks passed. The stored site hash includes display strings, so names alone invalidate that provenance. Windows files and the checker were deliberately retained as requested; no numerical regeneration or hash bypass was performed. A separately authorized provenance update is needed before the full contract can pass. The existing 33-site audit offsets remain unchanged at zero metres.
+
+## Original audit result (pinned snapshot)
 
 All **33 stored coordinate pairs match the stated source pair**, after longitude normalization: maximum source-to-catalogue separation **0.000 m**. This verifies transcription, **not** whether every named ridge/peak is located at that point.
 

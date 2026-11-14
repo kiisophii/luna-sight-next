@@ -22,8 +22,8 @@ Two problems were found, neither a wrong number:
 
 | # | Severity | Panel / element | What is shown | What the data has | Sites | Issue |
 |---|---|---|---|---|---|---|
-| 1 | **Real bug (integration)** | `#llsn-local` (How much does the exact spot matter?) — `web/js/local_map.js:8` hard-codes 6 IDs | "No local map for the focused site — showing Malapert Massif (region). Local maps exist for six south-polar areas." | `web/data/local/<ID>.json` exists for **all 33 sites** since card 20 (PR #26) | 27: APOLLO11–17, LUNA16/20/24, CHANGE3–6, CHANDRAYAAN3, SLIM, IM1, IM2, BLUE_GHOST1, IM3_REINER_GAMMA, ARTEMIS_CABEUS_B, ARTEMIS_MOUTON(_PLATEAU), ARTEMIS_NOBILE_RIM1/2, ARTEMIS_DE_GERLACHE_RIM2, ARTEMIS_SLATER_PLAIN, SHOEMAKER_RIM_A | see below |
-| 2 | Cosmetic (rounding) | `#llsn-relay .rl-kpis` | SHACKLETON_RIM, T = 10086: "Link with tower(s) 48 %" + "No link 53 %" = 101 % | 342 h + 378 h = 720 h (47.5 % + 52.5 %); each part is rounded half-up on its own | 1 (of 66 site-times) | see below |
+| 1 | **Real bug (integration)** | `#llsn-local` (How much does the exact spot matter?) — `web/js/local_map.js:8` hard-codes 6 IDs | "No local map for the focused site — showing Malapert Massif (region). Local maps exist for six south-polar areas." | `web/data/local/<ID>.json` exists for **all 33 sites** since card 20 (PR #26) | 27: APOLLO11–17, LUNA16/20/24, CHANGE3–6, CHANDRAYAAN3, SLIM, IM1, IM2, BLUE_GHOST1, IM3_REINER_GAMMA, ARTEMIS_CABEUS_B, ARTEMIS_MOUTON(_PLATEAU), ARTEMIS_NOBILE_RIM1/2, ARTEMIS_DE_GERLACHE_RIM2, ARTEMIS_SLATER_PLAIN, SHOEMAKER_RIM_A | [#43](https://github.com/kiisophii/lunar-landing-site-navigator/issues/43) |
+| 2 | Cosmetic (rounding) | `#llsn-relay .rl-kpis` | SHACKLETON_RIM, T = 10086: "Link with tower(s) 48 %" + "No link 53 %" = 101 % | 342 h + 378 h = 720 h (47.5 % + 52.5 %); each part is rounded half-up on its own | 1 (of 66 site-times) | [#44](https://github.com/kiisophii/lunar-landing-site-navigator/issues/44) |
 
 Screenshots: `docs/ui_audit/shots/<ID>_10086_local.png` (27 sites) and `docs/ui_audit/shots/SHACKLETON_RIM_10086_relay.png`.
 
@@ -52,7 +52,7 @@ Screenshots: `docs/ui_audit/shots/<ID>_10086_local.png` (27 sites) and `docs/ui_
 - Not covered: tower-network table rows and link-budget table in the relay panel, the 3D globe overlay text, the custom-point panel,
   chart pixel positions.
 
-## Proposed issues
+## Issues opened (#43, #44)
 
 1. **Local map panel shows only the six card-18 areas.** `web/js/local_map.js:8` lists six IDs and the note says "Local maps exist for six
    south-polar areas", but card 20 added `web/data/local/<ID>.json` for the other 27 sites. Fix: build the area list from the catalogue

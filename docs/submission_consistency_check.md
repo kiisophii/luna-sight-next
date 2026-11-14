@@ -144,6 +144,17 @@ No "NASA-validated", "accurate" or "real-time" claims were found in the six file
 - Recommendation: refresh the snapshot, as si:27 itself requires ("Refresh this inventory ... before final submission"). The statement at :7 can stay.
 - Evidence: count of `^| 2026-` rows in `docs/SI_USAGE.md` on `4fbdd63`, penultimate cell.
 
+> **Addendum (2026-11-15, main `8eff7ac`, web version 28; the M7 finding above is kept as written for `4fbdd63`).**
+> - Main `8eff7ac` filled all 77 `TO CHECK` human-check cells in `docs/SI_USAGE.md` with "Confirmed by <member> — in-person team confirmation relayed by Sua, 2026-11-14". It also added an update note at `si_disclosure_en.md:33`.
+> - That note gives the 77-cell breakdown (Sua Kim 43, Jiyong 18, Dongju Kim 10, Soyun Jeong 6, Minchul Kim 0) and states "Pending human-check cells in the current log: 0".
+> - It also states that the counts and list below describe the pinned snapshot `64e3bee`. The 98 / 72 figures at `si_disclosure_en.md:25,35` are therefore now explicitly labelled as a snapshot.
+> - **What remains:**
+>   1. Main has **115 rows** (not stated in the disclosure).
+>   2. After this PR (#54) merges, the log has **116 rows and 1 `TO CHECK`**: the 23:50 row for this review. So "Pending … 0" at `si_disclosure_en.md:33` becomes out of date unless that row is confirmed first.
+> - Suggested addition at :33: "Current log: 115 rows (116 after PR #54; its one new row is pending)".
+> - **Severity for the remaining part: Minor** (was Major).
+> - Evidence: `git show 8eff7ac:submission/si_disclosure_en.md` line 33; `^| 2026-` rows and penultimate cells of `docs/SI_USAGE.md` on `8eff7ac` (115 / 0) and on this branch (116 / 1).
+
 ### Minor
 - **m1. CONTEXT DIFFERENCE — PGDA Sun definition.**
   - The PDS label defines the PGDA Sun value as the fraction of hourly time steps "sunlit (by any fraction of the solar disc)". The headline 1.66 pp (VALIDATION:60, onepager:8, slides:61) compares it with our *mean visible disc fraction*. With the same any-part rule it is 1.400 pp, r 0.9834 (`validation_pgda.md:31`), so the headline is the more conservative number.
@@ -179,6 +190,7 @@ Wording note (no change needed): in `validation_onepager_en.md:26` the "Independ
 6. **M6** — decide the project name and align the one-pager title, README and app title.
 7. **M5** — correct the "team lead" label at VALIDATION:84.
 8. **M7** — refresh the SI disclosure counts (114 / 77 on `4fbdd63`) just before submitting. Owners fill their own `TO CHECK` cells.
+   - *Addendum, main `8eff7ac`:* the 77 cells are filled and `si_disclosure_en.md:33` explains this. What is left is the current row count (115, or 116 with PR #54) and this PR's one pending row. Now Minor; see the M7 addendum.
 9. Minor, if time allows: m2, m3, m4, m11, m12 (short additions), m5, m6, m7, m8, m9 (labels and counts), m1 (`card9_verification.md:14` wording), m14.
 
 ## 8. Items checked and found consistent

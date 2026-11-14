@@ -262,3 +262,35 @@ Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; 
 
 A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
 Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.
+
+## 15. Proposed — `web/data/local/<ID>.json` (Card 18, Jiyong, 2026-11-14)
+
+New optional data only; existing sections unchanged. Written by `pipeline/local_maps.py`.
+Each of six files contains 441 sampled locations, **not area-averaged pixels**.
+
+- `id`, `center:{lat,lon}`, `frame:"MOON_ME_DE421"`, `radius_m:1737400`, `complete:true`, `mock:false`.
+- `grid:{rows:21,cols:21,spacing_m:1000,origin_e_m:-10000,origin_n_m:-10000,order}`.
+  Node index = row×21+column; rows south to north and columns west to east. Offset (e,n)
+  is mapped by spherical geodesic bearing atan2(e,n) and distance hypot(e,n). A corner is
+  approximately 14.14 km from the centre; the square is not a 10 km circular footprint.
+- `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`.
+- `params:{min_km:0.005,max_km:300,n_steps:8000,obs_height_m:2}`. Horizon masks have 720
+  azimuths (0.5°), lunar curvature and original source gates measured from **each node**:
+  5/10/20/60/80/240 m terrain to 3/25/25/60/60/200 km, then global fallback to 300 km.
+  Expanded cached windows are storage envelopes, not modified radial gates. Real source
+  coverage may lack 5 m terrain; no extrapolation or invented elevations are permitted.
+- `points`: 441 ordered objects `{index,e_m,n_m,lat,lon,h0_m,ground_resolution_m,
+  sun_frac,earth_frac,both_frac,longest_dark_h,dem_sources}`. Fractions are unrounded
+  hourly counts/43824 from the actual `web/js/core.js`. The input horizon uses section-3
+  rounding (height 0.01 m, mask 0.0001°). Sunlit means disk fraction≥0.5; Earth centre must
+  be above the mask; both is their AND. Darkness is the longest consecutive dark hourly
+  run clipped to this window. `ground_resolution_m` is the finest source available at
+  that node, not a vertical accuracy claim; `dem_sources` describes sources used on rays.
+- `provenance:{terrain_sources,files_sha256,center,params,input_key}`. Each source contains
+  repository-relative `path`, full source `sha256`, `resolution_m`, `gate_km` (null for global
+  sources) and global `label_sha256`. Code/core/ephemeris hashes identify exact inputs.
+  Resume checkpoints and 720-bin masks are ignored local files, not browser payloads.
+
+No partial map is exported. Local statistics use nodes within circular radii 1/3/5/10 km;
+IQR is Q3−Q1 with linear quantile interpolation. Maps describe geometric illumination and
+direct Earth visibility, not Earth-station availability, terrain ground truth or RF service.

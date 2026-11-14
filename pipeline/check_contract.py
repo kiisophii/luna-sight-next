@@ -433,6 +433,26 @@ def check_hterrain(data):
     print(f"hterrain: near {idx['grids']['near'].get('res_m')} m, far {idx['grids']['far'].get('res_m')} m")
 
 
+def check_local(data, sites):
+    """Optional section 15: complete six-region local node maps."""
+    directory = data / 'local'
+    if not directory.exists():
+        return
+    from local_maps import IDS, validate_map
+    for sid in IDS:
+        where = f'local/{sid}.json'
+        obj = load_json(directory / (sid+'.json'))
+        if obj is None:
+            continue
+        try:
+            validate_map(obj)
+            if obj['id'] != sid or obj['center'] != {k:sites[sid][k] for k in ['lat','lon']}:
+                raise ValueError('Centre differs from catalogue')
+        except (ValueError, KeyError, TypeError) as exc:
+            err(where, str(exc))
+    print('local: six 21x21 maps checked')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(Path(__file__).resolve().parents[1] / "web" / "data"))
@@ -445,6 +465,7 @@ def main():
     check_relay(data, sites)
     check_korea(data, sites)
     check_hterrain(data)
+    check_local(data, sites)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

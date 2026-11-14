@@ -36,11 +36,8 @@ our team members; you (the AI) help implement, compute, document and cross-check
 
 ## Repo layout and data contracts (do not change formats without the team)
 - web/ (static app, GitHub Pages), web/js/<your-file>.js (one file per task owner), pipeline/ (Python), data/DATASETS.md, docs/SI_USAGE.md
-- web/data/sites.json: [{id, name, short, group, lat, lon, source_url, note}]
-- web/data/ephem.bin: float32, 6 values per hour (sun xyz, earth xyz; MOON_ME, km), 2026-01-01T00:00 UTC, 1-hour step, through 2030-12-31
-- web/data/horizon/<id>.json: {id, h0_m, az_step_deg, mask:[...degrees]}
-- web/data/validation.json: {n, sun:{mae_pp, rmse_pp, r}, earth:{...}, points:[...]}
-- web/js/core.js: sunEl(site,t), earthEl(site,t), visible(site,t), untilSunset(site,t), untilEarthset(site,t)
+- **The exact file formats are in docs/data_contract.md (v1, fixed 2026-11-14 09:40). Read it before writing or reading any data file.**
+  Key rules: MOON_ME frame; lon −180…180 east-positive; heights above R = 1737.4 km; azimuth 0 = north clockwise; UTC hour index from 2026-01-01T00Z.
 - Only the integrator (Sua) edits web/index.html. You work in your own branch and open a PR.
 
 ## Style

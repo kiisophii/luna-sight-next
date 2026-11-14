@@ -1,0 +1,3543 @@
+{
+  "generated_utc": "2026-11-14T07:12:39.809Z",
+  "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+  "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+  "sites_sha256": "fabf63bcfe2d33d556bb1e0c1f8934254600233fd65f0ecc7bb7d974d1ed7af0",
+  "first_landing": "2026-01-01",
+  "last_landing": "2027-12-31",
+  "days_after_landing": 14,
+  "sites": [
+    {
+      "id": "APOLLO11",
+      "name": "Apollo 11",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-01-24",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-02-08",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5021
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 164,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2027-01-14",
+            "worst_to": "2027-01-28",
+            "share_of_days_worse": 0.5014
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2027-01-14",
+            "worst_to": "2027-01-28",
+            "share_of_days_worse": 0.5014
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 335,
+            "worst_from": "2027-01-14",
+            "worst_to": "2027-01-28",
+            "share_of_days_worse": 0.5014
+          }
+        }
+      }
+    },
+    {
+      "id": "APOLLO12",
+      "name": "Apollo 12",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-01-28",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-02-12",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 164,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2027-09-11",
+            "worst_to": "2027-09-25",
+            "share_of_days_worse": 0.5042
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2027-09-11",
+            "worst_to": "2027-09-25",
+            "share_of_days_worse": 0.5042
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 336,
+            "worst_from": "2027-09-11",
+            "worst_to": "2027-09-25",
+            "share_of_days_worse": 0.5042
+          }
+        }
+      }
+    },
+    {
+      "id": "APOLLO14",
+      "name": "Apollo 14",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-01-28",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-13",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5062
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5062
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5062
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.5298,
+            "worst_change": -100,
+            "worst_from": "2027-08-12",
+            "worst_to": "2027-08-26",
+            "share_of_days_worse": 0.5056
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.5298,
+            "worst_change": -100,
+            "worst_from": "2027-08-12",
+            "worst_to": "2027-08-26",
+            "share_of_days_worse": 0.5056
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176.5,
+            "worst_change": 336,
+            "worst_from": "2027-08-12",
+            "worst_to": "2027-08-26",
+            "share_of_days_worse": 0.5056
+          }
+        }
+      }
+    },
+    {
+      "id": "APOLLO15",
+      "name": "Apollo 15",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-04-25",
+        "sun_frac": 0.997,
+        "earth_frac": 1,
+        "both_frac": 0.997,
+        "longest_dark_h": 1
+      },
+      "worst": {
+        "landing": "2026-01-11",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          0.997
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          0.997
+        ],
+        "longest_dark_h": [
+          1,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 47.9167,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 47.9167,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 161,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5035
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.0833,
+            "worst_change": -99.7024,
+            "worst_from": "2026-04-25",
+            "worst_to": "2026-05-09",
+            "share_of_days_worse": 0.5028
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.0833,
+            "worst_change": -99.7024,
+            "worst_from": "2026-04-25",
+            "worst_to": "2026-05-09",
+            "share_of_days_worse": 0.5028
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 175,
+            "worst_change": 335,
+            "worst_from": "2026-04-25",
+            "worst_to": "2026-05-09",
+            "share_of_days_worse": 0.5028
+          }
+        }
+      }
+    },
+    {
+      "id": "APOLLO16",
+      "name": "Apollo 16",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-01-25",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-10",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4938
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4938
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4938
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.2321,
+            "worst_change": -100,
+            "worst_from": "2026-02-24",
+            "worst_to": "2026-03-10",
+            "share_of_days_worse": 0.4916
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.2321,
+            "worst_change": -100,
+            "worst_from": "2026-02-24",
+            "worst_to": "2026-03-10",
+            "share_of_days_worse": 0.4916
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 175.5,
+            "worst_change": 336,
+            "worst_from": "2026-02-24",
+            "worst_to": "2026-03-10",
+            "share_of_days_worse": 0.4916
+          }
+        }
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "name": "Apollo 17",
+      "group": "apollo",
+      "best": {
+        "landing": "2026-03-24",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-09",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2026-07-20",
+            "worst_to": "2026-08-03",
+            "share_of_days_worse": 0.5
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2026-07-20",
+            "worst_to": "2026-08-03",
+            "share_of_days_worse": 0.5
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 336,
+            "worst_from": "2026-07-20",
+            "worst_to": "2026-08-03",
+            "share_of_days_worse": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "LUNA16",
+      "name": "Luna 16",
+      "group": "luna",
+      "best": {
+        "landing": "2026-02-20",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-07",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4896
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4896
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 165,
+            "worst_change": 168,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4896
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.5298,
+            "worst_change": -100,
+            "worst_from": "2026-07-18",
+            "worst_to": "2026-08-01",
+            "share_of_days_worse": 0.4902
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.5298,
+            "worst_change": -100,
+            "worst_from": "2026-07-18",
+            "worst_to": "2026-08-01",
+            "share_of_days_worse": 0.4902
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176.5,
+            "worst_change": 336,
+            "worst_from": "2026-07-18",
+            "worst_to": "2026-08-01",
+            "share_of_days_worse": 0.4902
+          }
+        }
+      }
+    },
+    {
+      "id": "LUNA20",
+      "name": "Luna 20",
+      "group": "luna",
+      "best": {
+        "landing": "2026-02-20",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-06",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4979
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4979
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4979
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.8274,
+            "worst_change": -99.7024,
+            "worst_from": "2026-02-20",
+            "worst_to": "2026-03-06",
+            "share_of_days_worse": 0.4986
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.8274,
+            "worst_change": -99.7024,
+            "worst_from": "2026-02-20",
+            "worst_to": "2026-03-06",
+            "share_of_days_worse": 0.4986
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 177.5,
+            "worst_change": 335,
+            "worst_from": "2026-02-20",
+            "worst_to": "2026-03-06",
+            "share_of_days_worse": 0.4986
+          }
+        }
+      }
+    },
+    {
+      "id": "LUNA24",
+      "name": "Luna 24",
+      "group": "luna",
+      "best": {
+        "landing": "2026-01-21",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-06",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 164,
+            "worst_change": 168,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.9762,
+            "worst_change": -100,
+            "worst_from": "2027-07-07",
+            "worst_to": "2027-07-21",
+            "share_of_days_worse": 0.4944
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.9762,
+            "worst_change": -100,
+            "worst_from": "2027-07-07",
+            "worst_to": "2027-07-21",
+            "share_of_days_worse": 0.4944
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 178,
+            "worst_change": 336,
+            "worst_from": "2027-07-07",
+            "worst_to": "2027-07-21",
+            "share_of_days_worse": 0.4944
+          }
+        }
+      }
+    },
+    {
+      "id": "CHANGE3",
+      "name": "Chang'e 3",
+      "group": "change",
+      "best": {
+        "landing": "2026-01-28",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-13",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5076
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5076
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 164,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5076
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2026-04-27",
+            "worst_to": "2026-05-11",
+            "share_of_days_worse": 0.5056
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2026-04-27",
+            "worst_to": "2026-05-11",
+            "share_of_days_worse": 0.5056
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 335,
+            "worst_from": "2026-04-27",
+            "worst_to": "2026-05-11",
+            "share_of_days_worse": 0.5056
+          }
+        }
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "name": "Chang'e 4",
+      "group": "change",
+      "best": {
+        "landing": "2026-01-12",
+        "sun_frac": 1,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-27",
+        "sun_frac": 0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0,
+          0
+        ],
+        "both_frac": [
+          0,
+          0
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -50,
+            "worst_from": "2026-01-13",
+            "worst_to": "2026-01-20",
+            "share_of_days_worse": 0.5035
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 165,
+            "worst_change": 168,
+            "worst_from": "2026-01-13",
+            "worst_to": "2026-01-20",
+            "share_of_days_worse": 0.5035
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2026-07-08",
+            "worst_to": "2026-07-22",
+            "share_of_days_worse": 0.5028
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 335,
+            "worst_from": "2026-07-08",
+            "worst_to": "2026-07-22",
+            "share_of_days_worse": 0.5028
+          }
+        }
+      }
+    },
+    {
+      "id": "CHANGE5",
+      "name": "Chang'e 5",
+      "group": "change",
+      "best": {
+        "landing": "2026-01-01",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-16",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-03",
+            "worst_to": "2026-01-10",
+            "share_of_days_worse": 0.5007
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-03",
+            "worst_to": "2026-01-10",
+            "share_of_days_worse": 0.5007
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5007
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.6786,
+            "worst_change": -99.7024,
+            "worst_from": "2026-07-27",
+            "worst_to": "2026-08-10",
+            "share_of_days_worse": 0.5014
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.6786,
+            "worst_change": -99.7024,
+            "worst_from": "2026-07-27",
+            "worst_to": "2026-08-10",
+            "share_of_days_worse": 0.5014
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 177,
+            "worst_change": 335,
+            "worst_from": "2026-07-27",
+            "worst_to": "2026-08-10",
+            "share_of_days_worse": 0.5014
+          }
+        }
+      }
+    },
+    {
+      "id": "CHANGE6",
+      "name": "Chang'e 6",
+      "group": "change",
+      "best": {
+        "landing": "2026-01-09",
+        "sun_frac": 1,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-24",
+        "sun_frac": 0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0,
+          0
+        ],
+        "both_frac": [
+          0,
+          0
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-10",
+            "worst_to": "2026-01-17",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-10",
+            "worst_to": "2026-01-17",
+            "share_of_days_worse": 0.5021
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.2321,
+            "worst_change": -100,
+            "worst_from": "2026-11-01",
+            "worst_to": "2026-11-15",
+            "share_of_days_worse": 0.5
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 175.5,
+            "worst_change": 336,
+            "worst_from": "2026-11-01",
+            "worst_to": "2026-11-15",
+            "share_of_days_worse": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "name": "Chandrayaan-3",
+      "group": "chandrayaan",
+      "best": {
+        "landing": "2026-02-22",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-09",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4924
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4924
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4924
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2027-07-09",
+            "worst_to": "2027-07-23",
+            "share_of_days_worse": 0.4916
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -99.7024,
+            "worst_from": "2027-07-09",
+            "worst_to": "2027-07-23",
+            "share_of_days_worse": 0.4916
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 335,
+            "worst_from": "2027-07-09",
+            "worst_to": "2027-07-23",
+            "share_of_days_worse": 0.4916
+          }
+        }
+      }
+    },
+    {
+      "id": "SLIM",
+      "name": "SLIM",
+      "group": "slim",
+      "best": {
+        "landing": "2026-02-23",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-09",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 163,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2026-06-21",
+            "worst_to": "2026-07-05",
+            "share_of_days_worse": 0.5028
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.381,
+            "worst_change": -100,
+            "worst_from": "2026-06-21",
+            "worst_to": "2026-07-05",
+            "share_of_days_worse": 0.5028
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176,
+            "worst_change": 336,
+            "worst_from": "2026-06-21",
+            "worst_to": "2026-07-05",
+            "share_of_days_worse": 0.5028
+          }
+        }
+      }
+    },
+    {
+      "id": "IM1",
+      "name": "IM-1 Odysseus",
+      "group": "clps",
+      "best": {
+        "landing": "2027-11-08",
+        "sun_frac": 0.9018,
+        "earth_frac": 1,
+        "both_frac": 0.9018,
+        "longest_dark_h": 23
+      },
+      "worst": {
+        "landing": "2026-01-11",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          0.9018
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          0.9018
+        ],
+        "longest_dark_h": [
+          21,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 39.2857,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5007
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 39.2857,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5007
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 141,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5007
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.6786,
+            "worst_change": -90.1786,
+            "worst_from": "2026-11-18",
+            "worst_to": "2026-12-02",
+            "share_of_days_worse": 0.4986
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.6786,
+            "worst_change": -90.1786,
+            "worst_from": "2026-11-18",
+            "worst_to": "2026-12-02",
+            "share_of_days_worse": 0.4986
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 177,
+            "worst_change": 315,
+            "worst_from": "2026-10-20",
+            "worst_to": "2026-11-03",
+            "share_of_days_worse": 0.4986
+          }
+        }
+      }
+    },
+    {
+      "id": "IM2",
+      "name": "IM-2 Athena",
+      "group": "clps",
+      "best": {
+        "landing": "2026-10-18",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-10",
+        "sun_frac": 0,
+        "earth_frac": 0.6101,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.5833,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 44.3452,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5007
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 19.0476,
+            "worst_change": -41.6667,
+            "worst_from": "2026-02-21",
+            "worst_to": "2026-02-28",
+            "share_of_days_worse": 0.4481
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 32.4405,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.4924
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 154,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5007
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 51.9345,
+            "worst_change": -99.7024,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-08",
+            "share_of_days_worse": 0.5
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 35.119,
+            "worst_change": -41.6667,
+            "worst_from": "2026-02-15",
+            "worst_to": "2026-03-01",
+            "share_of_days_worse": 0.4888
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 41.6667,
+            "worst_change": -99.7024,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-08",
+            "share_of_days_worse": 0.5028
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 176.5,
+            "worst_change": 335,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-08",
+            "share_of_days_worse": 0.4986
+          }
+        }
+      }
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "name": "Blue Ghost Mission 1",
+      "group": "clps",
+      "best": {
+        "landing": "2026-01-21",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-06",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 164,
+            "worst_change": 168,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 53.125,
+            "worst_change": -100,
+            "worst_from": "2027-11-02",
+            "worst_to": "2027-11-16",
+            "share_of_days_worse": 0.4944
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 53.125,
+            "worst_change": -100,
+            "worst_from": "2027-11-02",
+            "worst_to": "2027-11-16",
+            "share_of_days_worse": 0.4944
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 178.5,
+            "worst_change": 336,
+            "worst_from": "2027-11-02",
+            "worst_to": "2027-11-16",
+            "share_of_days_worse": 0.4944
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "name": "Peak near Cabeus B (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2027-07-22",
+        "sun_frac": 0.8333,
+        "earth_frac": 0.5417,
+        "both_frac": 0.5417,
+        "longest_dark_h": 33
+      },
+      "worst": {
+        "landing": "2026-01-20",
+        "sun_frac": 0,
+        "earth_frac": 0.5208,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          0.9345
+        ],
+        "earth_frac": [
+          0,
+          0.5655
+        ],
+        "both_frac": [
+          0,
+          0.5417
+        ],
+        "longest_dark_h": [
+          12,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 39.2857,
+            "worst_change": -50,
+            "worst_from": "2026-01-09",
+            "worst_to": "2026-01-16",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 27.381,
+            "worst_change": -50,
+            "worst_from": "2026-04-17",
+            "worst_to": "2026-04-24",
+            "share_of_days_worse": 0.4896
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 0.8929,
+            "worst_change": -49.4048,
+            "worst_from": "2026-08-04",
+            "worst_to": "2026-08-11",
+            "share_of_days_worse": 0.2711
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 132,
+            "worst_change": 168,
+            "worst_from": "2026-01-07",
+            "worst_to": "2026-01-14",
+            "share_of_days_worse": 0.4965
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.5298,
+            "worst_change": -92.5595,
+            "worst_from": "2026-01-06",
+            "worst_to": "2026-01-20",
+            "share_of_days_worse": 0.5042
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 47.619,
+            "worst_change": -55.0595,
+            "worst_from": "2027-08-14",
+            "worst_to": "2027-08-28",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 9.5238,
+            "worst_change": -54.1667,
+            "worst_from": "2027-07-17",
+            "worst_to": "2027-07-31",
+            "share_of_days_worse": 0.3506
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 168.5,
+            "worst_change": 319,
+            "worst_from": "2026-12-27",
+            "worst_to": "2027-01-10",
+            "share_of_days_worse": 0.5014
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "name": "Haworth (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2027-09-13",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-03-16",
+        "sun_frac": 0,
+        "earth_frac": 0.9494,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.1161,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 23.5119,
+            "worst_change": -47.9167,
+            "worst_from": "2026-03-08",
+            "worst_to": "2026-03-15",
+            "share_of_days_worse": 0.4841
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 43.4524,
+            "worst_change": -50,
+            "worst_from": "2026-01-23",
+            "worst_to": "2026-01-30",
+            "share_of_days_worse": 0.4952
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 22.3214,
+            "worst_change": -50,
+            "worst_from": "2026-09-01",
+            "worst_to": "2026-09-08",
+            "share_of_days_worse": 0.4454
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 60,
+            "worst_change": 168,
+            "worst_from": "2026-03-03",
+            "worst_to": "2026-03-10",
+            "share_of_days_worse": 0.4053
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 23.2143,
+            "worst_change": -83.3333,
+            "worst_from": "2026-03-01",
+            "worst_to": "2026-03-15",
+            "share_of_days_worse": 0.4972
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -88.3929,
+            "worst_from": "2026-02-18",
+            "worst_to": "2026-03-04",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 27.2321,
+            "worst_change": -92.2619,
+            "worst_from": "2026-09-24",
+            "worst_to": "2026-10-08",
+            "share_of_days_worse": 0.507
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 79.5,
+            "worst_change": 297,
+            "worst_from": "2026-03-02",
+            "worst_to": "2026-03-16",
+            "share_of_days_worse": 0.4777
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "name": "Malapert Massif (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-10-19",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-11",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 45.5357,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5021
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 45.5357,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5021
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 156,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.5021
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.0833,
+            "worst_change": -99.7024,
+            "worst_from": "2026-10-19",
+            "worst_to": "2026-11-02",
+            "share_of_days_worse": 0.5014
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.0833,
+            "worst_change": -99.7024,
+            "worst_from": "2026-10-19",
+            "worst_to": "2026-11-02",
+            "share_of_days_worse": 0.5014
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 175,
+            "worst_change": 335,
+            "worst_from": "2026-10-19",
+            "worst_to": "2026-11-02",
+            "share_of_days_worse": 0.5014
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "name": "Mons Mouton Plateau (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-11-16",
+        "sun_frac": 0.9821,
+        "earth_frac": 0.9673,
+        "both_frac": 0.9673,
+        "longest_dark_h": 6
+      },
+      "worst": {
+        "landing": "2026-01-09",
+        "sun_frac": 0,
+        "earth_frac": 0.1339,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          0.9881
+        ],
+        "earth_frac": [
+          0.1101,
+          1
+        ],
+        "both_frac": [
+          0,
+          0.9673
+        ],
+        "longest_dark_h": [
+          2,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 38.0952,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4938
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 43.75,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4938
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 17.8571,
+            "worst_change": -50,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.3679
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 138,
+            "worst_change": 168,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0.4938
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.0833,
+            "worst_change": -98.8095,
+            "worst_from": "2027-10-07",
+            "worst_to": "2027-10-21",
+            "share_of_days_worse": 0.5
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.8095,
+            "worst_change": -88.9881,
+            "worst_from": "2026-03-17",
+            "worst_to": "2026-03-31",
+            "share_of_days_worse": 0.4916
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 24.256,
+            "worst_change": -95.8333,
+            "worst_from": "2026-11-16",
+            "worst_to": "2026-11-30",
+            "share_of_days_worse": 0.4064
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 175,
+            "worst_change": 334,
+            "worst_from": "2027-10-07",
+            "worst_to": "2027-10-21",
+            "share_of_days_worse": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "name": "Mons Mouton (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-01-22",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-06-01",
+        "sun_frac": 0,
+        "earth_frac": 0.6161,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.131,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 3.2738,
+            "worst_change": -50,
+            "worst_from": "2026-02-27",
+            "worst_to": "2026-03-06",
+            "share_of_days_worse": 0.2669
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 41.6667,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4952
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 25.5952,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4633
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 6,
+            "worst_change": 168,
+            "worst_from": "2026-02-27",
+            "worst_to": "2026-03-06",
+            "share_of_days_worse": 0.278
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 7.4405,
+            "worst_change": -81.25,
+            "worst_from": "2026-02-25",
+            "worst_to": "2026-03-11",
+            "share_of_days_worse": 0.2779
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.6607,
+            "worst_change": -86.9048,
+            "worst_from": "2026-03-17",
+            "worst_to": "2026-03-31",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 30.8036,
+            "worst_change": -97.3214,
+            "worst_from": "2026-02-19",
+            "worst_to": "2026-03-05",
+            "share_of_days_worse": 0.4916
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 21,
+            "worst_change": 280,
+            "worst_from": "2027-04-09",
+            "worst_to": "2027-04-23",
+            "share_of_days_worse": 0.2835
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "name": "Nobile Rim 1 (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-01-20",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-05-08",
+        "sun_frac": 0,
+        "earth_frac": 0.9494,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.2976,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 14.5833,
+            "worst_change": -50,
+            "worst_from": "2026-03-01",
+            "worst_to": "2026-03-08",
+            "share_of_days_worse": 0.3402
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 33.9286,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4938
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 27.381,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4758
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 43,
+            "worst_change": 168,
+            "worst_from": "2026-03-02",
+            "worst_to": "2026-03-09",
+            "share_of_days_worse": 0.3389
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 21.131,
+            "worst_change": -96.7262,
+            "worst_from": "2027-03-14",
+            "worst_to": "2027-03-28",
+            "share_of_days_worse": 0.3771
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -70.2381,
+            "worst_from": "2026-01-20",
+            "worst_to": "2026-02-03",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 34.0774,
+            "worst_change": -98.8095,
+            "worst_from": "2026-01-23",
+            "worst_to": "2026-02-06",
+            "share_of_days_worse": 0.4958
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 67,
+            "worst_change": 325,
+            "worst_from": "2027-03-14",
+            "worst_to": "2027-03-28",
+            "share_of_days_worse": 0.3729
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "name": "Nobile Rim 2 (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-01-21",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-06",
+        "sun_frac": 0,
+        "earth_frac": 0.4851,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.4494,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 45.8333,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4924
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 22.9167,
+            "worst_change": -50,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-01",
+            "share_of_days_worse": 0.4689
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 31.25,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 158,
+            "worst_change": 168,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.491
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.6786,
+            "worst_change": -99.7024,
+            "worst_from": "2026-12-12",
+            "worst_to": "2026-12-26",
+            "share_of_days_worse": 0.493
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 38.0952,
+            "worst_change": -55.0595,
+            "worst_from": "2026-02-16",
+            "worst_to": "2026-03-02",
+            "share_of_days_worse": 0.4888
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 41.2202,
+            "worst_change": -99.7024,
+            "worst_from": "2026-12-12",
+            "worst_to": "2026-12-26",
+            "share_of_days_worse": 0.4972
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 177.5,
+            "worst_change": 335,
+            "worst_from": "2026-12-12",
+            "worst_to": "2026-12-26",
+            "share_of_days_worse": 0.4944
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "name": "de Gerlache Rim 2 (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2026-08-27",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2027-05-07",
+        "sun_frac": 0,
+        "earth_frac": 0.4405,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.0536,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 27.9762,
+            "worst_change": -50,
+            "worst_from": "2026-02-06",
+            "worst_to": "2026-02-13",
+            "share_of_days_worse": 0.4772
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 46.4286,
+            "worst_change": -50,
+            "worst_from": "2026-01-23",
+            "worst_to": "2026-01-30",
+            "share_of_days_worse": 0.4938
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 29.1667,
+            "worst_change": -50,
+            "worst_from": "2026-06-07",
+            "worst_to": "2026-06-14",
+            "share_of_days_worse": 0.4758
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 87,
+            "worst_change": 168,
+            "worst_from": "2026-02-06",
+            "worst_to": "2026-02-13",
+            "share_of_days_worse": 0.473
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 35.8631,
+            "worst_change": -98.5119,
+            "worst_from": "2026-06-02",
+            "worst_to": "2026-06-16",
+            "share_of_days_worse": 0.5028
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.6607,
+            "worst_change": -93.4524,
+            "worst_from": "2026-04-13",
+            "worst_to": "2026-04-27",
+            "share_of_days_worse": 0.4916
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 37.6488,
+            "worst_change": -99.7024,
+            "worst_from": "2027-10-10",
+            "worst_to": "2027-10-24",
+            "share_of_days_worse": 0.5154
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 103,
+            "worst_change": 330,
+            "worst_from": "2027-04-23",
+            "worst_to": "2027-05-07",
+            "share_of_days_worse": 0.5056
+          }
+        }
+      }
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "name": "Slater Plain (region)",
+      "group": "artemis3_region",
+      "best": {
+        "landing": "2027-02-04",
+        "sun_frac": 0.7619,
+        "earth_frac": 0.6488,
+        "both_frac": 0.6101,
+        "longest_dark_h": 69
+      },
+      "worst": {
+        "landing": "2026-03-01",
+        "sun_frac": 0,
+        "earth_frac": 0.0804,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0,
+          0.7679
+        ],
+        "both_frac": [
+          0,
+          0.6101
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 29.4643,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.473
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 36.6071,
+            "worst_change": -50,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-01",
+            "share_of_days_worse": 0.4938
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 10.7143,
+            "worst_change": -50,
+            "worst_from": "2026-02-20",
+            "worst_to": "2026-02-27",
+            "share_of_days_worse": 0.3693
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 118,
+            "worst_change": 168,
+            "worst_from": "2026-01-20",
+            "worst_to": "2026-01-27",
+            "share_of_days_worse": 0.4827
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 43.75,
+            "worst_change": -85.4167,
+            "worst_from": "2026-12-08",
+            "worst_to": "2026-12-22",
+            "share_of_days_worse": 0.4944
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.6607,
+            "worst_change": -75.5952,
+            "worst_from": "2027-12-02",
+            "worst_to": "2027-12-16",
+            "share_of_days_worse": 0.4958
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 15.4762,
+            "worst_change": -61.0119,
+            "worst_from": "2027-02-04",
+            "worst_to": "2027-02-18",
+            "share_of_days_worse": 0.4721
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 172.5,
+            "worst_change": 287,
+            "worst_from": "2026-12-08",
+            "worst_to": "2026-12-22",
+            "share_of_days_worse": 0.4972
+          }
+        }
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "name": "Shackleton Rim (S)",
+      "group": "polar_peak",
+      "best": {
+        "landing": "2027-09-12",
+        "sun_frac": 1,
+        "earth_frac": 0.9375,
+        "both_frac": 0.9375,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2027-04-18",
+        "sun_frac": 0.2143,
+        "earth_frac": 0.1577,
+        "both_frac": 0,
+        "longest_dark_h": 65
+      },
+      "range": {
+        "sun_frac": [
+          0.2083,
+          1
+        ],
+        "earth_frac": [
+          0,
+          0.9464
+        ],
+        "both_frac": [
+          0,
+          0.9375
+        ],
+        "longest_dark_h": [
+          0,
+          74
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 5.0595,
+            "worst_change": -41.369,
+            "worst_from": "2027-04-03",
+            "worst_to": "2027-04-10",
+            "share_of_days_worse": 0.3375
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 46.131,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4965
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 37.5,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4924
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 3,
+            "worst_change": 34,
+            "worst_from": "2026-03-15",
+            "worst_to": "2026-03-22",
+            "share_of_days_worse": 0.3181
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 6.8452,
+            "worst_change": -67.2619,
+            "worst_from": "2027-04-03",
+            "worst_to": "2027-04-17",
+            "share_of_days_worse": 0.3939
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -93.75,
+            "worst_from": "2027-09-12",
+            "worst_to": "2027-09-26",
+            "share_of_days_worse": 0.4986
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 44.1964,
+            "worst_change": -93.75,
+            "worst_from": "2027-09-12",
+            "worst_to": "2027-09-26",
+            "share_of_days_worse": 0.4972
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 13.5,
+            "worst_change": 59,
+            "worst_from": "2026-03-16",
+            "worst_to": "2026-03-30",
+            "share_of_days_worse": 0.4008
+          }
+        }
+      }
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "name": "Connecting Ridge (R01)",
+      "group": "polar_peak",
+      "best": {
+        "landing": "2027-11-30",
+        "sun_frac": 0.9345,
+        "earth_frac": 0.7232,
+        "both_frac": 0.6577,
+        "longest_dark_h": 22
+      },
+      "worst": {
+        "landing": "2026-02-27",
+        "sun_frac": 0,
+        "earth_frac": 0.244,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0,
+          0.8601
+        ],
+        "both_frac": [
+          0,
+          0.6577
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 31.8452,
+            "worst_change": -50,
+            "worst_from": "2026-01-20",
+            "worst_to": "2026-01-27",
+            "share_of_days_worse": 0.4869
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 40.7738,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4924
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 16.6667,
+            "worst_change": -50,
+            "worst_from": "2026-03-19",
+            "worst_to": "2026-03-26",
+            "share_of_days_worse": 0.4205
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 112,
+            "worst_change": 168,
+            "worst_from": "2026-01-20",
+            "worst_to": "2026-01-27",
+            "share_of_days_worse": 0.4896
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 45.8333,
+            "worst_change": -91.0714,
+            "worst_from": "2027-01-05",
+            "worst_to": "2027-01-19",
+            "share_of_days_worse": 0.4958
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -85.119,
+            "worst_from": "2027-09-12",
+            "worst_to": "2027-09-26",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 29.4643,
+            "worst_change": -65.7738,
+            "worst_from": "2027-11-30",
+            "worst_to": "2027-12-14",
+            "share_of_days_worse": 0.486
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 157.5,
+            "worst_change": 309,
+            "worst_from": "2026-02-13",
+            "worst_to": "2026-02-27",
+            "share_of_days_worse": 0.493
+          }
+        }
+      }
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "name": "Peak Near Shackleton (R07)",
+      "group": "polar_peak",
+      "best": {
+        "landing": "2027-01-10",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-04-16",
+        "sun_frac": 0,
+        "earth_frac": 0.8006,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.0149,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 2.0833,
+            "worst_change": -37.5,
+            "worst_from": "2026-04-09",
+            "worst_to": "2026-04-16",
+            "share_of_days_worse": 0.2835
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 45.5357,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4924
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 23.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4606
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 6,
+            "worst_change": 168,
+            "worst_from": "2026-04-06",
+            "worst_to": "2026-04-13",
+            "share_of_days_worse": 0.2794
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 9.5238,
+            "worst_change": -50.8929,
+            "worst_from": "2026-04-02",
+            "worst_to": "2026-04-16",
+            "share_of_days_worse": 0.3268
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -96.131,
+            "worst_from": "2026-03-17",
+            "worst_to": "2026-03-31",
+            "share_of_days_worse": 0.4958
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 28.2738,
+            "worst_change": -92.8571,
+            "worst_from": "2026-02-18",
+            "worst_to": "2026-03-04",
+            "share_of_days_worse": 0.5084
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 21,
+            "worst_change": 219,
+            "worst_from": "2027-03-26",
+            "worst_to": "2027-04-09",
+            "share_of_days_worse": 0.3282
+          }
+        }
+      }
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "name": "de Gerlache Rim 1 (R11)",
+      "group": "polar_peak",
+      "best": {
+        "landing": "2026-12-14",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-04-07",
+        "sun_frac": 0,
+        "earth_frac": 0.5833,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          0.0804,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 23.5119,
+            "worst_change": -50,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-01",
+            "share_of_days_worse": 0.4716
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 44.6429,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4952
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 17.5595,
+            "worst_change": -50,
+            "worst_from": "2026-01-22",
+            "worst_to": "2026-01-29",
+            "share_of_days_worse": 0.4011
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 94,
+            "worst_change": 168,
+            "worst_from": "2026-01-25",
+            "worst_to": "2026-02-01",
+            "share_of_days_worse": 0.4578
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 36.0119,
+            "worst_change": -89.881,
+            "worst_from": "2027-02-12",
+            "worst_to": "2027-02-26",
+            "share_of_days_worse": 0.4958
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.5119,
+            "worst_change": -91.369,
+            "worst_from": "2026-07-04",
+            "worst_to": "2026-07-18",
+            "share_of_days_worse": 0.4916
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 23.8095,
+            "worst_change": -91.9643,
+            "worst_from": "2027-01-10",
+            "worst_to": "2027-01-24",
+            "share_of_days_worse": 0.4581
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 137,
+            "worst_change": 298,
+            "worst_from": "2026-03-24",
+            "worst_to": "2026-04-07",
+            "share_of_days_worse": 0.4972
+          }
+        }
+      }
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "name": "Shoemaker Rim A (LM2)",
+      "group": "polar_peak",
+      "best": {
+        "landing": "2026-10-21",
+        "sun_frac": 0.8006,
+        "earth_frac": 0.7827,
+        "both_frac": 0.6726,
+        "longest_dark_h": 37
+      },
+      "worst": {
+        "landing": "2026-01-14",
+        "sun_frac": 0,
+        "earth_frac": 0.3036,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          0.8542
+        ],
+        "earth_frac": [
+          0,
+          0.8006
+        ],
+        "both_frac": [
+          0,
+          0.6726
+        ],
+        "longest_dark_h": [
+          35,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 11.0119,
+            "worst_change": -50,
+            "worst_from": "2026-10-28",
+            "worst_to": "2026-11-04",
+            "share_of_days_worse": 0.3624
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 39.2857,
+            "worst_change": -50,
+            "worst_from": "2026-01-24",
+            "worst_to": "2026-01-31",
+            "share_of_days_worse": 0.4938
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 1.7857,
+            "worst_change": -47.619,
+            "worst_from": "2027-09-17",
+            "worst_to": "2027-09-24",
+            "share_of_days_worse": 0.2642
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 85,
+            "worst_change": 168,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.3776
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 13.3929,
+            "worst_change": -82.4405,
+            "worst_from": "2026-11-20",
+            "worst_to": "2026-12-04",
+            "share_of_days_worse": 0.4078
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 48.3631,
+            "worst_change": -79.1667,
+            "worst_from": "2026-01-21",
+            "worst_to": "2026-02-04",
+            "share_of_days_worse": 0.4944
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 4.1667,
+            "worst_change": -67.2619,
+            "worst_from": "2026-10-21",
+            "worst_to": "2026-11-04",
+            "share_of_days_worse": 0.3059
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 108,
+            "worst_change": 297,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0.4036
+          }
+        }
+      }
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "name": "IM-3 / Lunar Vertex target",
+      "group": "future",
+      "best": {
+        "landing": "2026-01-31",
+        "sun_frac": 1,
+        "earth_frac": 1,
+        "both_frac": 1,
+        "longest_dark_h": 0
+      },
+      "worst": {
+        "landing": "2026-01-16",
+        "sun_frac": 0,
+        "earth_frac": 1,
+        "both_frac": 0,
+        "longest_dark_h": 336
+      },
+      "range": {
+        "sun_frac": [
+          0,
+          1
+        ],
+        "earth_frac": [
+          1,
+          1
+        ],
+        "both_frac": [
+          0,
+          1
+        ],
+        "longest_dark_h": [
+          0,
+          336
+        ]
+      },
+      "slip": {
+        "+7d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5048
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-08",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 49.1071,
+            "worst_change": -50,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5048
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 165,
+            "worst_change": 168,
+            "worst_from": "2026-01-02",
+            "worst_to": "2026-01-09",
+            "share_of_days_worse": 0.5048
+          }
+        },
+        "+14d": {
+          "sun_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.9762,
+            "worst_change": -100,
+            "worst_from": "2026-08-26",
+            "worst_to": "2026-09-09",
+            "share_of_days_worse": 0.5014
+          },
+          "earth_frac": {
+            "unit": "pp",
+            "median_abs_change": 0,
+            "worst_change": 0,
+            "worst_from": "2026-01-01",
+            "worst_to": "2026-01-15",
+            "share_of_days_worse": 0
+          },
+          "both_frac": {
+            "unit": "pp",
+            "median_abs_change": 52.9762,
+            "worst_change": -100,
+            "worst_from": "2026-08-26",
+            "worst_to": "2026-09-09",
+            "share_of_days_worse": 0.5014
+          },
+          "longest_dark_h": {
+            "unit": "h",
+            "median_abs_change": 178,
+            "worst_change": 336,
+            "worst_from": "2026-08-26",
+            "worst_to": "2026-09-09",
+            "share_of_days_worse": 0.5014
+          }
+        }
+      }
+    }
+  ],
+  "skipped": []
+}

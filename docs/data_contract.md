@@ -294,3 +294,23 @@ Each of six files contains 441 sampled locations, **not area-averaged pixels**.
 No partial map is exported. Local statistics use nodes within circular radii 1/3/5/10 km;
 IQR is Q3−Q1 with linear quantile interpolation. Maps describe geometric illumination and
 direct Earth visibility, not Earth-station availability, terrain ground truth or RF service.
+
+## 16. Proposed v1.2 — `web/data/date_slip/<ID>.json` landing-date slips (2026-11-14, Dongju, card 19) — NOT yet agreed; new section only (renumbered from 15 at merge; sections 0–15 unchanged)
+Written by `node pipeline/date_slip.mjs` (actual `web/js/core.js`); human summary `docs/date_slip.md`.
+```json
+{"id": "ARTEMIS_HAWORTH", "first_landing": "2026-01-01", "last_landing": "2027-12-31", "n_landings": 730,
+ "days_after_landing": 14, "step_h": 1, "definition": "...",
+ "series": {"sun_frac": [730 numbers], "earth_frac": [...], "both_frac": [...], "longest_dark_h": [730 integers]},
+ "best":  {"landing": "2027-09-13", "sun_frac": 1, "earth_frac": 1, "both_frac": 1, "longest_dark_h": 0},
+ "worst": {"landing": "2026-03-16", "sun_frac": 0, "earth_frac": 0.5, "both_frac": 0, "longest_dark_h": 336},
+ "range": {"sun_frac": [min, max], "earth_frac": [min, max], "both_frac": [min, max], "longest_dark_h": [min, max]},
+ "slip": {"+7d":  {"sun_frac": {"unit": "pp", "median_abs_change": 0, "worst_change": 0, "worst_from": "YYYY-MM-DD", "worst_to": "YYYY-MM-DD", "share_of_days_worse": 0},
+                   "earth_frac": {...}, "both_frac": {...}, "longest_dark_h": {"unit": "h", ...}},
+          "+14d": {...}},
+ "horizon_sha256": "...", "core_sha256": "...", "mock": false}
+```
+- `series[m][k]` = metric for landing at 00:00 UTC of `first_landing + k` days, over hours `[24·d, 24·d + 24·days_after_landing − 1]` (hour index from section 0); fractions rounded to 4 decimals, `longest_dark_h` integer hours.
+- Definitions = `core.sunlit` (≥ 50 % of the solar disc above the mask), `core.earthVisible` (Earth centre above the mask); `longest_dark_h` = longest run of not-sunlit hours inside the window.
+- `best` / `worst` = highest / lowest `both_frac` (ties: shorter / longer `longest_dark_h`), same as `web/js/landing_scan.js`.
+- `slip["+Nd"][m]`: Δ = metric(landing + N days) − metric(landing) for every landing with landing + N ≤ `last_landing`. `median_abs_change` = median |Δ|; `worst_change` = most unfavourable Δ (most negative for fractions, most positive for dark hours) with its dates; fractions in percentage points.
+- Only sites with a real horizon (section 3) get a file; no flat or mock fallback.

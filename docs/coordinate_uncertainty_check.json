@@ -1,0 +1,2787 @@
+{
+  "method": "Independent PROJ geodesics, DEM readers, ECEF brute-force rays and NumPy full-window Sun/Earth metrics; no production imports or early stop",
+  "criterion": "Rounded-record independent sun/earth/both differences <=1 percentage point; all catalogue centres exact in all four metrics; ground within 0.005001 m rounding envelope. Longest dark-run difference reported, no invented tolerance.",
+  "limitation": "Same-source numerical verification, not terrain ground truth or a statistical bound for every node.",
+  "seed": 20261114,
+  "sampling": "random.Random(seed), five nodes without replacement separately per site in SAMPLE_IDS order",
+  "sample_sites": [
+    "SHACKLETON_RIM",
+    "CHANGE3",
+    "APOLLO11"
+  ],
+  "selected": [
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 8
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 30
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 70
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 75
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 118
+    },
+    {
+      "id": "CHANGE3",
+      "index": 61
+    },
+    {
+      "id": "CHANGE3",
+      "index": 64
+    },
+    {
+      "id": "CHANGE3",
+      "index": 97
+    },
+    {
+      "id": "CHANGE3",
+      "index": 16
+    },
+    {
+      "id": "CHANGE3",
+      "index": 63
+    },
+    {
+      "id": "APOLLO11",
+      "index": 3
+    },
+    {
+      "id": "APOLLO11",
+      "index": 56
+    },
+    {
+      "id": "APOLLO11",
+      "index": 100
+    },
+    {
+      "id": "APOLLO11",
+      "index": 108
+    },
+    {
+      "id": "APOLLO11",
+      "index": 30
+    }
+  ],
+  "sample_n": 15,
+  "parameters": {
+    "radius_m": 1737400.0,
+    "observer_height_m": 2,
+    "azimuth_bins": 720,
+    "azimuth_step_deg": 0.5,
+    "per_site": {
+      "APOLLO11": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "APOLLO12": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "APOLLO14": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "APOLLO15": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "APOLLO16": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "APOLLO17": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "LUNA16": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "LUNA20": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "LUNA24": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CHANGE3": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CHANGE4": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CHANGE5": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CHANGE6": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CHANDRAYAAN3": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "SLIM": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "IM1": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "IM2": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "BLUE_GHOST1": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_CABEUS_B": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_HAWORTH": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_MALAPERT": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_MOUTON_PLATEAU": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_MOUTON": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_NOBILE_RIM1": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_NOBILE_RIM2": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_DE_GERLACHE_RIM2": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "ARTEMIS_SLATER_PLAIN": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "SHACKLETON_RIM": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "CONNECTING_RIDGE": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "PEAK_NEAR_SHACKLETON": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "DE_GERLACHE_RIM1": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "SHOEMAKER_RIM_A": {
+        "min_km": 0.005,
+        "max_km": 300,
+        "n_steps": 8000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      },
+      "IM3_REINER_GAMMA": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000,
+        "obs_height_m": 2.0,
+        "early_stop": true,
+        "hmax_m": 10800.0
+      }
+    },
+    "distance_spacing": "geomspace(min_km*1000,max_km*1000,n_steps+1)",
+    "early_stop": false,
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "quantization": "Primary comparison rounds independent mask to 4 decimal degrees and ground to 2 decimal metres using Python round. Full-precision comparison and rounding-induced metric changes are also retained.",
+  "source_policy": "Use exact provenance source order/gates centred on each observer and verify against unchanged legacy horizon metadata. Retain LDEM_64 before LDEM_16 at all sites. Reject any source-set difference; verify terrain and global-label SHA256.",
+  "identity": {
+    "catalogue_sha256": "fabf63bcfe2d33d556bb1e0c1f8934254600233fd65f0ecc7bb7d974d1ed7af0",
+    "ephem_bin_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+    "verifier_sha256": "9d45ec7357dc986961c3384ed12d8327c238b690c03faebf37ab81f0900ead80",
+    "helpers_sha256": {
+      "verify_card13_relay.py": "6c46b65edefc16cc33a514730482663060b8746f8855d835155d0534af05b35b",
+      "verify_card18_local.py": "e46a38000283ebee4126c5f64d568e90d1e38e8a7ce2cf8a04e622aeed9599a5"
+    },
+    "output_sha256": {
+      "APOLLO11": "ba7f545a91c997e84ab6670668bf89e12b67e8dc5b80c40e6ba0d5e28124d6a3",
+      "APOLLO12": "68df4a435881fd516f0c16be8ad66e28185717b5794672b15bce170326b7bb9c",
+      "APOLLO14": "d2b2908a809904220272bf341efa8e7bf1c16defc11d68c8054eca1573af4476",
+      "APOLLO15": "8f3606fb90ecab7986a7b8fb3d7e9645129ee84a24576489e5a7357ebc00cc17",
+      "APOLLO16": "73953a129b8254f9b58ba0b3d359066365e88e3dbb799748c7a7e8a36d893aa3",
+      "APOLLO17": "ef66171181acb11592aab82dfdcc7856c7502992f7bb4726991b64c17326af9f",
+      "LUNA16": "89cd72c5b1240bf835e7121e1ad0cfa9617aa7c371f53fe280e4fc9b3da1ad9d",
+      "LUNA20": "8c08b4b3c26d08e098c1bd20b8737c4c031a6d75c823966f72a1d6e2eb87f479",
+      "LUNA24": "cf2b355f73913675b80dacac4d17a10d658ce5569a5f0af39cd3d2c2cd3a613b",
+      "CHANGE3": "96019efcedfeb04d170038e3ec9d3f6276ab086496ce105acba00bc3302b4f61",
+      "CHANGE4": "fb174308d3fc82a51e90c9332b07581f9fb4256deb342a59e31147b49e0212b1",
+      "CHANGE5": "e68db681279f8dac0763c0b58b74d52065f96fbcb9dc7e34ec0f4ac2a0418cd5",
+      "CHANGE6": "b416bb3119e801103f5ce9a7b593e346603b2a1b945b4556f3cf44ef792914ad",
+      "CHANDRAYAAN3": "337a3c381bf1da5bf22850133493118532adacb5b6becec8871190f736d1458c",
+      "SLIM": "05ac4d696321fdcef79c7483b79767c25b44db8fb24f050e7138a07f9081ea00",
+      "IM1": "3a6ba754cc4d02e3a5b49db1665cf244cdb4bc2736861956ec647a5491afb0a1",
+      "IM2": "91816ceb0597f62c9adba32c967d1f2cbe00cf87f975936c5e0c2a6b28d72113",
+      "BLUE_GHOST1": "ba3363708803719fb7418c82a8056e7300371b30fe42559c372c797f3dc512d7",
+      "ARTEMIS_CABEUS_B": "79a5de7a77b5a8369d0ef34d2474e4d634982a109a3eee3610fbcdcf379e1b73",
+      "ARTEMIS_HAWORTH": "0d37f56db3ee9ad8da7e9f67790f59ac08df69f33ed25b0a6e0d41f8c9e96e0d",
+      "ARTEMIS_MALAPERT": "bb63c818df2fb3817ff31dc1c7830430c096e4f9d77038162d0392cc6e4b69a6",
+      "ARTEMIS_MOUTON_PLATEAU": "2918b82813b4c46dab42e1226d9be5d2f3f28f46595657b09644899b6e567014",
+      "ARTEMIS_MOUTON": "384dce8430fcd1b648a9256d89c075cf1d153203bc1d99d67feb177d00211ad4",
+      "ARTEMIS_NOBILE_RIM1": "2543daaa8e68af07dc8b49466c414d6c040d8f91365d7c4e4c1cc8f0278b6ee7",
+      "ARTEMIS_NOBILE_RIM2": "34eab547f351f92a462c18dbaafa3e969ff6c1a75411887fffe7417a21798b4b",
+      "ARTEMIS_DE_GERLACHE_RIM2": "f017159f553e279ab4d690a50518f53569cb240ad7c0dfdd2fcd7730cfce7b56",
+      "ARTEMIS_SLATER_PLAIN": "10091ba9b3a2e336ca8a8487ad7ad201c3f67ad1c6004599c4a4deb3dcf21733",
+      "SHACKLETON_RIM": "63bc60a7eb6c506719719751e97b79dd71f260922d71c47d4900a83432da4fc7",
+      "CONNECTING_RIDGE": "d9ab9e5660954856a948bfc48d1dd0535ef1edcee0bfd1ef21e1cf40f545b56e",
+      "PEAK_NEAR_SHACKLETON": "b3408bed87afd94c11059187b57dc790f781562726e2f6bd9a8f307437e2e5de",
+      "DE_GERLACHE_RIM1": "75955d52311c803780c5a54876208e81950e8ebd2e6aac05a8470586cacd971d",
+      "SHOEMAKER_RIM_A": "f476be16d87d2bfe43c949c43512b62262e5e683aa99900250a3970a38445051",
+      "IM3_REINER_GAMMA": "411c177366f364ce425aadb67b1686271046cd03b1b870aff75bc5b58243a6e2"
+    },
+    "baseline_sha256": {
+      "APOLLO11": "5edae7b3b6ad79298db637b695506a0cf4f9f0479a5a0fa3dcf6a662576ec789",
+      "APOLLO12": "2d5e23a069c2691ef386250df5c3112366b6c3e4b3aac6c8ea87b198bf709c7b",
+      "APOLLO14": "12398e622fbdf52f8c8ff6b76d6a10cc0651f13f36881e9b5e5cf0b995a16f41",
+      "APOLLO15": "02116f534db5cc092538918acd5c306c78e77b9e45e6bc36f11a164a53f4139e",
+      "APOLLO16": "ed8373d32025224195ebdb9053edaf3043e02b8b78d00a2bc958e45bb0816137",
+      "APOLLO17": "54f2687610d7c1c7dd1f8c0636a540ce5fbce5778480236089b34fc415dc324d",
+      "LUNA16": "27b012b3bf95d1dbe1df9f1f67eda352970b7d16ccf7997870b897e6d6818732",
+      "LUNA20": "392af0862adb4d18da0601daa5dc5837245dc95ddfdd4e3f542b76e57aec1e20",
+      "LUNA24": "625ff74de89e9dbe6167f211d9661870d3f81f584cde156bf1bd3fcbe86f7fec",
+      "CHANGE3": "d3c54f73ed17c88cc2b8ca903cb1ee9efeacb3a49e904497a08421f8cb4e7e25",
+      "CHANGE4": "12a53a093664fbae9b3fad3adf698254a29c2faf68bdc66c5359edacd05aaa4c",
+      "CHANGE5": "40b2407c8077493ba16240d4e458b75f9f59af272459b683487bbda264531222",
+      "CHANGE6": "d2686e0f9dd6a72d5ee081bcf048483fe9e722986397bc8abd40c29271f7b0ac",
+      "CHANDRAYAAN3": "a0b96a64978e9202505159cee603357fc7eb1096231711482206a5f0d8cdc32e",
+      "SLIM": "cad52c1ff42802cdd30dc7dafebc8dd7b41c293380d03ed78458f6d45de45078",
+      "IM1": "299a68d3fb8d39d88c92f4b4263ffa0d24cd3fdb4689a8dc8bba94d8bd796394",
+      "IM2": "30f08ca70cb0b5dd8be93e080c9ee3b405d3b1f704cc7b07a79b51f0b61f5eea",
+      "BLUE_GHOST1": "afcb05a70ca499bfbba9ee1aa605f601ad70a171f0f4572263e8a75083a2e6bf",
+      "ARTEMIS_CABEUS_B": "ee1123277e036fe8b7227a63af030354d944330b9523dce130c2e61cf823a3c7",
+      "ARTEMIS_HAWORTH": "a8079e03cc63db3218f1cef6f861f58c4b70b44d83706d76bd82ff89b08e19ac",
+      "ARTEMIS_MALAPERT": "d9ba2595feb614c123abb8f09e5d189f05eadcfeb15f77c716b413f5a45294ff",
+      "ARTEMIS_MOUTON_PLATEAU": "6ba4226bf5d2842dbdc1084cd0ad2966d0b42586c80354a230cb63e94c6f26ae",
+      "ARTEMIS_MOUTON": "54dcb1fd7d8697b6adfad6b41f9ad01f816b9cf0e489127ed9b0acca19fa4c84",
+      "ARTEMIS_NOBILE_RIM1": "dba916ab25c0af7d89ec84a070ed397312e63815b2cbd3e32d93fe6a992b84c8",
+      "ARTEMIS_NOBILE_RIM2": "7149e58b08c7b52f3878dec830fd2308346cd21e2f3d69432b6fbcf167540b17",
+      "ARTEMIS_DE_GERLACHE_RIM2": "639f2fdb6002f7307b3f8e9e7b449890b91e2172d5e28eea5bf8831ec8ec8950",
+      "ARTEMIS_SLATER_PLAIN": "bcc338e6b58c08d19b46013852afd9b54b540cb26f312cd2666c6924fda992f2",
+      "SHACKLETON_RIM": "55315d0d4b68c35facf5d7a53b5ecfbe1ca8834e70ecfece706f75c126fa92e7",
+      "CONNECTING_RIDGE": "5aff066dd957b3db19a2d3708c6bd329527e7fabd97b7e97eb80262f0894172a",
+      "PEAK_NEAR_SHACKLETON": "40e77c799c800acb7f12c7ddd9e453133b6693ca22a8c0a52fd7802a739b7a9d",
+      "DE_GERLACHE_RIM1": "b74f15bfb62f62841a215c3268f60b2db4e5554d8d0523df16f7c221b289ef4f",
+      "SHOEMAKER_RIM_A": "98f01c3b0db8fb418dc634d9b82ef7de94e12b8e540f86a57bb7b8ff6bc32abe",
+      "IM3_REINER_GAMMA": "e86985a1c9ba84d82a9c7d0a00d43c956790b1d5ec279edcd72db4d558156f4a"
+    },
+    "legacy_horizon_sha256": {
+      "APOLLO11": "5edc3fd2659d7e5a351cc32e4a6e32fcad3a69501ee1d178cde94923383da6b1",
+      "APOLLO12": "c3196f8934510a5a43c7f743503b037368e50a55432f19e7811db20c69f28ded",
+      "APOLLO14": "e05a2fd81d520dab184bb45d32c018f692ee1a4f4c154eb7561ac8a8b9e1a413",
+      "APOLLO15": "1bf4f6d15c75a7fffe6647d924afdf6d49b7ea638470e2836b6a6d6267628d64",
+      "APOLLO16": "e824dc2babe4fb459ba7663556cc4a27fbbd5a61741f4b3701fc25c12d84d8cb",
+      "APOLLO17": "a4eac336dfbc703ba64fad76aa98fe423211a8935660738429fd151b54ab8dda",
+      "LUNA16": "22cfde335f0e7fed5e774e50ef6d51e9305a4fdcb1bb6aeb6721bb0b06a61577",
+      "LUNA20": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781",
+      "LUNA24": "fd56cec2c8ec25ba69b288b0461875dbbc7833e3095236576a5ba355f3808a8a",
+      "CHANGE3": "a0d88ebf110f087ef37ff24839b6477900287eb8f585cd3b301328aa4383ebfa",
+      "CHANGE4": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21",
+      "CHANGE5": "f136c3a712db9d5376bd151612b86b0c239203aa4e34048a598399f22c7d2fb1",
+      "CHANGE6": "6d277cdc7617cab663768c711fc52cbc76c29783cef8f224727e09df442c2375",
+      "CHANDRAYAAN3": "e5b1829ee6c4cfdd58f482275410dfdee5b68a6080ba0bcc615e9bac28a5bcf4",
+      "SLIM": "25173b32dc20f8183b95c2f0b6d8e2c9bc62b1c3b08a350866d5470ef096e9fb",
+      "IM1": "a38e0bd619d235f929532c9d0f8a5370b4cb9052d3a90017ce1b4274f634f06b",
+      "IM2": "9e341663e268fa31f0d35427e42c5f7606abb47a743f8dd1402fde527e68e281",
+      "BLUE_GHOST1": "3d8d34d30b5be66253ec11b50b87cce527bbad7648d51329fc556b9183cf7d68",
+      "ARTEMIS_CABEUS_B": "145a651dc9df04ff9c942b854095d74b69f7f33408f89be0e29d956e3ad882e6",
+      "ARTEMIS_HAWORTH": "75051bf47e1625e387fba2267d75e776d3f0ede3ee64f44b655b2bb6ac8733f3",
+      "ARTEMIS_MALAPERT": "a274da886f22c9ac622d1819bfe6444f0647e94dd781d797fa5914e0aafc0ac1",
+      "ARTEMIS_MOUTON_PLATEAU": "9ee206cb92270145a529a4da19840486b31ea733001c1afb0898ab30f893d762",
+      "ARTEMIS_MOUTON": "42455df7850f8ccbf5d2615b060f921475ce7228b9f8c325caec5eeb4ec0bf71",
+      "ARTEMIS_NOBILE_RIM1": "5f64896417bb8bc27d41fd0b14c53dd87da816e97de68898ddf1e3956bdcbcd8",
+      "ARTEMIS_NOBILE_RIM2": "db3570a8e042fe44c939401f9dc1d9afdb09d2fa6809da22e032e8ea1438e216",
+      "ARTEMIS_DE_GERLACHE_RIM2": "c430f489e3dd711fcd52dbd67cdfd314291b8094db63cd5414de87da56fd8549",
+      "ARTEMIS_SLATER_PLAIN": "e890b5e6f08e5c81e431b9607c6e68674318aad59eca02aa0e1ce2f81e490796",
+      "SHACKLETON_RIM": "e58f5e53704a552774d49447ae575bf098031f3ea45f7f6763146ae27bc729b9",
+      "CONNECTING_RIDGE": "4a4f5be40df01e4410362fae8cdeebfc2d9f6a9b752968ace9edc5f1b488f3d7",
+      "PEAK_NEAR_SHACKLETON": "f96807381ecb0308de3160cd6a56ec6d664f4fa9fcb97c5dbf192571be58dbac",
+      "DE_GERLACHE_RIM1": "7ccaf2875df71c0a312130f66fde9c65fb246471c288dd35195aa375bf41e470",
+      "SHOEMAKER_RIM_A": "8730711877cb9ed376dd13166fc2eb7cdddddbbd0e700513ffc82d69985ce6f5",
+      "IM3_REINER_GAMMA": "6dd99c6ded1644beaf577fbeb179ffaa95c2936eab2834fca8c5273453ba5804"
+    }
+  },
+  "catalogue_checks": [
+    {
+      "id": "APOLLO11",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.1553047721458736e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "5edae7b3b6ad79298db637b695506a0cf4f9f0479a5a0fa3dcf6a662576ec789",
+      "passed": true
+    },
+    {
+      "id": "APOLLO12",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.165073599268062e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "2d5e23a069c2691ef386250df5c3112366b6c3e4b3aac6c8ea87b198bf709c7b",
+      "passed": true
+    },
+    {
+      "id": "APOLLO14",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 1.1783191387117993e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "12398e622fbdf52f8c8ff6b76d6a10cc0651f13f36881e9b5e5cf0b995a16f41",
+      "passed": true
+    },
+    {
+      "id": "APOLLO15",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.9253963498765433e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "02116f534db5cc092538918acd5c306c78e77b9e45e6bc36f11a164a53f4139e",
+      "passed": true
+    },
+    {
+      "id": "APOLLO16",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.755530370969032e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "ed8373d32025224195ebdb9053edaf3043e02b8b78d00a2bc958e45bb0816137",
+      "passed": true
+    },
+    {
+      "id": "APOLLO17",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 4.4804357594396816e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "54f2687610d7c1c7dd1f8c0636a540ce5fbce5778480236089b34fc415dc324d",
+      "passed": true
+    },
+    {
+      "id": "LUNA16",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 4.3090318465176544e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "27b012b3bf95d1dbe1df9f1f67eda352970b7d16ccf7997870b897e6d6818732",
+      "passed": true
+    },
+    {
+      "id": "LUNA20",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 4.3266763870908994e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "392af0862adb4d18da0601daa5dc5837245dc95ddfdd4e3f542b76e57aec1e20",
+      "passed": true
+    },
+    {
+      "id": "LUNA24",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 4.312501028601348e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "625ff74de89e9dbe6167f211d9661870d3f81f584cde156bf1bd3fcbe86f7fec",
+      "passed": true
+    },
+    {
+      "id": "CHANGE3",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 5.838164576169798e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "d3c54f73ed17c88cc2b8ca903cb1ee9efeacb3a49e904497a08421f8cb4e7e25",
+      "passed": true
+    },
+    {
+      "id": "CHANGE4",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 9.802360872816573e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "12a53a093664fbae9b3fad3adf698254a29c2faf68bdc66c5359edacd05aaa4c",
+      "passed": true
+    },
+    {
+      "id": "CHANGE5",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 5.996918693191935e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "40b2407c8077493ba16240d4e458b75f9f59af272459b683487bbda264531222",
+      "passed": true
+    },
+    {
+      "id": "CHANGE6",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 8.658407690588248e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "d2686e0f9dd6a72d5ee081bcf048483fe9e722986397bc8abd40c29271f7b0ac",
+      "passed": true
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 9.674344574333976e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "a0b96a64978e9202505159cee603357fc7eb1096231711482206a5f0d8cdc32e",
+      "passed": true
+    },
+    {
+      "id": "SLIM",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.1514720681465723e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "cad52c1ff42802cdd30dc7dafebc8dd7b41c293380d03ed78458f6d45de45078",
+      "passed": true
+    },
+    {
+      "id": "IM1",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 1.3020822584426884e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "299a68d3fb8d39d88c92f4b4263ffa0d24cd3fdb4689a8dc8bba94d8bd796394",
+      "passed": true
+    },
+    {
+      "id": "IM2",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.447967039384592e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "30f08ca70cb0b5dd8be93e080c9ee3b405d3b1f704cc7b07a79b51f0b61f5eea",
+      "passed": true
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 6.127680233932975e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "afcb05a70ca499bfbba9ee1aa605f601ad70a171f0f4572263e8a75083a2e6bf",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.580330916217977e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "ee1123277e036fe8b7227a63af030354d944330b9523dce130c2e61cf823a3c7",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.8939745670863115e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "a8079e03cc63db3218f1cef6f861f58c4b70b44d83706d76bd82ff89b08e19ac",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.038023602597694e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "d9ba2595feb614c123abb8f09e5d189f05eadcfeb15f77c716b413f5a45294ff",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.4479237077027887e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "6ba4226bf5d2842dbdc1084cd0ad2966d0b42586c80354a230cb63e94c6f26ae",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.0140187704771447e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "54dcb1fd7d8697b6adfad6b41f9ad01f816b9cf0e489127ed9b0acca19fa4c84",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 3.0139604564457573e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "dba916ab25c0af7d89ec84a070ed397312e63815b2cbd3e32d93fe6a992b84c8",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.9898804255820516e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "7149e58b08c7b52f3878dec830fd2308346cd21e2f3d69432b6fbcf167540b17",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 6.895833487337063e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "639f2fdb6002f7307b3f8e9e7b449890b91e2172d5e28eea5bf8831ec8ec8950",
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 6.907904325368568e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "bcc338e6b58c08d19b46013852afd9b54b540cb26f312cd2666c6924fda992f2",
+      "passed": true
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 5.300259627676908e-08,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "55315d0d4b68c35facf5d7a53b5ecfbe1ca8834e70ecfece706f75c126fa92e7",
+      "passed": true
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 2.2839400532230127e-08,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "5aff066dd957b3db19a2d3708c6bd329527e7fabd97b7e97eb80262f0894172a",
+      "passed": true
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 1.421962061987081e-08,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "40e77c799c800acb7f12c7ddd9e453133b6693ca22a8c0a52fd7802a739b7a9d",
+      "passed": true
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 1.2935699397844348e-08,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "b74f15bfb62f62841a215c3268f60b2db4e5554d8d0523df16f7c221b289ef4f",
+      "passed": true
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 7.751773046439371e-09,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "98f01c3b0db8fb418dc634d9b82ef7de94e12b8e540f86a57bb7b8ff6bc32abe",
+      "passed": true
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "schema_passed": true,
+      "maximum_coordinate_error_m": 4.2987986629693595e-10,
+      "center_exact_match": true,
+      "center_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "center_claim_matches": true,
+      "metrics_sha256": "e86985a1c9ba84d82a9c7d0a00d43c956790b1d5ec279edcd72db4d558156f4a",
+      "passed": true
+    }
+  ],
+  "points": [
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 8,
+      "e_m": 300,
+      "n_m": -500,
+      "lat": -89.70292416218018,
+      "lon": -160.90154634031865,
+      "independent_ground_m": 1692.80781997967,
+      "reported_ground_m": 1692.81,
+      "ground_difference_m": -0.002180020329888066,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "4a8014495d8a753b8631b7b4d6315903f2fbff412364586c36b2cf6f172b2bb6",
+      "rounded_mask_sha256": "ee5a012b58a76479febd495ef0e7d3e4cb53ec47b66d91aa2450f30388ea0012",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.43980467323840816,
+          "reported": 0.43980467323840816,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.45926889375684554,
+          "reported": 0.45926889375684554,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.2156809054399416,
+          "reported": 0.2156809054399416,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 384,
+          "reported": 384,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.43980467323840816,
+          "reported": 0.43980467323840816,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.45926889375684554,
+          "reported": 0.45926889375684554,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.2156809054399416,
+          "reported": 0.2156809054399416,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 384,
+          "reported": 384,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+          "gate_km": 3.0,
+          "resolution_m": 5.0
+        },
+        {
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+          "gate_km": 25.0,
+          "resolution_m": 10.0
+        },
+        {
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+          "gate_km": 25.0,
+          "resolution_m": 20.0
+        },
+        {
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+          "gate_km": 60.0,
+          "resolution_m": 60.0
+        },
+        {
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+          "gate_km": 60.0,
+          "resolution_m": 80.0
+        },
+        {
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+          "gate_km": 200.0,
+          "resolution_m": 240.0
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 8001,
+      "min_distance_m": 5.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 6.375
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 30,
+      "e_m": 300,
+      "n_m": -300,
+      "lat": -89.69633216390855,
+      "lon": -160.9429893474087,
+      "independent_ground_m": 1698.4065843804237,
+      "reported_ground_m": 1698.41,
+      "ground_difference_m": -0.0034156195763443975,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "8e6902a97dae43ff234807da9f67f4445c3d31547299efed077210b932a2544f",
+      "rounded_mask_sha256": "e432ae7e76d63792129dd85faa2d58cf62155728265bde657c8b06d58d9ccb99",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4150009127418766,
+          "reported": 0.4150009127418766,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.4765881708652793,
+          "reported": 0.4765881708652793,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.20265151515151514,
+          "reported": 0.20265151515151514,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 405,
+          "reported": 405,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4150009127418766,
+          "reported": 0.4150009127418766,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.4765881708652793,
+          "reported": 0.4765881708652793,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.20265151515151514,
+          "reported": 0.20265151515151514,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 405,
+          "reported": 405,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+          "gate_km": 3.0,
+          "resolution_m": 5.0
+        },
+        {
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+          "gate_km": 25.0,
+          "resolution_m": 10.0
+        },
+        {
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+          "gate_km": 25.0,
+          "resolution_m": 20.0
+        },
+        {
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+          "gate_km": 60.0,
+          "resolution_m": 60.0
+        },
+        {
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+          "gate_km": 60.0,
+          "resolution_m": 80.0
+        },
+        {
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+          "gate_km": 200.0,
+          "resolution_m": 240.0
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 8001,
+      "min_distance_m": 5.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 5.969
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 70,
+      "e_m": -100,
+      "n_m": 100,
+      "lat": -89.68328504200228,
+      "lon": -163.40660505935918,
+      "independent_ground_m": 1722.2582161065575,
+      "reported_ground_m": 1722.26,
+      "ground_difference_m": -0.0017838934425071784,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "db6d0bdd5c909a24caad99aedac8b49893677da432aac2db8881cb500e4eb2df",
+      "rounded_mask_sha256": "461d80cb4252b61db634c122324b5c29448c7523d428d5dcd150e28ef9af018b",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.5569550930996714,
+          "reported": 0.5569550930996714,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.006936838262139467,
+          "reported": 0.006936838262139467,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.004449616648411829,
+          "reported": 0.004449616648411829,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 383,
+          "reported": 383,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.5569550930996714,
+          "reported": 0.5569550930996714,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.006936838262139467,
+          "reported": 0.006936838262139467,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.004449616648411829,
+          "reported": 0.004449616648411829,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 383,
+          "reported": 383,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+          "gate_km": 3.0,
+          "resolution_m": 5.0
+        },
+        {
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+          "gate_km": 25.0,
+          "resolution_m": 10.0
+        },
+        {
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+          "gate_km": 25.0,
+          "resolution_m": 20.0
+        },
+        {
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+          "gate_km": 60.0,
+          "resolution_m": 60.0
+        },
+        {
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+          "gate_km": 60.0,
+          "resolution_m": 80.0
+        },
+        {
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+          "gate_km": 200.0,
+          "resolution_m": 240.0
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 8001,
+      "min_distance_m": 5.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 6.985
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 75,
+      "e_m": 400,
+      "n_m": 100,
+      "lat": -89.6830276129689,
+      "lon": -160.42487217012408,
+      "independent_ground_m": 1676.2369425647544,
+      "reported_ground_m": 1676.24,
+      "ground_difference_m": -0.0030574352456369525,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "22bd98c0276b1dc728d97d60db847841a6f5013cef254b66194df2b3163de28b",
+      "rounded_mask_sha256": "956671aa64cfb5022e76f148dec59be34313657462b7363ecff53570cbd0bfb8",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.39537696239503467,
+          "reported": 0.39537696239503467,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.4919678714859438,
+          "reported": 0.4919678714859438,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.19224625775830595,
+          "reported": 0.19224625775830595,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 399,
+          "reported": 399,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.39537696239503467,
+          "reported": 0.39537696239503467,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.4919678714859438,
+          "reported": 0.4919678714859438,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.19224625775830595,
+          "reported": 0.19224625775830595,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 399,
+          "reported": 399,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+          "gate_km": 3.0,
+          "resolution_m": 5.0
+        },
+        {
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+          "gate_km": 25.0,
+          "resolution_m": 10.0
+        },
+        {
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+          "gate_km": 25.0,
+          "resolution_m": 20.0
+        },
+        {
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+          "gate_km": 60.0,
+          "resolution_m": 60.0
+        },
+        {
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+          "gate_km": 60.0,
+          "resolution_m": 80.0
+        },
+        {
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+          "gate_km": 200.0,
+          "resolution_m": 240.0
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 8001,
+      "min_distance_m": 5.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 6.781
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 118,
+      "e_m": 300,
+      "n_m": 500,
+      "lat": -89.66996274074405,
+      "lon": -161.0922055774119,
+      "independent_ground_m": 1647.2917946660798,
+      "reported_ground_m": 1647.29,
+      "ground_difference_m": 0.001794666079831586,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "6654383a70bb4db34541ed79236a034b047a3e9b2c623287a6546a66b2c28e65",
+      "rounded_mask_sha256": "e28dda3e25127b19bb8c828a34b6bba2bc6a58e29aad025d9fce288bfbca5c8b",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.13088718510405256,
+          "reported": 0.13088718510405256,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.23496257758305952,
+          "reported": 0.23496257758305952,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.004198612632347572,
+          "reported": 0.004198612632347572,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 2092,
+          "reported": 2092,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.13088718510405256,
+          "reported": 0.13088718510405256,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.23496257758305952,
+          "reported": 0.23496257758305952,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.004198612632347572,
+          "reported": 0.004198612632347572,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 2092,
+          "reported": 2092,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "8263ec7f22af8936aa20c61f93a4c4ed3f28e5ac09f9564d96becfbbf4c97f7a",
+          "gate_km": 3.0,
+          "resolution_m": 5.0
+        },
+        {
+          "path": "data/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "c2b3aba62b61607fb00172af00b491173888ff591f23dfd37776e78e2707d1e5",
+          "gate_km": 25.0,
+          "resolution_m": 10.0
+        },
+        {
+          "path": "data/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "c8aed081ff57b2371e161f7b215d98b3f204217c0692c2bdccce91dc7c2ac867",
+          "gate_km": 25.0,
+          "resolution_m": 20.0
+        },
+        {
+          "path": "data/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "aa4b7d6a472e4397b887e3598939865f5483ed7d7465e959996f829001c2ebbf",
+          "gate_km": 60.0,
+          "resolution_m": 60.0
+        },
+        {
+          "path": "data/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "17bf730d82e3f2b147a52e798d5cc5543ed0f554736b0c933bb491860f69177d",
+          "gate_km": 60.0,
+          "resolution_m": 80.0
+        },
+        {
+          "path": "data/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "0edfa5079ee7051a7b8b2ed1092bb35ff2f413cc7a1ffe0d2172f8e9b51ef4e6",
+          "gate_km": 200.0,
+          "resolution_m": 240.0
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 8001,
+      "min_distance_m": 5.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 6.672
+    },
+    {
+      "id": "CHANGE3",
+      "index": 61,
+      "e_m": 100,
+      "n_m": 0,
+      "lat": 44.12139990796107,
+      "lon": -19.50700612436003,
+      "independent_ground_m": -2632.2416550309927,
+      "reported_ground_m": -2632.24,
+      "ground_difference_m": -0.001655030992878892,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "6a16af2b01937c416b94b658385b515beeef665ca1d22ad5a974b7c9262c8480",
+      "rounded_mask_sha256": "3b91966d0cc08b0acbe611ae92ee307d8298b1bbec2add60bb11d89da8730de0",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4992469879518072,
+          "reported": 0.4992469879518072,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4992469879518072,
+          "reported": 0.4992469879518072,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 361,
+          "reported": 361,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4992469879518072,
+          "reported": 0.4992469879518072,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4992469879518072,
+          "reported": 0.4992469879518072,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 361,
+          "reported": 361,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/CHANGE3.npz",
+          "sha256": "3c8c331cdfb4cd43a7afbfb90b195021bdd9d1cd703bddca930d2bb9cf6b5f46",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 3.062
+    },
+    {
+      "id": "CHANGE3",
+      "index": 64,
+      "e_m": 400,
+      "n_m": 0,
+      "lat": 44.12139852737713,
+      "lon": -19.493224497726377,
+      "independent_ground_m": -2636.548525046053,
+      "reported_ground_m": -2636.55,
+      "ground_difference_m": 0.001474953947308677,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "4ade8ce378192cc3acc7b0907c8b86b27b4f910edebd1ed177cbedd41e2b380a",
+      "rounded_mask_sha256": "f59c3a184abce2a3c62dfeba369d44f5958ef9b9a227f5ac730d955042a4a3d7",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.49678258488499455,
+          "reported": 0.49678258488499455,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49678258488499455,
+          "reported": 0.49678258488499455,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 362,
+          "reported": 362,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.49678258488499455,
+          "reported": 0.49678258488499455,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49678258488499455,
+          "reported": 0.49678258488499455,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 362,
+          "reported": 362,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/CHANGE3.npz",
+          "sha256": "3c8c331cdfb4cd43a7afbfb90b195021bdd9d1cd703bddca930d2bb9cf6b5f46",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.406
+    },
+    {
+      "id": "CHANGE3",
+      "index": 97,
+      "e_m": 400,
+      "n_m": 300,
+      "lat": 44.1312918929081,
+      "lon": -19.4932214199454,
+      "independent_ground_m": -2634.4265190516185,
+      "reported_ground_m": -2634.43,
+      "ground_difference_m": 0.0034809483813660336,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "acda079521172383323152b5bd65f7cf035855f296443f2ddf3d3a059fab2c92",
+      "rounded_mask_sha256": "a6ccbdd56f3d77c6306b10c9d331f8addb458fc1067cdda99a5a354116cfcfa6",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4957785688207375,
+          "reported": 0.4957785688207375,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4957785688207375,
+          "reported": 0.4957785688207375,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 363,
+          "reported": 363,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4957785688207375,
+          "reported": 0.4957785688207375,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4957785688207375,
+          "reported": 0.4957785688207375,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 363,
+          "reported": 363,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/CHANGE3.npz",
+          "sha256": "3c8c331cdfb4cd43a7afbfb90b195021bdd9d1cd703bddca930d2bb9cf6b5f46",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.437
+    },
+    {
+      "id": "CHANGE3",
+      "index": 16,
+      "e_m": 0,
+      "n_m": -400,
+      "lat": 44.108208845513296,
+      "lon": -19.5116,
+      "independent_ground_m": -2630.7595271234895,
+      "reported_ground_m": -2630.76,
+      "ground_difference_m": 0.0004728765106847277,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "f4fb0cfb4875ffd91e94428a660cf523d1b216f60ec5fedfa84491d4995fe0dd",
+      "rounded_mask_sha256": "fb1c05da307f103af817ddd4f637aec219af274c0ddbeda284a5789dec3b290b",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4984255202628697,
+          "reported": 0.4984255202628697,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4984255202628697,
+          "reported": 0.4984255202628697,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 361,
+          "reported": 361,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4984255202628697,
+          "reported": 0.4984255202628697,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4984255202628697,
+          "reported": 0.4984255202628697,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 361,
+          "reported": 361,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/CHANGE3.npz",
+          "sha256": "3c8c331cdfb4cd43a7afbfb90b195021bdd9d1cd703bddca930d2bb9cf6b5f46",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.313
+    },
+    {
+      "id": "CHANGE3",
+      "index": 63,
+      "e_m": 300,
+      "n_m": 0,
+      "lat": 44.121399171649635,
+      "lon": -19.497818373194587,
+      "independent_ground_m": -2640.721953732313,
+      "reported_ground_m": -2640.72,
+      "ground_difference_m": -0.0019537323132681195,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "2d114835922ac1ceb0b7743ececcffcaf39b017b9f665ac9bc05543f47a94a3a",
+      "rounded_mask_sha256": "4a3102379b05677ddb2c10107ccd2ed86d898f93afa7da6685a842d54885b882",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.48966319824753557,
+          "reported": 0.48966319824753557,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.48966319824753557,
+          "reported": 0.48966319824753557,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 367,
+          "reported": 367,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.48966319824753557,
+          "reported": 0.48966319824753557,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.48966319824753557,
+          "reported": 0.48966319824753557,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 367,
+          "reported": 367,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/CHANGE3.npz",
+          "sha256": "3c8c331cdfb4cd43a7afbfb90b195021bdd9d1cd703bddca930d2bb9cf6b5f46",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.266
+    },
+    {
+      "id": "APOLLO11",
+      "index": 3,
+      "e_m": -200,
+      "n_m": -500,
+      "lat": 0.6576710524610541,
+      "lon": 23.466543988318605,
+      "independent_ground_m": -1916.2304396160864,
+      "reported_ground_m": -1916.23,
+      "ground_difference_m": -0.00043961608639619953,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "e03ea40e2e3fa8e7365e8abdc23eae0c7f6740d472b95e9e3c12e06c5d17b0ce",
+      "rounded_mask_sha256": "7a832fdd9f3126834302c0e59fa833e8f40482f371bb9210de58db02c8e74dc1",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.49833424607520993,
+          "reported": 0.49833424607520993,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49833424607520993,
+          "reported": 0.49833424607520993,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 356,
+          "reported": 356,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.49833424607520993,
+          "reported": 0.49833424607520993,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49833424607520993,
+          "reported": 0.49833424607520993,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 356,
+          "reported": 356,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/APOLLO11.npz",
+          "sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.375
+    },
+    {
+      "id": "APOLLO11",
+      "index": 56,
+      "e_m": -400,
+      "n_m": 0,
+      "lat": 0.6741599821321058,
+      "lon": 23.45994793232875,
+      "independent_ground_m": -1925.343158638193,
+      "reported_ground_m": -1925.34,
+      "ground_difference_m": -0.00315863819309925,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "33edd3d694f793d0f87c82e43e0e8fed533ac2995fa03ef4c65e6b47235ee762",
+      "rounded_mask_sha256": "5e863e53a28f477c1e7cef442bfb3a4174a050fe5cf1b03d65bca48b828fabfd",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.49639466958744066,
+          "reported": 0.49639466958744066,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49639466958744066,
+          "reported": 0.49639466958744066,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 357,
+          "reported": 357,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.49639466958744066,
+          "reported": 0.49639466958744066,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49639466958744066,
+          "reported": 0.49639466958744066,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 357,
+          "reported": 357,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/APOLLO11.npz",
+          "sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.219
+    },
+    {
+      "id": "APOLLO11",
+      "index": 100,
+      "e_m": -400,
+      "n_m": 400,
+      "lat": 0.6873511365022461,
+      "lon": 23.459947896357306,
+      "independent_ground_m": -1926.6461406874887,
+      "reported_ground_m": -1926.65,
+      "ground_difference_m": 0.003859312511394819,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "f826caf000aebfb9e525a2275135177c2a2c2f5f7bc76b3c208c43c8d69244cd",
+      "rounded_mask_sha256": "4bcfcbd8fc206bbd939b18490fc37bc7a4cda7142b7cc772e206dec41bce259e",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.49612084702446146,
+          "reported": 0.49612084702446146,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49612084702446146,
+          "reported": 0.49612084702446146,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 358,
+          "reported": 358,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.49612084702446146,
+          "reported": 0.49612084702446146,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.49612084702446146,
+          "reported": 0.49612084702446146,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 358,
+          "reported": 358,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/APOLLO11.npz",
+          "sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.218
+    },
+    {
+      "id": "APOLLO11",
+      "index": 108,
+      "e_m": 400,
+      "n_m": 400,
+      "lat": 0.6873511365022461,
+      "lon": 23.486332103642706,
+      "independent_ground_m": -1926.8829195553965,
+      "reported_ground_m": -1926.88,
+      "ground_difference_m": -0.0029195553963745624,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "c3c013659efb34f067960bef975a662f7597d73bc39a56658dc8dedcb6bdfeba",
+      "rounded_mask_sha256": "443675e836a502cba65964cd744740dbc65abf0b63120893369de84ff66707aa",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4974671412924425,
+          "reported": 0.4974671412924425,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4974671412924425,
+          "reported": 0.4974671412924425,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 357,
+          "reported": 357,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4974671412924425,
+          "reported": 0.4974671412924425,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4974671412924425,
+          "reported": 0.4974671412924425,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 357,
+          "reported": 357,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/APOLLO11.npz",
+          "sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.235
+    },
+    {
+      "id": "APOLLO11",
+      "index": 30,
+      "e_m": 300,
+      "n_m": -300,
+      "lat": 0.66426662413345,
+      "lon": 23.483034030749053,
+      "independent_ground_m": -1930.5107382904655,
+      "reported_ground_m": -1930.51,
+      "ground_difference_m": -0.0007382904655059974,
+      "ground_rounding_passed": true,
+      "independent_mask_sha256": "a755e4ba290fd5949d7ffc79630d00c314896b488e7d6634eb4bd9d44309356f",
+      "rounded_mask_sha256": "0425c9c10fbf9b209ce4354303d4ca3b8e519e79f431382705c52782ac7fa072",
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4952081051478642,
+          "reported": 0.4952081051478642,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4952081051478642,
+          "reported": 0.4952081051478642,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 358,
+          "reported": 358,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "unrounded_comparison": {
+        "sun_frac": {
+          "independent": 0.4952081051478642,
+          "reported": 0.4952081051478642,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 1.0,
+          "reported": 1,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.4952081051478642,
+          "reported": 0.4952081051478642,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 358,
+          "reported": 358,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "rounding_effect": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "sources": [
+        {
+          "path": "data/raw/sldem/APOLLO11.npz",
+          "sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+          "gate_km": 150.0,
+          "resolution_m": 59.225293797166955
+        },
+        {
+          "path": "data/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": 300.0,
+          "resolution_m": 473.80235037733564,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": 300.0,
+          "resolution_m": 1895.2094015093426,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "final_missing_terrain_samples": 0,
+      "rays": 720,
+      "samples_per_ray": 4001,
+      "min_distance_m": 200.0,
+      "epochs": 43824,
+      "passed": true,
+      "elapsed_s": 2.187
+    }
+  ],
+  "complete": true,
+  "passed": true,
+  "started_utc": "2026-11-14T10:13:06.166525+00:00",
+  "finished_utc": "2026-11-14T10:14:04.698522+00:00"
+}

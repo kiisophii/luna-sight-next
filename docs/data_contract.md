@@ -323,3 +323,46 @@ Written by `node pipeline/date_slip.mjs` (actual `web/js/core.js`); human summar
 - `best` / `worst` = highest / lowest `both_frac` (ties: shorter / longer `longest_dark_h`), same as `web/js/landing_scan.js`.
 - `slip["+Nd"][m]`: Δ = metric(landing + N days) − metric(landing) for every landing with landing + N ≤ `last_landing`. `median_abs_change` = median |Δ|; `worst_change` = most unfavourable Δ (most negative for fractions, most positive for dark hours) with its dates; fractions in percentage points.
 - Only sites with a real horizon (section 3) get a file; no flat or mock fallback.
+
+## 18. Proposed — `web/data/uncertainty/<ID>.json` (Card 23, Jiyong, 2026-11-14)
+
+Written by `python pipeline/coordinate_uncertainty.py --workers 6`; summary:
+`docs/coordinate_uncertainty.md`. Existing formats are unchanged.
+
+- Each file: `id`, `center:{lat,lon}`, `frame:"MOON_ME_DE421"`, `radius_m:1737400`,
+  `complete:true`, `mock:false`.
+- `grid:{rows:11,cols:11,spacing_m:100,origin_e_m:-500,origin_n_m:-500}`; south-to-north
+  row-major, east changing fastest. Offsets map geodesically on the sphere. Node 60
+  is exactly the catalogue coordinate.
+- `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`. Actual `core.js` defines
+  sun_frac as hours with at least half the solar disk visible; earth_frac uses Earth
+  centre; both_frac is their conjunction; longest_dark_h is the longest dark hourly
+  run clipped to this window. Sun_frac is not the global map's mean disk fraction.
+- `params:{min_km,max_km,n_steps,obs_height_m,early_stop,hmax_m}` copies each site's
+  existing horizon settings. All use 720 azimuths, 2 m observer, curvature and 300 km
+  reach. Current polar sites use 5 m minimum/8000 steps; nonpolar sites retain
+  200 m/4000 steps. Legacy DEM chains include LDEM_64 before LDEM_16.
+- `points`: 121 objects `{index,e_m,n_m,lat,lon,h0_m,ground_resolution_m,dem_sources,
+  sun_frac,earth_frac,both_frac,longest_dark_h}`. Fractions are unrounded 0..1; dark
+  hours are integers. Input masks/heights use normal section 3 rounding.
+- `radii`: keys `"100","300","500"`; each has radius_m,n and four metric keys,
+  each containing `{min,max,p10,median,p90}`. Circular selection is
+  `hypot(e_m,n_m)<=radius_m`, giving 5/29/81 nodes. Square corners outside 500 m
+  remain in points only. Quantiles use linear interpolation, including dark hours.
+- `center_check:{matches:true,differences:{<four metrics>:0},metrics_sha256}`.
+  Centre metrics are recomputed, never copied/calibrated. A mismatch blocks export.
+- `provenance:{center,params,terrain_sources,files_sha256,input_key,
+  baseline_horizon_sha256,baseline_metrics_sha256}`. Sources have repository-relative
+  path, full SHA256, resolution_m, gate_km and label_sha256 for global IMG files.
+  Actual finest available ground resolution is reported per node; missing fine
+  coverage falls through to a coarser source. Existing baseline files are unchanged.
+
+These are sampled spatial ranges, not confidence intervals, coordinate-error
+probabilities or vertical DEM accuracy. A 100 m grid can miss smaller variations.
+No partial site file is exported. Checkpoints/masks remain ignored local files.
+Independent full-ray and hourly-loop verification: `coordinate_uncertainty_check.json`.
+
+The five-site near-field alternative is separate in `docs/near_field_comparison.*`.
+It does not change the grids or baselines. NASA PGDA polar illumination has no
+reference values at those five nonpolar coordinates; comparison fields are null
+with outside_product_coverage, never an invented reference/error score.

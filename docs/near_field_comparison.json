@@ -1,0 +1,229 @@
+{
+  "rows": [
+    {
+      "id": "APOLLO11",
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "legacy_params": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000
+      },
+      "near_params": {
+        "min_km": 0.005,
+        "max_km": 300.0,
+        "n_steps": 8000
+      },
+      "legacy": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      },
+      "near": {
+        "sun_frac": 0.4937477181453085,
+        "earth_frac": 1,
+        "both_frac": 0.4937477181453085,
+        "longest_dark_h": 359
+      },
+      "delta": {
+        "sun_frac": -0.0028294998174516195,
+        "earth_frac": 0,
+        "both_frac": -0.0028294998174516195,
+        "longest_dark_h": 2
+      },
+      "pgda": {
+        "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+        "status": "outside_product_coverage",
+        "value": null,
+        "legacy_error": null,
+        "near_error": null,
+        "closer": null
+      },
+      "legacy_horizon_sha256": "5edc3fd2659d7e5a351cc32e4a6e32fcad3a69501ee1d178cde94923383da6b1",
+      "legacy_metrics_sha256": "5edae7b3b6ad79298db637b695506a0cf4f9f0479a5a0fa3dcf6a662576ec789"
+    },
+    {
+      "id": "APOLLO12",
+      "lat": -3.0128,
+      "lon": -23.4219,
+      "legacy_params": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000
+      },
+      "near_params": {
+        "min_km": 0.005,
+        "max_km": 300.0,
+        "n_steps": 8000
+      },
+      "legacy": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      },
+      "near": {
+        "sun_frac": 0.49680540343190943,
+        "earth_frac": 1,
+        "both_frac": 0.49680540343190943,
+        "longest_dark_h": 358
+      },
+      "delta": {
+        "sun_frac": -0.0024872216137276637,
+        "earth_frac": 0,
+        "both_frac": -0.0024872216137276637,
+        "longest_dark_h": 2
+      },
+      "pgda": {
+        "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+        "status": "outside_product_coverage",
+        "value": null,
+        "legacy_error": null,
+        "near_error": null,
+        "closer": null
+      },
+      "legacy_horizon_sha256": "c3196f8934510a5a43c7f743503b037368e50a55432f19e7811db20c69f28ded",
+      "legacy_metrics_sha256": "2d5e23a069c2691ef386250df5c3112366b6c3e4b3aac6c8ea87b198bf709c7b"
+    },
+    {
+      "id": "LUNA20",
+      "lat": 3.7863,
+      "lon": 56.6242,
+      "legacy_params": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000
+      },
+      "near_params": {
+        "min_km": 0.005,
+        "max_km": 300.0,
+        "n_steps": 8000
+      },
+      "legacy": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      },
+      "near": {
+        "sun_frac": 0.4772270901788974,
+        "earth_frac": 1,
+        "both_frac": 0.4772270901788974,
+        "longest_dark_h": 371
+      },
+      "delta": {
+        "sun_frac": -0.0012093829864914252,
+        "earth_frac": 0,
+        "both_frac": -0.0012093829864914252,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+        "status": "outside_product_coverage",
+        "value": null,
+        "legacy_error": null,
+        "near_error": null,
+        "closer": null
+      },
+      "legacy_horizon_sha256": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781",
+      "legacy_metrics_sha256": "392af0862adb4d18da0601daa5dc5837245dc95ddfdd4e3f542b76e57aec1e20"
+    },
+    {
+      "id": "CHANGE5",
+      "lat": 43.0576,
+      "lon": -51.9161,
+      "legacy_params": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000
+      },
+      "near_params": {
+        "min_km": 0.005,
+        "max_km": 300.0,
+        "n_steps": 8000
+      },
+      "legacy": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      },
+      "near": {
+        "sun_frac": 0.49356516976998904,
+        "earth_frac": 1,
+        "both_frac": 0.49356516976998904,
+        "longest_dark_h": 366
+      },
+      "delta": {
+        "sun_frac": -0.007986491420226394,
+        "earth_frac": 0,
+        "both_frac": -0.007986491420226394,
+        "longest_dark_h": 6
+      },
+      "pgda": {
+        "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+        "status": "outside_product_coverage",
+        "value": null,
+        "legacy_error": null,
+        "near_error": null,
+        "closer": null
+      },
+      "legacy_horizon_sha256": "f136c3a712db9d5376bd151612b86b0c239203aa4e34048a598399f22c7d2fb1",
+      "legacy_metrics_sha256": "40b2407c8077493ba16240d4e458b75f9f59af272459b683487bbda264531222"
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "lat": 7.585,
+      "lon": -58.725,
+      "legacy_params": {
+        "min_km": 0.2,
+        "max_km": 300.0,
+        "n_steps": 4000
+      },
+      "near_params": {
+        "min_km": 0.005,
+        "max_km": 300.0,
+        "n_steps": 8000
+      },
+      "legacy": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      },
+      "near": {
+        "sun_frac": 0.4915343190945601,
+        "earth_frac": 1,
+        "both_frac": 0.4915343190945601,
+        "longest_dark_h": 363
+      },
+      "delta": {
+        "sun_frac": -0.003742241694048909,
+        "earth_frac": 0,
+        "both_frac": -0.003742241694048909,
+        "longest_dark_h": 2
+      },
+      "pgda": {
+        "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+        "status": "outside_product_coverage",
+        "value": null,
+        "legacy_error": null,
+        "near_error": null,
+        "closer": null
+      },
+      "legacy_horizon_sha256": "6dd99c6ded1644beaf577fbeb179ffaa95c2936eab2834fca8c5273453ba5804",
+      "legacy_metrics_sha256": "e86985a1c9ba84d82a9c7d0a00d43c956790b1d5ec279edcd72db4d558156f4a"
+    }
+  ],
+  "baseline_files_modified": false,
+  "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+  "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+  "pgda_coverage": "Published illumination/Earth products cover polar latitudes >=65N or <=65S; all five sites are outside.",
+  "caveats": [
+    "PGDA averages ~18.6 years, while this comparison uses 2026-2030.",
+    "PGDA Earth visibility accepts any visible disk portion; our metric uses Earth centre.",
+    "5 m is minimum ray distance, not DEM pixel resolution. These five sites use ~59 m SLDEM.",
+    "No conclusion about which method is closer to PGDA can be drawn for these coordinates."
+  ]
+}

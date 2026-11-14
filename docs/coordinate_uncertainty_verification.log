@@ -1,0 +1,32 @@
+2026-11-14T10:13:06.170037+00:00 Catalogue schema/statistics checked: 33 sites; exact centres: 33/33; resumed nodes: 0
+2026-11-14T10:13:06.904132+00:00 SHACKLETON_RIM/8: tracing all 720 x 8001 samples
+2026-11-14T10:13:13.277834+00:00 SHACKLETON_RIM/8: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.375
+2026-11-14T10:13:13.277834+00:00 SHACKLETON_RIM/30: tracing all 720 x 8001 samples
+2026-11-14T10:13:19.257839+00:00 SHACKLETON_RIM/30: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.969
+2026-11-14T10:13:19.257839+00:00 SHACKLETON_RIM/70: tracing all 720 x 8001 samples
+2026-11-14T10:13:26.248990+00:00 SHACKLETON_RIM/70: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.985
+2026-11-14T10:13:26.249991+00:00 SHACKLETON_RIM/75: tracing all 720 x 8001 samples
+2026-11-14T10:13:33.034204+00:00 SHACKLETON_RIM/75: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.781
+2026-11-14T10:13:33.034204+00:00 SHACKLETON_RIM/118: tracing all 720 x 8001 samples
+2026-11-14T10:13:39.707541+00:00 SHACKLETON_RIM/118: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.672
+2026-11-14T10:13:40.447806+00:00 CHANGE3/61: tracing all 720 x 4001 samples
+2026-11-14T10:13:43.526066+00:00 CHANGE3/61: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=3.062
+2026-11-14T10:13:43.526066+00:00 CHANGE3/64: tracing all 720 x 4001 samples
+2026-11-14T10:13:45.945710+00:00 CHANGE3/64: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.406
+2026-11-14T10:13:45.946709+00:00 CHANGE3/97: tracing all 720 x 4001 samples
+2026-11-14T10:13:48.389146+00:00 CHANGE3/97: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.437
+2026-11-14T10:13:48.389146+00:00 CHANGE3/16: tracing all 720 x 4001 samples
+2026-11-14T10:13:50.711954+00:00 CHANGE3/16: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.313
+2026-11-14T10:13:50.711954+00:00 CHANGE3/63: tracing all 720 x 4001 samples
+2026-11-14T10:13:52.993039+00:00 CHANGE3/63: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.266
+2026-11-14T10:13:53.442027+00:00 APOLLO11/3: tracing all 720 x 4001 samples
+2026-11-14T10:13:55.821724+00:00 APOLLO11/3: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.375
+2026-11-14T10:13:55.821724+00:00 APOLLO11/56: tracing all 720 x 4001 samples
+2026-11-14T10:13:58.054487+00:00 APOLLO11/56: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.219
+2026-11-14T10:13:58.055484+00:00 APOLLO11/100: tracing all 720 x 4001 samples
+2026-11-14T10:14:00.269117+00:00 APOLLO11/100: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.218
+2026-11-14T10:14:00.269117+00:00 APOLLO11/108: tracing all 720 x 4001 samples
+2026-11-14T10:14:02.498394+00:00 APOLLO11/108: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.235
+2026-11-14T10:14:02.498394+00:00 APOLLO11/30: tracing all 720 x 4001 samples
+2026-11-14T10:14:04.692193+00:00 APOLLO11/30: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.187
+2026-11-14T10:14:04.705522+00:00 Finished: complete=True; passed=True; report=C:\Users\jy02s\Documents\lunar-card23-jiyong\docs\coordinate_uncertainty_check.json

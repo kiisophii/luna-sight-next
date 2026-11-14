@@ -1,0 +1,153 @@
+{
+  "site_count": 33,
+  "nodes": 3993,
+  "centres_exact": [
+    "APOLLO11",
+    "APOLLO12",
+    "APOLLO14",
+    "APOLLO15",
+    "APOLLO16",
+    "APOLLO17",
+    "LUNA16",
+    "LUNA20",
+    "LUNA24",
+    "CHANGE3",
+    "CHANGE4",
+    "CHANGE5",
+    "CHANGE6",
+    "CHANDRAYAAN3",
+    "SLIM",
+    "IM1",
+    "IM2",
+    "BLUE_GHOST1",
+    "ARTEMIS_CABEUS_B",
+    "ARTEMIS_HAWORTH",
+    "ARTEMIS_MALAPERT",
+    "ARTEMIS_MOUTON_PLATEAU",
+    "ARTEMIS_MOUTON",
+    "ARTEMIS_NOBILE_RIM1",
+    "ARTEMIS_NOBILE_RIM2",
+    "ARTEMIS_DE_GERLACHE_RIM2",
+    "ARTEMIS_SLATER_PLAIN",
+    "SHACKLETON_RIM",
+    "CONNECTING_RIDGE",
+    "PEAK_NEAR_SHACKLETON",
+    "DE_GERLACHE_RIM1",
+    "SHOEMAKER_RIM_A",
+    "IM3_REINER_GAMMA"
+  ],
+  "over_10pp_within_300m": [
+    {
+      "id": "IM2",
+      "range_pp": {
+        "sun_frac": 9.348758671047829,
+        "earth_frac": 17.47900693683827,
+        "both_frac": 13.49032493610807
+      }
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "range_pp": {
+        "sun_frac": 22.852774735304855,
+        "earth_frac": 17.791621029572834,
+        "both_frac": 12.30376049653158
+      }
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "range_pp": {
+        "sun_frac": 41.54344651332603,
+        "earth_frac": 22.640562248995987,
+        "both_frac": 24.05759401241329
+      }
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "range_pp": {
+        "sun_frac": 12.230741146403801,
+        "earth_frac": 33.983661920408906,
+        "both_frac": 22.225264695144215
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "range_pp": {
+        "sun_frac": 23.904709748083242,
+        "earth_frac": 12.57073749543629,
+        "both_frac": 13.127510040160645
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "range_pp": {
+        "sun_frac": 56.10624315443593,
+        "earth_frac": 37.42013508579773,
+        "both_frac": 32.68985031033224
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "range_pp": {
+        "sun_frac": 64.39165753924789,
+        "earth_frac": 29.677802117561157,
+        "both_frac": 41.28787878787878
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "range_pp": {
+        "sun_frac": 39.843464768163564,
+        "earth_frac": 51.19112814895948,
+        "both_frac": 34.64083607155896
+      }
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "range_pp": {
+        "sun_frac": 38.00657174151149,
+        "earth_frac": 57.67844103687477,
+        "both_frac": 39.60615188024826
+      }
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "range_pp": {
+        "sun_frac": 18.143026652062794,
+        "earth_frac": 44.33871851040526,
+        "both_frac": 19.386637458926614
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "range_pp": {
+        "sun_frac": 54.935651697699896,
+        "earth_frac": 49.942953632712666,
+        "both_frac": 44.36153705732019
+      }
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "range_pp": {
+        "sun_frac": 51.80494706097115,
+        "earth_frac": 50.139193136181085,
+        "both_frac": 44.92515516611902
+      }
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "range_pp": {
+        "sun_frac": 40.11044176706828,
+        "earth_frac": 18.23201898503103,
+        "both_frac": 25.465498357064618
+      }
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "range_pp": {
+        "sun_frac": 41.299288061336256,
+        "earth_frac": 16.36546184738956,
+        "both_frac": 27.505476451259582
+      }
+    }
+  ]
+}

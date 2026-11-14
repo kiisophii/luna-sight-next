@@ -1,5 +1,20 @@
 # Data sources
 
+Card 23 (Jiyong, 2026-11-14) reuses existing PGDA polar windows, SLDEM2015 site
+windows, LOLA LDEM_64/16 and production MOON_ME ephemeris for 100 m-spaced local
+coordinate grids. Each site's legacy sampling and DEM chain are retained to match
+its catalogue centre. Source/code/baseline hashes are in every uncertainty JSON;
+raw inputs are unchanged. Sources: https://pgda.gsfc.nasa.gov/products/90 ,
+https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/ ,
+https://naif.jpl.nasa.gov/pub/naif/generic_kernels/ .
+
+The separate near-field comparison consults https://pgda.gsfc.nasa.gov/products/69
+for coverage: published illumination/Earth visibility grids span polar latitudes
+from 65 degrees to each pole. APOLLO11, APOLLO12, LUNA20, CHANGE5 and
+IM3_REINER_GAMMA are outside coverage; no PGDA reference or accuracy ranking is
+assigned. Its 18.6-year averaging and any-part-of-Earth-disk visibility also differ
+from our five-year window and Earth-centre definition.
+
 Card 13 (Jiyong, 2026-11-14) reuses the cited PGDA product 90 polar rasters,
 SLDEM2015 512 ppd site windows, LOLA LDEM_64/16 and MOON_ME ephemeris below for
 all 33 relay analyses. Downloads use the unchanged `pipeline/fetch_global.py`.

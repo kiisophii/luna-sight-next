@@ -15,7 +15,7 @@ live website match the data.
 points at five tested sites). The app counts Earth as visible only when its centre is above the horizon, which reads 4.6–5.6
 points lower than PGDA's any-part rule at the named sites. There is no PGDA reference north of 75° S. End of
 mission operations is only a proxy for sunset. Four polar points are region centres whose sunlight varies by
-up to 51.8 points within 300 m. Time-step and observer-height sensitivity: pending.
+up to 51.8 points within 300 m. Changing the time step from 1 h to 10 min changes sunlight by at most 0.03 points; changing the assumed 2 m observer height to 1–10 m changes it by up to 10.7 points at a steep polar site (ARTEMIS_HAWORTH).
 
 | Check | Independent source | Difference | Criterion | Pass |
 |---|---|---|---|---|
@@ -30,4 +30,4 @@ up to 51.8 points within 300 m. Time-step and observer-height sensitivity: pendi
 | Moon direction from KDSA and NASA DSN | NASA JPL Horizons | max 0.0012° | < 0.05° | ✅ |
 | Website numbers vs data (5,520 values) | data files + app code | 0 mismatches | exact text | ✅ |
 
-pp = percentage points. Rows 5 and 10: pull requests #41 and #45 (open).
+pp = percentage points. Rows 5 and 10: pull requests #41 and #45.

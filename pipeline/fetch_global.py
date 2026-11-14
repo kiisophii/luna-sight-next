@@ -22,6 +22,7 @@ import json
 import math
 import os
 import re
+import shutil
 import sys
 import time
 import urllib.error
@@ -36,6 +37,12 @@ LDEM_DIR = PDS + 'lola_gdr/cylindrical/float_img/'
 SLDEM_DIR = PDS + 'sldem2015/tiles/float_img/'
 LDEM = {16: 'ldem_16_float', 64: 'ldem_64_float'}
 SLDEM_PPD = 512
+PAD_PX = 2                      # extra pixels around each window (bilinear needs both neighbours)
+# Near-field terrain for non-polar sites outside SLDEM2015 (60..80 S is not covered by card 2,
+# which takes lat <= -80). Both are LOLA 60 m polar-stereographic products (labels read 2026-11-14).
+OUTSIDE_SLDEM_SOUTH = ('PGDA LDEM_60S_60MPP_ADJ.TIF (card 2 source list) or PDS '
+                       'lola_gdr/polar/float_img/ldem_60s_60m_float.img; LDEM_64 only as last resort')
+OUTSIDE_SLDEM_NORTH = 'PDS lola_gdr/polar/float_img/ldem_60n_60m_float.img; LDEM_64 only as last resort'
 SLDEM_LAT_LIMIT = 60.0          # SLDEM2015 covers 60 S .. 60 N only
 POLAR_LAT = -80.0               # card 2 (fetch_polar.py) handles lat <= -80
 UA = {'User-Agent': 'Mozilla/5.0 (compatible; dem-fetch/1.0)', 'Accept-Encoding': 'identity'}
@@ -380,15 +387,19 @@ def window_plan(lat, lon, radius_km, ppd=SLDEM_PPD):
 
     Row g centre: lat = 90 - (g + 0.5)/ppd. Column k centre: lon = (k + 0.5)/ppd, k may be
     negative or >= 360*ppd (unwrapped) so a window crossing 0/360 stays contiguous.
+    The window is padded by PAD_PX pixels on every side so that every point of the cap
+    (including the outermost half pixel) lies between pixel centres and can be
+    bilinearly interpolated (re-review 2026-11-14 found azimuths ~265-272 deg failing).
     """
     dlat, dlon = cap_extent(lat, radius_km)
-    north = min(lat + dlat, SLDEM_LAT_LIMIT)
-    south = max(lat - dlat, -SLDEM_LAT_LIMIT)
+    pad = PAD_PX / ppd
+    north = min(lat + dlat + pad, SLDEM_LAT_LIMIT)
+    south = max(lat - dlat - pad, -SLDEM_LAT_LIMIT)
     lon360 = lon % 360.0
     g0 = int(math.floor((90.0 - north) * ppd))
     g1 = int(math.ceil((90.0 - south) * ppd))          # exclusive
-    k0 = int(math.floor((lon360 - dlon) * ppd))
-    k1 = int(math.ceil((lon360 + dlon) * ppd))         # exclusive
+    k0 = int(math.floor((lon360 - dlon - pad) * ppd))
+    k1 = int(math.ceil((lon360 + dlon + pad) * ppd))   # exclusive
     clipped = (lat + dlat > SLDEM_LAT_LIMIT) or (lat - dlat < -SLDEM_LAT_LIMIT)
     return g0, g1, k0, k1, clipped
 
@@ -439,13 +450,15 @@ def fetch_site_window(site, radius_km, out_dir, workers=4, chunk_rows=256, sites
     plan = window_plan(site['lat'], site['lon'], radius_km)
     g0, g1, k0, k1, clipped = plan
     if abs(site['lat']) >= SLDEM_LAT_LIMIT:
-        print(f'  {site["id"]}: |lat| >= 60 -> outside SLDEM2015; use LDEM_64 in phase 2')
-        return dict(id=site['id'], status='outside_sldem', fallback='LDEM_64')
+        alt = OUTSIDE_SLDEM_SOUTH if site['lat'] < 0 else OUTSIDE_SLDEM_NORTH
+        print(f'  {site["id"]}: |lat| >= 60 -> outside SLDEM2015 (59 m). No window written. '
+              f'Near-field options: {alt}')
+        return dict(id=site['id'], status='outside_sldem', fallback=alt)
     if dest.exists():
         with np.load(dest) as z:
             meta = json.loads(str(z['meta']))
         same = (meta.get('radius_km') == radius_km and meta.get('site_lat') == site['lat']
-                and meta.get('site_lon') == site['lon'])
+                and meta.get('site_lon') == site['lon'] and meta.get('plan') == list(plan[:4]))
         if same:
             print(f'  have {dest.name}')
             return dict(id=site['id'], status='cached', path=dest.relative_to(ROOT).as_posix())
@@ -517,6 +530,7 @@ def fetch_site_window(site, radius_km, out_dir, workers=4, chunk_rows=256, sites
         units='m above 1737.4 km sphere', frame='MOON_ME_DE421',
         grid='pixel centres; rows north->south; lon_unwrapped monotonic (deg E, may exceed 0..360); '
              'lon = same in -180..180',
+        plan=list(plan[:4]), pad_px=PAD_PX,
         clipped_at_60deg=clipped, sites_source=sites_src, site_is_mock=bool(site.get('mock')),
         bytes_fetched_this_run=fetched[0],
         created_utc=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
@@ -525,28 +539,55 @@ def fetch_site_window(site, radius_km, out_dir, workers=4, chunk_rows=256, sites
     np.savez_compressed(tmp, height_m=h, lat=lat, lon=lon180(lon_unwrapped),
                         lon_unwrapped=lon_unwrapped, meta=json.dumps(meta))
     os.replace(tmp, dest)
+    shutil.rmtree(parts_dir, ignore_errors=True)   # chunks are only needed until the NPZ exists
     print(f'  saved {dest.relative_to(ROOT)}: {h.shape}, {h.min():.0f}..{h.max():.0f} m, '
           f'fetched {fetched[0] / 1e6:.1f} MB this run')
     return dict(id=site['id'], status='ok', path=dest.relative_to(ROOT).as_posix(),
                 shape=list(h.shape), clipped_at_60deg=clipped, bytes=fetched[0])
 
 
+class SldemWindow:
+    """A saved SLDEM window loaded once; use for repeated sampling (horizon marching).
+
+    w = SldemWindow('data/raw/sldem/APOLLO17.npz')
+    w.height(lat, lon)        # bilinear, metres above 1737.4 km; arrays OK
+    w.contains(lat, lon)      # boolean mask: inside the bilinear-safe area
+    """
+
+    def __init__(self, npz):
+        with np.load(npz) as z:
+            self.h = z['height_m']
+            self.lat = z['lat']
+            self.lon_unwrapped = z['lon_unwrapped']
+            self.meta = json.loads(str(z['meta']))
+        self.res = 1.0 / (self.lat[0] - self.lat[1])
+
+    def _rc(self, lat, lon):
+        lu0 = self.lon_unwrapped[0]
+        mid = 0.5 * (self.lon_unwrapped[0] + self.lon_unwrapped[-1])
+        lon = np.mod(np.asarray(lon, float) - mid + 180.0, 360.0) + mid - 180.0   # nearest copy
+        return (self.lat[0] - np.asarray(lat, float)) * self.res, (lon - lu0) * self.res
+
+    def contains(self, lat, lon):
+        r, c = self._rc(lat, lon)
+        return (r >= 0) & (r <= self.h.shape[0] - 1) & (c >= 0) & (c <= self.h.shape[1] - 1)
+
+    def height(self, lat, lon):
+        r, c = self._rc(lat, lon)
+        h = self.h
+        if np.any(r < 0) or np.any(r > h.shape[0] - 1) or np.any(c < 0) or np.any(c > h.shape[1] - 1):
+            raise ValueError('point outside the window')
+        r0 = np.minimum(np.floor(r).astype(int), h.shape[0] - 2)
+        c0 = np.minimum(np.floor(c).astype(int), h.shape[1] - 2)
+        fr, fc = r - r0, c - c0
+        return ((1 - fr) * ((1 - fc) * h[r0, c0] + fc * h[r0, c0 + 1])
+                + fr * ((1 - fc) * h[r0 + 1, c0] + fc * h[r0 + 1, c0 + 1])).astype(float)
+
+
 def sample_window(npz, lat, lon):
-    """Bilinear height (m) from a saved SLDEM window."""
-    with np.load(npz) as z:
-        h, la, lu = z['height_m'], z['lat'], z['lon_unwrapped']
-    res = 1.0 / (la[0] - la[1])
-    r = (la[0] - np.asarray(lat, float)) * res
-    lon = np.asarray(lon, float) % 360.0
-    lon = np.where(lon < lu[0] - 180, lon + 360, np.where(lon > lu[0] + 180, lon - 360, lon))
-    c = (lon - lu[0]) * res
-    if np.any(r < 0) or np.any(r > h.shape[0] - 1) or np.any(c < 0) or np.any(c > h.shape[1] - 1):
-        raise ValueError('point outside the window')
-    r0 = np.minimum(np.floor(r).astype(int), h.shape[0] - 2)
-    c0 = np.minimum(np.floor(c).astype(int), h.shape[1] - 2)
-    fr, fc = r - r0, c - c0
-    return ((1 - fr) * ((1 - fc) * h[r0, c0] + fc * h[r0, c0 + 1])
-            + fr * ((1 - fc) * h[r0 + 1, c0] + fc * h[r0 + 1, c0 + 1])).astype(float)
+    """Bilinear height (m) from a saved SLDEM window (loads the file each call;
+    use SldemWindow for repeated sampling)."""
+    return SldemWindow(npz).height(lat, lon)
 
 
 # ----------------------------------------------------------------------------- main

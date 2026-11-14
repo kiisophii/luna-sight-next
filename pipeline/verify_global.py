@@ -150,6 +150,24 @@ def apollo17(wins):
                 coord_source='web/data/sites.json (mock entry; NSSDCA value per card 4 brief)')
 
 
+def coverage(w, step_deg=0.1):
+    """E. every point of the radius_km circle (and 2 km inside it) must be samplable."""
+    m = w['meta']
+    win = fg.SldemWindow(w['path'])
+    p, q = math.radians(m['site_lat']), math.radians(m['site_lon'])
+    az = np.radians(np.arange(0, 360, step_deg))
+    bad = 0
+    for d_km in (m['radius_km'], m['radius_km'] - 2):
+        d = d_km / fg.R_KM
+        la = np.arcsin(np.sin(p) * np.cos(d) + np.cos(p) * np.sin(d) * np.cos(az))
+        lo = q + np.arctan2(np.sin(az) * np.sin(d) * np.cos(p), np.cos(d) - np.sin(p) * np.sin(la))
+        ok = win.contains(np.degrees(la), np.degrees(lo))
+        if m.get('clipped_at_60deg'):
+            ok |= np.abs(np.degrees(la)) > 60 - 1 / 512
+        bad += int((~ok).sum())
+    return dict(site=m['id'], n_azimuths=int(az.size), outside=bad)
+
+
 def main():
     wins = windows()
     if not wins:
@@ -180,6 +198,8 @@ def main():
     out['apollo17'] = apollo17(wins)
     if out['apollo17']:
         print('D. Apollo 17 valley check:', out['apollo17'])
+    out['coverage'] = [coverage(w) for w in wins]
+    print('E. window covers the full radius circle (outside must be 0):', out['coverage'])
     dest = RAW / 'verify_global.json'
     dest.write_text(json.dumps(out, indent=1))
     print(f'Saved {dest.relative_to(fg.ROOT)}')

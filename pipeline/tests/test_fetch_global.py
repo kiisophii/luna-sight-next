@@ -153,6 +153,49 @@ class Windows(unittest.TestCase):
         fg.tile_pieces(plan, [t], {'x': fg.Grid(SLDEM_TILE_LABEL)})  # asserts inside
 
 
+class CapCoverage(unittest.TestCase):
+    """Regression (re-review 2026-11-14): every point of the 150 km cap must lie between
+    pixel centres of the window so bilinear sampling never fails at the edge."""
+
+    def check(self, lat0, lon0, radius=150.0):
+        g0, g1, k0, k1, clipped = fg.window_plan(lat0, lon0, radius)
+        lat_c0 = 90 - (g0 + 0.5) / 512
+        lat_c1 = 90 - (g1 - 1 + 0.5) / 512
+        lu0, lu1 = (k0 + 0.5) / 512, (k1 - 1 + 0.5) / 512
+        R = fg.R_KM
+        p, q = math.radians(lat0), math.radians(lon0)
+        for d_km in (radius, radius * 0.999):
+            d = d_km / R
+            az = np.radians(np.arange(0, 360, 0.1))
+            la = np.arcsin(np.sin(p) * np.cos(d) + np.cos(p) * np.sin(d) * np.cos(az))
+            lo = q + np.arctan2(np.sin(az) * np.sin(d) * np.cos(p), np.cos(d) - np.sin(p) * np.sin(la))
+            la, lo = np.degrees(la), np.degrees(lo)
+            mid = 0.5 * (lu0 + lu1)
+            lo = np.mod(lo - mid + 180, 360) + mid - 180
+            inside_lat = (la <= lat_c0) & (la >= lat_c1)
+            if clipped:
+                inside_lat |= np.abs(la) > 60 - 1 / 512
+            self.assertTrue(inside_lat.all(), f'lat gap at {lat0},{lon0}')
+            self.assertTrue(((lo >= lu0) & (lo <= lu1)).all(), f'lon gap at {lat0},{lon0}')
+
+    def test_sites_and_edges(self):
+        for lat0, lon0 in [(20.1908, 30.7717), (-45.4446, 177.5991), (0, 0), (0, 179.99),
+                           (-30, -0.01), (40, 100), (-55, 60), (57.5, -120)]:
+            self.check(lat0, lon0)
+
+    def test_window_object_wraps(self):
+        lat = 10 - (np.arange(20) + 0.5) / 512
+        lu = 359.98 + (np.arange(30) + 0.5) / 512
+        h = np.zeros((20, 30), np.float32)
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / 'w.npz'
+            np.savez(f, height_m=h, lat=lat, lon_unwrapped=lu, lon=fg.lon180(lu), meta=json.dumps({}))
+            w = fg.SldemWindow(f)
+            self.assertTrue(bool(w.contains(9.99, 0.01)))
+            self.assertTrue(bool(w.contains(9.99, -359.99)))
+            self.assertFalse(bool(w.contains(9.99, 0.2)))
+
+
 class Http(unittest.TestCase):
     def test_parse_multipart(self):
         b = 'q1w2<>'

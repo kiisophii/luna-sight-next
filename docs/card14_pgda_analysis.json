@@ -1,0 +1,601 @@
+{
+ "what": "card 14 PGDA discrepancy analysis (VALIDATION row 11 vs card 14 map numbers)",
+ "points": {
+  "n": 400,
+  "seed": 42,
+  "lat_range": [
+   -85,
+   -75
+  ],
+  "sampling": "uniform by area (verify_card9.random_points)"
+ },
+ "pgda": {
+  "files": [
+   "AVGVISIB_75S_120M_201608.TIF",
+   "AVGVISIB_75S_120M_201608_EARTH.TIF"
+  ],
+  "reader": "verify_card9.Pgda, nearest 120 m pixel (floor), 3x3 range for 'inside'",
+  "definition": "hourly, 18.6 years (dates not stated); Sun = finite disc; Earth = any part of the disc"
+ },
+ "A_stored_maps": {
+  "948m": {
+   "store": "data\\processed\\gmaps_ppd32_merged",
+   "ephem": {
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 3,
+    "n_used": 14608,
+    "sha1_12": "4772740f1aed"
+   },
+   "nearest": {
+    "sun_mean": {
+     "n": 400,
+     "mae_pp": 2.609,
+     "rmse_pp": 5.353,
+     "bias_pp": 0.971,
+     "max_abs_pp": 33.739,
+     "r": 0.9108,
+     "inside_pgda_3x3_pct": 53.8
+    },
+    "earth_centre": {
+     "n": 400,
+     "mae_pp": 3.423,
+     "rmse_pp": 6.638,
+     "bias_pp": -1.611,
+     "max_abs_pp": 48.001,
+     "r": 0.9837,
+     "inside_pgda_3x3_pct": 63.5
+    }
+   },
+   "bilinear": {
+    "sun_mean": {
+     "n": 400,
+     "mae_pp": 2.388,
+     "rmse_pp": 4.912,
+     "bias_pp": 1.142,
+     "max_abs_pp": 28.595,
+     "r": 0.9273,
+     "inside_pgda_3x3_pct": 51.5
+    },
+    "earth_centre": {
+     "n": 400,
+     "mae_pp": 3.232,
+     "rmse_pp": 5.787,
+     "bias_pp": -1.441,
+     "max_abs_pp": 32.873,
+     "r": 0.9878,
+     "inside_pgda_3x3_pct": 63.2
+    }
+   },
+   "point_to_cell_centre_km": {
+    "mean": 0.241,
+    "max": 0.474
+   }
+  },
+  "3.8km": {
+   "store": "data\\processed\\gmaps_ppd8",
+   "ephem": {
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 2,
+    "n_used": 21912,
+    "sha1_12": "bf98b99edc04"
+   },
+   "nearest": {
+    "sun_mean": {
+     "n": 400,
+     "mae_pp": 4.337,
+     "rmse_pp": 7.446,
+     "bias_pp": 1.272,
+     "max_abs_pp": 34.133,
+     "r": 0.8232,
+     "inside_pgda_3x3_pct": 33.2
+    },
+    "earth_centre": {
+     "n": 400,
+     "mae_pp": 5.327,
+     "rmse_pp": 10.519,
+     "bias_pp": -1.232,
+     "max_abs_pp": 73.196,
+     "r": 0.9566,
+     "inside_pgda_3x3_pct": 58.0
+    }
+   },
+   "bilinear": {
+    "sun_mean": {
+     "n": 400,
+     "mae_pp": 3.967,
+     "rmse_pp": 6.802,
+     "bias_pp": 1.51,
+     "max_abs_pp": 38.938,
+     "r": 0.8539,
+     "inside_pgda_3x3_pct": 35.0
+    },
+    "earth_centre": {
+     "n": 400,
+     "mae_pp": 4.796,
+     "rmse_pp": 9.046,
+     "bias_pp": -1.196,
+     "max_abs_pp": 72.021,
+     "r": 0.9681,
+     "inside_pgda_3x3_pct": 55.0
+    }
+   },
+   "point_to_cell_centre_km": {
+    "mean": 0.954,
+    "max": 1.896
+   }
+  },
+  "rows_of_the_400_cells_948m": {
+   "min": 5281,
+   "max": 5595,
+   "all_in_gpu_rows_3455_5759": true
+  }
+ },
+ "B_point_recompute": {
+  "B1_points_2026-2030_3h": {
+   "ephem": {
+    "file": "ephem.bin",
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 3,
+    "n_used": 14608,
+    "sha1_12": "4772740f1aed"
+   },
+   "near_dem": "LDEM_64",
+   "seconds": 1.9,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 2.183,
+    "rmse_pp": 4.529,
+    "bias_pp": 1.005,
+    "max_abs_pp": 29.385,
+    "r": 0.938,
+    "inside_pgda_3x3_pct": 54.8
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 2.995,
+    "rmse_pp": 5.83,
+    "bias_pp": -1.68,
+    "max_abs_pp": 43.888,
+    "r": 0.9878,
+    "inside_pgda_3x3_pct": 67.0
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 2.087,
+    "rmse_pp": 5.632,
+    "bias_pp": 1.358,
+    "max_abs_pp": 43.888,
+    "r": 0.9884,
+    "inside_pgda_3x3_pct": 67.2
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    }
+   }
+  },
+  "B2_points_2026-2030_2h": {
+   "ephem": {
+    "file": "ephem.bin",
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 2,
+    "n_used": 21912,
+    "sha1_12": "bf98b99edc04"
+   },
+   "near_dem": "LDEM_64",
+   "seconds": 2.4,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 2.182,
+    "rmse_pp": 4.529,
+    "bias_pp": 1.005,
+    "max_abs_pp": 29.381,
+    "r": 0.938,
+    "inside_pgda_3x3_pct": 54.8
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 2.994,
+    "rmse_pp": 5.831,
+    "bias_pp": -1.68,
+    "max_abs_pp": 43.888,
+    "r": 0.9878,
+    "inside_pgda_3x3_pct": 67.0
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 2.087,
+    "rmse_pp": 5.633,
+    "bias_pp": 1.357,
+    "max_abs_pp": 43.888,
+    "r": 0.9884,
+    "inside_pgda_3x3_pct": 67.8
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": 0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": 0.0
+    }
+   }
+  },
+  "B3_points_2020-2038_2h": {
+   "ephem": {
+    "file": "ephem_2020-2038_2h.npz",
+    "start": "2020-01-01T00:00:00Z",
+    "step_h": 2,
+    "n_used": 81444,
+    "sha1_12": "84c3dc1070a7"
+   },
+   "near_dem": "LDEM_64",
+   "seconds": 7.7,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 2.185,
+    "rmse_pp": 4.539,
+    "bias_pp": 1.036,
+    "max_abs_pp": 29.542,
+    "r": 0.9379,
+    "inside_pgda_3x3_pct": 53.2
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 3.137,
+    "rmse_pp": 5.89,
+    "bias_pp": -1.918,
+    "max_abs_pp": 43.888,
+    "r": 0.9879,
+    "inside_pgda_3x3_pct": 65.0
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 1.827,
+    "rmse_pp": 5.46,
+    "bias_pp": 1.097,
+    "max_abs_pp": 43.888,
+    "r": 0.9889,
+    "inside_pgda_3x3_pct": 77.8
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": 0.0
+    }
+   }
+  },
+  "B4_948m_cell_centres_2026-2030_3h": {
+   "ephem": {
+    "file": "ephem.bin",
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 3,
+    "n_used": 14608,
+    "sha1_12": "4772740f1aed"
+   },
+   "near_dem": "LDEM_64",
+   "seconds": 1.5,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 2.609,
+    "rmse_pp": 5.353,
+    "bias_pp": 0.971,
+    "max_abs_pp": 33.739,
+    "r": 0.9108,
+    "inside_pgda_3x3_pct": 53.8
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 3.423,
+    "rmse_pp": 6.638,
+    "bias_pp": -1.611,
+    "max_abs_pp": 48.001,
+    "r": 0.9837,
+    "inside_pgda_3x3_pct": 63.5
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 2.417,
+    "rmse_pp": 6.425,
+    "bias_pp": 1.422,
+    "max_abs_pp": 52.601,
+    "r": 0.9847,
+    "inside_pgda_3x3_pct": 65.8
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    }
+   }
+  },
+  "B5_3.8km_cell_centres_2026-2030_2h": {
+   "ephem": {
+    "file": "ephem.bin",
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 2,
+    "n_used": 21912,
+    "sha1_12": "bf98b99edc04"
+   },
+   "near_dem": "LDEM_64",
+   "seconds": 1.9,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 4.337,
+    "rmse_pp": 7.446,
+    "bias_pp": 1.272,
+    "max_abs_pp": 34.133,
+    "r": 0.8232,
+    "inside_pgda_3x3_pct": 33.2
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 5.327,
+    "rmse_pp": 10.519,
+    "bias_pp": -1.232,
+    "max_abs_pp": 73.196,
+    "r": 0.9566,
+    "inside_pgda_3x3_pct": 58.0
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 4.737,
+    "rmse_pp": 10.695,
+    "bias_pp": 2.031,
+    "max_abs_pp": 74.004,
+    "r": 0.9574,
+    "inside_pgda_3x3_pct": 56.2
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": 0.0
+    }
+   }
+  },
+  "B6_points_2026-2030_3h_near_LDEM_16": {
+   "ephem": {
+    "file": "ephem.bin",
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 3,
+    "n_used": 14608,
+    "sha1_12": "4772740f1aed"
+   },
+   "near_dem": "LDEM_16",
+   "seconds": 1.4,
+   "sun_mean": {
+    "n": 400,
+    "mae_pp": 4.953,
+    "rmse_pp": 8.968,
+    "bias_pp": 4.616,
+    "max_abs_pp": 44.805,
+    "r": 0.7973,
+    "inside_pgda_3x3_pct": 27.3
+   },
+   "earth_centre": {
+    "n": 400,
+    "mae_pp": 4.667,
+    "rmse_pp": 10.093,
+    "bias_pp": 1.543,
+    "max_abs_pp": 74.004,
+    "r": 0.9616,
+    "inside_pgda_3x3_pct": 57.8
+   },
+   "earth_any_disc": {
+    "n": 400,
+    "mae_pp": 5.234,
+    "rmse_pp": 11.827,
+    "bias_pp": 4.909,
+    "max_abs_pp": 78.279,
+    "r": 0.9575,
+    "inside_pgda_3x3_pct": 50.7
+   },
+   "engine_vs_v9_fractions_same_mask": {
+    "sun": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    },
+    "earth_ctr": {
+     "mae_pp": 0.0,
+     "max_abs_pp": 0.0,
+     "bias_pp": -0.0
+    }
+   }
+  }
+ },
+ "C_card9_independent": {
+  "code": "pipeline/verify_card9.py (720 az, 200 m / 500 m steps, own DEM reader), ephem 2020-2038 2 h",
+  "sun_mean": {
+   "n": 400,
+   "mae_pp": 2.119,
+   "rmse_pp": 4.407,
+   "bias_pp": 0.706,
+   "max_abs_pp": 29.073,
+   "r": 0.9399,
+   "inside_pgda_3x3_pct": 54.0
+  },
+  "earth_any_disc": {
+   "n": 400,
+   "mae_pp": 1.733,
+   "rmse_pp": 5.357,
+   "bias_pp": 0.85,
+   "max_abs_pp": 43.888,
+   "r": 0.9891,
+   "inside_pgda_3x3_pct": 80.8
+  },
+  "earth_centre": {
+   "n": 400,
+   "mae_pp": 3.249,
+   "rmse_pp": 6.061,
+   "bias_pp": -2.142,
+   "max_abs_pp": 43.888,
+   "r": 0.9875,
+   "inside_pgda_3x3_pct": 63.2
+  },
+  "fresh_recompute_5_points_max_abs_vs_cache": 5e-06,
+  "engine_B3_vs_independent_sun": {
+   "mae_pp": 0.3682,
+   "max_abs_pp": 5.4424,
+   "bias_pp": 0.3294
+  }
+ },
+ "factors": {
+  "1_period_5y_vs_18.6y (B2 vs B3, both 2 h, exact points)": {
+   "sun": {
+    "mae_pp": 0.0931,
+    "max_abs_pp": 0.4281,
+    "bias_pp": -0.0309
+   },
+   "earth_centre": {
+    "mae_pp": 0.3417,
+    "max_abs_pp": 1.9333,
+    "bias_pp": 0.2376
+   },
+   "pgda_mae_change_sun_pp": -0.003
+  },
+  "2_step_3h_vs_2h (B1 vs B2, 2026-2030, exact points)": {
+   "sun": {
+    "mae_pp": 0.0031,
+    "max_abs_pp": 0.0298,
+    "bias_pp": 0.0001
+   },
+   "earth_centre": {
+    "mae_pp": 0.0092,
+    "max_abs_pp": 0.0593,
+    "bias_pp": 0.0004
+   }
+  },
+  "3a_948m_cell_centre_vs_point (B4 vs B1, 3 h)": {
+   "sun": {
+    "mae_pp": 1.2333,
+    "max_abs_pp": 20.2906,
+    "bias_pp": -0.0337
+   },
+   "earth_centre": {
+    "mae_pp": 1.2858,
+    "max_abs_pp": 47.3028,
+    "bias_pp": 0.0686
+   },
+   "distance_km": {
+    "mean": 0.241,
+    "max": 0.474
+   }
+  },
+  "3b_3.8km_cell_centre_vs_point (B5 vs B2, 2 h)": {
+   "sun": {
+    "mae_pp": 3.1709,
+    "max_abs_pp": 30.6502,
+    "bias_pp": 0.2678
+   },
+   "earth_centre": {
+    "mae_pp": 3.7012,
+    "max_abs_pp": 58.8992,
+    "bias_pp": 0.4485
+   },
+   "distance_km": {
+    "mean": 0.954,
+    "max": 1.896
+   }
+  },
+  "4_near_terrain_LDEM_16_vs_LDEM_64 (B6 vs B1)": {
+   "sun": {
+    "mae_pp": 3.7593,
+    "max_abs_pp": 41.2521,
+    "bias_pp": 3.611
+   },
+   "earth_centre": {
+    "mae_pp": 3.5458,
+    "max_abs_pp": 79.5181,
+    "bias_pp": 3.223
+   },
+   "note": "only a coarser-terrain sensitivity; no DEM finer than 474 m covers the 400 points here"
+  },
+  "5_earth_any_disc_vs_centre (same masks)": {
+   "B1_points_2026-2030_3h": {
+    "mae_pp": 3.0376,
+    "max_abs_pp": 14.7659,
+    "bias_pp": 3.0376
+   },
+   "B3_points_2020-2038_2h": {
+    "mae_pp": 3.0151,
+    "max_abs_pp": 14.5253,
+    "bias_pp": 3.0151
+   }
+  },
+  "4b_sun_error_correlations (B1)": {
+   "with_pgda_3x3_spread": 0.618,
+   "with_maskmax": -0.09
+  },
+  "6_cpu_vs_cuda_on_the_400_cells": {
+   "what": "stored 948 m values at the 400 cells (all in CUDA rows) vs this laptop's CPU engine at the same cell centres",
+   "fields": {
+    "sun": {
+     "max_abs": 0.0,
+     "n_identical_float32": 400,
+     "n": 400
+    },
+    "earth": {
+     "max_abs": 0.0,
+     "n_identical_float32": 400,
+     "n": 400
+    },
+    "both": {
+     "max_abs": 0.0,
+     "n_identical_float32": 400,
+     "n": 400
+    },
+    "h0": {
+     "max_abs": 0.0,
+     "n_identical_float32": 400,
+     "n": 400
+    },
+    "maskmax": {
+     "max_abs": 0.0,
+     "n_identical_float32": 400,
+     "n": 400
+    }
+   },
+   "store_3.8km_vs_recompute_max_abs": {
+    "sun": 0.0,
+    "earth": 0.0,
+    "h0": 0.0
+   }
+  }
+ },
+ "row11_sources": {
+  "engine Sun MAE 2.19 pp, r 0.938": "global_maps.py validate --n 400 = engine at the exact points, ephem 2020-2038 2 h, Earth centre -> reproduced by B3",
+  "independent Sun MAE 2.12 pp, r 0.940": "verify_card9.py sun_mean -> C.sun_mean",
+  "Earth (any) MAE 1.73 pp, r 0.989": "verify_card9.py earth_any (720 az, 2020-2038 2 h) -> C.earth_any_disc",
+  "note": "none of these values is read from a stored map"
+ },
+ "seconds": 21.7
+}

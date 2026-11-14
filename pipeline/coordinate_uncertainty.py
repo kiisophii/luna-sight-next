@@ -29,12 +29,22 @@ def summarize(points):
     output={}
     for radius in RADII:
         selected=[p for p in points if np.hypot(p['e_m'],p['n_m'])<=radius+1e-7]
-        stats=dict(radius_m=radius,n=len(selected))
+        stats=dict(n_nodes=len(selected))
         for metric in METRICS:
             a=np.array([p[metric] for p in selected]);q=np.quantile(a,[.1,.5,.9],method='linear')
             stats[metric]=dict(min=float(a.min()),max=float(a.max()),p10=float(q[0]),median=float(q[1]),p90=float(q[2]))
         output[str(radius)]=stats
     return output
+
+def aggregate_sources(points):
+    sources={}
+    for p in points:
+        for d in p['dem_sources']:
+            item=sources.setdefault(d['name'],dict(name=d['name'],res_m=d['res_m'],to_km_min=d['to_km'],to_km_max=d['to_km']))
+            item['to_km_min']=min(item['to_km_min'],d['to_km'])
+            item['to_km_max']=max(item['to_km_max'],d['to_km'])
+    return list(sources.values())
+
 
 def check_center(actual,expected):
     differences={k:actual[k]-expected[k] for k in METRICS}
@@ -76,7 +86,7 @@ def run_site(site,raw,work,out,common,limit=None):
     for sampler,gate in chain:
         p=Path(sampler.path) if hasattr(sampler,'path') else raw/'global'/Path(sampler.data.filename).name
         rel=p.relative_to(ROOT).as_posix()
-        item=dict(path=rel,sha256=common.get(rel) or sha_file(p),gate_km=gate,resolution_m=sampler.res_m)
+        item=dict(name=sampler.name,path=rel,sha256=common.get(rel) or sha_file(p),gate_km=gate,resolution_m=sampler.res_m)
         if p.suffix=='.img':item['label_sha256']=common[p.with_suffix('.lbl').relative_to(ROOT).as_posix()]
         terrain.append(item)
     provenance=dict(center=site,params=params,terrain_sources=terrain,files_sha256=common,
@@ -104,31 +114,33 @@ def run_site(site,raw,work,out,common,limit=None):
     centre=check_center(public[60],baseline)
     centre['metrics_sha256']=sha_file(ROOT/'web/data/metrics'/f'{sid}.json')
     output=dict(id=sid,center=dict(lat=site['lat'],lon=site['lon']),frame='MOON_ME_DE421',radius_m=hz.R_M,
-        grid=dict(rows=11,cols=11,spacing_m=100,origin_e_m=-500,origin_n_m=-500),
+        grid=dict(rows=11,cols=11,spacing_m=100,origin_e_m=-500,origin_n_m=-500,order='row-major, rows south to north, columns west to east; index = row*11 + col'),
         window=dict(start='2026-01-01T00:00:00Z',step_h=1,n=43824),params=params,
-        points=public,radii=summarize(public),center_check=centre,provenance=provenance,complete=True,mock=False)
+        nodes=public,ranges=summarize(public),
+        part='south-polar (lat <= -75), pipeline/coordinate_uncertainty.py',
+        radius_rule='hypot(e_m,n_m) <= radius; 100/300/500 m contain 5/29/81 nodes',
+        quantiles='numpy.percentile, linear interpolation',dem_sources=aggregate_sources(public),center_check=centre,provenance=provenance,complete=True,mock=False)
     validate(output);write(out/f'{sid}.json',output)
     return dict(id=sid,complete=True,computed_nodes=len(todo),elapsed_s=time.monotonic()-start)
 
 def validate(record):
-    points=record['points'];expected=grid_points(dict(id=record['id'],**record['center']))
+    points=record['nodes'];expected=grid_points(dict(id=record['id'],**record['center']))
     if len(points)!=121 or not record['complete'] or record['mock']:raise ValueError('Incomplete uncertainty map')
     if record['window']!=dict(start='2026-01-01T00:00:00Z',step_h=1,n=43824):raise ValueError('Wrong ephemeris window')
     if record['params']!=catalogue_params(dict(id=record['id'],**record['center'])) or record['frame']!='MOON_ME_DE421':raise ValueError('Wrong physical parameters')
     for p,e in zip(points,expected):
         if any(p[k]!=e[k] for k in e) or not valid_metrics(p):raise ValueError('Invalid grid/metrics')
-    if record['radii']!=summarize(points):raise ValueError('Invalid spatial statistics')
+    if record['ranges']!=summarize(points):raise ValueError('Invalid spatial statistics')
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--workers',type=int,default=6);ap.add_argument('--site',action='append')
-    ap.add_argument('--polar-only',action='store_true');ap.add_argument('--nonpolar-only',action='store_true')
+    ap.add_argument('--polar-only',action='store_true',help='All outputs are polar; retained as an explicit scope flag')
     ap.add_argument('--limit',type=int);a=ap.parse_args()
     if not 1<=a.workers<=6:ap.error('Use 1..6 workers per user CPU budget')
-    sites=read(ROOT/'web/data/sites.json');sites.sort(key=lambda s:s['lat']>-75)
+    sites=[s for s in read(ROOT/'web/data/sites.json') if s['lat']<=-75]
     if a.site:sites=[s for s in sites if s['id'] in a.site]
-    if a.polar_only:sites=[s for s in sites if s['lat']<=-75]
-    if a.nonpolar_only:sites=[s for s in sites if s['lat']>-75]
+    if not sites:ap.error('No matching south-polar sites')
     raw=ROOT/'data/raw';work=ROOT/'data/processed/uncertainty';out=ROOT/'web/data/uncertainty'
     paths=['pipeline/horizon.py','pipeline/run_horizons.py','pipeline/coordinate_uncertainty.py','pipeline/local_maps.py','pipeline/local_metrics.mjs','pipeline/cache_metrics.mjs','web/js/core.js','web/data/ephem.bin','web/data/ephem.json']
     for ppd in [64,16]:paths += [f'data/raw/global/ldem_{ppd}_float.{ext}' for ext in ['img','lbl']]

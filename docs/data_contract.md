@@ -343,45 +343,47 @@ Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent ch
 - Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
 - Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.
 
-## 18. Proposed — `web/data/uncertainty/<ID>.json` (Card 23, Jiyong, 2026-11-14)
+## 18. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua and Jiyong, 2026-11-14) — NOT yet agreed; new section only (sections 0–17 unchanged)
 
-Written by `python pipeline/coordinate_uncertainty.py --workers 6`; summary:
-`docs/coordinate_uncertainty.md`. Existing formats are unchanged.
+Answers "if the catalogue coordinate is off by r metres, what range of values could the site have?".
+Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; the south-polar part
+(Jiyong) should use the **same keys** so the app reads one format. One file per catalogue site.
 
-- Each file: `id`, `center:{lat,lon}`, `frame:"MOON_ME_DE421"`, `radius_m:1737400`,
-  `complete:true`, `mock:false`.
-- `grid:{rows:11,cols:11,spacing_m:100,origin_e_m:-500,origin_n_m:-500}`; south-to-north
-  row-major, east changing fastest. Offsets map geodesically on the sphere. Node 60
-  is exactly the catalogue coordinate.
-- `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`. Actual `core.js` defines
-  sun_frac as hours with at least half the solar disk visible; earth_frac uses Earth
-  centre; both_frac is their conjunction; longest_dark_h is the longest dark hourly
-  run clipped to this window. Sun_frac is not the global map's mean disk fraction.
-- `params:{min_km,max_km,n_steps,obs_height_m,early_stop,hmax_m}` copies each site's
-  existing horizon settings. All use 720 azimuths, 2 m observer, curvature and 300 km
-  reach. Current polar sites use 5 m minimum/8000 steps; nonpolar sites retain
-  200 m/4000 steps. Legacy DEM chains include LDEM_64 before LDEM_16.
-- `points`: 121 objects `{index,e_m,n_m,lat,lon,h0_m,ground_resolution_m,dem_sources,
-  sun_frac,earth_frac,both_frac,longest_dark_h}`. Fractions are unrounded 0..1; dark
-  hours are integers. Input masks/heights use normal section 3 rounding.
-- `radii`: keys `"100","300","500"`; each has radius_m,n and four metric keys,
-  each containing `{min,max,p10,median,p90}`. Circular selection is
-  `hypot(e_m,n_m)<=radius_m`, giving 5/29/81 nodes. Square corners outside 500 m
-  remain in points only. Quantiles use linear interpolation, including dark hours.
-- `center_check:{matches:true,differences:{<four metrics>:0},metrics_sha256}`.
-  Centre metrics are recomputed, never copied/calibrated. A mismatch blocks export.
-- `provenance:{center,params,terrain_sources,files_sha256,input_key,
-  baseline_horizon_sha256,baseline_metrics_sha256}`. Sources have repository-relative
-  path, full SHA256, resolution_m, gate_km and label_sha256 for global IMG files.
-  Actual finest available ground resolution is reported per node; missing fine
-  coverage falls through to a coarser source. Existing baseline files are unchanged.
+- `id`, `center:{lat,lon}` (= `sites.json`), `frame:"MOON_ME_DE421"`, `radius_m:1737400`,
+  `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`, `complete:true`, `mock:false`,
+  `part` (free text: which pipeline wrote it).
+- `grid:{rows:11,cols:11,spacing_m:100,origin_e_m:-500,origin_n_m:-500,order}`. Node index =
+  row×11+column, rows south→north, columns west→east; offset (e,n) placed at geodesic bearing
+  atan2(e,n) and distance hypot(e,n) (same rule as section 15). Centre node index 60 uses the
+  exact catalogue lat/lon.
+- `params:{min_km,max_km,n_steps,obs_height_m}` = the parameters of the site's production horizon
+  (section 3), so node 60 reproduces `metrics/<ID>.json`. Non-polar: `{0.2,300,4000,2}`, chain
+  SLDEM2015 59 m to 150 km → LDEM_64 → LDEM_16 to 300 km (|lat| ≥ 60: LDEM_64 → LDEM_16), gates
+  measured from **each node**. 720 azimuths, curvature, observer 2 m.
+- `nodes`: 121 ordered `{index,e_m,n_m,lat,lon,h0_m,sun_frac,earth_frac,both_frac,longest_dark_h}`;
+  unrounded fractions = hourly counts / 43824 from the actual `web/js/core.js` (horizon rounded as
+  section 3 before the metrics, exactly like production).
+- `radius_rule`: radius r uses the nodes with hypot(e_m,n_m) ≤ r → 100 m: 5, 300 m: 29, 500 m: 81 nodes
+  (a disc, not the square).
+- `ranges:{"100"|"300"|"500": {n_nodes, sun_frac:{min,max,p10,median,p90}, earth_frac:{…},
+  both_frac:{…}, longest_dark_h:{…}}}`; quantiles = `numpy.percentile` linear interpolation
+  (`longest_dark_h` min/max are integers, its quantiles may be fractional).
+- `dem_sources`: `[{name,res_m,to_km_min,to_km_max}]` over all node rays.
+- `provenance:{terrain_sources:[{name,path,sha256,gate_km,resolution_m,(label_sha256|storage_radius_km)}],
+  files_sha256,center,params,input_key}`.
 
-These are sampled spatial ranges, not confidence intervals, coordinate-error
-probabilities or vertical DEM accuracy. A 100 m grid can miss smaller variations.
-No partial site file is exported. Checkpoints/masks remain ignored local files.
-Independent full-ray and hourly-loop verification: `coordinate_uncertainty_check.json`.
+Nodes are point samples, not area averages. The spread shows sensitivity to position on the
+same DEM; it does not include DEM height errors.
 
-The five-site near-field alternative is separate in `docs/near_field_comparison.*`.
-It does not change the grids or baselines. NASA PGDA polar illumination has no
-reference values at those five nonpolar coordinates; comparison fields are null
-with outside_product_coverage, never an invented reference/error score.
+South-polar extension (same common keys, Jiyong): `pipeline/coordinate_uncertainty.py`
+writes only the 16 sites with lat <= -75. Each retains its current Card 8 horizon
+parameters (min_km=0.005, max_km=300, n_steps=8000, observer=2 m), full PGDA chain,
+and LDEM_64/LDEM_16 fallback. `params` also records `early_stop` and `hmax_m`.
+Optional node fields `ground_resolution_m` and `dem_sources` identify actual data
+support. Optional `center_check` stores exact differences and the baseline metrics
+SHA256; a mismatch blocks export. Provenance additionally records unchanged baseline
+horizon/metrics SHA256. No existing horizon or metrics files are modified.
+
+The five nonpolar near-field alternatives are separate in `docs/near_field_check.md`;
+they are never used to change uncertainty centres. PGDA reference values outside the
+published raster footprint remain null, including neighbourhood extrema and closeness.

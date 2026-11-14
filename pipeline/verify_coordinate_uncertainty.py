@@ -24,7 +24,7 @@ from verify_card18_local import compare_metrics, evaluate_metrics, load_ephemeri
 
 ROOT = Path(__file__).resolve().parents[1]
 SEED = 20261114
-SAMPLE_IDS = ('SHACKLETON_RIM', 'CHANGE3', 'APOLLO11')
+SAMPLE_IDS = ('SHACKLETON_RIM', 'ARTEMIS_HAWORTH', 'IM2')
 FRACTIONS = ('sun_frac', 'earth_frac', 'both_frac')
 METRICS = (*FRACTIONS, 'longest_dark_h')
 WINDOW = dict(start='2026-01-01T00:00:00Z', step_h=1, n=43824)
@@ -49,12 +49,12 @@ def linear_quantile(values, probability):
 
 
 def check_statistics(record):
-    if set(record['radii']) != {'100', '300', '500'}:
+    if set(record['ranges']) != {'100', '300', '500'}:
         raise ValueError('expected precisely the three circular radius summaries')
     for radius, count in ((100, 5), (300, 29), (500, 81)):
-        points = [p for p in record['points'] if p['e_m']**2+p['n_m']**2 <= radius**2]
-        summary = record['radii'][str(radius)]
-        if len(points) != count or summary.get('n') != count or summary.get('radius_m') != radius:
+        points = [p for p in record['nodes'] if p['e_m']**2+p['n_m']**2 <= radius**2]
+        summary = record['ranges'][str(radius)]
+        if len(points) != count or summary.get('n_nodes') != count:
             raise ValueError(f'{radius} m summary has wrong circle membership/count')
         for metric in METRICS:
             values = [p[metric] for p in points]
@@ -96,10 +96,10 @@ def check_record(record, site, baseline, baseline_hash, horizon):
             or record.get('params') != legacy_params(horizon)):
         raise ValueError(f'{sid}: wrong catalogue centre/frame/sphere/window/parameters')
     grid = dict(rows=11, cols=11, spacing_m=100, origin_e_m=-500, origin_n_m=-500)
-    if record.get('grid') != grid or len(record['points']) != 121:
+    if any(record.get('grid',{}).get(k)!=value for k,value in grid.items()) or not record['grid'].get('order') or len(record['nodes']) != 121:
         raise ValueError(f'{sid}: expected complete 11x11 grid at 100 m spacing')
     max_geometry_error = 0.
-    for index, point in enumerate(record['points']):
+    for index, point in enumerate(record['nodes']):
         east, north = (index % 11-5)*100, (index//11-5)*100
         if (point['index'], point['e_m'], point['n_m']) != (index, east, north):
             raise ValueError(f'{sid}/{index}: wrong row-major grid order/offsets')
@@ -121,7 +121,7 @@ def check_record(record, site, baseline, baseline_hash, horizon):
             raise ValueError(f'{sid}/{index}: invalid metric/resolution/DEM sources')
         if any(abs(point[k]*WINDOW['n']-round(point[k]*WINDOW['n'])) > 1e-8 for k in FRACTIONS):
             raise ValueError(f'{sid}/{index}: fractions are not exact hourly counts')
-    center_point = record['points'][60]
+    center_point = record['nodes'][60]
     if any(center_point[k] != center[k] for k in center):
         raise ValueError(f'{sid}: centre node coordinates must exactly equal catalogue')
     check_statistics(record)
@@ -177,7 +177,7 @@ class ProvenanceDEM(DEM):
 
 def verify_point(site, index, record, ephem, terrain):
     started = time.monotonic()
-    point = record['points'][index]
+    point = record['nodes'][index]
     terrain.lat, terrain.lon = point['lat'], point['lon']
     ground = float(terrain(np.array([point['lat']]), np.array([point['lon']]))[0])
     if not np.isfinite(ground):
@@ -229,12 +229,12 @@ def main(argv=None):
         return hashes[path]
 
     ephem = load_ephemeris(args.web_data)
-    sites = read(args.web_data/'sites.json')
+    sites = [s for s in read(args.web_data/'sites.json') if s['lat']<=-75]
     if len({s['id'] for s in sites}) != len(sites):
         raise ValueError('duplicate catalogue IDs')
     paths = list((args.web_data/'uncertainty').glob('*.json'))
-    if {p.stem for p in paths} != {s['id'] for s in sites}:
-        raise ValueError('uncertainty output IDs must exactly match all catalogue IDs')
+    if not {s['id'] for s in sites} <= {p.stem for p in paths}:
+        raise ValueError('uncertainty outputs must include all 16 polar IDs')
     records, checks = {}, []
     for site in sites:
         sid = site['id']
@@ -293,7 +293,7 @@ def main(argv=None):
             if any(p['id'] == sid and p['index'] == index for p in report['points']):
                 continue
             if terrain is None:
-                terrain = ProvenanceDEM(record['provenance']['center'], record['points'][index],
+                terrain = ProvenanceDEM(record['provenance']['center'], record['nodes'][index],
                     args.raw, record['provenance']['terrain_sources'], ROOT, hash_file)
             log(f'{sid}/{index}: tracing all 720 x {record["params"]["n_steps"]+1} samples')
             result = verify_point(sid, index, record, ephem, terrain)

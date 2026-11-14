@@ -11,7 +11,7 @@ def test_grid_and_circular_statistics():
     for p in points:
         p.update(sun_frac=(p['e_m']+500)/1000,earth_frac=.5,both_frac=0,longest_dark_h=p['index'])
     stats=cu.summarize(points)
-    assert [stats[str(r)]['n'] for r in [100,300,500]]==[5,29,81]
+    assert [stats[str(r)]['n_nodes'] for r in [100,300,500]]==[5,29,81]
     assert stats['300']['sun_frac']['min']==.2
     assert stats['300']['sun_frac']['max']==.8
     assert stats['300']['sun_frac']['median']==.5

@@ -39,7 +39,7 @@ def fixture_record():
     radii = {}
     for radius in (100, 300, 500):
         selected = [p for p in points if np.hypot(p['e_m'], p['n_m']) <= radius]
-        summary = dict(radius_m=radius, n=len(selected))
+        summary = dict(n_nodes=len(selected))
         for key in v.METRICS:
             values = np.array([p[key] for p in selected])
             lo, med, hi = np.quantile(values, [.1, .5, .9], method='linear')
@@ -53,8 +53,8 @@ def fixture_record():
         separators=(',', ':')).encode()).hexdigest()
     record = dict(id='TEST', complete=True, mock=False, center=dict(lat=0., lon=0.),
         frame='MOON_ME_DE421', radius_m=v.RADIUS, window=v.WINDOW.copy(), params=params,
-        grid=dict(rows=11, cols=11, spacing_m=100, origin_e_m=-500, origin_n_m=-500),
-        points=points, radii=radii, provenance=provenance,
+        grid=dict(rows=11, cols=11, spacing_m=100, origin_e_m=-500, origin_n_m=-500, order='row-major'),
+        nodes=points, ranges=radii, provenance=provenance,
         center_check=dict(matches=True, differences={k: 0 for k in v.METRICS}, metrics_sha256='BASELINE'))
     return record, site, baseline, horizon
 
@@ -63,22 +63,22 @@ def test_complete_schema_and_independent_circle_statistics():
     record, site, baseline, horizon = fixture_record()
     result = v.check_record(record, site, baseline, 'BASELINE', horizon)
     assert result['passed']
-    assert [record['radii'][str(radius)]['n'] for radius in (100, 300, 500)] == [5, 29, 81]
+    assert [record['ranges'][str(radius)]['n_nodes'] for radius in (100, 300, 500)] == [5, 29, 81]
 
 
 @pytest.mark.parametrize('fault', ['row_order', 'coordinate', 'window', 'fraction', 'stats', 'params', 'source_order', 'fingerprint'])
 def test_contract_rejects_grid_statistics_and_legacy_method_changes(fault):
     record, site, baseline, horizon = fixture_record()
     if fault == 'row_order':
-        record['points'][0]['index'] = 1
+        record['nodes'][0]['index'] = 1
     elif fault == 'coordinate':
-        record['points'][0]['lon'] += 1
+        record['nodes'][0]['lon'] += 1
     elif fault == 'window':
         record['window']['n'] -= 1
     elif fault == 'fraction':
-        record['points'][0]['sun_frac'] = .123456
+        record['nodes'][0]['sun_frac'] = .123456
     elif fault == 'stats':
-        record['radii']['300']['sun_frac']['p10'] += .01
+        record['ranges']['300']['sun_frac']['p10'] += .01
     elif fault == 'params':
         record['params']['min_km'] = .005
     elif fault == 'source_order':
@@ -146,7 +146,7 @@ def test_source_set_and_bytes_are_verified(tmp_path, fault):
 def test_ray_sampling_follows_legacy_params_and_record_rounding_is_explicit(monkeypatch, minimum, steps):
     record, _, _, _ = fixture_record()
     record['params'].update(min_km=minimum, n_steps=steps)
-    record['points'][0]['h0_m'] = 10.12
+    record['nodes'][0]['h0_m'] = 10.12
     captured = []
     def trace(lat, lon, ground, height, terrain, azimuths, distances):
         assert len(azimuths) == 720
@@ -157,7 +157,7 @@ def test_ray_sampling_follows_legacy_params_and_record_rounding_is_explicit(monk
         return np.full(720, 1.23456789)
     def evaluate(lat, lon, ground, mask, ephem):
         captured.append((ground, mask[0]))
-        return {key: record['points'][0][key] for key in v.METRICS}
+        return {key: record['nodes'][0][key] for key in v.METRICS}
     class Terrain:
         verified_sources = []
         def __call__(self, lat, lon):

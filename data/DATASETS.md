@@ -100,3 +100,11 @@ Reuses the PGDA original DEMs at https://pgda.gsfc.nasa.gov/products/90 and the 
 
 ### Card 18 local impact grids (Jiyong, 2026-11-14)
 Reuses the cited PGDA 5/10/20/60/80/240 m and LOLA global sources above, without altering original rasters or Card 13 caches. Expanded per-centre windows add 16 km of storage margin for the ±10 km node grid; original radial resolution gates are re-centred on each observer. The original 5 m source footprint remains finite (Malapert has no overlapping 5 m source window). Raw expanded windows and shared NPY backing arrays stay under ignored data/processed/card18/. Public local-map provenance records full source, ephemeris and code hashes. Source URLs: https://pgda.gsfc.nasa.gov/products/90 and https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/ .
+
+### Card 23 follow-up: original PGDA footprints and native-pixel diagnostics (Jiyong)
+
+`pipeline/near_field_check.py` reads the original four `AVGVISIB_65{N,S}_240M_201608{,_EARTH}.LBL` products linked by https://pgda.gsfc.nasa.gov/products/69 under https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/ . Their 6420x6420 polar-stereographic rasters have 240 m pixels, DN scale 0.00004; square corners reach approximately 55.2 degrees absolute latitude. All five requested nonpolar centres and their complete 300 m discs lie outside both raster footprints. No valid reference pixel or neighbourhood extrema exist there. Labels are cached locally, not committed; URLs, hashes, projected coordinates and bounds are in docs/near_field_check.json.
+
+The five local terrain diagnostics use the existing SLDEM2015 512 ppd caches (~59.23 m north-south), not a 5 m DEM. Ray minimum distance is distinct from pixel resolution. Original-cache SHA256, supporting-pixel heights, eight-neighbour residuals and any in-memory candidate-replacement sensitivity are recorded. The outlier heuristic is not physical terrain validation. Production DEMs/horizons/metrics are unchanged.
+
+The polar uncertainty public schema now follows Sua branch s3-uncert-nonpolar-sua at 30c64f6 (nodes/ranges/n_nodes). This branch owns only 16 south-polar outputs; the 17 nonpolar outputs remain with Sua.

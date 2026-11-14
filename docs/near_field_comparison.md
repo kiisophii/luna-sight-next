@@ -1,5 +1,7 @@
 # Five-site near-field sensitivity experiment
 
+Historical first comparison. The requested follow-up, original raster footprint checks and native-pixel diagnostics are in [near_field_check.md](near_field_check.md). Its footprint analysis supersedes the simplified 65-degree coverage description below.
+
 Catalogue horizons and metrics remain unchanged. This experiment compares independently recomputed legacy centres with a 5 m minimum ray-distance / 8000-step alternative, on the same DEM chain and hourly production core.js.
 
 | Site | Legacy sun % | Near-field sun % | Change pp | Legacy / near longest dark h | PGDA sun value | Closer to PGDA |

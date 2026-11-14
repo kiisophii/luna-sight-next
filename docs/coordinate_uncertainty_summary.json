@@ -1,25 +1,9 @@
 {
-  "site_count": 33,
-  "nodes": 3993,
+  "site_count": 16,
+  "nodes": 1936,
   "centres_exact": [
-    "APOLLO11",
-    "APOLLO12",
-    "APOLLO14",
-    "APOLLO15",
-    "APOLLO16",
-    "APOLLO17",
-    "LUNA16",
-    "LUNA20",
-    "LUNA24",
-    "CHANGE3",
-    "CHANGE4",
-    "CHANGE5",
-    "CHANGE6",
-    "CHANDRAYAAN3",
-    "SLIM",
     "IM1",
     "IM2",
-    "BLUE_GHOST1",
     "ARTEMIS_CABEUS_B",
     "ARTEMIS_HAWORTH",
     "ARTEMIS_MALAPERT",
@@ -33,8 +17,7 @@
     "CONNECTING_RIDGE",
     "PEAK_NEAR_SHACKLETON",
     "DE_GERLACHE_RIM1",
-    "SHOEMAKER_RIM_A",
-    "IM3_REINER_GAMMA"
+    "SHOEMAKER_RIM_A"
   ],
   "over_10pp_within_300m": [
     {

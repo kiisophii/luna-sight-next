@@ -30,3 +30,35 @@
 2026-11-14T10:14:02.498394+00:00 APOLLO11/30: tracing all 720 x 4001 samples
 2026-11-14T10:14:04.692193+00:00 APOLLO11/30: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=2.187
 2026-11-14T10:14:04.705522+00:00 Finished: complete=True; passed=True; report=C:\Users\jy02s\Documents\lunar-card23-jiyong\docs\coordinate_uncertainty_check.json
+2026-11-14T10:35:45.381213+00:00 Catalogue schema/statistics checked: 16 sites; exact centres: 16/16; resumed nodes: 0
+2026-11-14T10:35:46.096266+00:00 SHACKLETON_RIM/8: tracing all 720 x 8001 samples
+2026-11-14T10:35:51.154715+00:00 SHACKLETON_RIM/8: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.047
+2026-11-14T10:35:51.154715+00:00 SHACKLETON_RIM/30: tracing all 720 x 8001 samples
+2026-11-14T10:35:56.142795+00:00 SHACKLETON_RIM/30: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=4.984
+2026-11-14T10:35:56.143796+00:00 SHACKLETON_RIM/70: tracing all 720 x 8001 samples
+2026-11-14T10:36:01.177042+00:00 SHACKLETON_RIM/70: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.032
+2026-11-14T10:36:01.178041+00:00 SHACKLETON_RIM/75: tracing all 720 x 8001 samples
+2026-11-14T10:36:06.252993+00:00 SHACKLETON_RIM/75: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.078
+2026-11-14T10:36:06.252993+00:00 SHACKLETON_RIM/118: tracing all 720 x 8001 samples
+2026-11-14T10:36:11.318125+00:00 SHACKLETON_RIM/118: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.062
+2026-11-14T10:36:12.026445+00:00 ARTEMIS_HAWORTH/61: tracing all 720 x 8001 samples
+2026-11-14T10:36:17.152483+00:00 ARTEMIS_HAWORTH/61: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.109
+2026-11-14T10:36:17.152483+00:00 ARTEMIS_HAWORTH/64: tracing all 720 x 8001 samples
+2026-11-14T10:36:23.947979+00:00 ARTEMIS_HAWORTH/64: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.781
+2026-11-14T10:36:23.948979+00:00 ARTEMIS_HAWORTH/97: tracing all 720 x 8001 samples
+2026-11-14T10:36:30.487482+00:00 ARTEMIS_HAWORTH/97: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.531
+2026-11-14T10:36:30.488489+00:00 ARTEMIS_HAWORTH/16: tracing all 720 x 8001 samples
+2026-11-14T10:36:37.159806+00:00 ARTEMIS_HAWORTH/16: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=6.672
+2026-11-14T10:36:37.159806+00:00 ARTEMIS_HAWORTH/63: tracing all 720 x 8001 samples
+2026-11-14T10:36:42.498687+00:00 ARTEMIS_HAWORTH/63: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.328
+2026-11-14T10:36:43.230076+00:00 IM2/3: tracing all 720 x 8001 samples
+2026-11-14T10:36:48.455385+00:00 IM2/3: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.235
+2026-11-14T10:36:48.455890+00:00 IM2/56: tracing all 720 x 8001 samples
+2026-11-14T10:36:53.735763+00:00 IM2/56: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.281
+2026-11-14T10:36:53.735763+00:00 IM2/100: tracing all 720 x 8001 samples
+2026-11-14T10:36:58.991467+00:00 IM2/100: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.25
+2026-11-14T10:36:58.992464+00:00 IM2/108: tracing all 720 x 8001 samples
+2026-11-14T10:37:04.180412+00:00 IM2/108: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.188
+2026-11-14T10:37:04.181412+00:00 IM2/30: tracing all 720 x 8001 samples
+2026-11-14T10:37:09.512045+00:00 IM2/30: passed=True; differences_pp={'sun_frac': 0.0, 'earth_frac': 0.0, 'both_frac': 0.0}; dark_difference_h=0; elapsed_s=5.328
+2026-11-14T10:37:09.528084+00:00 Finished: complete=True; passed=True; report=C:\Users\jy02s\Documents\lunar-card23-jiyong\docs\coordinate_uncertainty_check.json

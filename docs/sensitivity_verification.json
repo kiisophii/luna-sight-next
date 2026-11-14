@@ -1,0 +1,851 @@
+{
+  "metrics": {
+    "n_hours": 43824,
+    "checks": [
+      {
+        "id": "APOLLO17",
+        "variant": "LDEM128_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.47768346111719606,
+          "earth_frac": 1.0,
+          "both_frac": 0.47768346111719606,
+          "longest_dark_h": 371
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "APOLLO17",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4775693683826214,
+          "earth_frac": 1.0,
+          "both_frac": 0.4775693683826214,
+          "longest_dark_h": 371
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "APOLLO17",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4774780941949617,
+          "earth_frac": 1.0,
+          "both_frac": 0.4774780941949617,
+          "longest_dark_h": 371
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "APOLLO17",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4774780941949617,
+          "earth_frac": 1.0,
+          "both_frac": 0.4774780941949617,
+          "longest_dark_h": 371
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "APOLLO17",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4775009127418766,
+          "earth_frac": 1.0,
+          "both_frac": 0.4775009127418766,
+          "longest_dark_h": 371
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_CABEUS_B",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.3951259583789704,
+          "earth_frac": 0.2967552026286966,
+          "both_frac": 0.10674516246805403,
+          "longest_dark_h": 485
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_CABEUS_B",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.39505750273822565,
+          "earth_frac": 0.29636728733114276,
+          "both_frac": 0.10658543263964951,
+          "longest_dark_h": 485
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.6833470244614823,
+          "earth_frac": 0.5538061336254108,
+          "both_frac": 0.38517707192405987,
+          "longest_dark_h": 353
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.6836664841182913,
+          "earth_frac": 0.5526652062796641,
+          "both_frac": 0.38446969696969696,
+          "longest_dark_h": 349
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.5509538152610441,
+          "earth_frac": 0.6123585250091275,
+          "both_frac": 0.3302756480467324,
+          "longest_dark_h": 423
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.5720381526104418,
+          "earth_frac": 0.6793537787513692,
+          "both_frac": 0.37340270171595474,
+          "longest_dark_h": 414
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.44042077400511137,
+          "earth_frac": 0.5231151880248266,
+          "both_frac": 0.24331416575392478,
+          "longest_dark_h": 697
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.547302847754655,
+          "earth_frac": 0.5853641840087623,
+          "both_frac": 0.3140516611902154,
+          "longest_dark_h": 424
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.5596020445418036,
+          "earth_frac": 0.6422964585615188,
+          "both_frac": 0.3502418765972983,
+          "longest_dark_h": 418
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.45201259583789705,
+          "earth_frac": 1.0,
+          "both_frac": 0.45201259583789705,
+          "longest_dark_h": 410
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.45607429718875503,
+          "earth_frac": 1.0,
+          "both_frac": 0.45607429718875503,
+          "longest_dark_h": 402
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4428623585250091,
+          "earth_frac": 1.0,
+          "both_frac": 0.4428623585250091,
+          "longest_dark_h": 426
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.45043811610076673,
+          "earth_frac": 1.0,
+          "both_frac": 0.45043811610076673,
+          "longest_dark_h": 415
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4532447973713034,
+          "earth_frac": 1.0,
+          "both_frac": 0.4532447973713034,
+          "longest_dark_h": 407
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MOUTON",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.7158634538152611,
+          "earth_frac": 0.596613727637824,
+          "both_frac": 0.39140653523183644,
+          "longest_dark_h": 439
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.37561610076670315,
+          "earth_frac": 0.5824205914567361,
+          "both_frac": 0.23802026286966046,
+          "longest_dark_h": 518
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.3758442862358525,
+          "earth_frac": 0.5836756115370573,
+          "both_frac": 0.23849945235487405,
+          "longest_dark_h": 516
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_MOUTON",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.7155896312522818,
+          "earth_frac": 0.5977774735304856,
+          "both_frac": 0.39218236582694416,
+          "longest_dark_h": 439
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.7294861263234758,
+          "earth_frac": 0.6782356699525374,
+          "both_frac": 0.4373859072654253,
+          "longest_dark_h": 410
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.7289156626506024,
+          "earth_frac": 0.6797645125958379,
+          "both_frac": 0.43823019350127784,
+          "longest_dark_h": 411
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4519213216502373,
+          "earth_frac": 0.7677071924059876,
+          "both_frac": 0.3489184008762322,
+          "longest_dark_h": 407
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4518300474625776,
+          "earth_frac": 0.7700575027382256,
+          "both_frac": 0.349990872581234,
+          "longest_dark_h": 407
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4045271997079226,
+          "earth_frac": 0.3976816356334429,
+          "both_frac": 0.15395673603504928,
+          "longest_dark_h": 552
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.40404801022270903,
+          "earth_frac": 0.39770445418035777,
+          "both_frac": 0.15391109894121943,
+          "longest_dark_h": 552
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CHANGE4",
+        "variant": "LDEM128_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.49399872216137275,
+          "earth_frac": 0.0,
+          "both_frac": 0.0,
+          "longest_dark_h": 366
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "CHANGE4",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.49532219788243886,
+          "earth_frac": 0.0,
+          "both_frac": 0.0,
+          "longest_dark_h": 365
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CHANGE4",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.49237860533041256,
+          "earth_frac": 0.0,
+          "both_frac": 0.0,
+          "longest_dark_h": 367
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CHANGE4",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4927437020810515,
+          "earth_frac": 0.0,
+          "both_frac": 0.0,
+          "longest_dark_h": 367
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CHANGE4",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4929947060971157,
+          "earth_frac": 0.0,
+          "both_frac": 0.0,
+          "longest_dark_h": 367
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CONNECTING_RIDGE",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.46515607886089816,
+          "earth_frac": 0.44274826579043447,
+          "both_frac": 0.21650237312887916,
+          "longest_dark_h": 553
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "CONNECTING_RIDGE",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4705868930266521,
+          "earth_frac": 0.43889193136181087,
+          "both_frac": 0.2176661190215407,
+          "longest_dark_h": 553
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "DE_GERLACHE_RIM1",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.5250091274187659,
+          "earth_frac": 0.5719925155166119,
+          "both_frac": 0.28947608616283316,
+          "longest_dark_h": 449
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "DE_GERLACHE_RIM1",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.5208105147864184,
+          "earth_frac": 0.5719925155166119,
+          "both_frac": 0.2880385177071924,
+          "longest_dark_h": 448
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "IM1",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.38896495071193865,
+          "earth_frac": 1.0,
+          "both_frac": 0.38896495071193865,
+          "longest_dark_h": 458
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "IM1",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.38887367652427896,
+          "earth_frac": 1.0,
+          "both_frac": 0.38887367652427896,
+          "longest_dark_h": 458
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "IM2",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4506434830230011,
+          "earth_frac": 0.8146221248630887,
+          "both_frac": 0.37433826213946697,
+          "longest_dark_h": 459
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "IM2",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.45027838627236216,
+          "earth_frac": 0.81421139101862,
+          "both_frac": 0.3738134355604235,
+          "longest_dark_h": 459
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.6911737860533042,
+          "earth_frac": 0.5575711938663745,
+          "both_frac": 0.3938481197517342,
+          "longest_dark_h": 413
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.6678304125593282,
+          "earth_frac": 0.5532128514056225,
+          "both_frac": 0.37680266520627964,
+          "longest_dark_h": 612
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.8593692953632712,
+          "earth_frac": 0.49990872581234025,
+          "both_frac": 0.44783680175246443,
+          "longest_dark_h": 75
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.8654618473895582,
+          "earth_frac": 0.5060240963855421,
+          "both_frac": 0.45484209565534867,
+          "longest_dark_h": 72
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": true,
+        "metrics": {
+          "sun_frac": 0.7936975173420957,
+          "earth_frac": 0.4985852500912742,
+          "both_frac": 0.41931361810879886,
+          "longest_dark_h": 146
+        },
+        "scalar_performed": true
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.8482566630156991,
+          "earth_frac": 0.49942953632712667,
+          "both_frac": 0.4436153705732019,
+          "longest_dark_h": 75
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.8613088718510405,
+          "earth_frac": 0.5002966411098941,
+          "both_frac": 0.4481106243154436,
+          "longest_dark_h": 75
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHOEMAKER_RIM_A",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.19423147133990507,
+          "earth_frac": 0.43451077035414387,
+          "both_frac": 0.11598667396860168,
+          "longest_dark_h": 2819
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SHOEMAKER_RIM_A",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.19336436655713765,
+          "earth_frac": 0.43451077035414387,
+          "both_frac": 0.11596385542168675,
+          "longest_dark_h": 2819
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SLIM",
+        "variant": "LDEM128_near",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4767250821467689,
+          "earth_frac": 1.0,
+          "both_frac": 0.4767250821467689,
+          "longest_dark_h": 372
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SLIM",
+        "variant": "production",
+        "height": 10,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4768848119751734,
+          "earth_frac": 1.0,
+          "both_frac": 0.4768848119751734,
+          "longest_dark_h": 372
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SLIM",
+        "variant": "production",
+        "height": 1,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4764056224899598,
+          "earth_frac": 1.0,
+          "both_frac": 0.4764056224899598,
+          "longest_dark_h": 372
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SLIM",
+        "variant": "production",
+        "height": 2,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4765197152245345,
+          "earth_frac": 1.0,
+          "both_frac": 0.4765197152245345,
+          "longest_dark_h": 372
+        },
+        "scalar_performed": false
+      },
+      {
+        "id": "SLIM",
+        "variant": "production",
+        "height": 3,
+        "vector_exact": true,
+        "scalar_exact": null,
+        "metrics": {
+          "sun_frac": 0.4765653523183644,
+          "earth_frac": 1.0,
+          "both_frac": 0.4765653523183644,
+          "longest_dark_h": 372
+        },
+        "scalar_performed": false
+      }
+    ],
+    "baseline_exact_count": 19
+  },
+  "horizons": {
+    "n_hours": 43824,
+    "checks": [
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "variant": "production",
+        "height": 1,
+        "early_stop_false_raw_max_diff_deg": 0.0,
+        "independent_geometry_12_az_max_diff_deg": 4.953313315070318e-10,
+        "n_samples": 5760720,
+        "elapsed_s": 0.75
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "variant": "PGDA20_60_near",
+        "height": 2,
+        "early_stop_false_raw_max_diff_deg": 0.0,
+        "independent_geometry_12_az_max_diff_deg": 1.3658785213976898e-10,
+        "n_samples": 5760720,
+        "elapsed_s": 0.5459999999729916
+      }
+    ]
+  },
+  "native_pixels": {
+    "n_hours": 43824,
+    "checks": [
+      {
+        "id": "APOLLO17",
+        "independent_range_pixels": 5,
+        "remote_exact": true,
+        "grid_registration_exact": true,
+        "observer_h0_m": -2628.874846701662,
+        "stored_h0_m": -2628.874846701661,
+        "remote_bytes": 4246732800,
+        "etag": "\"8c7512ec2927d31:0\""
+      },
+      {
+        "id": "CHANGE4",
+        "independent_range_pixels": 5,
+        "remote_exact": true,
+        "grid_registration_exact": true,
+        "observer_h0_m": -5930.747643296814,
+        "stored_h0_m": -5930.747643296817,
+        "remote_bytes": 4246732800,
+        "etag": "\"8c7512ec2927d31:0\""
+      },
+      {
+        "id": "SLIM",
+        "independent_range_pixels": 5,
+        "remote_exact": true,
+        "grid_registration_exact": true,
+        "observer_h0_m": -916.8662932272074,
+        "stored_h0_m": -916.8662932272019,
+        "remote_bytes": 4246732800,
+        "etag": "\"8c7512ec2927d31:0\""
+      }
+    ]
+  },
+  "independent_script_sha256": "fedb11e820cf2b0ef418134ec5a1a74bc3ffdecbc5e99ab22ad2fd2de136eb1f"
+}

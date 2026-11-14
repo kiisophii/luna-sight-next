@@ -16,7 +16,7 @@ jobs:
     env:
       LLSN_VERIFICATION_ROOT: ${{ github.workspace }}
       PYTHONUNBUFFERED: '1'
-      LLSN_PREVIOUS_RUN_ID: '43649858746'
+      LLSN_PREVIOUS_RUN_ID: '43651123822'
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
     steps:
@@ -27,30 +27,15 @@ jobs:
       - run: pip install -r verification/task_a/requirements-independent.txt
       - name: Independent analytic and isolation controls
         run: python -m unittest discover -s verification/task_a -p test_independent_geometry.py -v
-      - name: Resume the 17 already completed independent site results
+      - name: Resume all 33 completed full-range results without dropping initial failures
         uses: actions/download-artifact@v4
         with:
           name: task-a-horizons-full
-          run-id: 43649858746
+          run-id: 43651123822
           github-token: ${{ github.token }}
           path: .
-      - name: Recompute all 16 remaining polar sites at all 720 azimuths
-        run: |
-          python - <<'PY'
-          import json, subprocess, sys
-          from pathlib import Path
-          sites = json.load(open('web/data/sites.json'))
-          command = [sys.executable, 'verification/task_a/verify_horizons_independent.py', '--run']
-          selected = []
-          for site in sites:
-              h = json.load(open(Path('web/data/horizon') / (site['id'] + '.json')))
-              if h['engine']['min_km'] == 0.005:
-                  selected.append(site['id'])
-                  command += ['--site', site['id']]
-          assert len(selected) == 16
-          print('Resuming the 17 completed non-polar sites; computing', selected, flush=True)
-          subprocess.run(command, check=True)
-          PY
+      - name: Uniform near-field convergence at all 33 sites and all 720 rays
+        run: python verification/task_a/refine_near_field.py
       - name: Export all comparisons, including failures
         if: always()
         run: python verification/task_a/report_task_a.py

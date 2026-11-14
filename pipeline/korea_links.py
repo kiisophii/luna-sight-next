@@ -370,12 +370,21 @@ def site_frame(lat, lon):
     return east, north, up
 
 
+# Where terrain masks come from, in order. web/data/horizon = official phase-2 horizons (cards 8/9).
+# --provisional-horizons adds a second folder (e.g. data/processed/horizon_s4, computed by the same
+# pipeline/horizon.py engine from the cached PGDA/LOLA DEMs) used only until the official file exists.
+HORIZON_DIRS = [(WEB_DATA / "horizon", "official")]
+
+
 def load_mask(site_id):
-    p = WEB_DATA / "horizon" / f"{site_id}.json"
-    if not p.exists():
-        return None
-    h = json.loads(p.read_text(encoding="utf-8"))
-    return h
+    """(horizon dict, source label) or (None, None). Mock masks are treated as missing."""
+    for d, label in HORIZON_DIRS:
+        p = Path(d) / f"{site_id}.json"
+        if p.exists():
+            h = json.loads(p.read_text(encoding="utf-8"))
+            if not h.get("mock"):
+                return h, label
+    return None, None
 
 
 def mask_at(h, az):
@@ -444,7 +453,12 @@ def build_danuri(E, sites):
 
     out_sites = []
     for s in sites:
-        h = load_mask(s["id"])
+        h, mask_source = load_mask(s["id"])
+        if h is None:
+            # never present a flat-horizon result as real: record the site as pending terrain
+            out_sites.append({"id": s["id"], "lat": s["lat"], "lon": s["lon"], "status": "pending_terrain"})
+            log("danuri site", s["id"], "pending terrain (no real horizon mask yet)")
+            continue
         pos, h0 = site_position(s, h)
         fr = site_frame(s["lat"], s["lon"])
         az, el = topo_azel(pos, fr, rw)
@@ -466,9 +480,9 @@ def build_danuri(E, sites):
         gaps_a, gaps_b = runs(no_direct & ~relay)
         longest_gap_h = float(((gaps_b - gaps_a).max() if len(gaps_a) else 0) * dt_h)
         out_sites.append({
-            "id": s["id"], "lat": s["lat"], "lon": s["lon"], "h0_m": h0,
-            "mask": "terrain" if h else "flat",
-            "mask_mock": bool(h.get("mock", False)) if h else None,
+            "id": s["id"], "lat": s["lat"], "lon": s["lon"], "h0_m": h0, "status": "ok",
+            "mask": "terrain", "mask_source": mask_source,
+            "mask_mock": False,
             "site_coords_mock": bool(s.get("mock", False)),
             "passes": {"start_i": starts, "dur_s": durs, "max_el_deg": maxel},
             "n_passes": len(starts),
@@ -499,8 +513,10 @@ def build_danuri(E, sites):
         "orbit": {"alt_km_min": round(float(alt.min()), 1), "alt_km_max": round(float(alt.max()), 1),
                   "alt_km_min_window": round(float(alt[w].min()), 1), "alt_km_max_window": round(float(alt[w].max()), 1)},
         "definitions": {
-            "pass": "Danuri centre above the site's horizon mask (terrain mask if web/data/horizon/<ID>.json exists, "
-                    "else flat 0 deg), observer 2 m above terrain; edges linearly interpolated between 5-min samples",
+            "pass": "Danuri centre above the site's terrain horizon mask (web/data/horizon/<ID>.json = official, "
+                    "or a provisional mask from the same engine, see mask_source), observer 2 m above terrain; "
+                    "edges linearly interpolated between 5-min samples. Sites without a real mask: status "
+                    "pending_terrain, no numbers (never computed on a flat horizon)",
             "start_i": "UTC hour index from 2026-01-01T00Z (fractional)",
             "relay_upper_bound": "share of the site's no-direct-Earth time (Earth centre below the mask) during "
                                  "which Danuri is above the site's mask AND Earth's centre is not blocked by the lunar "
@@ -591,7 +607,11 @@ def build_korea():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", choices=["stations", "danuri", "korea"])
+    ap.add_argument("--provisional-horizons", help="extra folder of horizon/<ID>.json-format masks used when "
+                    "web/data/horizon/<ID>.json does not exist yet (labelled mask_source=provisional)")
     a = ap.parse_args()
+    if a.provisional_horizons:
+        HORIZON_DIRS.append((Path(a.provisional_horizons), "provisional"))
     OUT.mkdir(parents=True, exist_ok=True)
     if a.only in (None, "korea"):
         build_korea()

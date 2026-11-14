@@ -48,7 +48,7 @@ addStrings({
   tbt_mean: 'Mean visible fraction of the solar disc over 2026–2030 on a 948 m whole-Moon grid (data/gmaps_ppd32). Long-term average, not this period.',
   tbt_earthmap: 'Share of 2026–2030 with the Earth centre above the terrain horizon, 948 m grid (data/gmaps_ppd32). Long-term average.',
   tbt_pick: 'Click the Moon: the point gets its own terrain horizon (computed in your browser) and joins the list.',
-  legendMean: 'Mean sunlight 2026–2030 (948 m grid)', legendEarth: 'Mean Earth visibility 2026–2030 (948 m grid)',
+  legendMean: 'Mean sunlight 2026–2030', legendEarth: 'Mean Earth visibility 2026–2030', rankLbl: 'rank', rankTip: 'Position in the current sort (not the pin number)',
 }, {
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: '이 도구 소개',
   langAria: '언어', c1: '미션 조건', c1Date: '착륙 날짜 (UTC)', c1Period: '운용 기간',
@@ -80,7 +80,7 @@ addStrings({
   tbt_mean: '태양 원반이 보이는 시간 비율, 달 전체 2026–2030 평균, 948 m 격자(data/gmaps_ppd32). 이 기간 값이 아닌 장기 평균.',
   tbt_earthmap: '지구 중심이 지형 지평선 위에 있는 시간 비율, 2026–2030, 948 m 격자(data/gmaps_ppd32). 장기 평균.',
   tbt_pick: '달을 누르면 그 지점의 지형 지평선을 브라우저에서 계산해 목록에 넣습니다.',
-  legendMean: '평균 일조 2026–2030 (948 m 격자)', legendEarth: '평균 지구 가시 2026–2030 (948 m 격자)',
+  legendMean: '평균 일조 2026–2030', legendEarth: '평균 지구 가시 2026–2030', rankLbl: '순위', rankTip: '지금 정렬 기준에서의 순서 (고정 번호 아님)',
 });
 
 const $ = sel => document.querySelector(sel);
@@ -184,7 +184,7 @@ function rowHTML(s, rank) {
   const earthV = L.v == null ? '<span class="na">—</span>' : pctHTML(L.v);
   const tower = relayOn ? (L.tower ? `<span class="tag relay">${t('relayTag')}</span>` : L.noTower ? `<span class="tag">${t('relayNone')}</span>` : L.loading ? `<span class="tag">…</span>` : '') : '';
   return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}">
-    <span class="pk-rank num">${rank}.</span>
+    <span class="pk-rank" title="${esc(t('rankTip'))}"><small>${t('rankLbl')}</small><span class="num">${rank}</span></span>
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
       <span class="pk-main"><span class="pk-name">${p ? `<span class="pin-no">#${p.n}</span>` : ''}${esc(nameOf(s))}${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${tower}</span></span>

@@ -109,7 +109,16 @@ async function start() {
       sites: st.sites, ephem: st.ephem, ephemMeta: st.ephemMeta,
       lang: getLang(),
       wheelNeedsFocus: true,
-      hud: false,                 // layout HUD lines live in index.html (.ls-hud); the ×3 note stays
+      hud: false,
+      // site names stay clear of the floating panels (3-column layout): px covered at the left / right / top of the stage
+      labelInsets: () => {
+        const st = stage.getBoundingClientRect(), r = sel => document.querySelector(sel)?.getBoundingClientRect();
+        const L = r('.ls-left'), T = r('.ls-tray'), H = r('.ls-head');
+        const over = b => b && b.width && b.top < st.bottom && b.bottom > st.top && b.left < st.right && b.right > st.left;
+        return { left: over(L) && L.left < st.left + st.width / 2 ? L.right - st.left : 0,
+                 right: over(T) && T.right > st.left + st.width / 2 ? st.right - T.left : 0,
+                 top: H ? Math.max(0, H.bottom - st.top) : 0 };
+      },                 // layout HUD lines live in index.html (.ls-hud); the ×3 note stays
       // off-screen Sun/Earth chips never cover these (all other page UI is outside the globe stage)
       avoid: ['#globe-stage .gl-zoom', '#globe-stage .gl-progress', '#globe-stage .gl-hint', '#globe-stage .g3-site',
         '.ls-head', '.ls-left', '.ls-tray', '.ls-minimap', '.ls-toolbar', '.ls-hud', '.ls-scrollhint', '.ls-drawer:not([hidden])'],

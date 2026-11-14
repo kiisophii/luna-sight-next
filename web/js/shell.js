@@ -134,10 +134,35 @@ tb.addEventListener('pointerleave', () => { tip.hidden = true; });
 tb.addEventListener('focusout', () => { tip.hidden = true; });
 function showTip(b) { tip.textContent = t(b.dataset.tip); tip.hidden = false; }
 
+// 948 m whole-Moon maps (data/gmaps_ppd32, card 14); the 3.8 km set (data/gmaps) is the fallback.
+// Overview first (fast), then the finest tile level from index.json whose width fits the GPU texture limit.
 let gmaps = null;
 async function gmapsIndex() {
-  if (!gmaps) gmaps = fetch('data/gmaps_ppd32/index.json', { cache: 'no-cache' }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+  const get = dir => fetch(`data/${dir}/index.json`, { cache: 'no-cache' }).then(r => (r.ok ? r.json() : null)).then(j => (j ? { ...j, dir } : null)).catch(() => null);
+  if (!gmaps) gmaps = get('gmaps_ppd32').then(j => j || get('gmaps'));
   return gmaps;
+}
+const stitched = new Map();
+function stitch(idx, layerId) {
+  const key = `${idx.dir}/${layerId}`;
+  if (stitched.has(key)) return stitched.get(key);
+  const g = LL().globe, mem = navigator.deviceMemory || 8;
+  const cap = Math.min(g?.maxTextureSize?.() || 8192, mem < 8 ? 4096 : 8192);
+  const levels = (idx.tiles?.levels || []).filter(l => l.width <= cap && l.width > (idx.overview_size?.[0] || 0));
+  const L = levels[levels.length - 1];
+  if (!L) { stitched.set(key, Promise.resolve(null)); return stitched.get(key); }
+  const p = (async () => {
+    const cv = document.createElement('canvas'); cv.width = L.width; cv.height = L.height;
+    const c2 = cv.getContext('2d'), S = idx.tiles.size, jobs = [];
+    for (let y = 0; y < L.ny; y++) for (let x = 0; x < L.nx; x++) {
+      const url = `data/${idx.dir}/` + idx.tiles.url.replace('{layer}', layerId).replace('{z}', L.z).replace('{x}', x).replace('{y}', y);
+      jobs.push(new Promise((res, rej) => { const im = new Image(); im.onload = () => { c2.drawImage(im, x * S, y * S); res(); }; im.onerror = rej; im.src = url; }));
+    }
+    await Promise.all(jobs);
+    return { canvas: cv, level: L };
+  })().catch(() => null);
+  stitched.set(key, p);
+  return p;
 }
 let layer = 'light';
 async function setLayer(k) {
@@ -149,13 +174,20 @@ async function setLayer(k) {
   const idx = await gmapsIndex();
   const L = idx?.layers?.find(x => x.id === k);
   if (!L) { leg.hidden = true; return; }
-  await g.setColorMap(`data/gmaps_ppd32/${L.overview}`, { flat: true });
+  await g.setColorMap(`data/${idx.dir}/${L.overview}`, { flat: true });
   const stops = L.colormap.map(([v, c]) => `${c} ${v * 100}%`).join(', ');
-  leg.hidden = false;
-  leg.innerHTML = `<div>${esc(t(k === 'sun' ? 'legendMean' : 'legendEarth'))} <span class="chip-st long">${esc(t('chipLong'))}</span></div>
-    <div class="bar" style="background:linear-gradient(90deg, ${stops})"></div><div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
-    <div class="muted" style="margin-top:3px">${esc(L.definition)} · ${idx.grid_res_km} km · ${esc(idx.dem_sources?.map(d => d.name).join(' + ') || '')}</div>`;
+  const kmpx = lv => (2 * Math.PI * 1737.4 / lv).toFixed(2);
+  const draw = lvl => {
+    leg.hidden = false;
+    leg.innerHTML = `<div>${esc(t(k === 'sun' ? 'legendMean' : 'legendEarth'))} <span class="chip-st long">${esc(t('chipLong'))}</span></div>
+      <div class="bar" style="background:linear-gradient(90deg, ${stops})"></div><div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+      <div class="muted" style="margin-top:3px">${esc(L.definition)} · ${esc(fill(t('gmRes'), { c: idx.grid_res_km, d: kmpx(lvl) }))} · ${esc(idx.dem_sources?.map(d => d.name).join(' + ') || '')}</div>`;
+  };
+  draw(idx.overview_size?.[0] || 4096);
+  const st = await stitch(idx, k);
+  if (st && layer === k) { await g.setColorMap(st.canvas, { flat: true }); draw(st.level.width); }
 }
+addStrings({ gmRes: 'computed on a {c} km grid, shown at {d} km/px' }, { gmRes: '{c} km 격자로 계산, 화면은 {d} km/px' });
 addStrings({ chipLong: 'long-term 2026–2030' }, { chipLong: '장기 평균 2026–2030' });
 tb.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;

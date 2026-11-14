@@ -176,6 +176,7 @@ uniform sampler2D uColor;`)
   let hour = 0;
   let dirty = true;
   let fly = null;
+  let labelIns = null;            // panels over the stage (opts.labelInsets), refreshed every 30 frames
 
   // ---------------- tiles
   const tiles = new Map();   // key -> {key, kind, z, x, y, state, mesh, h(Float32Array P*P), dirs, center, radius, used}
@@ -452,6 +453,7 @@ uniform sampler2D uColor;`)
   .g3-site{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;border:0;background:none;color:#fff;padding:0;font:inherit;white-space:nowrap;text-shadow:0 0 3px #000,0 0 2px #000}
   .g3-site::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff5a5a;border:2px solid #fff;margin-right:4px;vertical-align:-2px;box-shadow:0 0 3px #000}
   .g3-site.g3-polar_peak::before,.g3-site.g3-artemis3_region::before{background:#2ee59d}
+  .g3-site.g3-flip{display:inline-flex;flex-direction:row-reverse;align-items:center}.g3-site.g3-flip::before{margin:0 0 0 4px}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
   .g3-chip.sun{background:#ffd23f;color:#222}.g3-chip.earth{background:#3b8cff;color:#fff}
@@ -740,6 +742,9 @@ uniform sampler2D uColor;`)
     if (frameNo % 30 === 0) evict();
     // overlays
     const w = el.clientWidth, h = el.clientHeight, camPos = camera.position;
+    // visible area for site names: the caller may report panels floating over the globe (opts.labelInsets())
+    if (typeof opts.labelInsets === 'function' && (frameNo % 30 === 0 || !labelIns)) labelIns = opts.labelInsets() || {};
+    const L0 = (labelIns && labelIns.left) || 0, R0 = w - ((labelIns && labelIns.right) || 0), T0 = (labelIns && labelIns.top) || 0;
     for (const m of siteEls) {
       if (m.h == null || frameNo % 20 === 0) m.h = heightAt(m.s.lat, m.s.lon);
       const p = m.dir.clone().multiplyScalar(R + m.h / 1000 * exag);
@@ -747,7 +752,15 @@ uniform sampler2D uColor;`)
       const pr = project(p);
       const show = facing && pr.on && view.range < 9000;
       m.el.style.display = show ? '' : 'none';
-      if (show) m.el.style.transform = `translate(${pr.x - 7}px,${pr.y - 7}px)`;
+      if (show) {
+        // keep the name inside the view: flip it to the left of the dot near the right edge, fade it near top/bottom
+        const lw = m.lw || (m.lw = m.el.offsetWidth || 80);
+        const flip = pr.x + lw > R0 - 6 && pr.x - lw > L0;
+        if (flip !== !!m.flip) { m.flip = flip; m.el.classList.toggle('g3-flip', flip); }
+        m.el.style.transform = flip ? `translate(${pr.x - lw + 7}px,${pr.y - 7}px)` : `translate(${pr.x - 7}px,${pr.y - 7}px)`;
+        const edge = Math.min(pr.y - 4 - T0, h - pr.y - 4, flip ? pr.x - lw - L0 : R0 - pr.x - lw, pr.x - L0, R0 - pr.x);
+        m.el.style.opacity = edge < 18 ? String(Math.max(0.25, edge / 18)) : '';
+      }
     }
     const placedSun = edgeChip(chipSun, sunSprite.position, labSun, null);
     edgeChip(chipEarth, earthSprite.position, labEarth, placedSun);
@@ -799,7 +812,7 @@ uniform sampler2D uColor;`)
       if (layerTex) { layerTex.dispose(); layerTex = null; }
       colorTex.value = baseTex; ambient.intensity = 0.10; sun.intensity = 3.2; dirty = true; return;
     }
-    const t = await texLoader.loadAsync(url);
+    const t = typeof url === 'string' ? await texLoader.loadAsync(url) : new THREE.CanvasTexture(url);   // URL or a stitched canvas
     if (layerUrl !== url) { t.dispose(); return; }          // a newer call won
     t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.generateMipmaps = true;
     if (layerTex) layerTex.dispose();
@@ -827,6 +840,7 @@ uniform sampler2D uColor;`)
 
   const api = {
     setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, screenToLatLon,
+    maxTextureSize: () => renderer.capabilities.maxTextureSize,
     // manual frames (tests / hidden tabs where requestAnimationFrame is paused); also loads tiles until idle
     async step(maxMs = 20000) {
       const t0 = performance.now(); let calm = 0;

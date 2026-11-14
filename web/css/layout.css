@@ -118,8 +118,9 @@ body.ls { background: var(--bg); font-size: 14px; }
 .pk-skel { height: 52px; border-radius: 10px; background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%); background-size: 200% 100%; animation: sk 1.4s infinite linear; }
 @keyframes sk { to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) { .pk-skel { animation: none; } }
-.pk-row { display: grid; grid-template-columns: 22px 1fr 40px; align-items: stretch; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); min-height: 54px; }
-.pk-rank { align-self: center; text-align: right; color: var(--muted); font-size: 11.5px; }
+.pk-row { display: grid; grid-template-columns: 30px 1fr 40px; align-items: stretch; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); min-height: 54px; }
+.pk-rank { align-self: center; display: flex; flex-direction: column; align-items: center; line-height: 1.05; color: var(--muted); font-size: 11px; padding-left: 2px; }
+.pk-rank small { font-size: 8.5px; letter-spacing: .04em; text-transform: uppercase; opacity: .8; }
 .pk-item { all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 7px 8px 7px 8px; min-width: 0; border-radius: 10px; }
 .pk-item:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
 .pk-main { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; }

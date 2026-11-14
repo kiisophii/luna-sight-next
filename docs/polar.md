@@ -1,5 +1,7 @@
 # Card 2: south-polar DEM cache (Jiyong)
 
+Phase-1 handoff and open team discussion: [polar-handoff.md](polar-handoff.md).
+
 ## Run
 
 From the repository root (Python 3.10+):

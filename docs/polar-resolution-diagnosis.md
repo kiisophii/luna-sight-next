@@ -62,7 +62,11 @@ diagnostic does not establish the unpublished production history of every pixel
 in the NASA products. Pointwise discrepancies can be larger on unresolved relief,
 so a universal few-metre pointwise criterion across 5–240 m is inappropriate.
 
-## Card 2 completion recommendation
+## Card 2 completion recommendation and disposition
+
+Jiyong has requested phase-1 handoff with the acceptance-method question retained
+as a team discussion. See [handoff and discussion](polar-handoff.md). The following
+recommendations are proposals, not changes to the agreed data contract or card.
 
 - Retain the original DEM values and the existing cache/web contracts. The
   downloader and the implicated coordinate/interpolation path need no correction.
@@ -76,9 +80,9 @@ so a universal few-metre pointwise criterion across 5–240 m is inappropriate.
   18 full-radius windows have passed. When card 4 supplies source-backed sites,
   rerun downloads and validation for those sites. Current integrator mock
   coordinates are not evidence about actual landing-site accuracy.
-- Human reviewer fills the SI log checks, and Sua reviews/merges the PR. Keep
-  draft status pending the acceptance-method decision; the original 9 m value
-  remains in the historical report and is now explained.
+- Human reviewer fills the SI log checks, and Sua reviews/merges the PR. The PR
+  is ready for review with the acceptance-method discussion explicitly open;
+  the original 9 m value remains in the historical report and is now explained.
 - In phase 2, use fine terrain nearby and coarse terrain farther away, include
   lunar curvature, and test horizon sensitivity to resolution. Cell averaging
   can suppress local peaks; these checks do not prove a horizon is conservative.

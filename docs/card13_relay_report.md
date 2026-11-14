@@ -184,7 +184,7 @@ the existing ephemeris generation workflow must also supply `data/processed/ephe
 
 ## Review rulings
 
-The independent code review found one Important co-located-path bug; a three-latitude regression reproduced it before the fix and passes afterward. No remaining Critical/Important code finding was reported; final artifact review is recorded in the PR. Physical terrain truth, RF service and structural feasibility are outside this geometric calculation; treating outputs as flight or construction assurance would exceed the evidence. Greedy network optimality and sensitivity re-ranking are not claimed, so better configurations may exist. Resume provenance uses raster size/mtime and global-label hashes plus ephemeris content hashes; it does not authenticate every DEM byte, so a deliberately same-size/same-timestamp replacement could evade that guard.
+The independent code review found one Important co-located-path bug; a three-latitude regression reproduced it before the fix and passes afterward. Final artifact review at d477409 passed with no remaining Critical, Important or Minor finding. The reviewer checked 33 coordinate/timeline/outage records, 59 parent hops, nine maps and all evidence hashes, and independently reran the contract checker and 36 related tests. No deferred minors remain. Physical terrain truth, RF service and structural feasibility are outside this geometric calculation; treating outputs as flight or construction assurance would exceed the evidence. Greedy network optimality and sensitivity re-ranking are not claimed, so better configurations may exist. Resume provenance uses raster size/mtime and global-label hashes plus ephemeris content hashes; it does not authenticate every DEM byte, so a deliberately same-size/same-timestamp replacement could evade that guard.
 
 ## Integration handoff
 
@@ -192,3 +192,5 @@ The independent code review found one Important co-located-path bug; a three-lat
 - Card 16 owner: rerun named-horizon/PGDA and Korea window checks for the new Shackleton coordinate; old validation rows are historical evidence, not validation of this point.
 - UI owner: existing relay fields remain compatible. New coverage masks are optional section-12 data, with a static nine-region preview in this report; live UI wiring is an integrator task.
 - Human reviewers: complete the source-audit and SI log TO CHECK cells.
+
+Review also retained the explicit unverified Shackleton datum/human-source status: precise location assurance requires those checks. Card 16 verification and live UI coverage wiring remain assigned handoffs, so this PR does not claim their completion. Using the coordinate change on a stacked feature branch lets Card 13 finish without modifying main; a later change to PR #16 requires regenerating this site before integration.

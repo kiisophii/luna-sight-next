@@ -317,6 +317,90 @@ def check_validation(data, sites):
     print(f"validation.json: {len(pts)} points")
 
 
+# ---------------------------------------------------------------- 12. relay/ (proposed v1.2)
+def check_relay(data, sites):
+    d = data / "relay"
+    if not d.exists():
+        return
+    idx_p = d / "index.json"
+    files = sorted(p.stem for p in d.glob("*.json") if p.name != "index.json")
+    idx = load_json(idx_p) if idx_p.exists() else None
+    if idx is None:
+        err("relay/index.json", "missing (run python pipeline/run_relay.py --index-only)")
+        return
+    if sorted(idx.get("ids", [])) != files:
+        err("relay/index.json", f"ids {sorted(idx.get('ids', []))} != files {files}")
+    pend = idx.get("pending_terrain", {})
+    for sid in idx.get("ids", []):
+        if sid in pend:
+            err("relay/index.json", f"{sid} is both computed and pending_terrain")
+    for sid in files:
+        w = f"relay/{sid}.json"
+        o = load_json(d / f"{sid}.json")
+        if o is None or not need(o, ["id", "lat", "lon", "window", "params", "lander", "candidates", "best",
+                                     "networks", "link_budget", "mock"], w):
+            continue
+        if o["id"] != sid:
+            err(w, f"id {o['id']} != file name")
+        s = sites.get(sid)
+        if s and (abs(o["lat"] - s["lat"]) > 1e-6 or abs(o["lon"] - s["lon"]) > 1e-6):
+            err(w, "lat/lon differ from sites.json (rerun pipeline/run_relay.py)")
+        if o["mock"] or any((o.get("inputs_mock") or {}).values()):
+            err(w, "mock inputs: relay results must come from real ephemeris and terrain")
+        if o["window"].get("n") != REAL_EPHEM_N:
+            err(w, f"window.n {o['window'].get('n')} != {REAL_EPHEM_N}")
+        if o["link_budget"].get("estimate") is not True:
+            err(w, "link_budget.estimate must be true")
+        n = o["window"].get("n", 0)
+        for k, net in enumerate(o["networks"]):
+            segs = net["timeline"]["segments"]
+            if not segs or segs[0][0] != 0 or sum(x[1] for x in segs) != n:
+                err(f"{w}.networks[{k}]", "timeline does not cover the window")
+            if any(segs[i][0] + segs[i][1] != segs[i + 1][0] for i in range(len(segs) - 1)):
+                err(f"{w}.networks[{k}]", "timeline segments not contiguous")
+        if not check_fracs(o["lander"], ["earth_frac"], f"{w}.lander"):
+            continue
+    print(f"relay: {len(files)} computed, {len(pend)} pending terrain")
+
+
+# ---------------------------------------------------------------- 13. korea/ (proposed v1.2)
+def check_korea(data, sites):
+    d = data / "korea"
+    if not d.exists():
+        return
+    st = load_json(d / "stations.json")
+    if st and need(st, ["start", "step_h", "n", "min_el_deg", "stations", "mock"], "korea/stations.json"):
+        if st["n"] != REAL_EPHEM_N:
+            err("korea/stations.json", f"n {st['n']} != {REAL_EPHEM_N}")
+        nbytes = (st["n"] + 7) // 8
+        import base64
+        for s in st["stations"]:
+            if len(base64.b64decode(s["bits_b64"])) != nbytes:
+                err("korea/stations.json", f"{s['id']}: bitset length != ceil(n/8)")
+        check_mock_flag(st, "korea/stations.json")
+    dn = load_json(d / "danuri.json")
+    if dn and need(dn, ["window", "sites", "caveat", "mock"], "korea/danuri.json"):
+        n_ok = n_pend = 0
+        for s in dn["sites"]:
+            w = f"korea/danuri.json[{s.get('id')}]"
+            if s.get("status") == "pending_terrain":
+                n_pend += 1
+                continue
+            if s.get("mask") != "terrain" or s.get("mask_mock"):
+                err(w, "Danuri results must use a real terrain mask (flat/mock masks are not allowed)")
+            if s["id"] in sites and (abs(s["lat"] - sites[s["id"]]["lat"]) > 1e-6 or abs(s["lon"] - sites[s["id"]]["lon"]) > 1e-6):
+                err(w, "lat/lon differ from sites.json (rerun pipeline/korea_links.py --only danuri)")
+            check_fracs(s, ["visible_frac", "direct_earth_frac", "relay_upper_bound"], w)
+            n_ok += 1
+        missing = set(sites) - {s["id"] for s in dn["sites"]}
+        if missing:
+            warn("korea/danuri.json", f"sites not listed: {sorted(missing)}")
+        if "upper bound" not in dn["caveat"].lower():
+            err("korea/danuri.json", "caveat must state the geometric upper bound")
+        check_mock_flag(dn, "korea/danuri.json")
+        print(f"korea: danuri {n_ok} sites with terrain, {n_pend} pending terrain")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(Path(__file__).resolve().parents[1] / "web" / "data"))
@@ -326,6 +410,8 @@ def main():
     check_horizons(data, sites)
     check_metrics(data, sites)
     check_validation(data, sites)
+    check_relay(data, sites)
+    check_korea(data, sites)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

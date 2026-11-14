@@ -134,3 +134,87 @@ Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Eart
 every other site uses a flat 0° mask labelled **"Terrain pending"** (not counted as mock). Written automatically at the end of
 `pipeline/run_horizons.py`; after merging horizon PRs run `python pipeline/run_horizons.py --index-only`.
 `check_contract.py` errors if the index and the files disagree. If the index is missing, the app tries every horizon file (old behaviour).
+
+## 12. Proposed v1.2 (relay towers, 2026-11-14, Sua) — NOT yet agreed; new section only (renumbered from 10 at merge; sections 0–11 unchanged)
+`web/data/relay/<ID>.json`, written by `pipeline/relay_tower.py` (differentiator A, concept after NASA GRC BEACON, NTRS 20240014584).
+```json
+{
+  "id": "SHACKLETON_RIM", "lat": -89.9, "lon": 0.0, "h0_m": 1700.0, "lander_antenna_m": 2,
+  "window": {"start": "2026-01-01T00:00:00Z", "step_h": 1, "n": 43824},
+  "params": {"radius_km": 20, "spacing_m": 250, "heights_m": [5, 15, 30, 50], "link_rule": "los",
+             "bands_ghz": {"S": 2.2, "Ka": 26.0}, "los_step_m": 20, "n_steps": 1500, "max_km": 300,
+             "earth_el_cap_deg": 45, "slope_box_m": 250, "max_slope_deg": 15, "n_towers": 3, "engine_version": 1},
+  "dem_sources": [{"name": "PGDA_LOLA_5M", "res_m": 5.0}],
+  "lander": {"earth_frac": 0.41, "longest_no_earth_h": 310},
+  "candidates": {
+    "n": 20109, "e_m": [..], "n_m": [..], "ground_m": [.. or null], "slope_deg": [..],
+    "per_height": {"15": {"link": [0|1], "tower_earth_pm": [0..1000], "lander_link_pm": [0..1000],
+                          "fresnel_S_pc": [..], "fresnel_Ka_pc": [..]}}
+  },
+  "best": [{"idx": 812, "height_m": 15, "e_m": -1250, "n_m": 3500, "lat": .., "lon": .., "dist_m": 3716.5,
+            "ground_m": .., "slope_deg": 4.2, "link_to_lander": true, "min_clear_m": 6.1,
+            "fresnel": {"S": 0.31, "Ka": 1.12}, "tower_earth_frac": 0.72, "link_frac": 0.74,
+            "sun_frac": 0.81, "longest_dark_h": 120}],
+  "networks": [{"height_m": 15, "towers": [{..same as best.., "parent": "LANDER" | 0 | 1, "gain_pp": 33.1}],
+                "link_frac_by_n": [0.41, 0.74, 0.80, 0.82], "longest_gap_h": 52,
+                "timeline": {"codes": {"0": "none", "1": "direct", "2": "via_tower"},
+                             "segments": [[start_hour_index, length_h, code], ..]}}],
+  "link_budget": {"estimate": true, "assumptions": {..}, "range_km": {"max": .., "mean": ..},
+                  "results": [{"station": "DSN_34m" | "KDSA_35m", "band": "S" | "Ka", "range": "max" | "mean",
+                               "cn0_dbhz": .., "max_rate_bps": .., "band_support": "assumed" | "unverified ..", ..}]},
+  "inputs_mock": {"ephem": false, "site_coords": false}, "mock": false,
+  "concept": "BEACON (NASA GRC, NTRS 20240014584): 15 m deployed boom, users up to ~10 km"
+}
+```
+- Candidate `i` sits at local offset (`e_m[i]` east, `n_m[i]` north) from the lander, measured along the surface (great circle with azimuth atan2(e, n), distance hypot(e, n)); the lander itself is the candidate with e = n = 0.
+- Integer encodings keep the file small: `*_pm` = per mille (0…1000); `fresnel_<band>_pc` = min clearance / first Fresnel radius × 100 over the interior of the path, clipped to −999…999 (999 = no interior sample). Clearance ≥ 60 (i.e. 0.6) is the usual "Fresnel clear" rule.
+- `link` = 1 when the lander antenna (2 m) and the tower top are linked under `params.link_rule` (`los` = geometric line of sight with curvature; `fresnel60_<band>` = also ≥ 0.6 F1).
+- `tower_earth_pm` = Earth centre above the tower-top horizon mask (horizon-engine geometry, observer height = tower height). `lander_link_pm` = direct OR (link AND tower sees Earth).
+- `best[j]` = best buildable candidate (slope ≤ `max_slope_deg`) for height `heights_m[j]`; `sun_frac` = sunlit (≥ 0.5 disk) fraction at the tower top.
+- `networks[j]`: greedy 1…`n_towers` towers at that height; `parent` = what the tower hangs on (`"LANDER"` or the index of an earlier tower in `towers`). `link_frac_by_n[0]` = direct only. Timeline segments cover the whole window in order; when direct works the code is 1 even if a tower also works.
+- `link_budget` is a rough estimate with explicit assumptions (not a specification); the UI must label it "estimate".
+
+## 13. `web/data/korea/*.json` — Korea links (differentiator B) — **v1.2 proposal** (2026-11-14, Sua; new section only, renumbered from 9 at merge; sections 0–12 unchanged)
+Written by `python pipeline/korea_links.py`; tests `python -m pytest pipeline/test_korea_links.py -q`.
+
+### 13.1 `stations.json` — Moon ≥ 10° above each ground station, hourly
+```json
+{"start": "2026-01-01T00:00:00Z", "step_h": 1, "n": 43824, "min_el_deg": 10,
+ "bit_order": "LSB-first: hour k is bit (k % 8) of byte k // 8 of base64-decoded bits_b64",
+ "stations": [{"id": "KDSA", "name": "...", "name_ko": "...", "antenna": "KDSA01 (DSN code 32)", "country": "KR",
+               "lat": 37.20723347, "lon": 127.62181206, "height_m": 145.359, "ellipsoid": "...",
+               "source": "...", "source_url": "...", "terms": "...", "frac_visible": 0.33, "bits_b64": "..."}],
+ "summary": {"frac_any_dsn": 0.0, "frac_any_dsn_or_kdsa": 0.0, "frac_kdsa_only": 0.0, "frac_kdsa_and_no_dsn_of_kdsa_hours": 0.0},
+ "mock": false}
+```
+- Station IDs: `KDSA`, `DSN_GOLDSTONE` (DSS-14), `DSN_MADRID` (DSS-63), `DSN_CANBERRA` (DSS-43). Station `lon` is Earth longitude, −180…180 east.
+- Bit = apparent Moon **centre** ≥ 10° above the ellipsoidal horizon at the hour mark (no refraction, no local terrain). Decode in JS: `bytes[k >> 3] >> (k & 7) & 1`.
+
+### 13.2 `windows_<station_id_lowercase>.json` — exact rise/set (1 s) at 10°
+`{"station", "min_el_deg": 10, "time": "UTC", "columns": ["rise_utc","set_utc","max_el_deg"], "windows": [["2026-01-01T03:12:09Z","2026-01-01T12:40:51Z",55.1], ...]}`
+
+### 13.3 `kdsa_daily_kst.json` — "when can Korea talk to the Moon tonight"
+`{"station": "KDSA", "tz": "KST (UTC+9)", "columns": ["from_kst","to_kst","max_el_deg_of_whole_window"], "days": {"2026-11-14": [["18:05","24:00",62.3]], ...}}`
+- A window crossing midnight is split per KST date (`"24:00"` / `"00:00"`). Helper: `web/js/korea.js` → `kdsaTonight(dateKST)`.
+
+### 13.4 `danuri.json` — Danuri (KPLO) passes over catalog sites
+```json
+{"frame": "MOON_ME_DE421", "window": ["2026-01-01T00:00:00Z", "2027-06-03T07:55:00Z"], "step_min": 5,
+ "prediction_after": "2026-11-10 ...", "orbit": {"alt_km_min": 0, "alt_km_max": 0},
+ "definitions": {...}, "caveat": "Danuri carries no lander relay payload ... GEOMETRIC upper bound only",
+ "track_sample": {"start": "...", "step_min": 5, "xyz_km": [[x,y,z], ...]},
+ "sites": [{"id": "APOLLO17", "lat": 0, "lon": 0, "h0_m": 0, "mask": "terrain|flat", "site_coords_mock": false,
+            "passes": {"start_i": [12.3417], "dur_s": [612], "max_el_deg": [41.2]},
+            "n_passes": 0, "visible_frac": 0, "visible_frac_flat": 0, "direct_earth_frac": 0,
+            "no_direct_hours": 0, "relay_covered_hours": 0, "relay_upper_bound": 0,
+            "longest_uncovered_gap_h": 0, "median_pass_min": 0}],
+ "mock": false}
+```
+- Only the overlap of Danuri's Horizons span with our window (2026-01-01 → end of Horizons prediction, 2027-06-03). After 2026-11-10 the trajectory is a **prediction**.
+- `start_i` = hour index (fractional), `dur_s` = seconds. Pass = Danuri centre above the site mask (terrain mask if `horizon/<ID>.json` exists, else flat 0°).
+- `relay_upper_bound` = share of the site's no-direct-Earth time when Danuri is above the site mask **and** sees Earth's centre past the lunar sphere. Geometry only.
+- Sites = `sites.json` + Korea sites from `korea.json` (`sites_of_korean_interest`).
+
+### 13.5 `korea.json` — sites of Korean interest + ShadowCam links
+`{"sites_of_korean_interest": [<sites.json-style objects + "korea_link">], "shadowcam": {"terms": "...", "products": [{"target", "product_id", "label_url", "data_url", "browse_url", "size_bytes", "center_lat", "center_lon", "corners", "projection", ...}]}, "pending_questions": [...]}`
+- ShadowCam: **links and metadata only, no image files** in the repo until the Seoul ops/SME answer on redistribution.

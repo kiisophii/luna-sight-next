@@ -1,4 +1,4 @@
-# Lunar Landing Site Navigator — Team Ginkgo Orbit
+# Luna Sight — Lunar Landing Site Navigator (Team Ginkgo Orbit)
 
 NASA Space Apps Challenge 2026 · Seoul · Challenge: *Lunar Landing Site Navigator*
 

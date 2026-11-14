@@ -1,4 +1,4 @@
-# Validation — Ginkgo Orbit (Lunar Landing Site Navigator)
+# Validation — Luna Sight — Lunar Landing Site Navigator (Team Ginkgo Orbit)
 
 How we know the numbers in the app are right, and where they stop being right.
 Status: 2026-11-14 22:10 KST, main version 23 (`19867c3`); updated at merge: PRs #41, #45, #46 and #47 are merged on main, and L6 / L7 now quote their numbers. The summary and the limits below only quote numbers from the files
@@ -83,9 +83,9 @@ Every check the team has run, in one place. Numbers are copied from the report f
 
 *Wording decided by Dongju Kim (team lead) on 2026-11-14 15:35 KST: "key numbers" instead of "every number", add the KDSA-only coverage figure, add the pending KDSA permission to the limits.*
 
-**Validation.** We checked the key numbers in the app against independent sources. Sun and Earth
-directions agree with NASA JPL Horizons to within 0.0005° in over 37,000 comparisons (2020–2038). Brute-force recomputation of the terrain horizons from NASA LOLA elevation models agrees
-to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight fractions at 240 random points differ by 1.7 percentage points on average (r = 0.985) and Earth visibility by
-1.2 points (r = 0.990); the largest errors lie on steep crater walls, where PGDA itself varies strongly. App metrics are identical in JavaScript and an independent Python port. Moon visibility from Yeoju KDSA and NASA's three DSN complexes matches Horizons to
+**Validation.** We checked the app's key numbers against independent sources. Sun and Earth
+directions agree with NASA JPL Horizons to within 0.0005° in over 37,000 comparisons (2020–2038). Brute-force recomputed terrain horizons from NASA LOLA elevation models agree
+to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight at 240 random points differs by 1.7 percentage points on average (r = 0.985) and Earth visibility (PGDA's any-part rule) by
+1.2 points; the largest errors lie on steep crater walls, where PGDA itself varies strongly. App metrics match an independent Python port exactly. Moon visibility from Yeoju KDSA and NASA's three DSN complexes matches Horizons to
 0.0012°; Yeoju adds direct-link hours that no DSN complex covers (0.3–0.4 % of Earth-visible time). Limits: geometry only (no link budget) and coarser terrain away from the poles. KDSA coordinates come from a publicly
-released NASA/JPL NAIF SPICE file, used with citation (no separate permission was requested).
+released NASA/JPL NAIF SPICE file, cited; no separate permission was requested.

@@ -1,6 +1,6 @@
 # Resources and acknowledgements — Team Ginkgo Orbit
 
-NASA Space Apps Challenge 2026, Lunar Landing Site Navigator. Prepared 14 November 2026 (KST).
+NASA Space Apps Challenge 2026, Luna Sight — Lunar Landing Site Navigator. Prepared 14 November 2026 (KST).
 
 Current web-asset/license status is in the dated **Third-party assets and web datasets** section below. Earlier inventory snapshots and superseded REVIEW flags remain explicitly historical.
 

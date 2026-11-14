@@ -280,8 +280,10 @@ async function route() {
 }
 window.addEventListener('hashchange', route);
 route();
-window.LLSN.openAdd = openDrawer;
-window.LLSN.goTo = goTo;
+// core.js replaces window.LLSN when it loads (after this module), so publish the helpers again once data is ready
+const publish = () => { window.LLSN.openAdd = openDrawer; window.LLSN.goTo = goTo; };
+publish();
+window.addEventListener('llsn:ready', publish);
 
 // ------------------------------------------------------------ version in the footer
 fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('#ls-ver').textContent = `v${j.v}`; }).catch(() => {});

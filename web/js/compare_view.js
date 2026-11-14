@@ -15,7 +15,7 @@ addStrings({
   cmpEmptyTray: 'No pinned sites yet. Press a pin in ② Sites on the left to compare them here side by side.',
   cmpCaption: 'Whole Moon: LROC colour (NASA SVS CGI Moon Kit) on LOLA terrain, lit by the real Sun at the selected time. Blue line = where the Earth sets (moves with libration).',
   r_item: 'Item', r_sun: 'Sunlight (period)', r_earth: 'Direct Earth link', r_both: 'Sun + Earth together', r_dark: 'Longest continuous shadow',
-  r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA link', r_gs: 'Any ground station',
+  r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA link', r_gs: 'NASA DSN (any of 3):',
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
   noChange: 'no change in data', why: 'Why this site ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
@@ -35,7 +35,7 @@ addStrings({
   cmpEmptyTray: '아직 고정한 후보지가 없습니다. 왼쪽 ② 후보지의 핀을 누르면 여기서 나란히 비교합니다.',
   cmpCaption: '달 전체: LROC 컬러(NASA SVS CGI Moon Kit)에 LOLA 지형, 선택한 시각의 실제 태양. 파란 선 = 지구가 지는 경계(칭동으로 출렁임).',
   r_item: '항목', r_sun: '햇빛 (운용 기간)', r_earth: '지구 직접 교신', r_both: '해+지구 동시', r_dark: '최장 연속 그늘',
-  r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 교신', r_gs: '어느 지상국이든',
+  r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 교신', r_gs: 'NASA DSN (3곳 중 하나):',
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '교신 · {x} 남음', nowNoEarth: '교신 없음 · 뜨기까지 {x}',
   noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
@@ -117,7 +117,7 @@ function cell(row, s, w, async) {
       const g = async.gs.get(s.id);
       if (g === undefined) return { html: '<span class="na">…</span>' };
       if (g.pending || g.error) return { html: `<span class="na">—</span>`, cls: 'na-cell' };
-      return { v: g.kdsa, html: `<span class="val num">${g.kdsa}<small> h</small></span><span class="sub">${t('r_gs')} ${g.earth ? Math.round(g.dsn) : 0} h (DSN)</span>` };
+      return { v: g.kdsa, html: `<span class="val num">${g.kdsa}<small> h</small></span><span class="sub">${t('r_gs')} ${g.dsn} h</span>` };
     }
     case 'now': return { html: `<span class="now-span" data-id="${s.id}"></span>` };
   }

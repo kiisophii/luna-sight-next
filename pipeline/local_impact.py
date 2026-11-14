@@ -158,10 +158,10 @@ def polar_vs_equatorial(records):
         rows.append([label,len(rs),f"{np.median(iqr_sun):.2f}",f"{np.median(rng_both):.2f}",f"{np.median(adj_sun):.2f}",f"{np.median(adj_both):.2f}",f"{max(adj_both):.2f} ({rs[int(np.argmax(adj_both))]['id']})"])
     out=['## South pole vs the rest (card 20)',
          'Medians over the sites in each group, within the 10 km circle. Adjacent = two grid nodes 1 km apart.',
-         table(['Group','Sites','Sunlight IQR pp','Both: max−min pp','Largest 1 km sunlight jump pp (median)','Largest 1 km both jump pp (median)','Largest 1 km both jump pp (max, site)'],rows)]
+         table(['Group','Sites','Sunlight IQR pp','Both: max−min pp','Largest neighbouring-node (1 km) sunlight difference pp, median over sites','Same for both, median over sites','Same for both, max (site)'],rows)]
     if 'south_polar' in med and 'low_mid_latitude' in med:
         p,e=med['south_polar'],med['low_mid_latitude']
-        out.append(f"**From the numbers:** moving the landing point by just 1 km changes simultaneous Sun + Earth visibility by up to {p['adj_both']:.1f} percentage points at a typical south-polar site (median of {p['n']} sites; largest {p['max_adj_both']:.1f} pp at {p['max_site']}), but only {e['adj_both']:.1f} pp at a typical low/mid-latitude site (median of {e['n']} sites). Within 10 km the sunlight spread (IQR) is {p['iqr_sun']:.1f} pp near the pole versus {e['iqr_sun']:.1f} pp elsewhere: at the poles the exact spot decides the result, away from them the date does.")
+        out.append(f"**From the numbers:** within each ±10 km grid, the largest difference in simultaneous Sun + Earth visibility between two neighbouring nodes 1 km apart is {p['adj_both']:.1f} percentage points at the median south-polar site ({p['n']} sites; largest {p['max_adj_both']:.1f} pp at {p['max_site']}) and {e['adj_both']:.1f} pp at the median low/mid-latitude site ({e['n']} sites). These are the most extreme neighbouring pairs, not the typical effect of a 1 km move. Within 10 km the sunlight spread (IQR) is {p['iqr_sun']:.1f} pp near the pole versus {e['iqr_sun']:.1f} pp elsewhere: at the poles the exact spot decides the result, away from them the date does.")
     return out
 
 

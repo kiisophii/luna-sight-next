@@ -60,8 +60,10 @@ def main(argv=None):
         ground = float(terrain(np.array([point['lat']]), np.array([point['lon']]))[0])
         if not np.isfinite(ground):
             raise ValueError(f'{site}/{index}: missing ground terrain')
+        # same near-field start as production: 5 m for south-polar sites (card 18), 200 m elsewhere (card 9 settings)
+        start_m = 5. if rec['center']['lat'] <= -75 else 200.
         mask = trace_mask(point['lat'], point['lon'], ground, 2., terrain,
-                          np.arange(720)*.5, np.geomspace(5., 300000., 8001))
+                          np.arange(720)*.5, np.geomspace(start_m, 300000., 8001))
         metrics = V18.evaluate_metrics(point['lat'], point['lon'], ground, mask, ephem)
         comp = V18.compare_metrics(metrics, point)
         points.append(dict(id=site, index=index, e_m=point['e_m'], n_m=point['n_m'], lat=point['lat'], lon=point['lon'],

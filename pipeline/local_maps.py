@@ -22,6 +22,13 @@ IDS = ['SHACKLETON_RIM', 'ARTEMIS_HAWORTH', 'ARTEMIS_MALAPERT',
        'CONNECTING_RIDGE', 'PEAK_NEAR_SHACKLETON', 'DE_GERLACHE_RIM1']
 GATES = {5: 3., 10: 25., 20: 25., 60: 60., 80: 60., 240: 200.}
 PARAMS = dict(min_km=.005, max_km=300., n_steps=8000, obs_height_m=2.)
+# Card 20 review: non-polar sites (lat > -75) use the card 9 horizon settings, so the grid centre equals
+# web/data/horizon/<ID>.json and web/data/metrics/<ID>.json exactly (near field < 200 m not marched).
+PARAMS_CARD9 = dict(min_km=.2, max_km=300., n_steps=4000, obs_height_m=2.)
+
+
+def params_for(site):
+    return PARAMS if site['lat'] <= -75.0 else PARAMS_CARD9
 METRICS = ['sun_frac', 'earth_frac', 'both_frac', 'longest_dark_h']
 POLAR_LAT = -75.0          # card 20: PGDA polar chain for lat <= -75
 SLDEM_LAT = 60.0           # SLDEM2015 covers |lat| < 60
@@ -191,7 +198,7 @@ def validate_map(record):
     expected_grid=dict(rows=21,cols=21,spacing_m=1000,origin_e_m=-10000,origin_n_m=-10000)
     if any(record['grid'].get(k)!=v for k,v in expected_grid.items()):
         raise ValueError('Invalid grid geometry')
-    if record['frame']!='MOON_ME_DE421' or record['radius_m']!=hz.R_M or record['params']!=PARAMS:
+    if record['frame']!='MOON_ME_DE421' or record['radius_m']!=hz.R_M or record['params']!=params_for(record['center']):
         raise ValueError('Invalid frame or horizon parameters')
     for p,expected in zip(points,grid_points(record['center'])):
         if any(p[k]!=expected[k] for k in ['index','e_m','n_m']):
@@ -222,7 +229,7 @@ def compute_point(point):
     chain, core, key, site, work = _context
     begin = time.monotonic()
     local_site = dict(id=f"{site['id']}_LOCAL_{point['index']:03d}",lat=point['lat'],lon=point['lon'],mock=False)
-    result = hz.compute_horizon(point['lat'], point['lon'], chain, **PARAMS)
+    result = hz.compute_horizon(point['lat'], point['lon'], chain, **params_for(site))
     if result['n_missing']:
         raise ValueError(f"{local_site['id']}: missing ray samples")
     horizon = hz.horizon_record(local_site, result)
@@ -277,7 +284,7 @@ def run_site(site, raw, work, out, jobs, limit=None):
         raise ValueError('Global far-field DEM required')
     inputs = {p:sha_file(ROOT/p) for p in ['web/js/core.js','web/data/ephem.bin','web/data/ephem.json',
         'pipeline/horizon.py','pipeline/local_maps.py','pipeline/local_metrics.mjs','pipeline/cache_metrics.mjs']}
-    provenance = dict(terrain_sources=terrain,files_sha256=inputs,center=site,params=PARAMS)
+    provenance = dict(terrain_sources=terrain,files_sha256=inputs,center=site,params=params_for(site))
     key = fingerprint(provenance)
     provenance['input_key'] = key
     point_dir = work/site['id']; point_dir.mkdir(parents=True,exist_ok=True)
@@ -306,7 +313,7 @@ def run_site(site, raw, work, out, jobs, limit=None):
     obj=dict(id=site['id'],center={k:site[k] for k in ['lat','lon']},
         grid=dict(rows=21,cols=21,spacing_m=1000,origin_e_m=-10000,origin_n_m=-10000,
                   order='row-major, south to north and west to east; nodes, not cell averages'),
-        window=dict(start='2026-01-01T00:00:00Z',step_h=1,n=43824),params=PARAMS,
+        window=dict(start='2026-01-01T00:00:00Z',step_h=1,n=43824),params=params_for(site),
         frame='MOON_ME_DE421',radius_m=hz.R_M,provenance=provenance,points=public,complete=True,mock=False)
     validate_map(obj)
     hz.write_json_atomic(out/(site['id']+'.json'),obj)

@@ -233,8 +233,8 @@
       ],
       "comparison": {
         "sun_frac": {
-          "independent": 0.4803760496531581,
-          "reported": 0.4803760496531581,
+          "independent": 0.4929718875502008,
+          "reported": 0.4929718875502008,
           "difference_pp": 0.0,
           "absolute_difference_pp": 0.0,
           "passed": true
@@ -254,8 +254,8 @@
           "passed": true
         },
         "longest_dark_h": {
-          "independent": 376,
-          "reported": 376,
+          "independent": 367,
+          "reported": 367,
           "difference_h": 0,
           "absolute_difference_h": 0,
           "criterion": "reported only; no tolerance specified"
@@ -292,8 +292,8 @@
       ],
       "comparison": {
         "sun_frac": {
-          "independent": 0.48300018254837535,
-          "reported": 0.48300018254837535,
+          "independent": 0.49151150054764514,
+          "reported": 0.49151150054764514,
           "difference_pp": 0.0,
           "absolute_difference_pp": 0.0,
           "passed": true
@@ -313,8 +313,8 @@
           "passed": true
         },
         "longest_dark_h": {
-          "independent": 374,
-          "reported": 374,
+          "independent": 368,
+          "reported": 368,
           "difference_h": 0,
           "absolute_difference_h": 0,
           "criterion": "reported only; no tolerance specified"
@@ -327,8 +327,8 @@
   "passed": true,
   "output_sha256": {
     "ARTEMIS_NOBILE_RIM1": "7b739deb53047923cc7ffd31da63d4f6ccebc8ce4343f7ab53ad307dcf05264b",
-    "CHANGE4": "836ea8af0eeeb111621211b94b0e8fa61d0fa3ffbcd69d4e3328a7aa9f4ba122",
-    "APOLLO11": "567d879209188a109f4727d302c78ffe984eb305490ed4f00f3a1e362fa24bfc"
+    "CHANGE4": "2ac57cd5f8b60ccc10ecf758dce05cdc9f2e66512927697f5f71f5d5c1590a3b",
+    "APOLLO11": "d2533b4702d16f73dd2a5c5c1617378bb241181af15d286c3ebd003cac9744b4"
   },
-  "generated_utc": "2026-11-14T10:04:04.123693+00:00"
+  "generated_utc": "2026-11-14T11:56:12.980243+00:00"
 }

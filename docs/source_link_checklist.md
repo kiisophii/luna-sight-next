@@ -78,9 +78,9 @@ Wiley remains UNRESOLVED due to bot blocking, not BROKEN. The Gläser result inc
 
 ## Human checks
 
-Only these two targeted human checks remain requested. An AI PASS above does not mean a human opened it. Enter date/result only after viewing the actual table.
+The user opened and supplied both original tables on 2026-11-14, then approved this record. The AI performed the numerical comparison. This records human source access plus AI comparison; it does not claim independent human recalculation, exact datum verification or a change to the original automated 65-link audit.
 
 | Check | Open and inspect | Human opened? | Human result |
 |---|---|---|---|
-| H1 | [Wiley original](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434), Appendix Table A1: compare PCB01, HW01, MMA01, MMP01, MMO01, NR101, NR201, dGR201 and SP01 with sites.json. AI access was blocked; no human result is assumed. | TO CHECK | TO CHECK |
-| H2 | [Gläser 2017 PDF](https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf), printed p.12 Table 2: visually confirm the FIRST Shackleton S row is -89.6866 / 197.19 E (= -162.81 signed E). Text extraction can misalign row labels. | TO CHECK | TO CHECK |
+| H1 | [Wiley original](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434), Appendix Table A1: compare PCB01, HW01, MMA01, MMP01, MMO01, NR101, NR201, dGR201 and SP01 with sites.json. The original AI request was blocked; the user subsequently opened and supplied the original table. | User opened the source and pasted Table A1, 2026-11-14 | AI compared PCB01, HW01, MMA01, MMP01, MMO01, NR101, NR201, dGR201 and SP01: all 9 coordinate pairs exactly match sites.json. User approved recording this evidence. |
+| H2 | [Gläser 2017 PDF](https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf), printed p.12 Table 2: visually confirm the FIRST Shackleton S row is -89.6866 / 197.19 E (= -162.81 signed E). Text extraction can misalign row labels. | User opened the PDF and supplied the Table 2 image, 2026-11-14 | Supplied image confirms the first Shackleton S row is -89.6866 / 197.19 E (= -162.81 signed E). AI compared it with sites.json; user approved recording this evidence. |

@@ -80,6 +80,17 @@ export function fmtHours(h) {
 }
 export const fmtDeg = x => `${x >= 0 ? '+' : '−'}${Math.abs(x).toFixed(1)}°`;
 
+/** Whole-number percentages of parts that add up to exactly 100 (largest-remainder / Hamilton rounding).
+ *  Rounding each share on its own can give 101 % (issue #44). Returns [] for an empty or zero total. */
+export function roundShares(parts) {
+  const tot = parts.reduce((a, b) => a + b, 0);
+  if (!(tot > 0)) return parts.map(() => 0);
+  const raw = parts.map(p => (100 * p) / tot), out = raw.map(Math.floor);
+  let left = 100 - out.reduce((a, b) => a + b, 0);
+  raw.map((r, k) => [r - Math.floor(r), k]).sort((a, b) => b[0] - a[0] || a[1] - b[1]).forEach(([, k]) => { if (left > 0) { out[k]++; left--; } });
+  return out;
+}
+
 /** Read a CSS custom property (theme.css may override base.css). */
 export const cssVar = (name, el = document.documentElement) => getComputedStyle(el).getPropertyValue(name).trim();
 

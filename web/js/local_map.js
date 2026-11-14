@@ -1,11 +1,14 @@
 // local_map.js — "How much does the exact spot matter?" (card 18 data, Jiyong).
-// Shows web/data/local/<ID>.json: 21 x 21 sampled locations, 1 km apart, around six south-polar sites.
+// Shows web/data/local/<ID>.json: 21 x 21 sampled locations, 1 km apart, around every catalogue site (33, contract section 15).
 // Each node = its own LOLA horizon + 2026-2030 hourly metrics (contract section 15). Colour = the chosen metric.
 // Hover/arrow keys = readout; click/Enter = put that point into "Your own landing point" (custom_site.js).
 import { t } from './i18n.js';
 import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, LLSN } from './ui_shared.js';
 
-const IDS = ['ARTEMIS_MALAPERT', 'ARTEMIS_HAWORTH', 'SHACKLETON_RIM', 'PEAK_NEAR_SHACKLETON', 'CONNECTING_RIDGE', 'DE_GERLACHE_RIM1'];
+// Every catalogue site has a local grid (card 20, PR #26): build the list from sites.json, not a hard-coded subset (issue #43).
+// Browser-computed custom points have no grid file.
+const catalogueIds = () => (LLSN().state?.sites || []).filter(s => s.group !== 'custom' && !s.user).map(s => s.id);
+let IDS = [];
 
 addStrings({
   lmTitle: 'How much does the exact spot matter?', lmAria: 'Local map of sunlight and Earth visibility around a south-polar site',
@@ -17,7 +20,7 @@ addStrings({
   lmClick: 'Click a square (or arrows + Enter) to send that location to "Your own landing point".',
   lmNote: 'Sampled points, not area averages · observer 2 m · Earth centre above the horizon · geometry only (no power or radio model). Data: card 18, web/data/local/.',
   lmLoading: 'Loading local map…', lmFail: 'Local map could not be loaded.',
-  lmNoGrid: 'No local map for the focused site — showing {s}. Local maps exist for six south-polar areas.',
+  lmNoGrid: 'No local map for the focused site (your own point) — showing {s}. Local maps exist for all catalogue sites.',
 }, {
   lmTitle: '정확한 위치가 얼마나 중요할까?', lmAria: '남극 착륙지 주변의 햇빛·지구 가시성 지도',
   lmWhy: '극지 능선에서는 수백 m만 옮겨도 결과가 완전히 달라질 수 있다. 칸 하나가 1 km 간격의 실제 지점이고, 지점마다 LOLA 지형 지평선을 따로 계산했다 (2026–2030, 1시간 간격).',
@@ -28,7 +31,7 @@ addStrings({
   lmClick: '칸을 누르면(또는 화살표 + Enter) 그 위치가 "내 착륙 지점"에 들어간다.',
   lmNote: '면적 평균이 아니라 표본 지점 · 관측자 2 m · 지구 중심이 지평선 위 · 기하만 (전력·전파 모델 없음). 자료: 카드 18, web/data/local/.',
   lmLoading: '국지 지도 불러오는 중…', lmFail: '국지 지도를 불러오지 못했다.',
-  lmNoGrid: '선택한 착륙지에는 국지 지도가 없어서 {s}을(를) 보여 준다. 국지 지도는 남극 지역 여섯 곳에만 있다.',
+  lmNoGrid: '선택한 곳(직접 넣은 지점)에는 국지 지도가 없어서 {s}을(를) 보여 준다. 국지 지도는 목록의 모든 착륙지에 있다.',
 });
 
 const METRICS = [
@@ -117,6 +120,7 @@ function init() {
 
 function fillSites() {
   const st = LLSN().state;
+  IDS = catalogueIds();
   siteSel.innerHTML = IDS.map(id => {
     const s = st.sites.find(x => x.id === id);
     return `<option value="${id}">${s ? siteName(s) : id}</option>`;

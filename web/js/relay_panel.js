@@ -6,7 +6,7 @@
 // Listens: llsn:window, llsn:focus, llsn:time, llsn:lang. Colours: CSS variables only.
 import * as core from './core.js';
 import { t } from './i18n.js';
-import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, LLSN } from './ui_shared.js';
+import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, roundShares, LLSN } from './ui_shared.js';
 import { relayIndex, relayFor, segmentHours, longestNone } from './diff_data.js';
 
 addStrings({
@@ -148,12 +148,14 @@ function render() {
   const gap = longestNone(net.timeline.segments, w.i0, w.i1);
   const nT = net.towers.length;
   const always = rel.lander.earth_frac >= 0.9999;
+  // direct + via + none = 100 % exactly (largest-remainder rounding, issue #44); total = direct + via.
+  const [pD, pV, pN] = roundShares([seg.direct, seg.via, seg.none]);
   body.innerHTML = `
     <div class="rl-kpis">
-      <div class="kpi direct"><span class="label">${t('rlDirect')}</span><span class="value">${pct(seg.direct / T)}</span><span class="sub">${fmtHours(seg.direct)}</span></div>
-      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pct(seg.via / T)}</span><span class="sub">${fmtHours(seg.via)}</span></div>
-      <div class="kpi total"><span class="label">${t('rlTotal')}</span><span class="value">${pct((seg.direct + seg.via) / T)}</span><span class="sub">${fmtHours(seg.direct + seg.via)}</span></div>
-      <div class="kpi none"><span class="label">${t('rlNone')}</span><span class="value">${pct(seg.none / T)}</span><span class="sub">${t('rlLongestNone')}: ${fmtHours(gap)}</span></div>
+      <div class="kpi direct"><span class="label">${t('rlDirect')}</span><span class="value">${pD}%</span><span class="sub">${fmtHours(seg.direct)}</span></div>
+      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pV}%</span><span class="sub">${fmtHours(seg.via)}</span></div>
+      <div class="kpi total"><span class="label">${t('rlTotal')}</span><span class="value">${pD + pV}%</span><span class="sub">${fmtHours(seg.direct + seg.via)}</span></div>
+      <div class="kpi none"><span class="label">${t('rlNone')}</span><span class="value">${pN}%</span><span class="sub">${t('rlLongestNone')}: ${fmtHours(gap)}</span></div>
     </div>
     <h3>${t('rlStrip')}</h3>
     <canvas class="rl-strip" height="34" role="img" aria-label="${esc(t('rlStrip'))}"></canvas>

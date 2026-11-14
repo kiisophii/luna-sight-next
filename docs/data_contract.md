@@ -464,3 +464,24 @@ from the generic section 10:
 Validation: `docs/VALIDATION.md` row 22 (PGDA, 400 points, cell-containing-point reading) and `docs/gpu_cpu_300_check.md` (CPU vs CUDA cells).
 As of version 26 the web app reads neither this folder nor the 3.8 km `web/data/gmaps/` (no `web/js` module requests them).
 
+## 22. Proposed — `web/data/local250/<ID>.json` (Jiyong, 2026-11-15)
+
+Optional finer south-polar neighbourhood product; section 15 `local/` remains unchanged.
+Written by `pipeline/local250.py`. Same fields and metric definitions as section 15, with:
+
+- Only the 16 catalogue sites at latitude <= -75 degrees.
+- `grid:{rows:41,cols:41,spacing_m:250,origin_e_m:-5000,origin_n_m:-5000,order}`;
+  1,681 **nodes**, south-to-north row-major; index=row*41+column. Centre index 840.
+- Offsets -5,000 through +5,000 m inclusive; same great-circle conversion as card18.
+  Corner distance is about 7.071 km; this is a square, not a 5 km circular footprint.
+- `params`, frame, ephemeris window, source gates and `points` fields are unchanged:
+  720 azimuths, 5 m near start, 8,001 geometric range samples to 300 km, 2 m observer,
+  curvature, and actual `core.js` hourly metrics for 2026–2030. Grid spacing does not
+  mean the underlying DEM resolution is 250 m.
+- `provenance` additionally includes `grid` and hashes of the runner/CUDA adapter.
+  Source windows are expanded storage envelopes; radial gates remain observer-centred.
+- GPU is an optional FP64 horizon implementation validated against CPU per site;
+  masks retain four-decimal-degree storage and metrics use unchanged `core.js`.
+- Only complete site files are exported. Centre metrics must exactly equal the
+  catalogue metrics file. Node checkpoints and progress/ETA remain git-ignored.
+

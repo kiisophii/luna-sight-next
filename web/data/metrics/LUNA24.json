@@ -1,0 +1,9 @@
+{
+  "id": "LUNA24",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.4954819277108434,
+  "earth_frac": 1,
+  "both_frac": 0.4954819277108434,
+  "longest_dark_h": 359,
+  "slope_deg": null
+}

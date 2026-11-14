@@ -1,0 +1,9 @@
+{
+  "id": "BLUE_GHOST1",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.4961436655713764,
+  "earth_frac": 1,
+  "both_frac": 0.4961436655713764,
+  "longest_dark_h": 359,
+  "slope_deg": null
+}

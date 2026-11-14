@@ -4,8 +4,24 @@
   "n_hours": 43824,
   "n_fixtures": 3,
   "real_horizon_sites_checked": [
+    "APOLLO11",
+    "APOLLO12",
+    "APOLLO14",
+    "APOLLO15",
+    "APOLLO16",
+    "APOLLO17",
+    "LUNA16",
+    "LUNA20",
+    "LUNA24",
+    "CHANGE3",
+    "CHANGE4",
+    "CHANGE5",
+    "CHANGE6",
+    "CHANDRAYAAN3",
+    "SLIM",
     "IM1",
     "IM2",
+    "BLUE_GHOST1",
     "ARTEMIS_CABEUS_B",
     "ARTEMIS_HAWORTH",
     "ARTEMIS_MALAPERT",
@@ -19,7 +35,8 @@
     "CONNECTING_RIDGE",
     "PEAK_NEAR_SHACKLETON",
     "DE_GERLACHE_RIM1",
-    "SHOEMAKER_RIM_A"
+    "SHOEMAKER_RIM_A",
+    "IM3_REINER_GAMMA"
   ],
   "fixture_scope": "Three synthetic terrains solely in a disposable test directory, plus every eligible real horizon currently available; real production ephemeris",
   "exact_metric_matches": true,
@@ -89,6 +106,411 @@
     },
     {
       "site": {
+        "id": "APOLLO11",
+        "name": "Apollo 11",
+        "name_ko": "아폴로 11호",
+        "short": "Apollo 11",
+        "group": "apollo",
+        "lat": 0.67416,
+        "lon": 23.47314,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      },
+      "python": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO12",
+        "name": "Apollo 12",
+        "name_ko": "아폴로 12호",
+        "short": "Apollo 12",
+        "group": "apollo",
+        "lat": -3.0128,
+        "lon": -23.4219,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      },
+      "python": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO14",
+        "name": "Apollo 14",
+        "name_ko": "아폴로 14호",
+        "short": "Apollo 14",
+        "group": "apollo",
+        "lat": -3.64589,
+        "lon": -17.47194,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4907813070463673,
+        "earth_frac": 1,
+        "both_frac": 0.4907813070463673,
+        "longest_dark_h": 362
+      },
+      "python": {
+        "sun_frac": 0.4907813070463673,
+        "earth_frac": 1,
+        "both_frac": 0.4907813070463673,
+        "longest_dark_h": 362
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO15",
+        "name": "Apollo 15",
+        "name_ko": "아폴로 15호",
+        "short": "Apollo 15",
+        "group": "apollo",
+        "lat": 26.13239,
+        "lon": 3.6333,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4720929171230376,
+        "earth_frac": 1,
+        "both_frac": 0.4720929171230376,
+        "longest_dark_h": 377
+      },
+      "python": {
+        "sun_frac": 0.4720929171230376,
+        "earth_frac": 1,
+        "both_frac": 0.4720929171230376,
+        "longest_dark_h": 377
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO16",
+        "name": "Apollo 16",
+        "name_ko": "아폴로 16호",
+        "short": "Apollo 16",
+        "group": "apollo",
+        "lat": -8.9734,
+        "lon": 15.5011,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.49552756480467325,
+        "earth_frac": 1,
+        "both_frac": 0.49552756480467325,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.49552756480467325,
+        "earth_frac": 1,
+        "both_frac": 0.49552756480467325,
+        "longest_dark_h": 359
+      }
+    },
+    {
+      "site": {
+        "id": "APOLLO17",
+        "name": "Apollo 17",
+        "name_ko": "아폴로 17호",
+        "short": "Apollo 17",
+        "group": "apollo",
+        "lat": 20.1911,
+        "lon": 30.7723,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+        "coord_quality": "primary",
+        "note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector)."
+      },
+      "js": {
+        "sun_frac": 0.4774780941949617,
+        "earth_frac": 1,
+        "both_frac": 0.4774780941949617,
+        "longest_dark_h": 371
+      },
+      "python": {
+        "sun_frac": 0.4774780941949617,
+        "earth_frac": 1,
+        "both_frac": 0.4774780941949617,
+        "longest_dark_h": 371
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA16",
+        "name": "Luna 16",
+        "name_ko": "루나 16호",
+        "short": "Luna 16",
+        "group": "luna",
+        "lat": -0.5137,
+        "lon": 56.3638,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.4932685286600949,
+        "earth_frac": 1,
+        "both_frac": 0.4932685286600949,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.4932685286600949,
+        "earth_frac": 1,
+        "both_frac": 0.4932685286600949,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA20",
+        "name": "Luna 20",
+        "name_ko": "루나 20호",
+        "short": "Luna 20",
+        "group": "luna",
+        "lat": 3.7863,
+        "lon": 56.6242,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      },
+      "python": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      }
+    },
+    {
+      "site": {
+        "id": "LUNA24",
+        "name": "Luna 24",
+        "name_ko": "루나 24호",
+        "short": "Luna 24",
+        "group": "luna",
+        "lat": 12.7142,
+        "lon": 62.2129,
+        "elev_m": null,
+        "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+        "coord_quality": "primary",
+        "note": "Historical robotic sample-return landing; NSSDCA/LROC location."
+      },
+      "js": {
+        "sun_frac": 0.4954819277108434,
+        "earth_frac": 1,
+        "both_frac": 0.4954819277108434,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.4954819277108434,
+        "earth_frac": 1,
+        "both_frac": 0.4954819277108434,
+        "longest_dark_h": 359
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE3",
+        "name": "Chang'e 3",
+        "name_ko": "창어 3호",
+        "short": "Chang'e 3",
+        "group": "change",
+        "lat": 44.1214,
+        "lon": -19.5116,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/637",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 340.4884 E converted to -19.5116 E."
+      },
+      "js": {
+        "sun_frac": 0.5008671047827674,
+        "earth_frac": 1,
+        "both_frac": 0.5008671047827674,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.5008671047827674,
+        "earth_frac": 1,
+        "both_frac": 0.5008671047827674,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE4",
+        "name": "Chang'e 4",
+        "name_ko": "창어 4호",
+        "short": "Chang'e 4",
+        "group": "change",
+        "lat": -45.4562,
+        "lon": 177.5885,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1168",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. Refined LROC lander position; source reports 13 m uncertainty at 95% confidence. Not the Chang'e-2-map coordinate used in some papers."
+      },
+      "js": {
+        "sun_frac": 0.4927437020810515,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 367
+      },
+      "python": {
+        "sun_frac": 0.4927437020810515,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 367
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE5",
+        "name": "Chang'e 5",
+        "name_ko": "창어 5호",
+        "short": "Chang'e 5",
+        "group": "change",
+        "lat": 43.0576,
+        "lon": -51.9161,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1172.2020",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 308.0839 E converted to -51.9161 E; reported horizontal accuracy +/-20 m."
+      },
+      "js": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      },
+      "python": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      }
+    },
+    {
+      "site": {
+        "id": "CHANGE6",
+        "name": "Chang'e 6",
+        "name_ko": "창어 6호",
+        "short": "Chang'e 6",
+        "group": "change",
+        "lat": -41.6385,
+        "lon": -153.9852,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1374",
+        "coord_quality": "primary",
+        "note": "Historical robotic landing. LROC lander position; source longitude 206.0148 E converted to -153.9852 E; reported horizontal accuracy +/-30 m."
+      },
+      "js": {
+        "sun_frac": 0.49714768163563344,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 364
+      },
+      "python": {
+        "sun_frac": 0.49714768163563344,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 364
+      }
+    },
+    {
+      "site": {
+        "id": "CHANDRAYAAN3",
+        "name": "Chandrayaan-3",
+        "name_ko": "찬드라얀 3호",
+        "short": "Chandrayaan-3",
+        "group": "chandrayaan",
+        "lat": -69.3741,
+        "lon": 32.32,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1314",
+        "coord_quality": "primary",
+        "note": "Historical landing; post-landing LROC coordinates, not the pre-launch target ellipse."
+      },
+      "js": {
+        "sun_frac": 0.47941767068273095,
+        "earth_frac": 1,
+        "both_frac": 0.47941767068273095,
+        "longest_dark_h": 385
+      },
+      "python": {
+        "sun_frac": 0.47941767068273095,
+        "earth_frac": 1,
+        "both_frac": 0.47941767068273095,
+        "longest_dark_h": 385
+      }
+    },
+    {
+      "site": {
+        "id": "SLIM",
+        "name": "SLIM",
+        "name_ko": "슬림",
+        "short": "SLIM",
+        "group": "slim",
+        "lat": -13.316,
+        "lon": 25.251,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1358",
+        "coord_quality": "primary",
+        "note": "Historical JAXA lander position measured by LROC; not the intended landing point."
+      },
+      "js": {
+        "sun_frac": 0.4765197152245345,
+        "earth_frac": 1,
+        "both_frac": 0.4765197152245345,
+        "longest_dark_h": 372
+      },
+      "python": {
+        "sun_frac": 0.4765197152245345,
+        "earth_frac": 1,
+        "both_frac": 0.4765197152245345,
+        "longest_dark_h": 372
+      }
+    },
+    {
+      "site": {
         "id": "IM1",
         "name": "IM-1 Odysseus",
         "name_ko": "IM-1 오디세우스",
@@ -139,6 +561,33 @@
         "earth_frac": 0.81421139101862,
         "both_frac": 0.3738134355604235,
         "longest_dark_h": 459
+      }
+    },
+    {
+      "site": {
+        "id": "BLUE_GHOST1",
+        "name": "Blue Ghost Mission 1",
+        "name_ko": "블루 고스트 1호",
+        "short": "Blue Ghost 1",
+        "group": "clps",
+        "lat": 18.562,
+        "lon": 61.81,
+        "elev_m": null,
+        "source_url": "https://lroc.im-ldi.com/images/1406",
+        "coord_quality": "primary",
+        "note": "Historical landed location near Mons Latreille; use lander coordinates, not LRO's imaging position."
+      },
+      "js": {
+        "sun_frac": 0.4961436655713764,
+        "earth_frac": 1,
+        "both_frac": 0.4961436655713764,
+        "longest_dark_h": 359
+      },
+      "python": {
+        "sun_frac": 0.4961436655713764,
+        "earth_frac": 1,
+        "both_frac": 0.4961436655713764,
+        "longest_dark_h": 359
       }
     },
     {
@@ -517,6 +966,33 @@
         "earth_frac": 0.43451077035414387,
         "both_frac": 0.11596385542168675,
         "longest_dark_h": 2819
+      }
+    },
+    {
+      "site": {
+        "id": "IM3_REINER_GAMMA",
+        "name": "IM-3 / Lunar Vertex target",
+        "name_ko": "IM-3 라이너 감마 목표점",
+        "short": "IM-3 target",
+        "group": "future",
+        "lat": 7.585,
+        "lon": -58.725,
+        "elev_m": null,
+        "source_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+        "coord_quality": "primary",
+        "note": "Planned science target, not an observed landing or a confirmed touchdown point. KASI associates LUSEM with IM-3/CP-11 at Reiner Gamma; https://pda.kasi.re.kr/lusem.php?lang=en ."
+      },
+      "js": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      },
+      "python": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
       }
     }
   ]

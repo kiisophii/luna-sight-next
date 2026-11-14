@@ -1,0 +1,9 @@
+{
+  "id": "IM3_REINER_GAMMA",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.495276560788609,
+  "earth_frac": 1,
+  "both_frac": 0.495276560788609,
+  "longest_dark_h": 361,
+  "slope_deg": null
+}

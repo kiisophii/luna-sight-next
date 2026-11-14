@@ -1,0 +1,9 @@
+{
+  "id": "CHANGE3",
+  "window": "2026-01-01..2030-12-31",
+  "sun_frac": 0.5008671047827674,
+  "earth_frac": 1,
+  "both_frac": 0.5008671047827674,
+  "longest_dark_h": 360,
+  "slope_deg": null
+}

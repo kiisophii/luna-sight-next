@@ -1,11 +1,15 @@
-"""Validate proposed contract section 15: windows, gaps and input identity.
+"""Validate proposed contract section 18: windows, gaps and input identity.
 
 Called by check_contract.py; no optional scientific packages are required.
 """
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
+from pathlib import Path
 import re
+import shutil
+import subprocess
 
 START = datetime(2026, 1, 1, tzinfo=timezone.utc)
 END = datetime(2031, 1, 1, tzinfo=timezone.utc)
@@ -14,6 +18,28 @@ N = 43824
 
 def digest(file):
     return hashlib.sha256(file.read_bytes()).hexdigest()
+
+
+def stringify_site_hashes(sites_file):
+    """Use Node itself: Python's JSON formatting is not JSON.stringify."""
+    node = os.environ.get('LLSN_NODE') or shutil.which('node')
+    if not node:
+        raise ValueError('Node is required to verify exact JSON.stringify(site) hashes')
+    script = """
+const fs = require('node:fs');
+const crypto = require('node:crypto');
+const sites = JSON.parse(fs.readFileSync(process.argv[1], 'utf8'));
+const hashes = Object.fromEntries(sites.map(site => [site.id,
+  crypto.createHash('sha256').update(JSON.stringify(site), 'utf8').digest('hex')]));
+process.stdout.write(JSON.stringify(hashes));
+"""
+    try:
+        result = subprocess.run([node, '--input-type=commonjs', '-e', script, str(sites_file)],
+                                capture_output=True, text=True, encoding='utf-8',
+                                check=True, timeout=30)
+        return json.loads(result.stdout)
+    except (OSError, subprocess.SubprocessError, ValueError) as error:
+        raise ValueError('Cannot verify JSON.stringify(site) hashes: ' + str(error)) from error
 
 
 def hour(text):
@@ -76,6 +102,12 @@ def check_windows(data, sites, err, warn):
     if not folder.exists():
         return
     files = sorted(p for p in folder.glob('*.json') if p.name != 'index.json')
+    try:
+        site_hashes = stringify_site_hashes(data / 'sites.json')
+        producer_hash = digest(Path(__file__).with_name('build_windows.mjs'))
+    except (OSError, ValueError) as error:
+        err('windows provenance', str(error))
+        return
     for file in files:
         where = f'windows/{file.name}'
         try:
@@ -89,6 +121,10 @@ def check_windows(data, sites, err, warn):
             if (horizon.get('lat'), horizon.get('lon')) != (doc['lat'], doc['lon']):
                 raise ValueError('horizon coordinate mismatch')
             validate_document(doc, sites[doc['id']], horizon)
+            if doc['source']['site_sha256'] != site_hashes[doc['id']]:
+                raise ValueError('input changed: site_sha256 (exact JSON.stringify(site))')
+            if doc['source']['producer_sha256'] != producer_hash:
+                raise ValueError('input changed: producer_sha256 (actual build_windows.mjs bytes)')
             for key, file_path in [('horizon_sha256', hfile), ('ephem_sha256', data / 'ephem.bin'),
                                    ('ephem_meta_sha256', data / 'ephem.json'),
                                    ('core_sha256', data.parent / 'js/core.js')]:

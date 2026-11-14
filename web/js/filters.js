@@ -94,6 +94,7 @@ function apply() {
   for (const s of core.state.sites) {
     const m = w.metrics.get(s.id);
     if (!m) continue;
+    if (m.pending) { if (!active) pass.add(s.id); continue; }
     const ok = DEFS.every(d => d.ge ? m[d.field] * 100 >= v[d.key] - 1e-9 : (v.dark >= maxDark || m[d.field] <= v.dark));
     if (ok) pass.add(s.id);
   }

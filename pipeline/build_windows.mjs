@@ -33,7 +33,7 @@ export async function generate(root = ROOT) {
   const reportFile = path.join(root, 'docs/windows_generation.json');
   let previous = {};
   try { previous = JSON.parse(await fs.readFile(reportFile)); } catch { /* First run. */ }
-  const report = { base_main: '82cd7f59737b6aa6034d767beace9ba9bfe250f0',
+  const report = { base_main: process.env.LLSN_INPUT_COMMIT ?? null,
     generated_utc: new Date().toISOString(), complete_for_available_horizons: false,
     start_utc: START, end_utc: END, n: ephem.n, computed: [], skipped: [],
     interpretation: 'Hourly states held over [hour, hour+1); not sub-hour astronomical rise/set times.' };

@@ -174,6 +174,39 @@ every other site uses a flat 0° mask labelled **"Terrain pending"** (not counte
 - `networks[j]`: greedy 1…`n_towers` towers at that height; `parent` = what the tower hangs on (`"LANDER"` or the index of an earlier tower in `towers`). `link_frac_by_n[0]` = direct only. Timeline segments cover the whole window in order; when direct works the code is 1 even if a tower also works.
 - `link_budget` is a rough estimate with explicit assumptions (not a specification); the UI must label it "estimate".
 
+### 12.1 Optional card-13 additions (2026-11-14, Jiyong)
+Existing fields remain compatible. Engine v2 samples local links at at most 5 m intervals,
+and horizons from 5 m to 300 km at 8,001 logarithmic distances. All Earth elevations are checked
+against terrain (`earth_el_cap_deg` is retained as metadata, 90). DEM gates are measured from
+the original lander even for a shifted tower; global rasters cover the entire tower ray.
+Missing profile/horizon terrain aborts output instead of assuming clear sky.
+
+- `input_identity`: DEM source names, radius gates, file byte sizes and nanosecond modification
+  times, global label hashes, plus a SHA-256 of the actual Sun/Earth arrays and epoch. Used for
+  resume invalidation. DEM file identity is **not** a cryptographic hash of the raster content.
+- `height_curve`: four rows `{height_m, single_link_frac, network_link_frac, single_gain_pp}`;
+  single is the selected `best` tower, network is the final greedy network, gain is percentage
+  points over the direct fraction. Each height may choose a different location.
+- `networks[].towers[].parent_link`: `{min_clear_m, fresnel:{S,Ka}}` for the actual parent hop.
+  Existing `min_clear_m`/`fresnel` remain the path to the lander. Same-position paths have no
+  interior samples: clearance `1000000` and Fresnel `999` are sentinels, not measured margins.
+- `coverage` (Artemis III sites): a 15 x 15 km square centred on the lander. `rows=cols=60`,
+  `spacing_m=250`, `origin_e_m=origin_n_m=-7500`; row-major, rows south to north, columns west
+  to east. Cell centres are origin + (index + 0.5) x spacing. `valid_terrain` has 3,600 binary
+  entries; `area_km2=225`, `valid_area_km2` counts available cell centres.
+  `per_height["5"|"15"|"30"|"50"]` identifies the selected single tower and contains binary
+  `los`, `fresnel60_S`, `fresnel60_Ka` arrays of length 3,600, plus corresponding `*_area_km2`.
+  The receiver antenna is 2 m above its local terrain; range is capped at `max_link_range_km`
+  (10 km in the batch run). Each represented cell contributes 0.0625 km²; areas are grid estimates,
+  not precise terrain surface areas. Fresnel masks require both positive LOS and clearance ≥0.6 F1.
+  Coverage means **local geometric antenna reach** only. It is not Earth-link availability,
+  receiver sunlight, guaranteed throughput, or ground-station coverage. Tower Earth availability
+  and sunlight remain in `best`. `params.coverage_side_km=0` disables the optional map.
+
+The network is a greedy marginal-coverage heuristic, not a global optimum. A bridge that adds
+zero immediate Earth-visible hours is not selected. Slopes are 250 m plane fits, not a survey
+for construction. Frequencies and link-budget assumptions remain the existing configurable estimates.
+
 ## 13. `web/data/korea/*.json` — Korea links (differentiator B) — **v1.2 proposal** (2026-11-14, Sua; new section only, renumbered from 9 at merge; sections 0–12 unchanged)
 Written by `python pipeline/korea_links.py`; tests `python -m pytest pipeline/test_korea_links.py -q`.
 
@@ -230,11 +263,92 @@ Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; 
 A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
 Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.
 
-## 15. Proposed v1.3 — site visibility windows (card 15-B, 2026-11-14) — pending team agreement; sections 0–14 unchanged
+### 14b. Proposed v1.2 — `web/data/hterrain/polar_s/` south-polar levels for user-defined points (2026-11-14, Sua, s4) — NOT yet agreed; new subsection only
+Written by `python pipeline/build_polar_terrain.py`; read by `web/js/hterrain.js` when the point latitude ≤ `lat_edge_deg`.
+| File | Content |
+|---|---|
+| `polar_s/index.json` | `pole` = "south", `lat_edge_deg`, `projection` (PROJ string: spherical polar stereographic, lat_0 = −90, k0 = 1, R = 1737400 m — the PGDA / card-2 grid), `levels` finest first: `name, source, source_url, res_m, q_m, to_km` (used for samples up to this distance from the point), `lat_edge_deg` (level used only for points at or poleward of it), `x0_m, y0_m` (first pixel centre), `tile_px, n (= tile_px + 1), nt` (tiles per side), `tiles` (list of `"ty_tx"` that exist; others = no data), `bytes`, `url` = `polar_s/<name>/{ty}_{tx}.bin.gz`; `mock` |
+| `polar_s/<name>/<ty>_<tx>.bin.gz` | gzip of int32 LE base + `n × n` int16 LE residuals of `a = round(h / q_m)`: planar predictor `res[r,c] = a[r,c] − a[r,c−1] − a[r−1,c] + a[r−1,c−1]`, first row / column 1-D deltas, `res[0,0] = a[0,0] − base = 0`. Heights in m above 1737.4 km. Level pixel centre `x = x0_m + C·res_m`, `y = y0_m − R·res_m`; tile (ty, tx) = level rows `ty·tile_px … ty·tile_px + tile_px`, cols likewise |
+
+Sampling chain for a polar point (same rule as `horizon.sample_chain`): for a sample at distance s, the first level with `to_km ≥ s` that has a tile there, then `grids.near` (to 150 km), then `grids.far` (to 300 km). March: 5 m → 300 km, 8000 geometric steps (card-8 settings). The browser horizon object adds `"polar": true` and `"accuracy": {lower, text}` from `hterrain/validation.json` → `polar` (written by `pipeline/validate_custom_polar.py`).
+
+## 15. Proposed — `web/data/local/<ID>.json` (Card 18, Jiyong, 2026-11-14)
+
+New optional data only; existing sections unchanged. Written by `pipeline/local_maps.py`.
+Each of six files contains 441 sampled locations, **not area-averaged pixels**.
+
+- `id`, `center:{lat,lon}`, `frame:"MOON_ME_DE421"`, `radius_m:1737400`, `complete:true`, `mock:false`.
+- `grid:{rows:21,cols:21,spacing_m:1000,origin_e_m:-10000,origin_n_m:-10000,order}`.
+  Node index = row×21+column; rows south to north and columns west to east. Offset (e,n)
+  is mapped by spherical geodesic bearing atan2(e,n) and distance hypot(e,n). A corner is
+  approximately 14.14 km from the centre; the square is not a 10 km circular footprint.
+- `window:{start:"2026-01-01T00:00:00Z",step_h:1,n:43824}`.
+- `params:{min_km:0.005,max_km:300,n_steps:8000,obs_height_m:2}`. Horizon masks have 720
+  azimuths (0.5°), lunar curvature and original source gates measured from **each node**:
+  5/10/20/60/80/240 m terrain to 3/25/25/60/60/200 km, then global fallback to 300 km.
+  Expanded cached windows are storage envelopes, not modified radial gates. Real source
+  coverage may lack 5 m terrain; no extrapolation or invented elevations are permitted.
+- `points`: 441 ordered objects `{index,e_m,n_m,lat,lon,h0_m,ground_resolution_m,
+  sun_frac,earth_frac,both_frac,longest_dark_h,dem_sources}`. Fractions are unrounded
+  hourly counts/43824 from the actual `web/js/core.js`. The input horizon uses section-3
+  rounding (height 0.01 m, mask 0.0001°). Sunlit means disk fraction≥0.5; Earth centre must
+  be above the mask; both is their AND. Darkness is the longest consecutive dark hourly
+  run clipped to this window. `ground_resolution_m` is the finest source available at
+  that node, not a vertical accuracy claim; `dem_sources` describes sources used on rays.
+- `provenance:{terrain_sources,files_sha256,center,params,input_key}`. Each source contains
+  repository-relative `path`, full source `sha256`, `resolution_m`, `gate_km` (null for global
+  sources) and global `label_sha256`. Code/core/ephemeris hashes identify exact inputs.
+  Resume checkpoints and 720-bin masks are ignored local files, not browser payloads.
+
+No partial map is exported. Local statistics use nodes within circular radii 1/3/5/10 km;
+IQR is Q3−Q1 with linear quantile interpolation. Maps describe geometric illumination and
+direct Earth visibility, not Earth-station availability, terrain ground truth or RF service.
+
+## 16. Proposed v1.2 — `web/data/date_slip/<ID>.json` landing-date slips (2026-11-14, Dongju, card 19) — NOT yet agreed; new section only (renumbered from 15 at merge; sections 0–15 unchanged)
+Written by `node pipeline/date_slip.mjs` (actual `web/js/core.js`); human summary `docs/date_slip.md`.
+```json
+{"id": "ARTEMIS_HAWORTH", "first_landing": "2026-01-01", "last_landing": "2027-12-31", "n_landings": 730,
+ "days_after_landing": 14, "step_h": 1, "definition": "...",
+ "series": {"sun_frac": [730 numbers], "earth_frac": [...], "both_frac": [...], "longest_dark_h": [730 integers]},
+ "best":  {"landing": "2027-09-13", "sun_frac": 1, "earth_frac": 1, "both_frac": 1, "longest_dark_h": 0},
+ "worst": {"landing": "2026-03-16", "sun_frac": 0, "earth_frac": 0.5, "both_frac": 0, "longest_dark_h": 336},
+ "range": {"sun_frac": [min, max], "earth_frac": [min, max], "both_frac": [min, max], "longest_dark_h": [min, max]},
+ "slip": {"+7d":  {"sun_frac": {"unit": "pp", "median_abs_change": 0, "worst_change": 0, "worst_from": "YYYY-MM-DD", "worst_to": "YYYY-MM-DD", "share_of_days_worse": 0},
+                   "earth_frac": {...}, "both_frac": {...}, "longest_dark_h": {"unit": "h", ...}},
+          "+14d": {...}},
+ "horizon_sha256": "...", "core_sha256": "...", "mock": false}
+```
+- `series[m][k]` = metric for landing at 00:00 UTC of `first_landing + k` days, over hours `[24·d, 24·d + 24·days_after_landing − 1]` (hour index from section 0); fractions rounded to 4 decimals, `longest_dark_h` integer hours.
+- Definitions = `core.sunlit` (≥ 50 % of the solar disc above the mask), `core.earthVisible` (Earth centre above the mask); `longest_dark_h` = longest run of not-sunlit hours inside the window.
+- `best` / `worst` = highest / lowest `both_frac` (ties: shorter / longer `longest_dark_h`), same as `web/js/landing_scan.js`.
+- `slip["+Nd"][m]`: Δ = metric(landing + N days) − metric(landing) for every landing with landing + N ≤ `last_landing`. `median_abs_change` = median |Δ|; `worst_change` = most unfavourable Δ (most negative for fractions, most positive for dark hours) with its dates; fractions in percentage points.
+- Only sites with a real horizon (section 3) get a file; no flat or mock fallback.
+
+## 17. Proposed v1.2 — `web/data/monthly/<ID>.json` seasons 2026–2030 (2026-11-14, Sua, s4-seasons) — NOT yet agreed; new section only (sections 0–16 unchanged)
+Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent check `python pipeline/verify_seasons.py` → `docs/seasons_check.json`; human summary `python pipeline/seasons_doc.py` → `docs/seasons.md`; all-site summary `docs/seasons_summary.json`.
+```json
+{"id": "SHACKLETON_RIM", "first_month": "2026-01", "last_month": "2030-12", "n_months": 60, "step_h": 1,
+ "definition": "...", "lunation_definition": "...",
+ "months": ["2026-01", ..., "2030-12"],
+ "series": {"hours": [744, 672, ...], "sun_h": [ints], "earth_h": [ints], "both_h": [ints],
+            "sun_frac": [60 numbers], "earth_frac": [...], "both_frac": [...], "longest_dark_h": [60 ints]},
+ "lunation": {"window_h": 709, "sun_frac": [60], "earth_frac": [60], "both_frac": [60]},
+ "subsolar_lat_deg": {"min": [60], "max": [60]}, "subearth_lat_deg": {"min": [60], "max": [60]},
+ "total": {"hours": 43824, "sun_frac": 0.84.., "earth_frac": ..., "both_frac": ..., "longest_dark_h_max_month": 75},
+ "horizon_sha256": "...", "core_sha256": "...", "mock": false}
+```
+- Month k = calendar month (UTC) = hour indices `[i0, i1]` (section 0); the 60 months tile hours 0 … 43823 exactly. `series` = `core.metrics(site, i0, i1)`: `*_h` = hours sunlit / Earth visible / both (integers), `*_frac` = count / hours rounded half-up to 4 decimals, `longest_dark_h` = longest not-sunlit run **inside** the month (cut at month boundaries).
+- `lunation` = the same metrics over 709 h (≈ one synodic month, 29.54 d) centred on the month: centre `c = i0 + floor(hours / 2)`, window `[c − 354, c + 354]`. It removes the day/night aliasing of 28–31-day months (equatorial sites), so the line shows the real season.
+- `subsolar_lat_deg` / `subearth_lat_deg` = min/max over the month's hours of the selenographic latitude (MOON_ME) of the Sun / Earth direction from `ephem.bin`, 3 decimals; same for every site.
+- Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
+- Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.
+
+
+## 18. Proposed v1.3 — site visibility windows (card 15-B, 2026-11-14) — pending team agreement; sections 0–17 unchanged
 
 Written by `node pipeline/build_windows.mjs`, using unchanged `web/js/core.js` predicates. Files are optional until generated; no existing format is changed.
 
-### 15.1 `web/data/windows/<ID>.json`
+### 18.1 `web/data/windows/<ID>.json`
 
 ```json
 {
@@ -257,11 +371,13 @@ The snippet shows structure only, not computed coordinates or results. Each inte
 - `duration_h` is an integer, exactly end minus start. `visible_hours` is the sum of durations. Divide by 43,824 to obtain the same hourly fractions as core.metrics.
 - A gap is a maximal consecutive run of false bins, the complement of visible intervals within the domain. `longest_gaps` contains at most 10, sorted by duration descending and then start UTC ascending. If always visible, gaps is empty; if never visible, visible is empty and one full-domain gap is returned. No December/January cyclic wrapping is performed.
 - `clipped_start` is true exactly when the interval begins at the domain start; `clipped_end` is true exactly when it ends at the exclusive domain end. These are censored boundaries, not independently detected transitions.
-- `h0_m`, lat/lon and observer height must match the real horizon used. No mock/flat/mismatched/missing-DEM horizon is exported. SHACKLETON_RIM is explicitly skipped until sites.json and its real horizon both use the corrected (-89.6866, -162.81) coordinate on main.
+- `h0_m`, lat/lon and observer height must match the real horizon used. No mock/flat/mismatched/missing-DEM horizon is exported. SHACKLETON_RIM is exported only when sites.json and its real horizon both use the corrected (-89.6866, -162.81) coordinate on main; otherwise it is skipped.
 - `source` hashes identify exact computation inputs; site_sha256 hashes JSON.stringify(site), producer_sha256 hashes pipeline/build_windows.mjs. Production ephemeris and core.js are not modified.
 
-### 15.2 `web/data/windows/index.json`
+### 18.2 `web/data/windows/index.json`
 
 `{"format":"site-windows-v1","start_utc":"2026-01-01T00:00:00Z","end_utc":"2031-01-01T00:00:00Z","step_h":1,"n":43824,"ids":[...],"skipped":{"<ID>":"reason"},"mock":false}`
 
 Every catalogue ID must appear exactly once in ids or skipped; ids match the actual <ID>.json files. The UI should use this index, treating skipped as unavailable rather than zero visibility. Tables/JSON in docs/windows_verification.md and docs/windows_verification.json record the Node edge checks. check_contract.py validates intervals, longest-gap complements, clipping, index coverage and input hashes via pipeline/check_windows.py.
+
+Section 18 validator detail: site_sha256 is recomputed by Node using exact JSON.stringify(site), not Python JSON serialization. producer_sha256 is recomputed from actual build_windows.mjs bytes. Node (or LLSN_NODE) is required when checking windows. See pipeline/test_windows_contract.py for zero-hash and missing-tile regressions; a present hterrain index with a missing required tile is an ERROR under section 14.

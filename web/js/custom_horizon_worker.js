@@ -1,11 +1,12 @@
 // custom_horizon_worker.js — module Web Worker: horizon mask of a user-defined point from web/data/hterrain/.
 // Message in:  {id, lat, lon, base}        (base = URL of the data folder, e.g. 'https://…/data/')
-// Messages out: {id, type:'progress', text} … then {id, type:'done', mask:[720], h0_m, dem_sources, tiles, ms}
+// Messages out: {id, type:'progress', text} … then {id, type:'done', mask:[720], h0_m, dem_sources, tiles, ms, polar}
 //               or {id, type:'error', message}
-import { computeHorizon, decodeTile, tilesFor } from './hterrain.js';
+// South of hterrain/polar_s/index.json lat_edge_deg the PGDA polar levels are used first (see hterrain.js).
+import { computeHorizon, decodeTile, decodePolarTile, tilesFor, needCount } from './hterrain.js';
 
 let index = null, indexBase = null;
-const cache = { near: new Map(), far: new Map() };    // decoded tiles stay in memory for later points
+const cache = { near: new Map(), far: new Map(), polar: {} };   // decoded tiles stay in memory for later points
 
 async function gunzip(buf) {
   const u8 = new Uint8Array(buf);
@@ -14,13 +15,22 @@ async function gunzip(buf) {
   return ds.arrayBuffer();
 }
 
+const get = url => fetch(url).then(r => { if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`); return r.arrayBuffer(); }).then(gunzip);
+
 async function fetchTiles(base, want) {
   const jobs = [];
   for (const g of ['near', 'far']) for (const key of want[g]) {
     if (cache[g].has(key)) continue;
     const url = base + 'hterrain/' + index.url.replace('{grid}', g).replace('{ty}_{tx}', key);
-    jobs.push(fetch(url).then(r => { if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`); return r.arrayBuffer(); })
-      .then(gunzip).then(raw => cache[g].set(key, decodeTile(raw, index.grids[g].n))));
+    jobs.push(get(url).then(raw => cache[g].set(key, decodeTile(raw, index.grids[g].n))));
+  }
+  for (const lv of (index.polar ? index.polar.levels : [])) {
+    const m = cache.polar[lv.name] || (cache.polar[lv.name] = new Map());
+    for (const key of (want.polar && want.polar[lv.name]) || []) {
+      if (m.has(key)) continue;
+      const url = base + 'hterrain/' + lv.url.replace('{ty}_{tx}', key);
+      jobs.push(get(url).then(raw => m.set(key, decodePolarTile(raw, lv.n, lv.q_m))));
+    }
   }
   await Promise.all(jobs);
   return jobs.length;
@@ -34,19 +44,21 @@ self.onmessage = async ev => {
       const r = await fetch(base + 'hterrain/index.json');
       if (!r.ok) throw new Error('hterrain/index.json: HTTP ' + r.status);
       index = await r.json(); indexBase = base;
+      const p = await fetch(base + 'hterrain/polar_s/index.json').catch(() => null);   // optional polar levels
+      if (p && p.ok) index.polar = await p.json();
     }
     let fetched = await fetchTiles(base, tilesFor(index, lat, lon));
     self.postMessage({ id, type: 'progress', text: 'march' });
     let res;
-    for (let round = 0; round < 4; round++) {
+    for (let round = 0; round < 6; round++) {
       res = computeHorizon(index, cache, lat, lon);
-      if (!res.need.near.size && !res.need.far.size) break;
+      if (!needCount(res.need)) break;
       fetched += await fetchTiles(base, res.need);
     }
-    if (res.need.near.size || res.need.far.size || !res.mask) throw new Error('terrain tiles missing');
+    if (needCount(res.need) || !res.mask) throw new Error('terrain tiles missing');
     self.postMessage({ id, type: 'done', mask: Array.from(res.mask, v => Math.round(v * 1e4) / 1e4), h0_m: res.h0_m,
       dem_sources: res.dem_sources, grids: { near: index.grids.near.res_m, far: index.grids.far.res_m },
-      tiles: fetched, ms: Math.round(performance.now() - t0) });
+      polar: res.polar, params: res.params, tiles: fetched, ms: Math.round(performance.now() - t0) });
   } catch (e) {
     self.postMessage({ id, type: 'error', message: String(e && e.message || e) });
   }

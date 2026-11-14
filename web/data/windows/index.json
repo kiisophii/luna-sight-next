@@ -32,14 +32,13 @@
     "ARTEMIS_NOBILE_RIM2",
     "ARTEMIS_DE_GERLACHE_RIM2",
     "ARTEMIS_SLATER_PLAIN",
+    "SHACKLETON_RIM",
     "CONNECTING_RIDGE",
     "PEAK_NEAR_SHACKLETON",
     "DE_GERLACHE_RIM1",
     "SHOEMAKER_RIM_A",
     "IM3_REINER_GAMMA"
   ],
-  "skipped": {
-    "SHACKLETON_RIM": "missing horizon"
-  },
+  "skipped": {},
   "mock": false
 }

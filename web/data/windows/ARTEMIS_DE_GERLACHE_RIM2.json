@@ -1317,7 +1317,7 @@
     "ephem_meta_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
     "site_sha256": "65c2a233cddc29d3badd07ef2758bbcb932faa943aa821c6bb7e3b5f9f9b613c",
     "horizon_sha256": "c430f489e3dd711fcd52dbd67cdfd314291b8094db63cd5414de87da56fd8549",
-    "producer_sha256": "1b4b03a56c5800ae3a7d351461f7551b6b7dbf14d8dbc3d6516c3a3499fed870"
+    "producer_sha256": "29b5476f6793ae9a2097691970ce6cdbb88070836ac79a9b5f2bc5a7890e66b9"
   },
   "mock": false
 }

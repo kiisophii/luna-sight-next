@@ -4,11 +4,12 @@ Actual unchanged core.js in Node is the reference. Twenty internal visible-windo
 
 | Site | Edges checked | Maximum difference (h) | Whole-series membership | Fraction / longest Sun gap | Result |
 |---|---:|---:|---|---|---|
-| APOLLO17 | 20 | 0 | PASS (43,824 hours per body) | PASS | PASS |
-| CHANGE4 | 20 | 0 | PASS (43,824 hours per body) | PASS | PASS |
-| ARTEMIS_HAWORTH | 20 | 0 | PASS (43,824 hours per body) | PASS | PASS |
+| APOLLO17 | 20 | 0 | PASS (43,824 hours per body; lists/gaps/clipping) | PASS | PASS |
+| CHANGE4 | 20 | 0 | PASS (43,824 hours per body; lists/gaps/clipping) | PASS | PASS |
+| ARTEMIS_HAWORTH | 20 | 0 | PASS (43,824 hours per body; lists/gaps/clipping) | PASS | PASS |
+| SHACKLETON_RIM | 20 | 0 | PASS (43,824 hours per body; lists/gaps/clipping) | PASS | PASS |
 
-Scope: sampled hourly visibility, not sub-hour rise/set accuracy or independent DEM accuracy. SHACKLETON_RIM remains skipped until its corrected-coordinate horizon is present on main.
+Scope: sampled hourly visibility, not sub-hour rise/set accuracy or independent DEM accuracy. SHACKLETON_RIM is included with its corrected-coordinate real horizon from main.
 
 Reproduce:
 

@@ -1,85 +1,86 @@
-# Card 15 source-link checklist
+# Card 15 source-link checklist — imported AI results
 
-Scope: every distinct absolute HTTP(S) URL written in data/DATASETS.md, plus every source_url in sites.json. Shared URLs appear once with all their references. Relative dataset-path fragments are not standalone links.
+**AI-checked 2026-11-14. This is the user-supplied Claude automated report, not human review and not a new independent run by the implementation assistant.**
 
-Total: 65 distinct URLs, including all 33 site source_url references.
+Original 65-URL audit: PASS 62 / BROKEN 2 / UNRESOLVED 1 / MISMATCH 0. Full supplied method/evidence: docs/source_link_ai_report_2026-11-14.md; structured import: docs/source_link_ai_results.json.
 
-**Human visual review is REQUIRED and still pending for every row.** The AI enumerated the links and read the replacement Shackleton paper; it did not perform or certify a human review. No row is marked PASS.
+The numbered rows preserve the original audit snapshot and old URLs for traceability. They are not a newly deduplicated inventory after repairs. DATASETS.md now uses products/90 and products/69 for the two broken folder listings; direct TIF URLs remain unchanged. The stale ACD-50044 current-site association was removed for Shackleton; its active source is Gläser et al. 2017, NTRS 20170007365. Historical R04 validation references remain historical.
 
-Open each link in your own browser. Confirm the expected paper, table, dataset listing or download opens, not just a login/error page. For large raw DEMs, cancel the download after confirming the expected file response/name; the adjacent product page and label help identify it. For parameterised APIs, an expected API help/parameter response is different from a missing page.
+Wiley remains UNRESOLVED due to bot blocking, not BROKEN. The Gläser result includes an explicit human table-layout check below. The ShadowCam redirect is recorded as working by the supplied AI report.
 
-Fill Human opened? with your name/date, Content matches? with PASS or the observed problem, and Issue with the issue URL for a confirmed broken/misdirected link. A transient timeout, bot block or network restriction is UNRESOLVED, not proof of a broken link. Keep the original URL and describe any working alternative in the Issue. One Issue per distinct broken source; do not silently alter other owners' dataset rows.
+| # | Checked URL (original snapshot) | Used at (snapshot) | AI result | Evidence / remediation |
+|---:|---|---|---|---|
+| 1 | [open](http://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_85S_060M_201608.LBL) | data/DATASETS.md:L43 | AI-checked 2026-11-14: PASS | PDS3 라벨, PRODUCT_ID = "AVGVISIB_85S_060M_201608", LOLA |
+| 2 | [open](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434) | data/DATASETS.md:L25; sites.json:ARTEMIS_CABEUS_B; sites.json:ARTEMIS_HAWORTH; sites.json:ARTEMIS_MALAPERT; sites.json:ARTEMIS_MOUTON_PLATEAU; sites.json:ARTEMIS_MOUTON; sites.json:ARTEMIS_NOBILE_RIM1; sites.json:ARTEMIS_NOBILE_RIM2; sites.json:ARTEMIS_DE_GERLACHE_RIM2; sites.json:ARTEMIS_SLATER_PLAIN | AI-checked 2026-11-14: UNRESOLVED | Wiley 403(Cloudflare "Just a moment"). Crossref·OpenAlex·Semantic Scholar로 DOI가 "Assessing Potential Landing Sites… Within Artemis Candidate Landing Regions", Wueller·Berger 외, JGR Planets, 2026-02-27, CC BY 4.0임을 확인. Table A1 좌표 9쌍은 미확인 |
+| 3 | [open](https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf) | data/DATASETS.md:L63 | AI-checked 2026-11-14: PASS | PDF 첫 쪽 "DSN No. 810-005, 301, Rev. P", Table 5 "Geodetic Coordinates for DSN Stations … WGS 84", DSS 14 행 존재 |
+| 4 | [open](https://doi.org/10.1038/s41467-019-12278-3) | data/DATASETS.md:L13 | AI-checked 2026-11-14: PASS | Nature Comms "Descent trajectory reconstruction and landing site positioning of Chang'E-4", 177.5991°E 45.4446°S |
+| 5 | [open](https://doi.org/10.3847/1538-3881/abd414) | data/DATASETS.md:L7 | AI-checked 2026-11-14: PASS | IOPscience "The JPL Planetary and Lunar Ephemerides DE440 and DE441" |
+| 6 | [open](https://lroc.im-ldi.com/images/1168) | data/DATASETS.md:L17; sites.json:CHANGE4 | AI-checked 2026-11-14: PASS | "Keeps on Roving!": refined lander 45.4562°S, 177.5885°E, 13 m(95%) — 좌표 일치 |
+| 7 | [open](https://lroc.im-ldi.com/images/1172.2020) | data/DATASETS.md:L18; sites.json:CHANGE5 | AI-checked 2026-11-14: PASS | "First Look: Chang'e 5": 43.0576°N, 308.0839°E(=-51.9161), ±20 m — 일치 |
+| 8 | [open](https://lroc.im-ldi.com/images/1314) | data/DATASETS.md:L13; data/DATASETS.md:L20; sites.json:CHANDRAYAAN3 | AI-checked 2026-11-14: PASS | "Chandrayaan-3 Landing Site": 69.3741°S, 32.32°E — 일치 |
+| 9 | [open](https://lroc.im-ldi.com/images/1358) | data/DATASETS.md:L21; sites.json:SLIM | AI-checked 2026-11-14: PASS | "JAXA SLIM Landing": 13.3160°S, 25.2510°E — 일치 |
+| 10 | [open](https://lroc.im-ldi.com/images/1360) | data/DATASETS.md:L22; sites.json:IM1 | AI-checked 2026-11-14: PASS | "Intuitive Machines IM-1 On The Moon!": 80.13°S, 1.44°E — 일치 |
+| 11 | [open](https://lroc.im-ldi.com/images/1374) | data/DATASETS.md:L19; sites.json:CHANGE6 | AI-checked 2026-11-14: PASS | "First Look: Chang'e 6": 41.6385°S, 206.0148°E(=-153.9852), ±30 m — 일치 |
+| 12 | [open](https://lroc.im-ldi.com/images/1406) | data/DATASETS.md:L24; sites.json:BLUE_GHOST1 | AI-checked 2026-11-14: PASS | "Blue Ghost Seen Obliquely": 18.562°N, 61.810°E — 일치(LRO 위치 19.294N 67.956E와 구분됨) |
+| 13 | [open](https://lroc.im-ldi.com/images/1408) | data/DATASETS.md:L23; sites.json:IM2 | AI-checked 2026-11-14: PASS | "IM-2 Athena Seen Obliquely": 84.7906°S, 29.1957°E — 일치 |
+| 14 | [open](https://lroc.im-ldi.com/images/637) | data/DATASETS.md:L16; sites.json:CHANGE3 | AI-checked 2026-11-14: PASS | "Chang'e 3 Lander and Rover From Above": 44.1214°N, 340.4884°E(=-19.5116) — 일치 |
+| 15 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/) | data/DATASETS.md:L61 | AI-checked 2026-11-14: PASS | 디렉터리 목록(fk/ lsk/ pck/ spk/ …) |
+| 16 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf) | data/DATASETS.md:L9 | AI-checked 2026-11-14: PASS | "SPICE Lunar Reference Frame Specification Kernel", 원파일명 moon_080317.tf |
+| 17 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls) | data/DATASETS.md:L11 | AI-checked 2026-11-14: PASS | 텍스트 LSK, 2016-12-31 윤초 기록 포함 |
+| 18 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/a_old_versions/pck00008.tpc) | data/DATASETS.md:L10 | AI-checked 2026-11-14: PASS | "KPL/PCK … P_constants (PcK) SPICE kernel file" |
+| 19 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc) | data/DATASETS.md:L8 | AI-checked 2026-11-14: PASS | 206, 전체 1,770,496 B — DATASETS 크기와 동일 |
+| 20 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp) | data/DATASETS.md:L7 | AI-checked 2026-11-14: PASS | 206, 전체 32,726,016 B — DATASETS 크기와 동일 |
+| 21 | [open](https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf) | data/DATASETS.md:L62 | AI-checked 2026-11-14: PASS | kdsa01.tf, 2021-03-08 생성, Lon 127.62181206, Lat 37.20723347, Alt 0.145359 km — 일치 |
+| 22 | [open](https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html) | data/DATASETS.md:L15; sites.json:LUNA16; sites.json:LUNA20; sites.json:LUNA24 | AI-checked 2026-11-14: PASS | 표: Luna 16 0.5137S 56.3638E, Luna 20 3.7863N 56.6242E, Luna 24 12.7142N 62.2129E — 3개 모두 일치 |
+| 23 | [open](https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html) | data/DATASETS.md:L13; data/DATASETS.md:L14; sites.json:APOLLO11; sites.json:APOLLO12; sites.json:APOLLO14; sites.json:APOLLO15; sites.json:APOLLO16; sites.json:APOLLO17 | AI-checked 2026-11-14: PASS | Wagner et al. 2017 표의 Lunar Module 행 6개(0.67416/23.47314 … 20.1911/30.7723) — 모두 일치 |
+| 24 | [open](https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf) | data/DATASETS.md:L72; sites.json:SHACKLETON_RIM | AI-checked 2026-11-14: PASS (주의) | Gläser et al. "Illumination conditions at the lunar poles" Table 2(p.12)에 -89.6866, 197.19(=-162.81) 있음. 텍스트 추출 시 이름 열이 밀려 "Connecting Ridge, C2" 옆에 찍히지만, 남극 4행 중 3번째 행이고 Shackleton 중심(-89.67, 129.8E)에서 약 10.8 km(=림 반경)라 Shackleton S 행으로 판단. 사람이 PDF 12쪽을 눈으로 한 번 확인 권장 |
+| 25 | [open](https://ntrs.nasa.gov/api/citations/20230000531/downloads/Blewett_LVx-CP11_landingsite_LPSC2023_abstr1780.pdf) | data/DATASETS.md:L66 | AI-checked 2026-11-14: PASS | Blewett et al. LPSC 초록 "…MISSION CP-11", "selected is at 7.585° N, 58.725° W" |
+| 26 | [open](https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf) | data/DATASETS.md:L26; sites.json:CONNECTING_RIDGE; sites.json:PEAK_NEAR_SHACKLETON; sites.json:DE_GERLACHE_RIM1; sites.json:SHOEMAKER_RIM_A | AI-checked 2026-11-14: PASS | ACD-50044 Rev A Table A2-2(pp.57–58): R01 Connecting Ridge -89.4632/-137.49, R07 -88.811/123.6901, R11 -88.6834/-67.9321, LM2 -88.0792/11.88866, R04 -89.7668/-171.87 — 모두 일치 (단 DATASETS 26행 설명은 문제 3 참고) |
+| 27 | [open](https://ntrs.nasa.gov/api/citations/20250002845/downloads/M2M-30044%20Lunar%20Surface%20Data%20Book%20Baseline_Final.pdf) | data/DATASETS.md:L36 | AI-checked 2026-11-14: PASS | M2M-30044 Baseline, p.75 "R04 or Site04 Shackleton Rim -89.7668 -171.87" |
+| 28 | [open](https://ntrs.nasa.gov/citations/20170007365) | data/DATASETS.md:L72 | AI-checked 2026-11-14: PASS | NTRS "Illumination Conditions at the Lunar Poles: Implications for Future Exploration" |
+| 29 | [open](https://ntrs.nasa.gov/citations/20230007818) | data/DATASETS.md:L13 | AI-checked 2026-11-14: PASS | NTRS "Lunar Surface Data Book" |
+| 30 | [open](https://ntrs.nasa.gov/citations/20240014584) | data/DATASETS.md:L60 | AI-checked 2026-11-14: PASS | NTRS "BEACON Demonstrator": "15 m deployed boom", 3GPP "users up to 10 km away, dependent on terrain" |
+| 31 | [open](https://pda.kasi.re.kr/lusem.php?lang=en) | data/DATASETS.md:L29 | AI-checked 2026-11-14: PASS | "Landing site: Reiner Gamma", "Nova-C lander … CP-11 (or IM-3)" |
+| 32 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/) | data/DATASETS.md:L49; data/DATASETS.md:L50; data/DATASETS.md:L55; data/DATASETS.md:L68 | AI-checked 2026-11-14: PASS | 목록에 ldem_16_float.img/.lbl, ldem_64_float.img/.lbl 있음 |
+| 33 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img) | data/DATASETS.md:L38; data/DATASETS.md:L70 | AI-checked 2026-11-14: PASS | 206, 전체 66,355,200 B — 일치 |
+| 34 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img) | data/DATASETS.md:L39; data/DATASETS.md:L57; data/DATASETS.md:L69 | AI-checked 2026-11-14: PASS | 206, 전체 1,061,683,200 B — 일치 |
+| 35 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_64.img) | data/DATASETS.md:L41 | AI-checked 2026-11-14: PASS | 206, 전체 530,841,600 B — 일치 |
+| 36 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/float_img/ldem_45s_400m_float.img) | data/DATASETS.md:L42 | AI-checked 2026-11-14: PASS | 206, 전체 207,360,000 B — 일치 |
+| 37 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/) | data/DATASETS.md:L40; data/DATASETS.md:L48; data/DATASETS.md:L58 | AI-checked 2026-11-14: PASS | 목록에 sldem2015_512_*_float.img 32개 — "32 tiles"와 일치 |
+| 38 | [open](https://pds.shadowcam.asu.edu/) | data/DATASETS.md:L65 | AI-checked 2026-11-14: PASS (리다이렉트) | https://pds.shadowcam.im-ldi.com/ 로 이동, 목록에 bundle_kplo-shadowcam.xml, derived/ 등 |
+| 39 | [open](https://pds.shadowcam.asu.edu/bundle_kplo-shadowcam.xml) | data/DATASETS.md:L65 | AI-checked 2026-11-14: PASS (리다이렉트) | im-ldi.com으로 이동, urn:nasa:pds:kplo-shadowcam, "KPLO ShadowCam Data Archive", DOI 10.17189/y89z-kt98 |
+| 40 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/) | data/DATASETS.md:L59; data/DATASETS.md:L68 | AI-checked 2026-11-14: BROKEN (soft 404) | HTTP 200이지만 본문이 "PGDA - Not Found … 404". 폴더 안 개별 TIF(41–45)는 정상; REPAIRED in DATASETS.md -> https://pgda.gsfc.nasa.gov/products/90 (individual files unchanged); tracking Issue: https://github.com/kiisophii/lunar-landing-site-navigator/issues/17 |
+| 41 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF) | data/DATASETS.md:L35; data/DATASETS.md:L53 | AI-checked 2026-11-14: PASS | 206 image/tiff, 218,961,039 B(제품 페이지 "210M"과 맞음) |
+| 42 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF) | data/DATASETS.md:L33; data/DATASETS.md:L53 | AI-checked 2026-11-14: PASS | 206 image/tiff, 3,089,110,093 B |
+| 43 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF) | data/DATASETS.md:L32 | AI-checked 2026-11-14: PASS | 206 image/tiff, 2,696,082,051 B; products/90에 파일명 명시 |
+| 44 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF) | data/DATASETS.md:L34 | AI-checked 2026-11-14: PASS | 206 image/tiff, 189,158,392 B |
+| 45 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF) | data/DATASETS.md:L31 | AI-checked 2026-11-14: PASS | 206 image/tiff, 5,116,709,568 B |
+| 46 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/) | data/DATASETS.md:L47 | AI-checked 2026-11-14: PASS | "South Pole Landing Site LOLA DEMs" 안내 + README, Site01/04/07… 목록 |
+| 47 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif) | data/DATASETS.md:L30 | AI-checked 2026-11-14: PASS | 206 image/tiff, 3,465,285,714 B (products/81 "3.3GB"와 일치) |
+| 48 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_surf.tif) | data/DATASETS.md:L37 | AI-checked 2026-11-14: PASS | 206 image/tiff, 40,980,806 B; products/78에 같은 파일명 |
+| 49 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/) | data/DATASETS.md:L51 | AI-checked 2026-11-14: BROKEN (soft 404) | HTTP 200이지만 본문 "PGDA - Not Found … 404". 개별 TIF(50–53)는 정상; REPAIRED in DATASETS.md -> https://pgda.gsfc.nasa.gov/products/69 (individual files unchanged); tracking Issue: https://github.com/kiisophii/lunar-landing-site-navigator/issues/18 |
+| 50 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_75S_120M_201608.TIF) | data/DATASETS.md:L45 | AI-checked 2026-11-14: PASS | 206 image/tiff, 83,052,039 B("83 MB" 일치) |
+| 51 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_75S_120M_201608_EARTH.TIF) | data/DATASETS.md:L46 | AI-checked 2026-11-14: PASS | 206 image/tiff, 43,148,153 B("43 MB" 일치) |
+| 52 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_85S_060M_201608.TIF) | data/DATASETS.md:L43 | AI-checked 2026-11-14: PASS | 206 image/tiff, 33,994,464 B("34 MB" 일치) |
+| 53 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_85S_060M_201608_EARTH.TIF) | data/DATASETS.md:L44 | AI-checked 2026-11-14: PASS | 206 image/tiff, 24,862,958 B("25 MB" 일치) |
+| 54 | [open](https://pgda.gsfc.nasa.gov/products/69) | data/DATASETS.md:L43; data/DATASETS.md:L51 | AI-checked 2026-11-14: PASS | "Lunar Polar Illumination", Mazarico 2011 Icarus 211 인용 요청 |
+| 55 | [open](https://pgda.gsfc.nasa.gov/products/78) | data/DATASETS.md:L37 | AI-checked 2026-11-14: PASS | "High-Resolution LOLA Topography for Lunar South Pole Sites", "Site04: Shackleton rim", Site04_final_adj_5mpp_surf.tif |
+| 56 | [open](https://pgda.gsfc.nasa.gov/products/81) | data/DATASETS.md:L30; data/DATASETS.md:L47 | AI-checked 2026-11-14: PASS | "South Pole LOLA DEM Mosaic", ldem_87s_5mpp 3.3GB, Barker et al. 2021 |
+| 57 | [open](https://pgda.gsfc.nasa.gov/products/90) | data/DATASETS.md:L31; data/DATASETS.md:L32; data/DATASETS.md:L33; data/DATASETS.md:L34; data/DATASETS.md:L35; data/DATASETS.md:L47; data/DATASETS.md:L53; data/DATASETS.md:L55; data/DATASETS.md:L59 | AI-checked 2026-11-14: PASS | "A New View of the Lunar South Pole from LOLA", LDEM_80S_20MPP_ADJ 등 파일명, Barker 2023 PSJ 4,183 (doi …/acf3e1) |
+| 58 | [open](https://planetarynames.wr.usgs.gov/Feature/5450) | data/DATASETS.md:L67 | AI-checked 2026-11-14: PASS | Feature Name Shackleton, Feature ID 5450, Moon, Crater |
+| 59 | [open](https://science.nasa.gov/lunar-science/clps-deliveries/cp-11/) | data/DATASETS.md:L66 | AI-checked 2026-11-14: PASS | "CP-11 Science Payloads": KASI LUSEM, PI Young-Jun Choi |
+| 60 | [open](https://ssd-api.jpl.nasa.gov/doc/horizons.html) | data/DATASETS.md:L12; data/DATASETS.md:L52 | AI-checked 2026-11-14: PASS | "Horizons API Version 1.3 (2025 June)" 문서 |
+| 61 | [open](https://ssd.jpl.nasa.gov/api/horizons.api) | data/DATASETS.md:L12; data/DATASETS.md:L52; data/DATASETS.md:L64 | AI-checked 2026-11-14: PASS | 파라미터 없이 JSON 응답 "Missing COMMAND specification" (정상 API 동작) |
+| 62 | [open](https://svs.gsfc.nasa.gov/4720) | data/DATASETS.md:L56 | AI-checked 2026-11-14: PASS | "NASA SVS / CGI Moon Kit", 다운로드 목록에 lroc_color_poles_8k.tif |
+| 63 | [open](https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_8k.tif) | data/DATASETS.md:L56 | AI-checked 2026-11-14: PASS | 206 image/tiff, 50,641,970 B |
+| 64 | [open](https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full) | data/DATASETS.md:L27; sites.json:IM3_REINER_GAMMA | AI-checked 2026-11-14: PASS | "Ultraviolet and magnetic perspectives at Reiner Gamma…": "LVx landing site (7.585°N, 58.725°W)" 여러 번 — 일치 |
+| 65 | [open](https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/) | data/DATASETS.md:L28 | AI-checked 2026-11-14: PASS | 9개 지역명(Peak near Cabeus B … Slater Plain)이 sites.json의 ARTEMIS_* 9개와 같음 |
 
-## Issue text for a confirmed problem
+## Human checks
 
-Title: [Card 15 sources] Broken or misdirected source: <URL>
+Only these two targeted human checks remain requested. An AI PASS above does not mean a human opened it. Enter date/result only after viewing the actual table.
 
-Body: original URL; affected DATASETS lines/site IDs; human review date/browser; observed error or wrong content; expected source; verified replacement if available. No Issue is filed solely because an AI/network request failed.
-
-| # | Source URL | Used at | Human opened? | Content matches? | Issue |
-|---:|---|---|---|---|---|
-| 1 | [open](http://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_85S_060M_201608.LBL) | data/DATASETS.md:L43 | TO CHECK | TO CHECK | TO CHECK |
-| 2 | [open](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434) | data/DATASETS.md:L25; sites.json:ARTEMIS_CABEUS_B; sites.json:ARTEMIS_HAWORTH; sites.json:ARTEMIS_MALAPERT; sites.json:ARTEMIS_MOUTON_PLATEAU; sites.json:ARTEMIS_MOUTON; sites.json:ARTEMIS_NOBILE_RIM1; sites.json:ARTEMIS_NOBILE_RIM2; sites.json:ARTEMIS_DE_GERLACHE_RIM2; sites.json:ARTEMIS_SLATER_PLAIN | TO CHECK | TO CHECK | TO CHECK |
-| 3 | [open](https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf) | data/DATASETS.md:L63 | TO CHECK | TO CHECK | TO CHECK |
-| 4 | [open](https://doi.org/10.1038/s41467-019-12278-3) | data/DATASETS.md:L13 | TO CHECK | TO CHECK | TO CHECK |
-| 5 | [open](https://doi.org/10.3847/1538-3881/abd414) | data/DATASETS.md:L7 | TO CHECK | TO CHECK | TO CHECK |
-| 6 | [open](https://lroc.im-ldi.com/images/1168) | data/DATASETS.md:L17; sites.json:CHANGE4 | TO CHECK | TO CHECK | TO CHECK |
-| 7 | [open](https://lroc.im-ldi.com/images/1172.2020) | data/DATASETS.md:L18; sites.json:CHANGE5 | TO CHECK | TO CHECK | TO CHECK |
-| 8 | [open](https://lroc.im-ldi.com/images/1314) | data/DATASETS.md:L13; data/DATASETS.md:L20; sites.json:CHANDRAYAAN3 | TO CHECK | TO CHECK | TO CHECK |
-| 9 | [open](https://lroc.im-ldi.com/images/1358) | data/DATASETS.md:L21; sites.json:SLIM | TO CHECK | TO CHECK | TO CHECK |
-| 10 | [open](https://lroc.im-ldi.com/images/1360) | data/DATASETS.md:L22; sites.json:IM1 | TO CHECK | TO CHECK | TO CHECK |
-| 11 | [open](https://lroc.im-ldi.com/images/1374) | data/DATASETS.md:L19; sites.json:CHANGE6 | TO CHECK | TO CHECK | TO CHECK |
-| 12 | [open](https://lroc.im-ldi.com/images/1406) | data/DATASETS.md:L24; sites.json:BLUE_GHOST1 | TO CHECK | TO CHECK | TO CHECK |
-| 13 | [open](https://lroc.im-ldi.com/images/1408) | data/DATASETS.md:L23; sites.json:IM2 | TO CHECK | TO CHECK | TO CHECK |
-| 14 | [open](https://lroc.im-ldi.com/images/637) | data/DATASETS.md:L16; sites.json:CHANGE3 | TO CHECK | TO CHECK | TO CHECK |
-| 15 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/) | data/DATASETS.md:L61 | TO CHECK | TO CHECK | TO CHECK |
-| 16 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf) | data/DATASETS.md:L9 | TO CHECK | TO CHECK | TO CHECK |
-| 17 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls) | data/DATASETS.md:L11 | TO CHECK | TO CHECK | TO CHECK |
-| 18 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/a_old_versions/pck00008.tpc) | data/DATASETS.md:L10 | TO CHECK | TO CHECK | TO CHECK |
-| 19 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc) | data/DATASETS.md:L8 | TO CHECK | TO CHECK | TO CHECK |
-| 20 | [open](https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp) | data/DATASETS.md:L7 | TO CHECK | TO CHECK | TO CHECK |
-| 21 | [open](https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf) | data/DATASETS.md:L62 | TO CHECK | TO CHECK | TO CHECK |
-| 22 | [open](https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html) | data/DATASETS.md:L15; sites.json:LUNA16; sites.json:LUNA20; sites.json:LUNA24 | TO CHECK | TO CHECK | TO CHECK |
-| 23 | [open](https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html) | data/DATASETS.md:L13; data/DATASETS.md:L14; sites.json:APOLLO11; sites.json:APOLLO12; sites.json:APOLLO14; sites.json:APOLLO15; sites.json:APOLLO16; sites.json:APOLLO17 | TO CHECK | TO CHECK | TO CHECK |
-| 24 | [open](https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf) | data/DATASETS.md:L72; sites.json:SHACKLETON_RIM | TO CHECK | TO CHECK | TO CHECK |
-| 25 | [open](https://ntrs.nasa.gov/api/citations/20230000531/downloads/Blewett_LVx-CP11_landingsite_LPSC2023_abstr1780.pdf) | data/DATASETS.md:L66 | TO CHECK | TO CHECK | TO CHECK |
-| 26 | [open](https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf) | data/DATASETS.md:L26; sites.json:CONNECTING_RIDGE; sites.json:PEAK_NEAR_SHACKLETON; sites.json:DE_GERLACHE_RIM1; sites.json:SHOEMAKER_RIM_A | TO CHECK | TO CHECK | TO CHECK |
-| 27 | [open](https://ntrs.nasa.gov/api/citations/20250002845/downloads/M2M-30044%20Lunar%20Surface%20Data%20Book%20Baseline_Final.pdf) | data/DATASETS.md:L36 | TO CHECK | TO CHECK | TO CHECK |
-| 28 | [open](https://ntrs.nasa.gov/citations/20170007365) | data/DATASETS.md:L72 | TO CHECK | TO CHECK | TO CHECK |
-| 29 | [open](https://ntrs.nasa.gov/citations/20230007818) | data/DATASETS.md:L13 | TO CHECK | TO CHECK | TO CHECK |
-| 30 | [open](https://ntrs.nasa.gov/citations/20240014584) | data/DATASETS.md:L60 | TO CHECK | TO CHECK | TO CHECK |
-| 31 | [open](https://pda.kasi.re.kr/lusem.php?lang=en) | data/DATASETS.md:L29 | TO CHECK | TO CHECK | TO CHECK |
-| 32 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/) | data/DATASETS.md:L49; data/DATASETS.md:L50; data/DATASETS.md:L55; data/DATASETS.md:L68 | TO CHECK | TO CHECK | TO CHECK |
-| 33 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img) | data/DATASETS.md:L38; data/DATASETS.md:L70 | TO CHECK | TO CHECK | TO CHECK |
-| 34 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img) | data/DATASETS.md:L39; data/DATASETS.md:L57; data/DATASETS.md:L69 | TO CHECK | TO CHECK | TO CHECK |
-| 35 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_64.img) | data/DATASETS.md:L41 | TO CHECK | TO CHECK | TO CHECK |
-| 36 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/float_img/ldem_45s_400m_float.img) | data/DATASETS.md:L42 | TO CHECK | TO CHECK | TO CHECK |
-| 37 | [open](https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/) | data/DATASETS.md:L40; data/DATASETS.md:L48; data/DATASETS.md:L58 | TO CHECK | TO CHECK | TO CHECK |
-| 38 | [open](https://pds.shadowcam.asu.edu/) | data/DATASETS.md:L65 | TO CHECK | TO CHECK | TO CHECK |
-| 39 | [open](https://pds.shadowcam.asu.edu/bundle_kplo-shadowcam.xml) | data/DATASETS.md:L65 | TO CHECK | TO CHECK | TO CHECK |
-| 40 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/) | data/DATASETS.md:L59; data/DATASETS.md:L68 | TO CHECK | TO CHECK | TO CHECK |
-| 41 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF) | data/DATASETS.md:L35; data/DATASETS.md:L53 | TO CHECK | TO CHECK | TO CHECK |
-| 42 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF) | data/DATASETS.md:L33; data/DATASETS.md:L53 | TO CHECK | TO CHECK | TO CHECK |
-| 43 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF) | data/DATASETS.md:L32 | TO CHECK | TO CHECK | TO CHECK |
-| 44 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF) | data/DATASETS.md:L34 | TO CHECK | TO CHECK | TO CHECK |
-| 45 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF) | data/DATASETS.md:L31 | TO CHECK | TO CHECK | TO CHECK |
-| 46 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/) | data/DATASETS.md:L47 | TO CHECK | TO CHECK | TO CHECK |
-| 47 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif) | data/DATASETS.md:L30 | TO CHECK | TO CHECK | TO CHECK |
-| 48 | [open](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_surf.tif) | data/DATASETS.md:L37 | TO CHECK | TO CHECK | TO CHECK |
-| 49 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/) | data/DATASETS.md:L51 | TO CHECK | TO CHECK | TO CHECK |
-| 50 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_75S_120M_201608.TIF) | data/DATASETS.md:L45 | TO CHECK | TO CHECK | TO CHECK |
-| 51 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_75S_120M_201608_EARTH.TIF) | data/DATASETS.md:L46 | TO CHECK | TO CHECK | TO CHECK |
-| 52 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_85S_060M_201608.TIF) | data/DATASETS.md:L43 | TO CHECK | TO CHECK | TO CHECK |
-| 53 | [open](https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_85S_060M_201608_EARTH.TIF) | data/DATASETS.md:L44 | TO CHECK | TO CHECK | TO CHECK |
-| 54 | [open](https://pgda.gsfc.nasa.gov/products/69) | data/DATASETS.md:L43; data/DATASETS.md:L51 | TO CHECK | TO CHECK | TO CHECK |
-| 55 | [open](https://pgda.gsfc.nasa.gov/products/78) | data/DATASETS.md:L37 | TO CHECK | TO CHECK | TO CHECK |
-| 56 | [open](https://pgda.gsfc.nasa.gov/products/81) | data/DATASETS.md:L30; data/DATASETS.md:L47 | TO CHECK | TO CHECK | TO CHECK |
-| 57 | [open](https://pgda.gsfc.nasa.gov/products/90) | data/DATASETS.md:L31; data/DATASETS.md:L32; data/DATASETS.md:L33; data/DATASETS.md:L34; data/DATASETS.md:L35; data/DATASETS.md:L47; data/DATASETS.md:L53; data/DATASETS.md:L55; data/DATASETS.md:L59 | TO CHECK | TO CHECK | TO CHECK |
-| 58 | [open](https://planetarynames.wr.usgs.gov/Feature/5450) | data/DATASETS.md:L67 | TO CHECK | TO CHECK | TO CHECK |
-| 59 | [open](https://science.nasa.gov/lunar-science/clps-deliveries/cp-11/) | data/DATASETS.md:L66 | TO CHECK | TO CHECK | TO CHECK |
-| 60 | [open](https://ssd-api.jpl.nasa.gov/doc/horizons.html) | data/DATASETS.md:L12; data/DATASETS.md:L52 | TO CHECK | TO CHECK | TO CHECK |
-| 61 | [open](https://ssd.jpl.nasa.gov/api/horizons.api) | data/DATASETS.md:L12; data/DATASETS.md:L52; data/DATASETS.md:L64 | TO CHECK | TO CHECK | TO CHECK |
-| 62 | [open](https://svs.gsfc.nasa.gov/4720) | data/DATASETS.md:L56 | TO CHECK | TO CHECK | TO CHECK |
-| 63 | [open](https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_8k.tif) | data/DATASETS.md:L56 | TO CHECK | TO CHECK | TO CHECK |
-| 64 | [open](https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full) | data/DATASETS.md:L27; sites.json:IM3_REINER_GAMMA | TO CHECK | TO CHECK | TO CHECK |
-| 65 | [open](https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/) | data/DATASETS.md:L28 | TO CHECK | TO CHECK | TO CHECK |
+| Check | Open and inspect | Human opened? | Human result |
+|---|---|---|---|
+| H1 | [Wiley original](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434), Appendix Table A1: compare PCB01, HW01, MMA01, MMP01, MMO01, NR101, NR201, dGR201 and SP01 with sites.json. AI access was blocked; no human result is assumed. | TO CHECK | TO CHECK |
+| H2 | [Gläser 2017 PDF](https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf), printed p.12 Table 2: visually confirm the FIRST Shackleton S row is -89.6866 / 197.19 E (= -162.81 signed E). Text extraction can misalign row labels. | TO CHECK | TO CHECK |

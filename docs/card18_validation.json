@@ -1,0 +1,535 @@
+{
+  "method": "Independent Card 13 DEM reader, PROJ geodesics, ECEF brute-force rays, NumPy full-window metrics; no production geometry imports or early stop",
+  "criterion": "Each sun_frac, earth_frac, both_frac difference <= 1 percentage point; dark-run difference reported without pass threshold",
+  "limitation": "Same-source numerical implementation check, not DEM physical accuracy or a statistical bound on all grid nodes",
+  "seed": 20261114,
+  "sampling": "Python random.Random(seed).sample without replacement; sorted six IDs then row-major indices 0..440",
+  "population_n": 2646,
+  "sample_n": 5,
+  "selected": [
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "index": 262
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "index": 104
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 62
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 199
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "index": 219
+    }
+  ],
+  "parameters": {
+    "radius_m": 1737400.0,
+    "observer_height_m": 2,
+    "azimuth_bins": 720,
+    "azimuth_step_deg": 0.5,
+    "min_distance_m": 5,
+    "max_distance_m": 300000,
+    "distances_n": 8001,
+    "distance_spacing": "geomspace",
+    "range_gates_km": {
+      "5": 3,
+      "10": 25,
+      "20": 25,
+      "60": 60,
+      "80": 60,
+      "240": 200
+    },
+    "global_range_gate": null,
+    "epochs": 43824,
+    "start": "2026-01-01T00:00:00Z",
+    "step_h": 1
+  },
+  "fallback_policy": "Missing/out-of-source 5 m samples fall through to coarser DEM; final missing samples abort",
+  "quantization": "Production h0 rounds to 0.01 m and mask to 0.0001 deg; independent metrics retain full precision",
+  "identity": {
+    "ephem_bin_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+    "verifier_sha256": "0655aa96c70a247195fdcb743d4ec323507aafbe62482c57f9f6878f7b444304",
+    "independent_helpers_sha256": "a2591dcf4f01cc3b58f4aaebfedd11f5bca82fc60d51e1fa6d3f0745e88b2660",
+    "output_sha256": {
+      "ARTEMIS_HAWORTH": "f99f492e8c91baa363b10b5aac5d30cea0387c68c0625d3cb45745b2d5702fae",
+      "ARTEMIS_MALAPERT": "42e94a80ec41f95468801f6e15b492449fd09fc5f47c8370f4c8b9235d207d36",
+      "CONNECTING_RIDGE": "50c8ec1c8c2399126b968ff9a7d1317d2a27cd0b9a2961d7ee7881f06303f760",
+      "DE_GERLACHE_RIM1": "824149f927a64f225b22fee2aeff19da76df102dc328adb46f62004430794fba",
+      "PEAK_NEAR_SHACKLETON": "bd3b867f45d81bcc27aae4fef852ef8c1045cab4ce524d851a149048c548307b",
+      "SHACKLETON_RIM": "9f04b8c0cb1f764f8092bbab61aac39bb8fa9b7c6703eac1d30a2d5cf29fa4c1"
+    }
+  },
+  "points": [
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "index": 262,
+      "e_m": 0,
+      "n_m": 2000,
+      "lat": -86.70204422756645,
+      "lon": -20.514000000000003,
+      "independent_ground_m": 1831.2342476909691,
+      "reported_ground_m": 1831.23,
+      "ground_difference_m": 0.004247690969123141,
+      "independent_mask_sha256": "fd4f1993f9d4d185cd8551408bfaa949ef5a4ced7ff8a9ec6d57d24cc5364ed0",
+      "sources": [
+        {
+          "path": "data/processed/card18/raw/polar/5/ARTEMIS_HAWORTH.npz",
+          "sha256": "6271734212e8cd0146aa2ad3ce0f2cf96e2fc21d07cff2286117e9e3b6523154",
+          "gate_km": 3
+        },
+        {
+          "path": "data/processed/card18/raw/polar/10/ARTEMIS_HAWORTH.npz",
+          "sha256": "a8f2f8df306d9cb892e94a4b20b5b653243d0ea794518078079046fb1f894a18",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/20/ARTEMIS_HAWORTH.npz",
+          "sha256": "4956d6a284b09b8eca813cda4ecb9d2f54a55f5cb71161f9d3f8d945d279e039",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/60/ARTEMIS_HAWORTH.npz",
+          "sha256": "3d1e7c44ef8ce394815010441b93ab261f93245c68a6a529a619c80983d3268b",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/80/ARTEMIS_HAWORTH.npz",
+          "sha256": "3c1233211ff3bff5fe8d73f25ef8f2087ce18fdf41fa4418c6811c27c688b8a1",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/240/ARTEMIS_HAWORTH.npz",
+          "sha256": "55374f775c960e2b2dbbb563088b8dfa6410f23113b6c3ab8da7bf916cad89d8",
+          "gate_km": 200
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": null,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": null,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "fine_5m_gate_samples": 3349441,
+      "fine_5m_missing_samples_falling_back": 0,
+      "final_missing_terrain_samples": 0,
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.41153249361080685,
+          "reported": 0.41153249361080685,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.6770947426067908,
+          "reported": 0.6770947426067908,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.2877646951442132,
+          "reported": 0.2877646951442132,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 421,
+          "reported": 421,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "elapsed_s": 12.312
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "index": 104,
+      "e_m": 10000,
+      "n_m": -6000,
+      "lat": -89.52710859671049,
+      "lon": -93.27364727613254,
+      "independent_ground_m": -968.0337274864994,
+      "reported_ground_m": -968.03,
+      "ground_difference_m": -0.003727486499428778,
+      "independent_mask_sha256": "7af99d0b7fe932a3f61370122618c0040acd653b4cd1f2f95fbd90388bc6e74d",
+      "sources": [
+        {
+          "path": "data/processed/card18/raw/polar/5/CONNECTING_RIDGE.npz",
+          "sha256": "232fba2653ebf35d873adf8f2f9c54b724cb68fe837419014eedbf9b33ad8c85",
+          "gate_km": 3
+        },
+        {
+          "path": "data/processed/card18/raw/polar/10/CONNECTING_RIDGE.npz",
+          "sha256": "0621d875dd46ca1730993b30f8220c2791423c048077280c26a1fd8bd009e0e3",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/20/CONNECTING_RIDGE.npz",
+          "sha256": "8856d78eb55c01582f1381e0962f672342e799f7c955b813cad72e50cfef7016",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/60/CONNECTING_RIDGE.npz",
+          "sha256": "a65b6d5bde27ef5ea18cf3b89b6e206afe263aa22ea103fbc4b4aee4a288ae72",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/80/CONNECTING_RIDGE.npz",
+          "sha256": "7bd5f6ccf06882019b98a9b34cf5bbe071df16750544f217ea5b9922321128de",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/240/CONNECTING_RIDGE.npz",
+          "sha256": "9be2865223f066e59b2114bb376a45b22c6c0e9beb3bd5832df8ba79c39373ba",
+          "gate_km": 200
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": null,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": null,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "fine_5m_gate_samples": 3349441,
+      "fine_5m_missing_samples_falling_back": 0,
+      "final_missing_terrain_samples": 0,
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.3431453085067543,
+          "reported": 0.3431453085067543,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.0,
+          "reported": 0,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 43824,
+          "reported": 43824,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "elapsed_s": 14.907
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 62,
+      "e_m": 10000,
+      "n_m": -8000,
+      "lat": -89.6665170418941,
+      "lon": -81.35891002234779,
+      "independent_ground_m": -793.7057829579318,
+      "reported_ground_m": -793.71,
+      "ground_difference_m": 0.004217042068262344,
+      "independent_mask_sha256": "113d55f3babd75a2efb444018d5d588f5932fc2a9830644f12aef24df3e9c07e",
+      "sources": [
+        {
+          "path": "data/processed/card18/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "b41e548b68ff3a7edddea46225e8d64e9604abf596452b03af2ca53a2f8bb35f",
+          "gate_km": 3
+        },
+        {
+          "path": "data/processed/card18/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "0dd546ae2e43b738dabfb6620a46772e1389d4d057d3a7e80ad3505e2a68cc15",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "1ab59d935c9bdc051cce285d32634e97266882a868ec9febd8445d2da0bef4a5",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "01415feaa5eaa57a375934b1e11b0ea2500366fe8f6f7c495f12116c842c45c5",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "29a95d1ea93929f4e0d48ff6429fc006594d1233c189000ec5d41e002730c3e2",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "f75816450c932c6ba5b94d2195adaadd3a617378dca1ca320b3285b37ae333e9",
+          "gate_km": 200
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": null,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": null,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "fine_5m_gate_samples": 3349441,
+      "fine_5m_missing_samples_falling_back": 0,
+      "final_missing_terrain_samples": 0,
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.0033999634903249362,
+          "reported": 0.0033999634903249362,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.265539430449069,
+          "reported": 0.26556224899598396,
+          "difference_pp": -0.0022818546914937787,
+          "absolute_difference_pp": 0.0022818546914937787,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.002395947426067908,
+          "reported": 0.002395947426067908,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 7750,
+          "reported": 7750,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "elapsed_s": 13.109
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "index": 199,
+      "e_m": 0,
+      "n_m": -1000,
+      "lat": -89.71957788621532,
+      "lon": -162.81,
+      "independent_ground_m": 1605.2859796044759,
+      "reported_ground_m": 1605.29,
+      "ground_difference_m": -0.004020395524094056,
+      "independent_mask_sha256": "0dd76b7acf2f5599a3acd66d39fc4b5faa3209081be6b021ba9a6355bcb6a284",
+      "sources": [
+        {
+          "path": "data/processed/card18/raw/polar/5/SHACKLETON_RIM.npz",
+          "sha256": "b41e548b68ff3a7edddea46225e8d64e9604abf596452b03af2ca53a2f8bb35f",
+          "gate_km": 3
+        },
+        {
+          "path": "data/processed/card18/raw/polar/10/SHACKLETON_RIM.npz",
+          "sha256": "0dd546ae2e43b738dabfb6620a46772e1389d4d057d3a7e80ad3505e2a68cc15",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/20/SHACKLETON_RIM.npz",
+          "sha256": "1ab59d935c9bdc051cce285d32634e97266882a868ec9febd8445d2da0bef4a5",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/60/SHACKLETON_RIM.npz",
+          "sha256": "01415feaa5eaa57a375934b1e11b0ea2500366fe8f6f7c495f12116c842c45c5",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/80/SHACKLETON_RIM.npz",
+          "sha256": "29a95d1ea93929f4e0d48ff6429fc006594d1233c189000ec5d41e002730c3e2",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/240/SHACKLETON_RIM.npz",
+          "sha256": "f75816450c932c6ba5b94d2195adaadd3a617378dca1ca320b3285b37ae333e9",
+          "gate_km": 200
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": null,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": null,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "fine_5m_gate_samples": 3349441,
+      "fine_5m_missing_samples_falling_back": 0,
+      "final_missing_terrain_samples": 0,
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4003057685286601,
+          "reported": 0.4003057685286601,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.3670363271266886,
+          "reported": 0.3670363271266886,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.16312979189485213,
+          "reported": 0.16312979189485213,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 422,
+          "reported": 422,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "elapsed_s": 11.734
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "index": 219,
+      "e_m": -1000,
+      "n_m": 0,
+      "lat": -88.81054281924021,
+      "lon": 122.10124791014651,
+      "independent_ground_m": 1519.1738709921644,
+      "reported_ground_m": 1519.17,
+      "ground_difference_m": 0.0038709921643658163,
+      "independent_mask_sha256": "7698c9447b195ce6f12535c467f7f95b6445639336e928100f9cc7a21f96e6f0",
+      "sources": [
+        {
+          "path": "data/processed/card18/raw/polar/5/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "b6a13d6e7b73c1d90ac8397ceca7cb5b1b9452a506cf2eef99ada55c7375f8bf",
+          "gate_km": 3
+        },
+        {
+          "path": "data/processed/card18/raw/polar/10/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "658712ac02785e9a90a7cdbd5096ea9e511b2feb8ee24abd0bf2bc8ebda998b5",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/20/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "61b07f556c7c5d6e669bd81271a78e3516acceb06848c1ab7f43853eed9323c4",
+          "gate_km": 25
+        },
+        {
+          "path": "data/processed/card18/raw/polar/60/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "72874806e6ce6a4a0f8195df58939d97939c2172ca8ba6aa6aef0f43f57399a9",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/80/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "2fd51210709526cf733cbfb5c2026f749600092e2ff29ae1752ebb77e1fb00e0",
+          "gate_km": 60
+        },
+        {
+          "path": "data/processed/card18/raw/polar/240/PEAK_NEAR_SHACKLETON.npz",
+          "sha256": "b98f30b60e5c500871e21bab89c3c5403194789f3c5704a8321d2db0d0d51cde",
+          "gate_km": 200
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_64_float.img",
+          "sha256": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+          "gate_km": null,
+          "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+        },
+        {
+          "path": "data/processed/card18/raw/global/ldem_16_float.img",
+          "sha256": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+          "gate_km": null,
+          "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+        }
+      ],
+      "fine_5m_gate_samples": 3349441,
+      "fine_5m_missing_samples_falling_back": 0,
+      "final_missing_terrain_samples": 0,
+      "comparison": {
+        "sun_frac": {
+          "independent": 0.4557776560788609,
+          "reported": 0.4557776560788609,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "earth_frac": {
+          "independent": 0.5650328587075575,
+          "reported": 0.5650328587075575,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "both_frac": {
+          "independent": 0.2860761226725082,
+          "reported": 0.2860761226725082,
+          "difference_pp": 0.0,
+          "absolute_difference_pp": 0.0,
+          "passed": true
+        },
+        "longest_dark_h": {
+          "independent": 410,
+          "reported": 410,
+          "difference_h": 0,
+          "absolute_difference_h": 0,
+          "criterion": "reported only; no tolerance specified"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "elapsed_s": 11.609
+    }
+  ],
+  "complete": true,
+  "passed": true,
+  "started_utc": "2026-11-14T06:58:23.745224+00:00",
+  "finished_utc": "2026-11-14T06:59:27.606741+00:00"
+}

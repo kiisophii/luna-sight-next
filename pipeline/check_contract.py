@@ -431,6 +431,127 @@ def check_hterrain(data):
         err("hterrain/index.json", "near grid must reach 150 km and far grid 300 km (same chain as pipeline/horizon.py)")
     check_mock_flag(idx, "hterrain/index.json")
     print(f"hterrain: near {idx['grids']['near'].get('res_m')} m, far {idx['grids']['far'].get('res_m')} m")
+    check_hterrain_polar(d)
+
+
+def check_hterrain_polar(d):
+    """Section 14b (proposed): south-polar PGDA levels for custom points (web/data/hterrain/polar_s/)."""
+    f = d / "polar_s" / "index.json"
+    if not f.exists():
+        warn("hterrain.polar_s", "index.json missing - polar custom points use the 948 m grid")
+        return
+    idx = load_json(f)
+    if idx is None or not need(idx, ["pole", "lat_edge_deg", "levels", "projection", "mock"], "hterrain/polar_s/index.json"):
+        return
+    if "R=1737400" not in idx["projection"].replace(".0", "") or "lat_0=-90" not in idx["projection"]:
+        err("hterrain/polar_s", f"unexpected projection {idx['projection']}")
+    total = 0
+    for lv in idx["levels"]:
+        w = f"hterrain.polar_s.{lv.get('name')}"
+        if not need(lv, ["name", "res_m", "q_m", "to_km", "x0_m", "y0_m", "tile_px", "n", "nt", "tiles", "url"], w):
+            continue
+        if lv["n"] != lv["tile_px"] + 1:
+            err(w, "n must be tile_px + 1")
+        if not (0 < lv["to_km"] <= 150):
+            err(w, f"to_km {lv['to_km']} outside (0, 150]")
+        paths = [d / lv["url"].replace("{ty}_{tx}", k) for k in lv["tiles"]]
+        absent = [p.name for p in paths if not p.exists()]
+        if absent:
+            err(w, f"{len(absent)} listed tiles missing, e.g. {absent[:3]}")
+        total += sum(p.stat().st_size for p in paths if p.exists())
+    check_mock_flag(idx, "hterrain/polar_s/index.json")
+    print(f"hterrain.polar_s: {[(lv['name'], lv['res_m'], lv['to_km']) for lv in idx['levels']]}, {total / 1e6:.1f} MB")
+
+
+def check_local(data, sites):
+    """Optional section 15: complete six-region local node maps."""
+    directory = data / 'local'
+    if not directory.exists():
+        return
+    from local_maps import IDS, validate_map
+    for sid in IDS:
+        where = f'local/{sid}.json'
+        obj = load_json(directory / (sid+'.json'))
+        if obj is None:
+            continue
+        try:
+            validate_map(obj)
+            if obj['id'] != sid or obj['center'] != {k:sites[sid][k] for k in ['lat','lon']}:
+                raise ValueError('Centre differs from catalogue')
+        except (ValueError, KeyError, TypeError) as exc:
+            err(where, str(exc))
+    print('local: six 21x21 maps checked')
+
+
+def check_monthly(data, sites):
+    """Section 17 (proposed): web/data/monthly/<ID>.json seasons 2026-2030 (pipeline/seasons.mjs)."""
+    d = data / "monthly"
+    if not d.exists():
+        warn("monthly", "folder missing - the Seasons chart has no data (run node pipeline/seasons.mjs)")
+        return
+    import calendar
+    want_m, want_h = [], []
+    for y in range(2026, 2031):
+        for mo in range(1, 13):
+            want_m.append(f"{y}-{mo:02d}")
+            want_h.append(calendar.monthrange(y, mo)[1] * 24)
+    n_ok = 0
+    for p in sorted(d.glob("*.json")):
+        w = f"monthly/{p.name}"
+        m = load_json(p)
+        if not need(m, ["id", "months", "series", "lunation", "subsolar_lat_deg", "subearth_lat_deg", "total", "mock"], w):
+            continue
+        if p.stem != m["id"] or m["id"] not in sites:
+            err(w, "id must match file name and sites.json")
+        if m["months"] != want_m:
+            err(w, "months must be 2026-01 .. 2030-12 (60 calendar months)")
+            continue
+        s = m["series"]
+        keys = ["hours", "sun_h", "earth_h", "both_h", "sun_frac", "earth_frac", "both_frac", "longest_dark_h"]
+        if not need(s, keys, w + ".series") or any(not isinstance(s[k], list) or len(s[k]) != 60 for k in keys):
+            err(w, "series arrays must have 60 values")
+            continue
+        if s["hours"] != want_h:
+            err(w, "series.hours must be the hours of each calendar month (sum 43824)")
+        bad = False
+        for k in range(60):
+            n = s["hours"][k]
+            for f in ("sun", "earth", "both"):
+                c, fr = s[f + "_h"][k], s[f + "_frac"][k]
+                if not isinstance(c, int) or not 0 <= c <= n or not is_num(fr) or abs(fr - c / n) > 5.01e-5:
+                    bad = True
+            if s["both_h"][k] > min(s["sun_h"][k], s["earth_h"][k]):
+                bad = True
+            dk = s["longest_dark_h"][k]
+            if not isinstance(dk, int) or not 0 <= dk <= n - s["sun_h"][k]:
+                bad = True
+        if bad:
+            err(w, "monthly counts / fractions / longest_dark_h inconsistent (frac = count/hours to 4 dp, both <= sun, earth; dark <= not-sunlit hours)")
+        lun = m["lunation"]
+        if lun.get("window_h") != 709 or any(len(lun.get(f, [])) != 60 or not all(is_num(x) and 0 <= x <= 1 for x in lun.get(f, []))
+                                             for f in ("sun_frac", "earth_frac", "both_frac")):
+            err(w, "lunation must have window_h 709 and three 60-value fraction arrays")
+        for key in ("subsolar_lat_deg", "subearth_lat_deg"):
+            r = m[key]
+            if any(len(r.get(x, [])) != 60 for x in ("min", "max")) or any(not (-10 < a <= b < 10) for a, b in zip(r["min"], r["max"])):
+                err(w, f"{key} must be 60 min <= max latitudes (deg)")
+        f5 = data / "metrics" / p.name
+        if f5.exists():
+            five = load_json(f5) or {}
+            N = sum(s["hours"])
+            for f in ("sun", "earth", "both"):
+                if is_num(five.get(f + "_frac")) and abs(sum(s[f + "_h"]) / N - five[f + "_frac"]) > 1e-9:
+                    err(w, f"60-month mean {f}_frac differs from metrics/{p.name}")
+            if is_num(five.get("longest_dark_h")) and max(s["longest_dark_h"]) > five["longest_dark_h"]:
+                err(w, "a month's longest dark exceeds the 5-year longest_dark_h")
+        check_mock_flag(m, w)
+        if m.get("mock") is not False:
+            err(w, "monthly data must be real (mock: false)")
+        n_ok += 1
+    missing = sorted(set(sites) - {p.stem for p in d.glob("*.json")})
+    if missing:
+        warn("monthly", f"sites without a monthly file: {missing}")
+    print(f"monthly: {n_ok} site files checked")
 
 
 def main():
@@ -447,6 +568,8 @@ def main():
     check_relay(data, sites)
     check_korea(data, sites)
     check_hterrain(data)
+    check_local(data, sites)
+    check_monthly(data, sites)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

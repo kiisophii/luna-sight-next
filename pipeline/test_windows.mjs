@@ -22,7 +22,7 @@ const rows = ['# Card 15-B verification', '',
   'Actual unchanged core.js in Node is the reference. Twenty internal visible-window edges per site are checked independently of the production run-grouping loop. The hourly transition must occur at the exact reported UTC hour; domain-clipped edges are not physical rise/set assertions.', '',
   '| Site | Edges checked | Maximum difference (h) | Whole-series membership | Fraction / longest Sun gap | Result |',
   '|---|---:|---:|---|---|---|'];
-for (const id of ['APOLLO17', 'CHANGE4', 'ARTEMIS_HAWORTH']) {
+for (const id of ['APOLLO17', 'CHANGE4', 'ARTEMIS_HAWORTH', 'SHACKLETON_RIM']) {
   const site = sites.find(s => s.id === id);
   const h = JSON.parse(await fs.readFile(path.join(ROOT, `web/data/horizon/${id}.json`)));
   validateHorizon(site, h); core.state.horizons.set(id, h);
@@ -38,8 +38,26 @@ for (const id of ['APOLLO17', 'CHANGE4', 'ARTEMIS_HAWORTH']) {
       if (!w.clipped_start) pool.push({ body, hour: a, kind: 'start', utc: w.start_utc });
       if (!w.clipped_end) pool.push({ body, hour: b, kind: 'end', utc: w.end_utc });
     }
-    for (let i = 0; i < core.state.n; i++) assert.equal(membership[i], +predicate(site, i), `${id} ${body} ${i}`);
+    const actual = new Uint8Array(core.state.n);
+    for (let i = 0; i < core.state.n; i++) {
+      actual[i] = +predicate(site, i);
+      assert.equal(membership[i], actual[i], `${id} ${body} ${i}`);
+    }
     assert.equal(membership.reduce((a, b) => a + b, 0), doc[body].visible_hours);
+    // Independent traversal of actual states, not the production splitRuns function.
+    const expectedVisible = [], expectedGaps = [];
+    let cursor = 0;
+    while (cursor < actual.length) {
+      const start = cursor, state = actual[cursor];
+      do { cursor++; } while (cursor < actual.length && actual[cursor] === state);
+      const utc = i => new Date(t0 + i * 3600000).toISOString().replace('.000Z', 'Z');
+      const expected = { start_utc: utc(start), end_utc: utc(cursor), duration_h: cursor - start,
+        clipped_start: start === 0, clipped_end: cursor === actual.length };
+      (state ? expectedVisible : expectedGaps).push(expected);
+    }
+    expectedGaps.sort((a, b) => b.duration_h - a.duration_h || a.start_utc.localeCompare(b.start_utc));
+    assert.deepEqual(doc[body].visible, expectedVisible, `${id} ${body} visible/clipping`);
+    assert.deepEqual(doc[body].longest_gaps, expectedGaps.slice(0, 10), `${id} ${body} top-10 gaps/clipping`);
   }
   // Spread selections across time and include both bodies when their actual windows have edges.
   pool.sort((a, b) => a.hour - b.hour || a.body.localeCompare(b.body));
@@ -56,12 +74,14 @@ for (const id of ['APOLLO17', 'CHANGE4', 'ARTEMIS_HAWORTH']) {
   assert.equal(doc.earth.visible_hours / core.state.n, metrics.earth_frac);
   assert.equal(doc.sun.longest_gaps[0]?.duration_h ?? 0, metrics.longest_dark_h);
   report.site_checks.push({ id, edges_checked: checked.length, max_edge_difference_h: 0,
-    all_43824_hour_memberships_match_each_body: true, metric_summary_matches: true, edges: checked });
-  rows.push(`| ${id} | ${checked.length} | 0 | PASS (43,824 hours per body) | PASS | PASS |`);
+    all_43824_hour_memberships_match_each_body: true,
+    full_visible_lists_and_top10_gaps_and_clipping_match_each_body: true,
+    metric_summary_matches: true, edges: checked });
+  rows.push(`| ${id} | ${checked.length} | 0 | PASS (43,824 hours per body; lists/gaps/clipping) | PASS | PASS |`);
 }
 report.n_edges_checked = report.site_checks.reduce((n, s) => n + s.edges_checked, 0);
-rows.push('', 'Scope: sampled hourly visibility, not sub-hour rise/set accuracy or independent DEM accuracy. SHACKLETON_RIM remains skipped until its corrected-coordinate horizon is present on main.', '',
+rows.push('', 'Scope: sampled hourly visibility, not sub-hour rise/set accuracy or independent DEM accuracy. SHACKLETON_RIM is included with its corrected-coordinate real horizon from main.', '',
   'Reproduce:', '', '```sh', 'node pipeline/build_windows.mjs', 'node pipeline/test_windows.mjs', 'python pipeline/check_contract.py', '```', '');
 await atomicJSON(path.join(ROOT, 'docs/windows_verification.json'), report);
 await fs.writeFile(path.join(ROOT, 'docs/windows_verification.md'), rows.join('\n'));
-console.log('PASS:', report.n_edges_checked, 'edges; three complete five-year membership/metric checks');
+console.log('PASS:', report.n_edges_checked, 'edges; four complete five-year membership/metric checks');

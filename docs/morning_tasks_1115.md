@@ -26,6 +26,7 @@
 | U | 북극 75–90° N 사용자 지점 검증 (지금 '미검증' 배지) — PGDA 북극 DEM 30점 | 수아 | 2시간+ |
 | V | 지구 가시 기준을 PGDA와 같게(any-part) 바꿔 다시 비교 → 3.87 %p 차이가 정말 정의 차이인지 증명 | 만든 사람 | 1–2시간 |
 | W | 민감도 33곳 전부: 관측 높이 0/2/10 m, 200 m 안쪽 지형 포함/제외 → 한계 숫자 근거 | — | 2시간+ |
+| X | 남극 밖 **17곳 250 m 주변 격자** 새로 만들기 (SLDEM2015 59 m, #61과 같은 정의·형식) → 검증은 다른 사람 | 만들기: 누구나(GPU 있으면 빠름) / 검증: 만든 사람 X | 2–3시간 + 검증 1시간 |
 
 **A 프롬프트**: Pick all 33 sites in `web/data/horizon/` (not ones I produced). For each, choose 10 random azimuths and recompute the horizon elevation by brute force directly from the DEM listed in `docs/DATASETS`/the horizon file header (same observer height 2 m, curvature, near-field rule), with my own code, no imports from `pipeline/`. Report a table site × azimuth: stored vs mine, difference. Criterion ≤ 0.05°. Then recompute sun_frac for those 10 sites from ephem + my horizons; criterion ≤ 1 %p. Add a row to `docs/verification_ledger.md` (row `horizon/`) with my name and numbers.
 
@@ -60,3 +61,5 @@
 - #61 독립 확인 → 합치기 → 남극 주변 지도 250 m 연결
 - 디자인 브랜치 미리보기 → main 합치기
 - 들어오는 PR 독립 재계산 후 합치기 → 최종 QA → 제출
+
+**X 프롬프트**: Using the same runner and exact definitions as PR #61 (`web/data/local250/`, contract section for local grids), compute 250 m 41×41 local grids for the 17 non-polar sites from SLDEM2015 59 m (LDEM_64 where SLDEM2015 does not cover, e.g. CHANDRAYAAN3 per card 3), 2026–2030 hourly, observer 2 m. Write `web/data/local250/<ID>.json` + index entries, run `check_contract.py`, and in the PR give per-site min/max/IQR within 1/3/5/10 km and the difference vs the 1 km grid at shared nodes. **Verification (another person)**: recompute 5 random nodes per 3 sites by brute force from the DEM with own code; ≤ 1 %p.

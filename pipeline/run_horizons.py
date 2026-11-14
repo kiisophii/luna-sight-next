@@ -118,6 +118,18 @@ def run_site(site, raw, out_dir, params, force):
                                 f"[{src}], {time.time() - t0:.1f} s{warn}")
 
 
+def write_index(out_dir):
+    """web/data/horizon_index.json = ids that have horizon/<ID>.json, so the app only fetches existing files."""
+    out_dir = Path(out_dir)
+    ids = sorted(p.stem for p in out_dir.glob("*.json")) if out_dir.exists() else []
+    idx = {"ids": ids, "note": "Sites with a computed horizon in horizon/<ID>.json. "
+                               "Written by pipeline/run_horizons.py (or --index-only)."}
+    path = out_dir.parent / "horizon_index.json"
+    path.write_text(json.dumps(idx, indent=1) + "\n", encoding="utf-8")
+    print(f"index: {len(ids)} horizon(s) listed in {path}")
+    return ids
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--sites", default=str(ROOT / "web" / "data" / "sites.json"))
@@ -130,7 +142,12 @@ def main(argv=None):
     ap.add_argument("--workers", type=int, default=1)
     ap.add_argument("--all-cores", action="store_true", help="use every CPU core (batch runs)")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--index-only", action="store_true",
+                    help="only rebuild web/data/horizon_index.json from the files present (after merging PRs)")
     a = ap.parse_args(argv)
+    if a.index_only:
+        write_index(a.out)
+        return 0
 
     sites = json.loads(Path(a.sites).read_text(encoding="utf-8"))
     if a.site:
@@ -156,6 +173,7 @@ def main(argv=None):
                 print(" ".join(results[-1]), flush=True)
     n = {k: sum(r[1] == k for r in results) for k in ("DONE", "OK", "SKIP")}
     print(f"\ncomputed {n['DONE']}, already up to date {n['OK']}, skipped (missing DEM) {n['SKIP']}")
+    write_index(out)
     return 0
 
 

@@ -9,11 +9,31 @@ export const STR = {
     untilSunset: 'Until sunset', untilSunrise: 'Until sunrise',
     untilEarthset: 'Until Earthset', untilEarthrise: 'Until Earthrise',
     sunlit: 'Sunlit', dark: 'In shadow', earthUp: 'Earth visible', earthDown: 'Earth hidden',
-    notInWindow: 'not within data window', az: 'az', sunFrac: 'Sunlight', earthFrac: 'Earth visible', bothFrac: 'Both',
+    notInWindow: 'no change before 2030-12-31 (end of data)', az: 'az', sunFrac: 'Sunlight', earthFrac: 'Earth visible', bothFrac: 'Both',
     longestDark: 'Longest shadow', windowStats: 'Over the data window',
     assumptions: 'Assumptions: observer 2 m above terrain · no atmosphere (no refraction) · sunlit = ≥ 50% of the solar disk above the local horizon · Earth visible = Earth centre above the horizon · azimuth 0° = north, clockwise · times in UTC.',
     loading: 'Loading data…', error: 'Could not load data',
     lang: '한국어', h: 'h', d: 'd',
+    // integrator (index.html / app.js)
+    pkTitle: 'Choose sites to compare', pkSearch: 'Search sites', pkSearchPh: 'Search by name, mission or ID…',
+    pkGroup: 'Group', pkAll: 'All groups', pkShown: 'shown', pkOf: 'of',
+    pkHint: 'Click a site to put it in the comparison (up to 3) and show its horizon below. Sites hidden by the filters at the bottom are not listed.',
+    pkNone: 'No site matches the search, group and filters.',
+    g_apollo: 'Apollo', g_luna: 'Luna', g_change: "Chang'e", g_chandrayaan: 'Chandrayaan', g_slim: 'SLIM', g_clps: 'CLPS (commercial)',
+    g_artemis3_region: 'Artemis III regions', g_polar_peak: 'South-polar peaks & rims', g_future: 'Future missions', g_custom: 'Your sites',
+    cmpRemove: 'Remove from comparison', cmpEmpty: 'Empty slot — pick a site above to compare.', cmpFocus: 'Horizon shown below',
+    instTitle: 'At the selected time', perTitle: 'Over the analysis period',
+    perSun: 'Sunlight', perEarth: 'Earth link', perBoth: 'Both', perDark: 'Longest dark', dOf: 'of', days: 'days',
+    terrainPending: 'Terrain pending', terrainPendingTip: 'No LOLA horizon computed yet: a flat 0° horizon is used, so terrain shadows are not included.',
+    mockTerrain: 'MOCK terrain', filteredOut: 'Outside filters',
+    awTitle: 'Analysis window', tbAria: 'Time and analysis period',
+    tbStart: 'Period start (UTC date)', tbTod: 'Time of day (UTC)', tbPeriod: 'Period', tbDays: 'Period length in days',
+    wm7: '7 days', wm30: '30 days', wm90: '90 days', wmDays: 'days',
+    sp1: '1 h / frame', sp3: '3 h / frame', sp6: '6 h / frame', sp24: '1 day / frame',
+    selTime: 'Selected time:', periodIs: 'Period',
+    tbHint: 'The slider and Play move the selected time inside the period (Play loops). Speed only changes how fast the animation runs; the period results always use every hour of the period, so they never change with speed.',
+    clipped: 'clipped to the end of the data (2030-12-31)',
+    terrainNote: 'Terrain: horizon masks from LOLA/SLDEM2015 DEMs (lunar curvature included) are being computed; sites marked "Terrain pending" use a flat 0° horizon until then. Ephemeris: NAIF DE440s + DE421 lunar orientation (MOON_ME), libration included.',
   },
   ko: {
     title: '달 착륙지 내비게이터',
@@ -24,11 +44,30 @@ export const STR = {
     untilSunset: '해 지기까지', untilSunrise: '해 뜨기까지',
     untilEarthset: '지구 지기까지', untilEarthrise: '지구 뜨기까지',
     sunlit: '햇빛 받음', dark: '그늘', earthUp: '지구 보임', earthDown: '지구 안 보임',
-    notInWindow: '데이터 기간 안에 없음', az: '방위', sunFrac: '햇빛', earthFrac: '지구 보임', bothFrac: '둘 다',
+    notInWindow: '2030-12-31(데이터 끝)까지 변화 없음', az: '방위', sunFrac: '햇빛', earthFrac: '지구 보임', bothFrac: '둘 다',
     longestDark: '가장 긴 그늘', windowStats: '데이터 기간 전체',
     assumptions: '가정: 관측자는 지면 위 2 m · 대기 없음(굴절 없음) · 햇빛 받음 = 태양 원반 50% 이상이 지평선 위 · 지구 보임 = 지구 중심이 지평선 위 · 방위 0° = 북쪽, 시계 방향 · 시각은 UTC.',
     loading: '데이터 불러오는 중…', error: '데이터를 불러오지 못함',
     lang: 'English', h: '시간', d: '일',
+    pkTitle: '비교할 착륙지 고르기', pkSearch: '착륙지 검색', pkSearchPh: '이름, 임무, ID로 검색…',
+    pkGroup: '분류', pkAll: '전체', pkShown: '곳 표시', pkOf: '/',
+    pkHint: '착륙지를 누르면 비교 카드(최대 3개)에 들어가고 아래에 지평선이 나온다. 맨 아래 거르기에 걸린 곳은 목록에서 빠진다.',
+    pkNone: '검색·분류·거르기에 맞는 착륙지가 없다.',
+    g_apollo: '아폴로', g_luna: '루나', g_change: '창어', g_chandrayaan: '찬드라얀', g_slim: 'SLIM', g_clps: 'CLPS (민간)',
+    g_artemis3_region: '아르테미스 III 후보 지역', g_polar_peak: '남극 봉우리·능선', g_future: '앞으로의 임무', g_custom: '내 착륙지',
+    cmpRemove: '비교에서 빼기', cmpEmpty: '빈 칸 — 위에서 착륙지를 골라 비교하자.', cmpFocus: '아래에 지평선 표시 중',
+    instTitle: '선택한 시각', perTitle: '분석 기간 전체',
+    perSun: '햇빛', perEarth: '지구 통신', perBoth: '둘 다', perDark: '가장 긴 어둠', dOf: '/', days: '일',
+    terrainPending: '지형 계산 중', terrainPendingTip: 'LOLA 지평선이 아직 없어 평평한 0° 지평선을 쓴다. 지형 그림자는 빠져 있다.',
+    mockTerrain: '가짜 지형', filteredOut: '거르기 밖',
+    awTitle: '분석 기간', tbAria: '시각과 분석 기간',
+    tbStart: '기간 시작 (UTC 날짜)', tbTod: '시각 (UTC)', tbPeriod: '기간', tbDays: '기간 길이(일)',
+    wm7: '7일', wm30: '30일', wm90: '90일', wmDays: '일',
+    sp1: '1프레임 1시간', sp3: '1프레임 3시간', sp6: '1프레임 6시간', sp24: '1프레임 1일',
+    selTime: '선택한 시각:', periodIs: '기간',
+    tbHint: '슬라이더와 재생은 기간 안에서 선택한 시각만 움직인다(재생은 반복). 속도는 애니메이션 빠르기만 바꾼다. 기간 결과는 기간의 모든 시간을 쓰므로 속도에 따라 바뀌지 않는다.',
+    clipped: '데이터 끝(2030-12-31)에서 잘림',
+    terrainNote: '지형: LOLA/SLDEM2015 DEM으로 지평선 마스크(달 곡률 포함)를 계산하는 중이다. "지형 계산 중" 표시가 있는 곳은 그때까지 평평한 0° 지평선을 쓴다. 천체력: NAIF DE440s + DE421 달 자세(MOON_ME), 칭동 포함.',
   },
 };
 
@@ -42,6 +81,8 @@ export const t = key => STR[lang][key] ?? STR.en[key] ?? key;
 export function applyI18n(root = document) {
   document.documentElement.lang = lang;
   root.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  root.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+  root.querySelectorAll('[data-i18n-ph]').forEach(el => el.setAttribute('placeholder', t(el.dataset.i18nPh)));
 }
 
 export function toggleLang() {

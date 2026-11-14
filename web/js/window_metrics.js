@@ -94,6 +94,9 @@ function render() {
   tbody.innerHTML = core.state.sites.map(s => {
     const m = w.metrics.get(s.id);
     if (!m) return '';
+    if (m.pending) return `<tr data-id="${s.id}" tabindex="0">
+      <th scope="row" style="text-align:left;font-weight:600">${siteName(s)}${tags(s)}</th>
+      <td class="wm-pending" colspan="4" style="color:var(--warn)">— ${t('terrainPendingTip')}</td></tr>`;
     return `<tr data-id="${s.id}" tabindex="0">
       <th scope="row" style="text-align:left;font-weight:600">${siteName(s)}${tags(s)}</th>
       ${cell('wm-sun', m.sun_frac, w.days)}${cell('wm-earth', m.earth_frac, w.days)}${cell('wm-both', m.both_frac, w.days)}

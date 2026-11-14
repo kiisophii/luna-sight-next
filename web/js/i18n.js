@@ -24,7 +24,7 @@ export const STR = {
     cmpRemove: 'Remove from comparison', cmpEmpty: 'Empty slot — pick a site above to compare.', cmpFocus: 'Horizon shown below',
     instTitle: 'At the selected time', perTitle: 'Over the analysis period',
     perSun: 'Sunlight', perEarth: 'Earth link', perBoth: 'Both', perDark: 'Longest dark', dOf: 'of', days: 'days',
-    terrainPending: 'Terrain pending', terrainPendingTip: 'No LOLA horizon computed yet: a flat 0° horizon is used, so terrain shadows are not included.',
+    terrainPending: 'Terrain pending', terrainPendingTip: 'No LOLA horizon computed yet, so no sunlight or Earth-visibility numbers are shown for this site (no flat-horizon results).',
     mockTerrain: 'MOCK terrain', filteredOut: 'Outside filters',
     browserTerrain: 'Browser terrain ~948 m', browserTerrainTip: 'Horizon computed in your browser from LOLA LDEM_64 (~948 m) and LDEM_16 — coarser than the catalogue sites.',
     awTitle: 'Analysis window', tbAria: 'Time and analysis period',
@@ -34,7 +34,7 @@ export const STR = {
     selTime: 'Selected time:', periodIs: 'Period',
     tbHint: 'The slider and Play move the selected time inside the period (Play loops). Speed only changes how fast the animation runs; the period results always use every hour of the period, so they never change with speed.',
     clipped: 'clipped to the end of the data (2030-12-31)',
-    terrainNote: 'Terrain: horizon masks from LOLA/SLDEM2015 DEMs (lunar curvature included) are being computed; sites marked "Terrain pending" use a flat 0° horizon until then. Ephemeris: NAIF DE440s + DE421 lunar orientation (MOON_ME), libration included.',
+    terrainNote: 'Terrain: horizon masks from LOLA/SLDEM2015 DEMs (lunar curvature included); a site marked "Terrain pending" has no horizon yet and shows no sunlight or Earth-visibility numbers. Ephemeris: NAIF DE440s + DE421 lunar orientation (MOON_ME), libration included.',
   },
   ko: {
     title: '달 착륙지 내비게이터',
@@ -60,7 +60,7 @@ export const STR = {
     cmpRemove: '비교에서 빼기', cmpEmpty: '빈 칸 — 위에서 착륙지를 골라 비교하자.', cmpFocus: '아래에 지평선 표시 중',
     instTitle: '선택한 시각', perTitle: '분석 기간 전체',
     perSun: '햇빛', perEarth: '지구 통신', perBoth: '둘 다', perDark: '가장 긴 어둠', dOf: '/', days: '일',
-    terrainPending: '지형 계산 중', terrainPendingTip: 'LOLA 지평선이 아직 없어 평평한 0° 지평선을 쓴다. 지형 그림자는 빠져 있다.',
+    terrainPending: '지형 계산 중', terrainPendingTip: 'LOLA 지평선이 아직 없어서 이 착륙지는 햇빛·지구 가시성 숫자를 보여 주지 않는다 (평평한 지평선 결과 없음).',
     mockTerrain: '가짜 지형', filteredOut: '거르기 밖',
     awTitle: '분석 기간', tbAria: '시각과 분석 기간',
     tbStart: '기간 시작 (UTC 날짜)', tbTod: '시각 (UTC)', tbPeriod: '기간', tbDays: '기간 길이(일)',
@@ -69,7 +69,7 @@ export const STR = {
     selTime: '선택한 시각:', periodIs: '기간',
     tbHint: '슬라이더와 재생은 기간 안에서 선택한 시각만 움직인다(재생은 반복). 속도는 애니메이션 빠르기만 바꾼다. 기간 결과는 기간의 모든 시간을 쓰므로 속도에 따라 바뀌지 않는다.',
     clipped: '데이터 끝(2030-12-31)에서 잘림',
-    terrainNote: '지형: LOLA/SLDEM2015 DEM으로 지평선 마스크(달 곡률 포함)를 계산하는 중이다. "지형 계산 중" 표시가 있는 곳은 그때까지 평평한 0° 지평선을 쓴다. 천체력: NAIF DE440s + DE421 달 자세(MOON_ME), 칭동 포함.',
+    terrainNote: '지형: LOLA/SLDEM2015 DEM으로 지평선 마스크(달 곡률 포함)를 계산한다. "지형 계산 중" 표시가 있는 곳은 아직 지평선이 없어서 햇빛·지구 가시성 숫자를 보여 주지 않는다. 천체력: NAIF DE440s + DE421 달 자세(MOON_ME), 칭동 포함.',
   },
 };
 

@@ -179,10 +179,19 @@ function renderInstant() {
   for (const el of document.querySelectorAll('#cards .card[data-id]')) {
     const s = byId(el.dataset.id);
     const sun = core.sunAzEl(s, now), earth = core.earthAzEl(s, now);
-    const lit = core.sunlit(s, now), eUp = core.earthVisible(s, now);
     el.querySelector('.v-time').textContent = fmtUTC(now);
     el.querySelector('.v-sunel').textContent = fmtDeg(sun.el);
     el.querySelector('.v-sunaz').textContent = `${t('az')} ${sun.az.toFixed(0)}°`;
+    el.querySelector('.v-earthel').textContent = `${t('earthEl')} ${fmtDeg(earth.el)} · ${t('az')} ${earth.az.toFixed(0)}°`;
+    if (core.terrainPending(s)) {          // elevations are pure geometry; visibility needs the terrain horizon
+      for (const c of ['.v-sunlbl', '.v-earthlbl']) el.querySelector(c).textContent = t('terrainPending');
+      for (const c of ['.v-sunt', '.v-eartht']) { const n = el.querySelector(c); n.textContent = '—'; n.classList.add('na'); }
+      const sc = el.querySelector('.v-sunchip'), ec = el.querySelector('.v-earthchip');
+      sc.textContent = t('terrainPending'); sc.className = 'chip v-sunchip off';
+      ec.textContent = t('terrainPending'); ec.className = 'chip v-earthchip off';
+      continue;
+    }
+    const lit = core.sunlit(s, now), eUp = core.earthVisible(s, now);
     el.querySelector('.v-sunlbl').textContent = t(lit ? 'untilSunset' : 'untilSunrise');
     setDur(el.querySelector('.v-sunt'), lit ? untilCached(core.untilSunset, 'set', s, now) : untilCached(core.untilSunrise, 'rise', s, now));
     el.querySelector('.v-earthlbl').textContent = t(eUp ? 'untilEarthset' : 'untilEarthrise');
@@ -190,8 +199,13 @@ function renderInstant() {
     const sc = el.querySelector('.v-sunchip'), ec = el.querySelector('.v-earthchip');
     sc.textContent = (lit ? '☀ ' : '◐ ') + t(lit ? 'sunlit' : 'dark'); sc.className = 'chip v-sunchip ' + (lit ? 'on sun' : 'off');
     ec.textContent = (eUp ? '● ' : '○ ') + t(eUp ? 'earthUp' : 'earthDown'); ec.className = 'chip v-earthchip ' + (eUp ? 'on earth' : 'off');
-    el.querySelector('.v-earthel').textContent = `${t('earthEl')} ${fmtDeg(earth.el)} · ${t('az')} ${earth.az.toFixed(0)}°`;
   }
+}
+
+/** Period metrics for one site. A site without a real terrain horizon gets {pending: true} and no numbers:
+ *  a flat 0° horizon would give confident-looking but wrong sunlight / Earth fractions. */
+function periodMetrics(s, a, b) {
+  return core.terrainPending(s) ? { pending: true } : core.metrics(s, a, b);
 }
 
 /** Period values on the cards (from LLSN.window; changes only with the period). */
@@ -201,6 +215,14 @@ function renderPeriodCards() {
   for (const el of document.querySelectorAll('#cards .card[data-id]')) {
     const m = w.metrics.get(el.dataset.id); if (!m) continue;
     el.querySelector('.v-range').textContent = rng;
+    if (m.pending) {
+      for (const k of ['sun', 'earth', 'both', 'dark']) {
+        el.querySelector(`.v-p${k}`).textContent = '—';
+        el.querySelector(`.v-p${k}d`).textContent = t('terrainPending');
+      }
+      el.querySelector('.v-tags').innerHTML = siteTags(byId(el.dataset.id));
+      continue;
+    }
     const put = (k, frac) => {
       el.querySelector(`.v-p${k}`).textContent = `${Math.round(frac * 100)}%`;
       el.querySelector(`.v-p${k}d`).textContent = `${(frac * w.days).toFixed(1)} ${t('dOf')} ${fmtDaysShort(w.days)} ${t('days')}`;
@@ -221,7 +243,7 @@ function setPeriod(start, days) {
   const want = i0 + periodDays * 24 - 1;
   i1 = Math.min(b, want);
   const metrics = new Map();
-  for (const s of core.state.sites) metrics.set(s.id, core.metrics(s, i0, i1));
+  for (const s of core.state.sites) metrics.set(s.id, periodMetrics(s, i0, i1));
   const hours = i1 - i0 + 1;
   window.LLSN.window = { i0, i1, hours, days: hours / 24, clipped: want > b, mode: String(periodDays), metrics };
   const sl = $('#slider');
@@ -337,7 +359,7 @@ async function main() {
     if (k >= 0) core.state.sites[k] = site; else core.state.sites.push(site);
     core.state.horizons.set(site.id, horizon);
     const w = window.LLSN.window;
-    if (w) w.metrics.set(site.id, core.metrics(site, w.i0, w.i1));
+    if (w) w.metrics.set(site.id, periodMetrics(site, w.i0, w.i1));
     fillGroups();
     if (focus) pick(site.id); else { buildCards(); renderPicker(); }
     window.dispatchEvent(new CustomEvent('llsn:sites', { detail: { id: site.id } }));

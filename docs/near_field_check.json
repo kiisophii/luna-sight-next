@@ -1,0 +1,3014 @@
+{
+  "rows": [
+    {
+      "id": "APOLLO11",
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "ours_a": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      },
+      "ours_b": {
+        "sun_frac": 0.4937477181453085,
+        "earth_frac": 1,
+        "both_frac": 0.4937477181453085,
+        "longest_dark_h": 359
+      },
+      "step_only_control": {
+        "sun_frac": 0.4965772179627601,
+        "earth_frac": 1,
+        "both_frac": 0.4965772179627601,
+        "longest_dark_h": 357
+      },
+      "step_only_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "sun_frac": null,
+        "earth_frac": null,
+        "sun_300m_min": null,
+        "sun_300m_max": null,
+        "earth_300m_min": null,
+        "earth_300m_max": null,
+        "closer": null,
+        "status": "outside_raster_extent",
+        "checks": [
+          {
+            "product": "AVGVISIB_65S_240M_201608",
+            "row": -10227.892053837651,
+            "col": 9044.755516431824,
+            "radius_300m_projected_bound_m": 607.2497727812994,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65S_240M_201608_EARTH",
+            "row": -10227.892053837651,
+            "col": 9044.755516431824,
+            "radius_300m_projected_bound_m": 607.2497727812994,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608",
+            "row": 16334.359534191748,
+            "col": 8909.03668780635,
+            "radius_300m_projected_bound_m": 593.1236915636491,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608_EARTH",
+            "row": 16334.359534191748,
+            "col": 8909.03668780635,
+            "radius_300m_projected_bound_m": 593.1236915636491,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          }
+        ]
+      },
+      "terrain_diagnostic": {
+        "source": "SLDEM2015",
+        "source_path": "data/raw/sldem/APOLLO11.npz",
+        "source_sha256": "4fdf96dc705d95092f4d10773f1add4e7df8a8da6cc015820612f941693cdb39",
+        "nominal_resolution_m": 59.225293797166955,
+        "local_ns_pixel_m": 59.225293797166955,
+        "local_ew_pixel_m": 59.2211940892687,
+        "near_dominant_azimuth_bins": 482,
+        "near_dominant_distances_m": [
+          44.28314833633634,
+          99.54738946004588,
+          198.2720959562497
+        ],
+        "maximum_near_over_far_deg": 1.9429332162873127,
+        "strongest_azimuth_deg": 330.5,
+        "supporting_native_pixels": [
+          {
+            "row": 2531,
+            "col": 2534,
+            "height_m": -1925.6197509765625,
+            "neighbor_median_m": -1925.4061889648438,
+            "excess_above_neighbor_median_m": -0.21356201171875,
+            "excess_above_highest_neighbor_m": -2.34716796875,
+            "robust_threshold_m": 4.221120739746094,
+            "candidate": false
+          },
+          {
+            "row": 2531,
+            "col": 2535,
+            "height_m": -1925.355224609375,
+            "neighbor_median_m": -1925.355224609375,
+            "excess_above_neighbor_median_m": 0.0,
+            "excess_above_highest_neighbor_m": -2.67236328125,
+            "robust_threshold_m": 5.854568774414062,
+            "candidate": false
+          },
+          {
+            "row": 2531,
+            "col": 2536,
+            "height_m": -1924.050048828125,
+            "neighbor_median_m": -1926.0092163085938,
+            "excess_above_neighbor_median_m": 1.95916748046875,
+            "excess_above_highest_neighbor_m": -1.3671875,
+            "robust_threshold_m": 3.178667614746094,
+            "candidate": false
+          },
+          {
+            "row": 2531,
+            "col": 2537,
+            "height_m": -1926.7652587890625,
+            "neighbor_median_m": -1927.0504150390625,
+            "excess_above_neighbor_median_m": 0.28515625,
+            "excess_above_highest_neighbor_m": -4.0823974609375,
+            "robust_threshold_m": 12.805070690917969,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2534,
+            "height_m": -1923.2725830078125,
+            "neighbor_median_m": -1925.4061889648438,
+            "excess_above_neighbor_median_m": 2.13360595703125,
+            "excess_above_highest_neighbor_m": -0.4296875,
+            "robust_threshold_m": 4.221120739746094,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2535,
+            "height_m": -1925.4571533203125,
+            "neighbor_median_m": -1925.4874877929688,
+            "excess_above_neighbor_median_m": 0.03033447265625,
+            "excess_above_highest_neighbor_m": -2.1845703125,
+            "robust_threshold_m": 7.033300927734375,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2536,
+            "height_m": -1926.6826171875,
+            "neighbor_median_m": -1927.0917358398438,
+            "excess_above_neighbor_median_m": 0.40911865234375,
+            "excess_above_highest_neighbor_m": -2.632568359375,
+            "robust_threshold_m": 7.496975390625,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2537,
+            "height_m": -1927.418212890625,
+            "neighbor_median_m": -1929.9293823242188,
+            "excess_above_neighbor_median_m": 2.51116943359375,
+            "excess_above_highest_neighbor_m": -3.3681640625,
+            "robust_threshold_m": 10.48344071044922,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2533,
+            "height_m": -1922.8428955078125,
+            "neighbor_median_m": -1924.3324584960938,
+            "excess_above_neighbor_median_m": 1.48956298828125,
+            "excess_above_highest_neighbor_m": 0.4296875,
+            "robust_threshold_m": 2.266521130371094,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2534,
+            "height_m": -1923.7623291015625,
+            "neighbor_median_m": -1924.9052734375,
+            "excess_above_neighbor_median_m": 1.1429443359375,
+            "excess_above_highest_neighbor_m": -0.91943359375,
+            "robust_threshold_m": 6.353263146972656,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2535,
+            "height_m": -1928.5999755859375,
+            "neighbor_median_m": -1926.406005859375,
+            "excess_above_neighbor_median_m": -2.1939697265625,
+            "excess_above_highest_neighbor_m": -5.327392578125,
+            "robust_threshold_m": 12.847691821289063,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2536,
+            "height_m": -1930.9071044921875,
+            "neighbor_median_m": -1930.0396118164062,
+            "excess_above_neighbor_median_m": -0.86749267578125,
+            "excess_above_highest_neighbor_m": -5.449951171875,
+            "robust_threshold_m": 10.257032922363281,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2533,
+            "height_m": -1924.0469970703125,
+            "neighbor_median_m": -1925.2811889648438,
+            "excess_above_neighbor_median_m": 1.23419189453125,
+            "excess_above_highest_neighbor_m": -1.2041015625,
+            "robust_threshold_m": 4.042763525390625,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2534,
+            "height_m": -1926.12939453125,
+            "neighbor_median_m": -1925.9861450195312,
+            "excess_above_neighbor_median_m": -0.14324951171875,
+            "excess_above_highest_neighbor_m": -3.2864990234375,
+            "robust_threshold_m": 10.758442016601563,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2535,
+            "height_m": -1932.0284423828125,
+            "neighbor_median_m": -1929.1201782226562,
+            "excess_above_neighbor_median_m": -2.90826416015625,
+            "excess_above_highest_neighbor_m": -8.26611328125,
+            "robust_threshold_m": 10.3072552734375,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2533,
+            "height_m": -1925.699951171875,
+            "neighbor_median_m": -1925.5361938476562,
+            "excess_above_neighbor_median_m": -0.16375732421875,
+            "excess_above_highest_neighbor_m": -2.2236328125,
+            "robust_threshold_m": 2.8176096313476564,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2534,
+            "height_m": -1926.2723388671875,
+            "neighbor_median_m": -1925.5060424804688,
+            "excess_above_neighbor_median_m": -0.76629638671875,
+            "excess_above_highest_neighbor_m": -2.7960205078125,
+            "robust_threshold_m": 4.897086437988281,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2535,
+            "height_m": -1929.640380859375,
+            "neighbor_median_m": -1926.32421875,
+            "excess_above_neighbor_median_m": -3.316162109375,
+            "excess_above_highest_neighbor_m": -6.1640625,
+            "robust_threshold_m": 9.805303234863281,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2536,
+            "height_m": -1929.90673828125,
+            "neighbor_median_m": -1928.9678344726562,
+            "excess_above_neighbor_median_m": -0.93890380859375,
+            "excess_above_highest_neighbor_m": -5.1436767578125,
+            "robust_threshold_m": 13.203591833496093,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2537,
+            "height_m": -1928.2952880859375,
+            "neighbor_median_m": -1930.18310546875,
+            "excess_above_neighbor_median_m": 1.8878173828125,
+            "excess_above_highest_neighbor_m": -2.2039794921875,
+            "robust_threshold_m": 12.754033923339843,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2538,
+            "height_m": -1930.45947265625,
+            "neighbor_median_m": -1931.4188232421875,
+            "excess_above_neighbor_median_m": 0.9593505859375,
+            "excess_above_highest_neighbor_m": -4.3681640625,
+            "robust_threshold_m": 11.850031604003906,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2533,
+            "height_m": -1925.3121337890625,
+            "neighbor_median_m": -1925.7301025390625,
+            "excess_above_neighbor_median_m": 0.41796875,
+            "excess_above_highest_neighbor_m": -4.897216796875,
+            "robust_threshold_m": 2.997052734375,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2534,
+            "height_m": -1923.476318359375,
+            "neighbor_median_m": -1925.03759765625,
+            "excess_above_neighbor_median_m": 1.561279296875,
+            "excess_above_highest_neighbor_m": -3.0614013671875,
+            "robust_threshold_m": 7.169579956054688,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2535,
+            "height_m": -1924.7630615234375,
+            "neighbor_median_m": -1926.1915283203125,
+            "excess_above_neighbor_median_m": 1.428466796875,
+            "excess_above_highest_neighbor_m": -4.34814453125,
+            "robust_threshold_m": 13.02822081298828,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2536,
+            "height_m": -1926.3760986328125,
+            "neighbor_median_m": -1926.1010131835938,
+            "excess_above_neighbor_median_m": -0.27508544921875,
+            "excess_above_highest_neighbor_m": -3.32763671875,
+            "robust_threshold_m": 7.85531865234375,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2537,
+            "height_m": -1926.09130859375,
+            "neighbor_median_m": -1927.1218872070312,
+            "excess_above_neighbor_median_m": 1.03057861328125,
+            "excess_above_highest_neighbor_m": -1.284912109375,
+            "robust_threshold_m": 6.263677331542969,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2538,
+            "height_m": -1927.86767578125,
+            "neighbor_median_m": -1927.1932983398438,
+            "excess_above_neighbor_median_m": -0.67437744140625,
+            "excess_above_highest_neighbor_m": -3.061279296875,
+            "robust_threshold_m": 9.12119337158203,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2533,
+            "height_m": -1922.8017578125,
+            "neighbor_median_m": -1923.4446411132812,
+            "excess_above_neighbor_median_m": 0.64288330078125,
+            "excess_above_highest_neighbor_m": -2.8564453125,
+            "robust_threshold_m": 10.119125061035156,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2534,
+            "height_m": -1920.4149169921875,
+            "neighbor_median_m": -1923.1708984375,
+            "excess_above_neighbor_median_m": 2.7559814453125,
+            "excess_above_highest_neighbor_m": -0.4696044921875,
+            "robust_threshold_m": 3.5028053833007813,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2535,
+            "height_m": -1923.0484619140625,
+            "neighbor_median_m": -1924.1196899414062,
+            "excess_above_neighbor_median_m": 1.07122802734375,
+            "excess_above_highest_neighbor_m": -3.1031494140625,
+            "robust_threshold_m": 8.946093823242187,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2536,
+            "height_m": -1926.1107177734375,
+            "neighbor_median_m": -1925.182861328125,
+            "excess_above_neighbor_median_m": -0.9278564453125,
+            "excess_above_highest_neighbor_m": -3.062255859375,
+            "robust_threshold_m": 4.1741560546875,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2537,
+            "height_m": -1925.478759765625,
+            "neighbor_median_m": -1926.1010131835938,
+            "excess_above_neighbor_median_m": 0.62225341796875,
+            "excess_above_highest_neighbor_m": -2.0806884765625,
+            "robust_threshold_m": 3.3116889770507814,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2534,
+            "height_m": -1919.9453125,
+            "neighbor_median_m": -1922.1290893554688,
+            "excess_above_neighbor_median_m": 2.18377685546875,
+            "excess_above_highest_neighbor_m": -0.3070068359375,
+            "robust_threshold_m": 4.633758435058594,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2535,
+            "height_m": -1923.2933349609375,
+            "neighbor_median_m": -1922.6708374023438,
+            "excess_above_neighbor_median_m": -0.62249755859375,
+            "excess_above_highest_neighbor_m": -3.3480224609375,
+            "robust_threshold_m": 9.126351342773438,
+            "candidate": false
+          }
+        ],
+        "positive_spike_candidates": 0,
+        "despiked_near_metrics": null,
+        "diagnosis": "No isolated positive spike under the stated heuristic in the supporting/observer pixels. Near-field obstruction is present in the interpolated SLDEM surface; physical accuracy is unverified.",
+        "native_patch": {
+          "first_row": 2529,
+          "first_col": 2529,
+          "height_m": [
+            [
+              -1926.83984375,
+              -1925.51416015625,
+              -1925.9232177734375,
+              -1928.148681640625,
+              -1930.027099609375,
+              -1929.5382080078125,
+              -1926.04931640625,
+              -1924.234130859375,
+              -1926.60205078125,
+              -1927.6439208984375,
+              -1928.05322265625,
+              -1931.439453125
+            ],
+            [
+              -1923.247802734375,
+              -1925.473388671875,
+              -1927.6170654296875,
+              -1928.3526611328125,
+              -1928.9658203125,
+              -1928.619873046875,
+              -1925.2532958984375,
+              -1922.682861328125,
+              -1926.561279296875,
+              -1930.3173828125,
+              -1930.2774658203125,
+              -1931.7906494140625
+            ],
+            [
+              -1920.227294921875,
+              -1925.06494140625,
+              -1926.5147705078125,
+              -1926.781005859375,
+              -1926.25146484375,
+              -1925.6197509765625,
+              -1925.355224609375,
+              -1924.050048828125,
+              -1926.7652587890625,
+              -1929.929443359375,
+              -1930.1549072265625,
+              -1933.7105712890625
+            ],
+            [
+              -1927.1046142578125,
+              -1930.901611328125,
+              -1927.8209228515625,
+              -1924.8216552734375,
+              -1924.3533935546875,
+              -1923.2725830078125,
+              -1925.4571533203125,
+              -1926.6826171875,
+              -1927.418212890625,
+              -1929.9293212890625,
+              -1931.0528564453125,
+              -1935.8670654296875
+            ],
+            [
+              -1931.9619140625,
+              -1932.962646484375,
+              -1928.126953125,
+              -1924.3115234375,
+              -1922.8428955078125,
+              -1923.7623291015625,
+              -1928.5999755859375,
+              -1930.9071044921875,
+              -1931.479248046875,
+              -1933.3577880859375,
+              -1933.787353515625,
+              -1936.4739990234375
+            ],
+            [
+              -1926.267822265625,
+              -1925.0443115234375,
+              -1924.90234375,
+              -1924.8624267578125,
+              -1924.0469970703125,
+              -1926.12939453125,
+              -1932.0284423828125,
+              -1933.6212158203125,
+              -1932.0303955078125,
+              -1933.6026611328125,
+              -1934.603515625,
+              -1933.7550048828125
+            ],
+            [
+              -1921.20654296875,
+              -1919.2073974609375,
+              -1922.1265869140625,
+              -1925.76025390625,
+              -1925.699951171875,
+              -1926.2723388671875,
+              -1929.640380859375,
+              -1929.90673828125,
+              -1928.2952880859375,
+              -1930.45947265625,
+              -1933.623779296875,
+              -1930.425537109375
+            ],
+            [
+              -1920.859375,
+              -1918.96240234375,
+              -1922.9224853515625,
+              -1926.1273193359375,
+              -1925.3121337890625,
+              -1923.476318359375,
+              -1924.7630615234375,
+              -1926.3760986328125,
+              -1926.09130859375,
+              -1927.86767578125,
+              -1930.8072509765625,
+              -1929.4580078125
+            ],
+            [
+              -1921.818359375,
+              -1920.73779296875,
+              -1924.3509521484375,
+              -1926.5355224609375,
+              -1922.8017578125,
+              -1920.4149169921875,
+              -1923.0484619140625,
+              -1926.1107177734375,
+              -1925.478759765625,
+              -1924.806396484375,
+              -1925.807373046875,
+              -1930.3350830078125
+            ],
+            [
+              -1920.981689453125,
+              -1920.4725341796875,
+              -1921.6773681640625,
+              -1923.4129638671875,
+              -1921.9649658203125,
+              -1919.9453125,
+              -1923.2933349609375,
+              -1926.1513671875,
+              -1924.886962890625,
+              -1923.3980712890625,
+              -1925.2969970703125,
+              -1931.9700927734375
+            ],
+            [
+              -1918.5936279296875,
+              -1916.7171630859375,
+              -1914.67724609375,
+              -1916.0657958984375,
+              -1919.6383056640625,
+              -1920.822998046875,
+              -1922.293212890625,
+              -1923.82470703125,
+              -1924.2337646484375,
+              -1925.8671875,
+              -1928.337646484375,
+              -1932.140625
+            ],
+            [
+              -1914.1446533203125,
+              -1911.819091796875,
+              -1909.820068359375,
+              -1911.0860595703125,
+              -1917.6585693359375,
+              -1920.3330078125,
+              -1920.6197509765625,
+              -1921.885986328125,
+              -1922.947998046875,
+              -1924.0712890625,
+              -1926.3375244140625,
+              -1929.738525390625
+            ]
+          ]
+        }
+      },
+      "baseline_horizon_sha256": "5edc3fd2659d7e5a351cc32e4a6e32fcad3a69501ee1d178cde94923383da6b1",
+      "baseline_metrics_sha256": "5edae7b3b6ad79298db637b695506a0cf4f9f0479a5a0fa3dcf6a662576ec789"
+    },
+    {
+      "id": "APOLLO12",
+      "lat": -3.0128,
+      "lon": -23.4219,
+      "ours_a": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      },
+      "ours_b": {
+        "sun_frac": 0.49680540343190943,
+        "earth_frac": 1,
+        "both_frac": 0.49680540343190943,
+        "longest_dark_h": 358
+      },
+      "step_only_control": {
+        "sun_frac": 0.4992926250456371,
+        "earth_frac": 1,
+        "both_frac": 0.4992926250456371,
+        "longest_dark_h": 356
+      },
+      "step_only_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "sun_frac": null,
+        "earth_frac": null,
+        "sun_300m_min": null,
+        "sun_300m_max": null,
+        "earth_300m_min": null,
+        "earth_300m_max": null,
+        "closer": null,
+        "status": "outside_raster_extent",
+        "checks": [
+          {
+            "product": "AVGVISIB_65S_240M_201608",
+            "row": -9395.014493060042,
+            "col": -2250.681413536313,
+            "radius_300m_projected_bound_m": 570.1326777773779,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65S_240M_201608_EARTH",
+            "row": -9395.014493060042,
+            "col": -2250.681413536313,
+            "radius_300m_projected_bound_m": 570.1326777773779,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608",
+            "row": 17212.479103719445,
+            "col": -2856.4858242349583,
+            "radius_300m_projected_bound_m": 633.4001282700189,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608_EARTH",
+            "row": 17212.479103719445,
+            "col": -2856.4858242349583,
+            "radius_300m_projected_bound_m": 633.4001282700189,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          }
+        ]
+      },
+      "terrain_diagnostic": {
+        "source": "SLDEM2015",
+        "source_path": "data/raw/sldem/APOLLO12.npz",
+        "source_sha256": "babca1f1ecd6d360ada7841f0e542df1b248f2025021e05def4cff8af0cff0e5",
+        "nominal_resolution_m": 59.225293797166955,
+        "local_ns_pixel_m": 59.225293797166955,
+        "local_ew_pixel_m": 59.14343365442258,
+        "near_dominant_azimuth_bins": 255,
+        "near_dominant_distances_m": [
+          91.66293123022952,
+          147.51927955483464,
+          199.3658061731058
+        ],
+        "maximum_near_over_far_deg": 1.488678957479482,
+        "strongest_azimuth_deg": 58.5,
+        "supporting_native_pixels": [
+          {
+            "row": 2532,
+            "col": 2536,
+            "height_m": -1419.657958984375,
+            "neighbor_median_m": -1420.7994384765625,
+            "excess_above_neighbor_median_m": 1.1414794921875,
+            "excess_above_highest_neighbor_m": -0.976806640625,
+            "robust_threshold_m": 6.27860830078125,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2537,
+            "height_m": -1422.56005859375,
+            "neighbor_median_m": -1421.3253173828125,
+            "excess_above_neighbor_median_m": -1.2347412109375,
+            "excess_above_highest_neighbor_m": -3.87890625,
+            "robust_threshold_m": 7.2407056640625,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2539,
+            "height_m": -1422.418212890625,
+            "neighbor_median_m": -1421.9263305664062,
+            "excess_above_neighbor_median_m": -0.49188232421875,
+            "excess_above_highest_neighbor_m": -3.5166015625,
+            "robust_threshold_m": 2.8626740112304687,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2540,
+            "height_m": -1421.26611328125,
+            "neighbor_median_m": -1421.7041015625,
+            "excess_above_neighbor_median_m": 0.43798828125,
+            "excess_above_highest_neighbor_m": -3.48291015625,
+            "robust_threshold_m": 3.4767440551757813,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2535,
+            "height_m": -1418.901611328125,
+            "neighbor_median_m": -1420.0853271484375,
+            "excess_above_neighbor_median_m": 1.1837158203125,
+            "excess_above_highest_neighbor_m": -0.220458984375,
+            "robust_threshold_m": 3.9303740478515623,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2536,
+            "height_m": -1418.68115234375,
+            "neighbor_median_m": -1420.0853271484375,
+            "excess_above_neighbor_median_m": 1.4041748046875,
+            "excess_above_highest_neighbor_m": 0.220458984375,
+            "robust_threshold_m": 3.9575212646484377,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2537,
+            "height_m": -1421.4608154296875,
+            "neighbor_median_m": -1421.879150390625,
+            "excess_above_neighbor_median_m": 0.4183349609375,
+            "excess_above_highest_neighbor_m": -2.7796630859375,
+            "robust_threshold_m": 9.697800256347657,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2539,
+            "height_m": -1422.5533447265625,
+            "neighbor_median_m": -1422.5032348632812,
+            "excess_above_neighbor_median_m": -0.05010986328125,
+            "excess_above_highest_neighbor_m": -4.3223876953125,
+            "robust_threshold_m": 6.500944006347656,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2540,
+            "height_m": -1418.901611328125,
+            "neighbor_median_m": -1420.6865234375,
+            "excess_above_neighbor_median_m": 1.784912109375,
+            "excess_above_highest_neighbor_m": -1.68701171875,
+            "robust_threshold_m": 8.38088876953125,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2541,
+            "height_m": -1417.783203125,
+            "neighbor_median_m": -1420.6865234375,
+            "excess_above_neighbor_median_m": 2.9033203125,
+            "excess_above_highest_neighbor_m": -0.568603515625,
+            "robust_threshold_m": 8.607296557617188,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2535,
+            "height_m": -1419.7615966796875,
+            "neighbor_median_m": -1421.2050170898438,
+            "excess_above_neighbor_median_m": 1.44342041015625,
+            "excess_above_highest_neighbor_m": -1.0804443359375,
+            "robust_threshold_m": 8.974326928710937,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2536,
+            "height_m": -1419.418701171875,
+            "neighbor_median_m": -1421.3295288085938,
+            "excess_above_neighbor_median_m": 1.91082763671875,
+            "excess_above_highest_neighbor_m": -0.737548828125,
+            "robust_threshold_m": 7.785278833007813,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2537,
+            "height_m": -1421.1982421875,
+            "neighbor_median_m": -1423.0255737304688,
+            "excess_above_neighbor_median_m": 1.82733154296875,
+            "excess_above_highest_neighbor_m": -2.51708984375,
+            "robust_threshold_m": 6.226757116699218,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2539,
+            "height_m": -1422.5882568359375,
+            "neighbor_median_m": -1423.038818359375,
+            "excess_above_neighbor_median_m": 0.4505615234375,
+            "excess_above_highest_neighbor_m": -4.3572998046875,
+            "robust_threshold_m": 7.4578833984375,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2540,
+            "height_m": -1418.23095703125,
+            "neighbor_median_m": -1420.2459716796875,
+            "excess_above_neighbor_median_m": 2.0150146484375,
+            "excess_above_highest_neighbor_m": -1.016357421875,
+            "robust_threshold_m": 10.340374877929687,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2541,
+            "height_m": -1417.214599609375,
+            "neighbor_median_m": -1420.2459716796875,
+            "excess_above_neighbor_median_m": 3.0313720703125,
+            "excess_above_highest_neighbor_m": 0.568603515625,
+            "robust_threshold_m": 9.958142065429687,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2535,
+            "height_m": -1423.8663330078125,
+            "neighbor_median_m": -1423.1214599609375,
+            "excess_above_neighbor_median_m": -0.744873046875,
+            "excess_above_highest_neighbor_m": -4.4476318359375,
+            "robust_threshold_m": 9.452660888671875,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2536,
+            "height_m": -1422.788818359375,
+            "neighbor_median_m": -1423.5643310546875,
+            "excess_above_neighbor_median_m": 0.7755126953125,
+            "excess_above_highest_neighbor_m": -3.3701171875,
+            "robust_threshold_m": 6.902179870605469,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2537,
+            "height_m": -1423.2623291015625,
+            "neighbor_median_m": -1424.0092163085938,
+            "excess_above_neighbor_median_m": 0.74688720703125,
+            "excess_above_highest_neighbor_m": -3.8436279296875,
+            "robust_threshold_m": 6.145315466308594,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2538,
+            "height_m": -1425.5521240234375,
+            "neighbor_median_m": -1423.7620239257812,
+            "excess_above_neighbor_median_m": -1.79010009765625,
+            "excess_above_highest_neighbor_m": -4.3538818359375,
+            "robust_threshold_m": 3.721611950683594,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2539,
+            "height_m": -1423.5242919921875,
+            "neighbor_median_m": -1424.5663452148438,
+            "excess_above_neighbor_median_m": 1.04205322265625,
+            "excess_above_highest_neighbor_m": -5.2933349609375,
+            "robust_threshold_m": 10.863773217773437,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2540,
+            "height_m": -1420.9072265625,
+            "neighbor_median_m": -1422.7613525390625,
+            "excess_above_neighbor_median_m": 1.8541259765625,
+            "excess_above_highest_neighbor_m": -3.692626953125,
+            "robust_threshold_m": 12.2966033203125,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2541,
+            "height_m": -1419.584716796875,
+            "neighbor_median_m": -1422.9212036132812,
+            "excess_above_neighbor_median_m": 3.33648681640625,
+            "excess_above_highest_neighbor_m": -2.3701171875,
+            "robust_threshold_m": 9.355473852539063,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2542,
+            "height_m": -1424.2559814453125,
+            "neighbor_median_m": -1422.930908203125,
+            "excess_above_neighbor_median_m": -1.3250732421875,
+            "excess_above_highest_neighbor_m": -7.0413818359375,
+            "robust_threshold_m": 4.366629821777344,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2538,
+            "height_m": -1427.4732666015625,
+            "neighbor_median_m": -1425.4610595703125,
+            "excess_above_neighbor_median_m": -2.01220703125,
+            "excess_above_highest_neighbor_m": -4.2109375,
+            "robust_threshold_m": 9.196934106445312,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2539,
+            "height_m": -1435.2943115234375,
+            "neighbor_median_m": -1426.0794067382812,
+            "excess_above_neighbor_median_m": -9.21490478515625,
+            "excess_above_highest_neighbor_m": -14.3870849609375,
+            "robust_threshold_m": 7.7489015625,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2540,
+            "height_m": -1425.114013671875,
+            "neighbor_median_m": -1423.68994140625,
+            "excess_above_neighbor_median_m": -1.424072265625,
+            "excess_above_highest_neighbor_m": -5.529296875,
+            "robust_threshold_m": 12.675035522460938,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2541,
+            "height_m": -1422.9344482421875,
+            "neighbor_median_m": -1424.0557861328125,
+            "excess_above_neighbor_median_m": 1.121337890625,
+            "excess_above_highest_neighbor_m": -3.3497314453125,
+            "robust_threshold_m": 8.225606689453125,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2542,
+            "height_m": -1422.907958984375,
+            "neighbor_median_m": -1424.0447387695312,
+            "excess_above_neighbor_median_m": 1.13677978515625,
+            "excess_above_highest_neighbor_m": -3.3232421875,
+            "robust_threshold_m": 2.9389576904296875,
+            "candidate": false
+          }
+        ],
+        "positive_spike_candidates": 0,
+        "despiked_near_metrics": null,
+        "diagnosis": "No isolated positive spike under the stated heuristic in the supporting/observer pixels. Near-field obstruction is present in the interpolated SLDEM surface; physical accuracy is unverified.",
+        "native_patch": {
+          "first_row": 2530,
+          "first_col": 2533,
+          "height_m": [
+            [
+              -1442.089111328125,
+              -1433.5830078125,
+              -1424.668701171875,
+              -1420.060546875,
+              -1420.4114990234375,
+              -1420.43603515625,
+              -1421.7052001953125,
+              -1420.464599609375,
+              -1422.34619140625,
+              -1423.044189453125,
+              -1421.718994140625,
+              -1418.848876953125
+            ],
+            [
+              -1440.071533203125,
+              -1432.3409423828125,
+              -1423.2838134765625,
+              -1419.73681640625,
+              -1421.1898193359375,
+              -1421.867431640625,
+              -1421.9852294921875,
+              -1421.5081787109375,
+              -1421.9000244140625,
+              -1421.7479248046875,
+              -1421.120361328125,
+              -1418.7496337890625
+            ],
+            [
+              -1435.6988525390625,
+              -1425.9151611328125,
+              -1420.4090576171875,
+              -1419.657958984375,
+              -1422.56005859375,
+              -1423.9110107421875,
+              -1422.418212890625,
+              -1421.26611328125,
+              -1420.10693359375,
+              -1421.7239990234375,
+              -1421.7103271484375,
+              -1416.2218017578125
+            ],
+            [
+              -1427.472900390625,
+              -1421.2239990234375,
+              -1418.901611328125,
+              -1418.68115234375,
+              -1421.4608154296875,
+              -1424.2607421875,
+              -1422.5533447265625,
+              -1418.901611328125,
+              -1417.783203125,
+              -1422.77197265625,
+              -1422.073974609375,
+              -1413.3878173828125
+            ],
+            [
+              -1422.1259765625,
+              -1421.18603515625,
+              -1419.7615966796875,
+              -1419.418701171875,
+              -1421.1982421875,
+              -1424.0186767578125,
+              -1422.5882568359375,
+              -1418.23095703125,
+              -1417.214599609375,
+              -1425.52490234375,
+              -1423.5809326171875,
+              -1418.2479248046875
+            ],
+            [
+              -1421.8377685546875,
+              -1423.4541015625,
+              -1423.8663330078125,
+              -1422.788818359375,
+              -1423.2623291015625,
+              -1425.5521240234375,
+              -1423.5242919921875,
+              -1420.9072265625,
+              -1419.584716796875,
+              -1424.2559814453125,
+              -1424.244384765625,
+              -1425.4547119140625
+            ],
+            [
+              -1424.6368408203125,
+              -1425.4365234375,
+              -1426.4610595703125,
+              -1424.3018798828125,
+              -1423.999755859375,
+              -1427.4732666015625,
+              -1435.2943115234375,
+              -1425.114013671875,
+              -1422.9344482421875,
+              -1422.907958984375,
+              -1422.9273681640625,
+              -1424.66162109375
+            ],
+            [
+              -1427.0899658203125,
+              -1426.11279296875,
+              -1427.3414306640625,
+              -1425.896484375,
+              -1425.3699951171875,
+              -1428.169921875,
+              -1440.3353271484375,
+              -1426.606689453125,
+              -1423.8555908203125,
+              -1428.119873046875,
+              -1424.23388671875,
+              -1421.480712890625
+            ],
+            [
+              -1427.033935546875,
+              -1429.29931640625,
+              -1428.8543701171875,
+              -1428.123779296875,
+              -1427.393310546875,
+              -1427.3768310546875,
+              -1430.2003173828125,
+              -1425.6910400390625,
+              -1422.9808349609375,
+              -1426.75,
+              -1429.243408203125,
+              -1422.5855712890625
+            ],
+            [
+              -1427.921875,
+              -1431.424560546875,
+              -1429.1837158203125,
+              -1428.8817138671875,
+              -1429.1102294921875,
+              -1426.583740234375,
+              -1425.73876953125,
+              -1425.5601806640625,
+              -1424.697998046875,
+              -1424.6229248046875,
+              -1424.83837890625,
+              -1425.220947265625
+            ],
+            [
+              -1430.6273193359375,
+              -1432.9375,
+              -1428.941650390625,
+              -1428.476318359375,
+              -1430.215087890625,
+              -1427.3824462890625,
+              -1426.6817626953125,
+              -1428.8553466796875,
+              -1426.374267578125,
+              -1424.927978515625,
+              -1424.4464111328125,
+              -1425.5885009765625
+            ],
+            [
+              -1430.099853515625,
+              -1433.675048828125,
+              -1427.7403564453125,
+              -1425.744384765625,
+              -1427.93212890625,
+              -1427.18115234375,
+              -1426.73828125,
+              -1426.84228515625,
+              -1427.846435546875,
+              -1424.264892578125,
+              -1424.5128173828125,
+              -1424.4102783203125
+            ]
+          ]
+        }
+      },
+      "baseline_horizon_sha256": "c3196f8934510a5a43c7f743503b037368e50a55432f19e7811db20c69f28ded",
+      "baseline_metrics_sha256": "2d5e23a069c2691ef386250df5c3112366b6c3e4b3aac6c8ea87b198bf709c7b"
+    },
+    {
+      "id": "LUNA20",
+      "lat": 3.7863,
+      "lon": 56.6242,
+      "ours_a": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      },
+      "ours_b": {
+        "sun_frac": 0.4772270901788974,
+        "earth_frac": 1,
+        "both_frac": 0.4772270901788974,
+        "longest_dark_h": 371
+      },
+      "step_only_control": {
+        "sun_frac": 0.47843647316538884,
+        "earth_frac": 1,
+        "both_frac": 0.47843647316538884,
+        "longest_dark_h": 371
+      },
+      "step_only_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "sun_frac": null,
+        "earth_frac": null,
+        "sun_300m_min": null,
+        "sun_300m_max": null,
+        "earth_300m_min": null,
+        "earth_300m_max": null,
+        "closer": null,
+        "status": "outside_raster_extent",
+        "checks": [
+          {
+            "product": "AVGVISIB_65S_240M_201608",
+            "row": -5299.978582812701,
+            "col": 16126.669999630092,
+            "radius_300m_projected_bound_m": 642.5411099448745,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65S_240M_201608_EARTH",
+            "row": -5299.978582812701,
+            "col": 16126.669999630092,
+            "radius_300m_projected_bound_m": 642.5411099448745,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608",
+            "row": 10664.74316764062,
+            "col": 14526.367707911151,
+            "radius_300m_projected_bound_m": 562.9241185396841,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608_EARTH",
+            "row": 10664.74316764062,
+            "col": 14526.367707911151,
+            "radius_300m_projected_bound_m": 562.9241185396841,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          }
+        ]
+      },
+      "terrain_diagnostic": {
+        "source": "SLDEM2015",
+        "source_path": "data/raw/sldem/LUNA20.npz",
+        "source_sha256": "f73f133f311fa621e2ad307adb896b23b57ca50d446b1d62102d5057a85d318a",
+        "nominal_resolution_m": 59.225293797166955,
+        "local_ns_pixel_m": 59.225293797166955,
+        "local_ew_pixel_m": 59.09602195047582,
+        "near_dominant_azimuth_bins": 291,
+        "near_dominant_distances_m": [
+          94.73886880930372,
+          127.33301127845168,
+          199.09181430860102
+        ],
+        "maximum_near_over_far_deg": 2.264093119240867,
+        "strongest_azimuth_deg": 286.5,
+        "supporting_native_pixels": [
+          {
+            "row": 2531,
+            "col": 2539,
+            "height_m": -1754.9989013671875,
+            "neighbor_median_m": -1755.85595703125,
+            "excess_above_neighbor_median_m": 0.8570556640625,
+            "excess_above_highest_neighbor_m": -0.5726318359375,
+            "robust_threshold_m": 6.188751013183594,
+            "candidate": false
+          },
+          {
+            "row": 2531,
+            "col": 2540,
+            "height_m": -1766.209716796875,
+            "neighbor_median_m": -1763.8898315429688,
+            "excess_above_neighbor_median_m": -2.31988525390625,
+            "excess_above_highest_neighbor_m": -11.2108154296875,
+            "robust_threshold_m": 24.779436547851564,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2538,
+            "height_m": -1754.5028076171875,
+            "neighbor_median_m": -1755.058837890625,
+            "excess_above_neighbor_median_m": 0.5560302734375,
+            "excess_above_highest_neighbor_m": -0.317138671875,
+            "robust_threshold_m": 2.674272326660156,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2539,
+            "height_m": -1755.9189453125,
+            "neighbor_median_m": -1757.8155517578125,
+            "excess_above_neighbor_median_m": 1.8966064453125,
+            "excess_above_highest_neighbor_m": -1.49267578125,
+            "robust_threshold_m": 14.90463643798828,
+            "candidate": false
+          },
+          {
+            "row": 2532,
+            "col": 2540,
+            "height_m": -1767.7547607421875,
+            "neighbor_median_m": -1766.9317016601562,
+            "excess_above_neighbor_median_m": -0.82305908203125,
+            "excess_above_highest_neighbor_m": -12.755859375,
+            "robust_threshold_m": 24.829658898925782,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2538,
+            "height_m": -1755.6287841796875,
+            "neighbor_median_m": -1756.539306640625,
+            "excess_above_neighbor_median_m": 0.9105224609375,
+            "excess_above_highest_neighbor_m": -1.443115234375,
+            "robust_threshold_m": 8.719957507324219,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2539,
+            "height_m": -1760.0023193359375,
+            "neighbor_median_m": -1761.12451171875,
+            "excess_above_neighbor_median_m": 1.1221923828125,
+            "excess_above_highest_neighbor_m": -5.49951171875,
+            "robust_threshold_m": 26.947956225585937,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2540,
+            "height_m": -1770.353759765625,
+            "neighbor_median_m": -1769.4609985351562,
+            "excess_above_neighbor_median_m": -0.89276123046875,
+            "excess_above_highest_neighbor_m": -14.434814453125,
+            "robust_threshold_m": 24.121388012695313,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2537,
+            "height_m": -1757.15966796875,
+            "neighbor_median_m": -1754.7127685546875,
+            "excess_above_neighbor_median_m": -2.4468994140625,
+            "excess_above_highest_neighbor_m": -6.9696044921875,
+            "robust_threshold_m": 8.799227380371093,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2538,
+            "height_m": -1757.938720703125,
+            "neighbor_median_m": -1756.9266967773438,
+            "excess_above_neighbor_median_m": -1.01202392578125,
+            "excess_above_highest_neighbor_m": -3.283935546875,
+            "robust_threshold_m": 9.847109948730468,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2539,
+            "height_m": -1764.310302734375,
+            "neighbor_median_m": -1764.2183837890625,
+            "excess_above_neighbor_median_m": -0.0919189453125,
+            "excess_above_highest_neighbor_m": -8.6815185546875,
+            "robust_threshold_m": 30.699430114746093,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2540,
+            "height_m": -1772.8988037109375,
+            "neighbor_median_m": -1772.7552490234375,
+            "excess_above_neighbor_median_m": -0.1435546875,
+            "excess_above_highest_neighbor_m": -12.896484375,
+            "robust_threshold_m": 20.074823876953126,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2541,
+            "height_m": -1777.4613037109375,
+            "neighbor_median_m": -1778.4093017578125,
+            "excess_above_neighbor_median_m": 0.947998046875,
+            "excess_above_highest_neighbor_m": -7.1075439453125,
+            "robust_threshold_m": 25.787141235351562,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2537,
+            "height_m": -1754.770751953125,
+            "neighbor_median_m": -1756.0447387695312,
+            "excess_above_neighbor_median_m": 1.27398681640625,
+            "excess_above_highest_neighbor_m": -4.5806884765625,
+            "robust_threshold_m": 9.183631970214844,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2538,
+            "height_m": -1756.6937255859375,
+            "neighbor_median_m": -1758.1094970703125,
+            "excess_above_neighbor_median_m": 1.415771484375,
+            "excess_above_highest_neighbor_m": -1.9229736328125,
+            "robust_threshold_m": 13.460133032226562,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2539,
+            "height_m": -1768.4344482421875,
+            "neighbor_median_m": -1767.72021484375,
+            "excess_above_neighbor_median_m": -0.7142333984375,
+            "excess_above_highest_neighbor_m": -11.74072265625,
+            "robust_threshold_m": 39.16094611816406,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2540,
+            "height_m": -1775.957763671875,
+            "neighbor_median_m": -1774.9953002929688,
+            "excess_above_neighbor_median_m": -0.96246337890625,
+            "excess_above_highest_neighbor_m": -11.6474609375,
+            "robust_threshold_m": 21.64013239746094,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2541,
+            "height_m": -1780.86083984375,
+            "neighbor_median_m": -1779.5450439453125,
+            "excess_above_neighbor_median_m": -1.3157958984375,
+            "excess_above_highest_neighbor_m": -7.9620361328125,
+            "robust_threshold_m": 22.758326257324217,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2537,
+            "height_m": -1755.395751953125,
+            "neighbor_median_m": -1755.836181640625,
+            "excess_above_neighbor_median_m": 0.4404296875,
+            "excess_above_highest_neighbor_m": -5.2056884765625,
+            "robust_threshold_m": 10.825224169921874,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2538,
+            "height_m": -1758.2802734375,
+            "neighbor_median_m": -1759.3765258789062,
+            "excess_above_neighbor_median_m": 1.09625244140625,
+            "excess_above_highest_neighbor_m": -3.509521484375,
+            "robust_threshold_m": 19.095623767089844,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2539,
+            "height_m": -1771.130126953125,
+            "neighbor_median_m": -1769.9158325195312,
+            "excess_above_neighbor_median_m": -1.21429443359375,
+            "excess_above_highest_neighbor_m": -14.4364013671875,
+            "robust_threshold_m": 36.91342803955078,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2537,
+            "height_m": -1758.259765625,
+            "neighbor_median_m": -1757.5221557617188,
+            "excess_above_neighbor_median_m": -0.73760986328125,
+            "excess_above_highest_neighbor_m": -6.897705078125,
+            "robust_threshold_m": 10.3854392578125,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2538,
+            "height_m": -1760.4932861328125,
+            "neighbor_median_m": -1761.5169677734375,
+            "excess_above_neighbor_median_m": 1.023681640625,
+            "excess_above_highest_neighbor_m": -5.0975341796875,
+            "robust_threshold_m": 20.856663720703125,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2539,
+            "height_m": -1771.397216796875,
+            "neighbor_median_m": -1771.8768310546875,
+            "excess_above_neighbor_median_m": 0.4796142578125,
+            "excess_above_highest_neighbor_m": -13.116943359375,
+            "robust_threshold_m": 39.65774018554688,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2537,
+            "height_m": -1759.4786376953125,
+            "neighbor_median_m": -1760.6484375,
+            "excess_above_neighbor_median_m": 1.1697998046875,
+            "excess_above_highest_neighbor_m": -4.5,
+            "robust_threshold_m": 15.103082592773438,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2538,
+            "height_m": -1763.5552978515625,
+            "neighbor_median_m": -1766.2156982421875,
+            "excess_above_neighbor_median_m": 2.660400390625,
+            "excess_above_highest_neighbor_m": -5.2955322265625,
+            "robust_threshold_m": 26.976460803222658,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2539,
+            "height_m": -1772.62353515625,
+            "neighbor_median_m": -1774.5827026367188,
+            "excess_above_neighbor_median_m": 1.95916748046875,
+            "excess_above_highest_neighbor_m": -12.1302490234375,
+            "robust_threshold_m": 39.88822005615234,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2540,
+            "height_m": -1786.0357666015625,
+            "neighbor_median_m": -1783.46533203125,
+            "excess_above_neighbor_median_m": -2.5704345703125,
+            "excess_above_highest_neighbor_m": -14.6385498046875,
+            "robust_threshold_m": 26.670240197753905,
+            "candidate": false
+          },
+          {
+            "row": 2539,
+            "col": 2538,
+            "height_m": -1767.606689453125,
+            "neighbor_median_m": -1770.5895385742188,
+            "excess_above_neighbor_median_m": 2.98284912109375,
+            "excess_above_highest_neighbor_m": -8.1280517578125,
+            "robust_threshold_m": 28.46385681152344,
+            "candidate": false
+          },
+          {
+            "row": 2539,
+            "col": 2539,
+            "height_m": -1777.7681884765625,
+            "neighbor_median_m": -1778.6253051757812,
+            "excess_above_neighbor_median_m": 0.85711669921875,
+            "excess_above_highest_neighbor_m": -14.212890625,
+            "robust_threshold_m": 31.864045715332033,
+            "candidate": false
+          },
+          {
+            "row": 2539,
+            "col": 2540,
+            "height_m": -1785.5428466796875,
+            "neighbor_median_m": -1787.8982543945312,
+            "excess_above_neighbor_median_m": 2.35540771484375,
+            "excess_above_highest_neighbor_m": -12.9193115234375,
+            "robust_threshold_m": 19.79982257080078,
+            "candidate": false
+          }
+        ],
+        "positive_spike_candidates": 0,
+        "despiked_near_metrics": null,
+        "diagnosis": "No isolated positive spike under the stated heuristic in the supporting/observer pixels. Near-field obstruction is present in the interpolated SLDEM surface; physical accuracy is unverified.",
+        "native_patch": {
+          "first_row": 2529,
+          "first_col": 2535,
+          "height_m": [
+            [
+              -1766.5933837890625,
+              -1758.758544921875,
+              -1757.7607421875,
+              -1756.7476806640625,
+              -1756.0767822265625,
+              -1759.3487548828125,
+              -1762.7657470703125,
+              -1771.9893798828125,
+              -1777.9293212890625,
+              -1781.511962890625,
+              -1790.573486328125,
+              -1805.4429931640625
+            ],
+            [
+              -1759.6192626953125,
+              -1754.9434814453125,
+              -1755.607666015625,
+              -1755.0806884765625,
+              -1755.79296875,
+              -1762.641845703125,
+              -1765.1378173828125,
+              -1772.5953369140625,
+              -1778.1302490234375,
+              -1784.08447265625,
+              -1792.0374755859375,
+              -1804.3074951171875
+            ],
+            [
+              -1760.167236328125,
+              -1755.5679931640625,
+              -1755.1187744140625,
+              -1754.42626953125,
+              -1754.9989013671875,
+              -1766.209716796875,
+              -1767.6536865234375,
+              -1775.4183349609375,
+              -1780.52978515625,
+              -1786.3009033203125,
+              -1795.0770263671875,
+              -1805.592041015625
+            ],
+            [
+              -1753.8062744140625,
+              -1752.4560546875,
+              -1754.1856689453125,
+              -1754.5028076171875,
+              -1755.9189453125,
+              -1767.7547607421875,
+              -1771.167236328125,
+              -1780.4212646484375,
+              -1786.6795654296875,
+              -1793.0335693359375,
+              -1800.79248046875,
+              -1809.22509765625
+            ],
+            [
+              -1750.957275390625,
+              -1752.0269775390625,
+              -1754.65478515625,
+              -1755.6287841796875,
+              -1760.0023193359375,
+              -1770.353759765625,
+              -1775.15673828125,
+              -1784.4942626953125,
+              -1790.2880859375,
+              -1797.2049560546875,
+              -1805.1505126953125,
+              -1814.60009765625
+            ],
+            [
+              -1750.9661865234375,
+              -1752.737060546875,
+              -1757.15966796875,
+              -1757.938720703125,
+              -1764.310302734375,
+              -1772.8988037109375,
+              -1777.4613037109375,
+              -1791.4893798828125,
+              -1795.36328125,
+              -1803.307861328125,
+              -1810.62060546875,
+              -1819.4210205078125
+            ],
+            [
+              -1749.8897705078125,
+              -1750.1900634765625,
+              -1754.770751953125,
+              -1756.6937255859375,
+              -1768.4344482421875,
+              -1775.957763671875,
+              -1780.86083984375,
+              -1791.6563720703125,
+              -1799.7724609375,
+              -1811.1490478515625,
+              -1818.2335205078125,
+              -1826.757080078125
+            ],
+            [
+              -1750.9752197265625,
+              -1751.362060546875,
+              -1755.395751953125,
+              -1758.2802734375,
+              -1771.130126953125,
+              -1777.091796875,
+              -1781.6287841796875,
+              -1797.222412109375,
+              -1803.43408203125,
+              -1817.199462890625,
+              -1826.5540771484375,
+              -1839.6885986328125
+            ],
+            [
+              -1752.666748046875,
+              -1754.9786376953125,
+              -1758.259765625,
+              -1760.4932861328125,
+              -1771.397216796875,
+              -1781.3878173828125,
+              -1787.2138671875,
+              -1803.505126953125,
+              -1810.1322021484375,
+              -1825.4029541015625,
+              -1835.1324462890625,
+              -1849.70458984375
+            ],
+            [
+              -1756.82421875,
+              -1756.7640380859375,
+              -1759.4786376953125,
+              -1763.5552978515625,
+              -1772.62353515625,
+              -1786.0357666015625,
+              -1789.7607421875,
+              -1806.8116455078125,
+              -1814.5721435546875,
+              -1835.1834716796875,
+              -1840.004638671875,
+              -1852.102783203125
+            ],
+            [
+              -1760.03173828125,
+              -1760.8035888671875,
+              -1764.82470703125,
+              -1767.606689453125,
+              -1777.7681884765625,
+              -1785.5428466796875,
+              -1792.6697998046875,
+              -1810.3870849609375,
+              -1818.777099609375,
+              -1837.551025390625,
+              -1846.357421875,
+              -1856.7301025390625
+            ],
+            [
+              -1764.3848876953125,
+              -1765.56298828125,
+              -1769.0238037109375,
+              -1772.1552734375,
+              -1784.6270751953125,
+              -1792.0299072265625,
+              -1797.8787841796875,
+              -1815.3011474609375,
+              -1824.8326416015625,
+              -1840.2120361328125,
+              -1847.260498046875,
+              -1862.8145751953125
+            ]
+          ]
+        }
+      },
+      "baseline_horizon_sha256": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781",
+      "baseline_metrics_sha256": "392af0862adb4d18da0601daa5dc5837245dc95ddfdd4e3f542b76e57aec1e20"
+    },
+    {
+      "id": "CHANGE5",
+      "lat": 43.0576,
+      "lon": -51.9161,
+      "ours_a": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      },
+      "ours_b": {
+        "sun_frac": 0.49356516976998904,
+        "earth_frac": 1,
+        "both_frac": 0.49356516976998904,
+        "longest_dark_h": 366
+      },
+      "step_only_control": {
+        "sun_frac": 0.5015516611902154,
+        "earth_frac": 1,
+        "both_frac": 0.5015516611902154,
+        "longest_dark_h": 360
+      },
+      "step_only_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "sun_frac": null,
+        "earth_frac": null,
+        "sun_300m_min": null,
+        "sun_300m_max": null,
+        "earth_300m_min": null,
+        "earth_300m_max": null,
+        "closer": null,
+        "status": "outside_raster_extent",
+        "checks": [
+          {
+            "product": "AVGVISIB_65S_240M_201608",
+            "row": -17357.391791681832,
+            "col": -23035.61412132518,
+            "radius_300m_projected_bound_m": 1891.9054032069096,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65S_240M_201608_EARTH",
+            "row": -17357.391791681832,
+            "col": -23035.61412132518,
+            "radius_300m_projected_bound_m": 1891.9054032069096,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608",
+            "row": 7087.23336121234,
+            "col": -1738.819640513142,
+            "radius_300m_projected_bound_m": 356.5894904601535,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608_EARTH",
+            "row": 7087.23336121234,
+            "col": -1738.819640513142,
+            "radius_300m_projected_bound_m": 356.5894904601535,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          }
+        ]
+      },
+      "terrain_diagnostic": {
+        "source": "SLDEM2015",
+        "source_path": "data/raw/sldem/CHANGE5.npz",
+        "source_sha256": "15b53a5d133ef937889c26406ff441edb2f5bee3b957423a221c5401c3fe6b42",
+        "nominal_resolution_m": 59.225293797166955,
+        "local_ns_pixel_m": 59.225293797166955,
+        "local_ew_pixel_m": 43.27400994874731,
+        "near_dominant_azimuth_bins": 309,
+        "near_dominant_distances_m": [
+          19.75339015639042,
+          25.266947382691907,
+          193.69036884425913
+        ],
+        "maximum_near_over_far_deg": 2.174503532510168,
+        "strongest_azimuth_deg": 267.5,
+        "supporting_native_pixels": [
+          {
+            "row": 2533,
+            "col": 3471,
+            "height_m": -2549.752197265625,
+            "neighbor_median_m": -2543.4110107421875,
+            "excess_above_neighbor_median_m": -6.3411865234375,
+            "excess_above_highest_neighbor_m": -8.489013671875,
+            "robust_threshold_m": 7.697321850585937,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 3472,
+            "height_m": -2541.752685546875,
+            "neighbor_median_m": -2547.439697265625,
+            "excess_above_neighbor_median_m": 5.68701171875,
+            "excess_above_highest_neighbor_m": -0.489501953125,
+            "robust_threshold_m": 18.73429431152344,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 3473,
+            "height_m": -2552.12109375,
+            "neighbor_median_m": -2544.7296142578125,
+            "excess_above_neighbor_median_m": -7.3914794921875,
+            "excess_above_highest_neighbor_m": -10.85791015625,
+            "robust_threshold_m": 14.650809960937499,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 3471,
+            "height_m": -2550.949951171875,
+            "neighbor_median_m": -2544.7379150390625,
+            "excess_above_neighbor_median_m": -6.2120361328125,
+            "excess_above_highest_neighbor_m": -9.697265625,
+            "robust_threshold_m": 14.176819555664062,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 3472,
+            "height_m": -2541.26318359375,
+            "neighbor_median_m": -2548.9398193359375,
+            "excess_above_neighbor_median_m": 7.6766357421875,
+            "excess_above_highest_neighbor_m": -0.010498046875,
+            "robust_threshold_m": 11.545168359375,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 3473,
+            "height_m": -2552.4208984375,
+            "neighbor_median_m": -2546.8333740234375,
+            "excess_above_neighbor_median_m": -5.5875244140625,
+            "excess_above_highest_neighbor_m": -11.168212890625,
+            "robust_threshold_m": 15.707379638671874,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 3471,
+            "height_m": -2548.12744140625,
+            "neighbor_median_m": -2545.7391357421875,
+            "excess_above_neighbor_median_m": -2.3883056640625,
+            "excess_above_highest_neighbor_m": -6.874755859375,
+            "robust_threshold_m": 13.209835693359375,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 3472,
+            "height_m": -2541.252685546875,
+            "neighbor_median_m": -2546.8289794921875,
+            "excess_above_neighbor_median_m": 5.5762939453125,
+            "excess_above_highest_neighbor_m": 0.010498046875,
+            "robust_threshold_m": 15.319174438476562,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 3473,
+            "height_m": -2547.455322265625,
+            "neighbor_median_m": -2543.6536865234375,
+            "excess_above_neighbor_median_m": -3.8016357421875,
+            "excess_above_highest_neighbor_m": -6.20263671875,
+            "robust_threshold_m": 10.655825537109376,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3471,
+            "height_m": -2546.20263671875,
+            "neighbor_median_m": -2546.6451416015625,
+            "excess_above_neighbor_median_m": 0.4425048828125,
+            "excess_above_highest_neighbor_m": -4.949951171875,
+            "robust_threshold_m": 4.897900854492187,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3472,
+            "height_m": -2541.42529296875,
+            "neighbor_median_m": -2545.4248046875,
+            "excess_above_neighbor_median_m": 3.99951171875,
+            "excess_above_highest_neighbor_m": -0.172607421875,
+            "robust_threshold_m": 5.655851147460938,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3473,
+            "height_m": -2544.0615234375,
+            "neighbor_median_m": -2543.92041015625,
+            "excess_above_neighbor_median_m": -0.14111328125,
+            "excess_above_highest_neighbor_m": -2.808837890625,
+            "robust_threshold_m": 6.7107919921875,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3474,
+            "height_m": -2543.245849609375,
+            "neighbor_median_m": -2544.354248046875,
+            "excess_above_neighbor_median_m": 1.1083984375,
+            "excess_above_highest_neighbor_m": -0.69921875,
+            "robust_threshold_m": 6.1808783203125,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3475,
+            "height_m": -2543.716064453125,
+            "neighbor_median_m": -2544.488525390625,
+            "excess_above_neighbor_median_m": 0.7724609375,
+            "excess_above_highest_neighbor_m": -1.16943359375,
+            "robust_threshold_m": 7.603935424804687,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3476,
+            "height_m": -2545.594482421875,
+            "neighbor_median_m": -2545.3392333984375,
+            "excess_above_neighbor_median_m": -0.2552490234375,
+            "excess_above_highest_neighbor_m": -3.0478515625,
+            "robust_threshold_m": 10.908294653320313,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 3477,
+            "height_m": -2547.717529296875,
+            "neighbor_median_m": -2546.738037109375,
+            "excess_above_neighbor_median_m": -0.9794921875,
+            "excess_above_highest_neighbor_m": -4.92529296875,
+            "robust_threshold_m": 9.637804907226563,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 3474,
+            "height_m": -2543.382568359375,
+            "neighbor_median_m": -2544.354248046875,
+            "excess_above_neighbor_median_m": 0.9716796875,
+            "excess_above_highest_neighbor_m": -0.8359375,
+            "robust_threshold_m": 6.4849271484375,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 3475,
+            "height_m": -2542.546630859375,
+            "neighbor_median_m": -2544.6552734375,
+            "excess_above_neighbor_median_m": 2.108642578125,
+            "excess_above_highest_neighbor_m": 0.24560546875,
+            "robust_threshold_m": 6.55659580078125,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 3476,
+            "height_m": -2542.792236328125,
+            "neighbor_median_m": -2545.894287109375,
+            "excess_above_neighbor_median_m": 3.10205078125,
+            "excess_above_highest_neighbor_m": -0.24560546875,
+            "robust_threshold_m": 5.565179443359375,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 3477,
+            "height_m": -2544.221435546875,
+            "neighbor_median_m": -2546.3067626953125,
+            "excess_above_neighbor_median_m": 2.0853271484375,
+            "excess_above_highest_neighbor_m": -1.42919921875,
+            "robust_threshold_m": 3.197942138671875,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 3474,
+            "height_m": -2547.478271484375,
+            "neighbor_median_m": -2547.0089111328125,
+            "excess_above_neighbor_median_m": -0.4693603515625,
+            "excess_above_highest_neighbor_m": -4.931640625,
+            "robust_threshold_m": 17.856896264648437,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 3475,
+            "height_m": -2546.723876953125,
+            "neighbor_median_m": -2546.836181640625,
+            "excess_above_neighbor_median_m": 0.1123046875,
+            "excess_above_highest_neighbor_m": -4.17724609375,
+            "robust_threshold_m": 18.532861962890625,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 3476,
+            "height_m": -2546.194091796875,
+            "neighbor_median_m": -2546.5716552734375,
+            "excess_above_neighbor_median_m": 0.3775634765625,
+            "excess_above_highest_neighbor_m": -3.6474609375,
+            "robust_threshold_m": 17.35630158691406,
+            "candidate": false
+          }
+        ],
+        "positive_spike_candidates": 0,
+        "despiked_near_metrics": null,
+        "diagnosis": "No isolated positive spike under the stated heuristic in the supporting/observer pixels. Near-field obstruction is present in the interpolated SLDEM surface; physical accuracy is unverified.",
+        "native_patch": {
+          "first_row": 2530,
+          "first_col": 3467,
+          "height_m": [
+            [
+              -2551.68603515625,
+              -2543.217529296875,
+              -2539.415283203125,
+              -2539.831298828125,
+              -2540.8525390625,
+              -2541.67724609375,
+              -2544.690673828125,
+              -2546.5078125,
+              -2548.85546875,
+              -2550.4072265625,
+              -2551.26513671875,
+              -2549.65380859375
+            ],
+            [
+              -2554.945068359375,
+              -2546.96630859375,
+              -2539.055419921875,
+              -2541.396484375,
+              -2540.703369140625,
+              -2541.255126953125,
+              -2541.133544921875,
+              -2542.54248046875,
+              -2544.80859375,
+              -2547.809326171875,
+              -2550.463134765625,
+              -2550.014892578125
+            ],
+            [
+              -2553.2451171875,
+              -2547.30712890625,
+              -2538.936279296875,
+              -2543.125,
+              -2543.697021484375,
+              -2541.608154296875,
+              -2545.127197265625,
+              -2544.33203125,
+              -2545.720703125,
+              -2549.619384765625,
+              -2552.375244140625,
+              -2552.539306640625
+            ],
+            [
+              -2546.9326171875,
+              -2542.545654296875,
+              -2537.58154296875,
+              -2544.2001953125,
+              -2549.752197265625,
+              -2541.752685546875,
+              -2552.12109375,
+              -2548.815673828125,
+              -2547.12255859375,
+              -2549.306884765625,
+              -2551.14453125,
+              -2551.4716796875
+            ],
+            [
+              -2546.33447265625,
+              -2542.4375,
+              -2539.407470703125,
+              -2545.275634765625,
+              -2550.949951171875,
+              -2541.26318359375,
+              -2552.4208984375,
+              -2548.48291015625,
+              -2546.83056640625,
+              -2547.9130859375,
+              -2549.219970703125,
+              -2550.09814453125
+            ],
+            [
+              -2548.920166015625,
+              -2548.04345703125,
+              -2541.91455078125,
+              -2546.800048828125,
+              -2548.12744140625,
+              -2541.252685546875,
+              -2547.455322265625,
+              -2546.21142578125,
+              -2546.45703125,
+              -2547.865966796875,
+              -2549.438232421875,
+              -2549.5
+            ],
+            [
+              -2548.648681640625,
+              -2549.8330078125,
+              -2542.08544921875,
+              -2547.365234375,
+              -2546.20263671875,
+              -2541.42529296875,
+              -2544.0615234375,
+              -2543.245849609375,
+              -2543.716064453125,
+              -2545.594482421875,
+              -2547.717529296875,
+              -2548.55517578125
+            ],
+            [
+              -2548.09130859375,
+              -2548.43896484375,
+              -2543.599365234375,
+              -2546.685546875,
+              -2546.604736328125,
+              -2544.458251953125,
+              -2544.64697265625,
+              -2543.382568359375,
+              -2542.546630859375,
+              -2542.792236328125,
+              -2544.221435546875,
+              -2545.610107421875
+            ],
+            [
+              -2549.22802734375,
+              -2550.024658203125,
+              -2543.283935546875,
+              -2547.638427734375,
+              -2547.47607421875,
+              -2543.40673828125,
+              -2547.2939453125,
+              -2547.478271484375,
+              -2546.723876953125,
+              -2546.194091796875,
+              -2546.41943359375,
+              -2547.032470703125
+            ],
+            [
+              -2550.157470703125,
+              -2552.015380859375,
+              -2544.93994140625,
+              -2551.01708984375,
+              -2549.089111328125,
+              -2543.9736328125,
+              -2551.412109375,
+              -2553.64501953125,
+              -2554.681640625,
+              -2555.003662109375,
+              -2554.540283203125,
+              -2552.487548828125
+            ],
+            [
+              -2548.173828125,
+              -2549.562255859375,
+              -2544.61376953125,
+              -2550.767822265625,
+              -2549.52392578125,
+              -2545.103515625,
+              -2552.280517578125,
+              -2553.546630859375,
+              -2553.6494140625,
+              -2553.69091796875,
+              -2553.26318359375,
+              -2550.957763671875
+            ],
+            [
+              -2545.820556640625,
+              -2544.67333984375,
+              -2544.12841796875,
+              -2546.47607421875,
+              -2546.80322265625,
+              -2544.72119140625,
+              -2547.845703125,
+              -2547.6015625,
+              -2546.5615234375,
+              -2546.99072265625,
+              -2547.501708984375,
+              -2547.604736328125
+            ]
+          ]
+        }
+      },
+      "baseline_horizon_sha256": "f136c3a712db9d5376bd151612b86b0c239203aa4e34048a598399f22c7d2fb1",
+      "baseline_metrics_sha256": "40b2407c8077493ba16240d4e458b75f9f59af272459b683487bbda264531222"
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "lat": 7.585,
+      "lon": -58.725,
+      "ours_a": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      },
+      "ours_b": {
+        "sun_frac": 0.4915343190945601,
+        "earth_frac": 1,
+        "both_frac": 0.4915343190945601,
+        "longest_dark_h": 363
+      },
+      "step_only_control": {
+        "sun_frac": 0.495276560788609,
+        "earth_frac": 1,
+        "both_frac": 0.495276560788609,
+        "longest_dark_h": 361
+      },
+      "step_only_differences": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "pgda": {
+        "sun_frac": null,
+        "earth_frac": null,
+        "sun_300m_min": null,
+        "sun_300m_max": null,
+        "earth_300m_min": null,
+        "earth_300m_max": null,
+        "closer": null,
+        "status": "outside_raster_extent",
+        "checks": [
+          {
+            "product": "AVGVISIB_65S_240M_201608",
+            "row": -5374.115471825042,
+            "col": -10921.953931376755,
+            "radius_300m_projected_bound_m": 691.378090660853,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65S_240M_201608_EARTH",
+            "row": -5374.115471825042,
+            "col": -10921.953931376755,
+            "radius_300m_projected_bound_m": 691.378090660853,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608",
+            "row": 9791.324605225467,
+            "col": -7626.347842723762,
+            "radius_300m_projected_bound_m": 530.1169497286263,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          },
+          {
+            "product": "AVGVISIB_65N_240M_201608_EARTH",
+            "row": 9791.324605225467,
+            "col": -7626.347842723762,
+            "radius_300m_projected_bound_m": 530.1169497286263,
+            "entire_300m_disc_outside": true,
+            "center": null,
+            "min_300m": null,
+            "max_300m": null,
+            "status": "outside_raster_extent"
+          }
+        ]
+      },
+      "terrain_diagnostic": {
+        "source": "SLDEM2015",
+        "source_path": "data/raw/sldem/IM3_REINER_GAMMA.npz",
+        "source_sha256": "423e63b57822910b545d4bc7f8c2d270f38340b35499a21c28524bcce4a3b507",
+        "nominal_resolution_m": 59.225293797166955,
+        "local_ns_pixel_m": 59.225293797166955,
+        "local_ew_pixel_m": 58.70708023049718,
+        "near_dominant_azimuth_bins": 505,
+        "near_dominant_distances_m": [
+          58.06313276674033,
+          99.95894924951345,
+          182.56833850781737
+        ],
+        "maximum_near_over_far_deg": 2.498728702031533,
+        "strongest_azimuth_deg": 54.5,
+        "supporting_native_pixels": [
+          {
+            "row": 2533,
+            "col": 2557,
+            "height_m": -1764.04248046875,
+            "neighbor_median_m": -1766.3078002929688,
+            "excess_above_neighbor_median_m": 2.26531982421875,
+            "excess_above_highest_neighbor_m": -3.4755859375,
+            "robust_threshold_m": 14.024252197265625,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2558,
+            "height_m": -1760.56689453125,
+            "neighbor_median_m": -1762.219970703125,
+            "excess_above_neighbor_median_m": 1.653076171875,
+            "excess_above_highest_neighbor_m": -2.5667724609375,
+            "robust_threshold_m": 11.352694592285156,
+            "candidate": false
+          },
+          {
+            "row": 2533,
+            "col": 2559,
+            "height_m": -1759.6014404296875,
+            "neighbor_median_m": -1760.3063354492188,
+            "excess_above_neighbor_median_m": 0.70489501953125,
+            "excess_above_highest_neighbor_m": -1.601318359375,
+            "robust_threshold_m": 3.6222531372070312,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2555,
+            "height_m": -1766.369873046875,
+            "neighbor_median_m": -1767.3367309570312,
+            "excess_above_neighbor_median_m": 0.96685791015625,
+            "excess_above_highest_neighbor_m": -2.4034423828125,
+            "robust_threshold_m": 14.310383862304688,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2556,
+            "height_m": -1768.7646484375,
+            "neighbor_median_m": -1765.6707763671875,
+            "excess_above_neighbor_median_m": -3.0938720703125,
+            "excess_above_highest_neighbor_m": -4.7982177734375,
+            "robust_threshold_m": 7.4114616577148436,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2557,
+            "height_m": -1764.9716796875,
+            "neighbor_median_m": -1765.1318359375,
+            "excess_above_neighbor_median_m": 0.16015625,
+            "excess_above_highest_neighbor_m": -4.40478515625,
+            "robust_threshold_m": 14.827266870117187,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2558,
+            "height_m": -1761.1695556640625,
+            "neighbor_median_m": -1762.587890625,
+            "excess_above_neighbor_median_m": 1.4183349609375,
+            "excess_above_highest_neighbor_m": -3.16943359375,
+            "robust_threshold_m": 11.942875085449218,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2559,
+            "height_m": -1758.0001220703125,
+            "neighbor_median_m": -1760.8193969726562,
+            "excess_above_neighbor_median_m": 2.81927490234375,
+            "excess_above_highest_neighbor_m": 0.722900390625,
+            "robust_threshold_m": 3.4873314697265623,
+            "candidate": false
+          },
+          {
+            "row": 2534,
+            "col": 2560,
+            "height_m": -1758.7230224609375,
+            "neighbor_median_m": -1759.9368896484375,
+            "excess_above_neighbor_median_m": 1.2138671875,
+            "excess_above_highest_neighbor_m": -1.0927734375,
+            "robust_threshold_m": 5.184846936035156,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2555,
+            "height_m": -1764.146728515625,
+            "neighbor_median_m": -1765.2821044921875,
+            "excess_above_neighbor_median_m": 1.1353759765625,
+            "excess_above_highest_neighbor_m": -2.13916015625,
+            "robust_threshold_m": 4.132077868652344,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2556,
+            "height_m": -1763.9664306640625,
+            "neighbor_median_m": -1765.6707763671875,
+            "excess_above_neighbor_median_m": 1.704345703125,
+            "excess_above_highest_neighbor_m": -1.9588623046875,
+            "robust_threshold_m": 5.966686779785157,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2557,
+            "height_m": -1768.166259765625,
+            "neighbor_median_m": -1765.56103515625,
+            "excess_above_neighbor_median_m": -2.605224609375,
+            "excess_above_highest_neighbor_m": -6.9967041015625,
+            "robust_threshold_m": 6.231915087890625,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2558,
+            "height_m": -1766.22119140625,
+            "neighbor_median_m": -1763.8844604492188,
+            "excess_above_neighbor_median_m": -2.33673095703125,
+            "excess_above_highest_neighbor_m": -8.2210693359375,
+            "robust_threshold_m": 12.155980737304688,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2559,
+            "height_m": -1761.13330078125,
+            "neighbor_median_m": -1761.1063232421875,
+            "excess_above_neighbor_median_m": -0.0269775390625,
+            "excess_above_highest_neighbor_m": -3.1331787109375,
+            "robust_threshold_m": 9.311223889160157,
+            "candidate": false
+          },
+          {
+            "row": 2535,
+            "col": 2560,
+            "height_m": -1759.302734375,
+            "neighbor_median_m": -1760.0178833007812,
+            "excess_above_neighbor_median_m": 0.71514892578125,
+            "excess_above_highest_neighbor_m": -1.6724853515625,
+            "robust_threshold_m": 5.360217956542969,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2555,
+            "height_m": -1764.5118408203125,
+            "neighbor_median_m": -1763.6421508789062,
+            "excess_above_neighbor_median_m": -0.86968994140625,
+            "excess_above_highest_neighbor_m": -4.9583740234375,
+            "robust_threshold_m": 6.5908012939453124,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2556,
+            "height_m": -1762.007568359375,
+            "neighbor_median_m": -1764.177490234375,
+            "excess_above_neighbor_median_m": 2.169921875,
+            "excess_above_highest_neighbor_m": -0.7669677734375,
+            "robust_threshold_m": 2.6552692749023437,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2557,
+            "height_m": -1766.7686767578125,
+            "neighbor_median_m": -1764.0873413085938,
+            "excess_above_neighbor_median_m": -2.68133544921875,
+            "excess_above_highest_neighbor_m": -5.528076171875,
+            "robust_threshold_m": 9.213222436523438,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2558,
+            "height_m": -1766.150390625,
+            "neighbor_median_m": -1763.5027465820312,
+            "excess_above_neighbor_median_m": -2.64764404296875,
+            "excess_above_highest_neighbor_m": -6.0770263671875,
+            "robust_threshold_m": 11.3149599609375,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2559,
+            "height_m": -1762.7972412109375,
+            "neighbor_median_m": -1761.0881958007812,
+            "excess_above_neighbor_median_m": -1.70904541015625,
+            "excess_above_highest_neighbor_m": -3.4945068359375,
+            "robust_threshold_m": 5.641734594726563,
+            "candidate": false
+          },
+          {
+            "row": 2536,
+            "col": 2560,
+            "height_m": -1761.0430908203125,
+            "neighbor_median_m": -1760.29443359375,
+            "excess_above_neighbor_median_m": -0.7486572265625,
+            "excess_above_highest_neighbor_m": -3.412841796875,
+            "robust_threshold_m": 4.070996630859375,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2555,
+            "height_m": -1763.31787109375,
+            "neighbor_median_m": -1762.689697265625,
+            "excess_above_neighbor_median_m": -0.628173828125,
+            "excess_above_highest_neighbor_m": -6.243408203125,
+            "robust_threshold_m": 9.12607987060547,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2556,
+            "height_m": -1761.2406005859375,
+            "neighbor_median_m": -1763.7900390625,
+            "excess_above_neighbor_median_m": 2.5494384765625,
+            "excess_above_highest_neighbor_m": 0.7669677734375,
+            "robust_threshold_m": 4.14592294921875,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2557,
+            "height_m": -1764.208251953125,
+            "neighbor_median_m": -1762.62890625,
+            "excess_above_neighbor_median_m": -1.579345703125,
+            "excess_above_highest_neighbor_m": -4.2403564453125,
+            "robust_threshold_m": 9.005274755859375,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2558,
+            "height_m": -1762.6102294921875,
+            "neighbor_median_m": -1762.722412109375,
+            "excess_above_neighbor_median_m": 0.1121826171875,
+            "excess_above_highest_neighbor_m": -5.9954833984375,
+            "robust_threshold_m": 12.016986987304687,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2559,
+            "height_m": -1760.0733642578125,
+            "neighbor_median_m": -1760.779296875,
+            "excess_above_neighbor_median_m": 0.7059326171875,
+            "excess_above_highest_neighbor_m": -3.4586181640625,
+            "robust_threshold_m": 8.559517456054687,
+            "candidate": false
+          },
+          {
+            "row": 2537,
+            "col": 2560,
+            "height_m": -1760.5155029296875,
+            "neighbor_median_m": -1760.5582275390625,
+            "excess_above_neighbor_median_m": 0.042724609375,
+            "excess_above_highest_neighbor_m": -3.9007568359375,
+            "robust_threshold_m": 6.3489195922851565,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2556,
+            "height_m": -1769.052001953125,
+            "neighbor_median_m": -1762.9827270507812,
+            "excess_above_neighbor_median_m": -6.06927490234375,
+            "excess_above_highest_neighbor_m": -7.9241943359375,
+            "robust_threshold_m": 5.204664404296875,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2557,
+            "height_m": -1762.6475830078125,
+            "neighbor_median_m": -1761.9254150390625,
+            "excess_above_neighbor_median_m": -0.72216796875,
+            "excess_above_highest_neighbor_m": -3.5260009765625,
+            "robust_threshold_m": 9.430128698730469,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2558,
+            "height_m": -1759.9678955078125,
+            "neighbor_median_m": -1760.6005859375,
+            "excess_above_neighbor_median_m": 0.6326904296875,
+            "excess_above_highest_neighbor_m": -6.240234375,
+            "robust_threshold_m": 9.0215630859375,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2559,
+            "height_m": -1756.61474609375,
+            "neighbor_median_m": -1759.5447387695312,
+            "excess_above_neighbor_median_m": 2.92999267578125,
+            "excess_above_highest_neighbor_m": -3.3861083984375,
+            "robust_threshold_m": 3.9127283569335938,
+            "candidate": false
+          },
+          {
+            "row": 2538,
+            "col": 2560,
+            "height_m": -1758.756103515625,
+            "neighbor_median_m": -1759.4142456054688,
+            "excess_above_neighbor_median_m": 0.65814208984375,
+            "excess_above_highest_neighbor_m": -5.5274658203125,
+            "robust_threshold_m": 11.111084362792969,
+            "candidate": false
+          },
+          {
+            "row": 2539,
+            "col": 2557,
+            "height_m": -1761.1278076171875,
+            "neighbor_median_m": -1762.2093505859375,
+            "excess_above_neighbor_median_m": 1.08154296875,
+            "excess_above_highest_neighbor_m": -2.0062255859375,
+            "robust_threshold_m": 11.851660437011718,
+            "candidate": false
+          },
+          {
+            "row": 2539,
+            "col": 2558,
+            "height_m": -1759.12158203125,
+            "neighbor_median_m": -1760.1929931640625,
+            "excess_above_neighbor_median_m": 1.0714111328125,
+            "excess_above_highest_neighbor_m": -5.3939208984375,
+            "robust_threshold_m": 8.968354541015625,
+            "candidate": false
+          }
+        ],
+        "positive_spike_candidates": 0,
+        "despiked_near_metrics": null,
+        "diagnosis": "No isolated positive spike under the stated heuristic in the supporting/observer pixels. Near-field obstruction is present in the interpolated SLDEM surface; physical accuracy is unverified.",
+        "native_patch": {
+          "first_row": 2529,
+          "first_col": 2552,
+          "height_m": [
+            [
+              -1767.56103515625,
+              -1770.003662109375,
+              -1772.732177734375,
+              -1775.6240234375,
+              -1771.07763671875,
+              -1772.2645263671875,
+              -1765.1971435546875,
+              -1761.537841796875,
+              -1764.3602294921875,
+              -1766.0345458984375,
+              -1764.9061279296875,
+              -1764.8997802734375
+            ],
+            [
+              -1770.735107421875,
+              -1772.3614501953125,
+              -1773.314453125,
+              -1767.4556884765625,
+              -1767.3570556640625,
+              -1771.8060302734375,
+              -1762.3916015625,
+              -1755.467041015625,
+              -1759.047119140625,
+              -1764.5352783203125,
+              -1765.671875,
+              -1766.1146240234375
+            ],
+            [
+              -1773.154052734375,
+              -1774.882568359375,
+              -1775.2232666015625,
+              -1771.70068359375,
+              -1767.58349609375,
+              -1770.959716796875,
+              -1763.075927734375,
+              -1755.7431640625,
+              -1757.3768310546875,
+              -1763.4237060546875,
+              -1766.7440185546875,
+              -1766.7989501953125
+            ],
+            [
+              -1773.1036376953125,
+              -1776.709716796875,
+              -1777.5810546875,
+              -1773.3438720703125,
+              -1769.5765380859375,
+              -1767.6439208984375,
+              -1763.2703857421875,
+              -1759.733642578125,
+              -1760.0457763671875,
+              -1763.12841796875,
+              -1767.2650146484375,
+              -1767.8505859375
+            ],
+            [
+              -1774.44091796875,
+              -1776.18994140625,
+              -1772.7755126953125,
+              -1771.11083984375,
+              -1770.58154296875,
+              -1764.04248046875,
+              -1760.56689453125,
+              -1759.6014404296875,
+              -1761.0718994140625,
+              -1763.4656982421875,
+              -1768.112548828125,
+              -1768.7186279296875
+            ],
+            [
+              -1774.0640869140625,
+              -1772.6904296875,
+              -1765.9088134765625,
+              -1766.369873046875,
+              -1768.7646484375,
+              -1764.9716796875,
+              -1761.1695556640625,
+              -1758.0001220703125,
+              -1758.7230224609375,
+              -1760.2723388671875,
+              -1762.408935546875,
+              -1762.851806640625
+            ],
+            [
+              -1767.666748046875,
+              -1766.7625732421875,
+              -1765.593017578125,
+              -1764.146728515625,
+              -1763.9664306640625,
+              -1768.166259765625,
+              -1766.22119140625,
+              -1761.13330078125,
+              -1759.302734375,
+              -1757.6302490234375,
+              -1756.6240234375,
+              -1756.1890869140625
+            ],
+            [
+              -1762.881591796875,
+              -1762.1611328125,
+              -1764.97119140625,
+              -1764.5118408203125,
+              -1762.007568359375,
+              -1766.7686767578125,
+              -1766.150390625,
+              -1762.7972412109375,
+              -1761.0430908203125,
+              -1759.763427734375,
+              -1757.5736083984375,
+              -1755.4244384765625
+            ],
+            [
+              -1762.1986083984375,
+              -1759.171875,
+              -1759.553466796875,
+              -1763.31787109375,
+              -1761.2406005859375,
+              -1764.208251953125,
+              -1762.6102294921875,
+              -1760.0733642578125,
+              -1760.5155029296875,
+              -1761.6109619140625,
+              -1759.5028076171875,
+              -1756.9659423828125
+            ],
+            [
+              -1762.6787109375,
+              -1758.5909423828125,
+              -1757.074462890625,
+              -1763.371826171875,
+              -1769.052001953125,
+              -1762.6475830078125,
+              -1759.9678955078125,
+              -1756.61474609375,
+              -1758.756103515625,
+              -1763.4993896484375,
+              -1762.39111328125,
+              -1759.5889892578125
+            ],
+            [
+              -1760.056884765625,
+              -1758.6015625,
+              -1760.166748046875,
+              -1761.867919921875,
+              -1773.0035400390625,
+              -1761.1278076171875,
+              -1759.12158203125,
+              -1753.7276611328125,
+              -1753.2286376953125,
+              -1758.755126953125,
+              -1760.2386474609375,
+              -1759.8038330078125
+            ],
+            [
+              -1757.8023681640625,
+              -1760.510498046875,
+              -1762.7119140625,
+              -1765.5201416015625,
+              -1766.944580078125,
+              -1761.7711181640625,
+              -1760.4180908203125,
+              -1754.2894287109375,
+              -1750.0047607421875,
+              -1752.9903564453125,
+              -1756.984130859375,
+              -1759.263671875
+            ]
+          ]
+        }
+      },
+      "baseline_horizon_sha256": "6dd99c6ded1644beaf577fbeb179ffaa95c2936eab2834fca8c5273453ba5804",
+      "baseline_metrics_sha256": "e86985a1c9ba84d82a9c7d0a00d43c956790b1d5ec279edcd72db4d558156f4a"
+    }
+  ],
+  "pgda_products": [
+    {
+      "product": "AVGVISIB_65S_240M_201608",
+      "label_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608.LBL",
+      "image_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608.IMG",
+      "label_sha256": "10b0d6d881713d6bd4d61a30cc64da6d53934e2c9a8cc702b36a5cd758751b03",
+      "pole": "S",
+      "metric": "sun_frac",
+      "metadata": {
+        "LINES": 6420.0,
+        "LINE_SAMPLES": 6420.0,
+        "MAP_SCALE": 240.0,
+        "LINE_PROJECTION_OFFSET": 3209.5,
+        "SAMPLE_PROJECTION_OFFSET": 3209.5,
+        "CENTER_LATITUDE": -90.0,
+        "MINIMUM_LATITUDE": -90.0,
+        "MAXIMUM_LATITUDE": -55.2,
+        "SCALING_FACTOR": 4e-05,
+        "OFFSET": 0.0
+      }
+    },
+    {
+      "product": "AVGVISIB_65S_240M_201608_EARTH",
+      "label_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608_EARTH.LBL",
+      "image_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608_EARTH.IMG",
+      "label_sha256": "eb99d4e4a0bd3508e95dc87e0f65663452db0c20dcadaf272ebf27c7ce418913",
+      "pole": "S",
+      "metric": "earth_frac",
+      "metadata": {
+        "LINES": 6420.0,
+        "LINE_SAMPLES": 6420.0,
+        "MAP_SCALE": 240.0,
+        "LINE_PROJECTION_OFFSET": 3209.5,
+        "SAMPLE_PROJECTION_OFFSET": 3209.5,
+        "CENTER_LATITUDE": -90.0,
+        "MINIMUM_LATITUDE": -90.0,
+        "MAXIMUM_LATITUDE": -55.2,
+        "SCALING_FACTOR": 4e-05,
+        "OFFSET": 0.0
+      }
+    },
+    {
+      "product": "AVGVISIB_65N_240M_201608",
+      "label_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608.LBL",
+      "image_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608.IMG",
+      "label_sha256": "ac839d42ea50ec34314d0c68bc3553d74a2719c88acca1ac7cf3b572a1742d71",
+      "pole": "N",
+      "metric": "sun_frac",
+      "metadata": {
+        "LINES": 6420.0,
+        "LINE_SAMPLES": 6420.0,
+        "MAP_SCALE": 240.0,
+        "LINE_PROJECTION_OFFSET": 3209.5,
+        "SAMPLE_PROJECTION_OFFSET": 3209.5,
+        "CENTER_LATITUDE": 90.0,
+        "MINIMUM_LATITUDE": 55.2,
+        "MAXIMUM_LATITUDE": 90.0,
+        "SCALING_FACTOR": 4e-05,
+        "OFFSET": 0.0
+      }
+    },
+    {
+      "product": "AVGVISIB_65N_240M_201608_EARTH",
+      "label_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608_EARTH.LBL",
+      "image_url": "https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608_EARTH.IMG",
+      "label_sha256": "31fe6cb62853d076d0aac190dc2d886204211e658b783be243dd4cdd90bedb82",
+      "pole": "N",
+      "metric": "earth_frac",
+      "metadata": {
+        "LINES": 6420.0,
+        "LINE_SAMPLES": 6420.0,
+        "MAP_SCALE": 240.0,
+        "LINE_PROJECTION_OFFSET": 3209.5,
+        "SAMPLE_PROJECTION_OFFSET": 3209.5,
+        "CENTER_LATITUDE": 90.0,
+        "MINIMUM_LATITUDE": 55.2,
+        "MAXIMUM_LATITUDE": 90.0,
+        "SCALING_FACTOR": 4e-05,
+        "OFFSET": 0.0
+      }
+    }
+  ],
+  "elapsed_s": 13.875,
+  "source_url": "https://pgda.gsfc.nasa.gov/products/69",
+  "baseline_files_modified": false,
+  "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+  "core_sha256": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+  "script_sha256": "1cbd27d2430e62e5c3624dbf8b06580a83c98901d7545d21df2bfc49800cf72e",
+  "horizon_sha256": "83f0ef54630961bd322e82a01baad74d368484987659d785cdfe9e6598ec24c4",
+  "method": "Current production centre versus 5 m minimum distance/8000 steps; 200 m/8000 step-only control; native SLDEM pixel diagnostics. All use 2 m observer, 720 azimuths, curvature, actual hourly core.js 2026-2030."
+}

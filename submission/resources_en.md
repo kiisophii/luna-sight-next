@@ -178,3 +178,29 @@ This document includes all 67 six-column dataset-use rows in the pinned DATASETS
 Historical assignment / audit URLs are not automatically resources used: the obsolete bare PGDA folder listings are replaced by products/90 and products/69; localhost test URLs, challenge/demo/repository navigation and the explicitly rejected unrelated NTRS 20250007692 record are excluded as scientific sources. No unverified Goossens coordinate table is claimed. Broken-link audit evidence is retained in docs/source_link_ai_report_2026-11-14.md rather than treated as a new dataset. Existing AI audit passes and user-supplied table access do not mean every URL has received human review.
 
 Inventory coverage was checked against the pinned files. “REVIEW” flags remain visible for the submission owner to resolve; this documentation change does not modify scientific data, UI or model assumptions. A new main snapshot may add resources and requires a corresponding inventory update.
+
+
+## Integration addendum — main 30d787701ef89b656c4a9ee461283b19aa8c2853
+
+PRs #19 (windows), #27 (polar coordinate uncertainty) and #28 (hindcast) merged after the original inventory snapshot. This addendum supersedes the earlier statement that Card 15-B is unmerged. Windows are team-derived products in contract section 19; hindcast is section 20. Source inventory base remains documented above so historical verification claims are not silently moved to a new snapshot.
+
+### NASA data / published computation references added at integration
+
+| Resource | Provider | URL | Terms / flag | Use |
+|---|---|---|---|---|
+| Apollo Sun and Earth altitudes/azimuths at landing | Apollo Lunar Surface Journal, P. Fjeld and J. Scotti; linked by NASA History | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html ; https://www.nasa.gov/history/alsj-and-afj/ | **REVIEW:** item-specific reuse terms not established; numerical reference/citation only. | Hindcast comparison; published computation, not in-situ measurements. |
+| IM-1 operating-end report / autonomous-navigation test | NASA Marshall | https://www.nasa.gov/centers-and-facilities/marshall/nasa-lights-beacon-on-moon-with-autonomous-navigation-system-test/ | **REVIEW:** NASA page terms; no images copied. | Reported 29 Feb 2024 power-down date, an operations proxy rather than a sunset measurement. |
+| PGDA 65N/65S solar/Earth visibility labels | NASA PGDA / LOLA, MIT archive | https://pgda.gsfc.nasa.gov/products/69 ; https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608.LBL ; https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65S_240M_201608_EARTH.LBL ; https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608.LBL ; https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_65N_240M_201608_EARTH.LBL | **REVIEW:** existing PGDA attribution and item-specific terms; labels consulted, not an independent new truth for out-of-coverage points. | Card 23 checks the original 240 m raster footprints. All five tested nonpolar centres and 300 m neighbourhoods are outside; no accuracy ranking is inferred. |
+| Hourly site visibility windows (team-derived) | Team Ginkgo Orbit using the already cited NASA/partner ephemerides and terrain | https://github.com/kiisophii/lunar-landing-site-navigator/tree/30d787701ef89b656c4a9ee461283b19aa8c2853/web/data/windows | Original source terms remain applicable; not an independently licensed external dataset. | 33 sites, maximal visible runs and longest gaps; independent review applies to the recorded e5848ba commit, not an assumed new Horizons/DEM validation. |
+
+### Partner / other providers: secondary mission operations reports
+
+These are secondary news sources used by the merged hindcast, not new primary agency datasets. Numeric event transcriptions only; **REVIEW** publisher terms; no article text, photographs or figures redistributed here.
+
+| Resource | Provider | URL | Terms / flag | Use |
+|---|---|---|---|---|
+| Vikram sleep-mode report quoting an ISRO statement | Business Today; embedded ISRO statement | https://www.businesstoday.in/latest/trends/story/chandrayaan-3-update-vikram-lander-set-into-sleep-mode-at-8-am-payloads-are-now-switched-off-says-isro-396766-2023-09-04 | **REVIEW:** publisher terms; indirect agency statement. | Approximate operations event at about 08:00 IST on 4 Sep 2023; not exact sunset. |
+| SLIM hibernation report quoting JAXA | Cosmic Log | https://cosmiclog.com/2024/02/01/japans-moon-lander-sleeps-again-after-sending-science/ | **REVIEW:** publisher terms; secondary source, date only. | Reported 1 Feb 2024 hibernation/sunset context; no primary agency event page was established by the team. |
+| Chang'e-3 / Yutu hibernation report | Spaceflight Now, reporting Chinese state media | https://spaceflightnow.com/china/change3/131227hibernation | **REVIEW:** publisher terms; secondary source. | Rover sleep time 25 Dec 2013; the lander is reported to sleep the same day. Not a direct lander-sunset measurement. |
+
+The new main DATASETS.md has one additional dataset-use table row (windows), giving 68 rows including the 67 covered above. The Card 23 footprint additions reuse the existing PGDA/SLDEM sources and are made explicit here. The hindcast reuses the same kernels/terrain with historical dates; no public first-night Chang'e-4 operations reference is claimed. No new software runtime is inferred merely from a new analysis script.

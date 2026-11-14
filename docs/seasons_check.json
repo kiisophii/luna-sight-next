@@ -1,0 +1,607 @@
+{
+  "random_months": [
+    "2026-05",
+    "2027-04",
+    "2028-07",
+    "2028-09",
+    "2028-12",
+    "2029-02"
+  ],
+  "sites": {
+    "SHACKLETON_RIM": {
+      "random_month_rows": [
+        {
+          "month": "2026-05",
+          "python": {
+            "sun_frac": 0.4973,
+            "earth_frac": 0.4261,
+            "both_frac": 0.2849,
+            "longest_dark_h": 72.0
+          },
+          "file": {
+            "sun_frac": 0.4973,
+            "earth_frac": 0.4261,
+            "both_frac": 0.2849,
+            "longest_dark_h": 72
+          },
+          "python_lunation_sun": 0.5134,
+          "file_lunation_sun": 0.5134,
+          "subsolar_lat_deg": [
+            1.441,
+            1.586
+          ]
+        },
+        {
+          "month": "2027-04",
+          "python": {
+            "sun_frac": 0.5417,
+            "earth_frac": 0.4625,
+            "both_frac": 0.3764,
+            "longest_dark_h": 60.0
+          },
+          "file": {
+            "sun_frac": 0.5417,
+            "earth_frac": 0.4625,
+            "both_frac": 0.3764,
+            "longest_dark_h": 60
+          },
+          "python_lunation_sun": 0.5501,
+          "file_lunation_sun": 0.5501,
+          "subsolar_lat_deg": [
+            1.247,
+            1.547
+          ]
+        },
+        {
+          "month": "2028-07",
+          "python": {
+            "sun_frac": 0.9247,
+            "earth_frac": 0.4476,
+            "both_frac": 0.3965,
+            "longest_dark_h": 38.0
+          },
+          "file": {
+            "sun_frac": 0.9247,
+            "earth_frac": 0.4476,
+            "both_frac": 0.3965,
+            "longest_dark_h": 38
+          },
+          "python_lunation_sun": 0.921,
+          "file_lunation_sun": 0.921,
+          "subsolar_lat_deg": [
+            -0.462,
+            0.377
+          ]
+        },
+        {
+          "month": "2028-09",
+          "python": {
+            "sun_frac": 1.0,
+            "earth_frac": 0.6083,
+            "both_frac": 0.6083,
+            "longest_dark_h": 0.0
+          },
+          "file": {
+            "sun_frac": 1,
+            "earth_frac": 0.6083,
+            "both_frac": 0.6083,
+            "longest_dark_h": 0
+          },
+          "python_lunation_sun": 1.0,
+          "file_lunation_sun": 1,
+          "subsolar_lat_deg": [
+            -1.558,
+            -1.186
+          ]
+        },
+        {
+          "month": "2028-12",
+          "python": {
+            "sun_frac": 0.9556,
+            "earth_frac": 0.5847,
+            "both_frac": 0.5685,
+            "longest_dark_h": 21.0
+          },
+          "file": {
+            "sun_frac": 0.9556,
+            "earth_frac": 0.5847,
+            "both_frac": 0.5685,
+            "longest_dark_h": 21
+          },
+          "python_lunation_sun": 0.9605,
+          "file_lunation_sun": 0.9605,
+          "subsolar_lat_deg": [
+            -0.966,
+            -0.125
+          ]
+        },
+        {
+          "month": "2029-02",
+          "python": {
+            "sun_frac": 0.7321,
+            "earth_frac": 0.5357,
+            "both_frac": 0.4881,
+            "longest_dark_h": 57.0
+          },
+          "file": {
+            "sun_frac": 0.7321,
+            "earth_frac": 0.5357,
+            "both_frac": 0.4881,
+            "longest_dark_h": 57
+          },
+          "python_lunation_sun": 0.7292,
+          "file_lunation_sun": 0.7292,
+          "subsolar_lat_deg": [
+            0.751,
+            1.307
+          ]
+        }
+      ],
+      "all_60_months_max_abs_diff_4dp": 0.0
+    },
+    "ARTEMIS_HAWORTH": {
+      "random_month_rows": [
+        {
+          "month": "2026-05",
+          "python": {
+            "sun_frac": 0.3535,
+            "earth_frac": 0.4785,
+            "both_frac": 0.0672,
+            "longest_dark_h": 423.0
+          },
+          "file": {
+            "sun_frac": 0.3535,
+            "earth_frac": 0.4785,
+            "both_frac": 0.0672,
+            "longest_dark_h": 423
+          },
+          "python_lunation_sun": 0.3216,
+          "file_lunation_sun": 0.3216,
+          "subsolar_lat_deg": [
+            1.441,
+            1.586
+          ]
+        },
+        {
+          "month": "2027-04",
+          "python": {
+            "sun_frac": 0.3375,
+            "earth_frac": 0.5972,
+            "both_frac": 0.1194,
+            "longest_dark_h": 418.0
+          },
+          "file": {
+            "sun_frac": 0.3375,
+            "earth_frac": 0.5972,
+            "both_frac": 0.1194,
+            "longest_dark_h": 418
+          },
+          "python_lunation_sun": 0.3272,
+          "file_lunation_sun": 0.3272,
+          "subsolar_lat_deg": [
+            1.247,
+            1.547
+          ]
+        },
+        {
+          "month": "2028-07",
+          "python": {
+            "sun_frac": 0.5202,
+            "earth_frac": 0.5296,
+            "both_frac": 0.3562,
+            "longest_dark_h": 173.0
+          },
+          "file": {
+            "sun_frac": 0.5202,
+            "earth_frac": 0.5296,
+            "both_frac": 0.3562,
+            "longest_dark_h": 173
+          },
+          "python_lunation_sun": 0.5402,
+          "file_lunation_sun": 0.5402,
+          "subsolar_lat_deg": [
+            -0.462,
+            0.377
+          ]
+        },
+        {
+          "month": "2028-09",
+          "python": {
+            "sun_frac": 0.8111,
+            "earth_frac": 0.6625,
+            "both_frac": 0.6014,
+            "longest_dark_h": 55.0
+          },
+          "file": {
+            "sun_frac": 0.8111,
+            "earth_frac": 0.6625,
+            "both_frac": 0.6014,
+            "longest_dark_h": 55
+          },
+          "python_lunation_sun": 0.8124,
+          "file_lunation_sun": 0.8124,
+          "subsolar_lat_deg": [
+            -1.558,
+            -1.186
+          ]
+        },
+        {
+          "month": "2028-12",
+          "python": {
+            "sun_frac": 0.6223,
+            "earth_frac": 0.6546,
+            "both_frac": 0.3616,
+            "longest_dark_h": 154.0
+          },
+          "file": {
+            "sun_frac": 0.6223,
+            "earth_frac": 0.6546,
+            "both_frac": 0.3616,
+            "longest_dark_h": 154
+          },
+          "python_lunation_sun": 0.6037,
+          "file_lunation_sun": 0.6037,
+          "subsolar_lat_deg": [
+            -0.966,
+            -0.125
+          ]
+        },
+        {
+          "month": "2029-02",
+          "python": {
+            "sun_frac": 0.3244,
+            "earth_frac": 0.6012,
+            "both_frac": 0.0313,
+            "longest_dark_h": 406.0
+          },
+          "file": {
+            "sun_frac": 0.3244,
+            "earth_frac": 0.6012,
+            "both_frac": 0.0313,
+            "longest_dark_h": 406
+          },
+          "python_lunation_sun": 0.3597,
+          "file_lunation_sun": 0.3597,
+          "subsolar_lat_deg": [
+            0.751,
+            1.307
+          ]
+        }
+      ],
+      "all_60_months_max_abs_diff_4dp": 0.0
+    },
+    "APOLLO17": {
+      "random_month_rows": [
+        {
+          "month": "2026-05",
+          "python": {
+            "sun_frac": 0.5054,
+            "earth_frac": 1.0,
+            "both_frac": 0.5054,
+            "longest_dark_h": 368.0
+          },
+          "file": {
+            "sun_frac": 0.5054,
+            "earth_frac": 1,
+            "both_frac": 0.5054,
+            "longest_dark_h": 368
+          },
+          "python_lunation_sun": 0.481,
+          "file_lunation_sun": 0.481,
+          "subsolar_lat_deg": [
+            1.441,
+            1.586
+          ]
+        },
+        {
+          "month": "2027-04",
+          "python": {
+            "sun_frac": 0.4722,
+            "earth_frac": 1.0,
+            "both_frac": 0.4722,
+            "longest_dark_h": 260.0
+          },
+          "file": {
+            "sun_frac": 0.4722,
+            "earth_frac": 1,
+            "both_frac": 0.4722,
+            "longest_dark_h": 260
+          },
+          "python_lunation_sun": 0.4795,
+          "file_lunation_sun": 0.4795,
+          "subsolar_lat_deg": [
+            1.247,
+            1.547
+          ]
+        },
+        {
+          "month": "2028-07",
+          "python": {
+            "sun_frac": 0.504,
+            "earth_frac": 1.0,
+            "both_frac": 0.504,
+            "longest_dark_h": 369.0
+          },
+          "file": {
+            "sun_frac": 0.504,
+            "earth_frac": 1,
+            "both_frac": 0.504,
+            "longest_dark_h": 369
+          },
+          "python_lunation_sun": 0.4795,
+          "file_lunation_sun": 0.4795,
+          "subsolar_lat_deg": [
+            -0.462,
+            0.377
+          ]
+        },
+        {
+          "month": "2028-09",
+          "python": {
+            "sun_frac": 0.4861,
+            "earth_frac": 1.0,
+            "both_frac": 0.4861,
+            "longest_dark_h": 370.0
+          },
+          "file": {
+            "sun_frac": 0.4861,
+            "earth_frac": 1,
+            "both_frac": 0.4861,
+            "longest_dark_h": 370
+          },
+          "python_lunation_sun": 0.4781,
+          "file_lunation_sun": 0.4781,
+          "subsolar_lat_deg": [
+            -1.558,
+            -1.186
+          ]
+        },
+        {
+          "month": "2028-12",
+          "python": {
+            "sun_frac": 0.5027,
+            "earth_frac": 1.0,
+            "both_frac": 0.5027,
+            "longest_dark_h": 370.0
+          },
+          "file": {
+            "sun_frac": 0.5027,
+            "earth_frac": 1,
+            "both_frac": 0.5027,
+            "longest_dark_h": 370
+          },
+          "python_lunation_sun": 0.4781,
+          "file_lunation_sun": 0.4781,
+          "subsolar_lat_deg": [
+            -0.966,
+            -0.125
+          ]
+        },
+        {
+          "month": "2029-02",
+          "python": {
+            "sun_frac": 0.4494,
+            "earth_frac": 1.0,
+            "both_frac": 0.4494,
+            "longest_dark_h": 370.0
+          },
+          "file": {
+            "sun_frac": 0.4494,
+            "earth_frac": 1,
+            "both_frac": 0.4494,
+            "longest_dark_h": 370
+          },
+          "python_lunation_sun": 0.4781,
+          "file_lunation_sun": 0.4781,
+          "subsolar_lat_deg": [
+            0.751,
+            1.307
+          ]
+        }
+      ],
+      "all_60_months_max_abs_diff_4dp": 0.0
+    }
+  },
+  "average_check": {
+    "APOLLO11": {
+      "max_abs_diff": 0.0,
+      "longest_month": 357,
+      "longest_5yr": 357,
+      "ok": true
+    },
+    "APOLLO12": {
+      "max_abs_diff": 0.0,
+      "longest_month": 356,
+      "longest_5yr": 356,
+      "ok": true
+    },
+    "APOLLO14": {
+      "max_abs_diff": 0.0,
+      "longest_month": 362,
+      "longest_5yr": 362,
+      "ok": true
+    },
+    "APOLLO15": {
+      "max_abs_diff": 0.0,
+      "longest_month": 377,
+      "longest_5yr": 377,
+      "ok": true
+    },
+    "APOLLO16": {
+      "max_abs_diff": 0.0,
+      "longest_month": 358,
+      "longest_5yr": 359,
+      "ok": true
+    },
+    "APOLLO17": {
+      "max_abs_diff": 0.0,
+      "longest_month": 371,
+      "longest_5yr": 371,
+      "ok": true
+    },
+    "LUNA16": {
+      "max_abs_diff": 0.0,
+      "longest_month": 360,
+      "longest_5yr": 360,
+      "ok": true
+    },
+    "LUNA20": {
+      "max_abs_diff": 0.0,
+      "longest_month": 370,
+      "longest_5yr": 371,
+      "ok": true
+    },
+    "LUNA24": {
+      "max_abs_diff": 0.0,
+      "longest_month": 359,
+      "longest_5yr": 359,
+      "ok": true
+    },
+    "CHANGE3": {
+      "max_abs_diff": 0.0,
+      "longest_month": 360,
+      "longest_5yr": 360,
+      "ok": true
+    },
+    "CHANGE4": {
+      "max_abs_diff": 0.0,
+      "longest_month": 367,
+      "longest_5yr": 367,
+      "ok": true
+    },
+    "CHANGE5": {
+      "max_abs_diff": 0.0,
+      "longest_month": 360,
+      "longest_5yr": 360,
+      "ok": true
+    },
+    "CHANGE6": {
+      "max_abs_diff": 0.0,
+      "longest_month": 364,
+      "longest_5yr": 364,
+      "ok": true
+    },
+    "CHANDRAYAAN3": {
+      "max_abs_diff": 0.0,
+      "longest_month": 383,
+      "longest_5yr": 385,
+      "ok": true
+    },
+    "SLIM": {
+      "max_abs_diff": 0.0,
+      "longest_month": 372,
+      "longest_5yr": 372,
+      "ok": true
+    },
+    "IM1": {
+      "max_abs_diff": 0.0,
+      "longest_month": 457,
+      "longest_5yr": 458,
+      "ok": true
+    },
+    "IM2": {
+      "max_abs_diff": 0.0,
+      "longest_month": 458,
+      "longest_5yr": 459,
+      "ok": true
+    },
+    "BLUE_GHOST1": {
+      "max_abs_diff": 0.0,
+      "longest_month": 359,
+      "longest_5yr": 359,
+      "ok": true
+    },
+    "ARTEMIS_CABEUS_B": {
+      "max_abs_diff": 0.0,
+      "longest_month": 485,
+      "longest_5yr": 485,
+      "ok": true
+    },
+    "ARTEMIS_HAWORTH": {
+      "max_abs_diff": 0.0,
+      "longest_month": 424,
+      "longest_5yr": 424,
+      "ok": true
+    },
+    "ARTEMIS_MALAPERT": {
+      "max_abs_diff": 0.0,
+      "longest_month": 414,
+      "longest_5yr": 415,
+      "ok": true
+    },
+    "ARTEMIS_MOUTON_PLATEAU": {
+      "max_abs_diff": 0.0,
+      "longest_month": 515,
+      "longest_5yr": 516,
+      "ok": true
+    },
+    "ARTEMIS_MOUTON": {
+      "max_abs_diff": 0.0,
+      "longest_month": 439,
+      "longest_5yr": 439,
+      "ok": true
+    },
+    "ARTEMIS_NOBILE_RIM1": {
+      "max_abs_diff": 0.0,
+      "longest_month": 410,
+      "longest_5yr": 411,
+      "ok": true
+    },
+    "ARTEMIS_NOBILE_RIM2": {
+      "max_abs_diff": 0.0,
+      "longest_month": 407,
+      "longest_5yr": 407,
+      "ok": true
+    },
+    "ARTEMIS_DE_GERLACHE_RIM2": {
+      "max_abs_diff": 0.0,
+      "longest_month": 349,
+      "longest_5yr": 349,
+      "ok": true
+    },
+    "ARTEMIS_SLATER_PLAIN": {
+      "max_abs_diff": 0.0,
+      "longest_month": 551,
+      "longest_5yr": 552,
+      "ok": true
+    },
+    "SHACKLETON_RIM": {
+      "max_abs_diff": 0.0,
+      "longest_month": 75,
+      "longest_5yr": 75,
+      "ok": true
+    },
+    "CONNECTING_RIDGE": {
+      "max_abs_diff": 0.0,
+      "longest_month": 517,
+      "longest_5yr": 553,
+      "ok": true
+    },
+    "PEAK_NEAR_SHACKLETON": {
+      "max_abs_diff": 0.0,
+      "longest_month": 604,
+      "longest_5yr": 612,
+      "ok": true
+    },
+    "DE_GERLACHE_RIM1": {
+      "max_abs_diff": 0.0,
+      "longest_month": 447,
+      "longest_5yr": 448,
+      "ok": true
+    },
+    "SHOEMAKER_RIM_A": {
+      "max_abs_diff": 0.0,
+      "longest_month": 744,
+      "longest_5yr": 2819,
+      "ok": true
+    },
+    "IM3_REINER_GAMMA": {
+      "max_abs_diff": 0.0,
+      "longest_month": 361,
+      "longest_5yr": 361,
+      "ok": true
+    }
+  },
+  "fail": [],
+  "pass": true
+}

@@ -2,14 +2,13 @@
 
 Sources: `docs/VALIDATION.md`.
 
-We checked the key steps, from sky geometry to the screen, against independent sources. Sun and Earth directions match
-NASA JPL Horizons to 0.000041° in 34,296 comparisons (2020–2038). Terrain horizons match separate
-brute-force code to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight at 240
-random points differs by 1.66 percentage points on average (r = 0.985) and Earth visibility, with PGDA's any-part rule, by 1.24 points
-(r = 0.990; the app's stricter centre rule: 3.87). The five largest named-site differences lie within PGDA's own 300 m
-spread or ours. The GPU-built 948 m Moon map matches its original CPU code at 600 cells, Apollo 11–17
-Sun elevations at landing match NASA's Apollo Lunar Surface Journal to 0.05°, and 5,520 numbers read from the
-live website match the data.
+All 18 published data products were re-checked by someone other than their author, who recomputed a sample with separate code (site coordinates: re-read from the sources); on identical inputs, differences were at most 0.15 percentage points, 0.004° or 0.37 m (tiles, within encoding steps); known gaps are listed in docs/verification_ledger.md. Sun and Earth directions match
+NASA JPL Horizons to 0.000041° in 34,296 comparisons. Terrain horizons match
+brute-force code to ~0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight at 240
+points differs by 1.66 percentage points on average (r = 0.985) and Earth visibility, with PGDA's any-part rule, by 1.24 points
+(r = 0.990; the app's stricter centre rule: 3.87). Apollo 11–17
+Sun elevations at landing match NASA's Apollo Lunar Surface Journal to 0.05°, and 5,520 live-website numbers
+match the data.
 
 **Limits.** Non-polar sites skip terrain closer than 200 m (sunlight 0.12–0.80
 points lower when included, five sites). The app's Earth-centre rule reads 4.6–5.6

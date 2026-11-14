@@ -134,10 +134,11 @@ for p, want in AUTH.items():
 L = open("docs/verification_ledger.md", encoding="utf-8").read()
 rows = [l for l in L.split("\n") if re.match(r"^\| \d+ \| `", l)]
 st = [l.rstrip(" |").split("|")[-1].strip() for l in rows]
-n_int = sum("Integrator" in l.split("|")[5] and s.startswith("Independently") and "other member" not in s for l, s in zip(rows, st))
 n_oth = sum(s.startswith("Independently verified (other member") for s in st)
+n_int = sum(s.startswith("Independently") and not s.startswith("Independently verified (other member") for s in st)
 n_auth = sum(s.startswith("Author-verified only") for s in st)
 print("  rows", len(rows), "integrator", n_int, "other member", n_oth, "author only", n_auth)
-ok((len(rows), n_int, n_oth, n_auth) == (18, 10, 2, 6), "count table 18 = 10 + 2 + 6")
+ok((len(rows), n_int, n_oth, n_auth) == (18, 10, 8, 0), "count table 18 = 10 + 8 + 0")
+ok("| Independently verified by another team member | 8 |" in L and "| Author-verified only | 0 |" in L, "count table text matches the rows")
 print("FAILURES:", bad)
 sys.exit(1 if bad else 0)

@@ -91,13 +91,13 @@
 | N7 | 1 km contrast in Sun + Earth time: 38.7 pp polar vs 6.7 pp elsewhere (medians 38.65 / 6.70; largest neighbouring pair per site) | `docs/location_sensitivity.md:15–16` (table), `:19` (sentence) | recomputed from all 33 `web/data/local/<ID>.json` grids (16 + 16 sites): 38.65 / 6.70 |
 | N8 | sunlight spread within 10 km (IQR): 17.2 pp polar vs 0.4 pp elsewhere (medians 17.16 / 0.40) | `docs/location_sensitivity.md:15–16`, `:19` | recomputed from the same grids (10 km circle, linear quartiles): 17.16 / 0.40 |
 | N9 | 26 of 33 sites; two-week delay turns the first two weeks into night; up to 336 h | `docs/date_slip.md:9` | `docs/date_slip_summary.json` (+14 d worst change of longest darkness): 26 sites ≥ 300 h, max 336 h |
-| N10 | Shackleton point: about 9% → 85% sunlight (8.7% old point, 2 h step; 84.8% new point, hourly) | old: `docs/custom_horizon_validation.json:455` (step `:16`); new: `docs/VALIDATION.md:65` (Sun 0.848) | `web/data/metrics/SHACKLETON_RIM.json` sun_frac 0.8483; context `docs/shackleton_handoff.md:18` (different published point, not an error fix) |
+| N10 | Shackleton point: about 9% → 85% sunlight (8.7% old point, 2 h step; 84.8% new point, hourly) | old: `docs/custom_horizon_validation.json:455` (step `:16`); new: `docs/VALIDATION.md:67` (Sun 0.848) | `web/data/metrics/SHACKLETON_RIM.json` sun_frac 0.8483; context `docs/shackleton_handoff.md:18` (different published point, not an error fix) |
 | N11 | Cabeus B Earth link 30% → 86% (29.64% → 85.73%), one 15 m tower, 2026–2030 | `docs/relay_impact.md:20` | `docs/card13_relay_report.md` states 85.7 |
 | N12 | 7 sites below 50% direct, 3 reach ≥ 50% with one tower | `docs/relay_impact.md:9` | counted from the 7 rows of the single-tower table (`docs/relay_impact.md:18–24`) |
 | N13 | Yeoju KDSA only: 123 h in 5 years; 0.3–0.4% of Earth-visible hours | `docs/korea_links.md:47` (123 h), `:46` (0.3–0.4 %) | table rows `docs/korea_links.md:11–43` (KDSA only = 123 h at always-Earth-facing sites) |
-| N14 | PGDA: 1.7 points on average (MAE 1.66 pp), r = 0.985, 240 points | `docs/VALIDATION.md:60` | `web/data/validation.json`: 1.658 pp, r 0.9846, 240 points |
-| N15 | JPL Horizons within 0.0005°, over 37,000 comparisons | `docs/VALIDATION.md:87` (team paragraph) | rows `docs/VALIDATION.md:53–55`: 0.000016° / 0.00044° (web float32), 0.000034°, 0.000041°; 1,452 + 1,452 + 34,296 = 37,200 comparisons |
-| N16 | Apollo 11–17 Sun elevation 0.05° | `docs/hindcast.md:7` | `docs/VALIDATION.md:73` (row 21) |
+| N14 | PGDA: 1.7 points on average (MAE 1.66 pp), r = 0.985, 240 points | `docs/VALIDATION.md:62` | `web/data/validation.json`: 1.658 pp, r 0.9846, 240 points |
+| N15 | JPL Horizons within 0.0005°, over 37,000 comparisons | `docs/VALIDATION.md:89` (team paragraph) | rows `docs/VALIDATION.md:55–57`: 0.000016° / 0.00044° (web float32), 0.000034°, 0.000041°; 1,452 + 1,452 + 34,296 = 37,200 comparisons |
+| N16 | Apollo 11–17 Sun elevation 0.05° | `docs/hindcast.md:7` | `docs/VALIDATION.md:75` (row 21) |
 | N17 | 5,520 website numbers, 0 mismatches | `docs/ui_data_audit.md:17` | `docs/ui_audit/findings.json` (checks = 5520) |
 | LIC | Apache-2.0 | `LICENSE:3` | — |
 

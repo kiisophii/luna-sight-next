@@ -167,3 +167,9 @@ Producer: Sua Kim. Checker implementation commit: `0df3fcd`; input main `89a9af1
 | `uncertainty/`, all 17 non-polar sites | Own SLDEM/PDS readers, full 720-azimuth / 4,001-distance Cartesian rays (CuPy FP64), own hourly ephemeris loop; no repository imports. Separate CPU PROJ/ECEF controls at centre + corner of every site | **2,057/2,057 nodes**, four metrics, **1,020/1,020** min/max/p10/median/p90 statistics over 100/300/500 m discs | Production serialization: **0 pp**, longest dark **0 h**, all radius statistics identical. Unrounded independent fraction max **0.002281855 pp**, dark **0 h**. GPU/CPU controls: 34 nodes, max **1.68223e-10°**, all rounded metrics equal | **PASS**, 0 failures vs task B's 1 pp fraction criterion; darkness reported without an assigned threshold |
 
 [Method and all-site table](task_b_full_check.md), [full JSON with source hashes and every failure](task_b_full_check.json), [all node comparisons](task_b_nodes.csv), [all radius comparisons](task_b_ranges.csv). Values from the full recalculation, not a sample extrapolation. The native DEM resolution and hourly/azimuth/radial sampling remain model limits; this checks implementation consistency, not absolute surface accuracy. Production files are unchanged.
+
+## Task F candidate development check — Jiyong, 2026-11-15
+
+| Product | Change and scope | Measured comparison | Status |
+|---|---|---|---|
+| hterrain/polar_s sparse p5/p10 | 16 centres + 32 fixed-seed nearby points versus original card-8 chain; 210 native tiles | Mean absolute Sun difference 0.494022 → 0.112429 pp, max 3.984118 → 0.588719 pp; Earth max 3.653249 → 0.502008 pp. SHACKLETON longest-dark difference worsens −2 → +14 h. [Full report and every regression](task_f_custom_polar.md) | Developer comparison, not another member's independent verification; integrator review required. Existing global validation/counts are unchanged. |

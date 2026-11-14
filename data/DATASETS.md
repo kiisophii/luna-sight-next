@@ -110,3 +110,7 @@ Reuses the cited PGDA 5/10/20/60/80/240 m and LOLA global sources above, without
 The five local terrain diagnostics use the existing SLDEM2015 512 ppd caches (~59.23 m north-south), not a 5 m DEM. Ray minimum distance is distinct from pixel resolution. Original-cache SHA256, supporting-pixel heights, eight-neighbour residuals and any in-memory candidate-replacement sensitivity are recorded. The outlier heuristic is not physical terrain validation. Production DEMs/horizons/metrics are unchanged.
 
 The polar uncertainty public schema now follows Sua branch s3-uncert-nonpolar-sua at 30c64f6 (nodes/ranges/n_nodes). This branch owns only 16 south-polar outputs; the 17 nonpolar outputs remain with Sua.
+
+### Task F native near-field patches (Jiyong, 2026-11-15)
+
+Existing PGDA [5 m](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif) and [10 m](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF) source windows produce optional sparse browser p5/p10 levels around the 16 south-polar catalogue regions. Native pixels, MOON_ME DE421, R=1737400 m, 0.25 m encoding steps, only full-valid tiles. 210 tiles / 19,884,973 compressed bytes; detailed source/window/tile hashes in docs/task_f/results.json. These regional patches do not establish global accuracy. Original source citations above apply.

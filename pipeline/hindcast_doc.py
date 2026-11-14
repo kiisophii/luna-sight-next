@@ -102,7 +102,7 @@ Written by `python pipeline/hindcast.py`; summary `docs/hindcast.md`; independen
         (ROOT / "docs/data_contract.md").write_text(c, encoding="utf-8")
 
     v = (ROOT / "docs/VALIDATION.md").read_text(encoding="utf-8")
-    if "\n| 20 |" not in v:
+    if "| Hindcast of real missions" not in v:
         row = (f"| 21 | Hindcast of real missions (card 21): Apollo 11–17 Sun elevation at landing; Chandrayaan-3, SLIM, IM-1, Chang'e 3 first "
                f"sunset vs reported sleep/power-down; 2019–2025 ephemeris | NASA Apollo Lunar Surface Journal table; ISRO/NASA/news reports "
                f"(proxy); JPL Horizons | Apollo max Δ {mx:.2f}° (catalogue points), {mxa:.2f}° (ALSJ points); "

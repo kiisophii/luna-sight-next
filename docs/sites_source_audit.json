@@ -351,15 +351,24 @@
     },
     {
       "id": "SHACKLETON_RIM",
-      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
-      "locator": "Table A2-2: R04 / Site04, printed p.58",
-      "source_lat_north_positive": -89.7668,
-      "source_lon_east_positive": -171.87,
+      "source_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
+      "locator": "Table 2, Shackleton S first row, printed p.12; rim context in Section 3 and Fig.6c",
+      "source_lat_north_positive": -89.6866,
+      "source_lon_east_positive": 197.19,
       "source_reviewed_date": "2026-11-14",
       "review_method": "Primary source opened; numeric pair manually transcribed",
       "longitude_conversion": "(east_lon + 180) modulo 360 - 180",
-      "catalogue_lon": -171.87,
-      "representation": "Published terrain-study polygon centre"
+      "catalogue_lon": -162.81,
+      "representation": "Published Shackleton rim point; Table 2 first Shackleton S row",
+      "datum_status": "exact_moon_me_de421_unverified",
+      "rim_evidence": "Paper Section 3 and Figure 6c identify the Shackleton S clusters on the crater rim; Table 2 first S row supplies the 2 m observer point.",
+      "supersedes": {
+        "lat": -89.7668,
+        "lon": -171.87,
+        "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+        "meaning": "R04 / Site04 regional polygon centre"
+      },
+      "scope": "AI source review; no human sign-off or new terrain/illumination validation"
     },
     {
       "id": "CONNECTING_RIDGE",

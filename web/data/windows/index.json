@@ -39,7 +39,7 @@
     "IM3_REINER_GAMMA"
   ],
   "skipped": {
-    "SHACKLETON_RIM": "Skip Shackleton until its corrected site and matching new horizon are on main"
+    "SHACKLETON_RIM": "missing horizon"
   },
   "mock": false
 }

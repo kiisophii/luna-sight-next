@@ -1947,7 +1947,7 @@
     "ephem_meta_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
     "site_sha256": "2f16aa15873afa70c75d1a0cb02a8f5de2a264500d0a00dd60f91ea9d22ba3fc",
     "horizon_sha256": "f96807381ecb0308de3160cd6a56ec6d664f4fa9fcb97c5dbf192571be58dbac",
-    "producer_sha256": "64c8f73616b1485e5aac928fafa75dd4bc63529dfba54b16fc5fe1d9e80c70bb"
+    "producer_sha256": "1b4b03a56c5800ae3a7d351461f7551b6b7dbf14d8dbc3d6516c3a3499fed870"
   },
   "mock": false
 }

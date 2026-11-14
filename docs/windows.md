@@ -1,12 +1,12 @@
 # Card 15-B: Sun and Earth visibility windows
 
-Implementation base: main ef2b2dad9e768af79e88f97b9c43ad35a8623de3. Branch: s3-windows-minchul.
+Implementation base: main 82cd7f59737b6aa6034d767beace9ba9bfe250f0. Branch: s3-windows-minchul.
 
 ## Outputs
 
 web/data/windows/index.json lists 32 computed site files and the explicit SHACKLETON_RIM skip. Each <ID>.json contains chronological Sun-visible and Earth-visible intervals, integer durations in hours, total visible hours, and each body's 10 longest gaps (or fewer if fewer exist). New format proposal: docs/data_contract.md section 15. Existing sections 0–14 and core.js are unchanged.
 
-The current main still has the old Shackleton coordinate/horizon. That site is excluded even though an old horizon file exists. The runner includes it only after both catalogue and matching real horizon use the corrected (-89.6866, -162.81) coordinate on main. Do not substitute the old point or a flat horizon.
+The current main has merged the corrected Shackleton coordinate and removed its stale horizon. That site remains excluded while the new horizon is pending. The runner includes it only after both catalogue and matching real horizon use the corrected (-89.6866, -162.81) coordinate on main. Do not substitute the old point or a flat horizon.
 
 ## Meaning for the timeline
 

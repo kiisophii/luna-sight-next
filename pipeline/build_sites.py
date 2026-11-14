@@ -17,6 +17,7 @@ APOLLO = "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
 LUNA = "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
 REGIONS = "https://www.nasa.gov/news-release/nasa-provides-update-on-artemis-iii-moon-landing-regions/"
 WUELLER = "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434"
+SHACKLETON_PAPER = "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf"
 DATA_BOOK = "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf"
 VERTEX = "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full"
 KASI = "https://pda.kasi.re.kr/lusem.php?lang=en"
@@ -105,16 +106,27 @@ def catalogue():
         rows.append((site, evidence))
 
     for id, name, ko, short, lat, lon, locator in [
-        ("SHACKLETON_RIM", "Shackleton Rim (R04)", "섀클턴 가장자리 R04", "Shackleton R04", -89.7668, -171.87, "R04 / Site04, printed p.58"),
+        ("SHACKLETON_RIM", "Shackleton Rim (S)", "섀클턴 테두리 연구 지점", "Shackleton Rim", -89.6866, 197.19, "Table 2, Shackleton S first row, printed p.12; rim context in Section 3 and Fig.6c"),
         ("CONNECTING_RIDGE", "Connecting Ridge (R01)", "연결 능선 R01", "Connect Ridge", -89.4632, -137.49, "R01 / Site01, printed p.58"),
         ("PEAK_NEAR_SHACKLETON", "Peak Near Shackleton (R07)", "섀클턴 인근 봉우리 R07", "Peak Shacklet", -88.811, 123.6901, "R07 / Site07, printed p.58"),
         ("DE_GERLACHE_RIM1", "de Gerlache Rim 1 (R11)", "드 제를라슈 가장자리 R11", "deGerlache R11", -88.6834, -67.9321, "R11 / Site11, printed p.58"),
         ("SHOEMAKER_RIM_A", "Shoemaker Rim A (LM2)", "슈메이커 가장자리 A", "Shoemaker A", -88.0792, 11.88866, "LM2, printed p.57"),
     ]:
-        site, evidence = record(id, name, ko, short, "polar_peak", lat, lon, DATA_BOOK,
-                                "Table A2-2: " + locator,
-                                "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit.")
-        evidence["representation"] = "Published terrain-study polygon centre"
+        is_shackleton = id == "SHACKLETON_RIM"
+        site, evidence = record(id, name, ko, short, "polar_peak", lat, lon,
+                                SHACKLETON_PAPER if is_shackleton else DATA_BOOK,
+                                locator if is_shackleton else "Table A2-2: " + locator,
+                                ("Published Shackleton crater rim research point (S), Table 2 first row; observer 2 m. Source longitude 197.19 E converted to -162.81 E. Replaces the old R04 regional polygon centre; not a landed vehicle or a claimed summit. Exact MOON_ME_DE421 datum unverified; terrain height and site results require recomputation."
+                                 if is_shackleton else
+                                 "South-polar terrain study point; published DEM-polygon centre, not a landed vehicle or a claimed summit."))
+        evidence["representation"] = ("Published Shackleton rim point; Table 2 first Shackleton S row"
+                                      if is_shackleton else "Published terrain-study polygon centre")
+        if is_shackleton:
+            evidence["datum_status"] = "exact_moon_me_de421_unverified"
+            evidence["rim_evidence"] = "Paper Section 3 and Figure 6c identify the Shackleton S clusters on the crater rim; Table 2 first S row supplies the 2 m observer point."
+            evidence["supersedes"] = {"lat": -89.7668, "lon": -171.87,
+                                      "source_url": DATA_BOOK, "meaning": "R04 / Site04 regional polygon centre"}
+            evidence["scope"] = "AI source review; no human sign-off or new terrain/illumination validation"
         rows.append((site, evidence))
 
     site, evidence = record("IM3_REINER_GAMMA", "IM-3 / Lunar Vertex target", "IM-3 라이너 감마 목표점",
@@ -150,13 +162,13 @@ def main():
     lines = ["# Landing sites and region representatives", "",
              f"Card 4 catalogue: {len(sites)} entries. Source review date: {REVIEWED}.", "",
              "## Coordinate policy", "",
-             "Latitude is north-positive and longitude is east-positive in [-180, 180). The application uses the contract's MOON_ME / DE421 convention. Apollo coordinates explicitly state DE421 ME/PA; LROC-derived lander locations and LOLA-based polar study points are used for terrain consistency. No unverified transformation of a different mission's control network has been applied.", "",
+             "Latitude is north-positive and longitude is east-positive in [-180, 180). The application uses the contract's MOON_ME / DE421 convention. Apollo coordinates explicitly state DE421 ME/PA; Numerical source agreement does not establish the exact MOON_ME_DE421 datum; that datum remains unverified for the non-Apollo/Luna entries, including the replacement Shackleton point. No unverified transformation of a different mission's control network has been applied.", "",
              "`coord_quality=primary` means the numbers are published by the official archive, measurement team or original paper. It is not an accuracy class and does not mean a point is NASA-approved. LROC's own image measurements are primary values under the contract; `secondary` would describe a location we derived from imagery ourselves. Coordinate precision is preserved; IM-1 remains a coarse two-decimal location.", "",
              "All `elev_m` values are null. Heights must be sampled from the team's DEM pipeline above R=1737.4 km; null is unknown, not a measured zero. We deliberately do not mix article elevations with potentially different vertical control. The observer's +2 m belongs in the geometry, not in the stored terrain elevation.", "",
              "## Point meanings", "",
              "Apollo entries identify lunar modules, not ALSEP stations or retroreflectors. Robotic entries use post-landing positions. The Chang'e-4 point follows the refined 2020 LROC solution (-45.4562, 177.5885), rather than the different Chang'e-2-map solution used for the card 1 geometry test; those test coordinates were not a catalogue decision.", "",
              "The nine Artemis entries reproduce the membership of NASA's 2024-10-28 candidate-region list. Each is represented by one explicitly identified research CLS in Wueller et al. (2026), Appendix Table A1; it is not a region centroid, boundary or selected NASA touchdown point. Choosing the first listed CLS is a reproducible display choice, not a ranking or recommendation. No mission schedule is inferred from the historical Artemis III label. Slater Plain uses SP01, whose longitude is explicitly 124.5210 E; it is not the centre of Slater crater.", "",
-             "The five polar_peak records are published topographic study points (polygon centres), not necessarily summits. The IM-3 entry is the published Lunar Vertex science target; KASI supplies the IM-3/LUSEM mission association, not a more precise landing location or launch-date guarantee.", "",
+             "Four polar_peak records are published topographic study polygon centres. SHACKLETON_RIM instead uses the explicitly published rim point Shackleton S from Table 2 of the NTRS-hosted paper DOI 10.1016/j.pss.2017.07.006; none is a claimed surveyed summit. The IM-3 entry is the published Lunar Vertex science target; KASI supplies the IM-3/LUSEM mission association, not a more precise landing location or launch-date guarantee.", "",
              "## Catalogue", "",
              "| ID | English name | Korean label | Group | Latitude N | Longitude E | Quality | Source / locator | Note |",
              "|---|---|---|---|---:|---:|---|---|---|"]
@@ -170,6 +182,10 @@ def main():
               "## Reproduce and verify", "", "```sh", "python pipeline/build_sites.py", "python pipeline/check_contract.py", "```", "",
               "`docs/sites_source_audit.json` retains the original east-longitude value and exact row/figure locator for each record, including 0..360-to-signed conversions. It documents this author's source review, not an independent PASS. A separate reviewer should open every source and compare latitude and wrapped longitude within 0.01 degrees, paying attention to regional representatives and source precision.", "",
               "The three old card-6 mock horizon files for APOLLO17, CHANGE4 and SHACKLETON_RIM were tied to obsolete placeholder coordinates. They are removed, not moved to the new sites or replaced with invented terrain. core.js already supplies an explicitly mock flat fallback until the terrain owners generate real horizons. This catalogue does not provide terrain-visibility results.", "",
+              "## Card 15 Shackleton correction and handoff", "",
+              f"SHACKLETON_RIM now represents latitude -89.6866, longitude -162.81 east-positive (source 197.19 E), the FIRST Shackleton S row of Table 2, printed p.12: {SHACKLETON_PAPER} . Section 3 and Figure 6c identify the rim. It is not the second S row or the R04 polygon centre. The paper's illumination values belong to its own 2017-2037 experiment, not our current five-year run; no new illumination fraction is asserted here.", "",
+              "The previous (-89.7668, -171.87) value was faithfully transcribed from a regional polygon centre, but is not the desired rim sample. The stage-3 assignment reports low illumination there; that does not invalidate the original transcription or prove the numerical engine wrong. elev_m remains null. Old horizon, metric and relay files for this ID are invalidated in the coordinate PR, with their index entries removed until recomputed; the old Danuri row for this ID is also reset to pending_terrain. Historical validation/provenance reports retain their original coordinates and must not be relabelled as new-point tests.", "",
+              "Handoff after integrator merges this coordinate PR: Jiyong refetches/revalidates DEM windows and regenerates this site's horizon and relay, then the site metric cache; Dongju reruns named PGDA/Korea checks and updates validation provenance. Verify every new file embeds or hashes the new coordinate before publishing results. See docs/shackleton_handoff.md and docs/source_link_checklist.md. Human source-link checks remain TO CHECK.", "",
               f"NASA 2024 region membership: {REGIONS}", f"KASI LUSEM association: {KASI}", ""]
     (ROOT / "docs/sites.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Built {len(sites)} sites, including 9 region representative points.")

@@ -546,7 +546,7 @@
     "ephem_meta_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
     "site_sha256": "2bd8fecb82d0e94f2e609d458b115859b63288068f6c4c4339af8d484deab983",
     "horizon_sha256": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781",
-    "producer_sha256": "64c8f73616b1485e5aac928fafa75dd4bc63529dfba54b16fc5fe1d9e80c70bb"
+    "producer_sha256": "1b4b03a56c5800ae3a7d351461f7551b6b7dbf14d8dbc3d6516c3a3499fed870"
   },
   "mock": false
 }

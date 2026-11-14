@@ -539,7 +539,7 @@
     "ephem_meta_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
     "site_sha256": "bfe232463aaaf56d6dd7dd0b13b5992bd58f64f4560328a8ff1814ddd7a8c8e4",
     "horizon_sha256": "a0d88ebf110f087ef37ff24839b6477900287eb8f585cd3b301328aa4383ebfa",
-    "producer_sha256": "64c8f73616b1485e5aac928fafa75dd4bc63529dfba54b16fc5fe1d9e80c70bb"
+    "producer_sha256": "1b4b03a56c5800ae3a7d351461f7551b6b7dbf14d8dbc3d6516c3a3499fed870"
   },
   "mock": false
 }

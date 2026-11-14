@@ -1,0 +1,44 @@
+[
+ {
+  "id": "APOLLO17",
+  "name": "Apollo 17",
+  "name_ko": "아폴로 17호",
+  "short": "Apollo 17",
+  "group": "apollo",
+  "lat": 20.1908,
+  "lon": 30.7717,
+  "elev_m": null,
+  "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+  "coord_quality": "estimated",
+  "note": "MOCK placeholder from the team brief; card 4 replaces it with a cited value.",
+  "mock": true
+ },
+ {
+  "id": "CHANGE4",
+  "name": "Chang'e 4",
+  "name_ko": "창어 4호",
+  "short": "Chang'e 4",
+  "group": "change",
+  "lat": -45.4446,
+  "lon": 177.5991,
+  "elev_m": null,
+  "source_url": "",
+  "coord_quality": "estimated",
+  "note": "MOCK placeholder from the team brief; card 4 replaces it with a cited value.",
+  "mock": true
+ },
+ {
+  "id": "SHACKLETON_RIM",
+  "name": "Shackleton rim (mock point)",
+  "name_ko": "섀클턴 크레이터 가장자리(가짜 지점)",
+  "short": "Shackleton",
+  "group": "polar_peak",
+  "lat": -89.9,
+  "lon": 0.0,
+  "elev_m": null,
+  "source_url": "",
+  "coord_quality": "estimated",
+  "note": "MOCK placeholder from the team brief; card 4 replaces it with a cited value.",
+  "mock": true
+ }
+]

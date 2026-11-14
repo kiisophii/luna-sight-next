@@ -1,4 +1,41 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lunar Landing Site Navigator</title><style>body{margin:0;background:#0D1118;color:#ECEFF4;font:18px system-ui,sans-serif;display:grid;place-items:center;min-height:100vh}</style></head>
-<body><main><h1>Lunar Landing Site Navigator</h1><p>Team Ginkgo Orbit · NASA Space Apps 2026 · building now</p></main>
-<script>let v=null;setInterval(async()=>{try{const r=await fetch('version.json',{cache:'no-store'});const j=await r.json();if(v&&j.v!==v)location.reload();v=j.v}catch(e){}},30000);</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lunar Landing Site Navigator</title>
+<link rel="stylesheet" href="css/base.css">
+<!-- card 7 (design) owns theme.css: it only overrides the variables defined at the top of base.css -->
+<link rel="stylesheet" href="css/theme.css" onerror="this.remove()">
+</head>
+<body>
+<header class="top">
+  <h1 data-i18n="title">Lunar Landing Site Navigator</h1>
+  <button id="lang" type="button" data-i18n="lang">한국어</button>
+  <p class="tagline" data-i18n="tagline"></p>
+</header>
+<div class="mock-banner" role="status" data-i18n="mock"></div>
+<main>
+  <section class="timebar" aria-label="Time">
+    <button id="play" type="button" data-i18n="play">Play</button>
+    <label><span data-i18n="speed">Speed</span>
+      <select id="speed">
+        <option value="0.25">15 min/frame</option>
+        <option value="1" selected>1 h/frame</option>
+        <option value="6">6 h/frame</option>
+        <option value="24">1 day/frame</option>
+      </select>
+    </label>
+    <input id="slider" type="range" min="0" max="0" value="0" aria-label="Time (UTC)">
+    <span id="time-label" aria-live="polite" data-i18n="loading">Loading data…</span>
+  </section>
+  <section id="cards" aria-label="Site comparison"></section>
+</main>
+<footer>
+  <p data-i18n="assumptions"></p>
+  <p>Team Ginkgo Orbit · NASA Space Apps Challenge 2026 · <a href="https://github.com/kiisophii/lunar-landing-site-navigator">source (Apache-2.0)</a></p>
+</footer>
+<script type="module" src="js/app.js"></script>
+<script>let v=null;setInterval(async()=>{try{const r=await fetch('version.json',{cache:'no-store'});const j=await r.json();if(v&&j.v!==v)location.reload();v=j.v}catch(e){}},30000);</script>
+</body>
+</html>

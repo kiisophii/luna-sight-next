@@ -1,0 +1,17 @@
+{
+ "start": "2026-01-01T00:00:00Z",
+ "step_h": 1,
+ "n": 720,
+ "frame": "MOON_ME_DE421",
+ "units": "km",
+ "columns": [
+  "sun_x",
+  "sun_y",
+  "sun_z",
+  "earth_x",
+  "earth_y",
+  "earth_z"
+ ],
+ "source": "MOCK: analytic toy model in pipeline/make_mocks.py (not an ephemeris)",
+ "mock": true
+}

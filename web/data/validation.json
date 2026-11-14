@@ -1,0 +1,22 @@
+{
+ "window": "2020-01-01..2038-08-01",
+ "step_h": 2,
+ "n_points": 0,
+ "seed": 42,
+ "sun": {
+  "mae_pp": 0,
+  "rmse_pp": 0,
+  "r": 0,
+  "within_pgda_60m_spread_pct": 0
+ },
+ "earth": {
+  "mae_pp": 0,
+  "rmse_pp": 0,
+  "r": 0,
+  "within_pgda_60m_spread_pct": 0
+ },
+ "points": [],
+ "named": [],
+ "pgda_files": [],
+ "mock": true
+}

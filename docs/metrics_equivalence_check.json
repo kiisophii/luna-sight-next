@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "core_sha256": "a948dab15caf3acd6c2d4ec58b5d1a7e5112c31f792b45bde9d7216342a123a0",
+  "n_hours": 43824,
+  "n_fixtures": 3,
+  "real_horizon_sites_checked": [],
+  "fixture_scope": "Three synthetic terrains solely in a disposable test directory, plus every eligible real horizon currently available; real production ephemeris",
+  "exact_metric_matches": true,
+  "matches_to_four_decimals": true,
+  "cache_resume_and_stale_removal_passed": true,
+  "mock_and_coordinate_mismatch_and_dem_gap_rejected": true,
+  "cases": [
+    {
+      "site": {
+        "id": "TEST_EQUATOR",
+        "lat": 0,
+        "lon": 0,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.4995208105147864,
+        "earth_frac": 1,
+        "both_frac": 0.4995208105147864,
+        "longest_dark_h": 355
+      },
+      "python": {
+        "sun_frac": 0.4995208105147864,
+        "earth_frac": 1,
+        "both_frac": 0.4995208105147864,
+        "longest_dark_h": 355
+      }
+    },
+    {
+      "site": {
+        "id": "TEST_POLAR",
+        "lat": -89.7668,
+        "lon": -171.87,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.36434373859072655,
+        "earth_frac": 0.3452217962760131,
+        "both_frac": 0.13134355604235123,
+        "longest_dark_h": 530
+      },
+      "python": {
+        "sun_frac": 0.36434373859072655,
+        "earth_frac": 0.3452217962760131,
+        "both_frac": 0.13134355604235123,
+        "longest_dark_h": 530
+      }
+    },
+    {
+      "site": {
+        "id": "TEST_WRAP",
+        "lat": 20.1911,
+        "lon": 30.7723,
+        "elev_m": null
+      },
+      "js": {
+        "sun_frac": 0.5021677619569186,
+        "earth_frac": 1,
+        "both_frac": 0.5021677619569186,
+        "longest_dark_h": 355
+      },
+      "python": {
+        "sun_frac": 0.5021677619569186,
+        "earth_frac": 1,
+        "both_frac": 0.5021677619569186,
+        "longest_dark_h": 355
+      }
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "generated_utc": "2026-11-14T02:06:37.747Z",
+  "complete": false,
+  "definition": "Actual web/js/core.js metrics(site, 0, 43823); inclusive hourly sample counts",
+  "window": "2026-01-01..2030-12-31",
+  "core_sha256": "a948dab15caf3acd6c2d4ec58b5d1a7e5112c31f792b45bde9d7216342a123a0",
+  "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+  "metadata_sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+  "n": 43824,
+  "sites_sha256": "a3f0bde4f7020742798317cd6b7f40fffa43c2f4928623d8be704245aeb7bcc2",
+  "computed": [],
+  "skipped": [
+    {
+      "id": "APOLLO11",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "APOLLO12",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "APOLLO14",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "APOLLO15",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "APOLLO16",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "APOLLO17",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "LUNA16",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "LUNA20",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "LUNA24",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CHANGE3",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CHANGE4",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CHANGE5",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CHANGE6",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "SLIM",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "IM1",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "IM2",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "reason": "missing horizon"
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "reason": "missing horizon"
+    }
+  ],
+  "notes": [
+    "No mock, missing, coordinate-mismatched or incomplete-DEM horizons are exported.",
+    "slope_deg is null: no measured slope is provided by the horizon contract.",
+    "longest_dark_h is the longest sampled dark run clipped to the five-year window; no sub-hour refinement."
+  ]
+}

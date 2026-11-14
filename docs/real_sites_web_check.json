@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "n_comparisons": 1452,
+  "core_sha256": "a948dab15caf3acd6c2d4ec58b5d1a7e5112c31f792b45bde9d7216342a123a0",
+  "max_az_deg": 0.000029621078624586517,
+  "max_el_deg": 0.000033907861642923365,
+  "max_js_python_az_deg": 0,
+  "max_js_python_el_deg": 1.4210854715202004e-14,
+  "scope": "Actual core.js in Node; zero terrain height and +2 m observer, no horizon obstruction. References from the fresh card 10 queries."
+}

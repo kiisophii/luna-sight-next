@@ -1,0 +1,564 @@
+{
+ "what": "independent tile-vs-original-DEM check (Soyun Jeong), products by Sua Kim",
+ "seed": 20261115,
+ "originals": {
+  "LDEM_64": {
+   "local": "data/raw/global/ldem_64_float.img",
+   "pds_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img",
+   "bytes": 1061683200,
+   "label": {
+    "PRODUCT_VERSION_ID": "V3.1",
+    "LINES": "11520",
+    "LINE_SAMPLES": "23040",
+    "MAP_RESOLUTION": "64",
+    "UNIT": "KILOMETER",
+    "OFFSET": "1737.4",
+    "CENTER_LONGITUDE": "180",
+    "LINE_PROJECTION_OFFSET": "5759.5",
+    "SAMPLE_PROJECTION_OFFSET": "11519.5",
+    "COORDINATE_SYSTEM_NAME": "MEAN EARTH/POLAR AXIS OF DE421"
+   }
+  },
+  "LDEM_16": {
+   "local": "data/raw/global/ldem_16_float.img",
+   "pds_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img",
+   "bytes": 66355200,
+   "label": {
+    "PRODUCT_VERSION_ID": "V3.1",
+    "LINES": "2880",
+    "LINE_SAMPLES": "5760",
+    "MAP_RESOLUTION": "16",
+    "UNIT": "KILOMETER",
+    "OFFSET": "1737.4",
+    "CENTER_LONGITUDE": "180",
+    "LINE_PROJECTION_OFFSET": "1439.5",
+    "SAMPLE_PROJECTION_OFFSET": "2879.5",
+    "COORDINATE_SYSTEM_NAME": "MEAN EARTH/POLAR AXIS OF DE421"
+   }
+  },
+  "PGDA": {
+   "20": {
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+    "width": 30400,
+    "height": 30400,
+    "dtype": "float32",
+    "nodata": "nan",
+    "transform": [
+     20.0,
+     0.0,
+     -304000.0,
+     0.0,
+     -20.0,
+     304000.0
+    ],
+    "area_or_point": "Area",
+    "crs": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +x_0=0 +y_0=0 +R=1737400 +units=m +no_defs=True"
+   },
+   "60": {
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF",
+    "width": 31040,
+    "height": 31040,
+    "dtype": "float32",
+    "nodata": "nan",
+    "transform": [
+     60.0,
+     0.0,
+     -931200.0,
+     0.0,
+     -60.0,
+     931200.0
+    ],
+    "area_or_point": "Area",
+    "crs": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +x_0=0 +y_0=0 +R=1737400 +units=m +no_defs=True"
+   },
+   "240": {
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+    "width": 7760,
+    "height": 7760,
+    "dtype": "float32",
+    "nodata": "nan",
+    "transform": [
+     240.0,
+     0.0,
+     -931200.0,
+     0.0,
+     -240.0,
+     931200.0
+    ],
+    "area_or_point": "Area",
+    "crs": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +x_0=0 +y_0=0 +R=1737400 +units=m +no_defs=True"
+   }
+  }
+ },
+ "globe": {
+  "tolerance_m": 0.26,
+  "tolerance_basis": "0.5 m PNG height step -> max rounding 0.25 m; + 0.01 m for float32 source values and floating-point bilinear",
+  "samples": [
+   {
+    "group": "band global",
+    "tile": "band/1/4_2",
+    "z": 1,
+    "pixel": [
+     129,
+     36
+    ],
+    "lat": -18.0,
+    "lon": -31.078125,
+    "source": "LOLA LDEM_64 (8 ppd = 8x8 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 4264.2,
+    "expected_m": -2079.577,
+    "tile_m": -2079.5,
+    "abs_diff_m": 0.077,
+    "info_native_64ppd_bilinear_m": -2082.201,
+    "info_abs_diff_to_native_m": 2.701,
+    "result": "PASS"
+   },
+   {
+    "group": "band global",
+    "tile": "band/2/6_3",
+    "z": 2,
+    "pixel": [
+     214,
+     151
+    ],
+    "lat": 3.023438,
+    "lon": -61.453125,
+    "source": "LOLA LDEM_64 (16 ppd = 4x4 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 2132.1,
+    "expected_m": -1653.39,
+    "tile_m": -1653.5,
+    "abs_diff_m": 0.11,
+    "info_native_64ppd_bilinear_m": -1653.681,
+    "info_abs_diff_to_native_m": 0.181,
+    "result": "PASS"
+   },
+   {
+    "group": "band global",
+    "tile": "band/3/32_10",
+    "z": 3,
+    "pixel": [
+     78,
+     81
+    ],
+    "lat": -20.707031,
+    "lon": 110.8125,
+    "source": "LOLA LDEM_64 (32 ppd = 2x2 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 1066.1,
+    "expected_m": 1005.912,
+    "tile_m": 1006.0,
+    "abs_diff_m": 0.088,
+    "info_native_64ppd_bilinear_m": 1018.308,
+    "info_abs_diff_to_native_m": 12.308,
+    "result": "PASS"
+   },
+   {
+    "group": "north cap global",
+    "tile": "north/0/0_0",
+    "z": 0,
+    "pixel": [
+     180,
+     31
+    ],
+    "lat": 74.162301,
+    "lon": -62.507163,
+    "source": "LOLA LDEM_64 (8 ppd = 8x8 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 4375.0,
+    "expected_m": 340.046,
+    "tile_m": 340.0,
+    "abs_diff_m": 0.046,
+    "info_native_64ppd_bilinear_m": 345.765,
+    "info_abs_diff_to_native_m": 5.765,
+    "result": "PASS"
+   },
+   {
+    "group": "north cap global",
+    "tile": "north/1/0_1",
+    "z": 1,
+    "pixel": [
+     91,
+     108
+    ],
+    "lat": 77.492517,
+    "lon": -58.866897,
+    "source": "LOLA LDEM_64 (16 ppd = 4x4 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 2187.5,
+    "expected_m": -510.023,
+    "tile_m": -510.0,
+    "abs_diff_m": 0.023,
+    "info_native_64ppd_bilinear_m": -509.069,
+    "info_abs_diff_to_native_m": 0.931,
+    "result": "PASS"
+   },
+   {
+    "group": "north cap global",
+    "tile": "north/2/2_2",
+    "z": 2,
+    "pixel": [
+     143,
+     3
+    ],
+    "lat": 84.881022,
+    "lon": 0.806929,
+    "source": "LOLA LDEM_64 (32 ppd = 2x2 block mean of 64 ppd, bilinear)",
+    "tile_spacing_m": 1093.8,
+    "expected_m": -1352.718,
+    "tile_m": -1352.5,
+    "abs_diff_m": 0.218,
+    "info_native_64ppd_bilinear_m": -1350.712,
+    "info_abs_diff_to_native_m": 1.788,
+    "result": "PASS"
+   },
+   {
+    "group": "south z7 (PGDA 20 m)",
+    "tile": "south/7/64_50",
+    "z": 7,
+    "pixel": [
+     87,
+     107
+    ],
+    "lat": -86.056893,
+    "lon": 1.735705,
+    "x_m": 3623.05,
+    "y_m": 119560.55,
+    "near_site": "ARTEMIS_MALAPERT",
+    "km_from_site": 6.66,
+    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF (20 m, bilinear between pixel centres; rows 9221-9222, cols 15380-15381)",
+    "tile_spacing_m": 34.2,
+    "expected_m": 4862.494,
+    "tile_m": 4862.5,
+    "abs_diff_m": 0.006,
+    "info_nearest_20m_pixel_m": 4866.311,
+    "info_abs_diff_to_nearest_m": 3.811,
+    "result": "PASS"
+   },
+   {
+    "group": "south z7 (PGDA 20 m)",
+    "tile": "south/7/71_49",
+    "z": 7,
+    "pixel": [
+     56,
+     191
+    ],
+    "lat": -85.186943,
+    "lon": 27.638622,
+    "x_m": 67744.14,
+    "y_m": 129370.12,
+    "near_site": "ARTEMIS_MOUTON_PLATEAU",
+    "km_from_site": 3.32,
+    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF (20 m, bilinear between pixel centres; rows 8730-8731, cols 18586-18587)",
+    "tile_spacing_m": 34.2,
+    "expected_m": 5002.798,
+    "tile_m": 5003.0,
+    "abs_diff_m": 0.202,
+    "info_nearest_20m_pixel_m": 5003.011,
+    "info_abs_diff_to_nearest_m": 0.011,
+    "result": "PASS"
+   },
+   {
+    "group": "south z7 (PGDA 20 m)",
+    "tile": "south/7/71_50",
+    "z": 7,
+    "pixel": [
+     56,
+     145
+    ],
+    "lat": -85.46531,
+    "lon": 28.749055,
+    "x_m": 66171.88,
+    "y_m": 120620.12,
+    "near_site": "ARTEMIS_MOUTON",
+    "km_from_site": 7.64,
+    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF (20 m, bilinear between pixel centres; rows 9168-9169, cols 18508-18509)",
+    "tile_spacing_m": 34.2,
+    "expected_m": 6023.455,
+    "tile_m": 6023.5,
+    "abs_diff_m": 0.045,
+    "info_nearest_20m_pixel_m": 6022.675,
+    "info_abs_diff_to_nearest_m": 0.825,
+    "result": "PASS"
+   },
+   {
+    "group": "south z7 (PGDA 20 m)",
+    "tile": "south/7/43_56",
+    "z": 7,
+    "pixel": [
+     174,
+     50
+    ],
+    "lat": -83.640991,
+    "lon": -70.608927,
+    "x_m": -182075.2,
+    "y_m": 64086.91,
+    "near_site": "ARTEMIS_CABEUS_B",
+    "km_from_site": 4.26,
+    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF (20 m, bilinear between pixel centres; rows 11995-11996, cols 6095-6096)",
+    "tile_spacing_m": 34.2,
+    "expected_m": 2646.561,
+    "tile_m": 2646.5,
+    "abs_diff_m": 0.061,
+    "info_nearest_20m_pixel_m": 2649.215,
+    "info_abs_diff_to_nearest_m": 2.715,
+    "result": "PASS"
+   }
+  ],
+  "stats": {
+   "n": 10,
+   "max_abs_m": 0.218,
+   "mean_abs_m": 0.0876,
+   "pass": 10,
+   "fail": 0
+  }
+ },
+ "hterrain": {
+  "tolerance_global_m": 0.51,
+  "tolerance_basis": "global tiles: heights rounded to 1 m -> max 0.5 m (+0.01 m float); the decoded value must also equal round(expected). polar: q_m/2 (p20/p60 q 0.25 m -> 0.125 m; p240 q 0.5 m -> 0.25 m) + 0.001 m",
+  "samples": [
+   {
+    "group": "near (32 ppd)",
+    "tile": "tiles/near/1_18",
+    "sample": [
+     181,
+     44
+    ],
+    "case": "random",
+    "grid_node": [
+     661,
+     8684
+    ],
+    "lat": 69.328125,
+    "lon": 91.390625,
+    "source": "LOLA LDEM_64 (2x2 block mean of 64 ppd)",
+    "expected_m": -2023.051,
+    "expected_rounded_m": -2023.0,
+    "tile_m": -2023.0,
+    "abs_diff_m": 0.051,
+    "result": "PASS"
+   },
+   {
+    "group": "near (32 ppd)",
+    "tile": "tiles/near/0_22",
+    "sample": [
+     326,
+     175
+    ],
+    "case": "random",
+    "grid_node": [
+     326,
+     10735
+    ],
+    "lat": 79.796875,
+    "lon": 155.484375,
+    "source": "LOLA LDEM_64 (2x2 block mean of 64 ppd)",
+    "expected_m": 817.082,
+    "expected_rounded_m": 817.0,
+    "tile_m": 817.0,
+    "abs_diff_m": 0.082,
+    "result": "PASS"
+   },
+   {
+    "group": "near (32 ppd)",
+    "tile": "tiles/near/10_14",
+    "sample": [
+     179,
+     397
+    ],
+    "case": "random",
+    "grid_node": [
+     4979,
+     7117
+    ],
+    "lat": -65.609375,
+    "lon": 42.421875,
+    "source": "LOLA LDEM_64 (2x2 block mean of 64 ppd)",
+    "expected_m": -178.731,
+    "expected_rounded_m": -179.0,
+    "tile_m": -179.0,
+    "abs_diff_m": 0.269,
+    "result": "PASS"
+   },
+   {
+    "group": "near (32 ppd)",
+    "tile": "tiles/near/1_23",
+    "sample": [
+     168,
+     480
+    ],
+    "case": "lon wrap (+180 -> -180)",
+    "grid_node": [
+     648,
+     0
+    ],
+    "lat": 69.734375,
+    "lon": -179.984375,
+    "source": "LOLA LDEM_64 (2x2 block mean of 64 ppd)",
+    "expected_m": -444.87,
+    "expected_rounded_m": -445.0,
+    "tile_m": -445.0,
+    "abs_diff_m": 0.13,
+    "same_node_in_tile_0_column_0_m": -445.0,
+    "result": "PASS"
+   },
+   {
+    "group": "far (16 ppd)",
+    "tile": "tiles/far/5_10",
+    "sample": [
+     187,
+     426
+    ],
+    "case": "random",
+    "grid_node": [
+     2587,
+     5226
+    ],
+    "lat": -71.71875,
+    "lon": 146.65625,
+    "source": "LOLA LDEM_16 (16 ppd as is)",
+    "expected_m": -2332.627,
+    "expected_rounded_m": -2333.0,
+    "tile_m": -2333.0,
+    "abs_diff_m": 0.373,
+    "result": "PASS"
+   },
+   {
+    "group": "far (16 ppd)",
+    "tile": "tiles/far/4_5",
+    "sample": [
+     154,
+     287
+    ],
+    "case": "random",
+    "grid_node": [
+     2074,
+     2687
+    ],
+    "lat": -39.65625,
+    "lon": -12.03125,
+    "source": "LOLA LDEM_16 (16 ppd as is)",
+    "expected_m": -1379.879,
+    "expected_rounded_m": -1380.0,
+    "tile_m": -1380.0,
+    "abs_diff_m": 0.121,
+    "result": "PASS"
+   },
+   {
+    "group": "far (16 ppd)",
+    "tile": "tiles/far/5_4",
+    "sample": [
+     480,
+     248
+    ],
+    "case": "south-pole row clamp",
+    "grid_node": [
+     2879,
+     2168
+    ],
+    "lat": -89.96875,
+    "lon": -44.46875,
+    "source": "LOLA LDEM_16 (16 ppd as is)",
+    "expected_m": 860.69,
+    "expected_rounded_m": 861.0,
+    "tile_m": 861.0,
+    "abs_diff_m": 0.31,
+    "result": "PASS"
+   },
+   {
+    "group": "polar_s p20 (20 m)",
+    "tile": "polar_s/p20/12_24",
+    "sample": [
+     211,
+     249
+    ],
+    "level_index": [
+     6355,
+     12537
+    ],
+    "x_m": 110150.0,
+    "y_m": 13490.0,
+    "lat": -86.341589,
+    "lon": 83.017792,
+    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF pixel (row 14525, col 20707)",
+    "q_m": 0.25,
+    "expected_m": 614.7972,
+    "expected_rounded_m": 614.75,
+    "tile_m": 614.75,
+    "abs_diff_m": 0.0472,
+    "tolerance_m": 0.126,
+    "result": "PASS"
+   },
+   {
+    "group": "polar_s p60 (60 m)",
+    "tile": "polar_s/p60/13_21",
+    "sample": [
+     228,
+     69
+    ],
+    "level_index": [
+     6884,
+     10821
+    ],
+    "x_m": 187590.0,
+    "y_m": 48630.0,
+    "lat": -83.615802,
+    "lon": 75.466817,
+    "source": "PGDA LDEM_60S_60MPP_ADJ.TIF pixel (row 14709, col 18646)",
+    "q_m": 0.25,
+    "expected_m": -917.9056,
+    "expected_rounded_m": -918.0,
+    "tile_m": -918.0,
+    "abs_diff_m": 0.0944,
+    "tolerance_m": 0.126,
+    "result": "PASS"
+   },
+   {
+    "group": "polar_s p240 (240 m)",
+    "tile": "polar_s/p240/6_0",
+    "sample": [
+     464,
+     151
+    ],
+    "level_index": [
+     3536,
+     151
+    ],
+    "x_m": -573000.0,
+    "y_m": -239400.0,
+    "lat": -69.734668,
+    "lon": -112.675223,
+    "source": "PGDA LDEM_60S_240MPP_ADJ.TIF pixel (row 4877, col 1492)",
+    "q_m": 0.5,
+    "expected_m": -2402.283,
+    "expected_rounded_m": -2402.5,
+    "tile_m": -2402.5,
+    "abs_diff_m": 0.217,
+    "tolerance_m": 0.251,
+    "result": "PASS"
+   }
+  ],
+  "stats": {
+   "n": 10,
+   "max_abs_m": 0.373,
+   "mean_abs_m": 0.1695,
+   "pass": 10,
+   "fail": 0
+  }
+ },
+ "pds_range_check": {
+  "LDEM_64": {
+   "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img",
+   "requests": 64,
+   "bytes": 2752,
+   "mismatching_ranges": 0
+  },
+  "LDEM_16": {
+   "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img",
+   "requests": 3,
+   "bytes": 12,
+   "mismatching_ranges": 0
+  }
+ },
+ "result": {
+  "globe": "PASS",
+  "hterrain": "PASS"
+ },
+ "seconds": 31.4
+}

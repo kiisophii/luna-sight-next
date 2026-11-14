@@ -56,3 +56,65 @@ Only `date_slip/` was recomputed in full; the other independent checks are sampl
 > differences of at most 0.15 percentage points or 0.004°; the other 6 were checked only by their authors.
 
 This replaces "every number was independently re-verified", which the records do not support.
+
+## Additional independent checks by another member (after the ledger snapshot)
+
+Requested by the team lead (Sua Kim) on 2026-11-14 and run on main `8eff7ac` (web version 28) with `python pipeline/verify_terrain_tiles.py` → `docs/terrain_tiles_verification.json` (details: `docs/terrain_tiles_verification.md`). The checker's own code decodes the tiles, places the samples and reads the original DEMs; no production decoder, sampler or builder is imported. The 18 rows above and the Count table are left as recorded; their owner may update rows 16–18 from these entries.
+
+| # | Product | Producer | Checker | Method | Samples | Max difference | Result |
+|---|---|---|---|---|---|---|---|
+| C1 | 3D globe terrain tiles (`globe/`: band z1–z3, north cap z0–z2, south z7 from PGDA 20 m; south z8 excluded because the checker computed it) | Sua Kim | Soyun Jeong | Independent tile decoding and comparison against original NASA LOLA DEM | 10 | 0.218 m (mean 0.088 m; tolerance 0.26 m = 0.5 m PNG step / 2 + 0.01 m) | PASS |
+| C2 | Custom-coordinate terrain tiles (`hterrain/tiles/` near 32 ppd and far 16 ppd; `hterrain/polar_s/` p20, p60, p240) | Sua Kim | Soyun Jeong | Independent decoding and comparison against original NASA LOLA DEM | 10 | 0.373 m (mean 0.170 m; tolerance 0.51 m for the 1 m global steps, q/2 for polar: 0.125 m p20/p60, 0.25 m p240) | PASS |
+
+**Originals.**
+- LOLA LDEM_64 and LDEM_16 float V3.1 (PDS Geosciences, `.../lola_gdr/cylindrical/float_img/ldem_{64,16}_float.img`).
+  - Local copies have the server's byte size (1,061,683,200 / 66,355,200).
+  - Every byte range the check reads was also fetched from the PDS server and compared: LDEM_64 64 ranges and LDEM_16 3 ranges, 0 mismatches.
+  - Labels read: centre-registered pixels, km above 1737.4 km, no missing constant.
+- PGDA `LDEM_80S_20MPP_ADJ.TIF`, `LDEM_60S_60MPP_ADJ.TIF`, `LDEM_60S_240MPP_ADJ.TIF`: read over HTTP from https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/ (Content-Length 2,696,082,051 / 3,089,110,093 / 218,961,039 B). GeoTIFF pixel-is-area; centre = corner + (c + 0.5) × res.
+
+**Expected values follow each product's documented rule** (not the nearest pixel of another resolution, which would differ by up to 12.3 m here):
+- C1 LDEM levels: bilinear between the pixel centres of the coarsest k × k block mean of LDEM_64 whose pixel is ≤ 1.01 × the tile spacing (8, 16 or 32 ppd).
+- C1 south z7: bilinear on PGDA 20 m.
+- C2 near: 2 × 2 block mean of LDEM_64. C2 far: LDEM_16 node.
+- C2 polar: the PGDA pixel itself.
+
+**C1 samples** (tile, vertex lat/lon, original → tile m, |Δ| m):
+
+| Tile | Lat, lon | Original → tile (m) | \|Δ\| (m) |
+|---|---|---|---|
+| band/1/4_2 | −18.00000, −31.07812 | −2079.577 → −2079.5 (LDEM_64 8 ppd) | 0.077 |
+| band/2/6_3 | +3.02344, −61.45312 | −1653.390 → −1653.5 (16 ppd) | 0.110 |
+| band/3/32_10 | −20.70703, +110.81250 | 1005.912 → 1006.0 (32 ppd) | 0.088 |
+| north/0/0_0 | +74.16230, −62.50716 | 340.046 → 340.0 (8 ppd) | 0.046 |
+| north/1/0_1 | +77.49252, −58.86690 | −510.023 → −510.0 (16 ppd) | 0.023 |
+| north/2/2_2 | +84.88102, +0.80693 | −1352.718 → −1352.5 (32 ppd) | 0.218 |
+| south/7/64_50 | −86.05689, +1.73571 (ARTEMIS_MALAPERT, 6.7 km) | 4862.494 → 4862.5 (PGDA 20 m) | 0.006 |
+| south/7/71_49 | −85.18694, +27.63862 (MOUTON_PLATEAU, 3.3 km) | 5002.798 → 5003.0 | 0.202 |
+| south/7/71_50 | −85.46531, +28.74905 (MOUTON, 7.6 km) | 6023.455 → 6023.5 | 0.045 |
+| south/7/43_56 | −83.64099, −70.60893 (CABEUS_B, 4.3 km) | 2646.561 → 2646.5 | 0.061 |
+
+**C2 samples**:
+
+| Tile | Case | Lat, lon | Original → tile (m) | \|Δ\| (m) |
+|---|---|---|---|---|
+| near/1_18 | random | +69.32812, +91.39062 | −2023.051 → −2023 (LDEM_64 2 × 2) | 0.051 |
+| near/0_22 | random | +79.79688, +155.48438 | 817.082 → 817 | 0.082 |
+| near/10_14 | random | −65.60938, +42.42188 | −178.731 → −179 | 0.269 |
+| near/1_23 | last column wraps to global column 0; same value in tile 1_0 column 0 | +69.73438, −179.98438 | −444.870 → −445 | 0.130 |
+| far/5_10 | random | −71.71875, +146.65625 | −2332.627 → −2333 (LDEM_16) | 0.373 |
+| far/4_5 | random | −39.65625, −12.03125 | −1379.879 → −1380 | 0.121 |
+| far/5_4 | last row clamped at the pole | −89.96875, −44.46875 | 860.690 → 861 | 0.310 |
+| polar_s/p20/12_24 | random | −86.34159, +83.01779 | 614.797 → 614.75 (PGDA 20 m) | 0.047 |
+| polar_s/p60/13_21 | random | −83.61580, +75.46682 | −917.906 → −918.00 (PGDA 60 m) | 0.094 |
+| polar_s/p240/6_0 | random | −69.73467, −112.67522 | −2402.283 → −2402.5 (PGDA 240 m) | 0.217 |
+
+Every decoded global value equals round(original); every polar value equals round(original / q) × q.
+
+**Scope and limits.**
+- 10 samples per product (fixed seed 20261115), not all tiles.
+- Not covered:
+  - the band fine levels z4–z7 (SLDEM2015 / PGDA 60 m windows; SLDEM2015 not read here)
+  - the south z3–z6 fine levels (box means of the PGDA 20 m site windows, whose window origins are not recorded in the repository)
+  - the albedo texture
+- A PASS confirms the tiles encode the stated DEMs as documented. It is not a check of the DEMs against the real surface.

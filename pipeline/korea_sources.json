@@ -1,0 +1,44 @@
+{
+  "about": "Korea links (differentiator B). KASA (Korea AeroSpace Administration) is a NASA Space Apps 2026 Space Agency Partner. Built 2026-11-14 during the event.",
+  "sites_of_korean_interest": [
+    {
+      "id": "REINER_GAMMA_CP11",
+      "name": "Reiner Gamma (CLPS CP-11 / IM-3 landing site)",
+      "name_ko": "라이너 감마(CLPS CP-11 / IM-3 착륙지)",
+      "short": "Reiner Gamma",
+      "group": "clps",
+      "lat": 7.585,
+      "lon": -58.725,
+      "elev_m": null,
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230000531/downloads/Blewett_LVx-CP11_landingsite_LPSC2023_abstr1780.pdf",
+      "coord_quality": "primary",
+      "note": "Selected landing location '7.585° N, 58.725° W' from Blewett et al., 'Selection and Characterization of the Landing Site for NASA CLPS PRISM1 Lunar Lander Mission CP-11', LPSC 2023 abstract #1780, NASA NTRS 20230000531. Planned landing location, not a landed position.",
+      "korea_link": "Intuitive Machines IM-3 (CLPS CP-11) carries KASI's Lunar Space Environment Monitor (LUSEM) to Reiner Gamma (NASA CP-11 page: https://science.nasa.gov/lunar-science/clps-deliveries/cp-11/). Launch date differs between sources (2026 H2 vs early 2027): unverified.",
+      "korea_link_ko": "IM-3(CLPS CP-11)에 한국천문연구원(KASI)의 달 우주환경 모니터 LUSEM이 실려 라이너 감마로 간다. 발사 시기는 출처마다 다름(미확인).",
+      "iau_feature_url": "https://planetarynames.wr.usgs.gov/Feature/4987"
+    }
+  ],
+  "ground_station": {
+    "id": "KDSA",
+    "summary": "Korea Deep Space Antenna, Yeoju, 35 m; receives Danuri in S/X band since 2022-08-15 (SpaceOps 2023 paper, unverified wording). Hourly Moon visibility in stations.json.",
+    "terms": "PENDING: may we use KDSA coordinates from NAIF kdsa01.tf? Question to Seoul ops/SMEs (owner: Dongju Kim)."
+  },
+  "danuri": {
+    "summary": "Danuri (KPLO) passes over each site and a geometric relay upper bound are in danuri.json.",
+    "caveat": "Danuri carries no lander relay payload. Numbers are a geometric upper bound only."
+  },
+  "shadowcam": {
+    "instrument": "ShadowCam (NASA instrument on KARI's Danuri/KPLO; operated by ASU)",
+    "archive": "https://pds.shadowcam.asu.edu/",
+    "bundle_label": "https://pds.shadowcam.asu.edu/bundle_kplo-shadowcam.xml",
+    "citation": "ShadowCam SOC, KPLO ShadowCam Data Archive, NASA PDS, doi:10.17189/y89z-kt98; mosaics: Grieser et al. 2025, LPSC 56 #2523 (https://www.hou.usra.edu/meetings/lpsc2025/pdf/2523.pdf)",
+    "credit": "NASA/KARI/ASU",
+    "terms": "PDS archive, public; the PDS labels carry no explicit licence statement. Redistribution of image files in our repo is PENDING the question to Seoul ops/SMEs (owner: Dongju Kim). Until then we store links and label metadata only and the app may load images from the PDS URL at view time.",
+    "products": []
+  },
+  "pending_questions": [
+    "May we redistribute ShadowCam images (PDS, NASA/KARI/ASU) inside our open-source repo and demo?",
+    "May we use and publish the KDSA antenna coordinates from NAIF kdsa01.tf?"
+  ],
+  "mock": false
+}

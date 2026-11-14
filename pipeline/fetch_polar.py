@@ -233,6 +233,8 @@ def main():
     sites = [s for s in sites if s['lat'] <= -80 and (args.site is None or s['id'] == args.site)]
     if not sites:
         p.error('No matching south-polar sites (latitude <= -80)')
+    if any(s.get('mock') for s in sites):
+        print('WARNING: selected sites include MOCK coordinates; terrain is real but site identity is unverified', flush=True)
     failures = []
     for site in sites:
         for res in args.res:

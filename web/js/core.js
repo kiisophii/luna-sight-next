@@ -9,7 +9,7 @@ export const SUNLIT_FRACTION = 0.5;        // "sunlit" = visible fraction >= 0.5
 export const T0_MS = Date.UTC(2026, 0, 1, 0, 0, 0);
 const D2R = Math.PI / 180, R2D = 180 / Math.PI;
 
-export const state = { sites: [], ephem: null, ephemMeta: null, n: 0, horizons: new Map(), mock: false, base: 'data/' };
+export const state = { sites: [], ephem: null, ephemMeta: null, n: 0, horizons: new Map(), horizonIds: null, mock: false, base: 'data/' };
 
 // ---------------------------------------------------------------- loading
 async function getJSON(url) {
@@ -18,21 +18,28 @@ async function getJSON(url) {
   return r.json();
 }
 
-/** Load sites + ephemeris, then every site's horizon in parallel (missing horizon => flat 0° mask). */
+/** Load sites + ephemeris, then every site's horizon in parallel.
+ *  `horizon_index.json` lists the sites that have a computed horizon (written by pipeline/run_horizons.py), so the
+ *  app does not request 33 missing files. Sites without one get a flat 0° mask marked `pending` ("terrain pending").
+ *  If the index itself is missing, every horizon file is tried (old behaviour). */
 export async function loadData(base = 'data/') {
   state.base = base;
-  const [sites, meta, buf] = await Promise.all([
+  const [sites, meta, buf, index] = await Promise.all([
     getJSON(base + 'sites.json'),
     getJSON(base + 'ephem.json'),
     fetch(base + 'ephem.bin', { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error('ephem.bin: HTTP ' + r.status); return r.arrayBuffer(); }),
+    getJSON(base + 'horizon_index.json').catch(() => null),
   ]);
   const dv = new DataView(buf);
   const f = new Float32Array(buf.byteLength / 4);
   for (let k = 0; k < f.length; k++) f[k] = dv.getFloat32(k * 4, true);   // little-endian regardless of CPU
   if (f.length !== meta.n * 6) throw new Error(`ephem.bin has ${f.length / 6} rows, ephem.json says ${meta.n}`);
   state.sites = sites; state.ephemMeta = meta; state.ephem = f; state.n = meta.n;
-  await Promise.all(sites.map(loadHorizon));
-  state.mock = !!meta.mock || sites.some(s => s.mock) || [...state.horizons.values()].some(h => h.mock);
+  state.horizonIds = index && Array.isArray(index.ids) ? new Set(index.ids) : null;
+  await Promise.all(sites.map(s => loadHorizon(s)));
+  // MOCK = some data actually in use is a placeholder. A flat "terrain pending" mask is not mock (it is labelled per site).
+  state.mock = !!meta.mock || sites.some(s => s.mock) ||
+    [...state.horizons.values()].some(h => !h.flat && (h.mock || h.site_coords_mock));
   return state;
 }
 
@@ -40,16 +47,25 @@ export async function loadData(base = 'data/') {
 export async function loadHorizon(site) {
   if (state.horizons.has(site.id)) return state.horizons.get(site.id);
   let h;
-  try { h = await getJSON(`${state.base}horizon/${site.id}.json`); }
-  catch (e) { console.warn('no horizon for', site.id, '- using flat 0° mask'); h = flatHorizon(site); }
+  if (state.horizonIds && !state.horizonIds.has(site.id)) h = flatHorizon(site);
+  else {
+    try { h = await getJSON(`${state.base}horizon/${site.id}.json`); }
+    catch (e) { console.warn('no horizon for', site.id, '- using flat 0° mask (terrain pending)'); h = flatHorizon(site); }
+  }
   state.horizons.set(site.id, h);
   return h;
 }
 
+/** Flat 0° mask used until the real LOLA horizon of a site exists. `pending` = show "terrain pending". */
 export function flatHorizon(site) {
   return { id: site.id, lat: site.lat, lon: site.lon, h0_m: site.elev_m ?? 0, obs_height_m: 2,
-           az_step_deg: 0.5, mask: new Array(720).fill(0), max_range_km: 0, dem_sources: [], mock: true, flat: true };
+           az_step_deg: 0.5, mask: new Array(720).fill(0), max_range_km: 0, dem_sources: [], mock: false, flat: true, pending: true };
 }
+
+/** true while the site uses the flat placeholder horizon instead of a computed terrain mask. */
+export const terrainPending = site => !!state.horizons.get(site.id)?.flat;
+/** true when the horizon file in use is itself mock data. */
+export const horizonMock = site => { const h = state.horizons.get(site.id); return !!h && !h.flat && !!(h.mock || h.site_coords_mock); };
 
 // ---------------------------------------------------------------- time helpers
 export const hourToDate = i => new Date(T0_MS + i * 3600e3);
@@ -172,5 +188,6 @@ export function metrics(site, i0 = 0, i1 = state.n - 1) {
 // For non-module scripts and console debugging.
 if (typeof window !== 'undefined') {
   window.LLSN = { state, loadData, loadHorizon, siteFrame, sunAzEl, earthAzEl, horizonAt, sunVisibleFraction, sunlit,
-    earthVisible, untilSunset, untilEarthset, untilSunrise, untilEarthrise, metrics, hourToDate, dateToHour };
+    earthVisible, untilSunset, untilEarthset, untilSunrise, untilEarthrise, metrics, hourToDate, dateToHour,
+    terrainPending, horizonMock };
 }

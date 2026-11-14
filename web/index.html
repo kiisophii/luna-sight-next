@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lunar Landing Site Navigator</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="css/base.css">
-<!-- card 7 (design) owns theme.css: it only overrides the variables defined at the top of base.css -->
-<link rel="stylesheet" href="css/theme.css" onerror="this.remove()">
+<!-- card 12 (design) owns theme.css: it only overrides the variables defined at the top of base.css -->
+<link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
 <header class="top">
@@ -16,23 +17,63 @@
 </header>
 <div class="mock-banner" role="status" data-i18n="mock"></div>
 <main>
-  <section class="timebar" aria-label="Time">
-    <button id="play" type="button" data-i18n="play">Play</button>
-    <label><span data-i18n="speed">Speed</span>
-      <select id="speed">
-        <option value="0.25">15 min/frame</option>
-        <option value="1" selected>1 h/frame</option>
-        <option value="6">6 h/frame</option>
-        <option value="24">1 day/frame</option>
-      </select>
-    </label>
-    <input id="slider" type="range" min="0" max="0" value="0" aria-label="Time (UTC)">
-    <span id="time-label" aria-live="polite" data-i18n="loading">Loading data…</span>
+  <!-- 1. site picker + 3-card comparison -->
+  <section id="picker" class="panel" data-i18n-aria="pkTitle">
+    <div class="panel-head">
+      <h2 data-i18n="pkTitle"></h2>
+      <a class="now-link" href="#llsn-window"><span data-i18n="selTime"></span> <span id="now-short" class="num"></span></a>
+    </div>
+    <div class="ctl">
+      <label class="grow"><span class="sr" data-i18n="pkSearch"></span>
+        <input id="pk-q" type="search" autocomplete="off" data-i18n-ph="pkSearchPh"></label>
+      <label><span data-i18n="pkGroup"></span> <select id="pk-group"></select></label>
+      <span id="pk-count" class="muted" aria-live="polite"></span>
+    </div>
+    <ul id="pk-list" class="pk-list"></ul>
+    <p class="hint" data-i18n="pkHint"></p>
   </section>
-  <section id="cards" aria-label="Site comparison"></section>
+  <section id="cards" aria-label="Site comparison"><p class="muted" data-i18n="loading">Loading data…</p></section>
+
+  <!-- 2. 360° horizon panorama of the focused site (horizon_chart.js mounts here) -->
+  <section id="llsn-horizon" class="panel"></section>
+
+  <!-- 3. analysis window: time controls + period results (window_metrics.js renders #wm-body) -->
+  <section id="llsn-window" class="panel" data-i18n-aria="awTitle">
+    <h2 data-i18n="awTitle"></h2>
+    <div class="timebar" role="group" data-i18n-aria="tbAria">
+      <label><span data-i18n="tbStart"></span> <input id="t-date" type="date" required></label>
+      <label><span data-i18n="tbTod"></span> <input id="t-tod" type="time" step="60" required></label>
+      <span class="ctl-item"><span data-i18n="tbPeriod"></span>
+        <span class="seg" id="t-period" role="group">
+          <button type="button" data-days="7" data-i18n="wm7"></button><button type="button" data-days="30" data-i18n="wm30"></button><button type="button" data-days="90" data-i18n="wm90"></button>
+        </span>
+        <input id="t-days" type="number" min="1" max="1826" step="1" data-i18n-aria="tbDays"> <span data-i18n="wmDays"></span>
+      </span>
+      <span class="ctl-item">
+        <button id="play" type="button" data-i18n="play">Play</button>
+        <label><span data-i18n="speed">Speed</span>
+          <select id="speed">
+            <option value="1" data-i18n="sp1"></option>
+            <option value="3" data-i18n="sp3"></option>
+            <option value="6" selected data-i18n="sp6"></option>
+            <option value="24" data-i18n="sp24"></option>
+          </select>
+        </label>
+      </span>
+      <input id="slider" class="span" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="time">
+      <p class="span tb-read"><span class="muted" data-i18n="selTime"></span> <strong id="time-label" class="num" aria-live="polite"></strong>
+        <span id="period-label" class="muted num"></span></p>
+    </div>
+    <p class="hint" data-i18n="tbHint"></p>
+    <div id="wm-body"></div>
+  </section>
+
+  <!-- 4. filters (filters.js mounts here) -->
+  <section id="llsn-filters" class="panel"></section>
 </main>
 <footer>
   <p data-i18n="assumptions"></p>
+  <p data-i18n="terrainNote"></p>
   <p>Team Ginkgo Orbit · NASA Space Apps Challenge 2026 · <a href="https://github.com/kiisophii/lunar-landing-site-navigator">source (Apache-2.0)</a></p>
 </footer>
 <script type="module" src="js/app.js"></script>

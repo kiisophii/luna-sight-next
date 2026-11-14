@@ -1,6 +1,6 @@
 // filters.js — threshold sliders that filter the site list (phase 3 UI).
 // Uses the per-site metrics of the current analysis window (LLSN.window from window_metrics.js).
-// Hides non-matching cards in #cards (class llsn-filtered), publishes LLSN.filterPass (Set of ids) and fires 'llsn:filter'.
+// Publishes LLSN.filterPass (Set of ids) and fires 'llsn:filter'.
 import * as core from './core.js';
 import { t } from './i18n.js';
 import { addStrings, whenReady, mountSection, translate, siteName, fmtHours, LLSN } from './ui_shared.js';
@@ -10,13 +10,13 @@ addStrings({
   flSun: 'Sunlight ≥', flEarth: 'Earth link ≥', flBoth: 'Both ≥', flDark: 'Longest dark ≤',
   flAny: 'any', flReset: 'Reset filters', flMatch: 'sites match', flOf: 'of',
   flNone: 'No site matches. Loosen a slider.',
-  flHint: 'Thresholds apply to the analysis window above. Hidden cards come back when you reset.',
+  flHint: 'Thresholds apply to the period results of the analysis window above. Sites that fail are removed from the site list; compared cards stay but are marked. Reset brings everything back.',
 }, {
   flTitle: '착륙지 거르기', flAria: '햇빛·지구 통신·어둠으로 착륙지 거르기',
   flSun: '햇빛 ≥', flEarth: '지구 통신 ≥', flBoth: '둘 다 ≥', flDark: '가장 긴 어둠 ≤',
   flAny: '상관없음', flReset: '거르기 초기화', flMatch: '곳이 맞음', flOf: '/',
   flNone: '맞는 착륙지가 없다. 슬라이더를 풀어 보자.',
-  flHint: '기준은 위의 분석 기간에 적용된다. 초기화하면 숨긴 카드가 다시 나온다.',
+  flHint: '기준은 위 분석 기간의 기간 결과에 적용된다. 맞지 않는 곳은 착륙지 목록에서 빠지고, 비교 카드는 남지만 표시가 붙는다. 초기화하면 모두 돌아온다.',
 });
 
 // key -> metric field, unit, comparison
@@ -98,7 +98,7 @@ function apply() {
     if (ok) pass.add(s.id);
   }
   const n = core.state.sites.length;
-  document.querySelectorAll('#cards .card').forEach(c => c.classList.toggle('llsn-filtered', active && !pass.has(c.dataset.id)));
+  // app.js hides non-matching sites in the picker and marks compared cards "Outside filters" on 'llsn:filter'.
   countEl.textContent = pass.size ? `${pass.size} ${t('flOf')} ${n} ${t('flMatch')}` : t('flNone');
   countEl.style.color = pass.size ? '' : 'var(--warn)';
   listEl.textContent = active && pass.size ? core.state.sites.filter(s => pass.has(s.id)).map(siteName).join(' · ') : '';

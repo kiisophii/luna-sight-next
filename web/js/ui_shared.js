@@ -26,8 +26,9 @@ export function whenReady(fn) {
 const ORDER = ['llsn-window', 'llsn-filters', 'llsn-horizon'];
 const AFTER_CARDS = new Set(['llsn-horizon']);
 export function mountSection(id, ariaKey) {
+  ensureStyles();
   let sec = document.getElementById(id);
-  if (sec) return sec;
+  if (sec) return sec;                         // placeholder already in index.html (fixed page order)
   sec = document.createElement('section');
   sec.id = id;
   sec.className = 'panel';
@@ -110,7 +111,6 @@ function ensureStyles() {
   .panel input[type=number] { width: 5em; }
   #cards .card { cursor: pointer; }
   #cards .card.is-focus { outline: 3px solid var(--text); outline-offset: 2px; }
-  #cards .card.llsn-filtered { display: none; }
   `;
   const st = document.createElement('style');
   st.dataset.owner = 'ui_shared.js';

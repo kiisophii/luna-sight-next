@@ -1,0 +1,23 @@
+[
+  {
+    "id": "TEST_POLAR_1",
+    "lat": -89.5,
+    "lon": 0,
+    "coord_quality": "estimated",
+    "note": "Synthetic test point; not a landing site"
+  },
+  {
+    "id": "TEST_POLAR_2",
+    "lat": -89.5,
+    "lon": 90,
+    "coord_quality": "estimated",
+    "note": "Synthetic test point; not a landing site"
+  },
+  {
+    "id": "TEST_POLAR_3",
+    "lat": -89,
+    "lon": -90,
+    "coord_quality": "estimated",
+    "note": "Synthetic test point; not a landing site"
+  }
+]

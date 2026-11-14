@@ -209,6 +209,15 @@ def check_horizons(data, sites):
     missing = sorted(set(sites) - {p.stem for p in files})
     if missing:
         warn("horizon", f"no horizon file for {missing} (app falls back to a flat 0 deg mask)")
+    idx_path = data / "horizon_index.json"
+    if idx_path.exists():
+        idx = load_json(idx_path)
+        listed = set(idx.get("ids", [])) if isinstance(idx, dict) and isinstance(idx.get("ids"), list) else None
+        if listed is None:
+            err("horizon_index.json", "must be {\"ids\": [...]}")
+        elif listed != {p.stem for p in files}:
+            err("horizon_index.json", f"ids differ from horizon/*.json files (missing {sorted({p.stem for p in files} - listed)}, "
+                f"extra {sorted(listed - {p.stem for p in files})}) - run: python pipeline/run_horizons.py --index-only")
     print(f"horizon: {len(files)} files")
 
 

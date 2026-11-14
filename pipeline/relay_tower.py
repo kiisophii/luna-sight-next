@@ -17,7 +17,7 @@ For one site (the lander, antenna 2 m above terrain):
      fraction (can it power itself) from a full 720-bin horizon (pipeline/horizon.py).
   3. Greedy 1..3 tower network per height (tower<->tower hops allowed) maximising lander link %.
   4. Rough link budget tower -> DSN 34 m and tower -> KDSA 35 m (explicit, labelled estimates).
-Output: web/data/relay/<ID>.json (format: docs/data_contract.md section 10, proposed v1.2).
+Output: web/data/relay/<ID>.json (format: docs/data_contract.md section 12, proposed v1.2).
 
 Definitions follow CLAUDE.md / contract: Earth visible = Earth CENTRE above the mask (topocentric,
 mask linearly interpolated between 0.5 deg bins); sun visible fraction of a 0.2666 deg disk,
@@ -595,7 +595,7 @@ def _greedy_network(j, h, p, chain_r, lat0, lon0, h0, E, Nn, clat, clon, ground,
 
 # ====================================================================== contract check
 def validate_relay(obj):
-    """Raise AssertionError if obj does not follow contract section 10 (proposed v1.2)."""
+    """Raise AssertionError if obj does not follow contract section 12 (proposed v1.2)."""
     for k in ("id", "lat", "lon", "h0_m", "window", "params", "lander", "candidates", "best",
               "networks", "link_budget", "mock"):
         assert k in obj, f"missing key {k}"

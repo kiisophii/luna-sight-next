@@ -134,6 +134,7 @@ Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Eart
 every other site uses a flat 0° mask labelled **"Terrain pending"** (not counted as mock). Written automatically at the end of
 `pipeline/run_horizons.py`; after merging horizon PRs run `python pipeline/run_horizons.py --index-only`.
 `check_contract.py` errors if the index and the files disagree. If the index is missing, the app tries every horizon file (old behaviour).
+
 ## 12. Proposed v1.2 (relay towers, 2026-11-14, Sua) — NOT yet agreed; new section only (renumbered from 10 at merge; sections 0–11 unchanged)
 `web/data/relay/<ID>.json`, written by `pipeline/relay_tower.py` (differentiator A, concept after NASA GRC BEACON, NTRS 20240014584).
 ```json
@@ -172,3 +173,48 @@ every other site uses a flat 0° mask labelled **"Terrain pending"** (not counte
 - `best[j]` = best buildable candidate (slope ≤ `max_slope_deg`) for height `heights_m[j]`; `sun_frac` = sunlit (≥ 0.5 disk) fraction at the tower top.
 - `networks[j]`: greedy 1…`n_towers` towers at that height; `parent` = what the tower hangs on (`"LANDER"` or the index of an earlier tower in `towers`). `link_frac_by_n[0]` = direct only. Timeline segments cover the whole window in order; when direct works the code is 1 even if a tower also works.
 - `link_budget` is a rough estimate with explicit assumptions (not a specification); the UI must label it "estimate".
+
+## 13. `web/data/korea/*.json` — Korea links (differentiator B) — **v1.2 proposal** (2026-11-14, Sua; new section only, renumbered from 9 at merge; sections 0–12 unchanged)
+Written by `python pipeline/korea_links.py`; tests `python -m pytest pipeline/test_korea_links.py -q`.
+
+### 13.1 `stations.json` — Moon ≥ 10° above each ground station, hourly
+```json
+{"start": "2026-01-01T00:00:00Z", "step_h": 1, "n": 43824, "min_el_deg": 10,
+ "bit_order": "LSB-first: hour k is bit (k % 8) of byte k // 8 of base64-decoded bits_b64",
+ "stations": [{"id": "KDSA", "name": "...", "name_ko": "...", "antenna": "KDSA01 (DSN code 32)", "country": "KR",
+               "lat": 37.20723347, "lon": 127.62181206, "height_m": 145.359, "ellipsoid": "...",
+               "source": "...", "source_url": "...", "terms": "...", "frac_visible": 0.33, "bits_b64": "..."}],
+ "summary": {"frac_any_dsn": 0.0, "frac_any_dsn_or_kdsa": 0.0, "frac_kdsa_only": 0.0, "frac_kdsa_and_no_dsn_of_kdsa_hours": 0.0},
+ "mock": false}
+```
+- Station IDs: `KDSA`, `DSN_GOLDSTONE` (DSS-14), `DSN_MADRID` (DSS-63), `DSN_CANBERRA` (DSS-43). Station `lon` is Earth longitude, −180…180 east.
+- Bit = apparent Moon **centre** ≥ 10° above the ellipsoidal horizon at the hour mark (no refraction, no local terrain). Decode in JS: `bytes[k >> 3] >> (k & 7) & 1`.
+
+### 13.2 `windows_<station_id_lowercase>.json` — exact rise/set (1 s) at 10°
+`{"station", "min_el_deg": 10, "time": "UTC", "columns": ["rise_utc","set_utc","max_el_deg"], "windows": [["2026-01-01T03:12:09Z","2026-01-01T12:40:51Z",55.1], ...]}`
+
+### 13.3 `kdsa_daily_kst.json` — "when can Korea talk to the Moon tonight"
+`{"station": "KDSA", "tz": "KST (UTC+9)", "columns": ["from_kst","to_kst","max_el_deg_of_whole_window"], "days": {"2026-11-14": [["18:05","24:00",62.3]], ...}}`
+- A window crossing midnight is split per KST date (`"24:00"` / `"00:00"`). Helper: `web/js/korea.js` → `kdsaTonight(dateKST)`.
+
+### 13.4 `danuri.json` — Danuri (KPLO) passes over catalog sites
+```json
+{"frame": "MOON_ME_DE421", "window": ["2026-01-01T00:00:00Z", "2027-06-03T07:55:00Z"], "step_min": 5,
+ "prediction_after": "2026-11-10 ...", "orbit": {"alt_km_min": 0, "alt_km_max": 0},
+ "definitions": {...}, "caveat": "Danuri carries no lander relay payload ... GEOMETRIC upper bound only",
+ "track_sample": {"start": "...", "step_min": 5, "xyz_km": [[x,y,z], ...]},
+ "sites": [{"id": "APOLLO17", "lat": 0, "lon": 0, "h0_m": 0, "mask": "terrain|flat", "site_coords_mock": false,
+            "passes": {"start_i": [12.3417], "dur_s": [612], "max_el_deg": [41.2]},
+            "n_passes": 0, "visible_frac": 0, "visible_frac_flat": 0, "direct_earth_frac": 0,
+            "no_direct_hours": 0, "relay_covered_hours": 0, "relay_upper_bound": 0,
+            "longest_uncovered_gap_h": 0, "median_pass_min": 0}],
+ "mock": false}
+```
+- Only the overlap of Danuri's Horizons span with our window (2026-01-01 → end of Horizons prediction, 2027-06-03). After 2026-11-10 the trajectory is a **prediction**.
+- `start_i` = hour index (fractional), `dur_s` = seconds. Pass = Danuri centre above the site mask (terrain mask if `horizon/<ID>.json` exists, else flat 0°).
+- `relay_upper_bound` = share of the site's no-direct-Earth time when Danuri is above the site mask **and** sees Earth's centre past the lunar sphere. Geometry only.
+- Sites = `sites.json` + Korea sites from `korea.json` (`sites_of_korean_interest`).
+
+### 13.5 `korea.json` — sites of Korean interest + ShadowCam links
+`{"sites_of_korean_interest": [<sites.json-style objects + "korea_link">], "shadowcam": {"terms": "...", "products": [{"target", "product_id", "label_url", "data_url", "browse_url", "size_bytes", "center_lat", "center_lon", "corners", "projection", ...}]}, "pending_questions": [...]}`
+- ShadowCam: **links and metadata only, no image files** in the repo until the Seoul ops/SME answer on redistribution.

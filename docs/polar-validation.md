@@ -1,5 +1,9 @@
 # Card 2 validation — 2026-11-14 (Jiyong)
 
+Follow-up: [resolution diagnosis](polar-resolution-diagnosis.md) explains the
+240 m discrepancy using fresh source bytes, independent GDAL checks and 1,728
+resolution-matched cells. Original pointwise measurements below are preserved.
+
 Automated evidence; human checks remain TO CHECK. All reported terrain values were calculated during this run.
 
 ## Results

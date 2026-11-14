@@ -63,6 +63,7 @@ response validators are compared directly instead. No credentials are required.
 .venv/Scripts/python -m pytest pipeline/tests/test_fetch_polar.py -q
 .venv/Scripts/python pipeline/verify_polar.py --site TEST_POLAR_1
 .venv/Scripts/python pipeline/check_polar_landmark.py
+.venv/Scripts/python pipeline/diagnose_polar_resolution.py --fresh
 ```
 
 The second command selects five seeded common coordinates, compares bilinearly
@@ -82,6 +83,11 @@ the 5 m mosaic at the same pixel center. This is a region-center check, not an
 independent survey of a summit. On 2026-11-14, the regional and mosaic elevations
 were 771.043212890625 m and 770.6483764648438 m (difference -0.39483642578125 m),
 with the nearest pixel center 3.2725984153628063 m from the reference coordinate.
+
+The follow-up [resolution diagnosis](polar-resolution-diagnosis.md) verifies that
+the observed 240 m discrepancy comes from spatial averaging/coarse interpolation,
+and gives a proposed resolution-matched acceptance check. The diagnostic requires
+the three full-radius test caches and the sparse TIFFs created by verify_polar.py.
 
 Sources: [PGDA 81](https://pgda.gsfc.nasa.gov/products/81) (5 m, Barker 2021) and
 [PGDA 90](https://pgda.gsfc.nasa.gov/products/90) (10–240 m, Barker 2023).

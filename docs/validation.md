@@ -63,6 +63,10 @@ python pipeline/validate.py          # PGDA maps + points (card 5)
 python pipeline/validate_ours.py     # horizons + fractions + web/data/validation.json
 python pipeline/check_contract.py
 ```
+Named sites with card 8's per-site horizons (after card 8 is on main):
+`python pipeline/validate_ours.py --named-horizons web/data/horizon` - named sites then use the
+5-240 m per-site masks; the JSON keeps `named_pole_window_vs_card8` (both versions side by side) and
+`data/processed/validation_named_card8.csv` is written. The 240 random points are unchanged.
 Needs the DEM windows: run once
 `python -c "import sys; sys.path.insert(0,'pipeline'); import fetch_polar as F; from pathlib import Path; s=dict(id='VALIDATION_POLE',lat=-90.0,lon=0.0); r=Path('data/raw/polar_validation'); F.fetch(s,60,220000,r); F.fetch(s,240,520000,r)"`
 and the validation ephemeris from `pipeline/ephem.py`.

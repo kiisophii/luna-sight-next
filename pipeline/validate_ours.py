@@ -142,6 +142,10 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--workers", type=int, default=1)
     ap.add_argument("--limit", type=int, default=0, help="only the first N points (test; no JSON)")
+    ap.add_argument("--named-horizons", type=Path, default=None,
+                    help="folder with card 8 site horizons (<ID>.json, contract section 3); named sites then use "
+                         "these masks instead of the pole-centred windows, and both are compared")
+    ap.add_argument("--no-json", action="store_true", help="do not write web/data/validation.json (preview)")
     a = ap.parse_args(argv)
 
     pts = V.read_csv(V.PROCESSED / "validation_points.csv")
@@ -172,12 +176,52 @@ def main(argv=None):
 
     vec = load_ephem()
     print(f"ephemeris: {vec.shape[0]} steps (2 h) 2020-01-01 .. 2038-07-31", flush=True)
+    card8 = {}
+    if a.named_horizons:
+        for n in named:
+            p = a.named_horizons / f"{n['id']}.json"
+            if not p.exists():
+                print(f"  card 8 horizon missing for {n['id']} - keeping the pole-window horizon", flush=True)
+                continue
+            h = json.loads(p.read_text(encoding="utf-8"))
+            if abs(h["lat"] - n["lat"]) > 1e-4 or abs(h["lon"] - n["lon"]) > 1e-4 or len(h["mask"]) != 720:
+                raise ValueError(f"{p}: coordinates or mask size differ from validation_named.csv")
+            card8[n["id"]] = h
     rows = []
     for (key, lat, lon) in jobs:
         m, h0, miss = hor[key]
         rows.append(dict(key=key, lat=lat, lon=lon, h0_m=h0, missing=miss,
                          **fractions(vec, lat, lon, h0, m)))
     by = {r["key"]: r for r in rows}
+    named_cmp = []
+    for n in named:
+        if n["id"] not in card8:
+            continue
+        h = card8[n["id"]]
+        f8 = fractions(vec, n["lat"], n["lon"], float(h["h0_m"]), np.asarray(h["mask"], float))
+        w = by[f"N_{n['id']}"]
+        named_cmp.append({"id": n["id"], "pgda_sun": n["pgda_sun"], "pole_sun": w["sun_mean"], "card8_sun": f8["sun_mean"],
+                          "pgda_earth": n["pgda_earth"], "pole_earth": w["earth_any"], "card8_earth": f8["earth_any"],
+                          "card8_earth_ctr": f8["earth_ctr"],
+                          "card8_sources": "+".join(f"{d['name']}<={d['to_km']:g}km" for d in h["dem_sources"])})
+        # named sites in the JSON use card 8's finer per-site horizons from now on
+        w.update({k: f8[k] for k in f8}, h0_m=float(h["h0_m"]), key=w["key"])
+    if named_cmp:
+        print(f"  named sites: card 8 site horizons vs pole-centred 60/240 m windows (n = {len(named_cmp)})")
+        print(f"  {'id':26s} {'PGDA sun':>8s} {'pole':>6s} {'card8':>6s} | {'PGDA earth':>10s} {'pole':>6s} {'card8':>6s}")
+        for c in named_cmp:
+            print(f"  {c['id']:26s} {c['pgda_sun']:8.3f} {c['pole_sun']:6.3f} {c['card8_sun']:6.3f} | "
+                  f"{c['pgda_earth']:10.3f} {c['pole_earth']:6.3f} {c['card8_earth']:6.3f}")
+        for body in ("sun", "earth"):
+            for src in ("pole", "card8"):
+                d = np.array([c[f"{src}_{body}"] - c[f"pgda_{body}"] for c in named_cmp]) * 100
+                print(f"  {body:5s} {src:5s}: MAE {np.abs(d).mean():.2f} pp, bias {d.mean():+.2f} pp")
+        cmp_csv = V.PROCESSED / "validation_named_card8.csv"
+        with open(cmp_csv, "w", encoding="utf-8") as f:
+            f.write(",".join(named_cmp[0].keys()) + "\n")
+            for c in named_cmp:
+                f.write(",".join(f"{v:.5f}" if isinstance(v, float) else str(v) for v in c.values()) + "\n")
+        print(f"  wrote {cmp_csv.relative_to(ROOT)}", flush=True)
 
     # per-point table for checking by hand
     out_csv = V.PROCESSED / "validation_ours.csv"
@@ -196,8 +240,8 @@ def main(argv=None):
         alt[name] = stats([r[col] for r in pr], [p[f"pgda_{body}"] for p in pts],
                           [p[f"pgda_{body}_min60"] for p in pts], [p[f"pgda_{body}_max60"] for p in pts])
         print(f"  {name:24s} {alt[name]}", flush=True)
-    if a.limit:
-        print("(test run: validation.json not written)")
+    if a.limit or a.no_json:
+        print("(test/preview run: validation.json not written)")
         return 0
 
     ours = {"points": [{"ours_sun": r["sun_mean"], "ours_earth": r["earth_any"]} for r in pr],
@@ -214,6 +258,10 @@ def main(argv=None):
     }
     res["alt_definitions"] = alt
     res["max_missing_dem_share"] = round(max(r["missing"] for r in rows), 5)
+    if card8:
+        res["definitions"]["named_horizon"] = ("named sites: card 8 per-site horizons (web/data/horizon/<ID>.json, "
+                                               "5-240 m PGDA LOLA + LDEM chain); random points: pole-centred 60/240 m windows")
+        res["named_pole_window_vs_card8"] = named_cmp
     out.write_text(json.dumps(res, indent=1), encoding="utf-8")
     print(f"  wrote {out.relative_to(ROOT)} (with definitions + alt_definitions)")
     return 0

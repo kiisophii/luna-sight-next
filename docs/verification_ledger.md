@@ -56,3 +56,22 @@ Only `date_slip/` was recomputed in full; the other independent checks are sampl
 > differences of at most 0.15 percentage points or 0.004°; the other 6 were checked only by their authors.
 
 This replaces "every number was independently re-verified", which the records do not support.
+
+## Additional independent checks — Jiyong, 2026-11-14 23:39 KST
+
+The table/count/claim above is the preserved PR #53 snapshot at main `115d285`;
+its 12-of-18 count and shared 0.15 pp / 0.004° sentence are **not an updated bound for the checks below**.
+This appendix uses new OpenAI Codex-assisted code, independent of the producers' check scripts.
+Inputs: main `6829725`; custom-polar Worker/sampler/index match `s4-custom-polar-sua` (`33831da`).
+Full method, limitations, all samples and reproduction: [independent cross-check report](crosscheck_maps_polar.md).
+
+| Product | Computed by | New independent recomputation | Recorded differences / scope | Status after this check |
+|---|---|---|---|---|
+| `gmaps/` (3.8 km whole-Moon map) | Soyun, card 9 / PR #9; original CPU engine by Sua | Jiyong's separate DEM reader, full CPU ray march and Sun/Earth loop; ten deterministic random source cells, seed 53142026; four supporting cells for each nearest published overview pixel, 40 unique cells total including the ten centres | Max vs original CPU engine **9.4147e-12 pp** over Sun/Earth/both. Published PNG **30/30 DN values identical** after own interpolation/quantization (0 pp); pre-quantization residual ≤ **0.198773 pp** within its 0.2 pp rounding half-step. Producer's raw float32 grid unavailable, so no claim of direct raw-array equality. [Evidence](crosscheck_maps_polar/map_check.json) | Independently verified by another member (10 sampled source cells + published overview encoding) |
+| `hterrain/polar_s/` (custom south-polar terrain) | Sua, `s4-custom-polar-sua` / `33831da` | Jiyong's independent card-8 PGDA-chain full march and time loop versus actual browser Worker at SHACKLETON_RIM, PEAK_NEAR_SHACKLETON, ARTEMIS_MALAPERT; second control independently decodes and marches identical browser tiles | Against card-8: RMS **0.105267 / 0.140531 / 0.063066°**, max **0.519843 / 0.413379 / 0.327241°**, Sun **+1.220792 / +2.430175 / +0.198521 pp**. Same browser tiles: all **2160 angles identical after output rounding**, unrounded max ≤ **0.000050°**, Sun difference **0 pp**, independent loop equals browser core. [Evidence](crosscheck_maps_polar/polar_check.json) | Independently verified by another member on identical inputs; high-resolution agreement is limited by the explicitly measured DEM-product differences |
+
+With these two checks alone added to PR #53, **14/18 products have independent sample recomputation**
+(10 integrator, 4 other member); **4 remain author-only** in this snapshot: sites, monthly, globe tiles,
+and global hterrain tiles. Other team members' pending checks are not counted here. The custom-polar
+control verifies implementation agreement, **not high-resolution equivalence or a universal <1 pp accuracy**.
+All values above are sample results, not bounds on absolute physical accuracy. No production numbers changed.

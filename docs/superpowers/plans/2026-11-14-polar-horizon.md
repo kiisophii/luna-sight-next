@@ -39,4 +39,4 @@ Files: pipeline/verify_card8_horizons.py, docs/polar-horizons.md, data/DATASETS.
 - [x] Run engine/fetch/card8 tests and full repo pytest; inspect any unrelated failures. Run check_contract.py and ensure 16 production files.
 - [x] Fresh reviewer verifies numerical method and final diff; fix material issues with regression tests.
 - [x] Document coverage, computation parameters, measured validation/sensitivity, limitations and reproducible commands; append SI log.
-- [ ] Push feature branch and open PR for Sua (no merge).
+- [x] Push feature branch and open PR for Sua (no merge): https://github.com/kiisophii/lunar-landing-site-navigator/pull/8

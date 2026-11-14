@@ -229,3 +229,39 @@ Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; 
 
 A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
 Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.
+
+## 15. Proposed v1.3 — site visibility windows (card 15-B, 2026-11-14) — pending team agreement; sections 0–14 unchanged
+
+Written by `node pipeline/build_windows.mjs`, using unchanged `web/js/core.js` predicates. Files are optional until generated; no existing format is changed.
+
+### 15.1 `web/data/windows/<ID>.json`
+
+```json
+{
+  "format": "site-windows-v1", "id": "<catalogue ID>", "lat": 0, "lon": 0,
+  "h0_m": 0, "obs_height_m": 2,
+  "start_utc": "2026-01-01T00:00:00Z", "end_utc": "2031-01-01T00:00:00Z",
+  "step_h": 1, "n": 43824,
+  "sun": {"visible": [], "longest_gaps": [], "visible_hours": 0},
+  "earth": {"visible": [], "longest_gaps": [], "visible_hours": 0},
+  "source": {"core_sha256": "<hash>", "ephem_sha256": "<hash>", "ephem_meta_sha256": "<hash>",
+             "site_sha256": "<hash>", "horizon_sha256": "<hash>", "producer_sha256": "<hash>"},
+  "mock": false
+}
+```
+
+The snippet shows structure only, not computed coordinates or results. Each interval record in visible or longest_gaps has exactly `start_utc, end_utc, duration_h, clipped_start, clipped_end`.
+
+- UTC timestamps are whole hours. Every interval is **[start_utc, end_utc)**: start included, end excluded. Each hour-mark state describes its one-hour bin. The final sampled state at 2030-12-31T23Z describes the bin ending 2031-01-01T00Z. This is a discretisation convention, not a claim that the physical transition is exactly on an hour mark.
+- Sun: `core.sunlit(site,i)`, visible disk fraction >= 0.5. Earth: `core.earthVisible(site,i)`, centre strictly above the interpolated terrain mask. A visible interval is a maximal consecutive run of true hour bins; no interpolation or sub-hour refinement is applied.
+- `duration_h` is an integer, exactly end minus start. `visible_hours` is the sum of durations. Divide by 43,824 to obtain the same hourly fractions as core.metrics.
+- A gap is a maximal consecutive run of false bins, the complement of visible intervals within the domain. `longest_gaps` contains at most 10, sorted by duration descending and then start UTC ascending. If always visible, gaps is empty; if never visible, visible is empty and one full-domain gap is returned. No December/January cyclic wrapping is performed.
+- `clipped_start` is true exactly when the interval begins at the domain start; `clipped_end` is true exactly when it ends at the exclusive domain end. These are censored boundaries, not independently detected transitions.
+- `h0_m`, lat/lon and observer height must match the real horizon used. No mock/flat/mismatched/missing-DEM horizon is exported. SHACKLETON_RIM is explicitly skipped until sites.json and its real horizon both use the corrected (-89.6866, -162.81) coordinate on main.
+- `source` hashes identify exact computation inputs; site_sha256 hashes JSON.stringify(site), producer_sha256 hashes pipeline/build_windows.mjs. Production ephemeris and core.js are not modified.
+
+### 15.2 `web/data/windows/index.json`
+
+`{"format":"site-windows-v1","start_utc":"2026-01-01T00:00:00Z","end_utc":"2031-01-01T00:00:00Z","step_h":1,"n":43824,"ids":[...],"skipped":{"<ID>":"reason"},"mock":false}`
+
+Every catalogue ID must appear exactly once in ids or skipped; ids match the actual <ID>.json files. The UI should use this index, treating skipped as unavailable rather than zero visibility. Tables/JSON in docs/windows_verification.md and docs/windows_verification.json record the Node edge checks. check_contract.py validates intervals, longest-gap complements, clipping, index coverage and input hashes via pipeline/check_windows.py.

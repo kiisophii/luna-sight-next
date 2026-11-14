@@ -92,7 +92,7 @@ Requested by the team lead (Sua Kim) on 2026-11-14 and run on main `8eff7ac` (we
   - Local copies have the server's byte size (1,061,683,200 / 66,355,200).
   - Every byte range the check reads was also fetched from the PDS server and compared: LDEM_64 64 ranges and LDEM_16 3 ranges, 0 mismatches.
   - Labels read: centre-registered pixels, km above 1737.4 km, no missing constant.
-- PGDA `LDEM_80S_20MPP_ADJ.TIF`, `LDEM_60S_60MPP_ADJ.TIF`, `LDEM_60S_240MPP_ADJ.TIF`: read over HTTP from https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/ (Content-Length 2,696,082,051 / 3,089,110,093 / 218,961,039 B). GeoTIFF pixel-is-area; centre = corner + (c + 0.5) × res.
+- PGDA `LDEM_80S_20MPP_ADJ.TIF`, `LDEM_60S_60MPP_ADJ.TIF`, `LDEM_60S_240MPP_ADJ.TIF`: read over HTTP from the file URLs `https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/<file>` listed on https://pgda.gsfc.nasa.gov/products/90 (Content-Length 2,696,082,051 / 3,089,110,093 / 218,961,039 B). GeoTIFF pixel-is-area; centre = corner + (c + 0.5) × res.
 
 **Expected values follow each product's documented rule** (not the nearest pixel of another resolution, which would differ by up to 12.3 m here):
 - C1 LDEM levels: bilinear between the pixel centres of the coarsest k × k block mean of LDEM_64 whose pixel is ≤ 1.01 × the tile spacing (8, 16 or 32 ppd).

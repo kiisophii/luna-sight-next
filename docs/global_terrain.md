@@ -14,6 +14,12 @@ Nothing here changes the shared web formats in `docs/data_contract.md`.
 | far field, all sites | LDEM_64 (474 m) or LDEM_16 (1.9 km), whole Moon | card 3 (`data/raw/global/`) |
 
 `fetch_global.py` reports sites in the gaps as `status: outside_sldem` in `data/raw/global_manifest.json`.
+
+**Card 9 (2026-11-14) — affected site:** CHANDRAYAAN3 (−69.3741°, 32.3200°) is the only one of the 17 non-polar sites in
+the 60–80° S gap. Its horizon (`web/data/horizon/CHANDRAYAAN3.json`) uses **LDEM_64 (474 m) from 0 km**, i.e. no 59 m near field.
+The other 16 sites use SLDEM2015 to 150 km. Terrain features smaller than ~1 km close to the lander (crater rims, boulders
+within a few km) are therefore smoothed for CHANDRAYAAN3. Its mask should be read as a coarse horizon until a 60 m
+polar product (§1 table) is added to the chain.
 Windows that reach past ±60° are clipped at 60° and flagged `clipped_at_60deg`.
 
 ## 2. Files (all git-ignored, local only)

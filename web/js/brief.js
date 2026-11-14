@@ -36,7 +36,7 @@ addStrings({
   tSample: 'Sample mean error', tSampleTxt: 'Sun {s} pp · Earth {e} pp (random {n} points; not this site’s error)', tDem: 'Terrain data', tHind: 'Mission hindcast',
   aObs: 'observer height 2 m', aHour: 'hourly steps', aGeo: 'link = geometric visibility (not radio performance)', aTower: 'tower height = {h} m',
   pTime: 'Time change ▾', pGs: 'Ground stations ▾', pDate: 'Date change ▾', pNear: 'Nearby ▾', pHz: 'Horizon & blocking ▾', pRelay: 'Relay tower ▾', pSrc: 'Sources & method ▾', pMore: 'More analysis ▾',
-  close: 'Close',
+  close: 'Close', legSun: 'Sunlight (%)', legRange: 'This grid: {a} – {b} (same 0–100 % scale for every site)', shadowPatch: 'mostly shadow (< 5 % sunlight)',
   d_time: 'Sunlight and link over time', d_timeD: 'Gaps are counted inside the analysis period; gaps cut by the start or end count with their clipped length.',
   d_near: 'If the spot moves a little', d_nearD: 'Values around the site. Rows ② ③ ④ are long-term averages (2026–2030 / 18.6 years): do not compare them directly with this period’s values.',
   d_date: 'If the landing date slips', d_dateD: 'Landing-day scan (computed in the browser from the ephemeris and the terrain horizon) and the 2026–2027 date-slip file.',
@@ -84,7 +84,7 @@ addStrings({
   tSample: '전체 표본 평균 오차', tSampleTxt: '일조 {s}%p · 지구 {e}%p (무작위 {n}점, 이 지점 오차 아님)', tDem: '지형 자료·해상도', tHind: '실제 임무 되짚기',
   aObs: '관측 높이 2 m 가정', aHour: '1시간 간격 계산', aGeo: '교신은 기하학적 가시성 (통신 성능 아님)', aTower: '중계탑 높이 = {h} m',
   pTime: '시간 변화 ▾', pGs: '지상국 ▾', pDate: '날짜 변화 ▾', pNear: '주변 위치 ▾', pHz: '지평선·가림 ▾', pRelay: '중계탑 가정 ▾', pSrc: '출처·방법 ▾', pMore: '추가 분석 ▾',
-  close: '닫기',
+  close: '닫기', legSun: '일조율 (%)', legRange: '이 격자: {a} – {b} (모든 착륙지 같은 0–100 % 색 범위)', shadowPatch: '대부분 그늘 (일조 5 % 미만)',
   d_time: '햇빛과 교신, 시간에 따라', d_timeD: '끊김은 분석 기간 안에서 셈. 기간 시작·끝에 걸친 끊김은 잘린 길이로 셈.',
   d_near: '주변 위치를 조금 옮기면', d_nearD: '착륙지 주변 값. ②③④는 장기 평균(2026–2030 / 18.6년)이라 이 기간 값과 직접 비교하지 마세요.',
   d_date: '날짜가 밀리면?', d_dateD: '착륙일 훑기(천체력과 지형 지평선으로 브라우저에서 계산)와 2026–2027 날짜 밀림 파일.',
@@ -188,8 +188,8 @@ async function mapCard(s) {
   }
   const G = loc.grid, pts = loc.points, N = G.cols, S = 300, cs = S / N;
   const vals = pts.map(p => p.sun_frac);
-  const lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
-  const col = f => { const a = Math.max(0, Math.min(1, (f - lo) / span)); return `rgb(${Math.round(20 + 225 * a)},${Math.round(16 + 168 * a)},${Math.round(30 + 35 * a)})`; };
+  // fixed 0–100 % scale for every site (maps are comparable across sites; team review 11/14)
+  const col = f => { const a = Math.max(0, Math.min(1, f)); return `rgb(${Math.round(20 + 225 * a)},${Math.round(16 + 168 * a)},${Math.round(30 + 35 * a)})`; };
   let cells = '';
   for (const p of pts) {
     const c = Math.round((p.e_m - G.origin_e_m) / G.spacing_m), r = Math.round((p.n_m - G.origin_n_m) / G.spacing_m);
@@ -197,14 +197,32 @@ async function mapCard(s) {
   }
   const others = LLSN().state.sites.filter(o => o.id !== s.id && distKm(s, o) < 14).map(o => ({ o, ...enKm(s, o) })).filter(x => Math.abs(x.e) <= 10.4 && Math.abs(x.n) <= 10.4);
   const X = e => ((e * 1000 - G.origin_e_m) / G.spacing_m + 0.5) * cs, Y = n => ((N - 1) - (n * 1000 - G.origin_n_m) / G.spacing_m + 0.5) * cs;
-  const dots = others.map(x => `<circle cx="${X(x.e)}" cy="${Y(x.n)}" r="3.5" fill="#fff"/><text x="${X(x.e) + 6}" y="${Y(x.n) + 4}" font-size="10" fill="#fff" stroke="#000" stroke-width="2.5" paint-order="stroke">${esc(nameOf(x.o)).slice(0, 18)}</text>`).join('');
+  const dots = others.map(x => { const L = X(x.e) > S * 0.6;   // names on the right half go to the left of the dot (never clipped)
+    return `<circle cx="${X(x.e)}" cy="${Y(x.n)}" r="3.5" fill="#fff"/><text x="${X(x.e) + (L ? -6 : 6)}" y="${Y(x.n) + 4}" text-anchor="${L ? 'end' : 'start'}" font-size="10" fill="#fff" stroke="#000" stroke-width="2.5" paint-order="stroke">${esc(nameOf(x.o)).slice(0, 18)}</text>`; }).join('');
   const cx = X(0), cy = Y(0);
+  // data-driven label only: the largest connected patch of nodes with < 5 % sunlight over 2026–2030 (≥ 4 nodes)
+  const dark = new Map(pts.filter(p => p.sun_frac < 0.05).map(p => [`${Math.round((p.e_m - G.origin_e_m) / G.spacing_m)},${Math.round((p.n_m - G.origin_n_m) / G.spacing_m)}`, p]));
+  let best = [];
+  const seen = new Set();
+  for (const k of dark.keys()) {
+    if (seen.has(k)) continue;
+    const q = [k], comp = []; seen.add(k);
+    while (q.length) { const c = q.pop(); comp.push(c); const [a, b] = c.split(',').map(Number); for (const [da, db] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const n2 = `${a + da},${b + db}`; if (dark.has(n2) && !seen.has(n2)) { seen.add(n2); q.push(n2); } } }
+    if (comp.length > best.length) best = comp;
+  }
+  let shadowLbl = '';
+  if (best.length >= 4) {
+    const cc = best.map(k => k.split(',').map(Number)), mc = cc.reduce((a, b) => a + b[0], 0) / cc.length, mr = cc.reduce((a, b) => a + b[1], 0) / cc.length;
+    const lx = (mc + 0.5) * cs, ly = (N - 1 - mr + 0.5) * cs;
+    shadowLbl = `<text x="${Math.min(S - 85, Math.max(85, lx))}" y="${Math.min(S - 30, Math.max(24, ly))}" font-size="10" fill="#fff" text-anchor="middle" stroke="#000" stroke-width="2.5" paint-order="stroke">${esc(t('shadowPatch'))}</text>`;
+  }
   return `<h3>${esc(t('bMap'))} <span class="r">${chip('chipLong', 'long')} ${info('bMapTip')}</span></h3>
-    <div class="map-wrap"><svg viewBox="0 0 ${S} ${S}" class="b-map-svg" role="img" aria-label="${esc(fill(t('bMapCap'), { m: t('kSun') }))}">${cells}${dots}
+    <div class="map-wrap"><svg viewBox="0 0 ${S} ${S}" class="b-map-svg" role="img" aria-label="${esc(fill(t('bMapCap'), { m: t('kSun') }))}">${cells}${shadowLbl}${dots}
       <path d="M${cx},${cy} c-6,-9 -6,-15 0,-18 c6,3 6,9 0,18z" transform="translate(0,-2)" fill="#fff" stroke="#000"/>
       <line x1="10" x2="${10 + 10 * cs}" y1="${S - 12}" y2="${S - 12}" stroke="#fff" stroke-width="2"/><text x="${10 + 5 * cs}" y="${S - 16}" font-size="10" fill="#fff" text-anchor="middle" stroke="#000" stroke-width="2.5" paint-order="stroke">10 km</text>
       <text x="${S - 6}" y="12" font-size="10" fill="#fff" text-anchor="end" stroke="#000" stroke-width="2.5" paint-order="stroke">N ↑</text></svg></div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--muted);margin-top:6px"><span class="num">${P(Math.min(...vals))}</span><i style="flex:1;height:8px;border-radius:3px;background:linear-gradient(90deg,${col(0)},${col(.5)},${col(1)})"></i><span class="num">${P(Math.max(...vals))}</span></div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--muted);margin-top:6px"><b style="color:var(--text);font-weight:600">${esc(t('legSun'))}</b><span class="num">0</span><i style="flex:1;height:8px;border-radius:3px;background:linear-gradient(90deg,${col(0)},${col(.5)},${col(1)})"></i><span class="num">100</span></div>
+    <p class="lsn-note" style="margin:2px 0 0">${esc(fill(t('legRange'), { a: P1(Math.min(...vals)), b: P1(Math.max(...vals)) }))}</p>
     <p class="ls-caption" style="margin:6px 0 0">${esc(fill(t('bMapCap'), { m: t('kSun') }))}</p>
     <div class="pills">${pill('pNear', 'near')}${pill('pHz', 'hz')}</div>`;
 }

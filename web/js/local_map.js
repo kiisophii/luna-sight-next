@@ -17,6 +17,7 @@ addStrings({
   lmCentre: 'catalogue point', lmAt: 'Point', lmEast: 'east', lmNorth: 'north', lmHeight: 'height',
   lmSpread: 'Within {r} km of the catalogue point: {lo} – {hi}',
   lmPair: 'Biggest jump between neighbours (1 km apart): {a} → {b} ({m}).',
+  lmScaleNote: 'Percent scales are fixed at 0–100 % for every site, so maps can be compared.',
   lmClick: 'Click a square (or arrows + Enter) to send that location to "Your own landing point".',
   lmNote: 'Sampled points, not area averages · observer 2 m · Earth centre above the horizon · geometry only (no power or radio model). Data: card 18, web/data/local/.',
   lmLoading: 'Loading local map…', lmFail: 'Local map could not be loaded.',
@@ -28,6 +29,7 @@ addStrings({
   lmCentre: '목록 좌표', lmAt: '지점', lmEast: '동', lmNorth: '북', lmHeight: '높이',
   lmSpread: '목록 좌표에서 {r} km 안: {lo} – {hi}',
   lmPair: '이웃한 두 칸(1 km)의 가장 큰 차이: {a} → {b} ({m}).',
+  lmScaleNote: '비율 색 범위는 모든 착륙지에서 0–100 %로 같아서 지도끼리 비교할 수 있다.',
   lmClick: '칸을 누르면(또는 화살표 + Enter) 그 위치가 "내 착륙 지점"에 들어간다.',
   lmNote: '면적 평균이 아니라 표본 지점 · 관측자 2 m · 지구 중심이 지평선 위 · 기하만 (전력·전파 모델 없음). 자료: 카드 18, web/data/local/.',
   lmLoading: '국지 지도 불러오는 중…', lmFail: '국지 지도를 불러오지 못했다.',
@@ -73,7 +75,7 @@ function init() {
         <div class="lm-scale"></div>
       </div>
     </div>
-    <p class="hint"><span data-i18n="lmClick"></span> <span data-i18n="lmNote"></span></p>`;
+    <p class="hint"><span data-i18n="lmClick"></span> <span data-i18n="lmScaleNote"></span> <span data-i18n="lmNote"></span></p>`;
   const st = document.createElement('style');
   st.dataset.owner = 'local_map.js';
   st.textContent = `
@@ -178,7 +180,7 @@ function draw() {
   svg.innerHTML = out;
   const s = LLSN().state.sites.find(x => x.id === grid.id);
   svg.setAttribute('aria-label', `${t('lmTitle')} — ${s ? siteName(s) : grid.id}, ${t(metric.label)}`);
-  sec.querySelector('.lm-scale').innerHTML = `<span>${fmt(metric, metric.key === 'longest_dark_h' ? hi : lo)}</span>
+  sec.querySelector('.lm-scale').innerHTML = `<b style="color:var(--text);font-weight:600">${t(metric.label)} ${metric.frac ? '(%)' : `(${t('h')})`}</b> <span>${fmt(metric, metric.key === 'longest_dark_h' ? hi : lo)}</span>
     <i style="background:linear-gradient(90deg, color-mix(in srgb, ${col} 6%, ${bg}), ${col})"></i><span>${fmt(metric, metric.key === 'longest_dark_h' ? lo : hi)}</span>`;
   stats();
   drawCursor();

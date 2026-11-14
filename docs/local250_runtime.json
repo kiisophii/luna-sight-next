@@ -1,0 +1,1153 @@
+{
+  "base_commit": "a060ece",
+  "environment": {
+    "python": "3.10.2",
+    "cupy_cuda12x": "14.2.0",
+    "gpu": "NVIDIA GeForce RTX 5060",
+    "driver": "610.88",
+    "cpu": "Ryzen 5 5600X",
+    "reserved_physical_cores": 2
+  },
+  "run": {
+    "start_epoch": 1794668915.0186315,
+    "end_epoch": 1794670587.1737158,
+    "backend": "gpu",
+    "jobs": 8,
+    "runs": [
+      {
+        "id": "SHACKLETON_RIM",
+        "complete": true,
+        "elapsed_s": 64.2426860332489,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "complete": true,
+        "elapsed_s": 57.50634431838989,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "complete": true,
+        "elapsed_s": 53.74642777442932,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "CONNECTING_RIDGE",
+        "complete": true,
+        "elapsed_s": 57.477935552597046,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "IM1",
+        "complete": true,
+        "elapsed_s": 90.82577252388,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "IM2",
+        "complete": true,
+        "elapsed_s": 114.97224926948547,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_CABEUS_B",
+        "complete": true,
+        "elapsed_s": 147.9639961719513,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "complete": true,
+        "elapsed_s": 84.81646537780762,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_MOUTON",
+        "complete": true,
+        "elapsed_s": 108.63337874412537,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "complete": true,
+        "elapsed_s": 91.2955391407013,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "complete": true,
+        "elapsed_s": 133.3023819923401,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "complete": true,
+        "elapsed_s": 138.58986282348633,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "complete": true,
+        "elapsed_s": 223.52863192558289,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "complete": true,
+        "elapsed_s": 59.15893602371216,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "DE_GERLACHE_RIM1",
+        "complete": true,
+        "elapsed_s": 58.8485746383667,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      },
+      {
+        "id": "SHOEMAKER_RIM_A",
+        "complete": true,
+        "elapsed_s": 184.55271816253662,
+        "new_nodes": 1681,
+        "resumed": 0,
+        "backend": "gpu"
+      }
+    ]
+  },
+  "run_start_kst": "2026-11-15T00:08:35.018631+09:00",
+  "grids_complete_kst": "2026-11-15T00:36:27.173716+09:00",
+  "independent_report_written_kst": "2026-11-15T00:37:41.843604+09:00",
+  "grids_wall_s": 1672.1550843715668,
+  "independent_phase_s": 74.66988849639893,
+  "total_wall_s": 1746.8249728679657,
+  "n_sites": 16,
+  "n_nodes": 26896,
+  "n_centres_exact": 16,
+  "preflight": [
+    {
+      "site": "SHACKLETON_RIM",
+      "gpu_s": 0.06298360001528636,
+      "cpu_s": 3.601081599947065,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 1.914477465447817e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 5.545786052607582e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 4.5922377012175275e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 6.101688043713693e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 3.036237927744878e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_HAWORTH",
+      "gpu_s": 0.06569179997313768,
+      "cpu_s": 2.135673099954147,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.701636692137299e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 4.678879506059275e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 3.042330831704021e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 1.0579537246258042e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 7.277023428287066e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_MALAPERT",
+      "gpu_s": 0.063455099996645,
+      "cpu_s": 1.9856479999725707,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.0372237230503742e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 1.0977174724757788e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 2.1172574804495525e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 1.5416112830735074e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 2.845155222530593e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "CONNECTING_RIDGE",
+      "gpu_s": 0.06397419999120757,
+      "cpu_s": 2.176553499943111,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.805285587159645e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 6.050626666365133e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 2.5774937739697634e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 2.7134561264574586e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 5.726388252469405e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "IM1",
+      "gpu_s": 0.0780450000311248,
+      "cpu_s": 2.03103839996038,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.501803209042919e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 1.021680517965251e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 2.5945467996280058e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 1.5012702192507277e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 7.329958862101194e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "IM2",
+      "gpu_s": 0.061254700005520135,
+      "cpu_s": 1.809235599997919,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 3.070954601724907e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 3.700062478628752e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 1.5153212018503837e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 6.638245508838736e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 5.345413001123234e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_CABEUS_B",
+      "gpu_s": 0.06358449999243021,
+      "cpu_s": 2.063959799881559,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 1.0754908075227831e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 2.2084289952317704e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 8.299956277824094e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 2.625730743943677e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 4.398330588628596e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_MOUTON_PLATEAU",
+      "gpu_s": 0.06387960002757609,
+      "cpu_s": 2.0308738000458106,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 3.275779647538002e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 1.8349766151004587e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 6.268585650559544e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 1.191944321021765e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 1.589567366622191e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_MOUTON",
+      "gpu_s": 0.06413849996170029,
+      "cpu_s": 2.04693460004637,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 7.139266955391577e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 3.2958169526864367e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 9.691802915767767e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 1.1442491398838683e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 9.759304475664976e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_NOBILE_RIM1",
+      "gpu_s": 0.06384260003687814,
+      "cpu_s": 1.8677535999449901,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 1.4054557517795274e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 1.9840484810629277e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 1.6686030335222313e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 7.607248164731573e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 3.2589042575636995e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_NOBILE_RIM2",
+      "gpu_s": 0.06321110000135377,
+      "cpu_s": 2.1147616999805905,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 4.033884337673044e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 6.064482249712455e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 6.265734597832306e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 4.5717207797224546e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 2.3795188042186055e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_DE_GERLACHE_RIM2",
+      "gpu_s": 0.06635259999893606,
+      "cpu_s": 2.231005599896889,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 1.552342698829534e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 2.9309887850104133e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 7.210587682493497e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 3.295674844139285e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 8.132872153510107e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "ARTEMIS_SLATER_PLAIN",
+      "gpu_s": 0.0644103999948129,
+      "cpu_s": 2.215445800102316,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 7.912853705605016e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 4.46576109425223e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 1.2530776416497247e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 2.3504931334628054e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 3.680735716216077e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "PEAK_NEAR_SHACKLETON",
+      "gpu_s": 0.06291649997001514,
+      "cpu_s": 2.264727500034496,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.0986512527798595e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 3.913180890435797e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 2.4020785360789887e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 4.2810199829546036e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 1.8564882964255958e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "DE_GERLACHE_RIM1",
+      "gpu_s": 0.06441689998609945,
+      "cpu_s": 2.0351911999750882,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 2.7435720362234406e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 2.844302571247681e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 1.3298162571118155e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 3.4212632726848824e-12,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 2.6262370056429063e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    },
+    {
+      "site": "SHOEMAKER_RIM_A",
+      "gpu_s": 0.06247589999111369,
+      "cpu_s": 2.0324855999206193,
+      "rows": [
+        {
+          "index": 840,
+          "mask_max_abs_deg": 1.4394752057000915e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 0,
+          "mask_max_abs_deg": 5.799467572842332e-10,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 40,
+          "mask_max_abs_deg": 3.396039005565399e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1640,
+          "mask_max_abs_deg": 3.5281999544167775e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        },
+        {
+          "index": 1680,
+          "mask_max_abs_deg": 8.334755108307945e-11,
+          "rounded_mask_equal": true,
+          "metrics_equal": true
+        }
+      ]
+    }
+  ],
+  "preflight_nodes": 80,
+  "max_preflight_angle_abs_deg": 8.299956277824094e-10,
+  "independent_grid_coordinate_max_error_m": 9.26483391616847e-08,
+  "original_local_overlap": [
+    {
+      "id": "IM1",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "9df13b166228ce8707c6997a9aab1d386921ec2321b39b1109b120a35385925d"
+    },
+    {
+      "id": "IM2",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "d7497a892b6d2121c7622d96c14cce4e999719fb470c6170753de3c99ffe65b4"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "f8d64d629217e11f96c8f67103a216b9e666a2237d5e7a8dd933d395e2d80b5c"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "f99f492e8c91baa363b10b5aac5d30cea0387c68c0625d3cb45745b2d5702fae"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "42e94a80ec41f95468801f6e15b492449fd09fc5f47c8370f4c8b9235d207d36"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "857df20d5ab92f4353a9b9bd1e11235c99f64e21fa48b59a5f8f717e80ff4d87"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "31b210307f9b067fcf9adc94ece7b80c4a6f66af88ea5e30818d5e5f1f7e4377"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "7b739deb53047923cc7ffd31da63d4f6ccebc8ce4343f7ab53ad307dcf05264b"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "98a67315dd509e41d536b6b68e842ee16ae70a9f580fdc90300065cf62867c92"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "2aab1638e09cc33ba9c3cc7d20ab4bd1e3e283d7ebec559fb67d39da8f141dca"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "aef8b169c28fee259d06389915ea48af044889a8a5655e732969db1841080806"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "9f04b8c0cb1f764f8092bbab61aac39bb8fa9b7c6703eac1d30a2d5cf29fa4c1"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "50c8ec1c8c2399126b968ff9a7d1317d2a27cd0b9a2961d7ee7881f06303f760"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "bd3b867f45d81bcc27aae4fef852ef8c1045cab4ce524d851a149048c548307b"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0,
+        "both_frac": 0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "824149f927a64f225b22fee2aeff19da76df102dc328adb46f62004430794fba"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "nodes": 121,
+      "max_absolute_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "original_local_sha256": "4eadf3079bf9ee52388d7263f109e5f71c76ebd5b4b3ca6a2a7cff53751bf45d"
+    }
+  ],
+  "overlap_nodes": 1936,
+  "initial_eight_point_spike": {
+    "gpu_8_s": 0.11174530000425875,
+    "cpu_8_s": 4.360760699957609,
+    "core_8_s": 0.09516154995071702,
+    "rows": [
+      {
+        "point": {
+          "id": "BENCH_0",
+          "lat": -89.6866,
+          "lon": -162.81
+        },
+        "horizon_max_deg": 1.914477465447817e-10,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.8482566630156991,
+          "earth_frac": 0.49942953632712667,
+          "both_frac": 0.4436153705732019,
+          "longest_dark_h": 75
+        },
+        "cpu": {
+          "sun_frac": 0.8482566630156991,
+          "earth_frac": 0.49942953632712667,
+          "both_frac": 0.4436153705732019,
+          "longest_dark_h": 75
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_1",
+          "lat": -89.77809091409118,
+          "lon": 149.19818002538207
+        },
+        "horizon_max_deg": 5.545786052607582e-12,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 43824
+        },
+        "cpu": {
+          "sun_frac": 0,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 43824
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_2",
+          "lat": -89.49408594285819,
+          "lon": -143.7882454413727
+        },
+        "horizon_max_deg": 3.036237927744878e-11,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.41532037239868563,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 520
+        },
+        "cpu": {
+          "sun_frac": 0.41532037239868563,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 520
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_3",
+          "lat": -89.67835552844535,
+          "lon": -162.81
+        },
+        "horizon_max_deg": 5.218465659595495e-10,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.4636500547645126,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 375
+        },
+        "cpu": {
+          "sun_frac": 0.4636500547645126,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 375
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_4",
+          "lat": -89.68649157805045,
+          "lon": -161.30308595872003
+        },
+        "horizon_max_deg": 3.383764379805143e-10,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.40555403431909454,
+          "earth_frac": 0.4884081781672143,
+          "both_frac": 0.2008716684921504,
+          "longest_dark_h": 399
+        },
+        "cpu": {
+          "sun_frac": 0.40555403431909454,
+          "earth_frac": 0.4884081781672143,
+          "both_frac": 0.2008716684921504,
+          "longest_dark_h": 399
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_5",
+          "lat": -89.52171056891586,
+          "lon": -162.81
+        },
+        "horizon_max_deg": 2.2799362398018275e-10,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.3263964950711939,
+          "earth_frac": 0.2188526834611172,
+          "both_frac": 0.06044633077765608,
+          "longest_dark_h": 528
+        },
+        "cpu": {
+          "sun_frac": 0.3263964950711939,
+          "earth_frac": 0.2188526834611172,
+          "both_frac": 0.06044633077765608,
+          "longest_dark_h": 528
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_6",
+          "lat": -89.64587034390192,
+          "lon": -135.05957158662642
+        },
+        "horizon_max_deg": 8.045830668379494e-11,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.2004381161007667,
+          "earth_frac": 0.5150146038700255,
+          "both_frac": 0.13588444687842277,
+          "longest_dark_h": 684
+        },
+        "cpu": {
+          "sun_frac": 0.2004381161007667,
+          "earth_frac": 0.5150146038700255,
+          "both_frac": 0.13588444687842277,
+          "longest_dark_h": 684
+        }
+      },
+      {
+        "point": {
+          "id": "BENCH_7",
+          "lat": -89.67824988466953,
+          "lon": -164.27830595953
+        },
+        "horizon_max_deg": 8.133778095498201e-10,
+        "rounded_equal": true,
+        "metrics_equal": true,
+        "gpu": {
+          "sun_frac": 0.4089768163563344,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 428
+        },
+        "cpu": {
+          "sun_frac": 0.4089768163563344,
+          "earth_frac": 0,
+          "both_frac": 0,
+          "longest_dark_h": 428
+        }
+      }
+    ]
+  },
+  "verification_report_sha256": "aadd25cbd4a4ba35a0be47faf304e4c56c2c3db79a4bb2e9641475debc45dd47",
+  "rounding_diagnostic": [
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "index": 1084,
+      "rounded_independent_mask_equals_stored_mask": true,
+      "rounded_independent_metrics_equal": true,
+      "max_unrounded_vs_stored_mask_deg": 4.996508894272722e-05
+    },
+    {
+      "id": "IM1",
+      "index": 961,
+      "rounded_independent_mask_equals_stored_mask": true,
+      "rounded_independent_metrics_equal": true,
+      "max_unrounded_vs_stored_mask_deg": 4.9822065118276804e-05
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "index": 1003,
+      "rounded_independent_mask_equals_stored_mask": true,
+      "rounded_independent_metrics_equal": true,
+      "max_unrounded_vs_stored_mask_deg": 4.993112200990524e-05
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "index": 298,
+      "rounded_independent_mask_equals_stored_mask": true,
+      "rounded_independent_metrics_equal": true,
+      "max_unrounded_vs_stored_mask_deg": 4.993518305340672e-05
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "index": 554,
+      "rounded_independent_mask_equals_stored_mask": true,
+      "rounded_independent_metrics_equal": true,
+      "max_unrounded_vs_stored_mask_deg": 4.989753466300151e-05
+    }
+  ]
+}

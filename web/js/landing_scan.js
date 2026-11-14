@@ -16,7 +16,7 @@ addStrings({
   lsBest: 'Best', lsWorst: 'Worst', lsNow: 'Current period', lsRank: 'Best / worst = highest / lowest "Both" % (ties: shorter longest dark).',
   lsClick: 'Click (or ←/→ then Enter) to start the analysis period on that date.',
   lsFor: 'Site', lsLanding: 'Landing', lsDays: 'days', lsClipped: 'Dates after {d} are not scanned (ephemeris ends 2030-12-31).',
-  lsFlat: 'Terrain pending for this site: a flat 0° horizon is used, so terrain shadows are not included.',
+  lsFlat: 'Terrain pending for this site: no real LOLA horizon yet, so the landing-date scan is not computed (no flat-horizon results).',
 }, {
   lsTitle: '착륙 날짜 훑어보기', lsAria: '선택한 착륙지의 착륙 날짜 비교',
   lsWhy: '발사가 밀리면 조건은 어떻게 바뀔까? 점 하나가 착륙 날짜 하나이고, 값은 착륙 후 첫 N일 동안이다.',
@@ -26,7 +26,7 @@ addStrings({
   lsBest: '최고', lsWorst: '최악', lsNow: '현재 기간', lsRank: '최고/최악 = "둘 다" 비율이 가장 높은/낮은 날 (같으면 가장 긴 어둠이 짧은 쪽).',
   lsClick: '날짜를 누르면(또는 ←/→ 후 Enter) 분석 기간이 그날부터 시작한다.',
   lsFor: '착륙지', lsLanding: '착륙', lsDays: '일', lsClipped: '{d} 이후 날짜는 계산하지 않는다(천문력이 2030-12-31에 끝남).',
-  lsFlat: '이 착륙지는 지형 계산 전: 평평한 0° 지평선을 써서 지형 그림자가 빠져 있다.',
+  lsFlat: '이 착륙지는 지형 계산 전: 실제 LOLA 지평선이 없어서 착륙일 비교를 계산하지 않는다 (평평한 지평선 결과 없음).',
 });
 
 let sec, svg, readout, fromIn, nIn, rangeSel, noteEl, siteEl;
@@ -143,6 +143,12 @@ function run() {
   if (!isFinite(start)) start = a;
   start = Math.min(Math.max(Math.floor(start / 24) * 24, a), b - 24);
   const nDays = Math.min(120, Math.max(1, Math.round(Number(nIn.value) || 14)));
+  if (core.terrainPending(site)) {
+    scan = null; cursor = -1; geom = null;
+    svg.innerHTML = ''; readout.textContent = '';
+    siteEl.textContent = `· ${siteName(site)}`; noteEl.textContent = t('lsFlat');
+    return;
+  }
   const t0 = performance.now();
   scan = compute(site, start, nDays, Number(rangeSel.value));
   scan.ms = performance.now() - t0;

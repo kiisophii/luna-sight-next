@@ -10,7 +10,7 @@ addStrings({
   hzTitle: 'Horizon panorama', hzAria: 'Horizon panorama of the focused site',
   hzSite: 'Site', hzScale: 'Vertical scale',
   hzHint: 'Grey = terrain horizon mask (LOLA). Dots = hourly Sun / Earth positions over the selected window; faded dots are hidden behind the mask. Pick a site above or click a card / table row to change it.',
-  hzFlat: 'TERRAIN PENDING — no LOLA horizon has been computed for this site yet, so a flat 0° horizon is drawn and used in every number. Terrain shadows are not included.',
+  hzFlat: 'TERRAIN PENDING — no LOLA horizon has been computed for this site yet. Sun and Earth positions are shown, but no visibility is judged (the 0° line is only a reference).',
   hzSun: 'Sun', hzEarth: 'Earth', hzMask: 'terrain mask', hzEl: 'el',
   hzVisible: 'Visible', hzPartial: 'Partly visible', hzBlocked: 'Blocked by terrain', hzBelow: 'Below horizon',
   hzDisk: 'of disk', hzTrack: 'track', hzCentre: 'centred on',
@@ -20,7 +20,7 @@ addStrings({
   hzTitle: '지평선 파노라마', hzAria: '선택한 착륙지의 지평선 파노라마',
   hzSite: '착륙지', hzScale: '세로 배율',
   hzHint: '회색 = 지형 지평선 마스크(LOLA). 점 = 선택한 기간의 시간별 해·지구 위치, 흐린 점은 지형에 가려진 시각. 위에서 착륙지를 고르거나 카드·표의 줄을 누르면 바뀐다.',
-  hzFlat: '지형 계산 중 — 이 착륙지의 LOLA 지평선이 아직 없어서 평평한 0° 지평선을 그리고 모든 숫자에 쓴다. 지형 그림자는 빠져 있다.',
+  hzFlat: '지형 계산 중 — 이 착륙지의 LOLA 지평선이 아직 없다. 태양·지구 위치는 보여 주지만 보이는지는 판정하지 않는다 (0° 선은 참고용).',
   hzSun: '해', hzEarth: '지구', hzMask: '지형 마스크', hzEl: '고도',
   hzVisible: '보임', hzPartial: '일부 보임', hzBlocked: '지형에 가려짐', hzBelow: '지평선 아래',
   hzDisk: '원반', hzTrack: '궤적', hzCentre: '가운데 방향',
@@ -116,6 +116,7 @@ function computeTrack(site) {
 function status(site, body, i) {
   const p = body === 'sun' ? core.sunAzEl(site, i) : core.earthAzEl(site, i);
   const mask = core.horizonAt(site, p.az);
+  if (core.terrainPending(site)) return { ...p, mask, vis: false, frac: null, kind: 'pending' };
   let vis, frac = null;
   if (body === 'sun') { frac = core.sunVisibleFraction(site, i); vis = frac >= core.SUNLIT_FRACTION; }
   else vis = p.el > mask;
@@ -215,7 +216,7 @@ function draw() {
       const ty = off < 0 ? padT - 2 : padT + ph + 2, d = off < 0 ? 1 : -1;
       ctx.moveTo(x, ty); ctx.lineTo(x - r * .7, ty + d * r * .9); ctx.lineTo(x + r * .7, ty + d * r * .9); ctx.fill();
     }
-    const label = `${name} ${fmtDeg(p.el)}` + (p.vis ? '' : ` · ${t(p.kind === 'blocked' ? 'hzBlocked' : 'hzBelow')}`);
+    const label = `${name} ${fmtDeg(p.el)}` + (p.vis ? '' : ` · ${t(p.kind === 'pending' ? 'terrainPending' : p.kind === 'blocked' ? 'hzBlocked' : 'hzBelow')}`);
     ctx.font = `700 ${fs * 0.8}px ${C.font}`;
     const tw = ctx.measureText(label).width;
     let lx = Math.min(Math.max(x + r + 4, padL), padL + pw - tw);
@@ -250,10 +251,11 @@ function draw() {
 }
 
 function kindText(p) {
+  if (p.kind === 'pending') return t('terrainPending');
   if (p.kind === 'partial') return `${t('hzPartial')} ${Math.round(p.frac * 100)}% ${t('hzDisk')}`;
   return t({ visible: 'hzVisible', blocked: 'hzBlocked', below: 'hzBelow' }[p.kind]);
 }
-const plain = (p, nameKey) => `${t(nameKey)} ${t('hzEl')} ${fmtDeg(p.el)}, ${t('hzAt')} ${p.az.toFixed(0)}°, ${t('hzMask')} ${fmtDeg(p.mask)}: ${kindText(p)}`;
+const plain = (p, nameKey) => `${t(nameKey)} ${t('hzEl')} ${fmtDeg(p.el)}, ${t('hzAt')} ${p.az.toFixed(0)}°, ${t('hzMask')} ${p.kind === 'pending' ? '—' : fmtDeg(p.mask)}: ${kindText(p)}`;
 
 function readRow(p, body) {
   const col = body === 'sun' ? 'var(--sun)' : 'var(--earth)';
@@ -264,7 +266,7 @@ function readRow(p, body) {
   return `<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.3em .8em">
     <strong style="color:${col}">${t(body === 'sun' ? 'hzSun' : 'hzEarth')}</strong>
     <span style="font-family:var(--font-num);font-size:${body === 'sun' ? '1.6rem' : '1.2rem'};font-weight:700;color:${col}">${fmtDeg(p.el)}</span>
-    <span style="font-family:var(--font-num);color:var(--muted)">${t('hzAt')} ${p.az.toFixed(1)}° · ${t('hzMask')} ${fmtDeg(p.mask)}</span>
+    <span style="font-family:var(--font-num);color:var(--muted)">${t('hzAt')} ${p.az.toFixed(1)}° · ${t('hzMask')} ${p.kind === 'pending' ? '—' : fmtDeg(p.mask)}</span>
     ${chip}</div>`;
 }
 
@@ -273,7 +275,7 @@ function onHover(e) {
   const r = canvas.getBoundingClientRect(), x = e.clientX - r.left;
   if (x < geom.padL || x > geom.padL + geom.pw) { hoverLine.innerHTML = '&nbsp;'; return; }
   const az = ((geom.centre - 180 + (x - geom.padL) / geom.pw * 360) % 360 + 360) % 360;
-  hoverLine.textContent = `${t('hzAt')} ${az.toFixed(1)}° · ${t('hzMask')} ${fmtDeg(core.horizonAt(geom.site, az))}`;
+  hoverLine.textContent = `${t('hzAt')} ${az.toFixed(1)}° · ${t('hzMask')} ${core.terrainPending(geom.site) ? '—' : fmtDeg(core.horizonAt(geom.site, az))}`;
 }
 
 function niceStep(raw) {

@@ -1,0 +1,989 @@
+{
+ "generated_utc": "2026-11-14T06:13:13.453104+00:00",
+ "window": "2026-01-01T00Z..2030-12-31T23Z",
+ "hours": 43824,
+ "definition": "(same as the app, web/js/diff_data.js siteStationLink):\n  link hour at site S and station G  =  Earth CENTRE above S's terrain horizon mask (topocentric, 2 m observer)\n                                        AND apparent Moon centre >= 10 deg above G's ellipsoidal horizon.\nDirect link only: no relay, no link budget, no antenna schedule/availability.",
+ "sites": [
+  {
+   "id": "APOLLO11",
+   "name": "Apollo 11",
+   "lat": 0.67416,
+   "lon": 23.47314,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "APOLLO12",
+   "name": "Apollo 12",
+   "lat": -3.0128,
+   "lon": -23.4219,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "APOLLO14",
+   "name": "Apollo 14",
+   "lat": -3.64589,
+   "lon": -17.47194,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "APOLLO15",
+   "name": "Apollo 15",
+   "lat": 26.13239,
+   "lon": 3.6333,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "APOLLO16",
+   "name": "Apollo 16",
+   "lat": -8.9734,
+   "lon": 15.5011,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "APOLLO17",
+   "name": "Apollo 17",
+   "lat": 20.1911,
+   "lon": 30.7723,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "LUNA16",
+   "name": "Luna 16",
+   "lat": -0.5137,
+   "lon": 56.3638,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "LUNA20",
+   "name": "Luna 20",
+   "lat": 3.7863,
+   "lon": 56.6242,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "LUNA24",
+   "name": "Luna 24",
+   "lat": 12.7142,
+   "lon": 62.2129,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "CHANGE3",
+   "name": "Chang'e 3",
+   "lat": 44.1214,
+   "lon": -19.5116,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "CHANGE4",
+   "name": "Chang'e 4",
+   "lat": -45.4562,
+   "lon": 177.5885,
+   "earth_h": 0,
+   "kdsa_h": 0,
+   "dsn_h": 0,
+   "kdsa_only_h": 0,
+   "kdsa_share": null,
+   "dsn_share": null,
+   "kdsa_only_share": null
+  },
+  {
+   "id": "CHANGE5",
+   "name": "Chang'e 5",
+   "lat": 43.0576,
+   "lon": -51.9161,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "CHANGE6",
+   "name": "Chang'e 6",
+   "lat": -41.6385,
+   "lon": -153.9852,
+   "earth_h": 0,
+   "kdsa_h": 0,
+   "dsn_h": 0,
+   "kdsa_only_h": 0,
+   "kdsa_share": null,
+   "dsn_share": null,
+   "kdsa_only_share": null
+  },
+  {
+   "id": "CHANDRAYAAN3",
+   "name": "Chandrayaan-3",
+   "lat": -69.3741,
+   "lon": 32.32,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "SLIM",
+   "name": "SLIM",
+   "lat": -13.316,
+   "lon": 25.251,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "IM1",
+   "name": "IM-1 Odysseus",
+   "lat": -80.13,
+   "lon": 1.44,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "IM2",
+   "name": "IM-2 Athena",
+   "lat": -84.7906,
+   "lon": 29.1957,
+   "earth_h": 35682,
+   "kdsa_h": 15299,
+   "dsn_h": 35190,
+   "kdsa_only_h": 105,
+   "kdsa_share": 0.4288,
+   "dsn_share": 0.9862,
+   "kdsa_only_share": 0.00294
+  },
+  {
+   "id": "BLUE_GHOST1",
+   "name": "Blue Ghost Mission 1",
+   "lat": 18.562,
+   "lon": 61.81,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "ARTEMIS_CABEUS_B",
+   "name": "Peak near Cabeus B (region)",
+   "lat": -83.763,
+   "lon": -69.983,
+   "earth_h": 12988,
+   "kdsa_h": 6075,
+   "dsn_h": 12918,
+   "kdsa_only_h": 51,
+   "kdsa_share": 0.4677,
+   "dsn_share": 0.9946,
+   "kdsa_only_share": 0.00393
+  },
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "name": "Haworth (region)",
+   "lat": -86.768,
+   "lon": -20.514,
+   "earth_h": 25653,
+   "kdsa_h": 11507,
+   "dsn_h": 25416,
+   "kdsa_only_h": 90,
+   "kdsa_share": 0.4486,
+   "dsn_share": 0.9908,
+   "kdsa_only_share": 0.00351
+  },
+  {
+   "id": "ARTEMIS_MALAPERT",
+   "name": "Malapert Massif (region)",
+   "lat": -85.942,
+   "lon": -0.944,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  },
+  {
+   "id": "ARTEMIS_MOUTON_PLATEAU",
+   "name": "Mons Mouton Plateau (region)",
+   "lat": -85.111,
+   "lon": 26.71,
+   "earth_h": 25579,
+   "kdsa_h": 11474,
+   "dsn_h": 25343,
+   "kdsa_only_h": 90,
+   "kdsa_share": 0.4486,
+   "dsn_share": 0.9908,
+   "kdsa_only_share": 0.00352
+  },
+  {
+   "id": "ARTEMIS_MOUTON",
+   "name": "Mons Mouton (region)",
+   "lat": -85.416,
+   "lon": 31.851,
+   "earth_h": 26197,
+   "kdsa_h": 11703,
+   "dsn_h": 25946,
+   "kdsa_only_h": 91,
+   "kdsa_share": 0.4467,
+   "dsn_share": 0.9904,
+   "kdsa_only_share": 0.00347
+  },
+  {
+   "id": "ARTEMIS_NOBILE_RIM1",
+   "name": "Nobile Rim 1 (region)",
+   "lat": -85.295,
+   "lon": 36.917,
+   "earth_h": 29790,
+   "kdsa_h": 13118,
+   "dsn_h": 29462,
+   "kdsa_only_h": 96,
+   "kdsa_share": 0.4403,
+   "dsn_share": 0.989,
+   "kdsa_only_share": 0.00322
+  },
+  {
+   "id": "ARTEMIS_NOBILE_RIM2",
+   "name": "Nobile Rim 2 (region)",
+   "lat": -84.054,
+   "lon": 56.481,
+   "earth_h": 33747,
+   "kdsa_h": 14547,
+   "dsn_h": 33300,
+   "kdsa_only_h": 103,
+   "kdsa_share": 0.4311,
+   "dsn_share": 0.9868,
+   "kdsa_only_share": 0.00305
+  },
+  {
+   "id": "ARTEMIS_DE_GERLACHE_RIM2",
+   "name": "de Gerlache Rim 2 (region)",
+   "lat": -88.389,
+   "lon": -68.865,
+   "earth_h": 24220,
+   "kdsa_h": 10974,
+   "dsn_h": 24022,
+   "kdsa_only_h": 89,
+   "kdsa_share": 0.4531,
+   "dsn_share": 0.9918,
+   "kdsa_only_share": 0.00367
+  },
+  {
+   "id": "ARTEMIS_SLATER_PLAIN",
+   "name": "Slater Plain (region)",
+   "lat": -87.478,
+   "lon": 124.521,
+   "earth_h": 17429,
+   "kdsa_h": 8037,
+   "dsn_h": 17317,
+   "kdsa_only_h": 67,
+   "kdsa_share": 0.4611,
+   "dsn_share": 0.9936,
+   "kdsa_only_share": 0.00384
+  },
+  {
+   "id": "SHACKLETON_RIM",
+   "name": "Shackleton Rim (S)",
+   "lat": -89.6866,
+   "lon": -162.81,
+   "earth_h": 21887,
+   "kdsa_h": 9986,
+   "dsn_h": 21723,
+   "kdsa_only_h": 84,
+   "kdsa_share": 0.4563,
+   "dsn_share": 0.9925,
+   "kdsa_only_share": 0.00384
+  },
+  {
+   "id": "CONNECTING_RIDGE",
+   "name": "Connecting Ridge (R01)",
+   "lat": -89.4632,
+   "lon": -137.49,
+   "earth_h": 19234,
+   "kdsa_h": 8856,
+   "dsn_h": 19106,
+   "kdsa_only_h": 72,
+   "kdsa_share": 0.4604,
+   "dsn_share": 0.9933,
+   "kdsa_only_share": 0.00374
+  },
+  {
+   "id": "PEAK_NEAR_SHACKLETON",
+   "name": "Peak Near Shackleton (R07)",
+   "lat": -88.811,
+   "lon": 123.6901,
+   "earth_h": 24244,
+   "kdsa_h": 10948,
+   "dsn_h": 24042,
+   "kdsa_only_h": 85,
+   "kdsa_share": 0.4516,
+   "dsn_share": 0.9917,
+   "kdsa_only_share": 0.00351
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "name": "de Gerlache Rim 1 (R11)",
+   "lat": -88.6834,
+   "lon": -67.9321,
+   "earth_h": 25067,
+   "kdsa_h": 11291,
+   "dsn_h": 24849,
+   "kdsa_only_h": 90,
+   "kdsa_share": 0.4504,
+   "dsn_share": 0.9913,
+   "kdsa_only_share": 0.00359
+  },
+  {
+   "id": "SHOEMAKER_RIM_A",
+   "name": "Shoemaker Rim A (LM2)",
+   "lat": -88.0792,
+   "lon": 11.88866,
+   "earth_h": 19042,
+   "kdsa_h": 8669,
+   "dsn_h": 18905,
+   "kdsa_only_h": 68,
+   "kdsa_share": 0.4553,
+   "dsn_share": 0.9928,
+   "kdsa_only_share": 0.00357
+  },
+  {
+   "id": "IM3_REINER_GAMMA",
+   "name": "IM-3 / Lunar Vertex target",
+   "lat": 7.585,
+   "lon": -58.725,
+   "earth_h": 43824,
+   "kdsa_h": 18213,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "kdsa_share": 0.4156,
+   "dsn_share": 0.984,
+   "kdsa_only_share": 0.00281
+  }
+ ],
+ "earth_frac_vs_app_metrics_max_abs_diff": 0.0,
+ "horizons_random_100": [
+  {
+   "station": "KDSA",
+   "n": 100,
+   "max_deg": 0.001188533567489365,
+   "mean_deg": 0.0008941203639095866,
+   "max_el_diff_deg": 0.0009367881095478847
+  },
+  {
+   "station": "DSN_GOLDSTONE",
+   "n": 100,
+   "max_deg": 0.0012068893046771746,
+   "mean_deg": 0.000910352043932693,
+   "max_el_diff_deg": 0.0009789893862634429
+  },
+  {
+   "station": "DSN_MADRID",
+   "n": 100,
+   "max_deg": 0.0010498861158610782,
+   "mean_deg": 0.0007892252841847774,
+   "max_el_diff_deg": 0.000798150056133751
+  },
+  {
+   "station": "DSN_CANBERRA",
+   "n": 100,
+   "max_deg": 0.0010802939341183994,
+   "mean_deg": 0.0008117343512301049,
+   "max_el_diff_deg": 0.0008766173809933564
+  }
+ ],
+ "horizons_bits_all_hours": [
+  {
+   "station": "KDSA",
+   "hours": 43824,
+   "mismatched_hours": 1,
+   "max_abs_el_minus_10_at_mismatch_deg": 0.0007704979999996198,
+   "frac_visible_horizons": 0.4156,
+   "frac_visible_stations_json": 0.4156
+  },
+  {
+   "station": "DSN_GOLDSTONE",
+   "hours": 43824,
+   "mismatched_hours": 1,
+   "max_abs_el_minus_10_at_mismatch_deg": 0.00021555900000080896,
+   "frac_visible_horizons": 0.4175,
+   "frac_visible_stations_json": 0.4175
+  },
+  {
+   "station": "DSN_MADRID",
+   "hours": 43824,
+   "mismatched_hours": 0,
+   "max_abs_el_minus_10_at_mismatch_deg": 0.0,
+   "frac_visible_horizons": 0.4099,
+   "frac_visible_stations_json": 0.4099
+  },
+  {
+   "station": "DSN_CANBERRA",
+   "hours": 43824,
+   "mismatched_hours": 0,
+   "max_abs_el_minus_10_at_mismatch_deg": 0.0,
+   "frac_visible_horizons": 0.4193,
+   "frac_visible_stations_json": 0.4193
+  }
+ ],
+ "horizons_queries": [
+  {
+   "station": "KDSA",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27301%27&CENTER=%27coord%40399%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27127.62181206%2C37.20723347%2C0.145359%27&START_TIME=%272026-01-01+00%3A00%27&STOP_TIME=%272030-12-31+23%3A00%27&STEP_SIZE=%271+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+   "retrieved_utc": "2026-11-14T04:03:58.965185+00:00",
+   "header_radii": "6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}"
+  },
+  {
+   "station": "DSN_GOLDSTONE",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27301%27&CENTER=%27coord%40399%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-116.88953821%2C35.42590087%2C1.001390%27&START_TIME=%272026-01-01+00%3A00%27&STOP_TIME=%272030-12-31+23%3A00%27&STEP_SIZE=%271+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+   "retrieved_utc": "2026-11-14T04:04:02.019801+00:00",
+   "header_radii": "6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}"
+  },
+  {
+   "station": "DSN_MADRID",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27301%27&CENTER=%27coord%40399%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-4.24800854%2C40.43120975%2C0.864816%27&START_TIME=%272026-01-01+00%3A00%27&STOP_TIME=%272030-12-31+23%3A00%27&STEP_SIZE=%271+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+   "retrieved_utc": "2026-11-14T04:04:05.053598+00:00",
+   "header_radii": "6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}"
+  },
+  {
+   "station": "DSN_CANBERRA",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27301%27&CENTER=%27coord%40399%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27148.98126731%2C-35.40242423%2C0.688867%27&START_TIME=%272026-01-01+00%3A00%27&STOP_TIME=%272030-12-31+23%3A00%27&STEP_SIZE=%271+h%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+   "retrieved_utc": "2026-11-14T04:04:08.131899+00:00",
+   "header_radii": "6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}"
+  }
+ ],
+ "brute_force_5_sites": [
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "earth_h": 25653,
+   "kdsa_h": 11507,
+   "dsn_h": 25416,
+   "kdsa_only_h": 90,
+   "diff_vs_table_h": {
+    "earth_h": 0,
+    "kdsa_h": 0,
+    "dsn_h": 0,
+    "kdsa_only_h": 0
+   }
+  },
+  {
+   "id": "APOLLO17",
+   "earth_h": 43824,
+   "kdsa_h": 18214,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "diff_vs_table_h": {
+    "earth_h": 0,
+    "kdsa_h": 1,
+    "dsn_h": 0,
+    "kdsa_only_h": 0
+   }
+  },
+  {
+   "id": "CHANGE4",
+   "earth_h": 0,
+   "kdsa_h": 0,
+   "dsn_h": 0,
+   "kdsa_only_h": 0,
+   "diff_vs_table_h": {
+    "earth_h": 0,
+    "kdsa_h": 0,
+    "dsn_h": 0,
+    "kdsa_only_h": 0
+   }
+  },
+  {
+   "id": "SHACKLETON_RIM",
+   "earth_h": 21887,
+   "kdsa_h": 9986,
+   "dsn_h": 21723,
+   "kdsa_only_h": 84,
+   "diff_vs_table_h": {
+    "earth_h": 0,
+    "kdsa_h": 0,
+    "dsn_h": 0,
+    "kdsa_only_h": 0
+   }
+  },
+  {
+   "id": "IM1",
+   "earth_h": 43824,
+   "kdsa_h": 18214,
+   "dsn_h": 43123,
+   "kdsa_only_h": 123,
+   "diff_vs_table_h": {
+    "earth_h": 0,
+    "kdsa_h": 1,
+    "dsn_h": 0,
+    "kdsa_only_h": 0
+   }
+  }
+ ],
+ "schedule_30d_kst": {
+  "start_kst": "2026-11-14T00:00:00+09:00",
+  "resolution": "1 min",
+  "sites": {
+   "ARTEMIS_HAWORTH": {
+    "earth_visible_minutes": 21908,
+    "kdsa_link_minutes": 10179,
+    "days_kst": {
+     "2026-11-16": [
+      [
+       "18:09",
+       "21:54"
+      ]
+     ],
+     "2026-11-17": [
+      [
+       "14:07",
+       "22:58"
+      ]
+     ],
+     "2026-11-18": [
+      [
+       "14:29",
+       "24:00"
+      ]
+     ],
+     "2026-11-19": [
+      [
+       "00:00",
+       "00:02"
+      ],
+      [
+       "14:52",
+       "24:00"
+      ]
+     ],
+     "2026-11-20": [
+      [
+       "00:00",
+       "01:05"
+      ],
+      [
+       "15:16",
+       "24:00"
+      ]
+     ],
+     "2026-11-21": [
+      [
+       "00:00",
+       "02:10"
+      ],
+      [
+       "15:42",
+       "24:00"
+      ]
+     ],
+     "2026-11-22": [
+      [
+       "00:00",
+       "03:17"
+      ],
+      [
+       "16:13",
+       "24:00"
+      ]
+     ],
+     "2026-11-23": [
+      [
+       "00:00",
+       "04:27"
+      ],
+      [
+       "16:51",
+       "24:00"
+      ]
+     ],
+     "2026-11-24": [
+      [
+       "00:00",
+       "05:40"
+      ],
+      [
+       "17:37",
+       "24:00"
+      ]
+     ],
+     "2026-11-25": [
+      [
+       "00:00",
+       "06:54"
+      ],
+      [
+       "18:33",
+       "24:00"
+      ]
+     ],
+     "2026-11-26": [
+      [
+       "00:00",
+       "08:05"
+      ],
+      [
+       "19:39",
+       "24:00"
+      ]
+     ],
+     "2026-11-27": [
+      [
+       "00:00",
+       "09:09"
+      ],
+      [
+       "20:51",
+       "24:00"
+      ]
+     ],
+     "2026-11-28": [
+      [
+       "00:00",
+       "10:02"
+      ],
+      [
+       "22:04",
+       "24:00"
+      ]
+     ],
+     "2026-11-29": [
+      [
+       "00:00",
+       "10:46"
+      ],
+      [
+       "23:16",
+       "24:00"
+      ]
+     ],
+     "2026-11-30": [
+      [
+       "00:00",
+       "11:22"
+      ]
+     ],
+     "2026-12-01": [
+      [
+       "00:25",
+       "11:51"
+      ]
+     ],
+     "2026-12-13": [
+      [
+       "19:44",
+       "19:45"
+      ]
+     ]
+    }
+   },
+   "APOLLO17": {
+    "earth_visible_minutes": 43200,
+    "kdsa_link_minutes": 17157,
+    "days_kst": {
+     "2026-11-14": [
+      [
+       "12:41",
+       "19:46"
+      ]
+     ],
+     "2026-11-15": [
+      [
+       "13:15",
+       "20:50"
+      ]
+     ],
+     "2026-11-16": [
+      [
+       "13:42",
+       "21:54"
+      ]
+     ],
+     "2026-11-17": [
+      [
+       "14:07",
+       "22:58"
+      ]
+     ],
+     "2026-11-18": [
+      [
+       "14:29",
+       "24:00"
+      ]
+     ],
+     "2026-11-19": [
+      [
+       "00:00",
+       "00:02"
+      ],
+      [
+       "14:52",
+       "24:00"
+      ]
+     ],
+     "2026-11-20": [
+      [
+       "00:00",
+       "01:05"
+      ],
+      [
+       "15:16",
+       "24:00"
+      ]
+     ],
+     "2026-11-21": [
+      [
+       "00:00",
+       "02:10"
+      ],
+      [
+       "15:42",
+       "24:00"
+      ]
+     ],
+     "2026-11-22": [
+      [
+       "00:00",
+       "03:17"
+      ],
+      [
+       "16:13",
+       "24:00"
+      ]
+     ],
+     "2026-11-23": [
+      [
+       "00:00",
+       "04:27"
+      ],
+      [
+       "16:51",
+       "24:00"
+      ]
+     ],
+     "2026-11-24": [
+      [
+       "00:00",
+       "05:40"
+      ],
+      [
+       "17:37",
+       "24:00"
+      ]
+     ],
+     "2026-11-25": [
+      [
+       "00:00",
+       "06:54"
+      ],
+      [
+       "18:33",
+       "24:00"
+      ]
+     ],
+     "2026-11-26": [
+      [
+       "00:00",
+       "08:05"
+      ],
+      [
+       "19:39",
+       "24:00"
+      ]
+     ],
+     "2026-11-27": [
+      [
+       "00:00",
+       "09:09"
+      ],
+      [
+       "20:51",
+       "24:00"
+      ]
+     ],
+     "2026-11-28": [
+      [
+       "00:00",
+       "10:02"
+      ],
+      [
+       "22:04",
+       "24:00"
+      ]
+     ],
+     "2026-11-29": [
+      [
+       "00:00",
+       "10:46"
+      ],
+      [
+       "23:16",
+       "24:00"
+      ]
+     ],
+     "2026-11-30": [
+      [
+       "00:00",
+       "11:22"
+      ]
+     ],
+     "2026-12-01": [
+      [
+       "00:25",
+       "11:51"
+      ]
+     ],
+     "2026-12-02": [
+      [
+       "01:31",
+       "12:17"
+      ]
+     ],
+     "2026-12-03": [
+      [
+       "02:36",
+       "12:41"
+      ]
+     ],
+     "2026-12-04": [
+      [
+       "03:40",
+       "13:04"
+      ]
+     ],
+     "2026-12-05": [
+      [
+       "04:46",
+       "13:28"
+      ]
+     ],
+     "2026-12-06": [
+      [
+       "05:52",
+       "13:54"
+      ]
+     ],
+     "2026-12-07": [
+      [
+       "06:58",
+       "14:24"
+      ]
+     ],
+     "2026-12-08": [
+      [
+       "08:03",
+       "15:01"
+      ]
+     ],
+     "2026-12-09": [
+      [
+       "09:03",
+       "15:45"
+      ]
+     ],
+     "2026-12-10": [
+      [
+       "09:56",
+       "16:38"
+      ]
+     ],
+     "2026-12-11": [
+      [
+       "10:39",
+       "17:37"
+      ]
+     ],
+     "2026-12-12": [
+      [
+       "11:15",
+       "18:41"
+      ]
+     ],
+     "2026-12-13": [
+      [
+       "11:44",
+       "19:45"
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "verdicts": {
+  "horizons_az_el_lt_0.05deg": true,
+  "station_bits_match_except_threshold": true,
+  "brute_force_matches_table": true,
+  "earth_visibility_equals_app": true
+ }
+}

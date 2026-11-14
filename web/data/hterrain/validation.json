@@ -25,6 +25,8 @@
   },
   "lat_edge_deg": -75.0,
   "levels": [
+   "5 m to 3 km (only within 4 km of the 16 south-polar catalogue sites)",
+   "10 m to 3 km (only within 4 km of the 16 south-polar catalogue sites)",
    "20 m to 3 km (points \u2265 85.5\u00b0S)",
    "60 m to 3 km (points \u2265 75\u00b0S)",
    "240 m to 150 km (points \u2265 75\u00b0S)"
@@ -44,27 +46,27 @@
    },
    "80-85S": {
     "n": 14,
-    "rms_deg_median": 0.053,
-    "rms_deg_max": 0.177,
+    "rms_deg_median": 0.037,
+    "rms_deg_max": 0.163,
     "max_abs_deg_max": 0.799,
     "abs_sun_pp_median": 0.1,
-    "abs_sun_pp_max": 0.81,
-    "abs_earth_pp_median": 0.02,
+    "abs_sun_pp_max": 0.42,
+    "abs_earth_pp_median": 0.01,
     "abs_earth_pp_max": 0.49,
     "n_sun_over_target": 0,
     "meets_target": true
    },
    "85-90S": {
     "n": 22,
-    "rms_deg_median": 0.071,
-    "rms_deg_max": 0.32,
-    "max_abs_deg_max": 1.415,
-    "abs_sun_pp_median": 0.23,
-    "abs_sun_pp_max": 2.4,
-    "abs_earth_pp_median": 0.12,
-    "abs_earth_pp_max": 3.17,
-    "n_sun_over_target": 1,
-    "meets_target": false
+    "rms_deg_median": 0.028,
+    "rms_deg_max": 0.165,
+    "max_abs_deg_max": 0.658,
+    "abs_sun_pp_median": 0.1,
+    "abs_sun_pp_max": 0.36,
+    "abs_earth_pp_median": 0.08,
+    "abs_earth_pp_max": 0.51,
+    "n_sun_over_target": 0,
+    "meets_target": true
    }
   },
   "bands_before": {

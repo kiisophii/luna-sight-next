@@ -7,6 +7,24 @@
  "ephem_window": "2026-01-01..2030-12-31, 2 h step",
  "polar_levels": [
   {
+   "name": "p5",
+   "source": "PGDA native 5 m, sparse catalogue-region near field",
+   "res_m": 5,
+   "q_m": 0.25,
+   "to_km": 3.0,
+   "lat_edge_deg": -75.0,
+   "bytes": 9875323
+  },
+  {
+   "name": "p10",
+   "source": "PGDA native 10 m, sparse catalogue-region near field",
+   "res_m": 10,
+   "q_m": 0.25,
+   "to_km": 3.0,
+   "lat_edge_deg": -75.0,
+   "bytes": 10009650
+  },
+  {
    "name": "p20",
    "source": "PGDA LDEM_80S_20MPP_ADJ.TIF",
    "res_m": 20,
@@ -180,24 +198,24 @@
   "after": {
    "catalogue_16": {
     "n": 16,
-    "rms_deg_median": 0.085,
-    "rms_deg_max": 0.177,
-    "max_abs_deg_max": 0.794,
-    "abs_sun_pp_median": 0.3,
-    "abs_sun_pp_max": 2.4,
-    "abs_earth_pp_median": 0.16,
-    "abs_earth_pp_max": 3.17,
-    "n_sun_over_target": 1,
-    "meets_target": false
+    "rms_deg_median": 0.027,
+    "rms_deg_max": 0.085,
+    "max_abs_deg_max": 0.377,
+    "abs_sun_pp_median": 0.08,
+    "abs_sun_pp_max": 0.33,
+    "abs_earth_pp_median": 0.05,
+    "abs_earth_pp_max": 0.51,
+    "n_sun_over_target": 0,
+    "meets_target": true
    },
    "random_30": {
     "n": 30,
     "rms_deg_median": 0.027,
-    "rms_deg_max": 0.32,
-    "max_abs_deg_max": 1.415,
+    "rms_deg_max": 0.165,
+    "max_abs_deg_max": 0.799,
     "abs_sun_pp_median": 0.06,
-    "abs_sun_pp_max": 0.43,
-    "abs_earth_pp_median": 0.02,
+    "abs_sun_pp_max": 0.42,
+    "abs_earth_pp_median": 0.01,
     "abs_earth_pp_max": 0.49,
     "n_sun_over_target": 0,
     "meets_target": true
@@ -240,12 +258,12 @@
    },
    "all_80-85S": {
     "n": 14,
-    "rms_deg_median": 0.053,
-    "rms_deg_max": 0.177,
+    "rms_deg_median": 0.037,
+    "rms_deg_max": 0.163,
     "max_abs_deg_max": 0.799,
     "abs_sun_pp_median": 0.1,
-    "abs_sun_pp_max": 0.81,
-    "abs_earth_pp_median": 0.02,
+    "abs_sun_pp_max": 0.42,
+    "abs_earth_pp_median": 0.01,
     "abs_earth_pp_max": 0.49,
     "n_sun_over_target": 0,
     "meets_target": true
@@ -253,10 +271,10 @@
    "random_85-90S": {
     "n": 10,
     "rms_deg_median": 0.03,
-    "rms_deg_max": 0.32,
-    "max_abs_deg_max": 1.415,
+    "rms_deg_max": 0.165,
+    "max_abs_deg_max": 0.658,
     "abs_sun_pp_median": 0.14,
-    "abs_sun_pp_max": 0.43,
+    "abs_sun_pp_max": 0.36,
     "abs_earth_pp_median": 0.07,
     "abs_earth_pp_max": 0.29,
     "n_sun_over_target": 0,
@@ -264,15 +282,15 @@
    },
    "all_85-90S": {
     "n": 22,
-    "rms_deg_median": 0.071,
-    "rms_deg_max": 0.32,
-    "max_abs_deg_max": 1.415,
-    "abs_sun_pp_median": 0.23,
-    "abs_sun_pp_max": 2.4,
-    "abs_earth_pp_median": 0.12,
-    "abs_earth_pp_max": 3.17,
-    "n_sun_over_target": 1,
-    "meets_target": false
+    "rms_deg_median": 0.028,
+    "rms_deg_max": 0.165,
+    "max_abs_deg_max": 0.658,
+    "abs_sun_pp_median": 0.1,
+    "abs_sun_pp_max": 0.36,
+    "abs_earth_pp_median": 0.08,
+    "abs_earth_pp_max": 0.51,
+    "n_sun_over_target": 0,
+    "meets_target": true
    }
   }
  },
@@ -1097,18 +1115,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.32,
-    "max_abs_deg": 1.415,
-    "bias_deg": -0.169,
-    "h0_diff_m": 0.2,
-    "sun_pp": 0.43,
-    "earth_pp": 0.03,
-    "both_pp": 0.19
+    "rms_deg": 0.057,
+    "max_abs_deg": 0.229,
+    "bias_deg": 0.006,
+    "h0_diff_m": 0.0,
+    "sun_pp": 0.31,
+    "earth_pp": -0.02,
+    "both_pp": 0.11
    },
    "before": {
     "rms_deg": 4.031,
@@ -1434,18 +1452,18 @@
     "PGDA_LOLA_240M"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 192.93 km"
    ],
    "after": {
-    "rms_deg": 0.027,
-    "max_abs_deg": 0.106,
-    "bias_deg": -0.021,
-    "h0_diff_m": -0.1,
-    "sun_pp": 0.06,
+    "rms_deg": 0.014,
+    "max_abs_deg": 0.05,
+    "bias_deg": -0.009,
+    "h0_diff_m": 0.0,
+    "sun_pp": 0.04,
     "earth_pp": 0.17,
-    "both_pp": 0.15
+    "both_pp": 0.12
    },
    "before": {
     "rms_deg": 0.364,
@@ -1472,18 +1490,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.177,
-    "max_abs_deg": 0.527,
-    "bias_deg": -0.124,
-    "h0_diff_m": 0.1,
-    "sun_pp": 0.81,
-    "earth_pp": 0.16,
-    "both_pp": 0.45
+    "rms_deg": 0.03,
+    "max_abs_deg": 0.092,
+    "bias_deg": 0.012,
+    "h0_diff_m": -0.1,
+    "sun_pp": -0.1,
+    "earth_pp": 0.02,
+    "both_pp": -0.03
    },
    "before": {
     "rms_deg": 0.932,
@@ -1511,18 +1529,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 274.35 km"
    ],
    "after": {
-    "rms_deg": 0.177,
-    "max_abs_deg": 0.794,
-    "bias_deg": -0.088,
-    "h0_diff_m": 0.1,
-    "sun_pp": 0.54,
-    "earth_pp": 3.17,
-    "both_pp": 1.98
+    "rms_deg": 0.033,
+    "max_abs_deg": 0.153,
+    "bias_deg": -0.01,
+    "h0_diff_m": 0.0,
+    "sun_pp": 0.12,
+    "earth_pp": -0.08,
+    "both_pp": -0.01
    },
    "before": {
     "rms_deg": 0.748,
@@ -1549,18 +1567,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.063,
-    "max_abs_deg": 0.327,
-    "bias_deg": -0.005,
-    "h0_diff_m": -0.1,
-    "sun_pp": 0.18,
+    "rms_deg": 0.032,
+    "max_abs_deg": 0.159,
+    "bias_deg": -0.011,
+    "h0_diff_m": -0.0,
+    "sun_pp": 0.09,
     "earth_pp": 0.0,
-    "both_pp": 0.18
+    "both_pp": 0.09
    },
    "before": {
     "rms_deg": 1.382,
@@ -1586,18 +1604,18 @@
     "PGDA_LOLA_240M"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 161.79 km"
    ],
    "after": {
-    "rms_deg": 0.05,
-    "max_abs_deg": 0.209,
-    "bias_deg": -0.03,
-    "h0_diff_m": -0.2,
-    "sun_pp": 0.17,
-    "earth_pp": 0.16,
-    "both_pp": 0.16
+    "rms_deg": 0.019,
+    "max_abs_deg": 0.09,
+    "bias_deg": -0.012,
+    "h0_diff_m": 0.1,
+    "sun_pp": 0.05,
+    "earth_pp": 0.01,
+    "both_pp": 0.01
    },
    "before": {
     "rms_deg": 0.855,
@@ -1624,18 +1642,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.078,
-    "max_abs_deg": 0.327,
-    "bias_deg": 0.034,
-    "h0_diff_m": -1.0,
-    "sun_pp": -0.33,
-    "earth_pp": -0.6,
-    "both_pp": -0.62
+    "rms_deg": 0.019,
+    "max_abs_deg": 0.11,
+    "bias_deg": -0.004,
+    "h0_diff_m": -0.0,
+    "sun_pp": 0.1,
+    "earth_pp": -0.08,
+    "both_pp": -0.0
    },
    "before": {
     "rms_deg": 2.818,
@@ -1662,18 +1680,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.092,
-    "max_abs_deg": 0.311,
-    "bias_deg": -0.0,
-    "h0_diff_m": -0.6,
-    "sun_pp": 0.26,
-    "earth_pp": 0.53,
-    "both_pp": 0.57
+    "rms_deg": 0.027,
+    "max_abs_deg": 0.15,
+    "bias_deg": 0.001,
+    "h0_diff_m": -0.0,
+    "sun_pp": -0.04,
+    "earth_pp": -0.19,
+    "both_pp": -0.2
    },
    "before": {
     "rms_deg": 0.574,
@@ -1699,18 +1717,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 60 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 10 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 274.35 km"
    ],
    "after": {
     "rms_deg": 0.027,
-    "max_abs_deg": 0.136,
-    "bias_deg": -0.009,
-    "h0_diff_m": -0.7,
-    "sun_pp": 0.02,
-    "earth_pp": -0.28,
-    "both_pp": -0.13
+    "max_abs_deg": 0.135,
+    "bias_deg": -0.01,
+    "h0_diff_m": -0.0,
+    "sun_pp": 0.04,
+    "earth_pp": -0.03,
+    "both_pp": 0.03
    },
    "before": {
     "rms_deg": 4.866,
@@ -1737,18 +1755,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 274.35 km"
    ],
    "after": {
-    "rms_deg": 0.062,
-    "max_abs_deg": 0.19,
-    "bias_deg": -0.025,
-    "h0_diff_m": -0.1,
-    "sun_pp": -0.18,
-    "earth_pp": -0.13,
-    "both_pp": -0.16
+    "rms_deg": 0.033,
+    "max_abs_deg": 0.121,
+    "bias_deg": 0.014,
+    "h0_diff_m": -0.0,
+    "sun_pp": -0.1,
+    "earth_pp": -0.16,
+    "both_pp": -0.13
    },
    "before": {
     "rms_deg": 0.924,
@@ -1775,18 +1793,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 274.35 km"
    ],
    "after": {
-    "rms_deg": 0.044,
-    "max_abs_deg": 0.195,
-    "bias_deg": -0.028,
+    "rms_deg": 0.027,
+    "max_abs_deg": 0.111,
+    "bias_deg": -0.021,
     "h0_diff_m": 0.1,
-    "sun_pp": 0.27,
-    "earth_pp": -0.11,
-    "both_pp": 0.04
+    "sun_pp": 0.29,
+    "earth_pp": 0.07,
+    "both_pp": 0.12
    },
    "before": {
     "rms_deg": 1.018,
@@ -1812,18 +1830,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.105,
-    "max_abs_deg": 0.52,
-    "bias_deg": -0.054,
-    "h0_diff_m": 0.3,
-    "sun_pp": 1.22,
-    "earth_pp": 0.06,
-    "both_pp": 0.53
+    "rms_deg": 0.029,
+    "max_abs_deg": 0.108,
+    "bias_deg": -0.003,
+    "h0_diff_m": -0.1,
+    "sun_pp": -0.02,
+    "earth_pp": 0.03,
+    "both_pp": -0.02
    },
    "before": {
     "rms_deg": 1.647,
@@ -1849,18 +1867,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.094,
-    "max_abs_deg": 0.29,
-    "bias_deg": 0.055,
-    "h0_diff_m": -0.2,
-    "sun_pp": -0.98,
-    "earth_pp": -0.2,
-    "both_pp": -0.71
+    "rms_deg": 0.038,
+    "max_abs_deg": 0.201,
+    "bias_deg": -0.017,
+    "h0_diff_m": 0.1,
+    "sun_pp": 0.33,
+    "earth_pp": 0.51,
+    "both_pp": 0.48
    },
    "before": {
     "rms_deg": 1.825,
@@ -1886,18 +1904,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.141,
-    "max_abs_deg": 0.413,
-    "bias_deg": -0.086,
-    "h0_diff_m": 0.1,
-    "sun_pp": 2.4,
-    "earth_pp": 0.28,
-    "both_pp": 1.66
+    "rms_deg": 0.027,
+    "max_abs_deg": 0.112,
+    "bias_deg": -0.005,
+    "h0_diff_m": 0.0,
+    "sun_pp": 0.08,
+    "earth_pp": -0.1,
+    "both_pp": 0.03
    },
    "before": {
     "rms_deg": 0.753,
@@ -1923,18 +1941,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 300 km"
    ],
    "after": {
-    "rms_deg": 0.098,
-    "max_abs_deg": 0.559,
-    "bias_deg": -0.033,
-    "h0_diff_m": -0.1,
-    "sun_pp": 0.39,
+    "rms_deg": 0.025,
+    "max_abs_deg": 0.092,
+    "bias_deg": -0.003,
+    "h0_diff_m": 0.0,
+    "sun_pp": -0.01,
     "earth_pp": 0.0,
-    "both_pp": 0.16
+    "both_pp": 0.01
    },
    "before": {
     "rms_deg": 0.879,
@@ -1961,18 +1979,18 @@
     "LDEM_64"
    ],
    "browser_dems": [
-    "PGDA 20 m (browser, 0.25 m steps) to 3 km",
+    "PGDA 5 m (browser, 0.25 m steps) to 3 km",
     "PGDA 240 m (browser, 0.5 m steps) to 149.8 km",
     "LDEM_16 (browser) to 230.06 km"
    ],
    "after": {
-    "rms_deg": 0.084,
-    "max_abs_deg": 0.341,
-    "bias_deg": 0.028,
-    "h0_diff_m": 0.0,
-    "sun_pp": 0.08,
+    "rms_deg": 0.026,
+    "max_abs_deg": 0.141,
+    "bias_deg": 0.002,
+    "h0_diff_m": -0.0,
+    "sun_pp": 0.0,
     "earth_pp": 0.0,
-    "both_pp": 0.0
+    "both_pp": 0.02
    },
    "before": {
     "rms_deg": 1.654,

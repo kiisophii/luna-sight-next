@@ -1,0 +1,167 @@
+{
+  "recorded_task_start_utc": "2026-11-14T06:30:20Z",
+  "task_start_note": "First recorded tool phase; request-receipt timestamp unavailable.",
+  "production": {
+    "start_epoch": 1794638854.4136045,
+    "end_epoch": 1794639267.1425834,
+    "complete": true,
+    "runs": [
+      {
+        "start_epoch": 1794638855.1321213,
+        "end_epoch": 1794638919.5848086,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "SHACKLETON_RIM",
+            "complete": true,
+            "elapsed_s": 64.45299999997951,
+            "computed": 429,
+            "resumed": 12
+          }
+        ]
+      },
+      {
+        "start_epoch": 1794638920.2399502,
+        "end_epoch": 1794638990.0893893,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "ARTEMIS_HAWORTH",
+            "complete": true,
+            "elapsed_s": 69.85999999998603,
+            "computed": 441,
+            "resumed": 0
+          }
+        ]
+      },
+      {
+        "start_epoch": 1794638990.764263,
+        "end_epoch": 1794639055.361709,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "ARTEMIS_MALAPERT",
+            "complete": true,
+            "elapsed_s": 64.59299999999348,
+            "computed": 441,
+            "resumed": 0
+          }
+        ]
+      },
+      {
+        "start_epoch": 1794639056.0588317,
+        "end_epoch": 1794639126.104693,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "CONNECTING_RIDGE",
+            "complete": true,
+            "elapsed_s": 70.04700000002049,
+            "computed": 441,
+            "resumed": 0
+          }
+        ]
+      },
+      {
+        "start_epoch": 1794639126.7654593,
+        "end_epoch": 1794639198.533347,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "PEAK_NEAR_SHACKLETON",
+            "complete": true,
+            "elapsed_s": 71.76500000001397,
+            "computed": 441,
+            "resumed": 0
+          }
+        ]
+      },
+      {
+        "start_epoch": 1794639199.1867154,
+        "end_epoch": 1794639267.1045563,
+        "jobs": 12,
+        "runs": [
+          {
+            "id": "DE_GERLACHE_RIM1",
+            "complete": true,
+            "elapsed_s": 67.90700000000652,
+            "computed": 441,
+            "resumed": 0
+          }
+        ]
+      }
+    ]
+  },
+  "production_wall_s": 412.7289788722992,
+  "benchmark_first_12_points_wall_s": 11.797,
+  "parallel_download_wall_s": 680.5159025192261,
+  "download_note": "Parallel replacement phase only; excludes earlier serial attempt. Download and implementation/production overlapped, so do not add these durations.",
+  "unchanged_input_resume": {
+    "start_epoch": 1794639480.8403416,
+    "end_epoch": 1794639490.0413396,
+    "jobs": 12,
+    "runs": [
+      {
+        "id": "SHACKLETON_RIM",
+        "complete": true,
+        "elapsed_s": 1.562000000034459,
+        "computed": 0,
+        "resumed": 441
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "complete": true,
+        "elapsed_s": 1.5160000000032596,
+        "computed": 0,
+        "resumed": 441
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "complete": true,
+        "elapsed_s": 1.4219999999622814,
+        "computed": 0,
+        "resumed": 441
+      },
+      {
+        "id": "CONNECTING_RIDGE",
+        "complete": true,
+        "elapsed_s": 1.562000000034459,
+        "computed": 0,
+        "resumed": 441
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "complete": true,
+        "elapsed_s": 1.562999999965541,
+        "computed": 0,
+        "resumed": 441
+      },
+      {
+        "id": "DE_GERLACHE_RIM1",
+        "complete": true,
+        "elapsed_s": 1.562000000034459,
+        "computed": 0,
+        "resumed": 441
+      }
+    ]
+  },
+  "resume_wall_s": 9.200998067855835,
+  "workers": 12,
+  "priority": "BelowNormal",
+  "numerical_threads_per_worker": 1,
+  "independent_validation": {
+    "started_utc": "2026-11-14T06:58:23.745224+00:00",
+    "finished_utc": "2026-11-14T06:59:27.606741+00:00",
+    "complete": true,
+    "passed": true
+  },
+  "verification_wall_s": 63.861517,
+  "validation_summary": {
+    "points": 5,
+    "max_fraction_difference_pp": 0.0022818546914937787,
+    "max_longest_dark_difference_h": 0,
+    "tests_passed": 137,
+    "contract_errors": 0,
+    "contract_warnings": 0
+  }
+}

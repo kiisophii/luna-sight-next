@@ -110,3 +110,7 @@ Reuses the cited PGDA 5/10/20/60/80/240 m and LOLA global sources above, without
 The five local terrain diagnostics use the existing SLDEM2015 512 ppd caches (~59.23 m north-south), not a 5 m DEM. Ray minimum distance is distinct from pixel resolution. Original-cache SHA256, supporting-pixel heights, eight-neighbour residuals and any in-memory candidate-replacement sensitivity are recorded. The outlier heuristic is not physical terrain validation. Production DEMs/horizons/metrics are unchanged.
 
 The polar uncertainty public schema now follows Sua branch s3-uncert-nonpolar-sua at 30c64f6 (nodes/ranges/n_nodes). This branch owns only 16 south-polar outputs; the 17 nonpolar outputs remain with Sua.
+
+### Task C full station/window/link recheck (Jiyong, 2026-11-15)
+
+Station coordinates re-read from NAIF https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf and DSN 810-005 module301 RevP Table5 p16 https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf (download hashes in docs/task_c_check.json). Reuses the cited original de440s.bsp (Skyfield1.54 builtin timescale), production ephem.bin and catalogue horizons; independent minute-grid root/peak search and link-composition loops, not an independent ephemeris model. Raw PDF/kernel coordinate files and monthly arrays remain ignored.

@@ -1,4 +1,22 @@
 {
- "ids": [],
+ "ids": [
+  "APOLLO11",
+  "APOLLO12",
+  "APOLLO14",
+  "APOLLO15",
+  "APOLLO16",
+  "APOLLO17",
+  "BLUE_GHOST1",
+  "CHANDRAYAAN3",
+  "CHANGE3",
+  "CHANGE4",
+  "CHANGE5",
+  "CHANGE6",
+  "IM3_REINER_GAMMA",
+  "LUNA16",
+  "LUNA20",
+  "LUNA24",
+  "SLIM"
+ ],
  "note": "Sites with a computed horizon in horizon/<ID>.json. Written by pipeline/run_horizons.py (or --index-only)."
 }

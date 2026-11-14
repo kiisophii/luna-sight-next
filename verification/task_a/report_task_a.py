@@ -15,7 +15,12 @@ records=[]
 missing=[]
 for site in sites:
     p=out/(site['id']+'.json')
-    if p.exists(): records.append(json.loads(p.read_text()))
+    if p.exists():
+        result=json.loads(p.read_text())
+        ref=root/'web/data/horizon'/(site['id']+'.json')
+        if result['stored_sha256']!=hashlib.sha256(ref.read_bytes()).hexdigest():
+            raise ValueError('Reference horizon changed: '+site['id'])
+        records.append(result)
     else: missing.append(site['id'])
 fields=['id','azimuth_deg','stored_deg','independent_deg','difference_deg','pass_0_05_deg','peak_distance_m']
 for filename,sampled in [('all_23760_angles.csv',False),('requested_330_random_angles.csv',True)]:
@@ -37,6 +42,8 @@ summary=dict(complete=len(records)==33,sites_completed=len(records),sites_missin
     passed=len(records)==33 and not fail_angles and not fail_sun,
     input_commit=records[0]['input_commit'] if records else None,
     checker='Minchul Kim',verification_scope='All 33 sites, all 720 published azimuth bins; full 43824-hour sunlight per site; independent finite-step brute force on original DEMs; no production imports')
+summary['previous_run_id']=os.environ.get('LLSN_PREVIOUS_RUN_ID')
+summary['current_run_id']=os.environ.get('GITHUB_RUN_ID')
 (dest/'summary.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
 (dest/'results.json').write_text(json.dumps(records,indent=2)+'\n',encoding='utf-8')
 lines=['# Task A — full independent horizon recomputation','',
@@ -44,6 +51,7 @@ lines=['# Task A — full independent horizon recomputation','',
     'All 720 azimuth bins at every site are compared. The requested seeded 10 random bins per site are an additional CSV, not the whole verification scope. Sunlight uses all 43,824 hourly ephemeris vectors and the complete newly recomputed masks at all 33 sites, expanding the prompt’s ambiguous ten-site wording.','',
     'Observer height: 2 m above independently sampled terrain. Radius: 1737.4 km. Exact spherical curvature, east-positive longitude, north-clockwise azimuth. Original source priority/range and near-field cutoff follow each published header (5 m polar; 200 m non-polar). No flat substitute and no early stop. Uniform native-resolution-based distance segments are recorded in the checker; finite step sizes do not establish an exact continuous maximum.','',
     'Thresholds: every absolute angle difference <= 0.05 degrees; absolute sunlight difference <= 1 percentage point. Strict comparisons use unrounded values. Failed and missing sites are retained.','',
+    'Execution provenance: the 17 non-polar results were completed in GitHub run 43649858746 with checker commit 537c358. The subsequent run resumes those exact results and computes the 16 polar sites after removing a query suffix rejected by PGDA. The geometry/sampling code is unchanged. Input horizon SHA-256 is checked again for every retained result. Earlier non-polar failures are retained, not discarded or recalculated to force a PASS.','',
     '| Site | Rays | Max angle difference (deg) | Median (deg) | Failing rays | Stored Sun fraction | Own Sun fraction | Sun difference (pp) |',
     '|---|---:|---:|---:|---:|---:|---:|---:|']
 byid={r['id']:r for r in records}

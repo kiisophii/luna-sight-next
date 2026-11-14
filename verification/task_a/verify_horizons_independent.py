@@ -217,7 +217,7 @@ class RemoteTIFF(io.RawIOBase):
             elif p.exists():
                 b = p.read_bytes()
             else:
-                with self.http.get(self.url+f'?range={begin}-{end}', headers={'Range': f'bytes={begin}-{end}'},
+                with self.http.get(self.url, headers={'Range': f'bytes={begin}-{end}'},
                          stream=True, timeout=(20, 180)) as r:
                     r.raise_for_status()
                     if r.status_code != 206 or r.headers.get('Content-Range') != f'bytes {begin}-{end}/{self.length}':
@@ -617,6 +617,9 @@ def main():
                 elif name == 'SLDEM2015':
                     sldem_window(s)
     if args.run:
+        if (OUT/'errors.json').exists():
+            atomic(OUT/'previous_run_errors.json',json.loads((OUT/'errors.json').read_text()))
+        atomic(OUT/'errors.json',[])
         RAW.mkdir(parents=True,exist_ok=True)
         for ppd in (64,16):
             f=RAW/f'ldem_{ppd}_float.lbl'

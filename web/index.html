@@ -17,6 +17,28 @@
 </header>
 <div class="mock-banner" role="status" data-i18n="mock"></div>
 <main>
+  <!-- 0. whole-Moon 3D globe (globe3d.js via globe_app.js): selected time = real Sun light; site clicks <-> picker/cards -->
+  <section id="llsn-globe" class="panel globe-panel" data-i18n-aria="glTitle">
+    <div class="panel-head">
+      <h2 data-i18n="glTitle">3D Moon</h2>
+      <div class="gl-views seg" role="group" data-i18n-aria="glViews">
+        <button type="button" data-view="whole" data-i18n="glWhole">Whole Moon</button><button type="button" data-view="south" data-i18n="glSouth">South pole</button><button type="button" data-view="focus" data-i18n="glFocus">Focused site</button>
+      </div>
+    </div>
+    <div id="globe-stage" class="globe-stage">
+      <div class="gl-progress" role="status" hidden><span class="bar"></span><span class="txt"></span></div>
+      <div class="gl-zoom"><button type="button" data-zoom="in" data-i18n-aria="glZoomIn">+</button><button type="button" data-zoom="out" data-i18n-aria="glZoomOut">−</button></div>
+      <p class="gl-hint" role="status" hidden></p>
+    </div>
+    <div class="gl-time">
+      <button id="gl-play" type="button" aria-pressed="false">Play</button>
+      <input id="gl-slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="time">
+      <strong id="gl-time" class="num"></strong>
+      <a class="now-link" href="#llsn-window" data-i18n="glToAnalysis">Analysis window ↓</a>
+    </div>
+    <p class="hint" data-i18n="glHint"></p>
+  </section>
+
   <!-- 1. site picker + 3-card comparison -->
   <section id="picker" class="panel" data-i18n-aria="pkTitle">
     <div class="panel-head">

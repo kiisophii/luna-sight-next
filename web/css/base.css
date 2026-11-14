@@ -141,3 +141,29 @@ footer a { color: var(--earth); }
 .row .big .value:not(.na) { font-size: calc(var(--fs-big) * .75); white-space: nowrap; }
 html.tv .row .big .value:not(.na) { font-size: calc(var(--fs-big) * .7); }
 html.tv .card h3 { font-size: 1.2rem; }
+
+/* 0. whole-Moon 3D globe (integrator, phase 4) */
+.globe-panel .panel-head { align-items: center; }
+.globe-stage { position: relative; height: min(72vh, 820px); min-height: 340px; margin-top: calc(var(--gap) * .5);
+  border-radius: 10px; overflow: hidden; background: #000; }
+html.tv .globe-stage { height: calc(100vh - 13rem); min-height: 480px; }
+.globe-stage.failed { display: flex; align-items: center; justify-content: center; height: 8em; min-height: 0; }
+.globe-stage .gl-progress { position: absolute; z-index: 3; top: 0; left: 0; right: 0; pointer-events: none; }
+.globe-stage .gl-progress .bar { display: block; height: 3px; background: linear-gradient(90deg, transparent, var(--sun), transparent);
+  background-size: 40% 100%; background-repeat: no-repeat; animation: gl-slide 1.2s linear infinite; }
+.globe-stage .gl-progress .txt { position: absolute; top: 8px; right: 10px; font-size: .75rem; color: var(--muted);
+  background: #000a; padding: .1em .6em; border-radius: 999px; font-family: var(--font-num); }
+@keyframes gl-slide { from { background-position: -40% 0; } to { background-position: 140% 0; } }
+@media (prefers-reduced-motion: reduce) { .globe-stage .gl-progress .bar { animation: none; background: var(--sun); opacity: .5; } }
+.globe-stage .gl-zoom { position: absolute; z-index: 3; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 6px; }
+.globe-stage .gl-zoom button { width: 2.2em; height: 2.2em; padding: 0; font-size: 1.1rem; font-weight: 700; background: #000b; }
+.globe-stage .gl-hint { position: absolute; z-index: 3; left: 50%; top: 40%; transform: translateX(-50%); margin: 0; pointer-events: none;
+  background: #000d; color: var(--text); padding: .5em 1em; border-radius: 10px; font-size: .9rem; text-align: center; max-width: 90%; }
+.globe-stage.failed .gl-hint { position: static; transform: none; }
+.gl-time { display: flex; flex-wrap: wrap; align-items: center; gap: .5em var(--gap); margin-top: calc(var(--gap) * .6); }
+.gl-time input[type=range] { flex: 1 1 260px; accent-color: var(--sun); }
+.gl-time #gl-time { font-size: 1.05rem; }
+#gl-play[aria-pressed="true"] { background: var(--sun); color: var(--sun-ink); border-color: var(--sun); }
+html.tv .globe-stage .g3-site, html.tv .globe-stage .g3-label, html.tv .globe-stage .g3-chip { font-size: 18px; }
+html.tv .globe-stage .g3-note { font-size: 17px; }
+html.tv .globe-stage .g3-hud { font-size: 15px; }

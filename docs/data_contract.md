@@ -134,3 +134,15 @@ Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Eart
 every other site uses a flat 0° mask labelled **"Terrain pending"** (not counted as mock). Written automatically at the end of
 `pipeline/run_horizons.py`; after merging horizon PRs run `python pipeline/run_horizons.py --index-only`.
 `check_contract.py` errors if the index and the files disagree. If the index is missing, the app tries every horizon file (old behaviour).
+
+## 12. Proposed v1.2 — `web/data/hterrain/` browser height tiles for user-defined sites (2026-11-14, Sua) — NOT yet agreed; sections 0–11 unchanged
+Written by `python pipeline/build_custom_terrain.py --ldem64 … --ldem16 …`; read by `web/js/hterrain.js` (Web Worker `custom_horizon_worker.js`).
+| File | Content |
+|---|---|
+| `index.json` | `grids.near` = LDEM_64 block-mean 2×2 → 32 px/deg (947.6 m), 15° tiles, used to 150 km; `grids.far` = LDEM_16 (1895 m), 30° tiles, 150–300 km. Each grid: `ppd, tile_deg, n (= ppd·tile_deg + 1), nx, ny, res_m, to_km, source`. `url` = `tiles/{grid}/{ty}_{tx}.i16.gz`, `overview` = `overview.png`, `mock` |
+| `tiles/<grid>/<ty>_<tx>.i16.gz` | gzip of `n × n` int16 LE heights (m above 1737.4 km, rounded to 1 m), each row delta-coded along the row. Global pixel centres `lat = 90 − (r+0.5)/ppd`, `lon = −180 + (c+0.5)/ppd`; tile (ty, tx) = rows `ty·(n−1)…`, cols `tx·(n−1)…` (one shared row/column with the next tile; columns wrap at the dateline, the last row is clamped at the south pole) |
+| `overview.png` | 1024 × 512 grey shaded relief (from LDEM_16), display only (click-to-pick mini map) |
+| `validation.json` | summary written by `pipeline/validate_custom_horizon.py` (full report: `docs/custom_horizon_validation.json`), shown next to the resolution label |
+
+A custom site's horizon object in the app = section 3 fields + `"browser": true`; it is never written to `web/data/horizon/`.
+Its id is `USER_<N|S><lat>_<E|W><lon>` with `P` for the decimal point (e.g. `USER_S85P942_W0P944`); the URL keeps it as `?u=lat,lon;…` and recomputes on load.

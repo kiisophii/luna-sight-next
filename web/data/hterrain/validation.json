@@ -1,0 +1,20 @@
+{
+ "source": "pipeline/validate_custom_horizon.py -> docs/custom_horizon_validation.json",
+ "impl_rms_deg_max": 5.33e-11,
+ "catalogue": {
+  "n_sites": 16,
+  "rms_deg_median": 0.962,
+  "rms_deg_max": 4.866,
+  "abs_sun_pp_median": 3.29,
+  "abs_sun_pp_max": 33.74,
+  "abs_earth_pp_median": 1.61,
+  "abs_earth_pp_max": 23.66
+ },
+ "catalogue_dems": "PGDA LOLA 5-240 m (card 8, south polar sites)",
+ "full_ldem64_rms_deg_max": 0.155,
+ "full_ldem64_ids": [
+  "APOLLO17",
+  "CHANGE4",
+  "APOLLO15"
+ ]
+}

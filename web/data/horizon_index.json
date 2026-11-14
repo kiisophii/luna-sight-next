@@ -1,0 +1,4 @@
+{
+ "ids": [],
+ "note": "Sites with a computed horizon in horizon/<ID>.json. Written by pipeline/run_horizons.py (or --index-only)."
+}

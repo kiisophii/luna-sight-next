@@ -93,6 +93,7 @@ def main():
     ap.add_argument('--check', action='store_true', help='Assert upload and desktop first-zoom budgets')
     ap.add_argument('--texture-size',type=int,choices=[4096,8192],default=8192)
     ap.add_argument('--cpu-profile',action='store_true',help='Diagnostic only; exclude profiled run from timing table')
+    ap.add_argument('--zoom-cycles',action='store_true',help='Measure cold detail zoom, zoom out and detail revisit')
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     source = (subprocess.check_output(['git', 'show', f'{BASE}:web/js/globe3d.js'], cwd=ROOT)
@@ -178,6 +179,17 @@ def main():
                     run['zoom_local_payload_bytes']=sum(x['bytes'] for x in server.payloads)-run['cold_local_payload_bytes']
                     run['uploads']=page.evaluate('__uploads')
                     run['rotation']=phase(page,'south_drag',lambda:drag(page,4))
+                    if args.zoom_cycles:
+                        run['zoom_cycles']=[]
+                        for name,view in [('detail_first',dict(lat=-89.66,lon=129.2,range=2,tilt=55,heading=0)),
+                                          ('whole_again',dict(lat=-20,lon=20,range=6500,tilt=0,heading=0)),
+                                          ('detail_revisit',dict(lat=-89.66,lon=129.2,range=2,tilt=55,heading=0))]:
+                            def move(view=view):
+                                page.evaluate('(v)=>LLSN.globe.flyTo(v)',view)
+                                if not idle(page,120000):raise RuntimeError(name+' did not settle')
+                            item=phase(page,name,move)
+                            item['empty_rendered_frames']=page.evaluate('(s)=>__desktopProbe.renders.filter(r=>r.t>=s && r.tiles===0).length',item['start_ms'])
+                            run['zoom_cycles'].append(item)
                     run['color']=page.evaluate('''() => {
                       const g=LLSN.globe._internal; const uniforms={uniforms:{},vertexShader:'#include <common>\\n#include <begin_vertex>',fragmentShader:'#include <common>\\n#include <map_fragment>'};
                       const tile=[...g.tiles.values()].find(t=>t.mesh);tile.mesh.material.onBeforeCompile(uniforms);
@@ -213,6 +225,8 @@ def main():
             for command in run['worker_protocol']:
                 assert 'error' not in command['response'], command
             assert len(run['texture_responses'])==1 and run['texture_responses'][0]['bytes']==results['texture_bytes']
+            for cycle in run.get('zoom_cycles',[]):
+                assert cycle['after']['tiles']>0 and cycle['empty_rendered_frames']==0,cycle
             uploads = [u['ms'] for u in run['uploads'] if u['width'] == args.texture_size]
             assert uploads and max(uploads) < 100, uploads
             if run['profile'] == 'desktop':

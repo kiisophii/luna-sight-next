@@ -25,10 +25,7 @@
   <button id="whole" type="button">Whole Moon</button>
   <button id="south" type="button">South pole</button>
   <select id="site" aria-label="Fly to site"><option value="">Fly to site…</option></select>
-  <span>Vertical ×</span>
-  <button type="button" data-ex="1" aria-pressed="true">1</button>
-  <button type="button" data-ex="3" aria-pressed="false">3</button>
-  <button type="button" data-ex="6" aria-pressed="false">6</button>
+  <button id="lang" type="button">한국어</button>
   <button id="play" type="button">Play</button>
   <input id="time" type="range" min="0" max="43823" step="1" value="0" aria-label="Time (hours since 2026-01-01 UTC)">
   <span id="when"></span>
@@ -44,7 +41,8 @@ const T0 = Date.UTC(2026, 0, 1);
 const hour0 = q.has('t') ? (Date.parse(q.get('t')) - T0) / 3600e3 : Math.round((Date.now() - T0) / 3600e3);
 const g = await createGlobe(document.getElementById('app'), {
   base: 'data/', hour: hour0, preserveDrawingBuffer: q.has('shot'),
-  exaggeration: +(q.get('exag') || 1),
+  ...(q.has('exag') ? { exaggeration: +q.get('exag') } : {}),   // default x3 (team decision); API keeps setExaggeration(k)
+  avoid: ['.bar', '.help'],
   view: { lat: +(q.get('lat') ?? 10), lon: +(q.get('lon') ?? 20), range: +(q.get('range') ?? 6500), tilt: +(q.get('tilt') ?? 0), heading: +(q.get('heading') ?? 0) },
 });
 window.globe = g;
@@ -58,11 +56,8 @@ sel.addEventListener('change', () => sel.value && g.focusSite(sel.value));
 g.on('siteclick', s => { sel.value = s.id; });
 document.getElementById('whole').onclick = () => g.flyTo({ range: 6500, tilt: 0, heading: 0 });
 document.getElementById('south').onclick = () => g.flyTo({ lat: -89.0, lon: 0, range: 420, tilt: 35, heading: 0 });
-for (const b of document.querySelectorAll('[data-ex]')) b.onclick = () => {
-  g.setExaggeration(+b.dataset.ex);
-  document.querySelectorAll('[data-ex]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-};
-document.querySelectorAll('[data-ex]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.ex === g.exaggeration)));
+let ko = false;
+document.getElementById('lang').onclick = e => { ko = !ko; g.setLang(ko ? 'ko' : 'en'); e.target.textContent = ko ? 'English' : '한국어'; };
 let timer = 0;
 document.getElementById('play').onclick = e => {
   if (timer) { clearInterval(timer); timer = 0; e.target.textContent = 'Play'; return; }

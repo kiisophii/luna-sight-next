@@ -6,7 +6,11 @@
 // World frame = MOON_ME (x -> lon 0, y -> lon 90E, z -> north), units = km.
 //
 // API (see createGlobe): setTime(hourIndex|Date), flyTo({lat,lon,range,tilt,heading}), focusSite(id),
-//   setExaggeration(1|3|6), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose().
+//   setExaggeration(k) [display default x3, shown in a persistent note; calculations always use true heights],
+//   setLang('en'|'ko'), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose().
+// Options: base, hour, view, exaggeration (3), lang ('en'), hud (true),
+//   avoid: [elements | CSS selectors] the off-screen Sun/Earth chips must never cover (header, panels, buttons, minimap),
+//   chipInsets: {top, right, bottom, left} px kept free for chips.
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.170.0/three.module.min.js';
 
 const R = 1737.4;                       // km, contract section 0
@@ -155,7 +159,8 @@ uniform sampler2D uColor;`)
 
   // ---------------- view state (vector form: parallel transport over the poles)
   const view = { tgt: dirFromLatLon(0, 0), hvec: v3(0, 0, 1), range: 6000, tilt: 0 };
-  let exag = opts.exaggeration ?? 1;
+  let exag = opts.exaggeration ?? 3;     // team decision 11/14: display fixed at x3 (true heights in all calculations)
+  let lang = opts.lang === 'ko' ? 'ko' : 'en';
   let hour = 0;
   let dirty = true;
   let fly = null;
@@ -440,7 +445,10 @@ uniform sampler2D uColor;`)
   .g3-chip.sun{background:#ffd23f;color:#222}.g3-chip.earth{background:#3b8cff;color:#fff}
   .g3-label{position:absolute;left:0;top:0;font-weight:600;white-space:nowrap;text-shadow:0 0 3px #000}
   .g3-label.sun{color:#ffd23f}.g3-label.earth{color:#7fb6ff}
-  .g3-hud{position:absolute;left:8px;bottom:8px;background:#000a;color:#eee;padding:6px 9px;border-radius:6px;line-height:1.45;font:12px/1.45 ui-monospace,monospace}
+  .g3-dock{position:absolute;left:8px;bottom:8px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+  .g3-note{background:#000c;color:#fff;padding:3px 8px;border-radius:5px;font:600 12px system-ui,sans-serif;border:1px solid #ffffff40}
+  .g3-hud{background:#000a;color:#eee;padding:6px 9px;border-radius:6px;font:12px/1.45 ui-monospace,monospace}
+  .g3-chip .g3-arr{display:inline-block;margin-right:4px}
   .g3-hud b.sun{color:#ffd23f}.g3-hud b.earth{color:#7fb6ff}`;
   overlay.appendChild(css);
   const siteEls = sites.map(s => {
@@ -454,7 +462,17 @@ uniform sampler2D uColor;`)
   const mk = (cls, text) => { const d = document.createElement('div'); d.className = cls; d.textContent = text; overlay.appendChild(d); return d; };
   const chipSun = mk('g3-chip sun', '☀ Sun'), chipEarth = mk('g3-chip earth', '◉ Earth');
   const labSun = mk('g3-label sun', 'Sun'), labEarth = mk('g3-label earth', 'Earth');
-  const hud = mk('g3-hud', '');
+  const dock = mk('g3-dock', '');
+  const note = document.createElement('div'); note.className = 'g3-note'; note.setAttribute('role', 'note'); dock.appendChild(note);
+  const hud = document.createElement('div'); hud.className = 'g3-hud'; dock.appendChild(hud);
+  if (opts.hud === false) hud.style.display = 'none';
+  function updateNote() {
+    note.textContent = exag === 1
+      ? (lang === 'ko' ? '실제 높이 (과장 없음)' : 'True heights (no exaggeration)')
+      : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
+  }
+  updateNote();
+  for (const [c, t] of [[chipSun, lang === 'ko' ? '☀ 태양' : '☀ Sun'], [chipEarth, lang === 'ko' ? '◉ 지구' : '◉ Earth']]) c.innerHTML = `<span class="g3-arr">➤</span>${t}`;
 
   const tmp = v3();
   function project(p) {                         // -> {x, y, behind, on}
@@ -463,20 +481,49 @@ uniform sampler2D uColor;`)
     const behind = tmp.z > 1;
     return { x: (tmp.x * 0.5 + 0.5) * w, y: (-tmp.y * 0.5 + 0.5) * h, behind, on: !behind && Math.abs(tmp.x) <= 1 && Math.abs(tmp.y) <= 1, nx: tmp.x, ny: tmp.y };
   }
-  function edgeChip(el, worldP, labelEl) {
-    const w = renderer.domElement.clientWidth, h = renderer.domElement.clientHeight;
-    // direction from screen centre, using camera space so "behind" points the right way
-    const pc = worldP.clone().applyMatrix4(camera.matrixWorldInverse);
+  // Off-screen chips: placed on the border of a safe rectangle (container minus opts.chipInsets) in the
+  // direction of the body, then slid along that border until they overlap no obstacle: opts.avoid
+  // (elements or CSS selectors: header, side panels, buttons, minimap ...), our own note/HUD and the other chip.
+  const avoidList = () => {
+    const out = [dock];
+    for (const a of opts.avoid || []) {
+      if (typeof a === 'string') document.querySelectorAll(a).forEach(e => out.push(e)); else if (a) out.push(a);
+    }
+    return out;
+  };
+  const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+  function edgeChip(el, worldP, labelEl, placed) {
     const pr = project(worldP);
-    if (pr.on) { el.style.display = 'none'; labelEl.style.display = ''; labelEl.style.transform = `translate(${pr.x + 14}px,${pr.y - 8}px)`; return; }
+    if (pr.on) { el.style.display = 'none'; labelEl.style.display = ''; labelEl.style.transform = `translate(${pr.x + 14}px,${pr.y - 8}px)`; return null; }
     labelEl.style.display = 'none';
+    const pc = worldP.clone().applyMatrix4(camera.matrixWorldInverse);   // camera space: "behind" points the right way
     let dx = pc.x, dy = -pc.y;
-    if (pc.z > 0 && Math.hypot(dx, dy) < 1e-9) dy = 1;
-    const m = 18, cw = el.offsetWidth || 70, ch = el.offsetHeight || 20;
-    const sx = (w / 2 - m - cw / 2) / Math.max(Math.abs(dx), 1e-9), sy = (h / 2 - m - ch / 2) / Math.max(Math.abs(dy), 1e-9);
-    const s = Math.min(sx, sy);
+    if (Math.hypot(dx, dy) < 1e-9) dy = 1;
     el.style.display = '';
-    el.style.transform = `translate(${w / 2 + dx * s - cw / 2}px,${h / 2 + dy * s - ch / 2}px)`;
+    el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D}deg)`;
+    const W = overlay.clientWidth, H = overlay.clientHeight, ins = { top: 0, right: 0, bottom: 0, left: 0, ...(opts.chipInsets || {}) };
+    const m = 8, cw = el.offsetWidth || 70, ch = el.offsetHeight || 22;
+    // centre-line rectangle the chip centre may travel on
+    const x0 = ins.left + m + cw / 2, x1 = W - ins.right - m - cw / 2, y0 = ins.top + m + ch / 2, y1 = H - ins.bottom - m - ch / 2;
+    if (x1 <= x0 || y1 <= y0) { el.style.display = 'none'; return null; }
+    const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    const s = Math.min((x1 - cx) / Math.max(Math.abs(dx), 1e-9), (y1 - cy) / Math.max(Math.abs(dy), 1e-9));
+    const px = cx + dx * s, py = cy + dy * s;
+    // perimeter parameter (clockwise from top-left) <-> point
+    const Wd = x1 - x0, Hd = y1 - y0, Ptot = 2 * (Wd + Hd);
+    const toT = (x, y) => Math.abs(y - y0) < 0.5 ? x - x0 : Math.abs(x - x1) < 0.5 ? Wd + (y - y0) : Math.abs(y - y1) < 0.5 ? Wd + Hd + (x1 - x) : 2 * Wd + Hd + (y1 - y);
+    const toP = t => { t = ((t % Ptot) + Ptot) % Ptot; if (t < Wd) return [x0 + t, y0]; t -= Wd; if (t < Hd) return [x1, y0 + t]; t -= Hd; if (t < Wd) return [x1 - t, y1]; t -= Wd; return [x0, y1 - t]; };
+    const ob = avoidList().map(e => { if (!e.isConnected || e.offsetParent === null && getComputedStyle(e).position !== 'fixed') return null; const r = e.getBoundingClientRect(), o = overlay.getBoundingClientRect(); return r.width && r.height ? { x: r.left - o.left - 2, y: r.top - o.top - 2, w: r.width + 4, h: r.height + 4 } : null; }).filter(Boolean);
+    if (placed) ob.push(placed);
+    const t0 = toT(px, py);
+    let best = null;
+    for (let k = 0; k <= Ptot / 6 + 1 && !best; k++) for (const sgn of k ? [1, -1] : [1]) {
+      const [x, y] = toP(t0 + sgn * k * 6), r = { x: x - cw / 2, y: y - ch / 2, w: cw, h: ch };
+      if (!ob.some(o => hit(r, o))) { best = r; break; }
+    }
+    if (!best) { el.style.display = 'none'; return null; }      // no free spot: hide rather than cover UI
+    el.style.transform = `translate(${best.x}px,${best.y}px)`;
+    return best;
   }
 
   // ---------------- camera
@@ -654,8 +701,8 @@ uniform sampler2D uColor;`)
       m.el.style.display = show ? '' : 'none';
       if (show) m.el.style.transform = `translate(${pr.x - 7}px,${pr.y - 7}px)`;
     }
-    edgeChip(chipSun, sunSprite.position, labSun);
-    edgeChip(chipEarth, earthSprite.position, labEarth);
+    const placedSun = edgeChip(chipSun, sunSprite.position, labSun, null);
+    edgeChip(chipEarth, earthSprite.position, labEarth, placedSun);
     if (now - hudT > 250) {
       hudT = now;
       const v = getView(), upv = view.tgt, { east, north } = enu(upv);
@@ -686,14 +733,15 @@ uniform sampler2D uColor;`)
     hour = t instanceof Date ? (t.getTime() - T0_MS) / 3600e3 : +t;
     updateBodies(); dirty = true; emit('time', hour);
   }
-  function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; dirty = true; }
+  function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
+  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? '☀ 태양' : '☀ Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? '◉ 지구' : '◉ Earth'; }
 
   setTime(opts.hour ?? 0);
   if (opts.view) setView(opts.view);
   raf = requestAnimationFrame(frame);
 
   const api = {
-    setTime, flyTo, focusSite, setView, getView, setExaggeration,
+    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang,
     // manual frames (tests / hidden tabs where requestAnimationFrame is paused); also loads tiles until idle
     async step(maxMs = 20000) {
       const t0 = performance.now(); let calm = 0;

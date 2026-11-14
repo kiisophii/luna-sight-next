@@ -41,7 +41,11 @@ const g = await createGlobe(element, { base: 'data/', hour: 7627, exaggeration: 
 g.setTime(hourIndexOrDate);            // Sun light + Sun/Earth sprites from ephem.bin (linear interpolation)
 g.flyTo({lat, lon, range, tilt, heading});   // Promise, animated (up-and-over in log range)
 g.focusSite('APOLLO17', {range: 40, tilt: 60});
-g.setExaggeration(1 | 3 | 6);
+g.setExaggeration(k);                  // display default x3 (team decision 11/14), no buttons; a persistent note says
+                                       // "Height x3 (display only; calculations use true heights)" / "높이 3배 과장 · 보기용 (계산은 실제 높이)"
+g.setLang('en' | 'ko');
+// options: avoid: ['header', '.side-panel', '#minimap', ...]  -> off-screen Sun/Earth chips never cover these
+//          chipInsets: {top, right, bottom, left}             -> extra free margins for chips
 g.getView(); g.on('siteclick' | 'view' | 'time', fn); g.heightAt(lat, lon); g.stats; g.dispose();
 g.step();                              // manual frames until tiles are loaded (tests / hidden tabs)
 ```
@@ -50,6 +54,10 @@ g.step();                              // manual frames until tiles are loaded (
   +/− zoom, N = north up, R = reset tilt. Tilt is limited to 0° from far away and up to 80° near the ground.
 - Light = directional Sun from `ephem.bin`; terrain shading from per-tile normal maps (full 256-cell resolution,
   geometry uses every 2nd sample); shadow map (4096²) follows the camera target (box ≈ 1.4 × range).
+- Vertical exaggeration is fixed at ×3 for display (team decision 11/14; the designer may revise). No buttons; a
+  persistent note shows it. Every number (HUD horizon test, app metrics) uses true heights.
+- Off-screen chips slide along the edge of the safe area until they overlap none of `opts.avoid`, the note/HUD,
+  or each other; if no free spot exists they hide rather than cover UI. A small arrow shows the true direction.
 - Sun and Earth sprites sit at their real directions (Earth with topocentric parallax from the camera) and are
   depth-tested against the terrain, so ridges hide them. Icons are enlarged (not true angular size). Off-screen
   chips at the screen edge point to them.

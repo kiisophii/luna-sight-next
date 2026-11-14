@@ -1,0 +1,135 @@
+{
+  "sua_branch": "s3-uncert-nonpolar-sua",
+  "sua_commit": "30c64f60e821773be8d38f8f1d7bad5f5635b30a",
+  "validator_sha256": "f25baecddfce516bae88cc53a95e17dd2e676ae0a49c2f14588915d0859eefb8",
+  "main_commit": "a832d22490211ee3d6806778569447f4b0d82efb",
+  "sites_passed": [
+    "ARTEMIS_CABEUS_B",
+    "ARTEMIS_DE_GERLACHE_RIM2",
+    "ARTEMIS_HAWORTH",
+    "ARTEMIS_MALAPERT",
+    "ARTEMIS_MOUTON",
+    "ARTEMIS_MOUTON_PLATEAU",
+    "ARTEMIS_NOBILE_RIM1",
+    "ARTEMIS_NOBILE_RIM2",
+    "ARTEMIS_SLATER_PLAIN",
+    "CONNECTING_RIDGE",
+    "DE_GERLACHE_RIM1",
+    "IM1",
+    "IM2",
+    "PEAK_NEAR_SHACKLETON",
+    "SHACKLETON_RIM",
+    "SHOEMAKER_RIM_A"
+  ],
+  "site_count": 16,
+  "nodes": 1936,
+  "all_nodes_identical_to_prior_run": true,
+  "all_centres_exact_main": true,
+  "near_field_step_only_changes_zero": true,
+  "production_run": {
+    "workers": 6,
+    "results": [
+      {
+        "id": "IM1",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 92.67200000002049
+      },
+      {
+        "id": "ARTEMIS_MALAPERT",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 99.40600000001723
+      },
+      {
+        "id": "ARTEMIS_MOUTON_PLATEAU",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 100.28100000001723
+      },
+      {
+        "id": "IM2",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 100.5
+      },
+      {
+        "id": "ARTEMIS_CABEUS_B",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 109.09400000004098
+      },
+      {
+        "id": "ARTEMIS_HAWORTH",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 110.07800000003772
+      },
+      {
+        "id": "ARTEMIS_MOUTON",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 92.0
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM1",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 93.875
+      },
+      {
+        "id": "ARTEMIS_NOBILE_RIM2",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 100.35899999999674
+      },
+      {
+        "id": "ARTEMIS_DE_GERLACHE_RIM2",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 101.59299999999348
+      },
+      {
+        "id": "SHACKLETON_RIM",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 100.42199999996228
+      },
+      {
+        "id": "ARTEMIS_SLATER_PLAIN",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 103.0
+      },
+      {
+        "id": "CONNECTING_RIDGE",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 91.26500000001397
+      },
+      {
+        "id": "SHOEMAKER_RIM_A",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 79.85899999999674
+      },
+      {
+        "id": "PEAK_NEAR_SHACKLETON",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 91.14000000001397
+      },
+      {
+        "id": "DE_GERLACHE_RIM1",
+        "complete": true,
+        "computed_nodes": 121,
+        "elapsed_s": 86.53099999995902
+      }
+    ],
+    "elapsed_s": 288.1057987213135
+  },
+  "independent_audit_elapsed_s": 84.144349,
+  "tests_passed": 162,
+  "contract_errors": 0,
+  "contract_warnings": 0
+}

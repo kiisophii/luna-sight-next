@@ -343,7 +343,7 @@ Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent ch
 - Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
 - Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.
 
-## 18. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua non-polar part, 2026-11-14) — NOT yet agreed; new section only (renumbered from 17 at merge: seasons took 17; sections 0–17 unchanged)
+## 18. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua non-polar part + Jiyong south-polar part, 2026-11-14) — NOT yet agreed; new section only (renumbered from 17 at merge: seasons took 17; sections 0–17 unchanged)
 
 Answers "if the catalogue coordinate is off by r metres, what range of values could the site have?".
 Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; the south-polar part
@@ -374,6 +374,19 @@ Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; 
 
 Nodes are point samples, not area averages. The spread shows sensitivity to position on the
 same DEM; it does not include DEM height errors.
+
+South-polar extension (same common keys, Jiyong): `pipeline/coordinate_uncertainty.py`
+writes only the 16 sites with lat <= -75. Each retains its current Card 8 horizon
+parameters (min_km=0.005, max_km=300, n_steps=8000, observer=2 m), full PGDA chain,
+and LDEM_64/LDEM_16 fallback. `params` also records `early_stop` and `hmax_m`.
+Optional node fields `ground_resolution_m` and `dem_sources` identify actual data
+support. Optional `center_check` stores exact differences and the baseline metrics
+SHA256; a mismatch blocks export. Provenance additionally records unchanged baseline
+horizon/metrics SHA256. No existing horizon or metrics files are modified.
+
+The five nonpolar near-field alternatives are separate in `docs/near_field_check.md`;
+they are never used to change uncertainty centres. PGDA reference values outside the
+published raster footprint remain null, including neighbourhood extrema and closeness.
 
 ## 19. Proposed v1.3 — site visibility windows (card 15-B, 2026-11-14) — pending team agreement; renumbered from 18 at merge (coordinate uncertainty took 18); sections 0–18 unchanged
 

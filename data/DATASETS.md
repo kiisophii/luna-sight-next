@@ -1,5 +1,20 @@
 # Data sources
 
+Card 23 (Jiyong, 2026-11-14) reuses existing PGDA polar windows, SLDEM2015 site
+windows, LOLA LDEM_64/16 and production MOON_ME ephemeris for 100 m-spaced local
+coordinate grids. Each site's legacy sampling and DEM chain are retained to match
+its catalogue centre. Source/code/baseline hashes are in every uncertainty JSON;
+raw inputs are unchanged. Sources: https://pgda.gsfc.nasa.gov/products/90 ,
+https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/ ,
+https://naif.jpl.nasa.gov/pub/naif/generic_kernels/ .
+
+The separate near-field comparison consults https://pgda.gsfc.nasa.gov/products/69
+for coverage: published illumination/Earth visibility grids span polar latitudes
+from 65 degrees to each pole. APOLLO11, APOLLO12, LUNA20, CHANGE5 and
+IM3_REINER_GAMMA are outside coverage; no PGDA reference or accuracy ranking is
+assigned. Its 18.6-year averaging and any-part-of-Earth-disk visibility also differ
+from our five-year window and Earth-centre definition.
+
 Card 13 (Jiyong, 2026-11-14) reuses the cited PGDA product 90 polar rasters,
 SLDEM2015 512 ppd site windows, LOLA LDEM_64/16 and MOON_ME ephemeris below for
 all 33 relay analyses. Downloads use the unchanged `pipeline/fetch_global.py`.
@@ -87,3 +102,11 @@ Reuses the PGDA original DEMs at https://pgda.gsfc.nasa.gov/products/90 and the 
 Reuses the cited PGDA 5/10/20/60/80/240 m and LOLA global sources above, without altering original rasters or Card 13 caches. Expanded per-centre windows add 16 km of storage margin for the ±10 km node grid; original radial resolution gates are re-centred on each observer. The original 5 m source footprint remains finite (Malapert has no overlapping 5 m source window). Raw expanded windows and shared NPY backing arrays stay under ignored data/processed/card18/. Public local-map provenance records full source, ephemeris and code hashes. Source URLs: https://pgda.gsfc.nasa.gov/products/90 and https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/ .
 
 | Hourly site visibility windows (derived from current core.js and existing real inputs) | https://github.com/kiisophii/lunar-landing-site-navigator/blob/ef2b2dad9e768af79e88f97b9c43ad35a8623de3/web/js/core.js | 2026-2030, 43824 UTC hourly bins; Sun disk >= 50%, Earth centre above terrain mask | Derived numeric output; original ephemeris and DEM source terms remain in the rows above | core.js definitions, contract sections 0/6 and proposed 15; per-site input hashes recorded | web/data/windows/<ID>.json; maximal visible runs and top-10 gaps; no mock/flat inputs; all 33 sites including the corrected Shackleton rim point |
+
+### Card 23 follow-up: original PGDA footprints and native-pixel diagnostics (Jiyong)
+
+`pipeline/near_field_check.py` reads the original four `AVGVISIB_65{N,S}_240M_201608{,_EARTH}.LBL` products linked by https://pgda.gsfc.nasa.gov/products/69 under https://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/ . Their 6420x6420 polar-stereographic rasters have 240 m pixels, DN scale 0.00004; square corners reach approximately 55.2 degrees absolute latitude. All five requested nonpolar centres and their complete 300 m discs lie outside both raster footprints. No valid reference pixel or neighbourhood extrema exist there. Labels are cached locally, not committed; URLs, hashes, projected coordinates and bounds are in docs/near_field_check.json.
+
+The five local terrain diagnostics use the existing SLDEM2015 512 ppd caches (~59.23 m north-south), not a 5 m DEM. Ray minimum distance is distinct from pixel resolution. Original-cache SHA256, supporting-pixel heights, eight-neighbour residuals and any in-memory candidate-replacement sensitivity are recorded. The outlier heuristic is not physical terrain validation. Production DEMs/horizons/metrics are unchanged.
+
+The polar uncertainty public schema now follows Sua branch s3-uncert-nonpolar-sua at 30c64f6 (nodes/ranges/n_nodes). This branch owns only 16 south-polar outputs; the 17 nonpolar outputs remain with Sua.

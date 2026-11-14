@@ -46,10 +46,16 @@ def test_hour_selection_covers_window_without_duplicates():
     assert hours[0] == 0 and hours[-1] == 43823
 
 
-def test_checkpoint_must_match_output_inputs_and_be_complete(tmp_path):
+@pytest.mark.parametrize('epoch_location', ['inputs', 'top'])
+def test_checkpoint_must_match_output_inputs_and_be_complete(tmp_path, epoch_location):
     record = dict(lat=0., lon=1., window={'n': 8}, candidates={'n': 2},
                   params={'heights_m': [15.], 'engine_version': 2}, input_identity={'source': 'new'})
-    key = dict(lat=0., lon=1., n=8, v=2, inputs={'source': 'old'})
+    key = dict(lat=0., lon=1., v=2, inputs={'source': 'old'})
+    if epoch_location == 'inputs':
+        record['input_identity']['n'] = 8
+        key['inputs']['n'] = 8
+    else:
+        key['n'] = 8
     (tmp_path/'key.json').write_text(json.dumps(key))
     np.save(tmp_path/'vis.npy', np.array([[[255]], [[0]]], dtype=np.uint8))
     np.save(tmp_path/'done.npy', np.array([True, True]))

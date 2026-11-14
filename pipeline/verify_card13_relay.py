@@ -211,10 +211,11 @@ def hour_indices(n, count):
 
 def load_reference(record, directory, candidate, height_index):
     key = json.loads((directory/'key.json').read_text(encoding='utf-8'))
+    epoch_count = (key.get('inputs') or {}).get('n', key.get('n'))
     if (key.get('inputs') != record.get('input_identity') or not record.get('input_identity')
             or key.get('v') != record['params']['engine_version']
             or key.get('lat') != record['lat'] or key.get('lon') != record['lon']
-            or key.get('n') != record['window']['n']):
+            or epoch_count != record['window']['n']):
         raise ValueError('candidate checkpoint identity does not match output')
     for name in ['radius_km', 'spacing_m', 'heights_m', 'min_km', 'max_km', 'n_steps', 'earth_el_cap_deg']:
         if name in key and key[name] != record['params'].get(name):

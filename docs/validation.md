@@ -39,6 +39,22 @@ primary rows equal the JSON `sun` / `earth` blocks exactly.
 Mean bias (ours − PGDA): Sun −0.25 pp, Earth (any part) +1.11 pp, Earth (centre) −3.25 pp.
 DEM coverage: 0 % missing terrain samples for all 256 horizons.
 
+## Named south-polar sites (card 8 per-site horizons)
+Since 2026-11-14 11:50 KST the 16 named sites in `validation.json` use card 8's per-site horizons
+(PR #8, branch `s2-polar-horizon-jiyong` at a31e1bf; 5 m → 10 → 60 → 240 m PGDA LOLA + LOLA LDEM,
+`web/data/horizon/<ID>.json`). The 240 random points keep the pole-centred 60/240 m horizons.
+
+| Named sites (n = 16) | Sun MAE | Sun bias | Earth (any part) MAE | Earth bias |
+|---|---|---|---|---|
+| pole-centred 60/240 m windows | 5.59 pp | +4.27 pp | 4.53 pp | +4.50 pp |
+| card 8 per-site horizons | 3.63 pp | +1.76 pp | 3.57 pp | +3.26 pp |
+
+Named sites sit on peaks and rims where PGDA's own value varies strongly within ±300 m, so these
+errors are larger than for the random points; the finer card 8 near-field terrain clearly helps
+(e.g. Connecting Ridge Sun 0.570 → 0.474 vs PGDA 0.439). Both versions are kept side by side in
+`validation.json` → `named_pole_window_vs_card8`. If PR #8 changes its horizons before merging,
+re-run `python pipeline/validate_ours.py --named-horizons web/data/horizon`.
+
 ## Method details
 - Truth: `AVGVISIB_85S_060M_201608.TIF` and `_EARTH.TIF` (60 m), `AVGVISIB_75S_120M_201608*.TIF` for
   IM1 and Cabeus B (outside the 85°S map). Value = DN × 0.00004 (PDS label).
@@ -63,6 +79,10 @@ python pipeline/validate.py          # PGDA maps + points (card 5)
 python pipeline/validate_ours.py     # horizons + fractions + web/data/validation.json
 python pipeline/check_contract.py
 ```
+Named sites with card 8's per-site horizons (after card 8 is on main):
+`python pipeline/validate_ours.py --named-horizons web/data/horizon` - named sites then use the
+5-240 m per-site masks; the JSON keeps `named_pole_window_vs_card8` (both versions side by side) and
+`data/processed/validation_named_card8.csv` is written. The 240 random points are unchanged.
 Needs the DEM windows: run once
 `python -c "import sys; sys.path.insert(0,'pipeline'); import fetch_polar as F; from pathlib import Path; s=dict(id='VALIDATION_POLE',lat=-90.0,lon=0.0); r=Path('data/raw/polar_validation'); F.fetch(s,60,220000,r); F.fetch(s,240,520000,r)"`
 and the validation ephemeris from `pipeline/ephem.py`.

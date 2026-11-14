@@ -2900,7 +2900,7 @@
  "named": [
   {
    "id": "IM1",
-   "ours_sun": 0.39439,
+   "ours_sun": 0.38963,
    "pgda_sun": 0.35568,
    "pgda_sun_min300": 0.2688,
    "pgda_sun_max300": 0.42112,
@@ -2911,40 +2911,40 @@
   },
   {
    "id": "IM2",
-   "ours_sun": 0.45319,
+   "ours_sun": 0.45277,
    "pgda_sun": 0.45104,
    "pgda_sun_min300": 0.30424,
    "pgda_sun_max300": 0.47128,
-   "ours_earth": 0.93139,
+   "ours_earth": 0.9308,
    "pgda_earth": 0.9208,
    "pgda_earth_min300": 0.62736,
    "pgda_earth_max300": 0.93784
   },
   {
    "id": "ARTEMIS_CABEUS_B",
-   "ours_sun": 0.40883,
+   "ours_sun": 0.39545,
    "pgda_sun": 0.39368,
    "pgda_sun_min300": 0.18248,
    "pgda_sun_max300": 0.46816,
-   "ours_earth": 0.34565,
+   "ours_earth": 0.34446,
    "pgda_earth": 0.3346,
    "pgda_earth_min300": 0.01512,
    "pgda_earth_max300": 0.3922
   },
   {
    "id": "ARTEMIS_HAWORTH",
-   "ours_sun": 0.56563,
+   "ours_sun": 0.55078,
    "pgda_sun": 0.49256,
    "pgda_sun_min300": 0.0,
    "pgda_sun_max300": 0.58692,
-   "ours_earth": 0.70766,
+   "ours_earth": 0.62587,
    "pgda_earth": 0.64624,
    "pgda_earth_min300": 0.37188,
    "pgda_earth_max300": 0.72308
   },
   {
    "id": "ARTEMIS_MALAPERT",
-   "ours_sun": 0.45436,
+   "ours_sun": 0.45187,
    "pgda_sun": 0.45708,
    "pgda_sun_min300": 0.23444,
    "pgda_sun_max300": 0.46776,
@@ -2955,106 +2955,106 @@
   },
   {
    "id": "ARTEMIS_MOUTON_PLATEAU",
-   "ours_sun": 0.37986,
+   "ours_sun": 0.37704,
    "pgda_sun": 0.3834,
    "pgda_sun_min300": 0.0,
    "pgda_sun_max300": 0.426,
-   "ours_earth": 0.6258,
+   "ours_earth": 0.62388,
    "pgda_earth": 0.61084,
    "pgda_earth_min300": 0.42732,
    "pgda_earth_max300": 0.70392
   },
   {
    "id": "ARTEMIS_MOUTON",
-   "ours_sun": 0.7134,
+   "ours_sun": 0.71733,
    "pgda_sun": 0.73828,
    "pgda_sun_min300": 0.161,
    "pgda_sun_max300": 0.7412,
-   "ours_earth": 0.63221,
+   "ours_earth": 0.63844,
    "pgda_earth": 0.60728,
    "pgda_earth_min300": 0.34312,
    "pgda_earth_max300": 0.75132
   },
   {
    "id": "ARTEMIS_NOBILE_RIM1",
-   "ours_sun": 0.73607,
+   "ours_sun": 0.73298,
    "pgda_sun": 0.5416,
    "pgda_sun_min300": 0.06328,
    "pgda_sun_max300": 0.68276,
-   "ours_earth": 0.74664,
+   "ours_earth": 0.72994,
    "pgda_earth": 0.664,
    "pgda_earth_min300": 0.41932,
    "pgda_earth_max300": 0.75876
   },
   {
    "id": "ARTEMIS_NOBILE_RIM2",
-   "ours_sun": 0.45356,
+   "ours_sun": 0.4536,
    "pgda_sun": 0.45752,
    "pgda_sun_min300": 0.0,
    "pgda_sun_max300": 0.46468,
-   "ours_earth": 0.85412,
+   "ours_earth": 0.84371,
    "pgda_earth": 0.6136,
    "pgda_earth_min300": 0.01616,
    "pgda_earth_max300": 0.84924
   },
   {
    "id": "ARTEMIS_DE_GERLACHE_RIM2",
-   "ours_sun": 0.697,
+   "ours_sun": 0.68369,
    "pgda_sun": 0.60944,
    "pgda_sun_min300": 0.24748,
    "pgda_sun_max300": 0.71908,
-   "ours_earth": 0.61765,
+   "ours_earth": 0.59165,
    "pgda_earth": 0.54084,
    "pgda_earth_min300": 0.0,
    "pgda_earth_max300": 0.61812
   },
   {
    "id": "ARTEMIS_SLATER_PLAIN",
-   "ours_sun": 0.40757,
+   "ours_sun": 0.40679,
    "pgda_sun": 0.43492,
    "pgda_sun_min300": 0.19612,
    "pgda_sun_max300": 0.47604,
-   "ours_earth": 0.44203,
+   "ours_earth": 0.43862,
    "pgda_earth": 0.4216,
    "pgda_earth_min300": 0.0,
    "pgda_earth_max300": 0.48164
   },
   {
    "id": "SHACKLETON_RIM",
-   "ours_sun": 0.09125,
+   "ours_sun": 0.09034,
    "pgda_sun": 0.10964,
    "pgda_sun_min300": 0.04916,
    "pgda_sun_max300": 0.16668,
-   "ours_earth": 0.10961,
+   "ours_earth": 0.10725,
    "pgda_earth": 0.11072,
    "pgda_earth_min300": 0.0,
    "pgda_earth_max300": 0.19896
   },
   {
    "id": "CONNECTING_RIDGE",
-   "ours_sun": 0.56988,
+   "ours_sun": 0.47421,
    "pgda_sun": 0.43872,
    "pgda_sun_min300": 0.0,
    "pgda_sun_max300": 0.88444,
-   "ours_earth": 0.52375,
+   "ours_earth": 0.47744,
    "pgda_earth": 0.39052,
    "pgda_earth_min300": 0.0,
    "pgda_earth_max300": 0.58164
   },
   {
    "id": "PEAK_NEAR_SHACKLETON",
-   "ours_sun": 0.80321,
+   "ours_sun": 0.66928,
    "pgda_sun": 0.70176,
    "pgda_sun_min300": 0.1702,
    "pgda_sun_max300": 0.85956,
-   "ours_earth": 0.60487,
+   "ours_earth": 0.59156,
    "pgda_earth": 0.55944,
    "pgda_earth_min300": 0.19136,
    "pgda_earth_max300": 0.60636
   },
   {
    "id": "DE_GERLACHE_RIM1",
-   "ours_sun": 0.63541,
+   "ours_sun": 0.52434,
    "pgda_sun": 0.48996,
    "pgda_sun_min300": 0.09728,
    "pgda_sun_max300": 0.72668,
@@ -3065,11 +3065,11 @@
   },
   {
    "id": "SHOEMAKER_RIM_A",
-   "ours_sun": 0.20331,
+   "ours_sun": 0.19459,
    "pgda_sun": 0.22776,
    "pgda_sun_min300": 0.12984,
    "pgda_sun_max300": 0.30184,
-   "ours_earth": 0.47543,
+   "ours_earth": 0.47541,
    "pgda_earth": 0.47612,
    "pgda_earth_min300": 0.47088,
    "pgda_earth_max300": 0.48016
@@ -3087,7 +3087,8 @@
   "ours_earth": "share of 2-h steps with any part of the Earth disc above the horizon mask (topocentric; same as PGDA). The app uses the stricter Earth-centre rule - see alt_definitions.earth_centre",
   "pgda": "PGDA AVGVISIB maps (Mazarico et al. 2011), 18.6-year hourly averages, LDEM 60 m",
   "horizon": "pipeline/horizon.py, PGDA LOLA 60 m <= 60 km then 240 m <= 300 km, curvature",
-  "ephemeris": "data/processed/ephem_2020-2038_2h.npz (pipeline/ephem.py, NAIF DE440s + MOON_ME DE421)"
+  "ephemeris": "data/processed/ephem_2020-2038_2h.npz (pipeline/ephem.py, NAIF DE440s + MOON_ME DE421)",
+  "named_horizon": "named sites: card 8 per-site horizons (web/data/horizon/<ID>.json, 5-240 m PGDA LOLA + LDEM chain); random points: pole-centred 60/240 m windows"
  },
  "alt_definitions": {
   "sun_mean_disc_fraction": {
@@ -3121,5 +3122,183 @@
    "within_pgda_60m_spread_pct": 82.92
   }
  },
- "max_missing_dem_share": 0.0
+ "max_missing_dem_share": 0.0,
+ "named_pole_window_vs_card8": [
+  {
+   "id": "IM1",
+   "pgda_sun": 0.35568,
+   "pole_sun": 0.39439269494486395,
+   "card8_sun": 0.38963437781278326,
+   "pgda_earth": 1.0,
+   "pole_earth": 1.0,
+   "card8_earth": 1.0,
+   "card8_earth_ctr": 1.0,
+   "card8_sources": "PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=192.93km"
+  },
+  {
+   "id": "IM2",
+   "pgda_sun": 0.45104,
+   "pole_sun": 0.4531924326002589,
+   "card8_sun": 0.45276774884640664,
+   "pgda_earth": 0.9208,
+   "pole_earth": 0.9313884386817937,
+   "card8_earth": 0.9307990766661756,
+   "card8_earth_ctr": 0.8095623987034035,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=192.93km"
+  },
+  {
+   "id": "ARTEMIS_CABEUS_B",
+   "pgda_sun": 0.39368,
+   "pole_sun": 0.4088321883991354,
+   "card8_sun": 0.39545210874634745,
+   "pgda_earth": 0.3346,
+   "pole_earth": 0.3456485437846864,
+   "card8_earth": 0.34445754137812484,
+   "card8_earth_ctr": 0.2913781248465203,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=24.96km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "pgda_sun": 0.49256,
+   "pole_sun": 0.5656345106627604,
+   "card8_sun": 0.5507797961571066,
+   "pgda_earth": 0.64624,
+   "pole_earth": 0.7076641618781003,
+   "card8_earth": 0.6258656254604391,
+   "card8_earth_ctr": 0.5777957860615883,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=274.35km"
+  },
+  {
+   "id": "ARTEMIS_MALAPERT",
+   "pgda_sun": 0.45708,
+   "pole_sun": 0.4543591664551865,
+   "card8_sun": 0.45187271817916413,
+   "pgda_earth": 1.0,
+   "pole_earth": 1.0,
+   "card8_earth": 1.0,
+   "card8_earth_ctr": 1.0,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "ARTEMIS_MOUTON_PLATEAU",
+   "pgda_sun": 0.3834,
+   "pole_sun": 0.3798611348534007,
+   "card8_sun": 0.3770386408584037,
+   "pgda_earth": 0.61084,
+   "pole_earth": 0.6258042335838122,
+   "card8_earth": 0.623876528657728,
+   "card8_earth_ctr": 0.5762487107705908,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=24.96km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=161.79km"
+  },
+  {
+   "id": "ARTEMIS_MOUTON",
+   "pgda_sun": 0.73828,
+   "pole_sun": 0.7134040117398929,
+   "card8_sun": 0.7173317257680131,
+   "pgda_earth": 0.60728,
+   "pole_earth": 0.6322135455036589,
+   "card8_earth": 0.6384386817936251,
+   "card8_earth_ctr": 0.5895707479986249,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "ARTEMIS_NOBILE_RIM1",
+   "pgda_sun": 0.5416,
+   "pole_sun": 0.7360660567605358,
+   "card8_sun": 0.7329809280276136,
+   "pgda_earth": 0.664,
+   "pole_earth": 0.7466357251608468,
+   "card8_earth": 0.7299371347183341,
+   "card8_earth_ctr": 0.6735425568488778,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "ARTEMIS_NOBILE_RIM2",
+   "pgda_sun": 0.45752,
+   "pole_sun": 0.45356287837678017,
+   "card8_sun": 0.4535989182257454,
+   "pgda_earth": 0.6136,
+   "pole_earth": 0.8541206227591965,
+   "card8_earth": 0.8437085604832768,
+   "card8_earth_ctr": 0.7602401650213644,
+   "card8_sources": "PGDA_LOLA_10M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_80M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=274.35km"
+  },
+  {
+   "id": "ARTEMIS_DE_GERLACHE_RIM2",
+   "pgda_sun": 0.60944,
+   "pole_sun": 0.6970043955134664,
+   "card8_sun": 0.6836903617008037,
+   "pgda_earth": 0.54084,
+   "pole_earth": 0.6176513923677619,
+   "card8_earth": 0.5916457934286136,
+   "card8_earth_ctr": 0.5452580914493395,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=274.35km"
+  },
+  {
+   "id": "ARTEMIS_SLATER_PLAIN",
+   "pgda_sun": 0.43492,
+   "pole_sun": 0.4075675558591864,
+   "card8_sun": 0.40679255953554033,
+   "pgda_earth": 0.4216,
+   "pole_earth": 0.44203379008889543,
+   "card8_earth": 0.43862040174844064,
+   "card8_earth_ctr": 0.39142232699769164,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=274.35km"
+  },
+  {
+   "id": "SHACKLETON_RIM",
+   "pgda_sun": 0.10964,
+   "pole_sun": 0.09124729286908245,
+   "card8_sun": 0.09033568122557839,
+   "pgda_earth": 0.11072,
+   "pole_earth": 0.10960905652964,
+   "card8_earth": 0.10725160846716762,
+   "card8_earth_ctr": 0.055621040223957564,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=192.93km"
+  },
+  {
+   "id": "CONNECTING_RIDGE",
+   "pgda_sun": 0.43872,
+   "pole_sun": 0.5698833076396823,
+   "card8_sun": 0.47420516458034817,
+   "pgda_earth": 0.39052,
+   "pole_earth": 0.523746377879279,
+   "card8_earth": 0.47744462452728254,
+   "card8_earth_ctr": 0.4317567899415549,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "PEAK_NEAR_SHACKLETON",
+   "pgda_sun": 0.70176,
+   "pole_sun": 0.8032103152072255,
+   "card8_sun": 0.6692752435121182,
+   "pgda_earth": 0.55944,
+   "pole_earth": 0.6048696036540445,
+   "card8_earth": 0.5915598448013358,
+   "card8_earth_ctr": 0.544951132066205,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "pgda_sun": 0.48996,
+   "pole_sun": 0.6354137039207264,
+   "card8_sun": 0.524342828706084,
+   "pgda_earth": 0.61264,
+   "pole_earth": 0.6122734639752468,
+   "card8_earth": 0.6122734639752468,
+   "card8_earth_ctr": 0.5649771622218948,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=300km"
+  },
+  {
+   "id": "SHOEMAKER_RIM_A",
+   "pgda_sun": 0.22776,
+   "pole_sun": 0.20330729641096967,
+   "card8_sun": 0.19459469057780082,
+   "pgda_earth": 0.47612,
+   "pole_earth": 0.47543097097392073,
+   "card8_earth": 0.47540641422326996,
+   "card8_earth_ctr": 0.42888365011541674,
+   "card8_sources": "PGDA_LOLA_5M<=3km+PGDA_LOLA_10M<=25km+PGDA_LOLA_20M<=25km+PGDA_LOLA_60M<=59.94km+PGDA_LOLA_240M<=199.95km+LDEM_64<=230.06km"
+  }
+ ]
 }

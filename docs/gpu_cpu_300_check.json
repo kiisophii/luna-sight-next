@@ -1,0 +1,267 @@
+{
+  "computed_utc": "2026-11-14T12:23:49.950035+00:00",
+  "elapsed_s": 2.980027500016149,
+  "threshold_pp": 0.5,
+  "layers": [
+    "sun",
+    "earth",
+    "both"
+  ],
+  "threads": 6,
+  "numpy_version": "2.2.6",
+  "numba_version": "0.68.1",
+  "cpu_original_commit": "a526acfc30b60176e50a7553ce44c78172bcc85d",
+  "original_input_sha256": {
+    "pipeline/global_maps.py": "64ec674b79ca1aa7426902c8eabc236ef62ddcca101b6933c7b00375839eb71d",
+    "pipeline/horizon.py": "83f0ef54630961bd322e82a01baad74d368484987659d785cdfe9e6598ec24c4",
+    "web/data/ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web/data/ephem.json": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8",
+    "data/raw/global/ldem_64_float.img": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+    "data/raw/global/ldem_64_float.lbl": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18",
+    "data/raw/global/ldem_16_float.img": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+    "data/raw/global/ldem_16_float.lbl": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+  },
+  "delivered_files_sha256": {
+    "both.npy": "3353b18e5068cb93fb250ea93748147aa17e19e85a08e655def78859eabe6c1d",
+    "done.npy": "d3d5f9608c4945894c461a934651bded8998241c8fadabdf1589661a74b425dd",
+    "earth.npy": "d2553eec3c13d1a202e65003c73741d724bc40bcea58eac50a0d5d8616b57e04",
+    "h0.npy": "7a6defefd59ef2ce1d892a4004a5d51666870195b4b5a2cd68cc608303bae058",
+    "maskmax.npy": "42f91b13ec74f32cf5b55a68d90a4282df47a3a356c483e4963361cf866a763c",
+    "meta.json": "a1d81f74bd458109a5bf1823eb2a4ccb0b8e55c400db7919fc1fdf25bb9c8caf",
+    "sun.npy": "f330c2c384c143925b2349a4468c18cfc85ee233dd402356ee1ccf0763d67595"
+  },
+  "handoff_manifest_sha256": "14f4c52f01c0959311e1c83789e479211a0698728dfae9ced9017e78b6d6b7da",
+  "gpu_source_sha256": {
+    "run_gpu_shard.py": "a732368c48f90c4cd017e8e81f58ace3181a1b00a719321f4f08a3130825c43f",
+    "gpu_engine.py": "ee5f77e3dd910d1a928767ea7bb91369d2671c4563415db527915256b6bb75ab",
+    "gpu_kernels.cu": "2e0ed5fa3170a1099c7a9636239aa755b933f20d628bc86bbcf8d378e8a0d9b8",
+    "gpu_resume_support.py": "05b61e59d25bc7ffeb180b630ea0b38b63ad6ee9a6418ea840efeb4d7186d9ad",
+    "verify_gpu_final.py": "af86e2059efaf4bfd23d1f2048ae5725e0c2b8a9d48237b3c48e53bebdca22d3"
+  },
+  "signature": {
+    "engine_version": 1,
+    "naz": 360,
+    "near_km": 150.0,
+    "max_km": 300.0,
+    "step_frac": 0.01,
+    "n_steps": 283,
+    "obs_height_m": 2.0,
+    "sun_radius_deg": 0.2666,
+    "near": {
+      "name": "LDEM_64",
+      "file": "ldem_64_float.img",
+      "bytes": 1061683200,
+      "res_m": 473.8
+    },
+    "far": {
+      "name": "LDEM_16",
+      "file": "ldem_16_float.img",
+      "bytes": 66355200,
+      "res_m": 1895.2
+    },
+    "ephem": {
+      "file": "ephem.bin",
+      "step_h": 3,
+      "n_used": 14608,
+      "sha1_12": "4772740f1aed",
+      "start": "2026-01-01T00:00:00Z",
+      "mock": false
+    }
+  },
+  "sampling": {
+    "assigned_300": {
+      "seed": 202611143001,
+      "strata": [
+        {
+          "row_start": 3103,
+          "row_stop_exclusive": 3200,
+          "n": 30,
+          "lat_north_center": -6.984375,
+          "lat_south_center": -9.984375
+        },
+        {
+          "row_start": 3200,
+          "row_stop_exclusive": 3520,
+          "n": 30,
+          "lat_north_center": -10.015625,
+          "lat_south_center": -19.984375
+        },
+        {
+          "row_start": 3520,
+          "row_stop_exclusive": 3840,
+          "n": 30,
+          "lat_north_center": -20.015625,
+          "lat_south_center": -29.984375
+        },
+        {
+          "row_start": 3840,
+          "row_stop_exclusive": 4160,
+          "n": 30,
+          "lat_north_center": -30.015625,
+          "lat_south_center": -39.984375
+        },
+        {
+          "row_start": 4160,
+          "row_stop_exclusive": 4480,
+          "n": 30,
+          "lat_north_center": -40.015625,
+          "lat_south_center": -49.984375
+        },
+        {
+          "row_start": 4480,
+          "row_stop_exclusive": 4800,
+          "n": 30,
+          "lat_north_center": -50.015625,
+          "lat_south_center": -59.984375
+        },
+        {
+          "row_start": 4800,
+          "row_stop_exclusive": 5120,
+          "n": 30,
+          "lat_north_center": -60.015625,
+          "lat_south_center": -69.984375
+        },
+        {
+          "row_start": 5120,
+          "row_stop_exclusive": 5440,
+          "n": 30,
+          "lat_north_center": -70.015625,
+          "lat_south_center": -79.984375
+        },
+        {
+          "row_start": 5440,
+          "row_stop_exclusive": 5600,
+          "n": 30,
+          "lat_north_center": -80.015625,
+          "lat_south_center": -84.984375
+        },
+        {
+          "row_start": 5600,
+          "row_stop_exclusive": 5760,
+          "n": 30,
+          "lat_north_center": -85.015625,
+          "lat_south_center": -89.984375
+        }
+      ]
+    },
+    "gpu_only_300": {
+      "seed": 202611143002,
+      "strata": [
+        {
+          "row_start": 3455,
+          "row_stop_exclusive": 3520,
+          "n": 30,
+          "lat_north_center": -17.984375,
+          "lat_south_center": -19.984375
+        },
+        {
+          "row_start": 3520,
+          "row_stop_exclusive": 3840,
+          "n": 30,
+          "lat_north_center": -20.015625,
+          "lat_south_center": -29.984375
+        },
+        {
+          "row_start": 3840,
+          "row_stop_exclusive": 4160,
+          "n": 30,
+          "lat_north_center": -30.015625,
+          "lat_south_center": -39.984375
+        },
+        {
+          "row_start": 4160,
+          "row_stop_exclusive": 4480,
+          "n": 30,
+          "lat_north_center": -40.015625,
+          "lat_south_center": -49.984375
+        },
+        {
+          "row_start": 4480,
+          "row_stop_exclusive": 4800,
+          "n": 30,
+          "lat_north_center": -50.015625,
+          "lat_south_center": -59.984375
+        },
+        {
+          "row_start": 4800,
+          "row_stop_exclusive": 5120,
+          "n": 30,
+          "lat_north_center": -60.015625,
+          "lat_south_center": -69.984375
+        },
+        {
+          "row_start": 5120,
+          "row_stop_exclusive": 5440,
+          "n": 30,
+          "lat_north_center": -70.015625,
+          "lat_south_center": -79.984375
+        },
+        {
+          "row_start": 5440,
+          "row_stop_exclusive": 5600,
+          "n": 45,
+          "lat_north_center": -80.015625,
+          "lat_south_center": -84.984375
+        },
+        {
+          "row_start": 5600,
+          "row_stop_exclusive": 5760,
+          "n": 45,
+          "lat_north_center": -85.015625,
+          "lat_south_center": -89.984375
+        }
+      ]
+    }
+  },
+  "summary": {
+    "assigned_300": {
+      "n": 300,
+      "gpu_count": 247,
+      "cpu_preserved_count": 53,
+      "south_80_90_count": 60,
+      "metrics": {
+        "sun": {
+          "max_abs_diff_pp": 2.3582033881197617e-06,
+          "mean_abs_diff_pp": 6.851588043240947e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        },
+        "earth": {
+          "max_abs_diff_pp": 2.95738270539303e-06,
+          "mean_abs_diff_pp": 3.0553862141468176e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        },
+        "both": {
+          "max_abs_diff_pp": 2.5395626268576166e-06,
+          "mean_abs_diff_pp": 3.071390343864073e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        }
+      },
+      "cells_exceeding_0_5_pp": []
+    },
+    "gpu_only_300": {
+      "n": 300,
+      "gpu_count": 300,
+      "cpu_preserved_count": 0,
+      "south_80_90_count": 90,
+      "metrics": {
+        "sun": {
+          "max_abs_diff_pp": 2.5938579395479167e-06,
+          "mean_abs_diff_pp": 6.808081327229946e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        },
+        "earth": {
+          "max_abs_diff_pp": 2.8986267608388516e-06,
+          "mean_abs_diff_pp": 2.548400249926955e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        },
+        "both": {
+          "max_abs_diff_pp": 2.480806682303438e-06,
+          "mean_abs_diff_pp": 2.894156730886112e-07,
+          "max_same_float32_abs_diff_pp": 0.0
+        }
+      },
+      "cells_exceeding_0_5_pp": []
+    }
+  },
+  "scope": "Numerical implementation consistency against original CPU pipeline, not physical truth. Cohorts are disjoint; fixed PCG64 seeds, uniform draws within row strata, rejection of previously drawn cells."
+}

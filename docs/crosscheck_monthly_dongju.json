@@ -1,0 +1,381 @@
+{
+ "product": "web/data/monthly/",
+ "producer": "Sua Kim",
+ "checker": "Dongju Kim",
+ "method": "own plain-Python hourly loop over ephem.bin + horizon files (no core.js / seasons.mjs / verify_seasons.py)",
+ "seed": 20261115,
+ "sample": [
+  "ARTEMIS_HAWORTH 2029-09",
+  "ARTEMIS_HAWORTH 2029-10",
+  "ARTEMIS_HAWORTH 2030-02",
+  "APOLLO12 2029-03",
+  "APOLLO12 2029-07",
+  "APOLLO12 2030-06",
+  "DE_GERLACHE_RIM1 2026-11",
+  "DE_GERLACHE_RIM1 2026-12",
+  "DE_GERLACHE_RIM1 2027-11"
+ ],
+ "rows": [
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "month": "2029-09",
+   "expected": {
+    "hours": 720,
+    "sun_h": 595,
+    "earth_h": 473,
+    "both_h": 432,
+    "longest_dark_h": 53
+   },
+   "got": {
+    "hours": 720,
+    "sun_h": 595,
+    "earth_h": 473,
+    "both_h": 432,
+    "longest_dark_h": 53
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.8264,
+     0.8264
+    ],
+    "earth": [
+     0.6569,
+     0.6569
+    ],
+    "both": [
+     0.6,
+     0.6
+    ]
+   }
+  },
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "month": "2029-10",
+   "expected": {
+    "hours": 744,
+    "sun_h": 617,
+    "earth_h": 409,
+    "both_h": 365,
+    "longest_dark_h": 53
+   },
+   "got": {
+    "hours": 744,
+    "sun_h": 617,
+    "earth_h": 409,
+    "both_h": 365,
+    "longest_dark_h": 53
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.8293,
+     0.8293
+    ],
+    "earth": [
+     0.5497,
+     0.5497
+    ],
+    "both": [
+     0.4906,
+     0.4906
+    ]
+   }
+  },
+  {
+   "id": "ARTEMIS_HAWORTH",
+   "month": "2030-02",
+   "expected": {
+    "hours": 672,
+    "sun_h": 232,
+    "earth_h": 409,
+    "both_h": 70,
+    "longest_dark_h": 363
+   },
+   "got": {
+    "hours": 672,
+    "sun_h": 232,
+    "earth_h": 409,
+    "both_h": 70,
+    "longest_dark_h": 363
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.3452,
+     0.3452
+    ],
+    "earth": [
+     0.6086,
+     0.6086
+    ],
+    "both": [
+     0.1042,
+     0.1042
+    ]
+   }
+  },
+  {
+   "id": "APOLLO12",
+   "month": "2029-03",
+   "expected": {
+    "hours": 744,
+    "sun_h": 389,
+    "earth_h": 744,
+    "both_h": 389,
+    "longest_dark_h": 355
+   },
+   "got": {
+    "hours": 744,
+    "sun_h": 389,
+    "earth_h": 744,
+    "both_h": 389,
+    "longest_dark_h": 355
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.5228,
+     0.5228
+    ],
+    "earth": [
+     1,
+     1.0
+    ],
+    "both": [
+     0.5228,
+     0.5228
+    ]
+   }
+  },
+  {
+   "id": "APOLLO12",
+   "month": "2029-07",
+   "expected": {
+    "hours": 744,
+    "sun_h": 391,
+    "earth_h": 744,
+    "both_h": 391,
+    "longest_dark_h": 353
+   },
+   "got": {
+    "hours": 744,
+    "sun_h": 391,
+    "earth_h": 744,
+    "both_h": 391,
+    "longest_dark_h": 353
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.5255,
+     0.5255
+    ],
+    "earth": [
+     1,
+     1.0
+    ],
+    "both": [
+     0.5255,
+     0.5255
+    ]
+   }
+  },
+  {
+   "id": "APOLLO12",
+   "month": "2030-06",
+   "expected": {
+    "hours": 720,
+    "sun_h": 353,
+    "earth_h": 720,
+    "both_h": 353,
+    "longest_dark_h": 228
+   },
+   "got": {
+    "hours": 720,
+    "sun_h": 353,
+    "earth_h": 720,
+    "both_h": 353,
+    "longest_dark_h": 228
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.4903,
+     0.4903
+    ],
+    "earth": [
+     1,
+     1.0
+    ],
+    "both": [
+     0.4903,
+     0.4903
+    ]
+   }
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "month": "2026-11",
+   "expected": {
+    "hours": 720,
+    "sun_h": 592,
+    "earth_h": 417,
+    "both_h": 351,
+    "longest_dark_h": 127
+   },
+   "got": {
+    "hours": 720,
+    "sun_h": 592,
+    "earth_h": 417,
+    "both_h": 351,
+    "longest_dark_h": 127
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.8222,
+     0.8222
+    ],
+    "earth": [
+     0.5792,
+     0.5792
+    ],
+    "both": [
+     0.4875,
+     0.4875
+    ]
+   }
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "month": "2026-12",
+   "expected": {
+    "hours": 744,
+    "sun_h": 571,
+    "earth_h": 349,
+    "both_h": 346,
+    "longest_dark_h": 130
+   },
+   "got": {
+    "hours": 744,
+    "sun_h": 571,
+    "earth_h": 349,
+    "both_h": 346,
+    "longest_dark_h": 130
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.7675,
+     0.7675
+    ],
+    "earth": [
+     0.4691,
+     0.4691
+    ],
+    "both": [
+     0.4651,
+     0.4651
+    ]
+   }
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "month": "2027-11",
+   "expected": {
+    "hours": 720,
+    "sun_h": 583,
+    "earth_h": 374,
+    "both_h": 374,
+    "longest_dark_h": 137
+   },
+   "got": {
+    "hours": 720,
+    "sun_h": 583,
+    "earth_h": 374,
+    "both_h": 374,
+    "longest_dark_h": 137
+   },
+   "diff": {
+    "hours": 0,
+    "sun_h": 0,
+    "earth_h": 0,
+    "both_h": 0,
+    "longest_dark_h": 0
+   },
+   "frac_expected_vs_got": {
+    "sun": [
+     0.8097,
+     0.8097
+    ],
+    "earth": [
+     0.5194,
+     0.5194
+    ],
+    "both": [
+     0.5194,
+     0.5194
+    ]
+   }
+  }
+ ],
+ "max_abs_diff": {
+  "hours": 0,
+  "sun_h": 0,
+  "earth_h": 0,
+  "both_h": 0,
+  "longest_dark_h": 0,
+  "frac": 0.0
+ },
+ "criterion": "hour counts and longest dark identical; fractions equal to 4 dp",
+ "passed": true
+}

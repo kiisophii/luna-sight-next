@@ -1,0 +1,74 @@
+{
+ "product": "web/data/sites.json",
+ "producer": "Minchul Kim",
+ "checker": "Dongju Kim",
+ "method": "coordinates re-read from the original source pages (browser text / PDF text), compared to sites.json",
+ "sample": [
+  "APOLLO16",
+  "IM1",
+  "DE_GERLACHE_RIM1",
+  "IM3_REINER_GAMMA",
+  "LUNA24"
+ ],
+ "seed": 20261114,
+ "rows": [
+  {
+   "id": "APOLLO16",
+   "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+   "source_matches_sites_json_url": true,
+   "quoted": "Apollo 16 ... Lunar Module -8.9734 15.5011",
+   "read_lat": -8.9734,
+   "read_lon": 15.5011,
+   "catalogue_lat": -8.9734,
+   "catalogue_lon": 15.5011,
+   "max_abs_diff_deg": 0.0
+  },
+  {
+   "id": "IM1",
+   "source_url": "https://lroc.im-ldi.com/images/1360",
+   "source_matches_sites_json_url": true,
+   "quoted": "Odysseus came to rest at 80.13°S, 1.44°E, 2579 m elevation",
+   "read_lat": -80.13,
+   "read_lon": 1.44,
+   "catalogue_lat": -80.13,
+   "catalogue_lon": 1.44,
+   "max_abs_diff_deg": 0.0
+  },
+  {
+   "id": "DE_GERLACHE_RIM1",
+   "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+   "source_matches_sites_json_url": true,
+   "quoted": "Table A2-2 (p. 58 of 70): R11 or Site11 de Gerlache Rim 1 -88.6834 -67.9321",
+   "read_lat": -88.6834,
+   "read_lon": -67.9321,
+   "catalogue_lat": -88.6834,
+   "catalogue_lon": -67.9321,
+   "max_abs_diff_deg": 0.0
+  },
+  {
+   "id": "IM3_REINER_GAMMA",
+   "source_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+   "source_matches_sites_json_url": true,
+   "quoted": "The targeted LVx landing site (7.585°N, 58.725°W)",
+   "read_lat": 7.585,
+   "read_lon": -58.725,
+   "catalogue_lat": 7.585,
+   "catalogue_lon": -58.725,
+   "max_abs_diff_deg": 0.0
+  },
+  {
+   "id": "LUNA24",
+   "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+   "source_matches_sites_json_url": true,
+   "quoted": "Luna 24 Soft Landing 18 August 1976 12.7142 N, 62.2129 E",
+   "read_lat": 12.7142,
+   "read_lon": 62.2129,
+   "catalogue_lat": 12.7142,
+   "catalogue_lon": 62.2129,
+   "max_abs_diff_deg": 0.0
+  }
+ ],
+ "max_abs_diff_deg": 0.0,
+ "criterion": "identical to the published precision",
+ "passed": true
+}

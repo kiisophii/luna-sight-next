@@ -76,6 +76,7 @@ function wheelHint() {
 
 // ------------------------------------------------------------ mirrored time strip under the globe
 function wireTimeStrip() {
+  if (!$('#gl-slider')) return;              // 3-column layout: one scrubber in the comparison tray (app.js)
   const sl = $('#gl-slider'), lab = $('#gl-time'), play = $('#gl-play'), mainPlay = $('#play'), mainSl = $('#slider');
   const syncRange = () => { sl.min = mainSl.min; sl.max = mainSl.max; sl.step = mainSl.step; sl.value = mainSl.value; };
   const syncPlay = () => { play.textContent = mainPlay.textContent; play.setAttribute('aria-pressed', mainPlay.getAttribute('aria-pressed') || 'false'); };
@@ -108,8 +109,10 @@ async function start() {
       sites: st.sites, ephem: st.ephem, ephemMeta: st.ephemMeta,
       lang: getLang(),
       wheelNeedsFocus: true,
+      hud: false,                 // layout HUD lines live in index.html (.ls-hud); the ×3 note stays
       // off-screen Sun/Earth chips never cover these (all other page UI is outside the globe stage)
-      avoid: ['#globe-stage .gl-zoom', '#globe-stage .gl-progress', '#globe-stage .gl-hint', '#globe-stage .g3-site'],
+      avoid: ['#globe-stage .gl-zoom', '#globe-stage .gl-progress', '#globe-stage .gl-hint', '#globe-stage .g3-site',
+        '.ls-head', '.ls-left', '.ls-tray', '.ls-minimap', '.ls-toolbar', '.ls-hud', '.ls-scrollhint', '.ls-drawer:not([hidden])'],
       view: initialView(focus),
     });
   } catch (e) {
@@ -122,17 +125,18 @@ async function start() {
   }
   window.LLSN.globe = g;
   stage.classList.add('ready');
+  window.dispatchEvent(new CustomEvent('llsn:globe', { detail: { globe: g } }));
 
   // app -> globe
   window.addEventListener('llsn:time', e => g.setTime(e.detail.i));
   window.addEventListener('llsn:focus', e => flySite(e.detail.id));
   window.addEventListener('llsn:lang', () => { g.setLang(getLang()); translate(sec); });
-  $('#pk-list').addEventListener('click', e => { const b = e.target.closest('.pk-item'); if (b) flySite(b.dataset.id, true); });
-  $('#cards').addEventListener('click', e => {
+  $('#pk-list')?.addEventListener('click', e => { const b = e.target.closest('.pk-item'); if (b) flySite(b.dataset.id, true); });
+  $('#cards')?.addEventListener('click', e => {
     if (e.target.closest('.rm')) return;
     const c = e.target.closest('.card[data-id]'); if (c) flySite(c.dataset.id, true);
   });
-  $('#cards').addEventListener('keydown', e => {
+  $('#cards')?.addEventListener('keydown', e => {
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.card[data-id]')) flySite(e.target.dataset.id, true);
   });
 
@@ -141,13 +145,13 @@ async function start() {
   g.on('wheelhint', wheelHint);
 
   // view buttons + zoom buttons
-  sec.querySelector('.gl-views').addEventListener('click', e => {
+  sec.querySelector('.gl-views')?.addEventListener('click', e => {
     const v = e.target.closest('button')?.dataset.view;
     if (v === 'whole') { const c = g.getView(); g.flyTo({ lat: Math.max(-30, Math.min(30, c.lat)), lon: c.lon, range: 6500, tilt: 0, heading: 0 }); }
     else if (v === 'south') g.flyTo({ lat: -89, lon: 0, range: 420, tilt: 35, heading: 0 });
     else if (v === 'focus') flySite(LLSN().focus, true);
   });
-  stage.querySelector('.gl-zoom').addEventListener('click', e => {
+  stage.querySelector('.gl-zoom')?.addEventListener('click', e => {
     const z = e.target.closest('button')?.dataset.zoom; if (!z) return;
     const v = g.getView();
     g.flyTo({ range: Math.max(0.3, Math.min(25000, v.range * (z === 'in' ? 0.5 : 2))) }, 500);

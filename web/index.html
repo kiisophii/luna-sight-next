@@ -3,112 +3,191 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lunar Landing Site Navigator</title>
+<title>Luna Sight — Lunar Landing Site Navigator</title>
+<meta name="description" content="Luna Sight (Lunar Landing Site Navigator): compare lunar landing sites and dates — can a lander see the Sun (power) and the Earth (direct-to-Earth link)? Team Ginkgo Orbit, NASA Space Apps 2026.">
 <link rel="icon" href="data:,">
+<!-- Fonts (SIL OFL 1.1): Pretendard (UI) via jsDelivr, Oxanium (measured numbers) via Google Fonts. Listed in About → Sources. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/base.css">
-<!-- card 12 (design) owns theme.css: it only overrides the variables defined at the top of base.css -->
+<!-- layout.css: 3-column layout + the team's "vivid" palette as variables (design spec v65 §2). Loaded before theme.css. -->
+<link rel="stylesheet" href="css/layout.css">
+<!-- card 12 (design) owns theme.css: it only overrides the variables defined at the top of base.css / layout.css -->
 <link rel="stylesheet" href="css/theme.css">
 </head>
-<body>
-<header class="top">
-  <h1 data-i18n="title">Lunar Landing Site Navigator</h1>
-  <button id="lang" type="button" data-i18n="lang">한국어</button>
-  <p class="tagline" data-i18n="tagline"></p>
+<body class="ls">
+<a class="ls-skip" href="#ls-compare" data-i18n="skipBelow">Skip to the comparison</a>
+
+<!-- I. intro (intro.js): first visit only, ≤ 3 s, real loading progress, skip; none with reduced motion -->
+<div id="ls-intro" class="ls-intro" hidden></div>
+
+<!-- H. header: wordmark (→ About), language -->
+<header class="ls-head">
+  <a class="ls-brand" href="#about" data-i18n-aria="toAbout">
+    <!-- LOGO SLOT: no contest-made logo file is in the repo yet. Drop an SVG/PNG here (web/img/), keep the text for screen readers. -->
+    <span class="ls-logo-slot" data-slot="logo" aria-hidden="true"></span>
+    <span class="ls-word" data-i18n="appName">Luna Sight</span>
+    <span class="ls-sub" data-i18n="appSub">Lunar Landing Site Navigator</span>
+    <svg class="ic ls-out" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3L5 11" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+  </a>
+  <div class="lang-seg" role="group" data-i18n-aria="langAria">
+    <button type="button" data-lang="ko" aria-pressed="false" lang="ko" aria-label="한국어">KR</button><button type="button" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+  </div>
 </header>
 <div class="mock-banner" role="status" data-i18n="mock"></div>
-<main>
-  <!-- 0. whole-Moon 3D globe (globe3d.js via globe_app.js): selected time = real Sun light; site clicks <-> picker/cards -->
-  <section id="llsn-globe" class="panel globe-panel" data-i18n-aria="glTitle">
-    <div class="panel-head">
-      <h2 data-i18n="glTitle">3D Moon</h2>
-      <div class="gl-views seg" role="group" data-i18n-aria="glViews">
-        <button type="button" data-view="whole" data-i18n="glWhole">Whole Moon</button><button type="button" data-view="south" data-i18n="glSouth">South pole</button><button type="button" data-view="focus" data-i18n="glFocus">Focused site</button>
+
+<div id="view-app">
+  <!-- first screen: 3D Moon fills the screen; panels float over it -->
+  <div class="ls-screen">
+    <section id="llsn-globe" class="ls-globe" data-i18n-aria="glTitle">
+      <div id="globe-stage" class="globe-stage">
+        <div class="gl-progress" role="status" hidden><span class="bar"></span><span class="txt"></span></div>
+        <div class="gl-zoom"><button type="button" data-zoom="in" data-i18n-aria="glZoomIn">+</button><button type="button" data-zoom="out" data-i18n-aria="glZoomOut">−</button></div>
+        <p class="gl-hint" role="status" hidden></p>
       </div>
-    </div>
-    <div id="globe-stage" class="globe-stage">
-      <div class="gl-progress" role="status" hidden><span class="bar"></span><span class="txt"></span></div>
-      <div class="gl-zoom"><button type="button" data-zoom="in" data-i18n-aria="glZoomIn">+</button><button type="button" data-zoom="out" data-i18n-aria="glZoomOut">−</button></div>
-      <p class="gl-hint" role="status" hidden></p>
-    </div>
-    <div class="gl-time">
-      <button id="gl-play" type="button" aria-pressed="false">Play</button>
-      <input id="gl-slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="time">
-      <strong id="gl-time" class="num"></strong>
-      <a class="now-link" href="#llsn-window" data-i18n="glToAnalysis">Analysis window ↓</a>
-    </div>
-    <p class="hint" data-i18n="glHint"></p>
-  </section>
+    </section>
 
-  <!-- 1. site picker + 3-card comparison -->
-  <section id="picker" class="panel" data-i18n-aria="pkTitle">
-    <div class="panel-head">
-      <h2 data-i18n="pkTitle"></h2>
-      <a class="now-link" href="#llsn-window"><span data-i18n="selTime"></span> <span id="now-short" class="num"></span></a>
+    <!-- L. left panel -->
+    <aside class="ls-left" id="ls-left">
+      <section class="ls-card ls-cond" id="ls-cond" aria-labelledby="c1-h">
+        <div class="ls-card-head">
+          <h2 id="c1-h"><span class="circ">1</span><span data-i18n="c1">Mission conditions</span></h2>
+          <button type="button" class="ls-icon ls-fold" data-fold="ls-cond" aria-expanded="true" data-i18n-aria="collapse">‹</button>
+        </div>
+        <div class="ls-foldable">
+          <div class="c1-grid">
+            <label><span data-i18n="c1Date">Landing date (UTC)</span><input id="c1-date" type="date" required></label>
+            <label><span data-i18n="c1Period">Operating period</span><select id="c1-period"></select></label>
+          </div>
+          <p id="c1-clipped" class="lsn-note warn" data-i18n="c1Clipped" hidden></p>
+          <section id="llsn-filters" class="ls-filters"></section>
+          <div class="c1-flow" aria-hidden="true">↓</div>
+        </div>
+      </section>
+
+      <section class="ls-card ls-sites" id="picker" aria-labelledby="c2-h">
+        <div class="ls-card-head">
+          <h2 id="c2-h"><span class="circ">2</span><span data-i18n="c2">Sites</span> <span id="c2-count" class="num big-n"></span> <small id="c2-pinned" class="muted"></small></h2>
+          <button type="button" class="ls-icon" id="sort-help-btn" aria-expanded="false" aria-controls="sort-help" data-i18n-aria="sortHelpT">i</button>
+        </div>
+        <div id="sort-help" class="ls-pop" role="dialog" hidden>
+          <h3 data-i18n="sortHelpT"></h3>
+          <p><strong data-i18n="sortHelp1"></strong> <span data-i18n="sortHelp2"></span></p>
+          <ul><li data-i18n="sortHelpBoth"></li><li data-i18n="sortHelpSun"></li><li data-i18n="sortHelpEarth"></li><li data-i18n="sortHelpDark"></li></ul>
+          <p class="muted" data-i18n="sortHelp3"></p>
+          <p class="muted" data-i18n="verdictNote"></p>
+        </div>
+        <label class="sort-row"><span class="muted"><span aria-hidden="true">⇅</span> <span data-i18n="sortBy">Sort by</span></span><select id="sort"></select></label>
+        <label class="relay-row"><input type="checkbox" id="relay-on"> <span data-i18n="relayAssume">Assume a relay tower</span> <small class="muted num">15 m</small></label>
+        <p id="relay-status" class="lsn-note" aria-live="polite"></p>
+        <p id="c2-pass" class="lsn-note" aria-live="polite"></p>
+        <p id="c2-none" class="lsn-note" hidden><span data-i18n="noneMatch"></span> <button type="button" id="c2-reset" class="ls-link" data-i18n="resetCond"></button></p>
+        <ul id="pk-list" class="pk-list"><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li></ul>
+        <button type="button" id="pk-more" class="ls-link more" hidden></button>
+        <button type="button" id="add-open" class="ls-add" data-i18n="addSite">+ Add a landing site</button>
+      </section>
+    </aside>
+
+    <!-- C3. minimap (minimap.js) -->
+    <div class="ls-minimap" id="ls-minimap"></div>
+
+    <!-- R. comparison tray -->
+    <aside class="ls-tray" id="ls-tray" aria-labelledby="tray-h">
+      <div class="ls-card-head">
+        <h2 id="tray-h"><span class="tray-pin" aria-hidden="true"></span><span data-i18n="tray">Compare</span></h2>
+        <span id="ls-valbadge" class="val-badge-slot"></span>
+        <button type="button" class="ls-icon ls-fold" data-fold="ls-tray" aria-expanded="true" data-i18n-aria="collapseTray">›</button>
+      </div>
+      <div class="ls-foldable">
+        <label class="tray-view"><span data-i18n="trayView">View</span><select id="tray-view">
+          <option value="table" data-i18n="tv_table">Table</option><option value="dial" data-i18n="tv_dial">Lunar-day clock</option><option value="alt" data-i18n="tv_alt">Sun & Earth elevation</option></select></label>
+        <div class="tray-time">
+          <span class="lbl" data-i18n="selTimeUTC">Selected time (UTC)</span>
+          <div class="tray-time-in"><input id="t-date" type="date" required aria-label="date"><input id="t-tod" type="time" step="60" required aria-label="time"></div>
+        </div>
+        <div class="scrub-row">
+          <div class="scrub-wrap">
+            <div class="scrub-ends num"><span id="scrub-a"></span><span id="scrub-b"></span></div>
+            <div class="scrub" id="scrub">
+              <canvas id="scrub-cv" aria-hidden="true"></canvas>
+              <span id="scrub-needle" class="needle" aria-hidden="true"></span>
+              <span id="scrub-tip" class="scrub-tip num" hidden></span>
+              <input id="slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="scrubAria">
+            </div>
+          </div>
+          <label class="speed"><span class="sr" data-i18n="speedAria"></span><select id="speed" data-i18n-aria="speedAria"><option value="1">1h/s</option><option value="6" selected>6h/s</option><option value="24">24h/s</option></select></label>
+          <button type="button" id="play" class="play" aria-pressed="false"></button>
+        </div>
+        <p class="scrub-note"><span id="scrub-for"></span> · <span data-i18n="speedNote"></span></p>
+        <div id="tray-body" class="tray-body" aria-live="off"></div>
+        <a class="ls-btn primary block" href="#ls-compare" data-i18n="details">See details below ↓</a>
+      </div>
+    </aside>
+
+    <!-- C2. layer / camera toolbar -->
+    <div class="ls-toolbar" role="toolbar" data-i18n-aria="tbAria">
+      <div class="tb-group" role="group">
+        <button type="button" data-layer="light" aria-pressed="true" data-tip="tbt_light" data-i18n-aria="tb_light"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+        <button type="button" data-layer="sun" aria-pressed="false" data-tip="tbt_mean" data-i18n-aria="tb_mean"><svg class="ic" viewBox="0 0 16 16"><path d="M2 12h12" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 12a3.5 3.5 0 0 1 7 0" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v2M3.5 6l1.2 1.2M12.5 6l-1.2 1.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+        <button type="button" data-layer="earth" aria-pressed="false" data-tip="tbt_earthmap" data-i18n-aria="tb_earthmap"><svg class="ic" viewBox="0 0 16 16"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></button>
+      </div>
+      <span class="tb-sep" aria-hidden="true"></span>
+      <div class="tb-group gl-views" role="group">
+        <button type="button" data-view="focus" data-tip="tb_focus" data-i18n-aria="tb_focus"><svg class="ic" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14M7 5v4M5 7h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+        <button type="button" data-view="whole" data-tip="tb_whole" data-i18n-aria="tb_whole"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="6.5" r="1.2" fill="currentColor"/><circle cx="10" cy="10" r=".9" fill="currentColor"/></svg></button>
+        <button type="button" data-view="south" data-tip="tb_south" data-i18n-aria="tb_south"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 11.5h10" stroke="currentColor" stroke-width="1.2"/><text x="8" y="10" font-size="5.5" text-anchor="middle" fill="currentColor" font-family="sans-serif">S</text></svg></button>
+        <button type="button" data-tool="pick" aria-pressed="false" data-tip="tbt_pick" data-i18n-aria="tb_pick"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v4M8 11v4M1 8h4M11 8h4" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      </div>
+      <span class="tb-tip" role="tooltip" hidden></span>
     </div>
-    <div class="ctl">
-      <label class="grow"><span class="sr" data-i18n="pkSearch"></span>
-        <input id="pk-q" type="search" autocomplete="off" data-i18n-ph="pkSearchPh"></label>
-      <label><span data-i18n="pkGroup"></span> <select id="pk-group"></select></label>
-      <span id="pk-count" class="muted" aria-live="polite"></span>
-    </div>
-    <ul id="pk-list" class="pk-list"></ul>
-    <p class="hint" data-i18n="pkHint"></p>
-  </section>
-  <!-- 1b. user-defined point (custom_site.js mounts here) -->
-  <section id="llsn-custom" class="panel"></section>
-  <section id="cards" aria-label="Site comparison"><p class="muted" data-i18n="loading">Loading data…</p></section>
+    <div class="map-legend" id="map-legend" hidden></div>
+    <div class="ls-pickbar" id="ls-pickbar" hidden><span data-i18n="pickOn"></span> <button type="button" class="ls-link" id="pick-cancel" data-i18n="cancel"></button></div>
+    <div class="ls-hud"><p id="hud-1" data-i18n="hudLine1"></p><p id="hud-2" class="num"></p></div>
+    <a class="ls-scrollhint" href="#ls-compare"><span aria-hidden="true">⌄</span> <span data-i18n="scrollHint">Below: compare pinned sites · why this site</span></a>
 
-  <!-- 2. 360° horizon panorama of the focused site (horizon_chart.js mounts here) -->
-  <section id="llsn-horizon" class="panel"></section>
+    <!-- 3.10 add-site drawer (shell.js); custom_site.js mounts its calculator into #llsn-custom -->
+    <div class="ls-drawer" id="ls-add" role="dialog" aria-labelledby="add-h" hidden></div>
+  </div>
 
-  <!-- 2b. communication story for the focused site (story_arc.js): direct → orbiter → tower → Korea -->
-  <section id="llsn-story" class="panel"></section>
+  <!-- B1. compare pinned sites (compare_view.js) -->
+  <main id="below" class="ls-below">
+    <section id="ls-compare" class="ls-section" tabindex="-1" aria-labelledby="cmp-h">
+      <div class="cmp-dyn"></div>
+      <details class="ls-panel" style="margin-top:16px"><summary style="cursor:pointer;font-weight:600" data-i18n="allSites">All sites — period table</summary>
+        <section id="llsn-window" class="panel"><div id="wm-body"></div></section></details>
+    </section>
+    <!-- B2. decision brief (brief.js) — existing modules mount into the detail blocks it creates -->
+    <section id="ls-brief" class="ls-section" tabindex="-1" aria-labelledby="brief-h">
+      <div class="brief-head"></div>
+      <div class="bento"></div>
+      <!-- detail blocks: fixed order (spec §5.4). Existing modules mount into their sections by id. Closed blocks stay laid out off-screen so charts keep their width. -->
+      <div class="ls-details">
+        <section class="ls-detail is-closed" data-block="time" id="blk-time" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div></section>
+        <section class="ls-detail is-closed" data-block="near" id="blk-near" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-local" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="date" id="blk-date" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-dates" class="panel"></section><section id="llsn-slip" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="seasons" id="blk-seasons" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-seasons" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="relay" id="blk-relay" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-relay" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="gs" id="blk-gs" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-korea" class="panel"></section><section id="llsn-story" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="hz" id="blk-hz" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div><section id="llsn-horizon" class="panel"></section></section>
+        <section class="ls-detail is-closed" data-block="more" id="blk-more" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div></section>
+        <section class="ls-detail is-closed" data-block="trust" id="blk-trust" aria-hidden="true"><header></header><p class="desc"></p><div class="blk-body"></div></section>
+      </div>
+      <div class="share-row"></div>
+    </section>
+  </main>
+</div>
 
-  <!-- 3. analysis window: time controls + period results (window_metrics.js renders #wm-body) -->
-  <section id="llsn-window" class="panel" data-i18n-aria="awTitle">
-    <h2 data-i18n="awTitle"></h2>
-    <div class="timebar" role="group" data-i18n-aria="tbAria">
-      <label><span data-i18n="tbStart"></span> <input id="t-date" type="date" required></label>
-      <label><span data-i18n="tbTod"></span> <input id="t-tod" type="time" step="60" required></label>
-      <span class="ctl-item"><span data-i18n="tbPeriod"></span>
-        <span class="seg" id="t-period" role="group">
-          <button type="button" data-days="7" data-i18n="wm7"></button><button type="button" data-days="30" data-i18n="wm30"></button><button type="button" data-days="90" data-i18n="wm90"></button>
-        </span>
-        <input id="t-days" type="number" min="1" max="1826" step="1" data-i18n-aria="tbDays"> <span data-i18n="wmDays"></span>
-      </span>
-      <span class="ctl-item">
-        <button id="play" type="button" data-i18n="play">Play</button>
-        <label><span data-i18n="speed">Speed</span>
-          <select id="speed">
-            <option value="1" data-i18n="sp1"></option>
-            <option value="3" data-i18n="sp3"></option>
-            <option value="6" selected data-i18n="sp6"></option>
-            <option value="24" data-i18n="sp24"></option>
-          </select>
-        </label>
-      </span>
-      <input id="slider" class="span" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="time">
-      <p class="span tb-read"><span class="muted" data-i18n="selTime"></span> <strong id="time-label" class="num" aria-live="polite"></strong>
-        <span id="period-label" class="muted num"></span></p>
-    </div>
-    <p class="hint" data-i18n="tbHint"></p>
-    <div id="wm-body"></div>
-  </section>
+<!-- A. About (about.js), #about -->
+<section id="view-about" class="ls-about" hidden></section>
 
-  <!-- 3b. differentiators for the focused site: relay tower (relay_panel.js), Korea links (korea_panel.js) -->
-  <section id="llsn-relay" class="panel"></section>
-  <section id="llsn-korea" class="panel"></section>
-  <!-- 3b. landing-date scan for the focused site (landing_scan.js mounts here) -->
-  <section id="llsn-dates" class="panel"></section>
-
-  <!-- 4. filters (filters.js mounts here) -->
-  <section id="llsn-filters" class="panel"></section>
-</main>
-<footer>
-  <p data-i18n="assumptions"></p>
-  <p data-i18n="terrainNote"></p>
-  <p>Team Ginkgo Orbit · NASA Space Apps Challenge 2026 · <a href="https://github.com/kiisophii/lunar-landing-site-navigator">source (Apache-2.0)</a></p>
+<footer class="ls-foot">
+  <p><span data-i18n="footNote">All times UTC. Sun and Earth disc sizes in the 3D view are enlarged for visibility; elevation axes are exaggerated.</span>
+    <a href="#about-sources" data-i18n="footSources">Sources</a> ·
+    Team Ginkgo Orbit · NASA Space Apps Challenge 2026 · <a href="https://github.com/kiisophii/lunar-landing-site-navigator">source (Apache-2.0)</a> · <span id="ls-ver" class="num"></span></p>
+  <p class="muted" data-i18n="assumptions"></p>
 </footer>
+<script type="module" src="js/shell.js"></script>
 <script type="module" src="js/app.js"></script>
 <script>let v=null;setInterval(async()=>{try{const r=await fetch('version.json',{cache:'no-store'});const j=await r.json();if(v&&j.v!==v)location.reload();v=j.v}catch(e){}},30000);</script>
 </body>

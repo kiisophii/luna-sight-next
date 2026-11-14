@@ -7,7 +7,8 @@
 //
 // API (see createGlobe): setTime(hourIndex|Date), flyTo({lat,lon,range,tilt,heading}), focusSite(id),
 //   setExaggeration(k) [display default x3, shown in a persistent note; calculations always use true heights],
-//   setLang('en'|'ko'), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose().
+//   setLang('en'|'ko'), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose(),
+//   setColorMap(url|null) [data layer instead of the colour kit], screenToLatLon(clientX, clientY).
 // Options: base, hour, view, exaggeration (3), lang ('en'), hud (true),
 //   avoid: [elements | CSS selectors] the off-screen Sun/Earth chips must never cover (header, panels, buttons, minimap),
 //   chipInsets: {top, right, bottom, left} px kept free for chips.
@@ -134,11 +135,13 @@ export async function createGlobe(container, opts = {}) {
   let hiresState = 'none';                 // none | loading | done
   const setColor = t => { t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); t.generateMipmaps = true; colorTex.value = t; };
   setColor(await texLoader.loadAsync(base + 'globe/moon_color_2k.jpg'));
+  let baseTex = null;                       // LROC colour texture currently loaded (2k or 8k)
+  let layerTex = null, layerUrl = null;     // optional data layer drawn instead of the colour (setColorMap)
   function loadHires() {
     if (hiresState !== 'none') return;
     hiresState = 'loading';
     texLoader.loadAsync(base + 'globe/moon_color_8k.jpg')
-      .then(t => { const old = colorTex.value; setColor(t); old.dispose(); dirty = true; })
+      .then(t => { const old = baseTex || colorTex.value; setColor(t); baseTex = t; if (layerTex) colorTex.value = layerTex; if (old !== t) old.dispose(); dirty = true; })
       .catch(() => {})
       .finally(() => { hiresState = 'done'; });
   }
@@ -786,8 +789,44 @@ uniform sampler2D uColor;`)
   if (opts.view) setView(opts.view);
   raf = requestAnimationFrame(frame);
 
+  /** Replace the surface colour by an equirectangular data map (lon -180 at the left edge, same as the colour kit),
+   *  e.g. the 2026-2030 mean-sunlight overview; null restores the LROC colour. `flat` lights the layer evenly
+   *  (ambient only) so a long-term average is not darkened by the selected time's night side. */
+  async function setColorMap(url, { flat = true } = {}) {
+    if (!baseTex) baseTex = colorTex.value;
+    layerUrl = url || null;
+    if (!url) {
+      if (layerTex) { layerTex.dispose(); layerTex = null; }
+      colorTex.value = baseTex; ambient.intensity = 0.10; sun.intensity = 3.2; dirty = true; return;
+    }
+    const t = await texLoader.loadAsync(url);
+    if (layerUrl !== url) { t.dispose(); return; }          // a newer call won
+    t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.generateMipmaps = true;
+    if (layerTex) layerTex.dispose();
+    layerTex = t; colorTex.value = t;
+    ambient.intensity = flat ? 2.2 : 0.10; sun.intensity = flat ? 0.6 : 3.2;
+    dirty = true;
+  }
+
+  /** lat/lon (deg) of the terrain under a client (page) pixel, or null when the ray misses the Moon. */
+  const ray = new THREE.Raycaster();
+  function screenToLatLon(clientX, clientY) {
+    const r = renderer.domElement.getBoundingClientRect();
+    if (!r.width || !r.height) return null;
+    ray.setFromCamera(new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1), camera);
+    const meshes = []; for (const t of tiles.values()) if (t.mesh && t.mesh.visible) meshes.push(t.mesh);
+    const hit = ray.intersectObjects(meshes, false)[0];
+    let p = hit ? hit.point : null;
+    if (!p) {                                                 // fall back to the mean sphere
+      const o = ray.ray.origin, d = ray.ray.direction, b = o.dot(d), c = o.dot(o) - R * R, disc = b * b - c;
+      if (disc < 0) return null;
+      p = o.clone().addScaledVector(d, -b - Math.sqrt(disc));
+    }
+    return latLonFromDir(p);
+  }
+
   const api = {
-    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang,
+    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, screenToLatLon,
     // manual frames (tests / hidden tabs where requestAnimationFrame is paused); also loads tiles until idle
     async step(maxMs = 20000) {
       const t0 = performance.now(); let calm = 0;

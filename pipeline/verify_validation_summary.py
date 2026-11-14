@@ -79,7 +79,7 @@ C = [
  ("8.99", "FULL", "240 m: ≤ 8.99 m"), ("1.39", "FULL", "10–80 m: ≤ 1.39 m"),
  # L11 / L12
  ("photographs", "FULL", "no surface photographs compared"), ("DEM height errors", "docs/coordinate_uncertainty.md", "DEM\nheight errors are not included"),
- ("KDSA permission", "FULL", "permission to use KDSA coordinates is pending"),
+ ("KDSA source", "FULL", "KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested"),
 ]
 bad = 0
 for label, s, needle in C:

@@ -1,14 +1,14 @@
-# KDSA / ShadowCam project permission record
+# KDSA / ShadowCam source status
 
-Status: **PROJECT USE APPROVED (user-relayed)**. Recorded 14 November 2026 (KST).
+Status (corrected 2026-11-14 KST): **no permission was requested and none is claimed.**
 
-After asking about the two pending items, the user reported in chat: “써도 된대. 진행한다.” (“They said we may use it. Proceed.”). This is the evidence for clearing the team's two project permission questions. The assistant did not independently receive a separate grant or inspect an attached licence document. No grantor identity, additional conditions or standard licence identifier is invented here.
-
-| Resource | Project permission now recorded | Current implementation |
+| Resource | Status | Current implementation |
 |---|---|---|
-| KDSA station coordinates from NAIF/KARI kdsa01.tf | The discussed use/publication in this project is approved as relayed by the user. | Existing station coordinates and numerical direct-link calculations; no values changed. |
-| ShadowCam (NASA/KARI/ASU) | The discussed project use/image redistribution is approved as relayed by the user. | Links and label metadata only; this documentation change does not download, rehost or add image overlays. |
+| KDSA station coordinates (kdsa01.tf) | Station coordinates taken from the publicly released SPICE frame kernel kdsa01.tf (KARI, 2021-03-08), distributed by NASA/JPL NAIF at https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf; factual coordinates used with citation; no separate permission was requested. | Station coordinates and numerical direct-link calculations (`web/data/korea/stations.json`, Korea panel). |
+| ShadowCam (NASA/KARI/ASU, PDS archive) | Links and label metadata only; no ShadowCam images are redistributed (credit NASA/KARI/ASU; no separate permission was requested). | Archive links and PDS label metadata in `web/data/korea/korea.json`; no image files are downloaded, rehosted or overlaid. |
 
-Sources: [KDSA definition](https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf), [ShadowCam archive](https://pds.shadowcam.asu.edu/), [archive DOI](https://doi.org/10.17189/y89z-kt98).
+Sources: [kdsa01.tf](https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf), [ShadowCam archive](https://pds.shadowcam.asu.edu/), [archive DOI](https://doi.org/10.17189/y89z-kt98).
 
-Keep NASA/KARI/ASU and the source-provider credits. This project-specific confirmation does not relicense third-party resources as Apache-2.0 or assert a blanket public licence. Other resources' independent REVIEW flags remain unchanged. Older SI/audit/brief records describe the earlier pending state and are retained as historical records; this dated permission record is the current status for these two items.
+**Correction.** An earlier version of this file (PR #36) recorded a "PROJECT USE APPROVED (user-relayed)" status for both items. That was a
+misunderstanding: Sua Kim confirmed on 2026-11-14 that the Seoul organisers / mentors were never asked. No approval exists, and none is
+claimed anywhere in the repository. Keep NASA/KARI/ASU and NAIF source credits; nothing here relicenses third-party material.

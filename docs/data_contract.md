@@ -343,7 +343,7 @@ Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent ch
 - Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
 - Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.
 
-## 18. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua non-polar part, 2026-11-14) — NOT yet agreed; new section only (renumbered from 17 at merge: seasons took 17; sections 0–17 unchanged)
+## 18. Proposed — `web/data/uncertainty/<ID>.json` coordinate-uncertainty ranges (Card 23, Sua non-polar part + Jiyong south-polar part, 2026-11-14) — NOT yet agreed; new section only (renumbered from 17 at merge: seasons took 17; sections 0–17 unchanged)
 
 Answers "if the catalogue coordinate is off by r metres, what range of values could the site have?".
 Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; the south-polar part
@@ -374,3 +374,72 @@ Non-polar sites (lat > −75°) are written by `pipeline/coord_uncertainty.py`; 
 
 Nodes are point samples, not area averages. The spread shows sensitivity to position on the
 same DEM; it does not include DEM height errors.
+
+South-polar extension (same common keys, Jiyong): `pipeline/coordinate_uncertainty.py`
+writes only the 16 sites with lat <= -75. Each retains its current Card 8 horizon
+parameters (min_km=0.005, max_km=300, n_steps=8000, observer=2 m), full PGDA chain,
+and LDEM_64/LDEM_16 fallback. `params` also records `early_stop` and `hmax_m`.
+Optional node fields `ground_resolution_m` and `dem_sources` identify actual data
+support. Optional `center_check` stores exact differences and the baseline metrics
+SHA256; a mismatch blocks export. Provenance additionally records unchanged baseline
+horizon/metrics SHA256. No existing horizon or metrics files are modified.
+
+The five nonpolar near-field alternatives are separate in `docs/near_field_check.md`;
+they are never used to change uncertainty centres. PGDA reference values outside the
+published raster footprint remain null, including neighbourhood extrema and closeness.
+
+## 19. Proposed v1.3 — site visibility windows (card 15-B, 2026-11-14) — pending team agreement; renumbered from 18 at merge (coordinate uncertainty took 18); sections 0–18 unchanged
+
+Written by `node pipeline/build_windows.mjs`, using unchanged `web/js/core.js` predicates. Files are optional until generated; no existing format is changed.
+
+### 19.1 `web/data/windows/<ID>.json`
+
+```json
+{
+  "format": "site-windows-v1", "id": "<catalogue ID>", "lat": 0, "lon": 0,
+  "h0_m": 0, "obs_height_m": 2,
+  "start_utc": "2026-01-01T00:00:00Z", "end_utc": "2031-01-01T00:00:00Z",
+  "step_h": 1, "n": 43824,
+  "sun": {"visible": [], "longest_gaps": [], "visible_hours": 0},
+  "earth": {"visible": [], "longest_gaps": [], "visible_hours": 0},
+  "source": {"core_sha256": "<hash>", "ephem_sha256": "<hash>", "ephem_meta_sha256": "<hash>",
+             "site_sha256": "<hash>", "horizon_sha256": "<hash>", "producer_sha256": "<hash>"},
+  "mock": false
+}
+```
+
+The snippet shows structure only, not computed coordinates or results. Each interval record in visible or longest_gaps has exactly `start_utc, end_utc, duration_h, clipped_start, clipped_end`.
+
+- UTC timestamps are whole hours. Every interval is **[start_utc, end_utc)**: start included, end excluded. Each hour-mark state describes its one-hour bin. The final sampled state at 2030-12-31T23Z describes the bin ending 2031-01-01T00Z. This is a discretisation convention, not a claim that the physical transition is exactly on an hour mark.
+- Sun: `core.sunlit(site,i)`, visible disk fraction >= 0.5. Earth: `core.earthVisible(site,i)`, centre strictly above the interpolated terrain mask. A visible interval is a maximal consecutive run of true hour bins; no interpolation or sub-hour refinement is applied.
+- `duration_h` is an integer, exactly end minus start. `visible_hours` is the sum of durations. Divide by 43,824 to obtain the same hourly fractions as core.metrics.
+- A gap is a maximal consecutive run of false bins, the complement of visible intervals within the domain. `longest_gaps` contains at most 10, sorted by duration descending and then start UTC ascending. If always visible, gaps is empty; if never visible, visible is empty and one full-domain gap is returned. No December/January cyclic wrapping is performed.
+- `clipped_start` is true exactly when the interval begins at the domain start; `clipped_end` is true exactly when it ends at the exclusive domain end. These are censored boundaries, not independently detected transitions.
+- `h0_m`, lat/lon and observer height must match the real horizon used. No mock/flat/mismatched/missing-DEM horizon is exported. SHACKLETON_RIM is exported only when sites.json and its real horizon both use the corrected (-89.6866, -162.81) coordinate on main; otherwise it is skipped.
+- `source` hashes identify exact computation inputs; site_sha256 hashes JSON.stringify(site), producer_sha256 hashes pipeline/build_windows.mjs. Production ephemeris and core.js are not modified.
+
+### 19.2 `web/data/windows/index.json`
+
+`{"format":"site-windows-v1","start_utc":"2026-01-01T00:00:00Z","end_utc":"2031-01-01T00:00:00Z","step_h":1,"n":43824,"ids":[...],"skipped":{"<ID>":"reason"},"mock":false}`
+
+Every catalogue ID must appear exactly once in ids or skipped; ids match the actual <ID>.json files. The UI should use this index, treating skipped as unavailable rather than zero visibility. Tables/JSON in docs/windows_verification.md and docs/windows_verification.json record the Node edge checks. check_contract.py validates intervals, longest-gap complements, clipping, index coverage and input hashes via pipeline/check_windows.py.
+
+Section 19 validator detail: site_sha256 is recomputed by Node using exact JSON.stringify(site), not Python JSON serialization. producer_sha256 is recomputed from actual build_windows.mjs bytes. Node (or LLSN_NODE) is required when checking windows. See pipeline/test_windows_contract.py for zero-hash and missing-tile regressions; a present hterrain index with a missing required tile is an ERROR under section 14.
+
+## 20. Proposed v1.2 — `web/data/hindcast.json` real-mission hindcast (2026-11-14, Dongju, card 21) — NOT yet agreed; new section only (renumbered from 18 at merge; sections 0–19 unchanged)
+Written by `python pipeline/hindcast.py`; summary `docs/hindcast.md`; independent check `docs/hindcast_check.json`.
+```json
+{"contract": "...", "generated_utc": "...", "definitions": {"sun_elevation": "...", "sunset": "...", "ephemeris": "..."},
+ "ephemeris_check": {"file": "ephem_2019-2025_1h.npz", "rows": 61368, "sample_hours": 50, "checks": [{"site": "", "body": "", "n": 50, "max_deg": 0, "mean_deg": 0}], "max_deg": 0, "passed": true},
+ "apollo_sun_elevation": [{"id": "APOLLO11", "mission": "Apollo 11", "landing_utc": "1969-07-20T20:17:39Z", "reported_sun_el_deg": 10.65,
+     "reported_source": "https://...", "ours_sun_el_deg_catalogue_point": 10.703, "ours_sun_el_deg_alsj_point": 10.66,
+     "difference_deg_catalogue": 0.053, "difference_deg_alsj_point": 0.01, "terrain_mask_at_sun_az_deg": 0.0,
+     "catalogue_point": [0, 0], "alsj_point": [0, 0], "h0_m": 0}],
+ "robotic_sunset": [{"id": "CHANDRAYAAN3", "mission": "...", "landing_utc": "...", "landing_source": "...", "sunlit_at_landing": true,
+     "ours_first_sunset_utc": "2023-09-04T06:17Z", "reported_event": "...", "reported_utc": "ISO time | YYYY-MM-DD | null",
+     "reported_precision": "time ... | date only | null", "source_url": "https://... | null", "source_quote": "...", "source_kind": "...",
+     "difference_hours": 3.8, "difference_days": 0, "difference_text": "...", "proxy_note": "..."}],
+ "alsj_note": "...", "mock": false}
+```
+- `reported_*` are copied from the cited source only; `null` with `source_kind: "no public source"` when nothing was found (never estimated).
+- `ours_first_sunset_utc` = first minute after landing with < 50 % of the solar disc above the terrain mask (core.js sunlit rule). End-of-operations reports are a proxy for sunset, not a measurement.

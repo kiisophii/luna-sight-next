@@ -1,0 +1,239 @@
+{
+ "note": "Origins of the PGDA polar-stereographic windows used by pipeline/build_globe_tiles.py for the south-cap globe tiles. x0_m,y0_m = first pixel centre (x_m[0], y_m[0]); south polar stereographic, R = 1737400 m. Extracted 2026-11-15 from the build inputs in worktree s4-globe3d-sua (the files that produced web/data/globe/south).",
+ "windows": [
+  {
+   "file": "polar/20/ARTEMIS_CABEUS_B.npz",
+   "res_m": 20.0,
+   "x0_m": -192870.0,
+   "y0_m": 79810.0,
+   "x_last_m": -162870.0,
+   "y_last_m": 49810.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_DE_GERLACHE_RIM2.npz",
+   "res_m": 20.0,
+   "x0_m": -60570.0,
+   "y0_m": 32610.0,
+   "x_last_m": -30570.0,
+   "y_last_m": 2610.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_HAWORTH.npz",
+   "res_m": 20.0,
+   "x0_m": -49350.0,
+   "y0_m": 106810.0,
+   "x_last_m": -19350.0,
+   "y_last_m": 76810.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_MALAPERT.npz",
+   "res_m": 20.0,
+   "x0_m": -17030.0,
+   "y0_m": 138090.0,
+   "x_last_m": 12970.0,
+   "y_last_m": 108090.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_MOUTON.npz",
+   "res_m": 20.0,
+   "x0_m": 58390.0,
+   "y0_m": 133130.0,
+   "x_last_m": 88390.0,
+   "y_last_m": 103130.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_MOUTON_PLATEAU.npz",
+   "res_m": 20.0,
+   "x0_m": 51670.0,
+   "y0_m": 147510.0,
+   "x_last_m": 81670.0,
+   "y_last_m": 117510.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_NOBILE_RIM1.npz",
+   "res_m": 20.0,
+   "x0_m": 70750.0,
+   "y0_m": 129130.0,
+   "x_last_m": 100750.0,
+   "y_last_m": 99130.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_NOBILE_RIM2.npz",
+   "res_m": 20.0,
+   "x0_m": 135450.0,
+   "y0_m": 114650.0,
+   "x_last_m": 165450.0,
+   "y_last_m": 84650.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/ARTEMIS_SLATER_PLAIN.npz",
+   "res_m": 20.0,
+   "x0_m": 48010.0,
+   "y0_m": -28350.0,
+   "x_last_m": 78010.0,
+   "y_last_m": -58350.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/CONNECTING_RIDGE.npz",
+   "res_m": 20.0,
+   "x0_m": -25990.0,
+   "y0_m": 3010.0,
+   "x_last_m": 4010.0,
+   "y_last_m": -26990.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/DE_GERLACHE_RIM1.npz",
+   "res_m": 20.0,
+   "x0_m": -52010.0,
+   "y0_m": 30010.0,
+   "x_last_m": -22010.0,
+   "y_last_m": 10.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/IM2.npz",
+   "res_m": 20.0,
+   "x0_m": 62110.0,
+   "y0_m": 152990.0,
+   "x_last_m": 92110.0,
+   "y_last_m": 122990.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/PEAK_NEAR_SHACKLETON.npz",
+   "res_m": 20.0,
+   "x0_m": 15010.0,
+   "y0_m": -5010.0,
+   "x_last_m": 45010.0,
+   "y_last_m": -35010.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/SHACKLETON_RIM.npz",
+   "res_m": 20.0,
+   "x0_m": -16010.0,
+   "y0_m": 7990.0,
+   "x_last_m": 13990.0,
+   "y_last_m": -22010.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/20/SHOEMAKER_RIM_A.npz",
+   "res_m": 20.0,
+   "x0_m": -2990.0,
+   "y0_m": 72010.0,
+   "x_last_m": 27010.0,
+   "y_last_m": 42010.0,
+   "shape": [
+    1501,
+    1501
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/60/CHANDRAYAAN3.npz",
+   "res_m": 60.0,
+   "x0_m": 275070.0,
+   "y0_m": 597330.0,
+   "x_last_m": 401070.0,
+   "y_last_m": 471330.0,
+   "shape": [
+    2101,
+    2101
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/60/IM1.npz",
+   "res_m": 60.0,
+   "x0_m": -55470.0,
+   "y0_m": 362910.0,
+   "x_last_m": 70530.0,
+   "y_last_m": 236910.0,
+   "shape": [
+    2101,
+    2101
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_60MPP_ADJ.TIF"
+  },
+  {
+   "file": "polar/80/SOUTH_CAP_80S.npz",
+   "res_m": 80.0,
+   "x0_m": -299960.0,
+   "y0_m": 299960.0,
+   "x_last_m": 299960.0,
+   "y_last_m": -299960.0,
+   "shape": [
+    7500,
+    7500
+   ],
+   "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+  }
+ ]
+}

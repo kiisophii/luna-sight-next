@@ -443,3 +443,24 @@ Written by `python pipeline/hindcast.py`; summary `docs/hindcast.md`; independen
 ```
 - `reported_*` are copied from the cited source only; `null` with `source_kind: "no public source"` when nothing was found (never estimated).
 - `ours_first_sunset_utc` = first minute after landing with < 50 % of the solar disc above the terrain mask (core.js sunlit rule). End-of-operations reports are a proxy for sunset, not a measurement.
+
+## 21. Proposed v1.3 — `web/data/gmaps_ppd32/` 948 m whole-Moon map (card 14, 2026-11-14, integrator) — NOT yet agreed; new section only (sections 0–20 unchanged)
+Same format as section 10, written by `python pipeline/global_maps.py export --ppd 32` from the merged CPU + CUDA store
+(`data/processed/gmaps_ppd32/`, git-ignored; rows 0–3102 CPU, 3103–3454 CPU on Jiyong's PC, 3455–5759 CUDA). What differs
+from the generic section 10:
+
+| Item | Value in `web/data/gmaps_ppd32/` |
+|---|---|
+| Grid | `ppd` 32, 11,520 × 5,760 cells, `grid_res_km` 0.948; one value per cell, computed at the cell centre (section 10a) |
+| Engine settings (`index.json` `params`) | `naz` 360, `near_km` 150 (LDEM_64), `max_km` 300 (LDEM_16), `step_frac` 0.01, `n_steps` 283, observer 2 m, Sun radius 0.2666° |
+| Ephemeris (`index.json` `ephem`) | `ephem.bin`, **3 h** step (14,608 samples, 2026-01-01 … 2030-12-31) — not the 2 h default of section 10; the 3 h vs 2 h effect is ≤ 0.001 pp of PGDA MAE (`docs/card14_pgda_analysis.md` factor 2) |
+| Layers | `sun` = mean visible solar-disc fraction; `earth` = Earth **centre** above the mask; `both` = sunlit (disc ≥ 50 %) AND Earth visible. Fractions 0…1 |
+| `tiles/<layer>/<z>/<x>_<y>.jpg` | 512 × 512 colour JPEG (q 88), equirectangular, tile (0,0) = north-west. Exported levels z 0–3 (`zmax` rule of section 10: round(log2(11520/1024)) = 3, 8,192 px ≈ 1.33 km/px). **z 4** (16,384 × 8,192 px, ≈ 0.67 km/px) was added afterwards by `pipeline/gmaps_add_zoom.py` and is listed in `index.json` `added_levels`: bilinear upsampling of the 948 m grid, **display only**, no detail finer than the grid |
+| Resampling | to a level / overview smaller than the grid: PIL BOX (mean of the cells whose centres fall in the pixel); larger: bilinear (`global_maps.resample`) |
+| `<layer>_values.png` | 8-bit grey 4096 × 2048, value = DN / 250, DN 255 = no data (BOX-averaged from the grid, so a pixel is ≈ 2.8 × 2.8 cells, not one cell) |
+| `<layer>_overview.jpg` | 4096 × 2048 colour overview |
+| Other `index.json` fields | `rows_done` = `rows_total` = 5760, `window`, `dem_sources`, `computed_utc`, `exported_utc`, `mock` false, `contract` (points to section 10) |
+
+Validation: `docs/VALIDATION.md` row 22 (PGDA, 400 points, cell-containing-point reading) and `docs/gpu_cpu_300_check.md` (CPU vs CUDA cells).
+As of version 26 the web app reads neither this folder nor the 3.8 km `web/data/gmaps/` (no `web/js` module requests them).
+

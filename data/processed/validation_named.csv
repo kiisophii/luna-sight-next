@@ -1,0 +1,2 @@
+id,lat,lon,map_res_m,mock_site,pgda_sun,pgda_sun_min300,pgda_sun_max300,pgda_earth,pgda_earth_min300,pgda_earth_max300,half_px300
+SHACKLETON_RIM,-89.90000,0.00000,60,True,0.30304,0.27640,0.33460,0.54048,0.53632,0.54448,5

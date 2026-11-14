@@ -157,3 +157,9 @@ With these two checks alone added to PR #53, **14/18 products have independent s
 and global hterrain tiles. Other team members' pending checks are not counted here. The custom-polar
 control verifies implementation agreement, **not high-resolution equivalence or a universal <1 pp accuracy**.
 All values above are sample results, not bounds on absolute physical accuracy. No production numbers changed.
+
+## Task W full assumption sensitivity — Jiyong, 2026-11-15
+
+| Product / scope | Implementation and evidence | Results | Status |
+|---|---|---|---|
+| 33 catalogue sites × heights 0/2/10 m × near-field included/excluded (198 cases) | Standalone copied-definition FP64 GPU march + NumPy time loop, no repository module imports; code/results commit `c9e08a4`; [full report](task_w_sensitivity.md), [198 rows](task_w_cases.csv), [all 159 threshold exceedances](task_w_exceedances.csv) | Production baselines 33/33 exact stored masks and metrics. 18 CPU PROJ/ECEF geometry controls: max 4.285773958e-9 deg, metric difference 0. Scenario max Sun change 46.278295 pp (0 m), Earth 18.937112 pp, longest dark 4499 h. At 2 m, near-field Sun effect max 13.371668 pp polar / 0.798649 pp nonpolar. | Complete sensitivity experiment; scenario changes are not physical errors. Same-author GPU/CPU controls share DEM reader and metric loop; not new independent team verification of self-produced data. Existing verification counts unchanged. |

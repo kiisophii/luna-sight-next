@@ -37,7 +37,7 @@ the correlation r rather than a maximum; no pass threshold was set before those 
 | L9 | Custom points the user adds at 85–90° S use the browser's 20 m / 60 m / 240 m polar terrain (card 8 uses 5 m near PEAK_NEAR_SHACKLETON) | PEAK_NEAR_SHACKLETON: sunlight +2.40 pp vs the card 8 chain (target 2 pp); the app shows "Lower accuracy here" | row 14 |
 | L10 | Coarse polar terrain (240 m) vs 5 m | heights differ by up to 8.99 m (10–80 m: ≤ 1.39 m) | row 5, `docs/polar-validation.md` (PR #1) |
 | L11 | No surface photographs compared; DEM height errors are not in the coordinate grids | not measured | "Not validated" list below; `docs/coordinate_uncertainty.md` |
-| L12 | Links are geometry only (no link budget, no antenna scheduling); permission to use the KDSA coordinates is pending | not measured | "Not validated" list below |
+| L12 | Links are geometry only (no link budget, no antenna scheduling). KDSA station coordinates come from the publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested | not measured | "Not validated" list below |
 
 ## Full validation table (card 16, all checks)
 
@@ -75,7 +75,7 @@ Every check the team has run, in one place. Numbers are copied from the report f
 
 ## Not validated (stated limits)
 - No ground truth for site horizons beyond the DEMs themselves (no surface photographs compared).
-- Link windows are geometry only: no link budget, no antenna scheduling; permission to use KDSA coordinates is pending.
+- Link windows are geometry only: no link budget, no antenna scheduling. KDSA coordinates: publicly released NASA/JPL NAIF SPICE file kdsa01.tf, used with citation; no separate permission was requested.
 - SHACKLETON_RIM moved (card 15, PR #16) from the R04 DEM-centre point on the inner crater wall to the Gläser et al. (2017) rim point S (−89.6866, −162.81; datum alignment with MOON_ME unverified). Rows 10, 13, 17 use the new point; rows 1–2 and older reports keep the old point as historical records.
 - PGDA's exact 18.6-year dates and observer height are not stated (unverified).
 
@@ -87,5 +87,5 @@ Every check the team has run, in one place. Numbers are copied from the report f
 directions agree with NASA JPL Horizons to within 0.0005° in over 37,000 comparisons (2020–2038). Brute-force recomputation of the terrain horizons from NASA LOLA elevation models agrees
 to about 0.02°. Against NASA's 18.6-year south-polar illumination maps (PGDA), sunlight fractions at 240 random points differ by 1.7 percentage points on average (r = 0.985) and Earth visibility by
 1.2 points (r = 0.990); the largest errors lie on steep crater walls, where PGDA itself varies strongly. App metrics are identical in JavaScript and an independent Python port. Moon visibility from Yeoju KDSA and NASA's three DSN complexes matches Horizons to
-0.0012°; Yeoju adds direct-link hours that no DSN complex covers (0.3–0.4 % of Earth-visible time). Limits: geometry only (no link budget), coarser terrain away from the poles, and permission to use the KDSA
-coordinates is still pending.
+0.0012°; Yeoju adds direct-link hours that no DSN complex covers (0.3–0.4 % of Earth-visible time). Limits: geometry only (no link budget) and coarser terrain away from the poles. KDSA coordinates come from a publicly
+released NASA/JPL NAIF SPICE file, used with citation (no separate permission was requested).

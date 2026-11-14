@@ -2,7 +2,7 @@
 //   1. KDSA (Yeoju, 35 m) Moon visibility in KST for the analysis period, compared with the NASA DSN 70 m antennas.
 //   2. Direct link from the focused site: Earth visible from the site AND the Moon >= 10 deg above Yeoju (and NASA DSN 70 m).
 //      No Danuri relay: Danuri (KPLO) carries no lunar-surface relay payload; it is only mentioned as ShadowCam's host.
-//   3. ShadowCam context products: links + label metadata only (image redistribution question pending).
+//   3. ShadowCam context products: links + label metadata only (no images redistributed).
 // Reads web/data/korea/*.json (contract section 13) via diff_data.js / korea.js. Colours: CSS variables only.
 import * as core from './core.js';
 import { t } from './i18n.js';
@@ -22,10 +22,10 @@ addStrings({
   krLnEarth: 'Site sees Earth', krLnKdsa: 'Site sees Earth + Yeoju sees the Moon', krLnDsn: 'Site sees Earth + any NASA DSN 70 m',
   krLnPending: 'Terrain pending — no real horizon for this site yet, so the direct link is not computed (no flat-horizon result is shown).',
   krScTitle: 'ShadowCam context (NASA instrument aboard Korea\'s Danuri / KPLO)',
-  krScNote: 'Links and label metadata only — we do not copy or show the images until the Seoul organisers answer our licence question. Credit: NASA/KARI/ASU.',
+  krScNote: 'Links and label metadata only — no ShadowCam images are copied or shown here. Credit: NASA/KARI/ASU.',
   krScCentre: 'centre', krScDates: 'acquired', krScPix: 'pixel', krScLabel: 'PDS label', krScData: 'data (COG)', krScReadme: 'readme',
   krPendingQ: 'Open questions to the organisers',
-  krSrc: 'Station coordinates: DSN 810-005 module 301 (NASA/JPL); KDSA from NAIF kdsa01.tf (use pending). Moon positions: NAIF DE440s via Skyfield.',
+  krSrc: 'Station coordinates: DSN 810-005 module 301 (NASA/JPL); KDSA from the publicly released NASA/JPL NAIF SPICE file kdsa01.tf (cited; no separate permission requested). Moon positions: NAIF DE440s via Skyfield.',
   krCP11: 'Korean payload on the Moon',
 }, {
   krTitle: '한국 연결 — 여주 안테나, 섀도캠', krAria: '한국 연결',
@@ -40,10 +40,10 @@ addStrings({
   krLnEarth: '착륙지에서 지구가 보임', krLnKdsa: '지구 보임 + 여주에서 달 보임', krLnDsn: '지구 보임 + NASA DSN 70 m 중 하나',
   krLnPending: '지형 대기 중 — 이 착륙지는 아직 실제 지평선이 없어서 직접 통신을 계산하지 않는다 (평평한 지평선 결과는 보여 주지 않음).',
   krScTitle: '섀도캠 자료 (한국 다누리/KPLO에 실린 NASA 장비)',
-  krScNote: '링크와 라벨 정보만 — 서울 운영진이 라이선스 질문에 답하기 전에는 이미지를 복사하거나 보여 주지 않는다. 출처: NASA/KARI/ASU.',
+  krScNote: '링크와 라벨 정보만 — 섀도캠 이미지는 복사하거나 보여 주지 않는다. 출처: NASA/KARI/ASU.',
   krScCentre: '중심', krScDates: '촬영', krScPix: '픽셀', krScLabel: 'PDS 라벨', krScData: '데이터 (COG)', krScReadme: 'readme',
   krPendingQ: '운영진에게 보낸 질문',
-  krSrc: '지상국 좌표: DSN 810-005 모듈 301 (NASA/JPL), KDSA는 NAIF kdsa01.tf (사용 허가 대기). 달 위치: NAIF DE440s, Skyfield.',
+  krSrc: '지상국 좌표: DSN 810-005 모듈 301 (NASA/JPL), KDSA는 NASA/JPL NAIF가 공개 배포한 SPICE 파일 kdsa01.tf (출처 표기, 별도 허가는 요청하지 않음). 달 위치: NAIF DE440s, Skyfield.',
   krCP11: '달에 가는 한국 장비',
 });
 

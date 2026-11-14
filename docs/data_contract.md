@@ -113,3 +113,18 @@ other sites: SLDEM2015 (|lat| < 60, to 150 km) → LDEM_64 → LDEM_16 (to 300 k
 `dem_sources[].to_km` = farthest distance where that DEM actually supplied a sample.
 
 **c. Extra keys in `horizon/<ID>.json`** (the app may ignore them): `engine` = `{min_km, max_km, n_steps, early_stop, hmax_m, engine_version, n_missing_samples, n_samples, chain}` (used for resume and QA), and `site_coords_mock` (true when the site coordinates in `sites.json` are still placeholders; the horizon itself is computed from real DEMs, so `mock` is false).
+
+## 10. Proposed v1.2 — global maps `web/data/gmaps/` (phase 2 C5/C6, 2026-11-14 10:30 KST, Sua) — NOT yet agreed; sections 0–9 unchanged
+Written by `python pipeline/global_maps.py export --ppd <P>` from the resumable grid in `data/processed/gmaps_ppd<P>/` (git-ignored).
+
+**a. Grid** — MOON_ME, pixel centres `lat = 90 − (r+0.5)/P`, `lon = −180 + (c+0.5)/P` (P = `--ppd`; 8 ≈ 3.79 km, 32 ≈ 948 m). Each point: horizon over 360 azimuths to 300 km (near DEM LDEM_64 to 150 km, LDEM_16 beyond, curvature exact, observer 2 m), then metrics over the whole `ephem.bin` window (2026–2030) at a 2 h step. Definitions = section 6 (sun disk 0.2666°, Earth centre, sunlit ≥ 0.5).
+
+**b. Files**
+| File | Content |
+|---|---|
+| `index.json` | `ppd`, `grid_res_km`, `projection`, `tiles` {`size`: 512, `url`: `"tiles/{layer}/{z}/{x}_{y}.jpg"`, `levels`: [{`z`,`width`,`height`,`nx`,`ny`}]}, `overview_size` [4096, 2048], `layers` [{`id`, `units`, `definition`, `colormap` [[value, "#rrggbb"], …], `nodata_rgb`, `overview`, `values_png`, `stats` {min, max, area_mean}}], `rows_done`/`rows_total`, `ephem` (file, step, sha1, mock), `dem_sources` [{name, res_m, to_km}], `params`, `mock` |
+| `tiles/<layer>/<z>/<x>_<y>.jpg` | colour JPEG, 512×512. Level z image = 1024·2^z × 512·2^z px, equirectangular, x from lon −180 (left edge), y from lat +90 (top edge); tile (0,0) = north-west. `zmax` = max(2, round(log2(360·P/1024))) → P=8: z 0–2, P=32: z 0–3 |
+| `<layer>_overview.jpg` | 4096 × 2048 colour image of the whole Moon (same projection) |
+| `<layer>_values.png` | 8-bit grey, 4096 × 2048: value = DN / 250 (0…1), DN 255 = no data — for hover read-outs and legends (JPEG colours are lossy) |
+
+Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Earth centre above the mask), `both` (sunlit AND Earth visible). Colours: Sun = yellow ramp, Earth = blue ramp, both = violet ramp (stops in `index.json`; card 7 may change them, then re-export). No-data (rows not computed yet) = `nodata_rgb` grey.

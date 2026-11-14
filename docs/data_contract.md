@@ -96,3 +96,20 @@ Array of objects:
 
 ## 8. Check
 Card 6 adds `python pipeline/check_contract.py`, which validates every file in `web/data/` against this contract (shapes, ranges, required keys). Run it before opening a PR that touches data.
+
+## 9. Proposed v1.2 (horizon engine, 2026-11-14 10:05 KST, Sua) — NOT yet agreed; sections 0–8 unchanged
+Written by phase 2 `pipeline/horizon.py` / `run_horizons.py`. Please comment in the PR.
+
+**a. DEM cache formats the horizon engine reads** (as on the open branches `s1-polar-jiyong` and `s1-terrain-global-soyun`; local only, git-ignored):
+| Cache | Arrays | Grid |
+|---|---|---|
+| `data/raw/polar/<res>/<ID>.npz` (card 2; res ∈ 5,10,20,60,80,240) | `height_m` float32 (NaN = no data), `x_m`, `y_m`, `metadata` (JSON string with `resolution_m`, `radius_m`, `projection`) | south polar stereographic `+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400`; pixel centres; x ascending, y descending (rows north→south) |
+| `data/raw/sldem/<ID>.npz` (card 3) | `height_m` float32, `lat` (descending), `lon` (−180…180), `lon_unwrapped` (ascending, may exceed 360), `meta` (JSON string with `radius_km`) | SLDEM2015 512 ppd pixel centres |
+| `data/raw/global/ldem_{16,64}_float.img` + `.lbl` (card 3) | raw PDS float32, km above 1737.4 km | simple cylindrical; row r centre lat = (LINE_PROJECTION_OFFSET − r)/ppd, col c centre lon = CENTER_LONGITUDE + (c − SAMPLE_PROJECTION_OFFSET)/ppd (0-based, lon 0…360 E) |
+
+**b. DEM chain** (finest first; a point uses the first DEM that covers it, NaN falls through):
+polar sites (lat ≤ −80): PGDA 5 → 10 → 20 → 60 → 80 → 240 m (each to its window radius) → LDEM_64 → LDEM_16 (to 300 km).
+other sites: SLDEM2015 (|lat| < 60, to 150 km) → LDEM_64 → LDEM_16 (to 300 km). |lat| ≥ 60 outside the polar caches needs LDEM_64.
+`dem_sources[].to_km` = farthest distance where that DEM actually supplied a sample.
+
+**c. Extra keys in `horizon/<ID>.json`** (the app may ignore them): `engine` = `{min_km, max_km, n_steps, early_stop, hmax_m, engine_version, n_missing_samples, n_samples, chain}` (used for resume and QA), and `site_coords_mock` (true when the site coordinates in `sites.json` are still placeholders; the horizon itself is computed from real DEMs, so `mock` is false).

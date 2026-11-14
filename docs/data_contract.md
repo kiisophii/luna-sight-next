@@ -342,3 +342,21 @@ Written by `node pipeline/seasons.mjs` (actual `web/js/core.js`); independent ch
 - `subsolar_lat_deg` / `subearth_lat_deg` = min/max over the month's hours of the selenographic latitude (MOON_ME) of the Sun / Earth direction from `ephem.bin`, 3 decimals; same for every site.
 - Invariants (checked by `pipeline/check_contract.py`): Σ`*_h` / 43824 = `metrics/<ID>.json` fraction (≤ 1e-9); max monthly `longest_dark_h` ≤ 5-year `longest_dark_h`; both ≤ min(sun, earth).
 - Only sites with a real horizon (section 3) get a file; custom (browser) points have none — the UI says "catalogue sites only" and requests nothing.
+
+## 18. Proposed v1.2 — `web/data/hindcast.json` real-mission hindcast (2026-11-14, Dongju, card 21) — NOT yet agreed; new section only (sections 0–17 unchanged)
+Written by `python pipeline/hindcast.py`; summary `docs/hindcast.md`; independent check `docs/hindcast_check.json`.
+```json
+{"contract": "...", "generated_utc": "...", "definitions": {"sun_elevation": "...", "sunset": "...", "ephemeris": "..."},
+ "ephemeris_check": {"file": "ephem_2019-2025_1h.npz", "rows": 61368, "sample_hours": 50, "checks": [{"site": "", "body": "", "n": 50, "max_deg": 0, "mean_deg": 0}], "max_deg": 0, "passed": true},
+ "apollo_sun_elevation": [{"id": "APOLLO11", "mission": "Apollo 11", "landing_utc": "1969-07-20T20:17:39Z", "reported_sun_el_deg": 10.65,
+     "reported_source": "https://...", "ours_sun_el_deg_catalogue_point": 10.703, "ours_sun_el_deg_alsj_point": 10.66,
+     "difference_deg_catalogue": 0.053, "difference_deg_alsj_point": 0.01, "terrain_mask_at_sun_az_deg": 0.0,
+     "catalogue_point": [0, 0], "alsj_point": [0, 0], "h0_m": 0}],
+ "robotic_sunset": [{"id": "CHANDRAYAAN3", "mission": "...", "landing_utc": "...", "landing_source": "...", "sunlit_at_landing": true,
+     "ours_first_sunset_utc": "2023-09-04T06:17Z", "reported_event": "...", "reported_utc": "ISO time | YYYY-MM-DD | null",
+     "reported_precision": "time ... | date only | null", "source_url": "https://... | null", "source_quote": "...", "source_kind": "...",
+     "difference_hours": 3.8, "difference_days": 0, "difference_text": "...", "proxy_note": "..."}],
+ "alsj_note": "...", "mock": false}
+```
+- `reported_*` are copied from the cited source only; `null` with `source_kind: "no public source"` when nothing was found (never estimated).
+- `ours_first_sunset_utc` = first minute after landing with < 50 % of the solar disc above the terrain mask (core.js sunlit rule). End-of-operations reports are a proxy for sunset, not a measurement.

@@ -1,0 +1,265 @@
+{
+ "contract": "docs/data_contract.md section 18 (proposal)",
+ "generated_utc": "2026-11-14T10:31:51.563369+00:00",
+ "definitions": {
+  "sun_elevation": "topocentric apparent Sun centre elevation, observer R + h0 + 2 m, no refraction",
+  "sunset": "first minute after landing when < 50 % of the solar disc is above the real terrain mask (core.js sunlit rule)",
+  "ephemeris": "card 1 pipeline (NAIF DE440s + MOON_ME DE421 via Skyfield)"
+ },
+ "ephemeris_check": {
+  "file": "ephem_2019-2025_1h.npz",
+  "rows": 61368,
+  "first": "2019-01-01T00:00:00Z",
+  "stop_exclusive": "2026-01-01T00:00:00Z",
+  "seed": 21,
+  "sample_hours": 50,
+  "checks": [
+   {
+    "site": "EQ_0_0",
+    "body": "sun",
+    "n": 50,
+    "max_deg": 1.5926940848252804e-05,
+    "mean_deg": 9.024817364249279e-06
+   },
+   {
+    "site": "EQ_0_0",
+    "body": "earth",
+    "n": 50,
+    "max_deg": 1.4158234202550823e-05,
+    "mean_deg": 9.681484218954612e-06
+   },
+   {
+    "site": "SOUTH_85S_30E",
+    "body": "sun",
+    "n": 50,
+    "max_deg": 1.548605131859321e-05,
+    "mean_deg": 8.936172901491729e-06
+   },
+   {
+    "site": "SOUTH_85S_30E",
+    "body": "earth",
+    "n": 50,
+    "max_deg": 3.641322080786621e-05,
+    "mean_deg": 1.8550715625333616e-05
+   }
+  ],
+  "max_deg": 3.641322080786621e-05,
+  "passed": true
+ },
+ "apollo_sun_elevation": [
+  {
+   "id": "APOLLO11",
+   "mission": "Apollo 11",
+   "landing_utc": "1969-07-20T20:17:39Z",
+   "reported_sun_el_deg": 10.65,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 10.703,
+   "ours_sun_el_deg_alsj_point": 10.664,
+   "difference_deg_catalogue": 0.053,
+   "difference_deg_alsj_point": 0.014,
+   "terrain_mask_at_sun_az_deg": -0.273,
+   "catalogue_point": [
+    0.67416,
+    23.47314
+   ],
+   "alsj_point": [
+    0.6875,
+    23.4333
+   ],
+   "h0_m": -1929.96
+  },
+  {
+   "id": "APOLLO12",
+   "mission": "Apollo 12",
+   "landing_utc": "1969-11-19T06:54:36Z",
+   "reported_sun_el_deg": 5.19,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 5.149,
+   "ours_sun_el_deg_alsj_point": 5.189,
+   "difference_deg_catalogue": -0.041,
+   "difference_deg_alsj_point": -0.001,
+   "terrain_mask_at_sun_az_deg": 0.251,
+   "catalogue_point": [
+    -3.0128,
+    -23.4219
+   ],
+   "alsj_point": [
+    -3.1975,
+    -23.3856
+   ],
+   "h0_m": -1424.92
+  },
+  {
+   "id": "APOLLO14",
+   "mission": "Apollo 14",
+   "landing_utc": "1971-02-05T09:18:13Z",
+   "reported_sun_el_deg": 10.36,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 10.349,
+   "ours_sun_el_deg_alsj_point": 10.355,
+   "difference_deg_catalogue": -0.011,
+   "difference_deg_alsj_point": -0.005,
+   "terrain_mask_at_sun_az_deg": 3.011,
+   "catalogue_point": [
+    -3.64589,
+    -17.47194
+   ],
+   "alsj_point": [
+    -3.6733,
+    -17.4653
+   ],
+   "h0_m": -1063.26
+  },
+  {
+   "id": "APOLLO15",
+   "mission": "Apollo 15",
+   "landing_utc": "1971-07-30T22:16:29Z",
+   "reported_sun_el_deg": 12.05,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 12.024,
+   "ours_sun_el_deg_alsj_point": 12.045,
+   "difference_deg_catalogue": -0.026,
+   "difference_deg_alsj_point": -0.005,
+   "terrain_mask_at_sun_az_deg": 7.762,
+   "catalogue_point": [
+    26.13239,
+    3.6333
+   ],
+   "alsj_point": [
+    26.1008,
+    3.6528
+   ],
+   "h0_m": -1927.95
+  },
+  {
+   "id": "APOLLO16",
+   "mission": "Apollo 16",
+   "landing_utc": "1972-04-21T02:23:35Z",
+   "reported_sun_el_deg": 14.76,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 14.761,
+   "ours_sun_el_deg_alsj_point": 14.773,
+   "difference_deg_catalogue": 0.001,
+   "difference_deg_alsj_point": 0.013,
+   "terrain_mask_at_sun_az_deg": 1.547,
+   "catalogue_point": [
+    -8.9734,
+    15.5011
+   ],
+   "alsj_point": [
+    -8.9914,
+    15.5144
+   ],
+   "h0_m": 11.23
+  },
+  {
+   "id": "APOLLO17",
+   "mission": "Apollo 17",
+   "landing_utc": "1972-12-11T19:54:58Z",
+   "reported_sun_el_deg": 13.33,
+   "reported_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+   "ours_sun_el_deg_catalogue_point": 13.35,
+   "ours_sun_el_deg_alsj_point": 13.347,
+   "difference_deg_catalogue": 0.02,
+   "difference_deg_alsj_point": 0.017,
+   "terrain_mask_at_sun_az_deg": 4.583,
+   "catalogue_point": [
+    20.1911,
+    30.7723
+   ],
+   "alsj_point": [
+    20.1653,
+    30.7658
+   ],
+   "h0_m": -2627.99
+  }
+ ],
+ "robotic_sunset": [
+  {
+   "id": "CHANDRAYAAN3",
+   "mission": "Chandrayaan-3 (Vikram)",
+   "landing_utc": "2023-08-23T12:32:00Z",
+   "landing_source": "ISRO (landing 23 Aug 2023 18:03-18:04 IST; date confirmed in the ISRO post quoted below)",
+   "sunlit_at_landing": true,
+   "ours_first_sunset_utc": "2023-09-04T06:17Z",
+   "reported_event": "lander set into sleep mode (operator decision before local sunset; rover slept 2 Sep)",
+   "reported_utc": "2023-09-04T02:30:00Z",
+   "reported_precision": "time (around 08:00 IST)",
+   "source_url": "https://www.businesstoday.in/latest/trends/story/chandrayaan-3-update-vikram-lander-set-into-sleep-mode-at-8-am-payloads-are-now-switched-off-says-isro-396766-2023-09-04",
+   "source_quote": "ISRO post embedded on the page: 'Vikram Lander is set into sleep mode around 08:00 Hrs. IST today' (4 Sep 2023)",
+   "source_kind": "agency statement (ISRO post), via news page",
+   "proxy_note": "End of operations is an approximate proxy for local sunset, not an exact measurement.",
+   "difference_hours": 3.8,
+   "difference_text": "our sunset minus reported event: +3.8 h"
+  },
+  {
+   "id": "SLIM",
+   "mission": "SLIM (JAXA)",
+   "landing_utc": "2024-01-19T15:20:00Z",
+   "landing_source": "JAXA DARTS mission page: 'landed on the moon on 2024-01-19 15:20' / 'January 20 at 00:20 JST'",
+   "sunlit_at_landing": true,
+   "ours_first_sunset_utc": "2024-01-31T04:05Z",
+   "reported_event": "sunset and hibernation after the first lunar day",
+   "reported_utc": "2024-02-01",
+   "reported_precision": "date only",
+   "source_url": "https://cosmiclog.com/2024/02/01/japans-moon-lander-sleeps-again-after-sending-science/",
+   "source_quote": "'Sunset came on Feb. 1, and once again, SLIM went into hibernation.' (quotes a JAXA X post; no agency page found)",
+   "source_kind": "secondary (news) - no JAXA page with the date was found",
+   "proxy_note": "End of operations is an approximate proxy for local sunset, not an exact measurement.",
+   "difference_days": -1,
+   "difference_text": "our sunset 2024-01-31 04:05 UTC vs reported date 2024-02-01: -1 day(s)"
+  },
+  {
+   "id": "IM1",
+   "mission": "IM-1 Odysseus (Intuitive Machines / NASA CLPS)",
+   "landing_utc": "2024-02-22T23:23:00Z",
+   "landing_source": "NASA: 'touched down Feb. 22 near Malapert A' (time 23:23 UTC as reported for the touchdown)",
+   "sunlit_at_landing": true,
+   "ours_first_sunset_utc": "2024-03-02T13:55Z",
+   "reported_event": "lander powered down (instruments ceased operations seven days after landing)",
+   "reported_utc": "2024-02-29",
+   "reported_precision": "date only",
+   "source_url": "https://www.nasa.gov/centers-and-facilities/marshall/nasa-lights-beacon-on-moon-with-autonomous-navigation-system-test/",
+   "source_quote": "NASA Marshall: '...before it officially powered down on Feb. 29.'",
+   "source_kind": "NASA",
+   "proxy_note": "End of operations is an approximate proxy for local sunset, not an exact measurement.",
+   "difference_days": 2,
+   "difference_text": "our sunset 2024-03-02 13:55 UTC vs reported date 2024-02-29: +2 day(s)"
+  },
+  {
+   "id": "CHANGE3",
+   "mission": "Chang'e 3 (lander + Yutu)",
+   "landing_utc": "2013-12-14T13:11:00Z",
+   "landing_source": "Chang'e 3 landed 14 Dec 2013 (phys.org / Spaceflight Now); 13:11 UTC as reported for touchdown",
+   "sunlit_at_landing": true,
+   "ours_first_sunset_utc": "2013-12-26T16:01Z",
+   "reported_event": "rover hibernation (lander also entered sleep mode the same Wednesday)",
+   "reported_utc": "2013-12-25T21:23:00Z",
+   "reported_precision": "time (rover); lander same day",
+   "source_url": "https://spaceflightnow.com/china/change3/131227hibernation",
+   "source_quote": "'Chinese state media reported the rover went into hibernation at 2123 GMT (4:23 p.m. EST) Wednesday.' (article of 27 Dec 2013)",
+   "source_kind": "secondary (news) citing Chinese state media",
+   "proxy_note": "End of operations is an approximate proxy for local sunset, not an exact measurement.",
+   "difference_hours": 18.6,
+   "difference_text": "our sunset minus reported event: +18.6 h"
+  },
+  {
+   "id": "CHANGE4",
+   "mission": "Chang'e 4 (lander + Yutu-2)",
+   "landing_utc": "2019-01-03T02:26:00Z",
+   "landing_source": "Spaceflight Now: 'The spacecraft landed at 0226 GMT on Jan. 3'",
+   "sunlit_at_landing": true,
+   "ours_first_sunset_utc": "2019-01-13T19:18Z",
+   "reported_event": "first lunar-night dormancy",
+   "reported_utc": null,
+   "reported_precision": null,
+   "source_url": null,
+   "source_quote": "no public source found with the date/time of the FIRST lunar-night dormancy (Spaceflight Now only says it 'will begin in mid-January')",
+   "source_kind": "no public source",
+   "proxy_note": "End of operations is an approximate proxy for local sunset, not an exact measurement.",
+   "difference_text": "not compared (no public source)"
+  }
+ ],
+ "alsj_note": "Apollo Lunar Surface Journal (NASA History; linked from https://www.nasa.gov/history/alsj-and-afj/), table 'Sun and Earth: Altitudes and Azimuths at the Apollo Landing Sites', computed by Paul Fjeld and Jim Scotti (Scotti values), spot-checked with JPL Horizons; revised 7 May 2025",
+ "mock": false
+}

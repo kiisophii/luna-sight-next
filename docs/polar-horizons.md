@@ -22,6 +22,7 @@ Use Python with the packages in `pipeline/requirements-polar.txt`. Numba is opti
 python pipeline/fetch_polar.py --clip-coverage --skip-unavailable
 python pipeline/fetch_global.py --skip-sites
 python pipeline/card8_horizons.py compute
+python pipeline/run_horizons.py --index-only
 python pipeline/card8_horizons.py sensitivity
 python pipeline/verify_card8_horizons.py
 python pipeline/check_contract.py
@@ -31,6 +32,8 @@ python -m pytest -q
 The first command reports `UNAVAILABLE` only for geographic coverage; transport errors and invalid source data still fail. Omit the two options to retain the original strict downloader behavior. Completed blocks and windows survive restarts. Do not run two writers against the same resolution's block cache concurrently. Independent resolutions may run concurrently; this run uses at most two download jobs and below-normal process priority.
 
 Production masks are written atomically to `web/data/horizon/<ID>.json`. Rerunning `compute` reuses a mask only when site coordinates, engine parameters and DEM-chain signatures match, and the saved mask has 720 finite angles and zero missing samples. `--force` recomputes it. Raw TIFF blocks, NPZ windows and global IMG files remain git-ignored.
+
+The phase-3 UI reads `web/data/horizon_index.json`. After computing masks or merging another horizon branch, regenerate it with `run_horizons.py --index-only`; this includes every horizon file present, including other owners' sites. Integration was checked against main `ad945de`.
 
 ## Sensitivity definition
 
@@ -101,4 +104,8 @@ On this Windows machine, using one calculation process, all 16 production masks 
 
 `check_contract.py`: PASS, zero errors. Its two warnings are outside card 8: the 17 non-polar masks are not in this branch yet, and the inherited validation.json is still mock. Final app illumination validation depends on the other cards. The catalog includes representative region coordinates; these masks do not turn those coordinates into a certified landing point.
 
+Full repository pytest after integrating the phase-3 index: 56 passed, 3 skipped (ephemeris kernel checks without local kernels), 2 upstream rasterio deprecation warnings. The index contains exactly the 16 generated masks.
+
 Inputs are real NASA terrain, while geospatial sampling/physical resolution and source uncertainties still limit accuracy. No 5 m terrain was invented for uncovered sites, and terrain inside 5 m or between the 0.5-degree azimuth rays is not resolved by this product.
+
+Independent whole-branch review found no critical or important issues. Resume invalidation was exercised on real records, but permanent automated regression coverage for those resume checks remains a minor follow-up. The review does not establish NASA DEM vertical accuracy, registration accuracy, or whether catalog representative coordinates are suitable landing points; ephemeris, non-polar horizons and PGDA illumination validation remain separate work.

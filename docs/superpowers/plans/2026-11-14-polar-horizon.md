@@ -21,21 +21,22 @@
 
 ## Task 1: Real-site terrain acquisition
 Files: pipeline/fetch_polar.py; pipeline/tests/test_fetch_polar.py; ignored data/raw and data/processed.
-- [ ] Add failing tests for opt-in clipped windows and non-overlap rejection; retain strict default.
-- [ ] Implement minimum optional coverage clipping and record requested/clipped extent in cache metadata.
-- [ ] Fetch full windows resumably by resolution with at most two concurrent independent source readers; fetch LDEM_16/64 for far field.
-- [ ] Save coverage manifest and verify finite data at all sites. Expected: 16 usable chains, unavailable 5/10 m sources explicit.
+- [x] Add failing tests for opt-in clipped windows and non-overlap rejection; retain strict default.
+- [x] Implement minimum optional coverage clipping and record requested/clipped extent in cache metadata.
+- [x] Fetch full windows resumably by resolution with at most two concurrent independent source readers; fetch LDEM_16/64 for far field.
+- [x] Save coverage manifest and verify finite data at all sites. Expected: 16 usable chains, unavailable 5/10 m sources explicit.
 
 ## Task 2: Production masks and sensitivity
 Files: pipeline/card8_horizons.py, pipeline/tests/test_card8_horizons.py, web/data/horizon/*.json.
-- [ ] Test selection, true 80/240 m near-field replacement, unchanged far field, completeness and resume identity.
-- [ ] Implement a small CLI using run_horizons.build_chain and horizon.compute_horizon, min_km=0.005, max_km=300, n_steps chosen after convergence check.
-- [ ] Run all 16 masks with zero missing samples, atomic output and resume.
-- [ ] Three sites with full 5 m coverage: SHACKLETON_RIM, CONNECTING_RIDGE, ARTEMIS_DE_GERLACHE_RIM2; baseline versus 80 m and 240 m over the same 3 km near field; report RMS/max angular change and observer-height change.
+- [x] Test selection, true 80/240 m near-field replacement, unchanged far field, completeness; exercise resume identity on real saved records (permanent resume regression tests remain a minor follow-up).
+- [x] Implement a small CLI using run_horizons.build_chain and horizon.compute_horizon, min_km=0.005, max_km=300, n_steps chosen after convergence check.
+- [x] Run all 16 masks with zero missing samples, atomic output and resume.
+- [x] Three sites with full 5 m coverage: SHACKLETON_RIM, CONNECTING_RIDGE, ARTEMIS_DE_GERLACHE_RIM2; baseline versus 80 m and 240 m over the same 3 km near field; report RMS/max angular change and observer-height change.
 
 ## Task 3: Independent verification and delivery
 Files: pipeline/verify_card8_horizons.py, docs/polar-horizons.md, data/DATASETS.md, docs/SI_USAGE.md.
-- [ ] Separate verifier: two sites x ten azimuths, independent geometry and bilinear sampling, no early stop. Compare identical distance grids (numerical consistency) and finer grids (sampling convergence), recording observed differences rather than asserting an invented scientific tolerance.
-- [ ] Run engine/fetch/card8 tests and full repo pytest; inspect any unrelated failures. Run check_contract.py and ensure 16 production files.
-- [ ] Fresh reviewer verifies numerical method and final diff; fix material issues with regression tests.
-- [ ] Document coverage, computation parameters, measured validation/sensitivity, limitations and reproducible commands; append SI log; commit, push feature branch, open PR for Sua (no merge).
+- [x] Separate verifier: two sites x ten azimuths, independent geometry and bilinear sampling, no early stop. Compare identical distance grids (numerical consistency) and finer grids (sampling convergence), recording observed differences rather than asserting an invented scientific tolerance.
+- [x] Run engine/fetch/card8 tests and full repo pytest; inspect any unrelated failures. Run check_contract.py and ensure 16 production files.
+- [x] Fresh reviewer verifies numerical method and final diff; fix material issues with regression tests.
+- [x] Document coverage, computation parameters, measured validation/sensitivity, limitations and reproducible commands; append SI log.
+- [ ] Push feature branch and open PR for Sua (no merge).

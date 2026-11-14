@@ -13,6 +13,7 @@ addStrings({
   dsBest: 'Best landing day: {d} (both {b}, longest dark {h})', dsWorstDay: 'Worst landing day: {d} (both {b}, longest dark {h})',
   dsRankTitle: 'All sites: worst extra darkness after a 14-day slip', dsRankHint: 'Shorter bar = more slip-tolerant. Click a bar to compare that site.',
   dsFull: '{n} sites where a 14-day slip can turn the whole first two weeks into night (+{h} h or more):',
+  dsCustom: 'The date-slip table is available for catalogue sites; for your own points use the landing-date scan above.',
   dsNone: 'No slip table for this site (no real terrain horizon yet).', dsLoading: 'Loading slip tables…',
   dsNote: 'pp = percentage points. Typical = median of |change| over all landing days; worst = most unfavourable change, with its dates. Landing at 00:00 UTC; geometry only. Data: card 19, web/data/date_slip/.',
 }, {
@@ -23,6 +24,7 @@ addStrings({
   dsBest: '가장 좋은 착륙일: {d} (둘 다 {b}, 가장 긴 어둠 {h})', dsWorstDay: '가장 나쁜 착륙일: {d} (둘 다 {b}, 가장 긴 어둠 {h})',
   dsRankTitle: '모든 착륙지: 14일 밀렸을 때 가장 긴 어둠이 최대 얼마나 늘어나나', dsRankHint: '막대가 짧을수록 지연에 강하다. 막대를 누르면 그 착륙지를 비교에 넣는다.',
   dsFull: '14일 밀리면 첫 2주 전체가 밤이 될 수 있는 착륙지 {n}곳 (+{h} h 이상):',
+  dsCustom: '지연 표는 목록 착륙지에만 있다. 내 착륙 지점은 위의 착륙 날짜 훑어보기를 쓰면 된다.',
   dsNone: '이 착륙지는 지연 표가 없다 (실제 지형 지평선이 아직 없음).', dsLoading: '지연 표 불러오는 중…',
   dsNote: 'pp = 퍼센트포인트. 보통 변화 = 모든 착륙일의 |변화| 중앙값, 최악 변화 = 가장 불리한 변화와 그 날짜. 00:00 UTC 착륙, 기하만. 자료: 카드 19, web/data/date_slip/.',
 });
@@ -36,7 +38,11 @@ const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const pct = f => `${Math.round(f * 100)}%`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+// sites computed in the browser (custom points, group "custom") have no precomputed slip table: never request one
+const isCustom = s => !s || s.group === 'custom' || String(s.id).startsWith('USER_');
+
 function load(id) {
+  if (String(id).startsWith('USER_')) return Promise.resolve(null);
   if (!cache.has(id)) cache.set(id, fetch(`data/date_slip/${id}.json`).then(r => (r.ok ? r.json() : null)).catch(() => null));
   return cache.get(id);
 }
@@ -100,7 +106,7 @@ async function loadAll() {
   if (loading) return;
   loading = true;
   rankEl.textContent = t('dsLoading');
-  const ids = LLSN().state.sites.map(s => s.id);
+  const ids = LLSN().state.sites.filter(s => !isCustom(s)).map(s => s.id);
   const got = await Promise.all(ids.map(id => load(id)));
   all = got.filter(Boolean);
   render();
@@ -118,7 +124,7 @@ async function render() {
   siteEl.textContent = `· ${siteName(site)}`;
   const d = await load(site.id);
   if (getFocus()?.id !== site.id) return;
-  if (!d) { tableEl.innerHTML = `<p class="note">${t('dsNone')}</p>`; daysEl.innerHTML = ''; }
+  if (!d) { tableEl.innerHTML = `<p class="note">${t(isCustom(site) ? 'dsCustom' : 'dsNone')}</p>`; daysEl.innerHTML = ''; }
   else {
     const head = `<thead><tr><th>${t('dsMetric')}</th><th>+7 d · ${t('dsTypical')}</th><th>+7 d · ${t('dsWorst')}</th>
       <th>+14 d · ${t('dsTypical')}</th><th>+14 d · ${t('dsWorst')}</th><th>+14 d · ${t('dsWorse')}</th></tr></thead>`;

@@ -34,6 +34,13 @@
     "height": 4096,
     "nx": 16,
     "ny": 8
+   },
+   {
+    "z": 4,
+    "width": 16384,
+    "height": 8192,
+    "nx": 32,
+    "ny": 16
    }
   ],
   "x0_y0": "north-west corner (lon -180, lat 90)"
@@ -197,5 +204,17 @@
  },
  "computed_utc": "2026-11-14T12:00:04Z",
  "exported_utc": "2026-11-14T12:01:15Z",
- "mock": false
+ "mock": false,
+ "added_levels": [
+  {
+   "z": 4,
+   "width": 16384,
+   "height": 8192,
+   "km_per_px_equator": 0.666,
+   "grid_res_km": 0.948,
+   "method": "pipeline/gmaps_add_zoom.py: global_maps.resample (bilinear upsampling of the grid) + colorize, JPEG q88",
+   "note": "display only: finer than the computed grid, no new terrain or ephemeris detail",
+   "added_utc": "2026-11-14T12:58:35Z"
+  }
+ ]
 }

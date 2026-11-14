@@ -1,0 +1,293 @@
+{
+ "what": "card 14: stored global maps vs PGDA AVGVISIB_75S_120M (no recomputation)",
+ "points": {
+  "n": 400,
+  "seed": 42,
+  "lat_range": [
+   -85,
+   -75
+  ],
+  "sampling": "uniform by area (same as card 9)",
+  "map_sampling": "grid cell containing the point (row = floor((90 - lat) * ppd))"
+ },
+ "pgda": {
+  "files": [
+   "AVGVISIB_75S_120M_201608.TIF",
+   "AVGVISIB_75S_120M_201608_EARTH.TIF"
+  ],
+  "source": "https://pgda.gsfc.nasa.gov/products/69",
+  "definition": "18.6-year averages; Earth = any part of the disc visible"
+ },
+ "maps": {
+  "ppd32_948m": {
+   "store": "data\\processed\\gmaps_ppd32_merged",
+   "ppd": 32,
+   "ephem": {
+    "step_h": 3,
+    "n_used": 14608,
+    "sha1_12": "4772740f1aed",
+    "start": "2026-01-01T00:00:00Z",
+    "mock": false
+   },
+   "dems": [
+    "LDEM_64",
+    "LDEM_16"
+   ],
+   "sun_vs_pgda_sun": {
+    "n": 400,
+    "mae_pp": 2.609,
+    "rmse_pp": 5.353,
+    "bias_pp": 0.971,
+    "max_abs_pp": 33.739,
+    "r": 0.9108,
+    "inside_pgda_3x3_range_pct": 53.8
+   },
+   "earth_centre_vs_pgda_earth": {
+    "n": 400,
+    "mae_pp": 3.423,
+    "rmse_pp": 6.638,
+    "bias_pp": -1.611,
+    "max_abs_pp": 48.001,
+    "r": 0.9837,
+    "inside_pgda_3x3_range_pct": 63.5
+   },
+   "corr_sun_error_vs_pgda_3x3_spread": 0.607,
+   "corr_sun_error_vs_maskmax": -0.098
+  },
+  "ppd8_3.8km": {
+   "store": "data\\processed\\gmaps_ppd8",
+   "ppd": 8,
+   "ephem": {
+    "step_h": 2,
+    "n_used": 21912,
+    "sha1_12": "bf98b99edc04",
+    "start": "2026-01-01T00:00:00Z",
+    "mock": false
+   },
+   "dems": [
+    "LDEM_64",
+    "LDEM_16"
+   ],
+   "sun_vs_pgda_sun": {
+    "n": 400,
+    "mae_pp": 4.337,
+    "rmse_pp": 7.446,
+    "bias_pp": 1.272,
+    "max_abs_pp": 34.133,
+    "r": 0.8232,
+    "inside_pgda_3x3_range_pct": 33.2
+   },
+   "earth_centre_vs_pgda_earth": {
+    "n": 400,
+    "mae_pp": 5.327,
+    "rmse_pp": 10.519,
+    "bias_pp": -1.232,
+    "max_abs_pp": 73.196,
+    "r": 0.9566,
+    "inside_pgda_3x3_range_pct": 58.0
+   },
+   "corr_sun_error_vs_pgda_3x3_spread": 0.515,
+   "corr_sun_error_vs_maskmax": -0.017
+  }
+ },
+ "ppd32_vs_ppd8_same_points": {
+  "sun": {
+   "n": 400,
+   "mae_pp": 3.101,
+   "rmse_pp": 5.525,
+   "bias_pp": -0.301,
+   "max_abs_pp": 36.234,
+   "r": 0.8903
+  },
+  "earth": {
+   "n": 400,
+   "mae_pp": 3.648,
+   "rmse_pp": 8.502,
+   "bias_pp": -0.379,
+   "max_abs_pp": 58.899,
+   "r": 0.9704
+  },
+  "both": {
+   "n": 400,
+   "mae_pp": 2.015,
+   "rmse_pp": 4.346,
+   "bias_pp": -0.118,
+   "max_abs_pp": 23.734,
+   "r": 0.9519
+  }
+ },
+ "largest_sun_errors_ppd32": [
+  {
+   "lat": -82.5615,
+   "lon": 72.7208,
+   "ours": 0.3374,
+   "pgda": 0.0,
+   "pgda_3x3": [
+    0.0,
+    0.0159
+   ],
+   "maskmax_deg": 7.38,
+   "h0_m": 2463.2
+  },
+  {
+   "lat": -83.2482,
+   "lon": 97.9578,
+   "ours": 0.4501,
+   "pgda": 0.1751,
+   "pgda_3x3": [
+    0.1319,
+    0.2796
+   ],
+   "maskmax_deg": 7.48,
+   "h0_m": -528.6
+  },
+  {
+   "lat": -82.5441,
+   "lon": 179.5476,
+   "ours": 0.365,
+   "pgda": 0.0938,
+   "pgda_3x3": [
+    0.0,
+    0.349
+   ],
+   "maskmax_deg": 5.96,
+   "h0_m": -2628.3
+  },
+  {
+   "lat": -81.6212,
+   "lon": 88.2677,
+   "ours": 0.2702,
+   "pgda": 0.0,
+   "pgda_3x3": [
+    0.0,
+    0.3013
+   ],
+   "maskmax_deg": 8.15,
+   "h0_m": -1930.3
+  },
+  {
+   "lat": -76.5649,
+   "lon": 38.1331,
+   "ours": 0.2055,
+   "pgda": 0.4493,
+   "pgda_3x3": [
+    0.4148,
+    0.4516
+   ],
+   "maskmax_deg": 12.32,
+   "h0_m": 120.3
+  },
+  {
+   "lat": -78.3472,
+   "lon": -149.4651,
+   "ours": 0.202,
+   "pgda": 0.4442,
+   "pgda_3x3": [
+    0.3348,
+    0.4442
+   ],
+   "maskmax_deg": 14.78,
+   "h0_m": -3923.5
+  },
+  {
+   "lat": -79.643,
+   "lon": 5.2666,
+   "ours": 0.254,
+   "pgda": 0.0334,
+   "pgda_3x3": [
+    0.0,
+    0.1109
+   ],
+   "maskmax_deg": 11.42,
+   "h0_m": 2586.6
+  },
+  {
+   "lat": -82.8412,
+   "lon": 132.0485,
+   "ours": 0.4793,
+   "pgda": 0.2628,
+   "pgda_3x3": [
+    0.0135,
+    0.5007
+   ],
+   "maskmax_deg": 2.56,
+   "h0_m": -2583.7
+  },
+  {
+   "lat": -79.5154,
+   "lon": -169.3414,
+   "ours": 0.4508,
+   "pgda": 0.2345,
+   "pgda_3x3": [
+    0.0,
+    0.4663
+   ],
+   "maskmax_deg": 5.03,
+   "h0_m": -4271.9
+  },
+  {
+   "lat": -80.2188,
+   "lon": -166.9814,
+   "ours": 0.4149,
+   "pgda": 0.202,
+   "pgda_3x3": [
+    0.064,
+    0.3288
+   ],
+   "maskmax_deg": 8.14,
+   "h0_m": -4931.5
+  }
+ ],
+ "card9_same_points_2020_2038_for_context": {
+  "independent_code": {
+   "sun_mean_vs_pgda_sun": {
+    "n": 400,
+    "mae_pp": 2.119,
+    "rmse_pp": 4.407,
+    "bias_pp": 0.706,
+    "r": 0.9399,
+    "inside_pgda_3x3_range_pct": 54.0
+   },
+   "sun_any_vs_pgda_sun": {
+    "n": 400,
+    "mae_pp": 2.3,
+    "rmse_pp": 4.794,
+    "bias_pp": 1.59,
+    "r": 0.9349,
+    "inside_pgda_3x3_range_pct": 49.2
+   },
+   "earth_any_vs_pgda_earth": {
+    "n": 400,
+    "mae_pp": 1.733,
+    "rmse_pp": 5.357,
+    "bias_pp": 0.85,
+    "r": 0.9891,
+    "inside_pgda_3x3_range_pct": 80.8
+   },
+   "earth_ctr_vs_pgda_earth": {
+    "n": 400,
+    "mae_pp": 3.249,
+    "rmse_pp": 6.061,
+    "bias_pp": -2.142,
+    "r": 0.9875,
+    "inside_pgda_3x3_range_pct": 63.2
+   }
+  },
+  "global_maps_engine": {
+   "sun": {
+    "n": 400,
+    "mae_pp": 2.185,
+    "rmse_pp": 4.539,
+    "bias_pp": 1.036,
+    "r": 0.9379
+   },
+   "earth_ctr_vs_pgda": {
+    "n": 400,
+    "mae_pp": 3.137,
+    "rmse_pp": 5.89,
+    "bias_pp": -1.918,
+    "r": 0.9879
+   }
+  }
+ }
+}

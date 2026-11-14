@@ -1,6 +1,8 @@
 """Analytic checks for the separate card-13 verifier (no production imports)."""
 import sys
 import json
+import hashlib
+from types import SimpleNamespace
 from pathlib import Path
 
 import numpy as np
@@ -67,4 +69,49 @@ def test_checkpoint_must_match_output_inputs_and_be_complete(tmp_path, epoch_loc
     np.save(tmp_path/'done.npy', np.array([True, False]))
     with pytest.raises(ValueError, match='incomplete'):
         verify.load_reference(record, tmp_path, 0, 0)
+
+
+def test_complete_checkpoint_report_is_json_serializable(tmp_path, monkeypatch):
+    """Exercise successful cache-backed verification, including NumPy scalar means."""
+    class FlatDEM:
+        sources = []
+
+        def __init__(self, *args):
+            pass
+
+        def __call__(self, lat, lon):
+            return np.zeros(lat.shape)
+
+        def manifest(self):
+            return [{'kind': 'analytic flat sphere'}]
+
+    monkeypatch.setattr(verify, 'DEM', FlatDEM)
+    web, work = tmp_path/'web', tmp_path/'work'
+    (web/'relay').mkdir(parents=True)
+    (work/'TEST').mkdir(parents=True)
+    epoch = '2026-01-01T00:00:00Z'
+    ephem = np.array([[1.5e8, 0., 0., 384400., 0., 0.]]*2, dtype='<f4')
+    ephem.tofile(web/'ephem.bin')
+    (web/'ephem.json').write_text(json.dumps(dict(start=epoch, n=2, mock=False)))
+    digest = hashlib.sha256()
+    for v in [ephem[:, :3], ephem[:, 3:]]:
+        digest.update(np.ascontiguousarray(v, dtype='<f8').tobytes())
+    inputs = dict(n=2, dem=[], ephem_sha256=digest.hexdigest())
+    params = dict(heights_m=[15.], engine_version=2, min_km=.005, max_km=.01,
+                  n_steps=2, link_rule='los', bands_ghz={'S': 2.2, 'Ka': 26.})
+    best = dict(idx=0, height_m=15., e_m=250., n_m=0., link_to_lander=True,
+                min_clear_m=2., fresnel={'S': 1., 'Ka': 1.}, tower_earth_frac=1., link_frac=1.)
+    record = dict(id='TEST', lat=0., lon=0., mock=False, params=params, best=[best],
+                  window={'n': 2, 'start': epoch}, input_identity=inputs,
+                  candidates={'n': 1}, lander={'earth_frac': 1.},
+                  networks=[{'timeline': {'segments': [[0, 2, 1]]}}])
+    (web/'relay/TEST.json').write_text(json.dumps(record))
+    (work/'TEST/key.json').write_text(json.dumps(dict(lat=0., lon=0., v=2, inputs=inputs)))
+    np.save(work/'TEST/done.npy', np.array([True]))
+    np.save(work/'TEST/vis.npy', np.array([[[192]]], dtype=np.uint8))
+    args = SimpleNamespace(web_data=web, raw=tmp_path, work=work, height_m=15., hour_count=2,
+                           los_step_m=1., horizon_step_m=2.5, allow_missing_cache=False)
+    result = verify.verify_site({'id': 'TEST', 'lat': 0., 'lon': 0.}, args)
+    assert result['passed']
+    json.dumps(result, allow_nan=False)
 

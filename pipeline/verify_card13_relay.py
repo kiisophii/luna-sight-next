@@ -336,8 +336,8 @@ def verify_site(site, args):
     if visfile.exists():
         tower_reference = load_reference(record, args.work/site['id'], best['idx'], height_index)
         cache_link = direct_reference | (best['link_to_lander'] & tower_reference)
-        cache_fraction_consistent = (abs(tower_reference.mean()-best['tower_earth_frac']) <= .000051
-                                     and abs(cache_link.mean()-best['link_frac']) <= .000051)
+        cache_fraction_consistent = bool(abs(tower_reference.mean()-best['tower_earth_frac']) <= .000051
+                                         and abs(cache_link.mean()-best['link_frac']) <= .000051)
     elif not args.allow_missing_cache:
         raise ValueError(f'missing candidate checkpoint: {visfile}')
     rows = []

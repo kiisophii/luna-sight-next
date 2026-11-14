@@ -134,3 +134,41 @@ Layers: `sun` (mean visible solar-disk fraction), `earth` (fraction of time Eart
 every other site uses a flat 0° mask labelled **"Terrain pending"** (not counted as mock). Written automatically at the end of
 `pipeline/run_horizons.py`; after merging horizon PRs run `python pipeline/run_horizons.py --index-only`.
 `check_contract.py` errors if the index and the files disagree. If the index is missing, the app tries every horizon file (old behaviour).
+## 12. Proposed v1.2 (relay towers, 2026-11-14, Sua) — NOT yet agreed; new section only (renumbered from 10 at merge; sections 0–11 unchanged)
+`web/data/relay/<ID>.json`, written by `pipeline/relay_tower.py` (differentiator A, concept after NASA GRC BEACON, NTRS 20240014584).
+```json
+{
+  "id": "SHACKLETON_RIM", "lat": -89.9, "lon": 0.0, "h0_m": 1700.0, "lander_antenna_m": 2,
+  "window": {"start": "2026-01-01T00:00:00Z", "step_h": 1, "n": 43824},
+  "params": {"radius_km": 20, "spacing_m": 250, "heights_m": [5, 15, 30, 50], "link_rule": "los",
+             "bands_ghz": {"S": 2.2, "Ka": 26.0}, "los_step_m": 20, "n_steps": 1500, "max_km": 300,
+             "earth_el_cap_deg": 45, "slope_box_m": 250, "max_slope_deg": 15, "n_towers": 3, "engine_version": 1},
+  "dem_sources": [{"name": "PGDA_LOLA_5M", "res_m": 5.0}],
+  "lander": {"earth_frac": 0.41, "longest_no_earth_h": 310},
+  "candidates": {
+    "n": 20109, "e_m": [..], "n_m": [..], "ground_m": [.. or null], "slope_deg": [..],
+    "per_height": {"15": {"link": [0|1], "tower_earth_pm": [0..1000], "lander_link_pm": [0..1000],
+                          "fresnel_S_pc": [..], "fresnel_Ka_pc": [..]}}
+  },
+  "best": [{"idx": 812, "height_m": 15, "e_m": -1250, "n_m": 3500, "lat": .., "lon": .., "dist_m": 3716.5,
+            "ground_m": .., "slope_deg": 4.2, "link_to_lander": true, "min_clear_m": 6.1,
+            "fresnel": {"S": 0.31, "Ka": 1.12}, "tower_earth_frac": 0.72, "link_frac": 0.74,
+            "sun_frac": 0.81, "longest_dark_h": 120}],
+  "networks": [{"height_m": 15, "towers": [{..same as best.., "parent": "LANDER" | 0 | 1, "gain_pp": 33.1}],
+                "link_frac_by_n": [0.41, 0.74, 0.80, 0.82], "longest_gap_h": 52,
+                "timeline": {"codes": {"0": "none", "1": "direct", "2": "via_tower"},
+                             "segments": [[start_hour_index, length_h, code], ..]}}],
+  "link_budget": {"estimate": true, "assumptions": {..}, "range_km": {"max": .., "mean": ..},
+                  "results": [{"station": "DSN_34m" | "KDSA_35m", "band": "S" | "Ka", "range": "max" | "mean",
+                               "cn0_dbhz": .., "max_rate_bps": .., "band_support": "assumed" | "unverified ..", ..}]},
+  "inputs_mock": {"ephem": false, "site_coords": false}, "mock": false,
+  "concept": "BEACON (NASA GRC, NTRS 20240014584): 15 m deployed boom, users up to ~10 km"
+}
+```
+- Candidate `i` sits at local offset (`e_m[i]` east, `n_m[i]` north) from the lander, measured along the surface (great circle with azimuth atan2(e, n), distance hypot(e, n)); the lander itself is the candidate with e = n = 0.
+- Integer encodings keep the file small: `*_pm` = per mille (0…1000); `fresnel_<band>_pc` = min clearance / first Fresnel radius × 100 over the interior of the path, clipped to −999…999 (999 = no interior sample). Clearance ≥ 60 (i.e. 0.6) is the usual "Fresnel clear" rule.
+- `link` = 1 when the lander antenna (2 m) and the tower top are linked under `params.link_rule` (`los` = geometric line of sight with curvature; `fresnel60_<band>` = also ≥ 0.6 F1).
+- `tower_earth_pm` = Earth centre above the tower-top horizon mask (horizon-engine geometry, observer height = tower height). `lander_link_pm` = direct OR (link AND tower sees Earth).
+- `best[j]` = best buildable candidate (slope ≤ `max_slope_deg`) for height `heights_m[j]`; `sun_frac` = sunlit (≥ 0.5 disk) fraction at the tower top.
+- `networks[j]`: greedy 1…`n_towers` towers at that height; `parent` = what the tower hangs on (`"LANDER"` or the index of an earlier tower in `towers`). `link_frac_by_n[0]` = direct only. Timeline segments cover the whole window in order; when direct works the code is 1 even if a tower also works.
+- `link_budget` is a rough estimate with explicit assumptions (not a specification); the UI must label it "estimate".

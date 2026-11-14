@@ -121,7 +121,7 @@ AUTH = {
     "web/data/gmaps": {"Soyun Jeong"}, "web/data/gmaps_ppd32": {"Soyun Jeong"},
     "web/data/date_slip": {"Dongju Kim"}, "web/data/monthly": {"kiisophii"},
     "web/data/windows": {"hmkmc9095-cell"}, "web/data/hindcast.json": {"Dongju Kim"},
-    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii"},
+    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii", "Jiyong"},  # task F, PR #63
     "web/data/local": {"Jiyong", "Dongju Kim"}, "web/data/uncertainty": {"Jiyong", "kiisophii"},
     "web/data/korea": {"kiisophii", "hmkmc9095-cell"}, "web/data/globe": {"kiisophii", "Soyun Jeong"},
 }

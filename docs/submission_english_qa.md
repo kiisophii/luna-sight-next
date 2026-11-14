@@ -1,6 +1,6 @@
 # Submission English UI check — 14 November 2026 (KST)
 
-Reporter: Minchul Kim, assisted by ChatGPT/Codex. This is AI-operated inspection of the real Chrome UI, **not an independent human visual sign-off**. Human review: **TO CHECK**.
+Reporter: Minchul Kim, assisted by ChatGPT/Codex. This is AI-operated inspection of the real Chrome UI, **not an independent human visual sign-off**. Human review status: **No independent human visual sign-off has been supplied.** The user explicitly delegated record completion to AI; the evidence below remains AI-operated browser QA, not a human PASS.
 
 Demo: https://kiisophii.github.io/lunar-landing-site-navigator/
 Source inventory snapshot: c799395a58e14d65f760d2969f320e6a588bc992. The live Pages deployment was inspected separately; no assertion that its deployed head equals this source snapshot.

@@ -117,7 +117,7 @@ The 17 non-polar sites are unchanged: z7 66.6 m from SLDEM 59 m, which is about 
 - Tests: `pytest pipeline/tests pipeline/test_horizon.py pipeline/test_global_maps.py pipeline/test_relay_tower.py pipeline/test_run_relay.py pipeline/test_korea_links.py` → 80 passed. `python pipeline/check_contract.py` → PASS, 0 errors, 0 warnings.
 
 ## 3. Open items
-1. The full 948 m run waits for the team member's go-ahead this evening (AC power, lid open). Then export, then the card 14 PGDA check (948 m and 3.8 km maps vs AVGVISIB_75S at 400 points).
+1. The 948 m run was split (team lead decision): rows 0–3103 on this laptop are **done and verified**, rows 3103–5759 run on Jiyong's GPU desktop. Merge, export and the PGDA check wait for that part: see `docs/card14_split_merge.md`.
 2. IM1 has no 10 m / 20 m tiles. The PGDA 20 m 80° S product could add z7 there; not done.
 3. The z8 reach is 10.5–14 km minimum, not 30 km. Extending it would need wider 10 m windows and ~4× more tiles (web size).
 4. The north cap has no PGDA data in our cache (unchanged).

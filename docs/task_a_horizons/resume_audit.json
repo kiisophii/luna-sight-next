@@ -283,7 +283,7 @@
   "computation_run_id": 43655770217,
   "artifact_id": 14137059934,
   "artifact_zip_sha256": "32872ee53320ed959bd7e6bf11ef1fd567247c236df231ba6958ae07eff2f40d",
-  "finalizer_commit": "5484db2d022edf1144467b90f2f152902e19aeb3",
+  "finalizer_commit": "b68226c575becc7f4a60b897a5d8a6ce97185d20",
   "hourly_sunlight_rechecked": 1446192,
   "failed_angles": [
     {

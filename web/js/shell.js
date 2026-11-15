@@ -126,6 +126,11 @@ document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', (
   const phone = window.matchMedia('(max-width: 899px)').matches && box.id === 'ls-cond';
   const open = phone ? !box.classList.contains('unfolded') : box.classList.contains('folded');
   if (phone) box.classList.toggle('unfolded', open); else box.classList.toggle('folded', !open);
+  if (box.id === 'ls-cond' && b.dataset.userClick === '1') {
+    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable input, .ls-foldable .dd-btn, .ls-foldable select')?.focus());
+    else b.focus();
+  }
+  delete b.dataset.userClick;
   b.setAttribute('aria-expanded', String(open));
   foldLabel(b, open);
   if (open && box.id === 'ls-tray') window.dispatchEvent(new Event('resize'));   // scrubber canvas re-measures
@@ -527,3 +532,8 @@ document.getElementById('sp-btn')?.addEventListener('click', () => document.quer
 // relay pill tooltip follows the language
 (() => { const rp = document.querySelector('.relay-pill'); if (!rp) return; const set = () => { rp.title = t('relayPillTip'); };
   ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set(); })();
+
+// a real click / key press on the conditions toggle (not the automatic fold) moves focus as in the copy
+document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('pointerdown', () => { b.dataset.userClick = '1'; }, true));
+document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') b.dataset.userClick = '1'; }, true));
+document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const b = document.querySelector('.ls-fold[data-fold="ls-cond"]'); if (b) b.dataset.userClick = '1'; }, true);

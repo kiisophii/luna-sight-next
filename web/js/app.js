@@ -491,7 +491,11 @@ async function main() {
     if (relayOn) primeRelay(); else { $('#relay-status').textContent = ''; renderList(); window.dispatchEvent(new CustomEvent('llsn:relay', { detail: { on: false } })); }
   });
   const onRows = e => {
-    const pb = e.target.closest('.pk-pin'); if (pb) { togglePin(pb.dataset.id); return; }
+    const pb = e.target.closest('.pk-pin');
+    if (pb) { const id = pb.dataset.id, kb = pb.matches(':focus-visible') || e.detail === 0; togglePin(id);
+      // keep the keyboard place: focus the same site's (+)/(-) button in its new row
+      requestAnimationFrame(() => { const nb = document.querySelector(`.pk-pin[data-id="${CSS.escape(id)}"]`); if (nb) nb.focus({ preventScroll: !kb }); });
+      return; }
     const it = e.target.closest('.pk-item'); if (it) pick(it.dataset.id);
   };
   $('#pk-list').addEventListener('click', onRows);

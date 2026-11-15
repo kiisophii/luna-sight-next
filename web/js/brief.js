@@ -491,7 +491,7 @@ async function timeBlock(s) {
     const T0 = Date.parse(win.start_utc), T1 = Date.parse(win.end_utc), W = 1000, X = ms => ((ms - T0) / (T1 - T0)) * W;
     const strip = (arr, col, y) => arr.map(v => `<rect x="${X(Date.parse(v.start_utc)).toFixed(1)}" y="${y}" width="${Math.max(0.5, X(Date.parse(v.end_utc)) - X(Date.parse(v.start_utc))).toFixed(1)}" height="12" fill="${col}"/>`).join('');
     const p0 = X(core.hourToDate(w.i0).getTime()), p1 = X(core.hourToDate(w.i1 + 1).getTime());
-    const years = [2027, 2028, 2029, 2030].map(y => { const x = X(Date.UTC(y, 0, 1)); return `<line x1="${x}" x2="${x}" y1="0" y2="40" stroke="var(--border)"/><text x="${x + 3}" y="48" font-size="10" fill="var(--muted)" font-family="Oxanium,monospace">${y}</text>`; }).join('');
+    const years = [2027, 2028, 2029, 2030].map(y => { const x = X(Date.UTC(y, 0, 1)); return `<line x1="${x}" x2="${x}" y1="0" y2="40" stroke="var(--border)"/><text x="${x + 3}" y="48" font-size="10" fill="var(--muted)" style="font-family:var(--font-num)">${y}</text>`; }).join('');
     const gapRows = (arr) => arr.map(g => `<tr><td class="num">${g.start_utc.slice(0, 16).replace('T', ' ')}</td><td>${g.end_utc.slice(0, 16).replace('T', ' ')}</td><td>${fmtHours(g.duration_h)}${g.clipped_start || g.clipped_end ? ' *' : ''}</td></tr>`).join('');
     five = `<h4 style="margin:16px 0 6px;font-size:13px">${esc(t('tFiveStrip'))} ${chip('chipLong', 'long')}</h4>
       <svg class="five-strip" viewBox="0 0 ${W} 52" style="width:100%;cursor:pointer" role="img" aria-label="${esc(t('tFiveStrip'))}" data-t0="${T0}" data-t1="${T1}">

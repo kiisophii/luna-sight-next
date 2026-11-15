@@ -214,8 +214,9 @@ function markPinnedLabels() {
 ['llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:sites', 'llsn:sort', 'llsn:window', 'llsn:lang', 'llsn:relay'].forEach(ev => window.addEventListener(ev, () => setTimeout(markPinnedLabels, 0)));
 
 // ------------------------------------------------------------ relay towers on the map (the 'Relay tower' switch)
-// Compared candidates (first three) with tower data get one icon at the best tower of the default-height network
-// (data/relay/<ID>.json -> networks[h].towers[0], a computed candidate position) and a thin line from the site.
+// Compared candidates (first three) with tower data get one icon per tower of the default-height network
+// (data/relay/<ID>.json -> networks[h].towers, up to 3 computed candidate positions) and a thin line from the site.
+// The nearest one is the distance the list row shows ('tower x km').
 // Sites without a file or without a tower get nothing. window.LLSN.relayMarks + 'llsn:relaymarks' feed the minimap.
 const RELAY_GREEN = '#3CC6A0';
 let relaySeq = 0;
@@ -228,12 +229,17 @@ async function syncRelayMarks() {
     for (const pn of (L.pins?.() || []).slice(0, 3)) {
       const s = L.state.sites.find(x => x.id === pn.id); if (!s || !idx?.ids?.includes(s.id)) continue;
       const rel = await relayFor(s.id).catch(() => null); if (!rel) continue;
-      const j = rel.params.heights_m.findIndex(x => Number(x) === TOWER_H), tw = j >= 0 ? rel.networks[j]?.towers?.[0] : null;
-      if (!tw || !isFinite(tw.lat) || !isFinite(tw.lon)) continue;
-      const name = getLang() === 'ko' && s.name_ko ? s.name_ko : s.name, km = (tw.dist_m / 1000).toFixed(1);
-      out.push({ id: s.id, n: pn.n, lat: tw.lat, lon: tw.lon, from: { lat: s.lat, lon: s.lon }, color: RELAY_GREEN, distKm: tw.dist_m / 1000, height: TOWER_H,
-        html: iconSvg('relay-tower', { size: 14 }),
-        title: getLang() === 'ko' ? `중계탑 후보 위치 · #${pn.n} ${name} · ${TOWER_H} m 탑 · 착륙지에서 ${km} km (data/relay)` : `Relay tower candidate · #${pn.n} ${name} · ${TOWER_H} m mast · ${km} km from the site (data/relay)` });
+      const j = rel.params.heights_m.findIndex(x => Number(x) === TOWER_H), tws = (j >= 0 ? rel.networks[j]?.towers : null) || [];
+      const name = getLang() === 'ko' && s.name_ko ? s.name_ko : s.name;
+      const near = tws.length ? Math.min(...tws.map(w => w.dist_m)) : null;   // the list row shows this distance ('tower x km')
+      tws.slice(0, 3).forEach((tw, k) => {
+        if (!isFinite(tw.lat) || !isFinite(tw.lon)) return;
+        const km = (tw.dist_m / 1000).toFixed(1), isNear = tw.dist_m === near;
+        out.push({ id: s.id, n: pn.n, k: k + 1, of: tws.length, nearest: isNear, lat: tw.lat, lon: tw.lon, from: { lat: s.lat, lon: s.lon }, color: RELAY_GREEN, distKm: tw.dist_m / 1000, height: TOWER_H,
+          html: iconSvg('relay-tower', { size: 14 }),
+          title: getLang() === 'ko' ? `중계탑 후보 위치 ${k + 1}/${tws.length} · #${pn.n} ${name} · ${TOWER_H} m 탑 · 착륙지에서 ${km} km${isNear ? ' (가장 가까운 탑)' : ''} · data/relay`
+            : `Relay tower candidate ${k + 1}/${tws.length} · #${pn.n} ${name} · ${TOWER_H} m mast · ${km} km from the site${isNear ? ' (nearest tower)' : ''} · data/relay` });
+      });
     }
   }
   if (seq !== relaySeq) return;

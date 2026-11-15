@@ -1676,3 +1676,5 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
 .ls-globe .g3-mark { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -26px 0 0 -11px; display: grid; place-items: center; border-radius: 50%; background: rgba(10, 10, 11, .86); border: 1px solid var(--mk, #3CC6A0); color: var(--mk, #3CC6A0); pointer-events: auto; cursor: help; }
 .ls-globe .g3-mark::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: 4px; background: var(--mk, #3CC6A0); }
 .ls-globe .g3-mark svg { width: 14px; height: 14px; display: block; }
+#hud-1, #globe-stage .g3-note { pointer-events: none; }   /* a tower icon under these boxes stays hoverable */
+.ls-globe .g3-mark { z-index: 16; }

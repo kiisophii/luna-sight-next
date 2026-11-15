@@ -348,6 +348,17 @@ async function renderTray() {
 }
 
 let bigSeq = 0;
+let mobileTableObserver;
+function fitMobileTable(root, count) {
+  mobileTableObserver?.disconnect();
+  const sc=root.querySelector('.big-cmp .cmp-scroll'), table=sc?.querySelector('table'); if(!table)return;
+  const update=()=>{
+    if(innerWidth>899){table.style.width='';table.style.removeProperty('--mobile-col');return;}
+    const col=Math.max(100,Math.floor((sc.clientWidth-64)/2));
+    table.style.setProperty('--mobile-col',`${col}px`);table.style.width=`${64+col*count}px`;
+  };
+  mobileTableObserver=new ResizeObserver(update);mobileTableObserver.observe(sc);update();
+}
 async function renderBig() {
   const root = sec(); if (!root || !LLSN().window) return;
   const my = ++bigSeq;
@@ -364,6 +375,7 @@ async function renderBig() {
     <div class="cards3 big-tab" role="tabpanel" style="margin-top:10px"></div>
     <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p>
     <div class="tl ls-panel"><div class="tl-wrap"></div></div>`;
+  fitMobileTable(root, sites.length);
   updateNow(root);
   const tab = root.querySelector('.big-tab');
   for (const s of sites) {

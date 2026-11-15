@@ -520,6 +520,12 @@ if (uLayerA > 0.0) {
   .g3-site::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff5a5a;border:2px solid #fff;margin-right:4px;vertical-align:-2px;box-shadow:0 0 3px #000}
   .g3-site.g3-polar_peak::before,.g3-site.g3-artemis3_region::before{background:#2ee59d}
   .g3-site.g3-flip{display:inline-flex;flex-direction:row-reverse;align-items:center}.g3-site.g3-flip::before{margin:0 0 0 4px}
+  .g3-site.g3-dotonly{width:14px!important;height:14px;font-size:0!important;overflow:hidden;padding:0!important}
+  .g3-site.g3-dotonly::before{content:''!important;width:6px!important;height:6px!important;margin:0!important;background:#fff;border:1px solid #111}
+  .g3-cluster{position:absolute;pointer-events:auto;z-index:4;min-width:32px;min-height:26px;padding:3px 7px;border:1px solid #aaa;border-radius:14px;background:#16191eee;color:#fff;font:600 12px sans-serif;cursor:pointer}
+  .g3-cluster-panel{position:absolute;pointer-events:auto;z-index:8;width:240px;max-width:calc(100% - 24px);max-height:240px;overflow:auto;padding:8px;border:1px solid #666;border-radius:8px;background:#101318f5;color:white}
+  .g3-cluster-panel[hidden]{display:none}.g3-cluster-panel button{display:block;width:100%;padding:8px;text-align:left;border:0;background:transparent;color:#fff;cursor:pointer}.g3-cluster-panel button:hover{background:#ffffff20}
+  .g3-cluster:focus-visible,.g3-cluster-panel button:focus-visible{outline:2px solid #ffd23f}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
   .g3-site.g3-dotonly{color:transparent!important;text-shadow:none!important}.g3-site.g3-dotonly:hover,.g3-site.g3-dotonly:focus-visible{color:inherit!important;z-index:2}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
@@ -534,7 +540,7 @@ if (uLayerA > 0.0) {
   overlay.appendChild(css);
   const siteEls = sites.map(s => {
     const b = document.createElement('button');
-    b.className = 'g3-site g3-' + s.group; b.type = 'button';
+    b.className = 'g3-site g3-' + s.group; b.type = 'button'; b.dataset.siteId = s.id;
     b.textContent = s.short || s.name; b.title = `${s.name} (${s.lat.toFixed(3)}, ${s.lon.toFixed(3)})`;
     b.addEventListener('click', ev => { ev.stopPropagation(); focusSite(s.id); emit('siteclick', s); });
     overlay.appendChild(b);
@@ -566,25 +572,69 @@ if (uLayerA > 0.0) {
   // direction of the body, then slid along that border until they overlap no obstacle: opts.avoid
   // (elements or CSS selectors: header, side panels, buttons, minimap ...), our own note/HUD and the other chip.
   const avoidList = () => {
-    const out = [dock];
+    const out = [dock, ...clusterButtons.values(), clusterPanel];
     for (const a of opts.avoid || []) {
       if (typeof a === 'string') document.querySelectorAll(a).forEach(e => out.push(e)); else if (a) out.push(a);
     }
     return out;
   };
   const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+  const clusterButtons = new Map();
+  const clusterPanel=document.createElement('div');clusterPanel.className='g3-cluster-panel';clusterPanel.hidden=true;clusterPanel.setAttribute('role','dialog');overlay.append(clusterPanel);
+  let activeCluster=null;
+  function closeCluster(restore=false){clusterPanel.hidden=true;if(restore)activeCluster?.focus();activeCluster=null;}
+  overlay.addEventListener('pointerdown',e=>{if(!e.target.closest('.g3-cluster,.g3-cluster-panel'))closeCluster();});
+  clusterPanel.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeCluster(true);}});
+  function openCluster(button, members){
+    activeCluster=button;clusterPanel.replaceChildren();clusterPanel.hidden=false;
+    clusterPanel.setAttribute('aria-label',lang==='ko'?'가까운 착륙지 선택':'Choose a nearby landing site');
+    const close=document.createElement('button');close.textContent=lang==='ko'?'닫기 ×':'Close ×';close.onclick=()=>closeCluster(true);clusterPanel.append(close);
+    for(const m of members){const row=document.createElement('button');row.textContent=lang==='ko'?(m.s.name_ko||m.s.name):m.s.name;row.dataset.siteId=m.s.id;
+      row.onclick=e=>{e.stopPropagation();closeCluster();focusSite(m.s.id);emit('siteclick',m.s);};clusterPanel.append(row);}
+    const x=parseFloat(button.style.left),y=parseFloat(button.style.top);
+    clusterPanel.style.left=`${Math.max(8,Math.min(x,overlay.clientWidth-clusterPanel.offsetWidth-8))}px`;
+    clusterPanel.style.top=`${Math.max(8,Math.min(y+30,overlay.clientHeight-clusterPanel.offsetHeight-8))}px`;
+    clusterPanel.querySelector('button[data-site-id]')?.focus();
+  }
   function declutter() {
-      // page boxes floating over the stage (legend, captions, minimap ...) count as already placed (opts.labelBlockers)
-    const kept = (typeof opts.labelBlockers === 'function' ? opts.labelBlockers() : []).map(q => ({ x0: q.left, y0: q.top, w: q.width, h: q.height }));
-    const order = siteEls.filter(m => m.box).sort((a, b) => (b.el.dataset.n ? 1 : 0) - (a.el.dataset.n ? 1 : 0));
-    for (const m of order) {
-      const q = m.el.getBoundingClientRect();                     // real box incl. the '#n' prefix (fonts / language change the width)
-      const r = { x0: q.left, y0: q.top, w: q.width, h: q.height }, hit = kept.some(k => r.x0 < k.x0 + k.w + 4 && k.x0 < r.x0 + r.w + 4 && r.y0 < k.y0 + k.h + 3 && k.y0 < r.y0 + r.h + 3);
-      m.el.classList.toggle('g3-dotonly', hit);
-      if (!hit) kept.push(r);
+    const origin=overlay.getBoundingClientRect();
+    const blockers=(typeof opts.labelBlockers==='function'?opts.labelBlockers():[]).map(q=>({x0:q.left,y0:q.top,w:q.width,h:q.height}));
+    const overlaps=(a,b,pad=3)=>a.x0<b.x0+b.w+pad&&b.x0<a.x0+a.w+pad&&a.y0<b.y0+b.h+pad&&b.y0<a.y0+a.h+pad;
+    const kept=[...blockers], candidates=[];
+    for(const m of siteEls){m.el.style.visibility='';m.el.classList.remove('g3-dotonly');if(!m.box||!m.point)continue;
+      m.lw=m.el.offsetWidth||m.lw||80;
+      m.el.style.transform=`translate(${m.flip?m.point.x-m.lw+7:m.point.x-7}px,${m.point.y-7}px)`;
+      if(m.point.x<(labelIns?.left||0)+7||m.point.x>overlay.clientWidth-(labelIns?.right||0)-7||m.point.y<(labelIns?.top||0)+7){m.el.style.visibility='hidden';continue;}
+      const dot={x0:origin.left+m.point.x-7,y0:origin.top+m.point.y-7,w:14,h:14};
+      if(blockers.some(k=>overlaps(dot,k,0))){m.el.style.visibility='hidden';continue;}candidates.push(m);
+    }
+    // Connected components in screen pixels split naturally as the camera zooms in.
+    const groups=[];const unseen=new Set(candidates);
+    while(unseen.size){const first=unseen.values().next().value,group=[first];unseen.delete(first);
+      for(let i=0;i<group.length;i++)for(const other of [...unseen])if(Math.hypot(group[i].point.x-other.point.x,group[i].point.y-other.point.y)<24){group.push(other);unseen.delete(other);}
+      groups.push(group);
+    }
+    const used=new Set(), clustered=new Set();
+    for(const members of groups.filter(g=>g.length>1)){
+      const key=members.map(m=>m.s.id).sort().join('|');used.add(key);
+      let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster';overlay.append(button);clusterButtons.set(key,button);}
+      button.textContent=`+${members.length}`;button.dataset.members=key;button.setAttribute('aria-label',lang==='ko'?`가까운 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} nearby landing sites`);
+      button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
+      const x=members.reduce((n,m)=>n+m.point.x,0)/members.length,y=members.reduce((n,m)=>n+m.point.y,0)/members.length;
+      const bw=button.offsetWidth,bh=button.offsetHeight;
+      let px=Math.max(8,Math.min(x,overlay.clientWidth-bw-8)),py=Math.max(8,Math.min(y,overlay.clientHeight-bh-8));
+      for(const [dx,dy]of [[0,0],[-bw-8,0],[0,-bh-8],[0,bh+8],[-bw-8,-bh-8]]){const a={x0:origin.left+px+dx,y0:origin.top+py+dy,w:bw,h:bh};if(!kept.some(k=>overlaps(a,k))&&px+dx>=0&&py+dy>=0){px+=dx;py+=dy;break;}}
+      button.style.left=`${px}px`;button.style.top=`${py}px`;kept.push({x0:origin.left+px,y0:origin.top+py,w:bw,h:bh});
+      for(const m of members){clustered.add(m);m.el.style.visibility='hidden';}
+    }
+    for(const [key,button]of clusterButtons)if(!used.has(key)){if(activeCluster===button)closeCluster();button.remove();clusterButtons.delete(key);}
+    const order=candidates.filter(m=>!clustered.has(m)).sort((a,b)=>(b.el.dataset.n?1:0)-(a.el.dataset.n?1:0));
+    for(const m of order){const q=m.el.getBoundingClientRect(),r={x0:q.left,y0:q.top,w:q.width,h:q.height};const collision=kept.some(k=>overlaps(r,k));
+      m.el.classList.toggle('g3-dotonly',collision);
+      if(collision)m.el.style.transform=`translate(${m.point.x-7}px,${m.point.y-7}px)`;else kept.push(r);
     }
   }
-  setInterval(() => { if (!stopped) declutter(); }, 400);   // also when the camera is still (legend / caption boxes come and go)
+  const declutterTimer=setInterval(()=>{if(!stopped)declutter();},400);
   function edgeChip(el, worldP, labelEl, placed) {
     const pr = project(worldP);
     if (pr.on) { el.style.display = 'none'; labelEl.style.display = ''; labelEl.style.transform = `translate(${pr.x + 14}px,${pr.y - 8}px)`; return null; }
@@ -835,13 +885,14 @@ if (uLayerA > 0.0) {
       const facing = m.dir.dot(camPos.clone().sub(p)) > 0;
       const pr = project(p);
       const show = facing && pr.on && view.range < 9000;
+      m.point = show ? {x:pr.x,y:pr.y} : null;
       m.el.style.display = show ? '' : 'none';
       if (show) {
         // keep the name inside the view: flip it to the left of the dot near the right edge, fade it near top/bottom
         const lw = (frameNo % 60 === 0 || !m.lw) ? (m.lw = m.el.offsetWidth || 80) : m.lw;
         const flip = pr.x + lw > R0 - 6 && pr.x - lw > L0;
         if (flip !== !!m.flip) { m.flip = flip; m.el.classList.toggle('g3-flip', flip); }
-        m.el.style.transform = flip ? `translate(${pr.x - lw + 7}px,${pr.y - 7}px)` : `translate(${pr.x - 7}px,${pr.y - 7}px)`;
+        m.el.style.transform = flip && !m.el.classList.contains('g3-dotonly') ? `translate(${pr.x - lw + 7}px,${pr.y - 7}px)` : `translate(${pr.x - 7}px,${pr.y - 7}px)`;
         const edge = Math.min(pr.y - 4 - T0, h - pr.y - 4, flip ? pr.x - lw - L0 : R0 - pr.x - lw, pr.x - L0, R0 - pr.x);
         m.el.style.opacity = edge < 18 ? String(Math.max(0.25, edge / 18)) : '';
         m.box = { x0: flip ? pr.x - lw + 7 : pr.x - 7, y0: pr.y - 7, w: lw, h: 14 };
@@ -884,7 +935,7 @@ if (uLayerA > 0.0) {
     updateBodies(); dirty = true; emit('time', hour);
   }
   function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
-  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? '☀ 태양' : '☀ Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? '◉ 지구' : '◉ Earth'; }
+  function setLang(l) { closeCluster(); lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? '☀ 태양' : '☀ Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? '◉ 지구' : '◉ Earth'; }
 
   setTime(opts.hour ?? 0);
   if (opts.view) setView(opts.view);
@@ -949,7 +1000,7 @@ if (uLayerA > 0.0) {
     sunDirection: () => sunDir.clone(), earthPosition: () => earthPos.clone(),
     waitIdle: async (timeout = 30000) => { const t0 = performance.now(); let calm = 0; while (performance.now() - t0 < timeout) { await new Promise(r => setTimeout(r, 100)); calm = stats.pending === 0 && !fly ? calm + 1 : 0; if (calm >= 5) return true; } return false; },
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter(f => f !== fn); }; },
-    dispose() { stopped = true; colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
+    dispose() { stopped = true; clearInterval(declutterTimer); colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
     _internal: { scene, camera, renderer, tiles },
   };
   return api;

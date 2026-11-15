@@ -27,6 +27,13 @@ function area() {
 }
 function place(animate) {
   if (!box) return;
+  if (innerWidth <= 899) {
+    const open = box.classList.contains('open');
+    Object.assign(box.style, {left:'',top:'',right:'',bottom:'',width:`${Math.min(open ? 580 : 222, innerWidth - 32)}px`,height:`${open ? 358 : 228}px`});
+    for (const selector of ['#hud-1','#globe-stage .g3-dock','#map-legend']) { const e=document.querySelector(selector); if(e) for(const key of ['left','top','right','bottom']) e.style[key]=''; }
+    return;
+  }
+  box.style.width = box.style.height = '';
   const follow = ['#hud-1', '#globe-stage .g3-dock', '#map-legend'].map(s => document.querySelector(s)).filter(Boolean);
   if (!desktop()) { for (const e of [box, ...follow]) { e.style.left = e.style.top = e.style.right = e.style.bottom = ''; } return; }
   const a = area(), open = box.classList.contains('open');

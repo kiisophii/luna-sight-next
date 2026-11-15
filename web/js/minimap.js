@@ -84,6 +84,7 @@ function build() {
   window.addEventListener('llsn:pins', () => { draw(); lists(); });
   window.addEventListener('llsn:sort', lists);
   window.addEventListener('llsn:focus', e => { recent = [e.detail.id, ...recent.filter(x => x !== e.detail.id)].slice(0, 5); lists(); draw(); });
+  window.addEventListener('resize', sizeBall);
   sizeBall();
   setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; draw(); } }, 400);
 }
@@ -103,7 +104,9 @@ function relabel() {
 }
 function sizeBall() {
   const open = box.classList.contains('open'), phone = window.matchMedia('(max-width: 899px)').matches;
-  const d = open ? (phone ? 220 : 200) : (phone ? 86 : 114), dpr = Math.min(2, window.devicePixelRatio || 1);
+  const mobileWidth = Math.min(open ? 580 : 222, innerWidth - 32), panelWidth = Math.min(205, mobileWidth * .43);
+  box.querySelector('.mm-side').style.width = phone ? `${panelWidth}px` : '205px';
+  const d = phone ? (open ? Math.min(330, mobileWidth-panelWidth-38) : Math.min(200,mobileWidth-22)) : (open ? 200 : 114), dpr = Math.min(2, window.devicePixelRatio || 1);
   cv.width = d * dpr; cv.height = d * dpr; cv.style.width = cv.style.height = d + 'px';
   cv.style.margin = open ? '12px 0 0 12px' : '6px auto 0';
   draw();

@@ -1336,3 +1336,14 @@ body.on-about .ls-export { display: none; }
 @media (min-width: 1440px) { .ls-toolbar .tb-time { width: clamp(80px, calc(var(--mapW) - 465px), 280px); } }
 .ls-tabs-top { gap: 26px; }
 .c2-bar .info-i { display: none; }   /* the copy has no i here; sort definitions are in the condition i texts and About */
+
+/* Compact screens: a separate minimap row and two visible comparison candidates. */
+@media (max-width:899px) {
+  .ls-minimap,.ls-minimap.open { position:relative; inset:auto; order:1; flex:none; align-self:flex-end; margin:12px 16px 0; max-width:calc(100% - 32px); }
+  .ls-minimap .mm-grip,.ls-minimap .mm-resize { display:none; }
+  .big-cmp .cmp-tbl { table-layout:fixed; min-width:0; }
+  .big-cmp .cmp-tbl th.lbl { width:64px; min-width:64px; max-width:64px; padding:8px 5px; white-space:normal; overflow-wrap:anywhere; font-size:11px; }
+  .big-cmp .cmp-tbl td,.big-cmp .cmp-tbl thead th:not(.lbl) { width:var(--mobile-col); min-width:var(--mobile-col); max-width:var(--mobile-col); padding:8px 5px; white-space:normal; overflow-wrap:anywhere; }
+  .big-cmp .cmp-tbl .val { font-size:16px; }
+  .big-cmp .cmp-tbl .sub,.big-cmp .cmp-tbl .num { white-space:normal; overflow-wrap:anywhere; }
+}

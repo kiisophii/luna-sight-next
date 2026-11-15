@@ -225,3 +225,9 @@ Input main `274e676`; implementation/evidence commit **dc53eca**. AI-assisted in
 | V / PGDA Earth definition | All 240 random masks independently reconstructed; own 81,444-epoch loop and direct original PGDA pixels. Centre MAE 3.874106927 pp → upper-limb approximation 1.239463679 pp (68.006% reduction); stored any-part max difference 0.000496292 pp. Direct PGDA max below 0.00001 pp. | Reproduction PASS; residual >0.1 pp at112/240, maximum25.083492952 pp, alllisted. 148 improve/31 worsen/61 unchanged. Sixteen named metrics separately reproduced (max0.000462453 pp), using checker-authored existing masks: not independent verification of those masks. Whole-disk geometry equivalence, exact PGDA dates and observer height unresolved. [Report](task_v_earth_definition.md), [all256rows](task_v_earth_definition_rows.csv). |
 
 Task K is an administrative audit, not an additional verified scientific product: [35 unique Jiyong SI entries across pinned main/current/pending branches including local storage migration, 17 rows with pending human cells](task_k_si_audit.md). Prior log entries and human cells are preserved. This table excludes the unmerged C/D/X/P/Q PR evidence from its status counts; each PR documents its own scope.
+
+## Task Y terrain descriptors — Jiyong, 2026-11-15
+
+| Product | Author checks | Status |
+|---|---|---|
+| `terrain/` (16 detailed polar + 17 coarse comparisons) | Native PGDA 5/10/20 m: 8/7/1 sites. Separate explicit least-squares checker on Shackleton/Malapert/IM1: maximum slope difference 2.230660101e-12 deg, flat fraction 0 pp, roughness summary 1.110223025e-16 m. All 33 stored relay-centre values/hashes exact. 22 focused tests and 2 subtests pass; full contract 0 errors. [Report](terrain_y.md), [check](terrain_y_check.json). | Author-verified only. Different team member must independently check 3 sites (≤0.5 deg, ≤1 pp); separate AI code/review does not satisfy that requirement. |

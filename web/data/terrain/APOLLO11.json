@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "id": "APOLLO11",
+  "lat": 0.67416,
+  "lon": 23.47314,
+  "frame": "MOON_ME_DE421",
+  "kind": "coarse_relay_comparison",
+  "mock": false,
+  "thresholds_deg": [
+    8,
+    15
+  ],
+  "thresholds_label": "reference_only",
+  "source": {
+    "dem_sources": [
+      {
+        "name": "SLDEM2015",
+        "res_m": 59.2
+      },
+      {
+        "name": "LDEM_64",
+        "res_m": 473.8
+      },
+      {
+        "name": "LDEM_16",
+        "res_m": 1895.2
+      }
+    ],
+    "label": "coarse (SLDEM2015 59 m / LDEM_64)"
+  },
+  "method": null,
+  "landing_slope_deg": null,
+  "slope_by_radius_m": null,
+  "roughness_within_500m": null,
+  "relay_box": {
+    "slope_deg": 1.2,
+    "box_m": 250,
+    "source_path": "web/data/relay/APOLLO11.json",
+    "source_sha256": "550569fca50e9dfec1a6c9a0be65daa9a7a825f2080f0336b5a84c79eac33849",
+    "candidate_index": 2512,
+    "e_m": 0,
+    "n_m": 0,
+    "provenance": {
+      "description": "Copied existing stored rounded 250m-box slope at relay centre; not recomputed.",
+      "dem_sources": [
+        {
+          "name": "SLDEM2015",
+          "res_m": 59.2
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8
+        },
+        {
+          "name": "LDEM_16",
+          "res_m": 1895.2
+        }
+      ],
+      "input_identity": {
+        "dem": [
+          {
+            "name": "SLDEM2015",
+            "radius_km": 150.0,
+            "size": 88483603,
+            "mtime_ns": 1794629301696660100
+          },
+          {
+            "name": "LDEM_64",
+            "radius_km": 300.0,
+            "size": 1061683200,
+            "mtime_ns": 1794623197433035400,
+            "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+          },
+          {
+            "name": "LDEM_16",
+            "radius_km": 300.0,
+            "size": 66355200,
+            "mtime_ns": 1794623000270986100,
+            "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+          }
+        ],
+        "ephem_sha256": "da06ed0d1762dd77d0c92d97efefbc47cfd2a63ee01b98b61093090631aa9a52",
+        "start": "2026-01-01T00:00:00Z",
+        "n": 43824,
+        "mock": false
+      }
+    }
+  },
+  "inputs": {
+    "producer_sha256": "940f7beb9b93329cc1b51af0f96f9816bc4ac7b8b178098381a1c7f3db7a8550",
+    "sites_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+    "site_sha256": "dc19e9b0e41906d46bdc1ee838e0802b0b6fb0c7c4b17c1f0ea65216c15d864e",
+    "relay_sha256": "550569fca50e9dfec1a6c9a0be65daa9a7a825f2080f0336b5a84c79eac33849",
+    "source_sha256": "2d46aecc3fd7c58c65c404e9d6dccea6e4cf17a5dbe024000a7cfcbcc58ce0d5",
+    "code_sha256": {
+      "fetch_polar.py": "15cd3b79e27038f948a4450a127ba4d778b60ba86fdeee2b2a788b5edbc55245",
+      "polar_prefetch.py": "5e335638d7039ac9140c9d5f97d7374c8161b79d34104ba858f5a253715fde4b"
+    },
+    "parameters": {
+      "thresholds_deg": [
+        8,
+        15
+      ],
+      "thresholds_label": "reference_only",
+      "radii_m": [
+        100,
+        500,
+        1000
+      ],
+      "roughness_radius_m": 500,
+      "roughness_window_width_ground_m": 50,
+      "projected_storage_radius_m": 1200,
+      "resolution_preference_m": [
+        5,
+        10,
+        20
+      ],
+      "source_metadata_sha256": "2d46aecc3fd7c58c65c404e9d6dccea6e4cf17a5dbe024000a7cfcbcc58ce0d5"
+    },
+    "signature": "edc7d50f4dc4caf0137feb7c0fc366bc8fd89e36e8e4d6642db3b33b84f3f7fa"
+  },
+  "verification_status": "author_checks_only_team_verification_pending",
+  "content_sha256": "46a2657d74b75203c50329bc70e02b6a28a0d68490a667e1e7f61a27a2dd999e"
+}

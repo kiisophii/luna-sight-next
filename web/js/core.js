@@ -34,6 +34,9 @@ export async function loadData(base = 'data/') {
   const f = new Float32Array(buf.byteLength / 4);
   for (let k = 0; k < f.length; k++) f[k] = dv.getFloat32(k * 4, true);   // little-endian regardless of CPU
   if (f.length !== meta.n * 6) throw new Error(`ephem.bin has ${f.length / 6} rows, ephem.json says ${meta.n}`);
+  // Site names stay in English on the Korean screen too, like the designer's reference (team decision 11/15);
+  // the Korean name is kept as name_ko_label for reference only.
+  for (const s of sites) if (s && s.name_ko) { s.name_ko_label = s.name_ko; delete s.name_ko; }
   state.sites = sites; state.ephemMeta = meta; state.ephem = f; state.n = meta.n;
   state.horizonIds = index && Array.isArray(index.ids) ? new Set(index.ids) : null;
   await Promise.all(sites.map(s => loadHorizon(s)));

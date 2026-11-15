@@ -548,6 +548,9 @@ async function renderBig() {
     renderBig().then(() => sec()?.querySelector(`[data-alt-body="${altBody}"]`)?.focus());
   }));
   placeAltNeedles(root); placeReadouts(root);
+  // the timeline shares the table's column: same width, centred like the table (same left edge as 'Change over time')
+  const tblBox = root.querySelector('.detail-table'), tlBox = root.querySelector('.detail-tl');
+  if (tblBox && tlBox) { tlBox.style.maxWidth = `${Math.round(tblBox.getBoundingClientRect().width)}px`; tlBox.style.marginLeft = tlBox.style.marginRight = 'auto'; }
   const timeline = await timelineSVG(sites);
   if (my !== bigSeq) return;
   const tl = root.querySelector('.tl-wrap'); tl.innerHTML = timeline;

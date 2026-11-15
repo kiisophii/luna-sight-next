@@ -27,7 +27,7 @@ const h=document.querySelector('.tc-h'),title=h.querySelector('h4'),info=h.query
 return{header:rect(h),title:rect(title),info:rect(info),subs:rect(subs),buttons:[...subs.querySelectorAll('button')].map(e=>({...rect(e),font:getComputedStyle(e).fontSize,text:e.textContent})),scroll:{width:document.querySelector('.tc-scroll').scrollWidth,client:document.querySelector('.tc-scroll').clientWidth},overflow:document.documentElement.scrollWidth>innerWidth,values:[...document.querySelectorAll('.tc-val')].map(e=>e.textContent)};
 });
 checks.push({mode,width,lang,cat,state,metrics:m,errors:[...errors]});
-if(cat==='sun')await page.locator('.tc-h').screenshot({path:dir+'/'+mode+'_'+width+'_'+lang+'_'+state+'.png'});
+if(width===1280&&lang==='en'&&state==='after'&&(cat==='sun'||cat==='earth'))await page.locator('.tc-h').screenshot({path:dir+'/'+mode+'_'+width+'_'+lang+'_'+cat+'_'+state+'.png'});
 if(state==='after'){
 const b=checks.at(-2).metrics;
 if(errors.length||m.overflow||m.scroll.width>m.scroll.client)failures.push({mode,width,lang,cat,reason:'errors/overflow',errors});

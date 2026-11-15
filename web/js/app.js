@@ -26,7 +26,7 @@ addStrings({
   c1Expand: 'Expand', c1Landing: '{d} landing', c1NoCond: 'No conditions · all sites', c2: 'Candidates', c2All: 'All', relayPillTip: 'Assumption: a 15 m mast near the site, adding the hours the Earth is visible through it. Geometry only; signal strength is not included.', rlTower: 'Tower', rlKm: 'tower {k} km', c1AddCond: '+ Condition', c2Count: '{n}', c2Desc: 'Sites that meet every mission condition. Press + to add one to the comparison.', comparing: 'Comparing', otherCand: 'Other candidates', pinnedEmpty: 'No sites in the comparison yet.', pinMax: 'Up to 10 sites can be compared', pinNoTip: 'Comparison number (colour in the comparison)', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',
   sortBy: 'Sort by', sortPre: 'Sort: ', s_both: 'Sun + Earth', s_sun: 'Sunlight', s_earth: 'Earth view', s_dark: 'Longest dark', s_name: 'Name',
   relayAssume: 'Relay tower', relayTowerH: 'Assumed · 15 m tower', relayTag: 'with tower', relayNone: 'no tower calc.', relayLoading: 'loading towers…',
-  relayHint: '{h} m towers (up to 3) from data/relay — geometric line of sight only',
+  relayHint: '{h} m towers (up to 3) — geometric line of sight only',
   sortHelpT: 'Sort order', sortHelp1: '', sortHelp2: 'Sites are ordered by one value only. There is no hidden weighting.',
   sortHelpBoth: 'Sun + Earth together: share of the period that is sunlit AND sees the Earth.',
   sortHelpSun: 'Sunlight: share of hours with ≥ 50 % of the solar disc above the local terrain horizon.',
@@ -46,8 +46,8 @@ addStrings({
   spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_elev: 'Elevation (LOLA)', tbt_elev: 'LOLA terrain height in colour, over the same fixed-light terrain shading. No time dependence.', lgElev: 'Elevation (LOLA)', lgElevNote: 'true height above 1737.4 km (3D shape ×{x} for display only) · colours clamp at the ends · data range {a} … {b} km · fixed light from the north-west', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
   tb_whole: 'Whole Moon', tb_south: 'South pole', tb_pick: 'Place a point on the Moon',
   tbt_light: 'Shadows for the Sun direction at the selected time (not necessarily the real current time).',
-  tbt_mean: 'Mean visible fraction of the solar disc over 2026–2030 on a 948 m whole-Moon grid (data/gmaps_ppd32). Long-term average, not this period.',
-  tbt_earthmap: 'Share of 2026–2030 with the Earth center above the terrain horizon, 948 m grid (data/gmaps_ppd32). Long-term average.',
+  tbt_mean: 'Mean visible fraction of the solar disc over 2026–2030 on a 948 m whole-Moon grid. Long-term average, not this period.',
+  tbt_earthmap: 'Share of 2026–2030 with the Earth center above the terrain horizon, 948 m grid. Long-term average.',
   tbt_pick: 'Click the Moon: the point gets its own terrain horizon (computed in your browser) and joins the list.',
   toastPinned: 'Pinned to compare · {n}', toastUnpinned: 'Removed from comparison · {n}', toastCopied: 'Link copied', layerStatic: 'This map is a 2026–2030 average, so it does not change with time.', layerToLight: 'Switch to Sunlight now',
   legendMean: 'Mean sunlight 2026–2030', legendEarth: 'Mean Earth visibility 2026–2030', rankLbl: 'rank', rankTip: 'Position in the current sort (not the pin number)',
@@ -59,7 +59,7 @@ addStrings({
   c1Expand: '펼치기', c1Landing: '{d} 착륙', c1NoCond: '조건 없음 · 모든 착륙지', c2: '후보지', c2All: '전체', relayPillTip: '가정: 착륙지 근처 15 m 탑을 세워 그 탑을 거쳐 지구가 보이는 시간을 더합니다. 기하만 보며 신호 세기는 포함하지 않습니다.', rlTower: '탑', rlKm: '탑 {k} km', c1AddCond: '+ 조건', c2Count: '{n}곳', c2Desc: '모든 미션 조건을 만족하는 착륙지입니다. + 를 누르면 비교에 넣습니다.', comparing: '비교 중', otherCand: '다른 후보', pinnedEmpty: '아직 비교 중인 곳이 없습니다.', pinMax: '최대 10곳까지 비교할 수 있습니다', pinNoTip: '비교 번호 (비교에서 쓰는 색)', c2Pinned: '· 비교 {n}곳', c2Pass: '{n}곳이 ① 조건을 모두 만족',
   sortBy: '정렬 기준', sortPre: '', s_both: '해·지구 함께 보임', s_sun: '일조율 순', s_earth: '지구 가시율 순', s_dark: '최장 어둠 짧은 순', s_name: '이름순',
   relayAssume: '중계탑', relayTowerH: '가정 · 15 m 탑', relayTag: '탑 포함', relayNone: '탑 계산 없음', relayLoading: '탑 자료 불러오는 중…',
-  relayHint: '{h} m 탑(최대 3기), data/relay · 기하학적 가시성만',
+  relayHint: '{h} m 탑(최대 3기) · 기하학적 가시성만',
   sortHelpT: '정렬 기준', sortHelp1: '', sortHelp2: '한 가지 기준으로만 줄 세웁니다. 숨은 가중치는 없습니다.',
   sortHelpBoth: '해+지구 동시: 기간 중 햇빛이 있고 동시에 지구가 보이는 시간 비율.',
   sortHelpSun: '일조율: 태양 원반의 50 % 이상이 지형 지평선 위에 있는 시간 비율.',
@@ -79,8 +79,8 @@ addStrings({
   spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_elev: '고도', tbt_elev: 'LOLA 지형 높이를 색으로, 같은 고정 조명 지형 음영 위에 표시. 시간에 따라 바뀌지 않습니다.', lgElev: '고도 (LOLA)', lgElevNote: '기준 반지름 1737.4 km 대비 실제 높이 (3D 모양만 ×{x} 과장) · 양 끝 밖은 끝 색 · 자료 범위 {a} … {b} km · 북서쪽 고정 조명', tb_light: '일조', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
   tb_whole: '전체 달 보기', tb_south: '남극', tb_pick: '달에서 지점 찍기',
   tbt_light: '선택 시각의 태양 방향으로 그림자. 실제 현재 시각이 아닐 수 있음.',
-  tbt_mean: '태양 원반이 보이는 시간 비율, 달 전체 2026–2030 평균, 948 m 격자(data/gmaps_ppd32). 이 기간 값이 아닌 장기 평균.',
-  tbt_earthmap: '지구 중심이 지형 지평선 위에 있는 시간 비율, 2026–2030, 948 m 격자(data/gmaps_ppd32). 장기 평균.',
+  tbt_mean: '태양 원반이 보이는 시간 비율, 달 전체 2026–2030 평균, 948 m 격자. 이 기간 값이 아닌 장기 평균.',
+  tbt_earthmap: '지구 중심이 지형 지평선 위에 있는 시간 비율, 2026–2030, 948 m 격자. 장기 평균.',
   tbt_pick: '달을 누르면 그 지점의 지형 지평선을 브라우저에서 계산해 목록에 넣습니다.',
   toastPinned: '비교에 고정 · {n}', toastUnpinned: '비교에서 뺌 · {n}', toastCopied: '링크를 복사했습니다', layerStatic: '이 지도는 2026–2030 평균이라 시간에 따라 바뀌지 않습니다.', layerToLight: '지금 일조로 바꾸기', legendMean: '평균 일조 2026–2030', legendEarth: '평균 지구 가시 2026–2030', rankLbl: '순위', rankTip: '지금 정렬 기준에서의 순서 (고정 번호 아님)',
 });
@@ -191,7 +191,7 @@ function siteTags(s) {
   return out.join('');
 }
 
-/** Relay switch on: one line under rows that have tower data — direct % → with tower %, nearest tower km (data/relay). */
+/** Relay switch on: one line under rows that have tower data — direct % → with tower %, nearest tower km. */
 function relayLine(s, m) {
   if (!relayOn || !m || m.pending) return '';
   const r = relayPeek(s.id, i0, i1); if (!r || r.state !== 'ok' || !r.total) return '';

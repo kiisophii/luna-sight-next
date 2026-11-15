@@ -22,7 +22,7 @@ addStrings({
   cuErrLbl: 'Expected error of that ~948 m grid', cuErrTxt: 'against {n} south-polar catalogue horizons the mask differs by {med}° RMS (median, max {max}°); sunlight over 2026–2030 by {sun} pp (median, up to {sunmax} pp on peaks and rims). On plains a 474 m grid changes the mask by ≤ {full}°. Use it for screening, not for final siting.',
   cuName0: 'Point',
   cuResPolar: 'South-polar path (points at or south of {edge}): NASA PGDA terrain {levels}, then LDEM_64 (~948 m) to 150 km and LDEM_16 to 300 km; march starts 5 m from the observer (as the catalogue sites).',
-  cuAccPolar: 'measured against the catalogue method (PGDA 5–240 m terrain, horizon.py) at {n} test points in {band}: mask {med}° RMS (median, worst {max}°); sunlight 2026–2030 differs by {sun} pp (median, up to {sunmax} pp). Target: median ≤ {tr}° and every point ≤ {tp} pp.',
+  cuAccPolar: 'measured against the catalogue method (PGDA 5–240 m terrain) at {n} test points in {band}: mask {med}° RMS (median, worst {max}°); sunlight 2026–2030 differs by {sun} pp (median, up to {sunmax} pp). Target: median ≤ {tr}° and every point ≤ {tp} pp.',
   cuAccNorth: 'no high-resolution north-polar terrain in the browser: this point uses the ~948 m grid, which near the south pole differed from 5–240 m terrain by {med}° RMS (median, worst {max}°). Not validated in the north.',
   cuKnownLimit: 'Known limit: at PEAK_NEAR_SHACKLETON (a sharp south-polar peak) the browser gives {pp} pp more sunlight than the catalogue method, over the {tp} pp target — treat sunlight on sharp peaks/rims above 85° S as approximate.',
   cuAccLbl: 'Accuracy at this point', cuLow: 'Lower accuracy here', cuOk: 'Within target',
@@ -39,7 +39,7 @@ addStrings({
   cuName0: '지점',
   cuResPolar: '남극 경로({edge} 이남 지점): 지점 근처는 NASA PGDA 지형 {levels}, 그다음 150 km까지 LDEM_64(~948 m), 300 km까지 LDEM_16. 목록 착륙지처럼 관측자 5 m 앞부터 계산.',
   cuKnownLimit: '알려진 한계: 남극의 뾰족한 봉우리인 PEAK_NEAR_SHACKLETON에서는 브라우저 햇빛 비율이 목록 착륙지 방식보다 {pp}%p 높아 목표({tp}%p)를 넘는다. 85° S 이남의 뾰족한 봉우리·테두리 햇빛은 근사값으로 봐야 한다.',
-  cuAccPolar: '목록 착륙지 방식(PGDA 5–240 m 지형, horizon.py)과 {band} 시험 지점 {n}곳에서 비교: 마스크 차이 {med}° RMS(중앙값, 최악 {max}°), 2026–2030 햇빛 비율 차이 {sun}%p(중앙값, 최대 {sunmax}%p). 목표: 중앙값 ≤ {tr}°, 모든 지점 ≤ {tp}%p.',
+  cuAccPolar: '목록 착륙지 방식(PGDA 5–240 m 지형)과 {band} 시험 지점 {n}곳에서 비교: 마스크 차이 {med}° RMS(중앙값, 최악 {max}°), 2026–2030 햇빛 비율 차이 {sun}%p(중앙값, 최대 {sunmax}%p). 목표: 중앙값 ≤ {tr}°, 모든 지점 ≤ {tp}%p.',
   cuAccNorth: '북극 고해상도 지형은 브라우저에 없다: 이 지점은 약 948 m 격자를 쓰고, 이 격자는 남극에서 5–240 m 지형과 {med}° RMS(중앙값, 최악 {max}°) 차이가 났다. 북극에서는 검증하지 않았다.',
   cuAccLbl: '이 지점의 정확도', cuLow: '여기는 정확도 낮음', cuOk: '목표 안',
 });

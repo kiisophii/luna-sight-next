@@ -1290,7 +1290,7 @@ body.on-about { overflow-x: clip; }
 
 /* ================================================================ tracker bundle 12 (first screen): header tabs, no rail, export row, Geist */
 /* 12-10 English screen: Geist (text) + Geist Mono (numbers, dates, site names); Korean keeps Pretendard + Oxanium */
-html:lang(en) { --font: "Geist", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif; --font-num: "Geist Mono", ui-monospace, "SF Mono", Consolas, monospace; }
+html:lang(en) { --font: "Geist", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif; --font-num: "Geist Mono", "Pretendard Variable", Pretendard, ui-monospace, "SF Mono", Consolas, monospace; }
 html:lang(en) .pk-name { font: 500 12.5px/1.2 var(--font-num); letter-spacing: -0.25px; }
 html:lang(en) .pk-vals { font: 500 13px var(--font-num); }
 html:lang(en) .tc-nm { font: 500 13px var(--font-num); letter-spacing: -0.25px; }

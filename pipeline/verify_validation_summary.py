@@ -75,7 +75,7 @@ C = [
  ("B3", "docs/card14_pgda_analysis.md", "| B3 | exact points | 2020–2038, 2 h | **2.185 / 0.9379** |"),
  ("PR46 title", "origin/pr/46:docs/timestep_sensitivity.md", None),
  # L9 / L10
- ("+2.40", "FULL", "browser sunlight is +2.40 pp above the card-8 chain"), ("20 m / 60 m", "FULL", "(20 m / 60 m to 3 km, 240 m to 150 km; s4)"),
+ ("+2.40", "FULL", "(PEAK_NEAR_SHACKLETON +2.40 pp)"), ("+0.08", "FULL", "PEAK_NEAR_SHACKLETON now +0.08 pp"), ("20 m / 60 m", "FULL", "otherwise 20 m / 60 m to 3 km; 240 m to 150 km; s4)"),
  ("8.99", "FULL", "240 m: ≤ 8.99 m"), ("1.39", "FULL", "10–80 m: ≤ 1.39 m"),
  # L11 / L12
  ("photographs", "FULL", "no surface photographs compared"), ("DEM height errors", "docs/coordinate_uncertainty.md", "DEM\nheight errors are not included"),

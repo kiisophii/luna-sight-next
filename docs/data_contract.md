@@ -272,6 +272,8 @@ Written by `python pipeline/build_polar_terrain.py`; read by `web/js/hterrain.js
 
 Sampling chain for a polar point (same rule as `horizon.sample_chain`): for a sample at distance s, the first level with `to_km ≥ s` that has a tile there, then `grids.near` (to 150 km), then `grids.far` (to 300 km). March: 5 m → 300 km, 8000 geometric steps (card-8 settings). The browser horizon object adds `"polar": true` and `"accuracy": {lower, text}` from `hterrain/validation.json` → `polar` (written by `pipeline/validate_custom_polar.py`).
 
+Task F proposal (2026-11-15, Jiyong): optional sparse `p5` and `p10` levels precede the existing levels, with the same encoding and 0.25 m height steps, used only to 3 km. They contain full-valid native-source tiles intersecting 4 km projected discs around the 16 catalogue sites; absent keys still fall through. `patch_radius_m`, `coverage_note` and top-level `sparse_near_field` document this limited coverage. No full-polar 5/10 m coverage or catalogue-equivalence promise. See [measured accuracy, regressions and cost](task_f_custom_polar.md).
+
 ## 15. Proposed — `web/data/local/<ID>.json` (Card 18, Jiyong, 2026-11-14)
 
 New optional data only; existing sections unchanged. Written by `pipeline/local_maps.py`.

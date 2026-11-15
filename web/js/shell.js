@@ -463,3 +463,30 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   document.getElementById('tray-view')?.addEventListener('click', () => setTimeout(trayInfo, 0));
   window.addEventListener('llsn:lang', ticks);
 })();
+
+// ------------------------------------------------------------ (1) folded summary card (the copy): folds when a site is added to the comparison
+(() => {
+  const box = document.getElementById('ls-cond'), sum = document.getElementById('c1-sum'), fb = box?.querySelector('.ls-fold'); if (!box || !sum || !fb) return;
+  const MON = { en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] };
+  const fillS = () => {
+    const w = LL().window; if (!w) return;
+    const x = new Date(Date.UTC(2026, 0, 1) + w.i0 * 3600e3);
+    const day = getLang() === 'ko' ? `${x.getUTCMonth() + 1}월 ${x.getUTCDate()}일` : `${MON.en[x.getUTCMonth()]} ${x.getUTCDate()}`;
+    const per = document.getElementById('c1-period'); const pt = per?.options[per.selectedIndex]?.textContent || '';
+    document.getElementById('c1-sum-1').textContent = `${fill(t('c1Landing'), { d: day })} · ${pt}`;
+    const on = [...document.querySelectorAll('#llsn-filters .fc-val')].filter(o => !o.classList.contains('unset') && o.dataset.k)
+      .map(o => `${o.closest('.fc-cell').querySelector('.fc-lbl').textContent} ${o.textContent}`);
+    document.getElementById('c1-sum-2').innerHTML = (on.length ? on : [t('c1NoCond')]).map(c => `<i>${c.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]))}</i>`).join('');
+  };
+  const sync = () => { const folded = box.classList.contains('folded'); sum.hidden = !folded; if (folded) fillS(); };
+  new MutationObserver(sync).observe(box, { attributes: true, attributeFilter: ['class'] });
+  sum.addEventListener('click', () => fb.click());
+  ['llsn:window', 'llsn:filter', 'llsn:lang'].forEach(ev => window.addEventListener(ev, () => { if (!sum.hidden) fillS(); }));
+  let last = null;
+  window.addEventListener('llsn:pins', e => {
+    const n = (e.detail?.pins || []).length;
+    if (last != null && n > last && !box.classList.contains('folded') && !window.matchMedia('(max-width: 1099px)').matches) fb.click();
+    last = n;
+  });
+  sync();
+})();

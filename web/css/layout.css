@@ -815,3 +815,15 @@ body.on-about .ls-pages { display: none; }
 .ls-pages a[aria-current="true"]::after { width: 10px; height: 10px; background: var(--n-text); border-color: var(--n-text); box-shadow: 0 0 0 4px rgba(237, 237, 237, .14); }
 .ls-pages a > span { right: 34px; font: 11px var(--font); background: rgba(12, 12, 13, .96); border-color: rgba(237, 237, 237, .14); }
 .ls-pages a > span b { color: var(--n-dim); font-weight: 500; margin-right: 4px; }
+
+/* (1) folded summary card */
+.c1-sum { all: unset; box-sizing: border-box; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; width: 100%; margin-top: 12px; padding: 12px 14px; cursor: pointer;
+  background: var(--n-0); border: 1px solid var(--n-line); border-radius: 10px; }
+.c1-sum[hidden] { display: none; }
+.c1-sum:focus-visible { outline: 2px solid var(--n-text); outline-offset: 2px; }
+.c1-sum-l { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.c1-sum-l b { font-size: 13px; font-weight: 400; color: var(--n-text); line-height: 1.5; }
+.c1-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.c1-chips i { font-style: normal; height: 22px; line-height: 20px; padding: 0 7px; font-size: 11px; color: var(--n-mute); background: rgba(237, 237, 237, .06); border: 1px solid rgba(237, 237, 237, .08); border-radius: 6px; box-sizing: border-box; }
+.c1-sum-x { flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--n-mute); }
+.c1-sum-x .ic { width: 12px; height: 12px; }

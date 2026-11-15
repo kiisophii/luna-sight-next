@@ -57,6 +57,8 @@
           <h2 id="c1-h"><span class="circ" aria-hidden="true">1</span><span data-i18n="c1">Mission conditions</span></h2>
           <button type="button" class="ls-icon ls-fold" data-fold="ls-cond" aria-expanded="true" data-i18n-aria="collapse">‹</button>
         </div>
+        <!-- folded summary (the copy): date · period, active conditions as chips, Expand -->
+        <button type="button" class="c1-sum" id="c1-sum" hidden><span class="c1-sum-l"><b id="c1-sum-1"></b><span class="c1-chips" id="c1-sum-2"></span></span><span class="c1-sum-x"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> <span data-i18n="c1Expand">Expand</span></span></button>
         <div class="ls-foldable">
           <div class="c1-grid">
             <label><span data-i18n="c1Date">Landing date (UTC)</span><input id="c1-date" type="date" required></label>

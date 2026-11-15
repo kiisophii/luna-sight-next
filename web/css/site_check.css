@@ -164,3 +164,17 @@ body > .sc-pop[hidden], body > .sc-tip[hidden] { display: none; }
 @keyframes sc-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { body > .sc-pop, body > .sc-tip { animation: none; } }
 html:not([lang="ko"]) body > .sc-pop, html:not([lang="ko"]) body > .sc-tip { --font: 'Geist', 'Pretendard', system-ui, sans-serif; --font-num: 'Geist Mono', 'Oxanium', ui-monospace, monospace; }
+
+/* ---- phones (<= 760 px): long period lines wrap, touch targets at least 32 px; also touch tablets; desktop mouse unchanged ---- */
+@media (max-width: 760px), (pointer: coarse) {
+  #ls-brief .ls-detail .rl-period, #ls-brief .ls-detail .kr-period, #ls-brief .ls-detail .sa-period, #ls-brief .ls-detail .now-link { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+  #ls-brief .sc-info { width: 32px; height: 32px; margin-left: -6px; }
+  #ls-brief .sc-dem { width: 32px; height: 32px; }
+  #ls-brief .sc-mv { padding: 8px 0; margin: -8px 0; }
+  #ls-brief .ls-detail .info { min-width: 32px; min-height: 32px; }
+}
+/* access / routes cards: short KPI rows (4 per row), ice warning */
+#ls-brief .sc-kpis.ac { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 4px; }
+#ls-brief .sc-kpis.ac + .sc-d, #ls-brief .tbl-x + .sc-kpis.ac { margin-top: 10px; }
+#ls-brief .warn-ice { color: #F5B841; font-weight: 600; }
+@media (max-width: 760px) { #ls-brief .sc-kpis.ac { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

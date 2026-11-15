@@ -262,7 +262,7 @@ let bitsKD = null, kdLoaded = null;
 async function timelineSVG(sites) {
   const cw = document.querySelector('#ls-compare .tl')?.clientWidth || 1100;
   // copy 18:41: one dark strip (#131822) across the content width, 150 px label column with 'Sun / Earth', 34 px per site, 9 px bars
-  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(640, Math.round(cw)), LW = W < 900 ? 124 : 150, rowH = 9, gap = 6, top = 22, pitch = rowH * 2 + 4 + 3 + gap;
+  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(innerWidth <= 760 ? 300 : 640, Math.round(cw)), LW = W < 500 ? 92 : W < 900 ? 124 : 150, rowH = 9, gap = 6, top = 22, pitch = rowH * 2 + 4 + 3 + gap;
   const kd = await (bitsKD ||= stationBits().catch(() => null));
   kdLoaded = kd;
   const H = top + sites.length * pitch + 2;
@@ -275,7 +275,7 @@ async function timelineSVG(sites) {
   for (let d = 0; d * 24 < n && X(d * 24) + labelW - 8 <= W; d += dStep) out += `<line x1="${X(d * 24)}" x2="${X(d * 24)}" y1="${top - 7}" y2="${top - 3}" stroke="#767E8E" stroke-width="1"/><text x="${X(d * 24) + 2}" y="11" font-size="9.5" fill="#767E8E" style="font-family:${esc(fontNum)}">${core.hourToDate(w.i0 + d * 24).toISOString().slice(5, 10)}</text>`;
   for (let r = 0; r < sites.length; r++) {
     const s = sites[r], y = top + r * pitch + 2, bits = hourBits(s, w.i0, w.i1);
-    const pn = LLSN().pinNo?.(s.id), nm = nameOf(s), max = LW < 150 ? (ko ? 9 : 16) : (ko ? 12 : 22);
+    const pn = LLSN().pinNo?.(s.id), nm = nameOf(s), max = LW < 100 ? (ko ? 6 : 11) : LW < 150 ? (ko ? 9 : 16) : (ko ? 12 : 22);
     out += `<text x="4" y="${y + 9}" font-size="11.5" font-weight="600" fill="#EDEDED">${pn ? `#${pn} ` : ''}${esc(nm.length > max ? nm.slice(0, max - 1) + '…' : nm)}</text><text x="4" y="${y + 22}" font-size="9" fill="#8D96A4">${ko ? '태양 / 지구' : 'Sun / Earth'}</text>`;
     if (!bits) { out += `<text x="${LW}" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
     const codes = await relayCodes(s.id, w.i0, w.i1).catch(() => null);
@@ -358,7 +358,7 @@ const terrainValues = new Map();
 let bigSeq = 0, firstColumn = 0;
 const detailLabels = {
   en: ['Sunlit time', 'Earth visibility', 'Sun and Earth together', 'Longest dark period', 'Slope', 'Relay tower', 'Yeoju ground station'],
-  ko: ['햇빛이 비치는 시간', '지구 가시성', '태양과 지구 동시', '최장 연속 어둠', '경사', '중계탑', '여주 지상국'],
+  ko: ['일조율', '지구 가시', '해·지구 함께 보임', '최장 어둠', '경사', '중계탑', '여주 지상국'],
 };
 const detailHelp = {
   en: ['Fraction of the period with at least half the Sun above the terrain horizon.',
@@ -491,10 +491,10 @@ async function renderBig() {
     return `<tr class="r-${row}"><th scope="row" class="lbl"><span class="detail-icon" aria-hidden="true">${detailIcons[index]}</span>${labels[index]}<button class="detail-info" aria-label="${esc(labels[index])}" title="${esc(detailHelp[ko ? 'ko' : 'en'][index])}">◇</button></th>
     ${cells.map((c, i) => `<td class="${sites[i].id === LLSN().focus ? 'focused ' : ''}${unique && c.v === best ? 'best' : ''}">${c.html}</td>`).join('')}</tr>`;
   }).join('');
-  const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '상세 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');
+  const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '자세히 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');
   root.classList.add('detail-comparison');
-  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${(LLSN().compare?.() || []).length} ${ko ? '고정 · 표시' : 'pinned · showing'} ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
-    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
+  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${ko ? `고정한 후보 <b>${(LLSN().compare?.() || []).length}</b>곳 · ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length} 보는 중` : `<b>${(LLSN().compare?.() || []).length}</b> pinned · showing ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}`}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
+    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, innerWidth <= 760 ? 150 : 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
     <div class="detail-tl"><h3>${esc(t('tlH'))}</h3>${tlLegend(ko)}<div class="tl"><div class="tl-wrap"></div></div></div><div class="detail-tooltip" role="status" hidden></div>`;
   root.querySelectorAll('[data-page-step]').forEach(button => button.addEventListener('click', () => {
     firstColumn = Math.max(0, firstColumn + Number(button.dataset.pageStep) * capacity); renderBig();
@@ -518,7 +518,8 @@ async function renderBig() {
   placeTlNeedle(root); wireTimeline(tl);
   root.querySelectorAll('[data-chart-site]').forEach(box => {
     box.addEventListener('pointermove', event => {
-      const svgBox = box.querySelector('svg') || box, rect = svgBox.getBoundingClientRect(), fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * 264 - 30) / 230));
+      const svgBox = box.querySelector('svg') || box, rect = svgBox.getBoundingClientRect(), vbW = svgBox.viewBox?.baseVal?.width || 264;
+      const fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * vbW - 30) / (vbW - 34)));
       const i = w.i0 + fraction * (w.i1 - w.i0), site = byId(box.dataset.chartSite);
       const tip = root.querySelector('.detail-tooltip');
       tip.classList.remove('tl-tip');

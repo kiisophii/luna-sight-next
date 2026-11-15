@@ -106,3 +106,33 @@ body:has(.ls-below) { background:#020306; }
 .detail-lg.row .sw.vl { margin: 0 4px; }
 .detail-tl .tl { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
 .detail-tl .tl-svg { display: block; width: 100%; height: auto; }
+
+/* ---- phones (<= 760 px): bigger touch targets in the comparison table; also touch tablets; desktop mouse unchanged ---- */
+@media (max-width: 760px), (pointer: coarse) {
+  .detail-info { width: 32px; height: 32px; margin-left: -8px; }
+  .detail-pager button { width: 36px; height: 36px; }
+  .detail-charts .rd-now { flex-wrap: wrap; gap: 2px 10px; }
+}
+.detail-tl .tl-svg { min-width: 0; max-width: 100%; }
+.detail-pager .num b { color: #EDEDED; font-weight: 500; }
+/* Korean names and buttons: the number font has no Hangul, keep them in the text font */
+html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions button, html[lang="ko"] .detail-pager .num { font-family: var(--font); letter-spacing: 0; }
+
+/* ---- first screen on phones / tablets only (width or touch rules; desktop mouse layout unchanged) ---- */
+@media (max-width: 1099px) {
+  /* tray chart: the fixed 360x156 drawing scaled up to ~700 px wide at 768 (labels 16 px); keep it at its drawing height */
+  .ls-tray .tc-chart { max-height: 200px; }
+}
+@media (max-width: 760px), (pointer: coarse) {
+  /* touch targets >= 32 px without changing the drawing: padding + negative margin, or an invisible hit area */
+  .val-badge { padding: 9px 0; margin: -9px 0; }
+  .tc-i { position: relative; }
+  .tc-i::before { content: ''; position: absolute; inset: -8px; }
+  .relay-pill { min-height: 32px; }
+}
+/* below 1100 px: the orange sliding line over the globe is the terrain loading bar (.gl-progress .bar) — hidden on desktop already,
+   so hide it here too; the "Loading terrain · n" label sat at left: left-panel width + 32 px (x 400 at 390) — keep it inside the globe area */
+@media (max-width: 1099px) {
+  .ls-globe .gl-progress .bar { display: none; }
+  .ls-globe .gl-progress .txt { left: 12px; right: auto; top: 8px; max-width: calc(100vw - 24px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}

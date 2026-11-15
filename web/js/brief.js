@@ -149,6 +149,14 @@ addStrings({
   src_hz: 'NASA LOLA / PGDA / SLDEM2015 terrain · data/horizon',
   src_terrain: 'NASA PGDA LOLA DEMs · PGDA 20 m PSR map · data/terrain, data/detail/psr',
   src_history: 'NASA NSSDCA / LROC and official mission pages · data/detail/history.json',
+  src_access: 'NASA PGDA 20 m PSR map (LPSR_80S_20MPP_ADJ) · data/detail/psr',
+  src_routes: 'NASA PGDA LOLA DEMs · data/terrain (slope and roughness around the site)',
+  d_accessD: 'Distance to the nearest permanently shadowed region (PSR) on the NASA PGDA 20 m map. Great-circle distance only; no route, slope or ice content.',
+  d_routesD: 'Obstacle indicators around the site from LOLA slope and roughness. No route is computed; 15° is a reference value, not a landing or driving criterion.',
+  acDist: 'Nearest PSR', acIn: 'Inside a PSR', acBear: 'Direction', acEdge: 'Nearest PSR edge', acSouth: 'South polar region only (PSR map covers 80°S to the pole).',
+  acNoFile: 'No PSR result for this site.', acWarn: 'PSR ≠ confirmed ice.', acYes: 'yes', acNo: 'no',
+  rtH: 'Obstacle indicators around the landing site (not route planning; reference values)', rtRad: 'Within', rtSteep: 'Area steeper than 15°', rtP95: '95th % slope', rtMax: 'Max slope',
+  rtRough: 'Roughness within 500 m (95th %)', rtRef: 'thresholds: reference only', rtNone: 'Detailed polar terrain is not available for this site, so no obstacle indicators are shown.',
   src_seasons: 'NAIF ephemeris + terrain horizons · data/monthly',
   src_trust: 'NASA PGDA AVGVISIB maps (Mazarico et al. 2011) · ALSJ and mission reports · data/validation.json, data/hindcast.json',
   src_more: 'This tool’s own data inventory',
@@ -173,15 +181,23 @@ addStrings({
   src_hz: 'NASA LOLA / PGDA / SLDEM2015 지형 · data/horizon',
   src_terrain: 'NASA PGDA LOLA DEM · PGDA 20 m PSR 지도 · data/terrain, data/detail/psr',
   src_history: 'NASA NSSDCA / LROC와 각 임무 공식 페이지 · data/detail/history.json',
+  src_access: 'NASA PGDA 20 m PSR 지도 (LPSR_80S_20MPP_ADJ) · data/detail/psr',
+  src_routes: 'NASA PGDA LOLA DEM · data/terrain (착륙지 주변 경사·거칠기)',
+  d_accessD: 'NASA PGDA 20 m 지도에서 가장 가까운 영구음영지역(PSR)까지의 거리입니다. 대원 거리만이며 이동 경로·경사·얼음 양은 반영하지 않습니다.',
+  d_routesD: 'LOLA 경사·거칠기로 본 착륙지 주변 장애물 지표입니다. 경로는 계산하지 않았고, 15°는 착륙·주행 기준이 아닌 참고값입니다.',
+  acDist: '가장 가까운 PSR', acIn: 'PSR 안', acBear: '방향', acEdge: '가장 가까운 PSR 경계', acSouth: '남극 지역만 해당합니다 (PSR 지도는 남위 80°부터 극까지).',
+  acNoFile: '이 착륙지의 PSR 결과가 없습니다.', acWarn: 'PSR ≠ 확인된 얼음.', acYes: '예', acNo: '아니요',
+  rtH: '착륙지 주변 장애물 지표 (경로 계획 아님, 참고 기준)', rtRad: '반경', rtSteep: '15°보다 가파른 면적', rtP95: '경사 95번째 %', rtMax: '최대 경사',
+  rtRough: '500 m 안 거칠기 (95번째 %)', rtRef: '기준값: 참고용', rtNone: '이 착륙지는 극지 상세 지형이 없어 장애물 지표를 보이지 않습니다.',
   src_seasons: 'NAIF 천체력 + 지형 지평선 · data/monthly',
   src_trust: 'NASA PGDA AVGVISIB 지도 (Mazarico et al. 2011) · ALSJ와 임무 보고 · data/validation.json, data/hindcast.json',
   src_more: '이 도구의 자료 목록',
 });
 // chips in the designer copy's order. 'soon' = no data in this build (dimmed, not selectable, like the copy).
 // Slope and past missions have data here, so they are real chips (copy shows them as coming soon).
-const PICK = [['time'], ['near'], ['date'], ['relay'], ['gs'], ['hz'], ['terrain'], ['access', 'soon'], ['history'], ['routes', 'soon'], ['seasons']];
+const PICK = [['time'], ['near'], ['date'], ['relay'], ['gs'], ['hz'], ['terrain'], ['access'], ['history'], ['routes'], ['seasons']];
 const PICKABLE = PICK.filter(p => !p[1]).map(p => p[0]);
-const CARD_ORDER = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'history', 'seasons', 'trust', 'more'];
+const CARD_ORDER = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'access', 'history', 'routes', 'seasons', 'trust', 'more'];
 
 // ------------------------------------------------------------ 11/15 detail products (Y terrain, Z1 time stats, Z2 PSR, Z3 dates, Z4 history)
 // Values are read from the files and only rounded for display; nothing is recomputed here.
@@ -639,6 +655,45 @@ async function terrainBlock(s) {
     ${h4('psrH', ` ${infoT(t('psrTip'))} ${Z2 ? vChip('psr') : ''}`)}${p}`;
 }
 
+// Access to science targets: nearest PSR (data/detail/psr, read as stored; rounded for display only)
+async function accessBlock(s) {
+  const body = blockShell('access', '');
+  if (s.user || s.lat > -80) { body.innerHTML = `<p class="lsn-note">${esc(t('acSouth'))}</p>`; return; }
+  const Z2 = await detailFile('detail/psr', s.id);
+  if (current !== s.id) return;
+  if (!Z2) { body.innerHTML = `<p class="lsn-note">${esc(t('acNoFile'))}</p>`; return; }
+  const nb = Z2.nearest_boundary, inside = Z2.inside_psr;
+  let dist = '—', bear = '—', edge = '—';
+  if (Z2.status === 'none_within_radius') dist = esc(fill(t('psrNone'), { r: (Z2.distance_lower_bound_m ?? Z2.search.radius_m) / 1000 }));
+  else if (Z2.status === 'incomplete_coverage' || Z2.distance_to_psr_area_m == null) dist = esc(t('psrInc'));
+  else {
+    dist = inside ? '0 m' : distTxt(Z2.distance_to_psr_area_m);
+    if (!inside && nb) { bear = bearTxt(nb.bearing_deg); edge = `${Math.abs(nb.lat).toFixed(3)}°${nb.lat < 0 ? 'S' : 'N'} ${Math.abs(nb.lon).toFixed(3)}°${nb.lon < 0 ? 'W' : 'E'}`; if (!nb.nearest_guaranteed) dist += ` <small class="muted">(${esc(t('psrNotG'))})</small>`; }
+  }
+  body.innerHTML = `<div class="sc-kpis ac">${[[t('acDist'), dist], [t('acIn'), esc(t(inside === true ? 'acYes' : inside === false ? 'acNo' : 'chipNone'))], [t('acBear'), bear], [t('acEdge'), edge]]
+      .map(([k, v]) => `<div class="sc-kv"><span>${esc(k)}</span><b class="num">${v}</b></div>`).join('')}</div>
+    <p class="sc-d"><b class="warn-ice">${esc(t('acWarn'))}</b> ${vChip('psr')} · <a href="${esc(Z2.source.product_page)}" target="_blank" rel="noopener">NASA PGDA</a> · LPSR_80S_20MPP_ADJ (20 m) · data/detail/psr/${esc(s.id)}.json</p>`;
+}
+
+// Routes & obstacles: NO route is computed — obstacle indicators from data/terrain (slope by radius, roughness), as stored
+async function routesBlock(s) {
+  const body = blockShell('routes', '');
+  if (s.user) { body.innerHTML = `<p class="lsn-note">${esc(t('rtNone'))}</p>`; return; }
+  const Y = await detailFile('terrain', s.id);
+  if (current !== s.id) return;
+  if (!(Y?.kind === 'polar_detailed' && Y.slope_by_radius_m)) { body.innerHTML = `<p class="lsn-note">${esc(t('rtNone'))}</p>`; return; }
+  const pc = f => (f == null || !isFinite(f) ? '—' : `${(f * 100).toFixed(1)}<small>%</small>`);
+  const rows = Object.keys(Y.slope_by_radius_m).sort((a, b) => a - b).map(r => {
+    const q = Y.slope_by_radius_m[r], fl = q.flat_fraction?.['15'];
+    return `<tr><td>${r} m</td><td>${pc(fl == null ? null : 1 - fl)}</td><td>${deg1(q.p95_deg)}</td><td>${deg1(q.max_deg)}</td></tr>`;
+  }).join('');
+  const R = Y.roughness_within_500m;
+  body.innerHTML = `${h4('rtH')}
+    <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('rtRad'))}</th><th>${esc(t('rtSteep'))}</th><th>${esc(t('rtP95'))}</th><th>${esc(t('rtMax'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="sc-kpis ac"><div class="sc-kv"><span>${esc(t('rtRough'))}</span><b class="num">${R?.p95_m != null ? `${R.p95_m.toFixed(2)}<small> m</small>` : '—'}</b></div></div>
+    <p class="sc-d"><span class="chip-st">${esc(t('rtRef'))} (${esc(Y.thresholds_label)})</span> ${vChip('terrain')} · data/terrain/${esc(s.id)}.json</p>`;
+}
+
 // Z4 (own card, "Past missions nearby")
 async function historyBlock(s) {
   const body = blockShell('history', '');
@@ -739,7 +794,7 @@ async function render() {
   renderHead(s); renderSum(s); renderPick(); renderShare();
   mvHTML = await trustCard(s, true);
   if (my !== seq) return;
-  await Promise.all([timeBlock(s), nearBlock(s), terrainBlock(s), historyBlock(s), dateBlock(s), moreBlock(s), trustBlock(s)]);
+  await Promise.all([timeBlock(s), nearBlock(s), terrainBlock(s), accessBlock(s), historyBlock(s), routesBlock(s), dateBlock(s), moreBlock(s), trustBlock(s)]);
   simpleBlock('seasons', chip('chipLong', 'long'));
   simpleBlock('relay', chip('chipPeriod', 'period') + ' ' + chip('chipEst', 'est'));
   simpleBlock('gs', chip('chipPeriod', 'period'));
@@ -823,7 +878,7 @@ window.addEventListener('llsn:lang', closePop);
 
 function wire() {
   const root = $('#ls-brief');
-  for (const k of ['terrain', 'history']) {
+  for (const k of ['terrain', 'access', 'history', 'routes']) {
     if (document.getElementById(`blk-${k}`)) continue;
     const sec = document.createElement('section');
     sec.className = 'ls-detail is-closed'; sec.dataset.block = k; sec.id = `blk-${k}`; sec.setAttribute('aria-hidden', 'true');

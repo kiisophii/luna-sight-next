@@ -1,2 +1,21 @@
-/* theme.css - placeholder so the page loads without a 404. Card 12 (design) replaces this file:
-   override only the custom properties listed at the top of base.css. */
+/* theme.css — design tokens (team designer Chaei's decisions, diff table #32·#33, 11/15).
+   Re-implemented as variables from the written values; no practice-build code. Loaded after base.css and layout.css,
+   so these win. layout.css rules read these tokens instead of fixed numbers. */
+:root {
+  /* spacing: 4 px steps */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-12: 48px; --sp-16: 64px;
+  /* corners: small 4 · button/input 6 · panel/card 10 · pill */
+  --r-sm: 4px; --r-ctl: 6px; --r-card: 10px; --r-pill: 999px;
+  /* lines: always 1 px, white at three strengths */
+  --line-1: rgba(255, 255, 255, .10); --line-2: rgba(255, 255, 255, .18); --line-3: rgba(255, 255, 255, .90);
+  --fill-1: rgba(255, 255, 255, .06); --fill-2: rgba(255, 255, 255, .10); --fill-3: rgba(255, 255, 255, .16);
+  /* type scale: title 16/600 · subtitle 14/600 · body 13/400 (1.55) · label 12/500 · caption 11 · number 16/500 */
+  --fs-title: 16px; --fs-sub: 14px; --fs-body: 13px; --lh-body: 1.55; --fs-label: 12px; --fs-cap: 11px; --fs-num: 16px;
+  /* controls: 24 · 32, touch 44 */
+  --ctl-s: 24px; --ctl-m: 32px; --touch: 44px;
+  /* motion */
+  --t-fast: 120ms; --t-mid: 200ms; --t-slow: 400ms;
+  /* existing names mapped onto the tokens */
+  --border: var(--line-1); --radius: var(--r-card); --gap: var(--sp-4); --fs-base: var(--fs-body);
+}
+@media (prefers-reduced-motion: reduce) { :root { --t-fast: 0ms; --t-mid: 0ms; --t-slow: 0ms; } }

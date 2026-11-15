@@ -15,3 +15,7 @@ Numbers on screen must come from this repository's data, never from the screensh
 Exceptions to "identical": no AI logo image (text wordmark in the same place/size), contest data only, no practice code,
 accurate wording for things we did not compute (power, link performance), the 3D ×3 height note stays,
 and the 390 px mobile layout keeps the contest build's stacked layout (the mock-up has no mobile layout) with the mock-up's styling.
+
+- `채이사본_동기화_로켓모션.md` — About/intro rocket motion, frame-by-frame (p = 0…1 in 0.05 steps); contact sheets in `shots/rocket/sheet_*.png`
+- `채이님_요청_전수체크_1720.md` — every request the designer made (51 requests, 481 rows) with mock-up status; contest-build column being filled in
+- Intro: the mock-up has a ~10 s intro (Moon disc, LOADING %, lander descent with flame, wordmark lighting up letter by letter, T+ clock, ALT, TOUCHDOWN, SKIP). See the rocket-motion doc.

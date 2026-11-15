@@ -1,0 +1,299 @@
+{
+  "input_snapshot": "89a9af12d2b1b59490546f4409eb5b88debf8eca",
+  "latest_main_at_resume": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+  "inputs_byte_identical": true,
+  "input_files": [
+    {
+      "path": "web/data/sites.json",
+      "sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017"
+    },
+    {
+      "path": "web/data/ephem.bin",
+      "sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3"
+    },
+    {
+      "path": "web/data/ephem.json",
+      "sha256": "c6294c416a16bcc34d08752b8f0541d803e2e5784af09ce291b0a211269f52b8"
+    },
+    {
+      "path": "web/data/horizon/APOLLO11.json",
+      "sha256": "5edc3fd2659d7e5a351cc32e4a6e32fcad3a69501ee1d178cde94923383da6b1"
+    },
+    {
+      "path": "web/data/metrics/APOLLO11.json",
+      "sha256": "7be423c5230412c880218cfa2a942aa139977953bbf3c46695357f568eee882d"
+    },
+    {
+      "path": "web/data/horizon/APOLLO12.json",
+      "sha256": "c3196f8934510a5a43c7f743503b037368e50a55432f19e7811db20c69f28ded"
+    },
+    {
+      "path": "web/data/metrics/APOLLO12.json",
+      "sha256": "fc9d156114c4ca58eb389c886336b500c43dfabfef178620b88633bb2acf5e77"
+    },
+    {
+      "path": "web/data/horizon/APOLLO14.json",
+      "sha256": "e05a2fd81d520dab184bb45d32c018f692ee1a4f4c154eb7561ac8a8b9e1a413"
+    },
+    {
+      "path": "web/data/metrics/APOLLO14.json",
+      "sha256": "ab3a5c5082111874b42d893a2294953933bd0a42c0821098b98140da0503c789"
+    },
+    {
+      "path": "web/data/horizon/APOLLO15.json",
+      "sha256": "1bf4f6d15c75a7fffe6647d924afdf6d49b7ea638470e2836b6a6d6267628d64"
+    },
+    {
+      "path": "web/data/metrics/APOLLO15.json",
+      "sha256": "4a319ba245461dfc9e122bd73581c549b1d6134449e7b37283dbaca810e2bd19"
+    },
+    {
+      "path": "web/data/horizon/APOLLO16.json",
+      "sha256": "e824dc2babe4fb459ba7663556cc4a27fbbd5a61741f4b3701fc25c12d84d8cb"
+    },
+    {
+      "path": "web/data/metrics/APOLLO16.json",
+      "sha256": "b92d937fccbd8c7deabaa020fa475a0f53a4f7bd00e8a007edeb5f511b3d6369"
+    },
+    {
+      "path": "web/data/horizon/APOLLO17.json",
+      "sha256": "a4eac336dfbc703ba64fad76aa98fe423211a8935660738429fd151b54ab8dda"
+    },
+    {
+      "path": "web/data/metrics/APOLLO17.json",
+      "sha256": "19d38e4fd223314fd223a507ea0ab28ef4264bca02bfcc9dea269e427ca92f2c"
+    },
+    {
+      "path": "web/data/horizon/LUNA16.json",
+      "sha256": "22cfde335f0e7fed5e774e50ef6d51e9305a4fdcb1bb6aeb6721bb0b06a61577"
+    },
+    {
+      "path": "web/data/metrics/LUNA16.json",
+      "sha256": "f99ab7b7455410a83eab3c7d76956aecad0ff5585fd1367cfb68ac1d34316950"
+    },
+    {
+      "path": "web/data/horizon/LUNA20.json",
+      "sha256": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781"
+    },
+    {
+      "path": "web/data/metrics/LUNA20.json",
+      "sha256": "7ac2d851bd155db7d4293810c8ac018f3d4cbd115a948b4b4443193aaa3d3268"
+    },
+    {
+      "path": "web/data/horizon/LUNA24.json",
+      "sha256": "fd56cec2c8ec25ba69b288b0461875dbbc7833e3095236576a5ba355f3808a8a"
+    },
+    {
+      "path": "web/data/metrics/LUNA24.json",
+      "sha256": "cadb6e9017bcf1b44f40cc229865db2067448176978209790d483055c7e62f3e"
+    },
+    {
+      "path": "web/data/horizon/CHANGE3.json",
+      "sha256": "a0d88ebf110f087ef37ff24839b6477900287eb8f585cd3b301328aa4383ebfa"
+    },
+    {
+      "path": "web/data/metrics/CHANGE3.json",
+      "sha256": "50992ee6ec44a3a957b5d11cf4b642e61ff2514aa05b1b1b59a9fc3d6a218fe1"
+    },
+    {
+      "path": "web/data/horizon/CHANGE4.json",
+      "sha256": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21"
+    },
+    {
+      "path": "web/data/metrics/CHANGE4.json",
+      "sha256": "9a944575fb227022082c18d75ce8da7463ffacaa0c1291e9ea14f126588b8edd"
+    },
+    {
+      "path": "web/data/horizon/CHANGE5.json",
+      "sha256": "f136c3a712db9d5376bd151612b86b0c239203aa4e34048a598399f22c7d2fb1"
+    },
+    {
+      "path": "web/data/metrics/CHANGE5.json",
+      "sha256": "68efa03486de20333a21e73627218c27c29548279bc840199847f4462bfc8aea"
+    },
+    {
+      "path": "web/data/horizon/CHANGE6.json",
+      "sha256": "6d277cdc7617cab663768c711fc52cbc76c29783cef8f224727e09df442c2375"
+    },
+    {
+      "path": "web/data/metrics/CHANGE6.json",
+      "sha256": "f008014ff9314ff26d9bbc5fcca4989d804a5cafbe441f089caf65877d2e2e54"
+    },
+    {
+      "path": "web/data/horizon/CHANDRAYAAN3.json",
+      "sha256": "e5b1829ee6c4cfdd58f482275410dfdee5b68a6080ba0bcc615e9bac28a5bcf4"
+    },
+    {
+      "path": "web/data/metrics/CHANDRAYAAN3.json",
+      "sha256": "d7f8b04ddff7a9c74a2b965d14413f7df2e7c55baaf11fd5d309249a2a70f21a"
+    },
+    {
+      "path": "web/data/horizon/SLIM.json",
+      "sha256": "25173b32dc20f8183b95c2f0b6d8e2c9bc62b1c3b08a350866d5470ef096e9fb"
+    },
+    {
+      "path": "web/data/metrics/SLIM.json",
+      "sha256": "89ec98f600856437f332b510d9adbf6524a68c2a3f5a464f51dd4c820dffdd51"
+    },
+    {
+      "path": "web/data/horizon/IM1.json",
+      "sha256": "a38e0bd619d235f929532c9d0f8a5370b4cb9052d3a90017ce1b4274f634f06b"
+    },
+    {
+      "path": "web/data/metrics/IM1.json",
+      "sha256": "7c9ab36f23902c4fa5dc9339bd678783b86dac14d0fb98dd86e3543925f413b1"
+    },
+    {
+      "path": "web/data/horizon/IM2.json",
+      "sha256": "9e341663e268fa31f0d35427e42c5f7606abb47a743f8dd1402fde527e68e281"
+    },
+    {
+      "path": "web/data/metrics/IM2.json",
+      "sha256": "104c86f2e756ff88de940cf35945dbbb52ed68cb5c01e23d9f9fa4fc652e90f3"
+    },
+    {
+      "path": "web/data/horizon/BLUE_GHOST1.json",
+      "sha256": "3d8d34d30b5be66253ec11b50b87cce527bbad7648d51329fc556b9183cf7d68"
+    },
+    {
+      "path": "web/data/metrics/BLUE_GHOST1.json",
+      "sha256": "9a05e13186ca54db2f56c621beab1ded2de481fe3b0a3ea60f1ec6b1df06c567"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_CABEUS_B.json",
+      "sha256": "145a651dc9df04ff9c942b854095d74b69f7f33408f89be0e29d956e3ad882e6"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_CABEUS_B.json",
+      "sha256": "95e777ca34fd7080890126d59ce348d3b7f2f1fe588d1271c3fdd69977dafaf5"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_HAWORTH.json",
+      "sha256": "75051bf47e1625e387fba2267d75e776d3f0ede3ee64f44b655b2bb6ac8733f3"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_HAWORTH.json",
+      "sha256": "83d99a0d38637f39006068ef1e458771bcc056211d4afb27d9a4aeb8ed2c8f90"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_MALAPERT.json",
+      "sha256": "a274da886f22c9ac622d1819bfe6444f0647e94dd781d797fa5914e0aafc0ac1"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_MALAPERT.json",
+      "sha256": "e3e06836d23544579dd38a8d9494d968c441637caada64db30b6bdf80b959133"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_MOUTON_PLATEAU.json",
+      "sha256": "9ee206cb92270145a529a4da19840486b31ea733001c1afb0898ab30f893d762"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_MOUTON_PLATEAU.json",
+      "sha256": "44bd97b23510ffbeef59c8698007373f920a1d0868398487958b5ab2df0ff99a"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_MOUTON.json",
+      "sha256": "42455df7850f8ccbf5d2615b060f921475ce7228b9f8c325caec5eeb4ec0bf71"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_MOUTON.json",
+      "sha256": "fa3fb8d1a8afaf701fb096a4ef7d18b99900ea0ead67bad48989f6271d23dc13"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_NOBILE_RIM1.json",
+      "sha256": "5f64896417bb8bc27d41fd0b14c53dd87da816e97de68898ddf1e3956bdcbcd8"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_NOBILE_RIM1.json",
+      "sha256": "5cc277a2f501adf4e88d4d19cbc2901f47c754e9d0b1a09bec6f33603c7d3ca2"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_NOBILE_RIM2.json",
+      "sha256": "db3570a8e042fe44c939401f9dc1d9afdb09d2fa6809da22e032e8ea1438e216"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_NOBILE_RIM2.json",
+      "sha256": "28380c5c04d331e92aa45789bb1acc4c6987fdb768c8c88b5b75553bf2a917f9"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_DE_GERLACHE_RIM2.json",
+      "sha256": "c430f489e3dd711fcd52dbd67cdfd314291b8094db63cd5414de87da56fd8549"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_DE_GERLACHE_RIM2.json",
+      "sha256": "a9de15b8ed50fa86b91570ae5c0fff21c89f411ededafd18e528f03a27554a4d"
+    },
+    {
+      "path": "web/data/horizon/ARTEMIS_SLATER_PLAIN.json",
+      "sha256": "e890b5e6f08e5c81e431b9607c6e68674318aad59eca02aa0e1ce2f81e490796"
+    },
+    {
+      "path": "web/data/metrics/ARTEMIS_SLATER_PLAIN.json",
+      "sha256": "ba2bfbe3ac3abec50d03d1934e88a6adf912d1ed67153b633512afae17e16193"
+    },
+    {
+      "path": "web/data/horizon/SHACKLETON_RIM.json",
+      "sha256": "e58f5e53704a552774d49447ae575bf098031f3ea45f7f6763146ae27bc729b9"
+    },
+    {
+      "path": "web/data/metrics/SHACKLETON_RIM.json",
+      "sha256": "5ad89bb8bdb5936037ede71a7f70ef6c52df82b9dc34160721e5ac4b1913cb0d"
+    },
+    {
+      "path": "web/data/horizon/CONNECTING_RIDGE.json",
+      "sha256": "4a4f5be40df01e4410362fae8cdeebfc2d9f6a9b752968ace9edc5f1b488f3d7"
+    },
+    {
+      "path": "web/data/metrics/CONNECTING_RIDGE.json",
+      "sha256": "a1998a14c442b6c375a0b2db9813b2532d13854b08fde32190d81366534e4c4b"
+    },
+    {
+      "path": "web/data/horizon/PEAK_NEAR_SHACKLETON.json",
+      "sha256": "f96807381ecb0308de3160cd6a56ec6d664f4fa9fcb97c5dbf192571be58dbac"
+    },
+    {
+      "path": "web/data/metrics/PEAK_NEAR_SHACKLETON.json",
+      "sha256": "6272b0466e877e4be4d5f3a26696cf13de14eeb02ac8ac73dccd5d3adaf84259"
+    },
+    {
+      "path": "web/data/horizon/DE_GERLACHE_RIM1.json",
+      "sha256": "7ccaf2875df71c0a312130f66fde9c65fb246471c288dd35195aa375bf41e470"
+    },
+    {
+      "path": "web/data/metrics/DE_GERLACHE_RIM1.json",
+      "sha256": "5e24eb5962eacdb0a7f5a1f9c69224339efe8a6d78ff65d648a9f87d2040fe43"
+    },
+    {
+      "path": "web/data/horizon/SHOEMAKER_RIM_A.json",
+      "sha256": "8730711877cb9ed376dd13166fc2eb7cdddddbbd0e700513ffc82d69985ce6f5"
+    },
+    {
+      "path": "web/data/metrics/SHOEMAKER_RIM_A.json",
+      "sha256": "c47df8fa6790153ded61be862ad472ecb27d023c3c6e410121f6062b92ecde3e"
+    },
+    {
+      "path": "web/data/horizon/IM3_REINER_GAMMA.json",
+      "sha256": "6dd99c6ded1644beaf577fbeb179ffaa95c2936eab2834fca8c5273453ba5804"
+    },
+    {
+      "path": "web/data/metrics/IM3_REINER_GAMMA.json",
+      "sha256": "3f4783cc1adcb2a64d8cd6a1a2892ee8565a5fee48334c0588b88b97f3137558"
+    }
+  ],
+  "computation_run_id": 43655770217,
+  "artifact_id": 14137059934,
+  "artifact_zip_sha256": "32872ee53320ed959bd7e6bf11ef1fd567247c236df231ba6958ae07eff2f40d",
+  "finalizer_commit": "b68226c575becc7f4a60b897a5d8a6ce97185d20",
+  "hourly_sunlight_rechecked": 1446192,
+  "failed_angles": [
+    {
+      "id": "CHANGE6",
+      "azimuth_deg": 231.0,
+      "stored_deg": 0.1695,
+      "independent_deg": 0.22996302810083658,
+      "difference_deg": 0.06046302810083656,
+      "peak_distance_m": 10620.0
+    }
+  ],
+  "production_files_changed": false
+}

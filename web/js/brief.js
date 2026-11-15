@@ -343,18 +343,38 @@ function renderSum(s) {
   $('#ls-brief .sc-sum').innerHTML = cell('sumSun', pc(m?.sun_frac), 'var(--sun)') + cell('sumEarth', pc(m?.earth_frac), 'var(--earth)')
     + cell('sumBoth', pc(m?.both_frac)) + cell('sumDark', ok ? dh(m.longest_dark_h) : '—');
 }
+addStrings({hiddenAnalyses:'{n} items not needed for this candidate are hidden',noAnalysisData:'No data for this candidate; this does not mean the analysis is unnecessary.'},{hiddenAnalyses:'이 후보에는 필요 없는 항목 {n}개를 숨겼어요',noAnalysisData:'이 후보의 자료가 없는 항목입니다. 분석이 필요 없다는 뜻은 아닙니다.'});
+let available = new Set(PICKABLE), showUnavailable = false;
+async function updateAvailability(s) {
+  const valid=!core.terrainPending(s)&&!core.horizonMock(s);
+  const [terrain,relay,dates,history,local,monthly,psr,terrainData]=await Promise.all([
+    idxIds('terrain'),idxIds('relay'),idxIds('detail/dates'),historyFile(),
+    s.user?null:localGrid(s.id),s.user?null:siteFile('monthly',s.id),idxIds('detail/psr'),s.user?null:detailFile('terrain',s.id)]);
+  const next=new Set(['gs']);
+  if(valid)for(const k of ['time','hz'])next.add(k);
+  if(local?.data?.points?.length || (valid && LLSN().state.sites.some(o=>o.id!==s.id&&distKm(s,o)<=20&&!core.terrainPending(o))))next.add('near');
+  if(terrain.has(s.id))next.add('terrain');
+  if(relay.has(s.id)&&valid)next.add('relay');
+  if(dates.has(s.id))next.add('date');
+  if(history?.sites?.some(x=>x.id===s.id))next.add('history');
+  if(monthly)next.add('seasons');
+  if(!s.user&&s.lat<=-80&&psr.has(s.id))next.add('access');
+  if(terrainData?.kind==='polar_detailed'&&terrainData.slope_by_radius_m)next.add('routes');
+  return next;
+}
 /** 7-5: analysis chips; on = card shown below. */
 function renderPick() {
-  const n = PICKABLE.filter(k => open.has(k)).length;
-  $('#ls-brief .sc-pick').innerHTML = `<p class="sc-pick-h"><b>${esc(t('pickH'))}</b> <span>${esc(fill(t('pickSub'), { n, m: PICKABLE.length }))}</span></p>
-    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${PICK.map(([k, soon]) => (soon
-      ? `<span class="sc-chip soon" aria-disabled="true"><i class="box"></i>${esc(t('c_' + k))}<em>${esc(t('soon'))}</em></span>`
-      : `<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_' + k))}</button>`)).join('')}</div>`;
+  const visible=PICK.filter(([k])=>available.has(k)), missing=PICK.filter(([k])=>!available.has(k));
+  const n=visible.filter(([k])=>open.has(k)).length;
+  $('#ls-brief .sc-pick').innerHTML = `<p class="sc-pick-h"><b>${esc(t('pickH'))}</b> <span>${esc(fill(t('pickSub'), { n, m:visible.length }))}</span></p>
+    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${visible.map(([k])=>`<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_'+k))}</button>`).join('')}</div>
+    ${missing.length?`<button type="button" class="sc-hidden-toggle" aria-expanded="${showUnavailable}" aria-controls="sc-unavailable">${esc(fill(t('hiddenAnalyses'),{n:missing.length}))}</button><div id="sc-unavailable" class="sc-unavailable"${showUnavailable?'':' hidden'}><p>${esc(t('noAnalysisData'))}</p><div class="sc-chips">${missing.map(([k])=>`<span class="sc-chip soon" aria-disabled="true">${esc(t('c_'+k))}</span>`).join('')}</div></div>`:''}`;
+  PICK.forEach(([k])=>document.getElementById(`blk-${k}`)?.classList.toggle('data-unavailable',!available.has(k)));
 }
 /** Card numbers 01, 02 … follow the order of the open cards. */
 function renumber() {
   let i = 0;
-  CARD_ORDER.forEach(k => { const el = document.getElementById(`blk-${k}`); const no = el?.querySelector('.sc-no'); if (no) no.textContent = el.classList.contains('is-closed') ? '' : String(++i).padStart(2, '0'); });
+  CARD_ORDER.forEach(k => { const el = document.getElementById(`blk-${k}`); const no = el?.querySelector('.sc-no'); if (no) no.textContent = (el.classList.contains('is-closed') || el.classList.contains('data-unavailable')) ? '' : String(++i).padStart(2, '0'); });
 }
 function renderShare() {
   const url = LLSN().shareURL?.() || location.href;
@@ -790,7 +810,8 @@ function drawZ3(body, s, D) {
 // ------------------------------------------------------------ render all
 async function render() {
   const s = target(); if (!s || !LLSN().window) return;
-  const my = ++seq; current = s.id;
+  const my = ++seq; if(current!==s.id)showUnavailable=false; current = s.id;
+  const next=await updateAvailability(s);if(my!==seq)return;available=next;
   renderHead(s); renderSum(s); renderPick(); renderShare();
   mvHTML = await trustCard(s, true);
   if (my !== seq) return;
@@ -801,7 +822,7 @@ async function render() {
   simpleBlock('hz', chip('chipPeriod', 'period'));
 }
 function setOpen(k, on, scroll = true) {
-  const el = document.getElementById(`blk-${k}`); if (!el) return;
+  const el = document.getElementById(`blk-${k}`); if (!el || (on && PICKABLE.includes(k) && !available.has(k))) return;
   if (on) open.add(k); else open.delete(k);
   el.classList.toggle('is-closed', !on); el.setAttribute('aria-hidden', String(!on));
   document.querySelectorAll(`#ls-brief [data-open="${k}"]`).forEach(b => b.setAttribute('aria-expanded', String(on)));
@@ -914,6 +935,7 @@ function wire() {
     #ls-brief .z3-ctl .pill[aria-pressed="true"] { background: var(--text); color: var(--bg); }`;
   document.head.appendChild(st);
   root.addEventListener('click', e => {
+    if(e.target.closest('.sc-hidden-toggle')){showUnavailable=!showUnavailable;renderPick();root.querySelector('.sc-hidden-toggle')?.focus();return;}
     const ch = e.target.closest('[data-chip]'); if (ch) { const k = ch.dataset.chip; setOpen(k, !open.has(k), false); return; }
     const mv = e.target.closest('.sc-mv'); if (mv) { const on = mv.getAttribute('aria-expanded') !== 'true'; mv.setAttribute('aria-expanded', String(on)); document.getElementById(mv.getAttribute('aria-controls'))?.toggleAttribute('hidden', !on); return; }
     const o = e.target.closest('[data-open]'); if (o) { const k = o.dataset.open; setOpen(k, o.closest('.bento') ? !open.has(k) : true); return; }

@@ -9,6 +9,7 @@ import { RULE } from './compare_view.js';
 import { CREDITS } from './credits.js';
 import { mountHero } from './about_hero.js';
 import { ABOUT_COPY } from './about_copy.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
@@ -154,7 +155,7 @@ async function render() {
   </div></section>
 `;
   mountHero(root.querySelector('.abh-scene'), E('abArtAria'));
-  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`);
+  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}">${iconSvg('arrow-down', { size: 18 })}</button>`);
   const nextBtn = root.querySelector('.ab-next');
   const secs = () => [...root.querySelectorAll('.ab-sec')];
   const upcoming = () => { const line = (document.querySelector('.ab-hero')?.getBoundingClientRect().bottom || 0) + 12; return secs().find(x => x.getBoundingClientRect().top > line + 4); };

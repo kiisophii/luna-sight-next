@@ -16,6 +16,7 @@ import * as core from './core.js';
 import { t, applyI18n, toggleLang, getLang } from './i18n.js';
 import { setFocus, addStrings } from './ui_shared.js';
 import { relayPeriod, relayPeek, hourBits, TOWER_H } from './values.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: 'About this tool',
@@ -119,11 +120,11 @@ const isoDay = i => core.hourToDate(i).toISOString().slice(0, 10);
 const dayStart = i => Math.floor(i / 24) * 24;
 const fmtDaysShort = d => (Math.abs(d - Math.round(d)) < 0.05 ? String(Math.round(d)) : d.toFixed(1));
 const pctHTML = f => (f == null || !isFinite(f) ? '<span class="na">—</span>' : `${Math.round(f * 100)}<small>%</small>`);
-export const SUN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
-export const EARTH_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>';
-const ADD_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 6.8v8.4M6.8 11h8.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
-const REM_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="currentColor"/><path d="M6.8 11h8.4" stroke="#0A0A0B" stroke-width="1.8" stroke-linecap="round"/></svg>';
-export const PIN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.5h5l-.8 4.2 2.3 2.3v1H4v-1l2.3-2.3z" fill="var(--pin-fill, none)" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 9v5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+export const SUN_ICON = iconSvg('sun', { size: 14 });
+export const EARTH_ICON = iconSvg('earth', { size: 14 });
+const ADD_ICON = iconSvg('pin-add', { size: 20, cls: 'pk-ic' });
+const REM_ICON = iconSvg('pin-remove-filled', { size: 20, cls: 'pk-ic' });
+export const PIN_ICON = iconSvg('pin', { size: 14 });
 
 // ------------------------------------------------------------ pins (no limit; stable numbers)
 const pinOf = id => pins.find(p => p.id === id);
@@ -195,7 +196,7 @@ function relayLine(s, m) {
   if (!relayOn || !m || m.pending) return '';
   const r = relayPeek(s.id, i0, i1); if (!r || r.state !== 'ok' || !r.total) return '';
   const d = Math.round((r.direct / r.total) * 100), w = Math.round(((r.direct + r.via) / r.total) * 100);
-  return `<span class="pk-relay"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 9v9M6.5 18h7M10 9l-3 9M10 9l3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="7.5" r="1.8" fill="currentColor"/></svg><b>${t('rlTower')}</b><span class="num">${d}% → <em>${w}%</em></span>${r.distKm != null ? `<span>· ${fill(t('rlKm'), { k: r.distKm.toFixed(1) })}</span>` : ''}</span>`;
+  return `<span class="pk-relay">${iconSvg('relay-tower', { size: 14 })}<b>${t('rlTower')}</b><span class="num">${d}% → <em>${w}%</em></span>${r.distKm != null ? `<span>· ${fill(t('rlKm'), { k: r.distKm.toFixed(1) })}</span>` : ''}</span>`;
 }
 function rowHTML(s, rank) {
   const p = pinOf(s.id), m = metricsOf(s.id), focus = window.LLSN.focus === s.id;
@@ -209,7 +210,7 @@ function rowHTML(s, rank) {
   return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}"${p ? ` style="--sc:var(--c${p.n})"` : ''}>
     ${chip}
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
-      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(rowName(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
+      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(rowName(s))}</span>${rank === 1 && sortKey !== 'name' ? ` <span class="star" aria-label="1st">${iconSvg('star', { size: 12 })}</span>` : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${relayOn && !L.tower ? tower : ''}</span></span>
       <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}<span class="n">${sunV}</span></span><i class="pk-div" aria-hidden="true"></i><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}<span class="n">${earthV}</span></span></span>
     </button>
@@ -303,8 +304,7 @@ function setPlaying(on) {
   const b = $('#play');
   b.setAttribute('aria-pressed', String(on));
   b.setAttribute('aria-label', t(on ? 'pause' : 'play'));
-  b.innerHTML = on ? '<svg viewBox="0 0 16 16" class="ic"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>'
-    : '<svg viewBox="0 0 16 16" class="ic"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>';
+  b.innerHTML = iconSvg(on ? 'pause' : 'play', { size: 16 });
   cancelAnimationFrame(raf);
   if (on) {
     if (now >= i1) setTime(i0);

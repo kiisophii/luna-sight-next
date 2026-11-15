@@ -1,0 +1,19 @@
+/* Icon set (js/icons.js, by Chaei Oh): 24 grid, square caps, miter joins, currentColor.
+   Sizes come from the existing .ic rules in layout.css; this file only adds what the new markup needs. */
+.ls svg[data-icon], .ls svg[class*="ic-"] { overflow: visible; }
+.ls .ic.flip { transform: scaleX(-1); }
+/* "i" buttons: the info icon carries its own outline, so the round border goes */
+.ls .hud-i:has(> .ic-info), .ls .info-i.round:has(> .ic-info) { border: 0; background: none; }
+.ls .hud-i > .ic-info { width: 12px; height: 12px; }
+.ls .info-i.round > .ic-info { width: 18px; height: 18px; }
+.ls .gl-zoom button > .ic { width: 18px; height: 18px; }
+.ls .sp-btn > .ic { width: 12px; height: 12px; }
+.ls .tb-speed button > .ic { width: 12px; height: 12px; }
+.ls .ic.flip-v { transform: scaleY(-1); }
+/* inline icons that replaced 10–13 px glyphs keep that size */
+.ls .pk-name .star > .ic { width: 11px; height: 11px; vertical-align: -1px; }
+.ls .now-cell .ic, .ls .mini-tbl th .ic, .ls .kv .ic, .ls .pill .ic, .ls .verdict .ic, .ls .g3-chip .ic { width: 12px; height: 12px; vertical-align: -1px; }
+/* "i" info buttons now hold the info icon (own outline): drop the drawn circle */
+.ls .info:has(> .ic-info), .ls .fc-i:has(> .ic-info), .ls .tc-i:has(> .ic-info) { border: 0; background: none; }
+.ls .info > .ic-info, .ls .fc-i > .ic-info, .ls .tc-i > .ic-info { width: 16px; height: 16px; }
+.ls .pill > .ic { margin-left: 4px; }

@@ -12,6 +12,7 @@ import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, fmtHours, LLSN } from './ui_shared.js';
 import { hourBits, gapStats, relayPeriod, getJSON } from './values.js';
 import * as core from './core.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay', tcTerrain: 'Terrain',
@@ -101,7 +102,7 @@ async function render() {
   const root = document.getElementById('tray-cat'), W = LLSN().window; if (!root || !W) return;
   const my = ++seq, list = sites(), C = CATS[cat], sk = sub[cat], subDef = C.subs.find(x => x[0] === sk) || C.subs[0];
   root.querySelectorAll('.tc-tabs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === cat)));
-  root.querySelector('.tc-h').innerHTML = `<h4>${esc(t(C.tab))}</h4><button type="button" class="tc-i" aria-label="${esc(t(C.info))}" title="${esc(t(C.info))}">i</button>
+  root.querySelector('.tc-h').innerHTML = `<h4>${esc(t(C.tab))}</h4><button type="button" class="tc-i" aria-label="${esc(t(C.info))}" title="${esc(t(C.info))}">${iconSvg('info')}</button>
     <span class="tc-subs" role="group">${C.subs.map(([k, lab]) => `<button type="button" data-s="${k}" aria-pressed="${k === subDef[0]}">${esc(t(lab))}</button>`).join('')}</span>`;
   root.querySelector('.tc-desc').textContent = t(subDef[2]);
   const body = root.querySelector('.tc-body');

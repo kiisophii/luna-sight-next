@@ -9,6 +9,7 @@ import { addStrings, whenReady, setFocus, fmtHours, LLSN } from './ui_shared.js'
 import { relayPeriod, stationPeriod, instant, hourBits, gapStats, TOWER_H } from './values.js';
 import { relayFor, relayIndex } from './diff_data.js';
 import { stationBits } from './korea.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   cmpH: 'Detailed comparison', cmpSub: '',
@@ -20,14 +21,14 @@ addStrings({
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
   noChange: 'no change in data', why: 'Site check ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
-  tabDial: '◷ Lunar-day clock', tabAlt: '↗ Sun & Earth elevation', changeH: 'Change over time',
+  tabDial: 'Lunar-day clock', tabAlt: 'Sun & Earth elevation', changeH: 'Change over time',
   dialDesc: 'One turn = the analysis period, 12 o’clock = start.',
   lgSun: 'sunlight', lgEarth: 'Earth in view (direct-to-Earth geometry)', lgRelay: 'via relay tower', lgCut: 'no link even with the tower', lgNeedle: 'selected time', lgKdsa: 'Yeoju sees the Moon (≥ 10°) while the site sees Earth — geometry only',
   altDesc: 'A body is visible only above the terrain line.', lgSunEl: 'Sun elevation', lgEarthEl: 'Earth elevation', lgHzSun: 'terrain horizon (Sun direction)', lgZero: '0° (flat horizon)', lgSunPart: 'Sun partly visible', lgSunDial: 'sunlight (stronger = more of the disc)', altAria: 'Sun and Earth elevation with the terrain horizon over the period',
   tlH: 'Timeline', tlDesc: 'Click or drag to move the selected time.',
   sNextSet: 'Until sunset', sNextRise: 'Until sunrise', sNextESet: 'Until Earthset', sNextERise: 'Until Earthrise', sDark: 'Longest shadow',
   sRelayNeed: 'Longest direct-link gap', sTower: 'Via tower ({h} m)', sCut: 'Still no link with tower', sKdsa: 'Yeoju KDSA in view',
-  vGood: '✓ No flags', vCond: '! Check conditions', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
+  vGood: 'No flags', vCond: '! Check conditions', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
   sumLine: '{n}: {s} strength(s), {c} caution(s) under the example rule.', allSites: 'All sites — period table',
   coordsH: '{c} · h {h} m',
 }, {
@@ -40,14 +41,14 @@ addStrings({
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '지구 보임 · {x} 남음', nowNoEarth: '지구 안 보임 · 뜨기까지 {x}',
   noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
-  tabDial: '◷ 달의 하루 시계', tabAlt: '↗ 태양·지구 고도', changeH: '시간에 따른 변화',
+  tabDial: '달의 하루 시계', tabAlt: '태양·지구 고도', changeH: '시간에 따른 변화',
   dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작.',
   lgSun: '햇빛', lgEarth: '지구 보임 (직접 교신 기하)', lgRelay: '중계탑 경유', lgCut: '탑이 있어도 끊김', lgNeedle: '선택 시각', lgKdsa: '여주에서 달 ≥ 10° 이고 착륙지에서 지구가 보임 — 기하만',
   altDesc: '지형 선보다 위에 있어야 보입니다.', lgSunEl: '태양 고도', lgEarthEl: '지구 고도', lgHzSun: '지형 지평선 (태양 방향)', lgZero: '0° (평평한 지평선)', lgSunPart: '태양 일부만 보임', lgSunDial: '햇빛 (진할수록 원반이 많이 보임)', altAria: '기간 동안의 태양·지구 고도와 지형 지평선',
   tlH: '타임라인', tlDesc: '누르거나 끌어서 선택 시각을 옮깁니다.',
   sNextSet: '다음 일몰까지', sNextRise: '다음 일출까지', sNextESet: '다음 지구몰까지', sNextERise: '다음 지구돋이까지', sDark: '최장 연속 그늘',
   sRelayNeed: '직접 교신 최장 끊김', sTower: '탑 경유 ({h} m)', sCut: '탑 있어도 끊김', sKdsa: '여주 KDSA 가시',
-  vGood: '✓ 주의 없음', vCond: '! 조건 확인', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
+  vGood: '주의 없음', vCond: '! 조건 확인', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
   sumLine: '{n}: 예시 규칙으로 강점 {s}개, 주의 {c}개.', allSites: '전체 착륙지 — 기간 표',
   coordsH: '{c} · 높이 {h} m',
 });
@@ -63,7 +64,8 @@ const daysTxt = h => { const d = h / 24; return d < 1.95 ? `${h.toFixed(0)} h` :
 const darkH = h => (getLang() === 'ko' ? (h < 48 ? `${h}시간` : `${(h / 24).toFixed(1)}일`) : (h < 48 ? `${h} h` : `${(h / 24).toFixed(1)} d`));
 const until = h => (h == null ? t('noChange') : fmtHours(h));
 export const coordText = s => `${Math.abs(s.lat).toFixed(3)}°${s.lat >= 0 ? 'N' : 'S'}, ${Math.abs(s.lon).toFixed(3)}°${s.lon >= 0 ? 'E' : 'W'}`;
-const PIN_SVG = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.5h5l-.8 4.2 2.3 2.3v1H4v-1l2.3-2.3z" fill="currentColor" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 9v5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+const PIN_SVG = iconSvg('pushpin-filled', { size: 14 });
+const whyLbl = on => on ? esc(t('whyOn')) : `${esc(t('why').replace(/ ↓$/, ''))} ${iconSvg('arrow-down', { size: 14 })}`;
 
 /** Sites shown: pinned (pin order), else the focused site. */
 function shown() {
@@ -157,7 +159,7 @@ function tableHTML(sites, rows, big, async) {
     return `<tr class="r-${r}"><th scope="row" class="lbl">${esc(t('r_' + r))}${r === 'relay' ? ` <small class="muted num">${TOWER_H} m</small>` : ''}</th>${cells.map((c, k) =>
       `<td class="${c.cls || ''}${best !== null && c.v === best ? ' best' : ''}" data-id="${sites[k].id}">${c.html}</td>`).join('')}</tr>`;
   }).join('');
-  const why = `<tr class="r-why"><th scope="row" class="lbl"></th>${sites.map(s => `<td><button type="button" class="ls-btn why-btn" data-why="${s.id}" aria-pressed="${s.id === focus}">${esc(t(s.id === focus ? 'whyOn' : 'why'))}</button></td>`).join('')}</tr>`;
+  const why = `<tr class="r-why"><th scope="row" class="lbl"></th>${sites.map(s => `<td><button type="button" class="ls-btn why-btn" data-why="${s.id}" aria-pressed="${s.id === focus}">${whyLbl(s.id === focus)}</button></td>`).join('')}</tr>`;
   return `<div class="cmp-scroll"><table class="cmp-tbl"><thead><tr><th scope="col" class="lbl">${esc(t('r_item'))}</th>${head}</tr></thead><tbody>${body}${why}</tbody></table></div>`;
 }
 
@@ -250,7 +252,7 @@ function placeAltNeedles(root) {
   root.querySelectorAll('.alt-now').forEach(p => {
     const s = byId(p.dataset.id); if (!s) return;
     const su = core.sunAzEl(s, now), ea = core.earthAzEl(s, now);
-    p.innerHTML = `<span class="v sun">☼ ${su.el.toFixed(1)}°</span> | <span class="v earth">◍ ${ea.el.toFixed(1)}°</span>`;
+    p.innerHTML = `<span class="v sun">${iconSvg('sun', { size: 12 })} ${su.el.toFixed(1)}°</span> | <span class="v earth">${iconSvg('earth', { size: 12 })} ${ea.el.toFixed(1)}°</span>`;
   });
 }
 
@@ -298,7 +300,7 @@ async function summaryHTML(s, ids) {
   const v = verdict(s.id, ids);
   const hz = LLSN().state.horizons.get(s.id);
   return `<h4><span>${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</span>
-      <span class="verdict${v.good ? '' : ' cond'}" title="${esc(t('vRuleTip'))}">${esc(t(v.good ? 'vGood' : 'vCond'))}</span></h4>
+      <span class="verdict${v.good ? '' : ' cond'}" title="${esc(t('vRuleTip'))}">${v.good ? iconSvg('check', { size: 12 }) + ' ' : ''}${esc(t(v.good ? 'vGood' : 'vCond'))}</span></h4>
     <p class="meta">${esc(fill(t('coordsH'), { c: coordText(s), h: hz ? Math.round(hz.h0_m) : '—' }))}</p>
     <dl class="kv">
       <dt>${esc(t(x.lit ? 'sNextSet' : 'sNextRise'))}</dt><dd>${esc(until(x.sunNext))}</dd>
@@ -310,7 +312,7 @@ async function summaryHTML(s, ids) {
       <dt style="color:var(--kdsa)">${esc(t('sKdsa'))}</dt><dd style="color:var(--kdsa)">${g && !g.pending && !g.error ? `${g.kdsa} h` : '—'}</dd>
     </dl>
     <p class="lsn-note">${esc(fill(t('sumLine'), { n: nameOf(s), s: v.plus.length, c: v.bang.length }))}</p>
-    <button type="button" class="ls-btn why-btn" data-why="${s.id}" style="margin-top:8px;width:100%" aria-pressed="${s.id === LLSN().focus}">${esc(t(s.id === LLSN().focus ? 'whyOn' : 'why'))}</button>`;
+    <button type="button" class="ls-btn why-btn" data-why="${s.id}" style="margin-top:8px;width:100%" aria-pressed="${s.id === LLSN().focus}">${whyLbl(s.id === LLSN().focus)}</button>`;
 }
 
 // ------------------------------------------------------------ render
@@ -338,7 +340,7 @@ async function renderTray() {
     const box = root.querySelector('.tray-dials');
     for (const s of sites) {
       const svg = await dialSVG(s, 160); if (my !== seq) return;
-      box.insertAdjacentHTML('beforeend', `<div class="ls-panel" style="padding:8px"><div style="font-size:12px;font-weight:600">${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</div>${svg}<button type="button" class="ls-btn why-btn" data-why="${s.id}" style="width:100%">${esc(t('why'))}</button></div>`);
+      box.insertAdjacentHTML('beforeend', `<div class="ls-panel" style="padding:8px"><div style="font-size:12px;font-weight:600">${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</div>${svg}<button type="button" class="ls-btn why-btn" data-why="${s.id}" style="width:100%">${whyLbl(false)}</button></div>`);
     }
     placeDialNeedles(root);
   } else {
@@ -359,7 +361,7 @@ async function renderBig() {
     ${pinned ? '' : `<p class="lsn-note" style="margin-bottom:10px">${esc(t('cmpNoPins'))}</p>`}
     <div class="big-cmp" id="cards">${tableHTML(sites, BIG_ROWS, true, asyncVals)}</div>
     <div class="sub-h"><h3>${esc(t('changeH'))}</h3><div class="ls-seg" role="tablist">
-      <button type="button" role="tab" data-tab="dial" aria-selected="${bigTab === 'dial'}">${esc(t('tabDial'))}</button><button type="button" role="tab" data-tab="alt" aria-selected="${bigTab === 'alt'}">${esc(t('tabAlt'))}</button></div></div>
+      <button type="button" role="tab" data-tab="dial" aria-selected="${bigTab === 'dial'}">${iconSvg('lunar-clock', { size: 14 })} ${esc(t('tabDial'))}</button><button type="button" role="tab" data-tab="alt" aria-selected="${bigTab === 'alt'}">${iconSvg('elevation-chart', { size: 14 })} ${esc(t('tabAlt'))}</button></div></div>
     ${bigTab === 'dial' ? LG.dial() : LG.alt()}<p class="lsn-note">${esc(t(bigTab === 'dial' ? 'dialDesc' : 'altDesc'))}</p>
     <div class="cards3 big-tab" role="tabpanel" style="margin-top:10px"></div>
     <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p>

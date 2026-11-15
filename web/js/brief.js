@@ -6,6 +6,7 @@
 import * as core from './core.js';
 import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, setFocus, fmtHours, LLSN } from './ui_shared.js';
+import { iconSvg } from './icons.js';
 import { relayPeriod, stationPeriod, instant, hourBits, gapStats, runs, siteFile, validation, TOWER_H, localGrid, spacingText, getJSON } from './values.js';
 import { verdict, RULE, coordText } from './compare_view.js';
 import { headline, namedFor, siteLine, hindcastFor, PGDA_URL } from './trust.js';
@@ -189,7 +190,7 @@ const P = f => (f == null || !isFinite(f) ? '—' : `${Math.round(f * 100)}%`);
 const P1 = f => (f == null || !isFinite(f) ? '—' : `${(f * 100).toFixed(1)}%`);
 const darkTxt = h => (h < 48 ? `${Math.round(h)} ${getLang() === 'ko' ? '시간' : 'h'}` : `${(h / 24).toFixed(1)} ${getLang() === 'ko' ? '일' : 'd'}`);
 const chip = (k, cls) => `<span class="chip-st ${cls}">${esc(t(k))}</span>`;
-const info = k => `<button type="button" class="info" aria-label="${esc(t(k))}">i<span class="tipx" role="tooltip">${esc(t(k))}</span></button>`;
+const info = k => `<button type="button" class="info" aria-label="${esc(t(k))}">${iconSvg('info')}<span class="tipx" role="tooltip">${esc(t(k))}</span></button>`;
 const BLOCKS = ['time', 'near', 'terrain', 'date', 'seasons', 'relay', 'gs', 'hz', 'more', 'trust'];
 const open = new Set();
 let current = null, seq = 0;
@@ -249,7 +250,7 @@ function dailyBars(bits, mask, color, dark = false) {
   const w = LLSN().window;
   return `<div class="daybars" style="color:${color}" aria-hidden="true">${bars.join('')}</div><div class="daybars-ends"><span>${isoDay(w.i0).slice(5)}</span><span>${esc(t('daily'))}</span><span>${isoDay(w.i1).slice(5)}</span></div>`;
 }
-function pill(k, blk) { return `<button type="button" class="pill" data-open="${blk}" aria-expanded="${open.has(blk)}" aria-controls="blk-${blk}">${esc(t(k))}</button>`; }
+function pill(k, blk) { return `<button type="button" class="pill" data-open="${blk}" aria-expanded="${open.has(blk)}" aria-controls="blk-${blk}">${esc(t(k).replace(/ ▾$/, ''))}${iconSvg('chevron-down', { size: 12 })}</button>`; }
 
 async function mapCard(s) {
   const LG = s.user ? null : await localGrid(s.id), loc = LG?.data;
@@ -325,8 +326,8 @@ function nowCard(s) {
   if (x.pending) return `${head}<p class="na">${esc(t('terrainPending'))}</p>`;
   const nx = h => (h == null || i + h > w.i1 ? t('nNone') : fill(t('nNext'), { x: fmtHours(h) }));
   return `${head}<div class="now-cells">
-    <div class="now-cell sun${x.lit ? ' on' : ''}"><span style="color:var(--sun)">☼ ${esc(t('sunEl'))} <span class="num">${x.sun.el.toFixed(1)}°</span></span><b>${esc(t(x.lit ? 'nSun' : 'nDark'))}</b><span>${esc(nx(x.sunNext))}</span></div>
-    <div class="now-cell earth${x.up ? ' on' : ''}"><span style="color:var(--earth)">◍ ${esc(t('earthEl'))} <span class="num">${x.earth.el.toFixed(1)}°</span></span><b>${esc(t(x.up ? 'nEarth' : 'nNoEarth'))}</b><span>${esc(nx(x.earthNext))}</span></div></div>`;
+    <div class="now-cell sun${x.lit ? ' on' : ''}"><span style="color:var(--sun)">${iconSvg('sun', { size: 12 })} ${esc(t('sunEl'))} <span class="num">${x.sun.el.toFixed(1)}°</span></span><b>${esc(t(x.lit ? 'nSun' : 'nDark'))}</b><span>${esc(nx(x.sunNext))}</span></div>
+    <div class="now-cell earth${x.up ? ' on' : ''}"><span style="color:var(--earth)">${iconSvg('earth', { size: 12 })} ${esc(t('earthEl'))} <span class="num">${x.earth.el.toFixed(1)}°</span></span><b>${esc(t(x.up ? 'nEarth' : 'nNoEarth'))}</b><span>${esc(nx(x.earthNext))}</span></div></div>`;
 }
 
 function kpiCards(s, unc) {
@@ -384,7 +385,7 @@ async function trustCard(s) {
 // ------------------------------------------------------------ detail blocks
 function blockShell(k, chips) {
   const el = document.getElementById(`blk-${k}`);
-  el.querySelector('header').innerHTML = `<h3>${esc(t('d_' + k))}</h3>${chips}<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">×</button>`;
+  el.querySelector('header').innerHTML = `<h3>${esc(t('d_' + k))}</h3>${chips}<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">${iconSvg('close')}</button>`;
   el.querySelector('.desc').textContent = t(`d_${k}D`);
   return el.querySelector('.blk-body');
 }
@@ -409,8 +410,8 @@ async function timeBlock(s) {
         ${years}<rect x="${p0}" y="0" width="${Math.max(2, p1 - p0)}" height="32" fill="none" stroke="var(--text)" stroke-width="1.5"/></svg>
       <details><summary style="cursor:pointer;font-size:12.5px">${esc(t('tFive'))} (${esc(t('rowSun'))} · ${esc(t('rowEarth'))})</summary>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:6px">
-          <table class="mini-tbl"><thead><tr><th>☼ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.sun.longest_gaps)}</tbody></table>
-          <table class="mini-tbl"><thead><tr><th>◍ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
+          <table class="mini-tbl"><thead><tr><th>${iconSvg('sun', { size: 12 })} ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.sun.longest_gaps)}</tbody></table>
+          <table class="mini-tbl"><thead><tr><th>${iconSvg('earth', { size: 12 })} ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01 · data/windows/${esc(s.id)}.json</p></details>`;
   }
   body.innerHTML = `<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
@@ -428,7 +429,7 @@ async function nearBlock(s) {
   const w = LLSN().window, m = w.metrics.get(s.id);
   const near = LLSN().state.sites.filter(o => o.id !== s.id).map(o => ({ o, d: distKm(s, o) })).filter(x => x.d <= 20).sort((a, b) => a.d - b.d);
   const diff = (a, b) => { if (a == null || b == null) return ''; const d = Math.round((a - b) * 100); return `<span style="color:${d > 0 ? 'var(--good)' : d < 0 ? 'var(--cut)' : 'var(--muted)'}">${d > 0 ? '+' : ''}${d} pp</span>`; };
-  const nearTbl = near.length ? `<table class="mini-tbl"><thead><tr><th></th><th>${esc(t('nDist'))}</th><th>☼</th><th>◍</th><th>${esc(t('kDark'))}</th><th>☼ ${esc(t('nDiff'))}</th><th>◍ ${esc(t('nDiff'))}</th></tr></thead><tbody>${near.map(({ o, d }) => {
+  const nearTbl = near.length ? `<table class="mini-tbl"><thead><tr><th></th><th>${esc(t('nDist'))}</th><th>${iconSvg('sun', { size: 12 })}</th><th>${iconSvg('earth', { size: 12 })}</th><th>${esc(t('kDark'))}</th><th>${iconSvg('sun', { size: 12 })} ${esc(t('nDiff'))}</th><th>${iconSvg('earth', { size: 12 })} ${esc(t('nDiff'))}</th></tr></thead><tbody>${near.map(({ o, d }) => {
     const mo = w.metrics.get(o.id); const ok = mo && !mo.pending && m && !m.pending;
     return `<tr><td><button type="button" class="ls-link" data-go="${o.id}">${esc(nameOf(o))}</button></td><td>${d.toFixed(1)} km</td><td>${ok ? P(mo.sun_frac) : '—'}</td><td>${ok ? P(mo.earth_frac) : '—'}</td><td>${ok ? darkTxt(mo.longest_dark_h) : '—'}</td><td>${ok ? diff(mo.sun_frac, m.sun_frac) : ''}</td><td>${ok ? diff(mo.earth_frac, m.earth_frac) : ''}</td></tr>`;
   }).join('')}</tbody></table>` : `<p class="lsn-note">${esc(t('nNearNone'))}</p>`;
@@ -498,7 +499,7 @@ async function trustBlock(s) {
 // detail/dates/ has author checks only.
 const VERIF = { terrain: 'vMember', psr: 'vMember', time_stats: 'vIntg', history: 'vIntg', dates: 'vAuthor' };
 const vChip = k => `<span class="chip-st">${esc(t(VERIF[k]))}</span>`;
-const infoT = txt => `<button type="button" class="info" aria-label="${esc(txt)}">i<span class="tipx" role="tooltip">${esc(txt)}</span></button>`;
+const infoT = txt => `<button type="button" class="info" aria-label="${esc(txt)}">${iconSvg('info')}<span class="tipx" role="tooltip">${esc(txt)}</span></button>`;
 const idxIds = dir => getJSON(`${core.state.base}${dir}/index.json`).then(j => new Set(j.ids || (j.sites || []).map(x => x.id))).catch(() => new Set());
 /** Per-site detail file, only when its index lists the site (no 404 requests for sites outside the product). */
 async function detailFile(dir, id) { return (await idxIds(dir)).has(id) ? getJSON(`${core.state.base}${dir}/${id}.json`).catch(() => null) : null; }
@@ -512,7 +513,7 @@ const distTxt = m => (m == null || !isFinite(m) ? '—' : m < 1000 ? `${Math.rou
 /** hours as stored (integer or 1 decimal), plus days for long values */
 const hd = h => (h == null || !isFinite(h) ? '—' : `${Number.isInteger(h) ? nf(h) : h.toFixed(1)} ${t('h')}${h >= 48 ? ` (${(h / 24).toFixed(1)} ${t('d')})` : ''}`);
 const h4 = (k, extra = '') => `<h4 class="det-h4">${esc(t(k))}${extra}</h4>`;
-const kv = (label, val, tip = '') => `<div><span class="k">${esc(label)}${tip}</span><b class="num">${val}</b></div>`;
+const kv = (label, val, tip = '', ic = '') => `<div><span class="k">${ic}${esc(label)}${tip}</span><b class="num">${val}</b></div>`;
 
 // Y terrain + Z2 PSR + Z4 history
 async function terrainBlock(s) {
@@ -615,8 +616,8 @@ function drawZ3(body, s, D) {
   else {
     const cen = [row[C.dark_left_censored] && t('z3CenL'), row[C.dark_right_censored] && t('z3CenR')].filter(Boolean);
     base = `<div class="det-kv">
-        ${kv(`☼ ${t('rowSun')}`, `<span style="color:var(--sun)">${P1(row[C.sun_frac])}</span> <small class="muted">${nf(row[C.sun_h])} ${esc(t('h'))}</small>`)}
-        ${kv(`◍ ${t('rowEarth')}`, `<span style="color:var(--earth)">${P1(row[C.earth_frac])}</span> <small class="muted">${nf(row[C.earth_h])} ${esc(t('h'))}</small>`)}
+        ${kv(` ${t('rowSun')}`, `<span style="color:var(--sun)">${P1(row[C.sun_frac])}</span> <small class="muted">${nf(row[C.sun_h])} ${esc(t('h'))}</small>`, '', iconSvg('sun', { size: 12 }))}
+        ${kv(` ${t('rowEarth')}`, `<span style="color:var(--earth)">${P1(row[C.earth_frac])}</span> <small class="muted">${nf(row[C.earth_h])} ${esc(t('h'))}</small>`, '', iconSvg('earth', { size: 12 }))}
         ${kv(t('rowBoth'), `${P1(row[C.both_frac])} <small class="muted">${nf(row[C.both_h])} ${esc(t('h'))}</small>`)}
         ${kv(t('z3Dark'), darkCell(row))}</div>
       ${cen.length ? `<p class="lsn-note">* ${esc(cen.join(' · '))}</p>` : ''}`;
@@ -634,7 +635,7 @@ function drawZ3(body, s, D) {
     <div class="z3-ctl"><label>${esc(t('z3Day'))} <input type="date" class="z3-day" min="${D.first_landing}" max="${D.last_landing}" value="${iso(day)}"></label>
       <span role="group" aria-label="${esc(t('z3Stay'))}">${esc(t('z3Stay'))} ${D.stays.map((x, j) => `<button type="button" class="pill" data-z3stay="${j}" aria-pressed="${x === st}">${esc(fill(t('z3Days'), { n: x.stay_days }))}</button>`).join(' ')}</span></div>
     <p class="lsn-note" style="margin:0 0 6px">${esc(fill(t('z3Base'), { d: `${iso(day)} 00:00 UTC`, n: stayTxt }))}</p>${base}
-    <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('z3Shift'))}</th><th>${esc(t('z3Target'))}</th><th>☼ ${esc(t('rowSun'))}</th><th>◍ ${esc(t('rowEarth'))}</th><th>${esc(t('rowBoth'))}</th><th>${esc(t('z3Dark'))}</th></tr></thead><tbody>${slipRows}</tbody></table></div>
+    <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('z3Shift'))}</th><th>${esc(t('z3Target'))}</th><th>${iconSvg('sun', { size: 12 })} ${esc(t('rowSun'))}</th><th>${iconSvg('earth', { size: 12 })} ${esc(t('rowEarth'))}</th><th>${esc(t('rowBoth'))}</th><th>${esc(t('z3Dark'))}</th></tr></thead><tbody>${slipRows}</tbody></table></div>
     <p class="lsn-note">data/detail/dates/${esc(s.id)}.json</p></div>`;
   body.onclick = e => { const b = e.target.closest('[data-z3stay]'); if (!b) return; z3.stay = Number(b.dataset.z3stay); drawZ3(body, s, D); body.querySelector(`[data-z3stay="${z3.stay}"]`)?.focus(); };
   body.onchange = e => {

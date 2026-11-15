@@ -4,6 +4,8 @@
 import { t, getLang } from './i18n.js';
 import { addStrings } from './ui_shared.js';
 import { enhanceSelect, autoEnhance } from './ui_select.js';
+import { iconSvg, hydrateIcons } from './icons.js';
+hydrateIcons();
 // ?gv= (shared camera) is read here, before app.js rewrites the address bar, so the late-loading globe still gets it
 window.__llsnGV = new URLSearchParams(location.search).get('gv');
 
@@ -58,8 +60,8 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
     return p;
   };
   el.hidden = false;
-  el.innerHTML = `<div class="stars"></div><button type="button" class="skip">${t('introSkip')} ⏩</button>
-    <div class="moon"><svg class="lander" viewBox="0 0 34 30" aria-hidden="true"><path d="M10 4h14l3 10H7z M7 14h20v4H7z M9 18l-5 10M25 18l5 10M3 28h4M27 28h4M17 18v4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+  el.innerHTML = `<div class="stars"></div><button type="button" class="skip">${t('introSkip')} ${iconSvg('chevron-right')}</button>
+    <div class="moon">${iconSvg('lander', { size: 34, cls: 'lander' })}</div>
     <div class="bar"><i></i></div>
     <div class="word"><b>LUNA SIGHT</b><span>Lunar Landing Site Navigator</span></div>
     <div class="pct num">${t('introLoading')} 000%</div><div class="clock num">T+ 00:00.00</div>`;
@@ -112,11 +114,11 @@ document.addEventListener('click', e => {
 });
 
 // ------------------------------------------------------------ panel folding
-const CHEV = up => `<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="${up ? 'M4 10l4-4 4 4' : 'M4 6l4 4 4-4'}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const CHEV = up => iconSvg('chevron-down', { cls: up ? 'ic flip-v' : 'ic' });
 function foldLabel(b, open) {
   const left = b.dataset.fold === 'ls-cond';
   if (left) { b.innerHTML = CHEV(open); b.setAttribute('aria-label', t(open ? 'collapse' : 'expand')); return; }
-  b.textContent = open ? (left ? '‹' : '›') : (left ? '›' : `‹ ${t('openTray')}`);
+  b.innerHTML = open ? iconSvg('chevron-right') : `${iconSvg('chevron-right', { cls: 'ic flip' })} ${t('openTray')}`;
   b.classList.toggle('wide', !open && !left);
   b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : (left ? 'expand' : 'openTray')));
 }
@@ -314,7 +316,7 @@ function showComputing() {
 // ------------------------------------------------------------ 3.10 add-site drawer
 const drawer = $('#ls-add');
 drawer.innerHTML = `
-  <div class="ls-card-head"><h2 id="add-h">${esc(t('addT'))}</h2><button type="button" class="ls-icon add-x" aria-label="${esc(t('close'))}">×</button></div>
+  <div class="ls-card-head"><h2 id="add-h">${esc(t('addT'))}</h2><button type="button" class="ls-icon add-x" aria-label="${esc(t('close'))}">${iconSvg('close')}</button></div>
   <div class="ls-tabs" role="tablist"><button type="button" role="tab" data-tab="cat" aria-selected="true">${esc(t('tabCat'))}</button><button type="button" role="tab" data-tab="coord" aria-selected="false">${esc(t('tabCoord'))}</button></div>
   <div class="tab-cat" role="tabpanel">
     <div style="display:flex;gap:6px"><input type="search" class="cat-q" style="flex:1" aria-label="${esc(t('catSearch'))}" placeholder="${esc(t('catSearch'))}"><select class="cat-g" aria-label="group"></select></div>
@@ -366,8 +368,8 @@ function renderCat() {
     const m = w.metrics.get(s.id), n = LL().pinNo?.(s.id);
     return `<li class="${pass && !pass.has(s.id) ? 'out' : ''}"><button type="button" class="ls-link add-go" data-id="${s.id}" style="text-align:left;color:var(--text);text-decoration:none">
       ${n ? `<span class="pin-no">#${n}</span>` : ''}${esc(name(s))}<br><small class="muted">${esc(t('g_' + s.group))}</small></button>
-      <span class="num"><span class="v sun">☼ ${m && !m.pending ? pctTxt(m.sun_frac) : '—'}</span> <span class="v earth">◍ ${m && !m.pending ? pctTxt(m.earth_frac) : '—'}</span></span>
-      <button type="button" class="ls-icon add-pin" data-id="${s.id}" aria-pressed="${!!n}" aria-label="${esc(t(n ? 'unpin' : 'pin'))}" style="${n ? 'background:var(--text);color:var(--bg)' : ''}">${n ? '✓' : '+'}</button></li>`;
+      <span class="num"><span class="v sun">${iconSvg('sun', { size: 12 })} ${m && !m.pending ? pctTxt(m.sun_frac) : '—'}</span> <span class="v earth">${iconSvg('earth', { size: 12 })} ${m && !m.pending ? pctTxt(m.earth_frac) : '—'}</span></span>
+      <button type="button" class="ls-icon add-pin" data-id="${s.id}" aria-pressed="${!!n}" aria-label="${esc(t(n ? 'unpin' : 'pin'))}" style="${n ? 'background:var(--text);color:var(--bg)' : ''}">${iconSvg(n ? 'check' : 'plus')}</button></li>`;
   }).join('');
 }
 ['llsn:window', 'llsn:pins', 'llsn:filter', 'llsn:lang', 'llsn:sites'].forEach(ev => window.addEventListener(ev, renderCat));

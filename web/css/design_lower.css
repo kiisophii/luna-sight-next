@@ -117,3 +117,16 @@ body:has(.ls-below) { background:#020306; }
 .detail-pager .num b { color: #EDEDED; font-weight: 500; }
 /* Korean names and buttons: the number font has no Hangul, keep them in the text font */
 html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions button, html[lang="ko"] .detail-pager .num { font-family: var(--font); letter-spacing: 0; }
+
+/* ---- first screen on phones / tablets only (width or touch rules; desktop mouse layout unchanged) ---- */
+@media (max-width: 1099px) {
+  /* tray chart: the fixed 360x156 drawing scaled up to ~700 px wide at 768 (labels 16 px); keep it at its drawing height */
+  .ls-tray .tc-chart { max-height: 200px; }
+}
+@media (max-width: 760px), (pointer: coarse) {
+  /* touch targets >= 32 px without changing the drawing: padding + negative margin, or an invisible hit area */
+  .val-badge { padding: 9px 0; margin: -9px 0; }
+  .tc-i { position: relative; }
+  .tc-i::before { content: ''; position: absolute; inset: -8px; }
+  .relay-pill { min-height: 32px; }
+}

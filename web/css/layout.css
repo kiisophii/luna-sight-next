@@ -1806,3 +1806,10 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
 
 /* Sua 11/15 23:3x: the folded minimap Moon at 70% of its former size (222x228 -> 155x160); the opened view keeps its size. */
 @media (min-width:900px) { .ls-minimap:not(.open) { width:155px; height:160px; } }
+
+/* GitHub link in the header, left of the language switch (Sua 11/15 23:40) */
+.head-r { display:flex; align-items:center; gap:8px; }
+.gh-link { display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 10px; box-sizing:border-box; border:1px solid rgba(255,255,255,.22); border-radius:6px; background:rgba(6,8,12,.72); color:#ededed; font-size:13px; font-weight:500; text-decoration:none; }
+.gh-link:hover { background:rgba(237,237,237,.08); }
+.gh-link:focus-visible { outline:2px solid #ededed; outline-offset:2px; }
+@media (max-width:600px) { .gh-link span { display:none; } .gh-link { padding:0 8px; } }

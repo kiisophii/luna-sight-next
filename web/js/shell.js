@@ -65,7 +65,8 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
   const q = new URLSearchParams(location.search);
   let seen = false; try { seen = localStorage.getItem('ls.introSeen') === '1'; } catch (e) { /* storage blocked */ }
   const force = q.get('intro') === '1';   // ?intro=1: play again even when seen before, with sites= or a hash (for checking)
-  if (!el || !window.LunaIntro || (!force && (seen || q.has('sites') || q.has('nointro') || location.hash))) return;
+  // Team decision 11/15 23:40: the intro plays on every load and reload (?nointro skips it); `seen` is kept for reference only.
+  if (!el || !window.LunaIntro || (!force && q.has('nointro'))) return;
   try { localStorage.setItem('ls.introSeen', '1'); } catch (e) { /* ignore */ }
   const when = (events, capMs, failed) => new Promise(res => {
     events.forEach(ev => window.addEventListener(ev, res, { once: true }));

@@ -306,7 +306,11 @@ if (uLayerA > 0.0) {
     try {
       const blob = await fetch(base + 'globe/' + idx.url.replace('{kind}', t.kind).replace('{z}', t.z).replace('{x}', t.x).replace('{y}', t.y)).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); });
       const bmp = await createImageBitmap(blob, { colorSpaceConversion: 'none', premultiplyAlpha: 'none' });
-      const cv = new OffscreenCanvas(bmp.width, bmp.height), g = cv.getContext('2d', { willReadFrequently: true });
+      // #104: OffscreenCanvas only where it exists (Safari < 16.4 and some WebKit builds lack it) — same check as the 8k path above
+      const cv = typeof OffscreenCanvas === 'function'
+        ? new OffscreenCanvas(bmp.width, bmp.height)
+        : Object.assign(document.createElement('canvas'), { width: bmp.width, height: bmp.height });
+      const g = cv.getContext('2d', { willReadFrequently: true });
       g.drawImage(bmp, 0, 0); bmp.close();
       const px = g.getImageData(0, 0, cv.width, cv.height).data;
       const n = cv.width * cv.height, h = new Float32Array(n);

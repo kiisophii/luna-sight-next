@@ -184,11 +184,11 @@ function rowHTML(s, rank) {
   const earthV = L.v == null ? '<span class="na">—</span>' : pctHTML(L.v);
   const tower = relayOn ? (L.tower ? `<span class="tag relay">${t('relayTag')}</span>` : L.noTower ? `<span class="tag">${t('relayNone')}</span>` : L.loading ? `<span class="tag">…</span>` : '') : '';
   return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}">
-    <span class="pk-rank" title="${esc(t('rankTip'))}"><small>${t('rankLbl')}</small><span class="num">${rank}</span></span>
+    <span class="pk-rank num" title="${esc(t('rankTip'))}"><span class="sr">${t('rankLbl')} </span>${rank}.</span>
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
-      <span class="pk-main"><span class="pk-name">${p ? `<span class="pin-no">#${p.n}</span>` : ''}${esc(nameOf(s))}${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
+      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(nameOf(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${tower}</span></span>
-      <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}${sunV}</span><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}${earthV}</span></span>
+      <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}<span class="n">${sunV}</span></span><i class="pk-div" aria-hidden="true"></i><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}<span class="n">${earthV}</span></span></span>
     </button>
     <button type="button" class="pk-pin" data-id="${s.id}" aria-pressed="${!!p}" aria-label="${esc(t(p ? 'unpin' : 'pin'))}: ${esc(nameOf(s))}" title="${esc(t(p ? 'unpin' : 'pin'))}">${PIN_ICON}</button>
   </li>`;

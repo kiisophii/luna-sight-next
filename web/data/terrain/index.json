@@ -40,8 +40,8 @@
     {
       "id": "APOLLO17",
       "path": "APOLLO17.json",
-      "kind": "coarse_relay_comparison",
-      "dem_resolution_m": null
+      "kind": "nonpolar_detailed",
+      "dem_resolution_m": 59.2
     },
     {
       "id": "LUNA16",

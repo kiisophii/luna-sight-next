@@ -173,3 +173,8 @@ html:not([lang="ko"]) body > .sc-pop, html:not([lang="ko"]) body > .sc-tip { --f
   #ls-brief .sc-mv { padding: 8px 0; margin: -8px 0; }
   #ls-brief .ls-detail .info { min-width: 32px; min-height: 32px; }
 }
+/* access / routes cards: short KPI rows (4 per row), ice warning */
+#ls-brief .sc-kpis.ac { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 4px; }
+#ls-brief .sc-kpis.ac + .sc-d, #ls-brief .tbl-x + .sc-kpis.ac { margin-top: 10px; }
+#ls-brief .warn-ice { color: #F5B841; font-weight: 600; }
+@media (max-width: 760px) { #ls-brief .sc-kpis.ac { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

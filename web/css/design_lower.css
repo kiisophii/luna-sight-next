@@ -130,3 +130,9 @@ html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions butto
   .tc-i::before { content: ''; position: absolute; inset: -8px; }
   .relay-pill { min-height: 32px; }
 }
+/* below 1100 px: the orange sliding line over the globe is the terrain loading bar (.gl-progress .bar) — hidden on desktop already,
+   so hide it here too; the "Loading terrain · n" label sat at left: left-panel width + 32 px (x 400 at 390) — keep it inside the globe area */
+@media (max-width: 1099px) {
+  .ls-globe .gl-progress .bar { display: none; }
+  .ls-globe .gl-progress .txt { left: 12px; right: auto; top: 8px; max-width: calc(100vw - 24px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}

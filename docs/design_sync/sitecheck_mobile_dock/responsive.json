@@ -1,0 +1,17 @@
+{
+  "layers": [
+    "light",
+    "sun",
+    "earth",
+    "elev"
+  ],
+  "resizeWidths": [
+    1920,
+    1100,
+    390,
+    1440
+  ],
+  "errors": [],
+  "pickerUsable": true,
+  "buttonClearOfToolbar": true
+}

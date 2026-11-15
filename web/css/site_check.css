@@ -178,3 +178,10 @@ html:not([lang="ko"]) body > .sc-pop, html:not([lang="ko"]) body > .sc-tip { --f
 #ls-brief .sc-kpis.ac + .sc-d, #ls-brief .tbl-x + .sc-kpis.ac { margin-top: 10px; }
 #ls-brief .warn-ice { color: #F5B841; font-weight: 600; }
 @media (max-width: 760px) { #ls-brief .sc-kpis.ac { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Phone time summaries: readable names and three non-overlapping date ticks. */
+@media (max-width: 760px) {
+  #ls-brief #blk-time .sc-kv > span { white-space: normal; word-break: keep-all; overflow-wrap: normal; overflow: visible; text-overflow: clip; line-height: 16px; min-height: 32px; }
+  #ls-brief #blk-time .sc-axis span:nth-child(2),
+  #ls-brief #blk-time .sc-axis span:nth-child(4) { display: none; }
+}

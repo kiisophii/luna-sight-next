@@ -40,7 +40,7 @@ for(const state of ['before','after']){
  if(target&&(Math.abs(metrics.dock.width-target[0])>.1||Math.abs(metrics.dock.height-target[1])>.1||Math.abs(metrics.bottom-20)>.1))failures.push({width,lang,reason:'dock dimensions',metrics});
  if(width===390&&JSON.stringify(before.dock)!==JSON.stringify(metrics.dock))failures.push({width,lang,reason:'mobile changed'});
  if(width===1100&&metrics.buttons.some(b=>['light','sun','earth','relief','whole','focus','play'].includes(b.id)&&(Math.abs(b.width-32)>.1||Math.abs(b.height-32)>.1)))failures.push({width,lang,reason:'narrow button size'});
- for(const b of metrics.buttons.filter(b=>['light','sun','earth','relief','whole','focus','play'].includes(b.id))){
+ for(const b of metrics.buttons.filter(b=>['light','sun','earth','relief','whole','focus','play','-1','1'].includes(b.id))){
  if(width>=1100&&(b.x<metrics.dock.x-.1||b.x+b.width>metrics.dock.x+metrics.dock.width+.1||b.y<metrics.dock.y-.1||b.y+b.height>metrics.dock.y+metrics.dock.height+.1))failures.push({width,lang,reason:'button outside dock',b});
  }
  }

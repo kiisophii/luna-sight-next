@@ -6,7 +6,7 @@
 // World frame = MOON_ME (x -> lon 0, y -> lon 90E, z -> north), units = km.
 //
 // API (see createGlobe): setTime(hourIndex|Date), flyTo({lat,lon,range,tilt,heading}), focusSite(id),
-//   setExaggeration(k) [display default x3, shown in a persistent note; calculations always use true heights],
+//   setExaggeration(k) [display default x3; calculations always use true heights],
 //   setLang('en'|'ko'), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose(),
 //   setColorMap(url|null) [data layer instead of the colour kit], screenToLatLon(clientX, clientY).
 // Options: base, hour, view, exaggeration (3), lang ('en'), hud (true),
@@ -605,15 +605,8 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   const chipSun = mk('g3-chip sun', 'Sun'), chipEarth = mk('g3-chip earth', 'Earth');
   const labSun = mk('g3-label sun', 'Sun'), labEarth = mk('g3-label earth', 'Earth');
   const dock = mk('g3-dock', '');
-  const note = document.createElement('div'); note.className = 'g3-note'; note.setAttribute('role', 'note'); dock.appendChild(note);
   const hud = document.createElement('div'); hud.className = 'g3-hud'; dock.appendChild(hud);
   if (opts.hud === false) hud.style.display = 'none';
-  function updateNote() {
-    note.textContent = exag === 1
-      ? (lang === 'ko' ? '실제 높이 (과장 없음)' : 'True heights (no exaggeration)')
-      : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
-  }
-  updateNote();
   for (const [c, t, ic] of [[chipSun, lang === 'ko' ? '태양' : 'Sun', 'sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth', 'earth']]) c.innerHTML = `<span class="g3-arr">${iconSvg('marker-down', { size: 12 })}</span>${iconSvg(ic, { size: 12 })} ${t}`;
 
   const tmp = v3();
@@ -1051,7 +1044,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     hour = hNew;
     updateBodies(); dirty = true; emit('time', hour);
   }
-  function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
+  function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; dirty = true; }
   function setLang(l) {
     closeCluster();
     lang = l === 'ko' ? 'ko' : 'en';
@@ -1059,7 +1052,6 @@ if (uLayerA > 0.0 || uElev > 0.5) {
       updateSiteLabel(m.s, m.el);
       m.lw = 0;
     }
-    updateNote();
     chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun';
     chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth';
     dirty = true;

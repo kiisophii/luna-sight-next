@@ -91,7 +91,7 @@ if (params.get('tv') === '1') document.documentElement.classList.add('tv');
 
 const DEFAULT_PINS = ['SHACKLETON_RIM', 'ARTEMIS_HAWORTH', 'APOLLO17'];   // first visit only (team choice 11/14); a comparison, not a recommendation
 const PERIODS = [['7', 'p7'], ['29.5', 'p295'], ['90', 'p90'], ['365', 'p365']];
-const SORTS = ['both', 'sun', 'earth', 'dark', 'name'];
+const SORTS = ['both', 'sun', 'earth', 'dark'];   // 17-3: 'Name' removed (the copy's list)
 const LIST_FIRST = 12;
 const store = {
   get(k, d) { try { const v = localStorage.getItem('ls.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },

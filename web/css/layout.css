@@ -1646,7 +1646,7 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
 /* v46 comparison table integration: retain map action and existing fixed graph scale. */
 #ls-compare .detail-table .detail-see { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.28); font-weight:600; }
 #ls-compare .detail-charts .cw { height:auto; }
-#ls-compare .detail-charts .cw svg.alt-geometry { height:202px; }
+#ls-compare .detail-charts .cw svg.alt-geometry { height:188px; }
 
 /* ---- bundle 18 (copy 20:27, map and dock): zoom − / + at the dock's right end, one legend box for the static layers */
 .ls-toolbar .tb-zoom, .ls-toolbar .tb-zoom-sep { display: none; }
@@ -1772,3 +1772,27 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
 #tl-ticks .lb.end { transform: translateX(-100%); }
 
 @media (max-width: 1099px) { .ls .map-legend { left: 12px; right: auto; bottom: auto; top: var(--lg-top, 440px) !important; max-width: calc(100vw - 24px); z-index: 20; } .ls .map-legend .lg-tip { left: 0; right: auto; top: auto; bottom: calc(100% + 6px); max-width: calc(100vw - 24px); } }
+/* ---- Detailed comparison, 2nd section (Chaei request): Sun / Earth switch, one heading scale, 3 x 2 timeline legend, 32 px between blocks */
+#ls-compare.detail-comparison .sec-head h2 { font: 700 22px/30px var(--font); }
+#ls-compare .detail-sech { margin: 0; font: 600 16px/24px var(--font); letter-spacing: -0.01em; color: #EDEDED; }
+#ls-compare .detail-desc { font: 400 12px/18px var(--font); color: #8D96A4; }
+#ls-compare .detail-table.cmp-tbl tr.detail-chart-heading th { padding: 32px 0 12px; background: transparent; border-bottom: 0; }
+#ls-compare .detail-chart-heading .dch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+#ls-compare .alt-body { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid #2a2a2c; border-radius: 8px; }
+#ls-compare .alt-body button { width: 30px; height: 26px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 6px; background: none; color: #6E6E74; cursor: pointer; }
+#ls-compare .alt-body button[data-alt-body="sun"][aria-pressed="true"] { color: var(--sun); background: rgba(237,237,237,.10); }
+#ls-compare .alt-body button[data-alt-body="earth"][aria-pressed="true"] { color: var(--earth); background: rgba(237,237,237,.10); }
+#ls-compare .alt-body button:hover { color: #EDEDED; }
+#ls-compare .alt-body button:focus-visible { outline: 2px solid #EDEDED; outline-offset: 1px; }
+#ls-compare .detail-tl { margin-top: 32px; }
+#ls-compare .detail-tl > .detail-sech { margin: 0 0 12px; }
+#ls-compare .detail-lg.tl-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(3, auto); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px; max-width: 760px; margin: 0 0 14px; }
+#ls-compare .detail-lg.tl-grid li { display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 10px; align-items: start; cursor: help; }
+#ls-compare .detail-lg.tl-grid .sw { width: 18px; margin: 3px 0 0; justify-self: center; }
+#ls-compare .detail-lg.tl-grid .sw.vl { width: 2px; height: 12px; margin: 2px 0 0; }
+#ls-compare .detail-lg.tl-grid .sw.kd { height: 3px; margin-top: 6px; }
+#ls-compare .detail-lg.tl-grid .tx { min-width: 0; overflow-wrap: anywhere; }
+#ls-compare .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) {
+  #ls-compare .detail-lg.tl-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: minmax(0, 1fr); }
+  #ls-compare .detail-table.cmp-tbl tr.detail-chart-heading th { padding-left: 0; padding-right: 0; }

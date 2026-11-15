@@ -510,6 +510,10 @@ body.on-about #view-app { display: none; }
 :lang(ko) .ls, .ls :lang(ko) { word-break: keep-all; overflow-wrap: break-word; }
 .ls p, .ls li, .ls dd, .ls .lsn-note, .ls .tray-empty { text-wrap: pretty; }
 .ls .num, .ls .val, .ls .kpi-big, .ls .sub { white-space: nowrap; }
+/* paragraph-level .num text inside the detail blocks (file lists, map readouts) must wrap: one unbroken line widened
+   the page (scrollWidth > innerWidth at ~800 px: trust-block file list, #llsn-local .lm-read) */
+.ls-details p.num, .ls-details div.num, .ls-details .kpi .sub { white-space: normal; overflow-wrap: anywhere; }
+.ls-detail { min-width: 0; }
 /* #35 toast: one line, bottom centre, 1.8 s */
 .ls-toast { position: fixed; z-index: 80; left: 50%; bottom: calc(var(--hint-h) + 82px); transform: translate(-50%, 8px); max-width: calc(100vw - 32px); padding: 8px 14px; border-radius: var(--r-pill);
   background: #0C0E12; border: 1px solid var(--line-2); color: var(--text); font-size: var(--fs-body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;

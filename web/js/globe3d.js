@@ -628,13 +628,16 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     const origin=overlay.getBoundingClientRect();
     const blockers=(typeof opts.labelBlockers==='function'?opts.labelBlockers():[]).map(q=>({x0:q.left,y0:q.top,w:q.width,h:q.height}));
     const overlaps=(a,b,pad=3)=>a.x0<b.x0+b.w+pad&&b.x0<a.x0+a.w+pad&&a.y0<b.y0+b.h+pad&&b.y0<a.y0+a.h+pad;
-    const kept=[...blockers], candidates=[];
+    const kept=[...blockers], candidates=[], blocked=new Map();   // blocker index -> sites whose dot sits under that box
     for(const m of siteEls){m.el.style.visibility='';m.el.classList.remove('g3-dotonly');if(!m.box||!m.point)continue;
       m.lw=m.el.offsetWidth||m.lw||80;
       m.el.style.transform=`translate(${m.flip?m.point.x-m.lw+7:m.point.x-7}px,${m.point.y-7}px)`;
-      if(m.point.x<(labelIns?.left||0)+7||m.point.x>overlay.clientWidth-(labelIns?.right||0)-7||m.point.y<(labelIns?.top||0)+7){m.el.style.visibility='hidden';continue;}
+      const edge=m.point.x<(labelIns?.left||0)+7?'left':m.point.x>overlay.clientWidth-(labelIns?.right||0)-7?'right':m.point.y<(labelIns?.top||0)+7?'top':null;
+      if(edge){m.el.style.visibility='hidden';if(m.point.x>=0&&m.point.x<=overlay.clientWidth&&m.point.y>=0&&m.point.y<=overlay.clientHeight){if(!blocked.has(edge))blocked.set(edge,[]);blocked.get(edge).push(m);}continue;}
       const dot={x0:origin.left+m.point.x-7,y0:origin.top+m.point.y-7,w:14,h:14};
-      if(blockers.some(k=>overlaps(dot,k,0))){m.el.style.visibility='hidden';continue;}candidates.push(m);
+      // a dot under a page box (legend, notes, minimap) is not dropped: it joins a +N button placed beside that box
+      const bi=blockers.findIndex(k=>overlaps(dot,k,0));
+      if(bi>=0){m.el.style.visibility='hidden';if(!blocked.has(bi))blocked.set(bi,[]);blocked.get(bi).push(m);continue;}candidates.push(m);
     }
     // Connected components in screen pixels split naturally as the camera zooms in.
     const groups=[];const unseen=new Set(candidates);
@@ -654,6 +657,27 @@ if (uLayerA > 0.0 || uElev > 0.5) {
       for(const [dx,dy]of [[0,0],[-bw-8,0],[0,-bh-8],[0,bh+8],[-bw-8,-bh-8]]){const a={x0:origin.left+px+dx,y0:origin.top+py+dy,w:bw,h:bh};if(!kept.some(k=>overlaps(a,k))&&px+dx>=0&&py+dy>=0){px+=dx;py+=dy;break;}}
       button.style.left=`${px}px`;button.style.top=`${py}px`;kept.push({x0:origin.left+px,y0:origin.top+py,w:bw,h:bh});
       for(const m of members){clustered.add(m);m.el.style.visibility='hidden';}
+    }
+    for(const [bi,members]of blocked){
+      const key='under:'+bi+':'+members.map(m=>m.s.id).sort().join('|');used.add(key);
+      let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster g3-under';overlay.append(button);clusterButtons.set(key,button);}
+      button.textContent=`+${members.length}`;button.dataset.members=members.map(m=>m.s.id).join('|');
+      button.setAttribute('aria-label',lang==='ko'?`패널·상자에 가려진 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} landing sites hidden under a panel`);
+      button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
+      const bw=button.offsetWidth||34,bh=button.offsetHeight||26;
+      const mx=members.reduce((n,m)=>n+m.point.x,0)/members.length+origin.left, my=members.reduce((n,m)=>n+m.point.y,0)/members.length+origin.top;   // keep the button near the hidden dots
+      const L=labelIns?.left||0,R=labelIns?.right||0,T=labelIns?.top||0,W=overlay.clientWidth,Hh=overlay.clientHeight;
+      const k=typeof bi==='number'?blockers[bi]:bi==='left'?{x0:origin.left,y0:origin.top,w:L,h:Hh}:bi==='right'?{x0:origin.left+W-R,y0:origin.top,w:R,h:Hh}:{x0:origin.left,y0:origin.top,w:W,h:T};
+      const spots=bi==='left'?[[k.x0+k.w+6,my-bh/2]]:bi==='right'?[[k.x0-bw-6,my-bh/2],[k.x0-bw-6,my+bh+4],[k.x0-bw-6,my-2*bh-4]]:bi==='top'?[[mx-bw/2,k.y0+k.h+6],[mx-bw*1.5-6,k.y0+k.h+6]]
+        :[[mx-bw/2,k.y0+k.h+6],[k.x0-bw-6,k.y0+k.h/2-bh/2],[mx-bw/2,k.y0-bh-6],[k.x0+k.w+6,k.y0+k.h/2-bh/2]];
+      let pick=null;
+      for(const [ax,ay]of spots){const px=Math.max(origin.left+8,Math.min(ax,origin.left+overlay.clientWidth-bw-8)),py=Math.max(origin.top+(labelIns?.top||0)+4,Math.min(ay,origin.top+overlay.clientHeight-bh-8));
+        const a={x0:px,y0:py,w:bw,h:bh};if(!kept.some(q=>overlaps(a,q))){pick=[px,py];break;}}
+      if(!pick){const ax=Math.max(origin.left+8,Math.min(spots[0][0],origin.left+overlay.clientWidth-bw-8)),ay=spots[0][1];   // walk up and down the same column to the nearest free spot
+        for(let i=1;i<40&&!pick;i++)for(const sg of [1,-1]){const py=ay+sg*i*(bh/2+2);if(py<origin.top+(labelIns?.top||0)+4||py>origin.top+overlay.clientHeight-bh-8)continue;
+          if(!kept.some(q=>overlaps({x0:ax,y0:py,w:bw,h:bh},q))){pick=[ax,py];break;}}
+        if(!pick)pick=[ax,Math.min(ay,origin.top+overlay.clientHeight-bh-8)];}
+      button.style.left=`${pick[0]-origin.left}px`;button.style.top=`${pick[1]-origin.top}px`;kept.push({x0:pick[0],y0:pick[1],w:bw,h:bh});
     }
     for(const [key,button]of clusterButtons)if(!used.has(key)){if(activeCluster===button)closeCluster();button.remove();clusterButtons.delete(key);}
     const order=candidates.filter(m=>!clustered.has(m)).sort((a,b)=>(b.el.dataset.n?1:0)-(a.el.dataset.n?1:0));

@@ -109,7 +109,9 @@ function editValue(vb) {
   const any = d.kind === 'ge' ? Number(el.value) === 0 : Number(el.value) >= Number(el.max);
   vb.innerHTML = `<input type="number" class="fc-num" min="${el.min}" max="${el.max}" step="${el.step}" value="${any ? '' : el.value}" placeholder="${d.unit || '%'}" aria-label="${t(d.label)}: ${t('flEdit')}">`;
   const inp = vb.firstElementChild; inp.focus(); inp.select();
+  let closed = false;
   const done = ok => {
+    if (closed) return; closed = true;
     if (ok && inp.value !== '') el.value = Math.min(Number(el.max), Math.max(Number(el.min), Number(inp.value)));
     else if (ok) el.value = d.kind === 'ge' ? 0 : el.max;
     vb.textContent = '';                      // drop the input first so apply() writes the new label

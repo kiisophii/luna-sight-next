@@ -37,6 +37,7 @@ export const CREDITS = [
     ["C18", "Oxanium — Copyright 2019 The Oxanium Project Authors, SIL Open Font License 1.1."],
     ["C19", "three.js r170 — Copyright © 2010–2024 three.js authors, MIT License."],
     ["C20", "Luna Sight source code: Apache License 2.0, github.com/kiisophii/lunar-landing-site-navigator."],
+    ["C25", "JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors, SIL Open Font License 1.1."],
   ]],
   ["Disclaimer", [
     ["C21", "Luna Sight uses public NASA data and imagery and credits NASA as the source. No NASA logos or insignia are used. NASA has not reviewed, approved or endorsed this project."],

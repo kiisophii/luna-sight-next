@@ -399,22 +399,7 @@ body.ls { background: var(--bg); font-size: var(--fs-body, 13px); line-height: v
 .ls-foot { max-width: 1600px; margin: 0 auto; padding: 16px 24px 32px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); }
 .ls-foot p { margin: 4px 0; }
 
-/* intro */
-.ls-intro { position: fixed; inset: 0; z-index: 90; background: #000; display: grid; place-items: center; transition: opacity .35s; }
-.ls-intro.done { opacity: 0; pointer-events: none; }
-.ls-intro .moon { width: 26vh; height: 26vh; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #d9dbe0, #8b8f98 60%, #4b4f57); box-shadow: 0 0 60px rgba(255,255,255,.08); position: relative; }
-.ls-intro .lander { position: absolute; left: 50%; top: -22vh; width: 34px; margin-left: -17px; transition: top 1.1s cubic-bezier(.2,.7,.3,1); color: #fff; }
-.ls-intro.touch .lander { top: -26px; }
-.ls-intro .word { position: absolute; left: 0; right: 0; top: calc(50% + 16vh); text-align: center; opacity: 0; transition: opacity .5s; }
-.ls-intro.touch .word { opacity: 1; }
-.ls-intro .word b { display: block; letter-spacing: .3em; font-size: 22px; } .ls-intro .word span { color: var(--muted); font-size: 12px; }
-.ls-intro .bar { position: absolute; left: 50%; top: calc(50% + 15vh); width: 26vh; margin-left: -13vh; height: 2px; background: #222; }
-.ls-intro .bar i { display: block; height: 100%; background: var(--text); width: 0; transition: width .2s; }
-.ls-intro .pct { position: absolute; right: 24px; bottom: 20px; font-family: var(--font-num); font-size: 12px; color: var(--muted); }
-.ls-intro.touch .pct { color: var(--sun); }
-.ls-intro .clock { position: absolute; left: 24px; bottom: 20px; font-family: var(--font-num); font-size: 11px; color: var(--muted); }
-.ls-intro .skip { position: absolute; right: 20px; top: 16px; background: transparent; border: 1px solid var(--muted); color: var(--text); border-radius: 8px; height: 30px; font-size: 12px; }
-.ls-intro .stars { position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 20% 30%, #fff8, transparent), radial-gradient(1px 1px at 70% 20%, #fff6, transparent), radial-gradient(1px 1px at 40% 80%, #fff5, transparent), radial-gradient(1px 1px at 85% 65%, #fff7, transparent), radial-gradient(1px 1px at 10% 75%, #fff4, transparent), radial-gradient(1px 1px at 55% 50%, #fff3, transparent); }
+/* intro: js/luna-intro.js (Chaei Oh) injects its own styles; #ls-intro is only the slot it renders into */
 
 /* About */
 .ls-about { max-width: 1200px; margin: 0 auto; padding: calc(var(--head-h) + 30px) 24px 40px; }

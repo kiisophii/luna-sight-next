@@ -118,13 +118,16 @@ async function start() {
       chipInsets: () => {
         const st = stage.getBoundingClientRect(), L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
         if (window.innerWidth < 1100 || !L || !T) return {};
-        return { left: Math.max(0, L.right + 20 - st.left), right: Math.max(0, st.right - T.left + 20), top: 64 - st.top, bottom: 20 };
+        const root=document.documentElement,gap=parseFloat(getComputedStyle(root).getPropertyValue('--G'))||20;
+        return { left: root.classList.contains('lp-off')?gap+28:Math.max(0,L.right+gap-st.left), right: root.classList.contains('rp-off')?gap+28:Math.max(0,st.right-T.left+gap), top:64-st.top,bottom:20 };
       },
       centerShift: w => {
         if (window.innerWidth < 1100) return 0;
         const L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
         if (!L || !T) return 0;
-        const cx = (L.right + 20 + T.left - 20) / 2;
+        const root=document.documentElement,gap=parseFloat(getComputedStyle(root).getPropertyValue('--G'))||20;
+        const st=stage.getBoundingClientRect(),left=root.classList.contains('lp-off')?gap+28:L.right-st.left+gap,right=root.classList.contains('rp-off')?w-gap-28:T.left-st.left-gap;
+        const cx = (left+right)/2;
         return w / 2 - cx;
       },
       labelBlockers: () => ['.map-legend:not([hidden])', '.ls-hud #hud-1', '.ls-hud #hud-2', '#globe-stage .g3-note', '.ls-minimap', '#sp-btn', '#globe-stage .gl-zoom']

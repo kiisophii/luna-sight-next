@@ -558,6 +558,8 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   .g3-cluster:focus-visible,.g3-cluster-panel button:focus-visible{outline:2px solid #ffd23f}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
   .g3-site.g3-dotonly{color:transparent!important;text-shadow:none!important}.g3-site.g3-dotonly:hover,.g3-site.g3-dotonly:focus-visible{color:inherit!important;z-index:2}
+  .ls-globe .g3-site[data-map-color]:not([data-n]){color:var(--map-site-color)}
+  .ls-globe .g3-site[data-map-color]:not([data-n])::before{background:var(--map-site-color)}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
   .g3-chip.sun{background:#ffd23f;color:#222}.g3-chip.earth{background:#3b8cff;color:#fff}
   .g3-label{position:absolute;left:0;top:0;font-weight:600;white-space:nowrap;text-shadow:0 0 3px #000}

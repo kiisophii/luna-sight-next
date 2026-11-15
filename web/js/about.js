@@ -11,7 +11,7 @@ import { CREDITS } from './credits.js';
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
   abH1: 'Where can a lander see the Sun and the Earth?', abLead: 'Luna Sight compares lunar landing sites and dates side by side: sunlight for power, a direct line to Earth for the radio link, and how long the dark lasts — from NASA terrain and ephemeris data, hour by hour. A comparison tool, not a “best site” picker.',
-  abArtCap: 'The Moon is drawn by this tool’s 3D view (NASA SVS CGI Moon Kit color, LOLA terrain). Not to scale.',
+  abArtCap: 'Illustration only, not to scale.',
   abWhy: 'Why the lunar south pole?', abW1: 'There is ice', abW1t: 'Crater floors that never see the Sun can keep water ice — a resource for future crews.',
   abW2: 'The Sun stays low', abW2t: 'Near the pole the Sun skims the horizon, so a few hundred meters of height or a ridge decide between light and long shadows.',
   abW3: 'The Earth hides', abW3t: 'Libration makes the Earth bob around the horizon, so the direct radio link comes and goes.',
@@ -29,7 +29,7 @@ addStrings({
   df8: 'Analysis period vs long-term', df8t: 'Period values (chip “this period”) come from the dates you chose. Long-term values (chip “long-term”) are 2026–2030 or 18.6-year averages. Do not mix them.',
   df9: 'Example verdict thresholds', df9t: 'Caution: longest shadow > {dark} h, direct link < {lo} %, or last among the compared sites. Strength: direct link ≥ {hi} % or first. These are published examples for discussion, not mission requirements. No hidden scores.',
   abVal: 'Can I trust these numbers?', abValLead: 'Average sunlight over 18.6 years at {n} random points (85–90°S) compared with NASA PGDA maps: mean absolute error',
-  abNext: 'Next section', abVc1: 'Sunlight', abVc2: 'Earth visibility', abVc3: 'Named sites inside PGDA’s ±300 m range', abVc3t: '{a} of {b} catalogue sites (sunlight)',
+  abArtAria: 'Illustration: a small rocket leaves the Earth on a dotted path toward the Moon.', abNext: 'Next section', abVc1: 'Sunlight', abVc2: 'Earth visibility', abVc3: 'Named sites inside PGDA’s ±300 m range', abVc3t: '{a} of {b} catalogue sites (sunlight)',
   abEph: 'Ephemeris check against an independent run: max difference {d}° over {n} samples.',
   abHind: 'Mission hindcast', abNotNasa: 'Comparisons with public data — not a NASA approval or endorsement.',
   abKorea: 'Korea links', abK1: 'ShadowCam on Danuri', abK1t: 'A NASA camera on Korea’s Danuri orbiter images inside permanently shadowed craters (NASA / KARI / ASU). Links only — Danuri does not relay for landers.',
@@ -44,7 +44,7 @@ addStrings({
 }, {
   abExplore: '달 살펴보기', abKicker: 'Lunar Landing Site Navigator',
   abH1: '착륙선이 해와 지구를 볼 수 있는 곳은?', abLead: 'Luna Sight는 달 착륙지와 날짜를 나란히 비교합니다: 전력을 위한 햇빛, 지구와 직접 교신할 수 있는 시간, 어둠이 얼마나 오래 가는지 — NASA 지형·천체력 자료로 1시간 간격으로 계산합니다. "최고의 착륙지"를 고르는 도구가 아니라 비교 도구입니다.',
-  abArtCap: '달은 이 도구의 3D 보기(NASA SVS CGI Moon Kit 색, LOLA 지형)로 그린 것. 실제 비율 아님.',
+  abArtCap: '설명용 그래픽, 실제 비율 아님.',
   abWhy: '왜 달 남극인가', abW1: '얼음이 있다', abW1t: '해가 들지 않는 분화구 바닥에 물 얼음이 남아 있을 수 있습니다 — 미래 탐사의 자원.',
   abW2: '해가 낮게 뜬다', abW2t: '극 근처에서는 해가 지평선을 스치듯 움직여서, 몇백 m의 높이나 능선 하나가 빛과 긴 그늘을 가릅니다.',
   abW3: '지구가 숨는다', abW3t: '칭동 때문에 지구가 지평선 근처에서 오르내려 직접 교신이 생겼다 끊겼다 합니다.',
@@ -62,7 +62,7 @@ addStrings({
   df8: '분석 기간 vs 장기 평균', df8t: '기간 값(칩 "이 기간")은 고른 날짜의 값, 장기 값(칩 "장기 평균")은 2026–2030 또는 18.6년 평균. 섞지 않습니다.',
   df9: '예시 판정 기준값', df9t: '주의: 최장 그늘 > {dark}시간, 직접 교신 < {lo} %, 또는 비교 중 꼴찌. 강점: 직접 교신 ≥ {hi} % 또는 1위. 토론용으로 공개한 예시이며 임무 요구 조건이 아닙니다. 숨은 점수 없음.',
   abVal: '이 숫자 믿어도 되나', abValLead: '남위 85–90° 무작위 {n}점의 18.6년 평균 일조를 NASA PGDA 지도와 비교한 평균 절대 오차',
-  abNext: '다음 섹션', abVc1: '일조', abVc2: '지구 가시', abVc3: 'PGDA ±300 m 범위 안에 든 이름 있는 착륙지', abVc3t: '카탈로그 {b}곳 중 {a}곳 (일조)',
+  abArtAria: '그림: 작은 로켓이 지구에서 점선을 따라 달로 향합니다.', abNext: '다음 섹션', abVc1: '일조', abVc2: '지구 가시', abVc3: 'PGDA ±300 m 범위 안에 든 이름 있는 착륙지', abVc3t: '카탈로그 {b}곳 중 {a}곳 (일조)',
   abEph: '독립 계산과 천체력 비교: {n}개 표본에서 최대 차 {d}°.',
   abHind: '실제 임무 되짚기', abNotNasa: '공개 자료와 비교한 결과이며 NASA의 승인이나 보증이 아닙니다.',
   abKorea: '한국과의 연결', abK1: '다누리의 ShadowCam', abK1t: '한국 다누리 궤도선에 실린 NASA 카메라가 영구음영 분화구 안을 찍습니다(NASA / KARI / ASU). 링크만 — 다누리는 착륙선을 중계하지 않습니다.',
@@ -79,6 +79,39 @@ addStrings({
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const E = k => esc(t(k));
+/** Hero illustration (decorative): Earth limb with atmosphere glow, a small rocket, a dotted path to a dark Moon
+ *  with a soft grey halo, stars. Drawn here as SVG; the rocket travels and the path draws in unless the viewer
+ *  prefers reduced motion (then a still picture). Not data, not to scale. */
+function scene() {
+  const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  let x = 11, st = ''; const r = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+  for (let k = 0; k < 70; k++) { const big = r() > 0.9; st += `<circle cx="${(r() * 600).toFixed(1)}" cy="${(r() * 300).toFixed(1)}" r="${big ? 1.1 : 0.6}" fill="#fff" opacity="${(0.2 + r() * 0.6).toFixed(2)}"/>`; }
+  const path = 'M292 318 C 316 268, 352 214, 372 160';
+  const anim = still ? '' : `<animate attributeName="stroke-dashoffset" values="230;0;0" keyTimes="0;0.7;1" dur="7s" repeatCount="indefinite"/>`;
+  const move = still ? '' : `<animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear" rotate="auto"><mpath href="#ab-traj"/></animateMotion>`;
+  const fade = still ? '' : `<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.68;0.74;1" dur="7s" repeatCount="indefinite"/>`;
+  return `<svg class="ab-svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${E('abArtAria')}">
+  <defs>
+    <radialGradient id="ab-sky" cx="50%" cy="100%" r="80%"><stop offset="0" stop-color="#0d1622"/><stop offset="0.55" stop-color="#05070b"/><stop offset="1" stop-color="#020203"/></radialGradient>
+    <radialGradient id="ab-air" cx="50%" cy="100%" r="55%"><stop offset="0.5" stop-color="#6cb4f0" stop-opacity=".7"/><stop offset="0.75" stop-color="#3a78b8" stop-opacity=".25"/><stop offset="1" stop-color="#3a78b8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ab-halo" cx="50%" cy="50%" r="50%"><stop offset="0.72" stop-color="#cfd3da" stop-opacity=".0"/><stop offset="0.80" stop-color="#cfd3da" stop-opacity=".45"/><stop offset="1" stop-color="#cfd3da" stop-opacity="0"/></radialGradient>
+    <mask id="ab-reveal"><path d="${path}" fill="none" stroke="#fff" stroke-width="6" stroke-dasharray="230" stroke-dashoffset="${still ? 0 : 230}">${anim}</path></mask>
+  </defs>
+  <rect width="600" height="360" fill="url(#ab-sky)"/>
+  <g>${st}</g>
+  <ellipse cx="300" cy="372" rx="330" ry="70" fill="url(#ab-air)"/>
+  <circle cx="300" cy="1260" r="930" fill="#06090e" stroke="#7fb4e6" stroke-opacity=".75" stroke-width="1.2"/>
+  <circle cx="390" cy="100" r="86" fill="url(#ab-halo)"/>
+  <circle cx="390" cy="100" r="62" fill="#040506" stroke="#b9bec7" stroke-opacity=".55" stroke-width="1.4"/>
+  <path id="ab-traj" d="${path}" fill="none" stroke="none"/>
+  <path d="${path}" fill="none" stroke="#e6eaf2" stroke-opacity=".65" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="0.1 6" mask="url(#ab-reveal)"/>
+  <g class="ab-rocket"${still ? ' transform="translate(292 318) rotate(-58)"' : ''}>${move}<g>${fade}
+    <path d="M9 0 C 5 -3, -3 -3, -7 -2.4 L -7 2.4 C -3 3, 5 3, 9 0 Z" fill="#f4f6fa"/>
+    <path d="M-4 -2.2 L -9 -6 L -7 -1.8 Z M-4 2.2 L -9 6 L -7 1.8 Z" fill="#c9ced6"/>
+    <circle cx="2.5" cy="0" r="1.1" fill="#0b0e14"/>
+    <path d="M-7.5 -1.2 L -12 0 L -7.5 1.2 Z" fill="#f5b841" opacity=".9"/></g></g>
+</svg>`;
+}
 // about 40 fixed stars for the picture band (seeded, same every load)
 const STARS = (() => { let x = 7, out = ''; const r = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
   for (let k = 0; k < 40; k++) out += `<i style="left:${(r() * 100).toFixed(1)}%;top:${(r() * 100).toFixed(1)}%;opacity:${(0.25 + r() * 0.6).toFixed(2)};${r() > 0.85 ? 'width:2px;height:2px;' : ''}"></i>`;
@@ -110,8 +143,7 @@ async function render() {
   <div class="ab-hero"><div class="ab-stars" aria-hidden="true">${STARS}</div>
     <div><div class="ab-kicker">${E('abKicker')}</div><h1 tabindex="-1">${E('abH1')}</h1><p>${E('abLead')}</p>
       <p style="margin-top:20px"><a class="ls-btn primary" href="#" data-explore style="height:40px;border-radius:999px;padding:0 1.4em">${E('abExplore')} →</a></p></div>
-    <figure style="margin:0"><div class="ab-art"><canvas class="ab-moon" width="360" height="360" style="width:62%;aspect-ratio:1"></canvas>
-      <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"><path d="M70 6 C64 20 60 30 56 38" stroke="#fff" stroke-dasharray="2 2" fill="none" stroke-width=".5"/><g transform="translate(51 36) scale(.25)" fill="none" stroke="#fff" stroke-width="2"><path d="M10 4h14l3 10H7z M7 14h20v4H7z M9 18l-5 10M25 18l5 10M17 18v4"/></g></svg></div>
+    <figure style="margin:0"><div class="ab-art ab-scene">${scene()}</div>
       <figcaption class="ls-caption"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</figcaption></figure>
   </div>
   <section class="ab-sec" id="about-why"><h2>${E('abWhy')}</h2><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.why[k - 1]}<h3>${E('abW' + k)}</h3><p>${E('abW' + k + 't')}</p></div>`).join('')}</div></section>
@@ -147,7 +179,6 @@ async function render() {
   nextBtn.addEventListener('click', () => upcoming()?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
   const sync = () => { nextBtn.hidden = !upcoming(); };
   window.addEventListener('scroll', sync, { passive: true }); sync();
-  drawMoon(root.querySelector('.ab-moon'));
   root.querySelector('[data-explore]').addEventListener('click', e => { e.preventDefault(); leave(); });
   root.querySelector('[data-mine]').addEventListener('click', e => { e.preventDefault(); leave(); setTimeout(() => LLSN().openAdd?.('coord'), 100); });
   root.querySelector('[data-gs]').addEventListener('click', e => { e.preventDefault(); leave(); setTimeout(() => { document.querySelector('#ls-brief [data-open="gs"]')?.click(); }, 200); });

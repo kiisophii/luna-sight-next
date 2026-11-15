@@ -377,7 +377,18 @@ const detailHelp = {
     '15 m 중계탑 가정 전후 지구 가시성입니다. 기하학적 결과이며 무선 성능은 아닙니다.',
     '착륙지에서 지구가 보이고 여주에서 달 고도가 10° 이상인 시간을 일로 표시합니다.'],
 };
-const detailIcons = ['☼', '⊕', '☍', '☾', '∠', '↟', '◉'];
+// 14 px line icons for the row labels (sun, globe, Sun+Earth link, dark, slope, tower, Korean flag for Yeoju) — no glyph characters
+const ICO = d => `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const detailIcons = [
+  ICO('<circle cx="8" cy="8" r="2.6"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/>'),
+  ICO('<circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c1.8 1.7 2.6 3.7 2.6 6S9.8 12.3 8 14M8 2C6.2 3.7 5.4 5.7 5.4 8s.8 4.3 2.6 6"/>'),
+  ICO('<circle cx="4.5" cy="11.5" r="2.2"/><circle cx="11.5" cy="4.5" r="2.2"/><path d="M6.1 9.9l3.8-3.8"/>'),
+  ICO('<path d="M12.5 10.2A5.5 5.5 0 0 1 5.8 3.5a5.5 5.5 0 1 0 6.7 6.7z"/><path d="M11 2.2v2M10 3.2h2M13.6 5.6v1.4M12.9 6.3h1.4"/>'),
+  ICO('<path d="M2 13.5h12L2 6z"/><path d="M5.6 13.5a3.6 3.6 0 0 0-1-2.5"/>'),
+  ICO('<path d="M8 6.5V14.5M5.5 14.5h5M6 14.5L8 6.5l2 8"/><path d="M5.2 3.8a4 4 0 0 1 5.6 0M3.6 2.2a6.2 6.2 0 0 1 8.8 0"/><circle cx="8" cy="6" r=".6" fill="currentColor"/>'),
+  // Korean flag for the Yeoju row (the copy uses a flag here); drawn from the flag's published geometry
+  '<svg class="flag" viewBox="0 0 36 24" width="14" height="14" aria-hidden="true"><rect width="36" height="24" rx="2" fill="#fff"/><g transform="translate(18.0 12.0) rotate(33.69)"><path d="M-6.0 0A6.0 6.0 0 0 1 6.0 0A3.0 3.0 0 0 1 0 0A3.0 3.0 0 0 0 -6.0 0Z" fill="#CD2E3A"/><path d="M-6.0 0A6.0 6.0 0 0 0 6.0 0A3.0 3.0 0 0 1 0 0A3.0 3.0 0 0 0 -6.0 0Z" fill="#0047A0"/></g><g fill="#000"><g transform="translate(18.0 12.0) rotate(-56.31) translate(0 -10.85)"><rect x="-3.00" y="-1.85" width="6.00" height="0.90"/><rect x="-3.00" y="-0.45" width="6.00" height="0.90"/><rect x="-3.00" y="0.95" width="6.00" height="0.90"/></g><g transform="translate(18.0 12.0) rotate(123.69) translate(0 -10.85)"><rect x="-3.00" y="-1.85" width="2.50" height="0.90"/><rect x="0.50" y="-1.85" width="2.50" height="0.90"/><rect x="-3.00" y="-0.45" width="2.50" height="0.90"/><rect x="0.50" y="-0.45" width="2.50" height="0.90"/><rect x="-3.00" y="0.95" width="2.50" height="0.90"/><rect x="0.50" y="0.95" width="2.50" height="0.90"/></g><g transform="translate(18.0 12.0) rotate(56.31) translate(0 -10.85)"><rect x="-3.00" y="-1.85" width="2.50" height="0.90"/><rect x="0.50" y="-1.85" width="2.50" height="0.90"/><rect x="-3.00" y="-0.45" width="6.00" height="0.90"/><rect x="-3.00" y="0.95" width="2.50" height="0.90"/><rect x="0.50" y="0.95" width="2.50" height="0.90"/></g><g transform="translate(18.0 12.0) rotate(-123.69) translate(0 -10.85)"><rect x="-3.00" y="-1.85" width="6.00" height="0.90"/><rect x="-3.00" y="-0.45" width="2.50" height="0.90"/><rect x="0.50" y="-0.45" width="2.50" height="0.90"/><rect x="-3.00" y="0.95" width="6.00" height="0.90"/></g></g></svg>'];
+const INFO_IC = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M8 2.2L13.8 8 8 13.8 2.2 8z"/></svg>';
 const detailDay = hours => `<span class="val num">${(hours / 24).toFixed(1)}<small>${getLang() === 'ko' ? '일' : 'd'}</small></span>`;
 function detailCell(row, site, w) {
   const original = cell(row, site, w, asyncVals);
@@ -483,7 +494,7 @@ async function renderBig() {
   if (terrainJobs.length) Promise.all(terrainJobs).then(() => renderBig());
   const bounds = chartBounds(allSites);
   const head = sites.map((site, index) => `<th scope="col" class="${site.id === LLSN().focus ? 'focus-col' : ''}">
-    <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm">${esc(nameOf(site))}</span></button>
+    <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}" title="${esc(nameOf(site))}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm" title="${esc(nameOf(site))}">${esc(nameOf(site))}</span></button>
     <button class="unpin" data-id="${esc(site.id)}" aria-label="${esc(t('unpin'))} ${esc(nameOf(site))}">×</button></div><span class="detail-group">${esc(t('g_' + site.group))}</span></th>`).join('');
   const rows = BIG_ROWS.map((row, index) => {
     const cells = sites.map(site => detailCell(row, site, w));
@@ -491,7 +502,7 @@ async function renderBig() {
     const direction = row === 'slope' || row === 'dark' ? -1 : 1;
     const best = allValues.length > 1 && row !== 'relay' ? (direction > 0 ? Math.max(...allValues) : Math.min(...allValues)) : null;
     const unique = best !== null && allValues.filter(v => v === best).length === 1;
-    return `<tr class="r-${row}"><th scope="row" class="lbl"><span class="detail-icon" aria-hidden="true">${detailIcons[index]}</span>${labels[index]}<button class="detail-info" aria-label="${esc(labels[index])}" title="${esc(detailHelp[ko ? 'ko' : 'en'][index])}">◇</button></th>
+    return `<tr class="r-${row}"><th scope="row" class="lbl"><span class="detail-icon" aria-hidden="true">${detailIcons[index]}</span>${labels[index]}<button class="detail-info" aria-label="${esc(labels[index])}" title="${esc(detailHelp[ko ? 'ko' : 'en'][index])}">${INFO_IC}</button></th>
     ${cells.map((c, i) => `<td class="${sites[i].id === LLSN().focus ? 'focused ' : ''}${unique && c.v === best ? 'best' : ''}">${c.html}</td>`).join('')}</tr>`;
   }).join('');
   const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '자세히 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');

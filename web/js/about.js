@@ -104,8 +104,14 @@ const IC = {
     SV('<ellipse cx="10" cy="10" rx="8" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-25 10 10)"/><circle cx="10" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>'),
     SV('<rect x="3" y="6" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="10" cy="11" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 6l1.2-2h3.6L13 6" fill="none" stroke="currentColor" stroke-width="1.4"/>')],
 };
-/** the credits text uses *italics* only */
-const md = x => esc(x).replace(/\*([^*]+)\*/g, '<i>$1</i>');
+/** the credits text uses *italics*, [label](target) links (relative targets are files in submission/), bare https:// addresses,
+    doi:10.x identifiers and the github.com repository address; every link opens in a new tab */
+const SUBMISSION_URL = 'https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/submission/';
+const A = (href, label) => `<a class="ls-link" href="${href}" target="_blank" rel="noopener">${label}</a>`;
+const md = x => esc(x).replace(/\*([^*]+)\*/g, '<i>$1</i>').replace(
+  /\[([^\]]+)\]\(([^)\s]+)\)|(https:\/\/[^\s)]+)|doi:(10\.\d{4,9}\/\S+?)(?=[.;,]?(?:\s|$))|(?<![\/\w])(github\.com\/[\w.\/-]+?)(?=[.;,]?(?:\s|$))/g,
+  (m, label, target, url, doi, gh) => label ? A(/^https?:/.test(target) ? target : SUBMISSION_URL + target, label)
+    : url ? A(url, url) : doi ? A(`https://doi.org/${doi}`, `doi:${doi}`) : A(`https://${gh}`, gh));
 
 const TEAM = [['Dongju Kim', 'team lead · validation'], ['Sua Kim', 'integrator · Korea links · custom points'], ['Minchul Kim', 'ephemeris · site catalogue'],
   ['Jiyong Sung', 'terrain · horizons · local grids'], ['Soyun Jeong', 'whole-Moon maps'], ['Chaei Oh', 'visual design']];
@@ -159,8 +165,7 @@ async function render() {
     <table class="src-tbl" style="margin-top:10px"><tbody>${rb.map(r => `<tr><td>${esc(r.mission)}</td><td>${r.difference_text ? esc(r.difference_text) : esc(t('hcNoSrc'))}${r.source_url ? ` · <a href="${esc(r.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}</tbody></table>
     <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></details>
     <details id="about-sources"><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
-      <p class="credits-add" lang="en">Fonts (added 2026-11-15): Geist, Geist Mono — Copyright 2024 The Geist Project Authors, SIL Open Font License 1.1, served by Google Fonts (C26, C27).</p>
-      <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li><span class="muted num">${id}.</span> ${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
+      <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li>${id ? `<span class="muted num">${id}.</span> ` : ''}${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
     <details id="about-limits"><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
       <p id="about-si">${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>

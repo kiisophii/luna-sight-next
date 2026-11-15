@@ -1092,3 +1092,27 @@ body.on-about { overflow-x: clip; }
 .ls-about .abh-text h1 { font-size: clamp(22px, 2.5vw, 38px); }
 .abh-lead { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 860px) { .abh-lead { display: none; } }
+
+/* ================================================================ About: team copy layout (copy's 12-column grid, numbered sections) */
+.abh-name { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--n-mute); margin-bottom: 6px; }
+.abh-btns .ls-btn:not(.primary) { background: transparent; border-color: rgba(237, 237, 237, .35); }
+.ab-no { display: block; font-size: 11px; color: var(--n-dim); margin-bottom: 14px; letter-spacing: .08em; }
+.ab-sec > div:first-child h2 { margin: 0; }
+.ab-body p { margin: 0 0 14px; color: #c9ccd2; font-size: 15px; line-height: 1.65; max-width: 720px; }
+.ab-body p.ab-strong { color: var(--n-text); font-weight: 600; }
+.ab-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ab-steps .ls-panel h3 { margin: 0 0 8px; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.ab-steps .ls-panel p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--n-mute); }
+.ab-cards .ls-panel .ab-act { margin-top: auto; align-self: flex-start; height: 30px; font-size: 12.5px; border-radius: 999px; }
+.ab-measures th[scope="row"] { color: var(--n-text); font-weight: 600; width: 34%; }
+.ab-measures td { color: #c9ccd2; }
+.ab-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ab-links .ls-btn { height: 32px; border-radius: 999px; font-size: 13px; }
+.ab-links.small { font-size: 13px; color: var(--n-mute); gap: 4px; }
+.ab-by { color: var(--n-mute) !important; margin-top: 18px !important; }
+.ab-ref-sep { height: 1px; background: var(--line-2); margin: 24px 0 8px; }
+@media (max-width: 1099px) { .ab-steps { grid-template-columns: 1fr; } }
+/* hero band holds the team's two-sentence lead: a little taller on desktop, caption out of the text's way */
+@media (min-width: 861px) { .ls-about .ab-hero { height: max(260px, calc((100vh - var(--head-h)) * .34)); } .abh-text { max-width: 470px; } .ls-about .abh-text h1 { font-size: clamp(22px, 2.3vw, 34px); } }
+@media (max-width: 860px) { .ls-about .ab-hero { height: 260px; } .abh-cap { right: 8px; bottom: 4px; font-size: 9.5px; } .abh-text { top: 46%; } .abh-btns .ls-btn { height: 30px; font-size: 12.5px; } }
+@media (max-width: 860px) { .abh-cap { top: 8px; bottom: auto; right: 8px; } }

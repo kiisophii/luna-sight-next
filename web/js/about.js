@@ -8,6 +8,7 @@ import { hindcast, validation } from './values.js';
 import { RULE } from './compare_view.js';
 import { CREDITS } from './credits.js';
 import { mountHero } from './about_hero.js';
+import { ABOUT_COPY } from './about_copy.js';
 
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
@@ -107,16 +108,29 @@ async function render() {
   const H = await headline(), v = await validation(), h = await hindcast();
   const inRange = v?.named ? v.named.filter(n => n.ours_sun >= n.pgda_sun_min300 && n.ours_sun <= n.pgda_sun_max300).length : null;
   const ap = h?.apollo_sun_elevation || [], rb = h?.robotic_sunset || [];
+  const C = ABOUT_COPY[getLang() === 'ko' ? 'ko' : 'en'], X = esc;
   root.innerHTML = `
   <div class="ab-hero" id="ab-hero">
     <div class="abh-scene"></div><div class="abh-shade" aria-hidden="true"></div>
-    <div class="abh-text"><h1 tabindex="-1">${E('abH1')}</h1><p class="abh-lead">${E('abLead')}</p>
-      <p class="abh-btns"><a class="ls-btn primary" href="#" data-explore>${E('abExplore')} →</a></p></div>
+    <div class="abh-text"><div class="abh-name">${X(C.hero.name)}</div><h1 tabindex="-1">${X(C.hero.h1)}</h1>${C.hero.lead.map(x => `<p class="abh-lead">${X(x)}</p>`).join('')}
+      <p class="abh-btns"><a class="ls-btn primary" href="#" data-act="explore">${X(C.hero.btns[0])} →</a><a class="ls-btn" href="#about-steps" data-act="how">${X(C.hero.btns[1])}</a></p></div>
     <p class="abh-cap"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</p>
   </div>
-  <section class="ab-sec" id="about-why"><h2>${E('abWhy')}</h2><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.why[k - 1]}<h3>${E('abW' + k)}</h3><p>${E('abW' + k + 't')}</p></div>`).join('')}</div></section>
-  <section class="ab-sec" id="about-how"><h2>${E('abHow')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.how[k - 1]}<h3>${E('abH' + k + 's')}</h3><p>${E('abH' + k + 't')}</p></div>`).join('')}</div>
-    <details><summary>${E('abKeys')}</summary><p class="muted">${E('abKeysT')}</p></details></div></section>
+  <section class="ab-sec" id="about-why"><div><span class="ab-no num">01</span><h2>${X(C.why.h2)}</h2></div><div class="ab-body">${C.why.p.map((x, k) => `<p${k === C.why.p.length - 1 ? ' class="ab-strong"' : ''}>${X(x)}</p>`).join('')}</div></section>
+  <section class="ab-sec" id="about-steps"><div><span class="ab-no num">02</span><h2>${X(C.steps.h2)}</h2></div><div class="ab-steps">${C.steps.items.map(it => `<div class="ls-panel"><h3><span class="circ">${X(it.n)}</span> ${X(it.h)}</h3><p>${X(it.p)}</p></div>`).join('')}</div></section>
+  <section class="ab-sec" id="about-what"><div><span class="ab-no num">03</span><h2>${X(C.what.h2)}</h2></div><div class="ab-cards">${C.what.items.map((it, k) => `<div class="ls-panel"><h3>${X(it.h)}</h3><p>${X(it.p)}</p><a class="ls-btn ab-act" href="#" data-act="${['dates', 'near', 'relay'][k]}">${X(it.btn)} →</a></div>`).join('')}</div></section>
+  <section class="ab-sec" id="about-results"><div><span class="ab-no num">04</span><h2>${X(C.results.h2)}</h2></div><div class="ab-body">
+    <table class="src-tbl ab-measures"><thead><tr><th>${X(C.results.head[0])}</th><th>${X(C.results.head[1])}</th></tr></thead><tbody>${C.results.rows.map(r => `<tr><th scope="row">${X(r[0])}</th><td>${X(r[1])}</td></tr>`).join('')}</tbody></table>
+    ${C.results.p.map(x => `<p>${X(x)}</p>`).join('')}</div></section>
+  <section class="ab-sec" id="about-data"><div><span class="ab-no num">05</span><h2>${X(C.data.h2)}</h2></div><div class="ab-body">${C.data.p.map(x => `<p>${X(x)}</p>`).join('')}
+    <p class="ab-links">${C.data.btns.map((x, k) => `<a class="ls-btn" href="#" data-act="${['sources', 'methods', 'limits'][k]}">${X(x)}</a>`).join('')}</p></div></section>
+  <section class="ab-sec" id="about-korea"><div><span class="ab-no num">06</span><h2>${X(C.korea.h2)}</h2></div><div class="ab-body">${C.korea.p.map(x => `<p>${X(x)}</p>`).join('')}
+    <p class="ab-links"><a class="ls-btn ab-act" href="#" data-act="korea">${X(C.korea.btn)} →</a></p></div></section>
+  <section class="ab-sec ab-start" id="about-start"><div><span class="ab-no num">07</span><h2>${X(C.start.h2)}</h2></div><div class="ab-body"><p>${X(C.start.p)}</p>
+    <p class="ab-links"><a class="ls-btn primary" href="#" data-act="explore">${X(C.start.btn)} →</a></p>
+    <p class="ab-by"><em>${X(C.start.by)}</em></p>
+    <p class="ab-links small">${C.start.links.map((x, k) => `<a class="ls-link" href="#" data-act="${['team', 'credits', 'ai'][k]}">${X(x)}</a>`).join('<span aria-hidden="true"> · </span>')}</p></div></section>
+  <div class="ab-ref-sep" role="presentation"></div>
   <section class="ab-sec" id="about-defs"><h2>${E('abDefs')}</h2><dl class="defs">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => `<dt>${E('df' + k)}</dt><dd>${esc(fill(t('df' + k + 't'), { dark: RULE.darkH, lo: RULE.directLow * 100, hi: RULE.directHigh * 100 }))}</dd>`).join('')}</dl></section>
   <section class="ab-sec" id="about-validation"><h2>${E('abVal')}</h2><div>
     ${H ? `<p>${esc(fill(t('abValLead'), { n: v.n_points }))}</p>
@@ -130,16 +144,14 @@ async function render() {
     <table class="src-tbl"><thead><tr><th></th><th>UTC</th><th>ALSJ</th><th>Luna Sight</th><th>Δ</th></tr></thead><tbody>${ap.map(a => `<tr><td>${esc(a.mission)}</td><td class="num">${a.landing_utc.slice(0, 16).replace('T', ' ')}</td><td class="num">${a.reported_sun_el_deg.toFixed(2)}°</td><td class="num">${a.ours_sun_el_deg_catalogue_point.toFixed(2)}°</td><td class="num">${a.difference_deg_catalogue.toFixed(2)}°</td></tr>`).join('')}</tbody></table>
     <table class="src-tbl" style="margin-top:10px"><tbody>${rb.map(r => `<tr><td>${esc(r.mission)}</td><td>${r.difference_text ? esc(r.difference_text) : esc(t('hcNoSrc'))}${r.source_url ? ` · <a href="${esc(r.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}</tbody></table>
     <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></section>
-  <section class="ab-sec" id="about-korea"><h2>${E('abKorea')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.kr[k - 1]}<h3>${E('abK' + k)}</h3><p>${E('abK' + k + 't')}</p></div>`).join('')}</div>
-    <p><a href="#" data-gs>${E('abKMore')}</a></p></div></section>
   <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
     <details id="about-sources" open><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
       <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li><span class="muted num">${id}.</span> ${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
-    <details><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
+    <details id="about-limits"><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
-      <p>${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>
+      <p id="about-si">${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>
   </div></section>
-  <section class="ab-sec"><h2>${E('abCTA')}</h2><div><a class="ls-btn primary" href="#" data-mine style="height:40px;border-radius:999px;padding:0 1.4em">${E('abCTAb')}</a></div></section>`;
+`;
   mountHero(root.querySelector('.abh-scene'), E('abArtAria'));
   root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`);
   const nextBtn = root.querySelector('.ab-next');
@@ -148,9 +160,24 @@ async function render() {
   nextBtn.addEventListener('click', () => upcoming()?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
   const sync = () => { nextBtn.hidden = !upcoming(); };
   window.addEventListener('scroll', sync, { passive: true }); sync();
-  root.querySelector('[data-explore]').addEventListener('click', e => { e.preventDefault(); leave(); });
-  root.querySelector('[data-mine]').addEventListener('click', e => { e.preventDefault(); leave(); setTimeout(() => LLSN().openAdd?.('coord'), 100); });
-  root.querySelector('[data-gs]').addEventListener('click', e => { e.preventDefault(); leave(); setTimeout(() => { document.querySelector('#ls-brief [data-open="gs"]')?.click(); }, 200); });
+  // buttons: leave About for the app (and open the right block / tab), or jump inside About
+  const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  const openBlock = k => setTimeout(() => { const b = document.querySelector(`#ls-brief [data-open="${k}"]`); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+  root.addEventListener('click', e => {
+    const a = e.target.closest('[data-act]'); if (!a) return; e.preventDefault();
+    const act = a.dataset.act;
+    if (act === 'explore') leave();
+    else if (act === 'how') goIn('#about-steps');
+    else if (act === 'dates') { leave(); openBlock('date'); }
+    else if (act === 'near') { leave(); openBlock('near'); }
+    else if (act === 'korea') { leave(); openBlock('gs'); }
+    else if (act === 'relay') { leave(); setTimeout(() => { window.scrollTo({ top: 0 }); document.querySelector('#tray-cat .tc-tabs [data-c="relay"]')?.click(); }, 150); }
+    else if (act === 'sources' || act === 'credits') goIn('#about-sources', true);
+    else if (act === 'methods') goIn('#about-validation');
+    else if (act === 'limits') goIn('#about-limits', true);
+    else if (act === 'team') goIn('#about-team', true);
+    else if (act === 'ai') goIn('#about-si', true);
+  });
 }
 function leave() { history.pushState(null, '', location.pathname + location.search); window.dispatchEvent(new HashChangeEvent('hashchange')); }
 /** The hero picture: the same colour map as the 3D view, orthographic, lit from the side. */

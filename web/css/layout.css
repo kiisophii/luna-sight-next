@@ -1531,3 +1531,15 @@ body.on-about .ls-export { display: none; }
 
 /* ---- headings and sections that take script focus: no ring after a mouse / touch move (Safari), ring stays for keyboard users */
 html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabindex="-1"]:focus-visible { outline: none; }
+
+/* Bundle 10 follow-up: compact English tray headings below 1440; keep 14px labels. */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  html:lang(en) #ls-tray .tray-main { overflow: visible; }
+  html:lang(en) #ls-tray .tc-scroll { margin-right: -35px; padding-right: 3px; }
+  html:lang(en) #ls-tray .tc-desc, html:lang(en) #ls-tray .tc-body { margin-right: 22px; }
+  html:lang(en) #ls-tray .tc-h { width: calc(var(--tray-w) - 42px); flex-wrap: nowrap; gap: 2px; }
+  html:lang(en) #ls-tray .tc-h h4 { flex: none; }
+  html:lang(en) #ls-tray .tc-i { width: 16px; padding: 0; flex: none; }
+  html:lang(en) #ls-tray .tc-subs { flex: 0 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: auto; gap: 2px; }
+  html:lang(en) #ls-tray .tc-subs button { padding: 0; font-size: 14px; white-space: nowrap; }
+}

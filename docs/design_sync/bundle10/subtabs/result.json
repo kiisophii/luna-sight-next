@@ -1,38 +1,5 @@
 {
   "baseline": "58bbc449692185698f2d9eb6a2d52cb2a4707293",
   "cases": 64,
-  "failures": [
-    {
-      "mode": "pr97",
-      "width": 1280,
-      "lang": "en",
-      "cat": "sun",
-      "reason": "errors/overflow",
-      "errors": []
-    },
-    {
-      "mode": "pr97",
-      "width": 1280,
-      "lang": "en",
-      "cat": "earth",
-      "reason": "errors/overflow",
-      "errors": []
-    },
-    {
-      "mode": "pr97",
-      "width": 1280,
-      "lang": "en",
-      "cat": "relay",
-      "reason": "errors/overflow",
-      "errors": []
-    },
-    {
-      "mode": "pr97",
-      "width": 1280,
-      "lang": "en",
-      "cat": "terrain",
-      "reason": "errors/overflow",
-      "errors": []
-    }
-  ]
+  "failures": []
 }

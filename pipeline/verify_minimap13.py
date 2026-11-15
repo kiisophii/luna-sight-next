@@ -19,7 +19,7 @@ async def check(p,width,lang):
  print(width,lang,'open PASS',flush=True)
  await page.screenshot(path=str(OUT/f'open_{width}_{lang}.png'))
  assert await page.locator('.mm-destination').count()>=7
- assert await page.locator('.mm-list-title').inner_text()==('⌖ 이동 목록' if lang=='ko' else '⌖ Go to')
+ assert await page.locator('.mm-list-title').inner_text()==('이동 목록' if lang=='ko' else 'Go to')
  await page.evaluate('''()=>{window.__flights=[];const g=LLSN.globe;g.flyTo=x=>{window.__flights.push(x);return undefined;};}''')
  await page.locator('#mm-lat').fill('91');await page.locator('#mm-lon').fill('15');await page.locator('#mm-lon').press('Enter')
  assert await page.locator('.mm-err').inner_text();assert await page.evaluate('__flights.length')==0

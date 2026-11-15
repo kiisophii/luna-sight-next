@@ -518,7 +518,7 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   // Keep the precise UTC picker reachable when the dock uses a compact label.
   $('#utc-chip')?.insertAdjacentHTML('afterbegin', iconSvg('calendar', { size: 16 }));
   const utcButton = $('#utc-chip'), utcPop = $('#utc-pop'), utcHome = utcButton.parentElement;
-  const compactUTC = matchMedia('(min-width: 1100px) and (max-width: 1599px)');
+  const compactUTC = matchMedia('(min-width: 1100px)');
   // compact dock: the calendar button sits inside the dock, right after the speed stepper (it used to float above the dock)
   const placeUTC = () => { if (!compactUTC.matches) { utcHome.append(utcButton, utcPop); return; } const tbar = $('.ls-toolbar'), sp = tbar.querySelector('.tb-speed'); if (sp) sp.after(utcButton); else tbar.append(utcButton); tbar.append(utcPop); };
   compactUTC.addEventListener('change', placeUTC); placeUTC();

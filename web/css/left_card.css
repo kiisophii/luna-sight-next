@@ -78,7 +78,7 @@
 }
 @media (min-width: 1100px) and (max-width: 1439px) { :root { --panel-base-left: 344px; --panel-base-right: 316px; } }
 @media (min-width: 1100px) and (max-width: 1279px) { :root { --panel-base-left: 340px; --panel-base-right: 320px; } }
-@media (min-width: 1100px) and (max-width: 1599px) {
+@media (min-width: 1100px) {
   .ls .ls-toolbar #utc-chip { position: static; top: auto; left: auto !important; transform: none; flex: none; order: 0; width: 32px; height: 32px; margin: 0; padding: 0; display: inline-grid; place-items: center; border-radius: 9px; }
 }
 @media (min-width: 1100px) { .ls .ls-left .c2-bar .sort-row { flex: 0 0 auto; } }

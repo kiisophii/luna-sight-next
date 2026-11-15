@@ -1767,7 +1767,6 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
   #ls-brief h4 { break-after: avoid; page-break-after: avoid; }   /* a small heading stays with what follows */
   #ls-brief .sc-sum, #ls-brief .mini-tbl, #ls-brief .ls-detail .ls-panel { break-inside: avoid; page-break-inside: avoid; }
 }
-
 /* ---- dock time axis with two labels (short axis): first date left-aligned, last date right-aligned so they never touch */
 #tl-ticks .lb.start { transform: none; }
 #tl-ticks .lb.end { transform: translateX(-100%); }

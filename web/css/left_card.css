@@ -1,0 +1,37 @@
+/* Left card revision (Chaei's request "Luna Sight Left Card Revision", P0). Layout and spacing only:
+   data, sorting, relay-tower values and interactions are unchanged. Loaded after a11y.css. */
+
+/* P0-1 card width: ~392 px at 1440, ~360 px at 1280 (requested 380-420 / 350-390; map and tray stay clear).
+   A width the user dragged (--panel-user-left) still wins. */
+@media (min-width: 1100px) {
+  :root { --panel-base-left: 392px; }
+}
+@media (min-width: 1100px) and (max-width: 1439px) {
+  :root { --panel-base-left: 360px; }
+}
+
+/* P0-1 consistent inner spacing: 20 px sides, 16 px between sections */
+@media (min-width: 1100px) {
+  .ls .ls-left .ls-cond { padding: 16px 20px 0; }
+  .ls .ls-left .c2-bar { padding: 0 20px; }
+  .ls .ls-left .pk-scroll { padding: 0 12px 12px; }
+  .ls .ls-left .ls-add { margin-top: 0; }
+}
+
+/* P0-2 Mission conditions: summary chips share one height, wrap instead of overlapping; at most two chip rows */
+.ls .ls-left .c1-chips { flex-wrap: wrap; overflow: hidden; max-height: 48px; row-gap: 4px; }
+.ls .ls-left .c1-chips i, .ls .ls-left .c1-chips .c1-add, .ls .ls-left .c1-chips .c1-no-condition {
+  height: 22px; line-height: 20px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 0 7px; font-size: 11px; white-space: nowrap;
+  border: 1px solid rgba(237, 237, 237, .10); border-radius: 6px; }
+.ls .ls-left .c1-chips .c1-no-condition { color: var(--n-mute); background: rgba(237, 237, 237, .04); }
+.ls .ls-left #c1-sum { gap: 8px; margin-bottom: 4px; }
+.ls .ls-left .ls-cond .ls-card-head { gap: 8px; }
+
+/* P0-3 candidate rows: name and subtitle on one line each (ellipsis, full name in the title tooltip), values never overlap */
+.ls .ls-left .pk-main { min-width: 0; overflow: hidden; }
+.ls .ls-left .pk-name .nm { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ls .ls-left .pk-grp { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ls .ls-left .pk-vals { flex: none; }
+/* relay block inside the same row card: change and distance on one line when it fits */
+.ls .ls-left .pk-row .pk-relay { display: flex; flex-wrap: wrap; align-items: center; column-gap: 6px; row-gap: 2px; line-height: 1.35; }
+.ls .ls-left .pk-row .pk-relay > span, .ls .ls-left .pk-row .pk-relay > span:not(.num) { grid-column: auto; white-space: nowrap; overflow-wrap: normal; }

@@ -229,6 +229,16 @@ window.addEventListener('llsn:time', () => {
 });
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
+  tb.classList.toggle('time-off', k !== 'light');                // the time block folds for time-independent layers
+  if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
+    layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
+    const g0 = LL().globe; if (!g0) return;
+    const cv = document.createElement('canvas'); cv.width = 4; cv.height = 2; const c2 = cv.getContext('2d'); c2.fillStyle = '#9a9aa0'; c2.fillRect(0, 0, 4, 2);
+    await g0.setColorMap(cv, { flat: true });
+    const leg = $('#map-legend'); leg.hidden = false;
+    leg.innerHTML = `<div>${esc(t('lgRelief'))}</div><div class="muted" style="margin-top:3px">${esc(t('lgReliefNote'))}</div>`;
+    return;
+  }
   const g = LL().globe; if (!g) return;
   layer = k;
   tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
@@ -437,7 +447,11 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const md = i => { const x = d(i); return `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}`; };
   const ticks = () => {
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
-    const n = 5; el.innerHTML = Array.from({ length: n }, (_, k) => `<span>${md(Math.round(w.i0 + (w.i1 - w.i0) * k / (n - 1)))}</span>`).join('');
+    const span = w.i1 - w.i0 || 1, days = Math.floor(span / 24);
+    let html = '';
+    for (let dd = 0; dd <= days; dd++) { const f = (dd * 24) / span; html += `<i class="tk${dd % 7 === 0 ? ' big' : ''}" style="left:${(f * 100).toFixed(2)}%"></i>`; }
+    html += [0, 0.5, 1].map(f => `<span class="lb" style="left:${f * 100}%">${md(Math.round(w.i0 + span * f))}</span>`).join('');
+    el.innerHTML = html;
     const per = document.getElementById('tray-period');
     if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)}${getLang() === 'ko' ? '일' : ' d'}`; }
   };
@@ -489,4 +503,11 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
     last = n;
   });
   sync();
+})();
+
+// time label follows the handle (the calculation time is always on screen while the time block is open)
+(() => {
+  const nd = document.getElementById('scrub-needle'), lab = document.getElementById('utc-chip'); if (!nd || !lab) return;
+  const place = () => { lab.style.left = nd.style.left || '0%'; };
+  new MutationObserver(place).observe(nd, { attributes: true, attributeFilter: ['style'] }); place();
 })();

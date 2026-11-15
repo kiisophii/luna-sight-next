@@ -12,7 +12,6 @@
 >   - 대상: 아이콘 세트, 파비콘, 인트로 애니메이션 `luna-intro.js`, About 띠 그래픽 `about-journey.js`.
 >   - 모두 코드로 그렸고, AI 그림이나 외부 이미지가 아니다(팀 확인: 수아님, 2026-11-15).
 > - **로고는 이미지가 아니라 글자 워드마크다.**
-> - **앱 About 목록에는 아직 Inter 줄이 없다.** 넣을 문구는 아래 C25다.
 
 ## Text for the page
 
@@ -109,7 +108,7 @@ Opened on 14 November 2026 (KST) unless the source column says "resources_en.md"
 | C19 | **Confirmed.** r170 LICENSE "Copyright © 2010-2024 three.js authors", MIT. MIT asks that the notice stay with copies of the software; we load it from cdnjs, so the line plus a link to the LICENSE is enough for the About page | https://github.com/mrdoob/three.js/blob/r170/LICENSE |
 | C20 | **Confirmed.** Repository LICENSE = Apache License 2.0 | ../LICENSE |
 | C21 | **Basis confirmed: NASA Images and Media Usage Guidelines.** NASA content "used in a factual manner that does not imply endorsement may be used"; "NASA should be acknowledged as the source"; the Insignia and Logotype "are not in the public domain"; for SI uses, "do not imply any review or permission was granted by NASA". The Space Apps brand guidelines and 2026 participant terms pages were also opened: neither shows a required disclaimer text, so C21 is our own wording based on the NASA page | https://www.nasa.gov/nasa-brand-center/images-and-media/ ; https://www.spaceappschallenge.org/brand/ ; https://www.spaceappschallenge.org/legal/ |
-| C25 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)"; SIL OFL 1.1. Loaded from Google Fonts (index.html:12); Korean-screen UI text. **Not yet in the app's About list** (credits.js) | https://github.com/google/fonts/blob/main/ofl/inter/OFL.txt |
+| C25 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)"; SIL OFL 1.1. Loaded from Google Fonts (index.html:12); Korean-screen UI text. | https://github.com/google/fonts/blob/main/ofl/inter/OFL.txt |
 | C26 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git)"; SIL OFL 1.1. Loaded from Google Fonts (index.html:12, site_check.css:3); English-screen UI text. The app's About credits it in about.js:149 as "(Vercel)" | https://github.com/google/fonts/blob/main/ofl/geist/OFL.txt |
 | C27 | **Confirmed 2026-11-15.** Same holder as Geist; SIL OFL 1.1. English-screen numbers, dates and site names | https://github.com/google/fonts/blob/main/ofl/geistmono/OFL.txt |
 | C28 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)"; SIL OFL 1.1. Loaded by the intro (luna-intro.js:91, PR #113). PR #113 numbers this font "C22" in credits.js; that number is already used by the terrain line, so keep one entry (suggest C28) when merging | https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/OFL.txt |

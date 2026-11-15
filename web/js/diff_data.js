@@ -97,15 +97,17 @@ export async function siteStationLink(site, i0, i1) {
   if (core.terrainPending(site) || core.horizonMock(site)) return { pending: true };
   const bits = await bitsOnce();
   const a = Math.max(0, Math.floor(i0)), b = Math.floor(i1);
-  let n = 0, earth = 0, kdsa = 0, dsn = 0;
+  let n = 0, earth = 0, kdsa = 0, dsn = 0, any = 0;   // any = KDSA or one of the three DSN sites
   for (let k = a; k <= b; k++) {
     n++;
     if (!core.earthVisible(site, k)) continue;
     earth++;
     if (bits.KDSA[k]) kdsa++;
-    if (bits.DSN_GOLDSTONE[k] | bits.DSN_MADRID[k] | bits.DSN_CANBERRA[k]) dsn++;
+    const d = bits.DSN_GOLDSTONE[k] | bits.DSN_MADRID[k] | bits.DSN_CANBERRA[k];
+    if (d) dsn++;
+    if (d | bits.KDSA[k]) any++;
   }
-  return { hours: n, earth, kdsa, dsn };
+  return { hours: n, earth, kdsa, dsn, any };
 }
 
 export { koreaInfo };

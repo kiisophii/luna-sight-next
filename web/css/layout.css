@@ -690,3 +690,35 @@ body.on-about .ls-pages { display: none; }
 @media (max-width: 1099px) { .ls-left { position: static; margin: 12px 16px 0; height: auto; } .pk-scroll { max-height: 560px; } }
 .ls .cmp-n small { font-size: 13px; }
 .pk-name .nm { overflow-wrap: anywhere; }
+
+/* ================================================================ bundle C: (1) mission conditions = 2 x 3 cell grid */
+#c1-h { font-size: 17px; font-weight: 700; gap: 8px; color: var(--n-text); }
+.ls .circ { width: 16px; height: 16px; border: 0; background: rgba(237, 237, 237, .14); color: var(--n-text); font-size: 10px; font-weight: 600; }
+.ls-cond .ls-fold { width: 24px; height: 24px; border: 0; background: none; color: #C9D0DA; }
+.c1-grid { margin-top: 8px; gap: 8px; }
+.c1-grid label { font-size: 11.5px; color: #9AA4B5; gap: 6px; }
+.c1-grid input[type=date], .c1-grid .dd-box .dd-btn { height: 40px; background: transparent; border: 1px solid var(--n-line); border-radius: 6px; }
+.c1-grid input[type=date] { font-family: var(--font-num); font-size: 14px; color: var(--n-text); }
+#llsn-filters.ls-filters { margin: 12px 0 0; }
+.fc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1px; background: var(--n-line); border: 1px solid var(--n-line); border-radius: 10px; overflow: hidden; }
+.fc-cell { display: flex; flex-direction: column; gap: 4px; min-height: 99px; padding: 12px 14px 14px; background: var(--n-0); box-sizing: border-box; }
+.fc-top { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.fc-ic { width: 16px; height: 16px; flex: none; }
+.fc-lbl { font-size: 12px; color: var(--n-mute); flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fc-i { width: 20px; height: 20px; flex: none; padding: 0; border-radius: 50%; border: 1px solid var(--n-line); background: none; color: var(--n-mute); font: 600 10px var(--font); display: grid; place-items: center; cursor: help; }
+.fc-val { font: 500 15px var(--font-num); color: var(--n-text); white-space: nowrap; }
+.fc-val.unset { color: var(--n-dim); }
+.fc-val.warn { color: var(--warn); font-size: 12px; white-space: normal; }
+.fc-match .fc-val { font-size: 20px; margin-top: 4px; }
+/* thin slider: 2 px track, the set part tinted with the axis colour at 18 %, 12 x 12 square-ish thumb */
+.fc-range { -webkit-appearance: none; appearance: none; width: 100%; height: 14px; margin: auto 0 0; background:
+  linear-gradient(90deg, color-mix(in srgb, var(--ac) 45%, transparent) 0 var(--p, 0%), #2C2C30 var(--p, 0%) 100%) center / 100% 2px no-repeat; cursor: pointer; }
+.fc-range::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 3px; background: #EDEDED; box-shadow: 0 0 0 3px rgba(10, 10, 11, .9); }
+.fc-range::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 3px; background: #EDEDED; box-shadow: 0 0 0 3px rgba(10, 10, 11, .9); }
+.fc-range::-moz-range-track { background: transparent; }
+.fc-range:focus-visible { outline: 2px solid var(--n-text); outline-offset: 2px; }
+.fc-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.fc-foot p { margin: 0; font-size: 12px; color: var(--n-dim); line-height: 1.4; }
+.fc-foot .fl-reset { flex: none; color: var(--n-mute); font-size: 12px; text-decoration: none; min-height: 44px; padding: 0 4px; }
+#llsn-filters { position: relative; }
+.fc-tip { position: absolute; z-index: 30; width: 260px; padding: 8px 10px; border-radius: 6px; background: rgba(12, 12, 13, .96); border: 1px solid rgba(237, 237, 237, .14); font-size: 11.5px; line-height: 1.45; color: var(--n-text); }

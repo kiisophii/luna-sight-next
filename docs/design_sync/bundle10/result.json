@@ -1,4 +1,149 @@
 {
   "checks": 20,
-  "failures": []
+  "failures": [
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "light",
+        "x": 502,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "sun",
+        "x": 553,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "earth",
+        "x": 597,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "relief",
+        "x": 641,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "whole",
+        "x": 692,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "focus",
+        "x": 736,
+        "y": 672,
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "light",
+        "x": 442.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "sun",
+        "x": 481.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "earth",
+        "x": 516.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "relief",
+        "x": 551.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "whole",
+        "x": 590.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "reason": "button outside dock",
+      "b": {
+        "id": "focus",
+        "x": 625.5,
+        "y": 686.5,
+        "width": 32,
+        "height": 32
+      }
+    }
+  ]
 }

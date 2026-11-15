@@ -1,0 +1,229 @@
+{
+  "sha": "c147c21e5e747e9fca9fd41b4aa0629c0c2b9c9a",
+  "tabs": [
+    {
+      "width": 1920,
+      "lang": "en",
+      "tabs": [
+        {
+          "text": "Sunlight",
+          "width": 76.734375,
+          "height": 39
+        },
+        {
+          "text": "Earth view",
+          "width": 88.6875,
+          "height": 39
+        },
+        {
+          "text": "Relay",
+          "width": 60.796875,
+          "height": 39
+        },
+        {
+          "text": "Terrain",
+          "width": 67.78125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1920,
+      "lang": "ko",
+      "tabs": [
+        {
+          "text": "일조",
+          "width": 76.734375,
+          "height": 39
+        },
+        {
+          "text": "지구 가시",
+          "width": 88.6875,
+          "height": 39
+        },
+        {
+          "text": "중계탑",
+          "width": 60.796875,
+          "height": 39
+        },
+        {
+          "text": "지형",
+          "width": 67.78125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "tabs": [
+        {
+          "text": "Sunlight",
+          "width": 76.734375,
+          "height": 39
+        },
+        {
+          "text": "Earth view",
+          "width": 88.6875,
+          "height": 39
+        },
+        {
+          "text": "Relay",
+          "width": 60.796875,
+          "height": 39
+        },
+        {
+          "text": "Terrain",
+          "width": 67.78125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "lang": "ko",
+      "tabs": [
+        {
+          "text": "일조",
+          "width": 76.734375,
+          "height": 39
+        },
+        {
+          "text": "지구 가시",
+          "width": 88.6875,
+          "height": 39
+        },
+        {
+          "text": "중계탑",
+          "width": 60.796875,
+          "height": 39
+        },
+        {
+          "text": "지형",
+          "width": 67.78125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "lang": "en",
+      "tabs": [
+        {
+          "text": "Sunlight",
+          "width": 64.203125,
+          "height": 39
+        },
+        {
+          "text": "Earth view",
+          "width": 74.21875,
+          "height": 39
+        },
+        {
+          "text": "Relay",
+          "width": 50.859375,
+          "height": 39
+        },
+        {
+          "text": "Terrain",
+          "width": 56.71875,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "lang": "ko",
+      "tabs": [
+        {
+          "text": "일조",
+          "width": 64.203125,
+          "height": 39
+        },
+        {
+          "text": "지구 가시",
+          "width": 74.21875,
+          "height": 39
+        },
+        {
+          "text": "중계탑",
+          "width": 50.859375,
+          "height": 39
+        },
+        {
+          "text": "지형",
+          "width": 56.71875,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1100,
+      "lang": "en",
+      "tabs": [
+        {
+          "text": "Sunlight",
+          "width": 61.0625,
+          "height": 39
+        },
+        {
+          "text": "Earth view",
+          "width": 70.609375,
+          "height": 39
+        },
+        {
+          "text": "Relay",
+          "width": 48.375,
+          "height": 39
+        },
+        {
+          "text": "Terrain",
+          "width": 53.953125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1100,
+      "lang": "ko",
+      "tabs": [
+        {
+          "text": "일조",
+          "width": 61.0625,
+          "height": 39
+        },
+        {
+          "text": "지구 가시",
+          "width": 70.609375,
+          "height": 39
+        },
+        {
+          "text": "중계탑",
+          "width": 48.375,
+          "height": 39
+        },
+        {
+          "text": "지형",
+          "width": 53.953125,
+          "height": 39
+        }
+      ],
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

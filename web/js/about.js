@@ -163,7 +163,17 @@ async function render() {
   window.addEventListener('scroll', sync, { passive: true }); sync();
   // buttons: leave About for the app (and open the right block / tab), or jump inside About
   const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-  const openBlock = k => setTimeout(() => { const b = document.querySelector(`#ls-brief [data-open="${k}"]`); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+  // leaving About: the app may still be drawing, so retry until the target exists, then re-align twice — stop as soon as the user scrolls
+  const settle = (find, act) => {
+    let tries = 0, stop = false; const quit = () => { stop = true; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(ev => window.addEventListener(ev, quit, { once: true, passive: true }));
+    const go = () => { if (stop) return; const el = find(); if (!el) { if (++tries < 16) setTimeout(go, 250); return; }
+      act(el); [600, 1500].forEach(ms => setTimeout(() => { if (!stop) act(find() || el, true); }, ms)); };
+    setTimeout(go, 250);
+  };
+  const openBlock = k => settle(() => document.querySelector(`#ls-brief [data-open="${k}"]`), (b, again) => {
+    if (!again && b.getAttribute('aria-expanded') !== 'true') b.click();
+    document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); });
   root.addEventListener('click', e => {
     const a = e.target.closest('[data-act]'); if (!a) return; e.preventDefault();
     const act = a.dataset.act;
@@ -172,7 +182,9 @@ async function render() {
     else if (act === 'dates') { leave(); openBlock('date'); }
     else if (act === 'near') { leave(); openBlock('near'); }
     else if (act === 'korea') { leave(); openBlock('gs'); }
-    else if (act === 'relay') { leave(); setTimeout(() => { window.scrollTo({ top: 0 }); document.querySelector('#tray-cat .tc-tabs [data-c="relay"]')?.click(); }, 150); }
+    else if (act === 'relay') { leave(); settle(() => document.querySelector('#tray-cat .tc-tabs [data-c="relay"]'), (b, again) => {
+      if (b.getAttribute('aria-pressed') !== 'true') b.click();
+      if (window.innerWidth < 1100) document.getElementById('ls-tray')?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); else if (!again) window.scrollTo({ top: 0 }); }); }
     else if (act === 'sources' || act === 'credits') goIn('#about-sources', true);
     else if (act === 'methods') goIn('#about-validation');
     else if (act === 'limits') goIn('#about-limits', true);

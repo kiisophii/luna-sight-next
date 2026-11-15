@@ -429,3 +429,37 @@ fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('
   new MutationObserver(arrows).observe(host, { childList: true, subtree: true }); arrows();
 })();
 addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 열', colNext: '다음 열' });
+
+// ------------------------------------------------------------ bottom toolbar time parts (the copy's bar): ticks, UTC chip, speed stepper
+(() => {
+  const H0 = Date.UTC(2026, 0, 1), d = i => new Date(H0 + i * 3600e3);
+  const p2 = n => String(n).padStart(2, '0');
+  const md = i => { const x = d(i); return `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}`; };
+  const ticks = () => {
+    const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
+    const n = 5; el.innerHTML = Array.from({ length: n }, (_, k) => `<span>${md(Math.round(w.i0 + (w.i1 - w.i0) * k / (n - 1)))}</span>`).join('');
+    const per = document.getElementById('tray-period');
+    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)} d`; }
+  };
+  const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
+  window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
+  popover($('#utc-chip'), $('#utc-pop'));
+  // speed: ‹ 6h/s › stepper over the native select (app.js keeps reading #speed)
+  const sel = document.getElementById('speed'), val = document.getElementById('speed-val');
+  const show = () => { val.textContent = sel.options[sel.selectedIndex]?.textContent || ''; };
+  document.querySelector('.tb-speed')?.addEventListener('click', e => {
+    const b = e.target.closest('button[data-sp]'); if (!b) return;
+    sel.selectedIndex = Math.max(0, Math.min(sel.options.length - 1, sel.selectedIndex + Number(b.dataset.sp)));
+    sel.dispatchEvent(new Event('change', { bubbles: true })); show();
+  });
+  show();
+  // tray top: n / 10, description per view
+  const trayInfo = () => {
+    const n = document.getElementById('tray-n'); if (n) n.textContent = (LL().pins?.() || []).length;
+    const v = document.querySelector('#tray-view [aria-pressed="true"]')?.dataset.v || 'table';
+    const desc = document.getElementById('tray-desc'); if (desc) desc.textContent = t(v === 'table' ? 'trayDescTable' : v === 'dial' ? 'dialDesc' : 'altDesc');
+  };
+  ['llsn:pins', 'llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, trayInfo));
+  document.getElementById('tray-view')?.addEventListener('click', () => setTimeout(trayInfo, 0));
+  window.addEventListener('llsn:lang', ticks);
+})();

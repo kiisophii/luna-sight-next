@@ -110,46 +110,54 @@
     <!-- R. comparison tray -->
     <aside class="ls-tray empty" id="ls-tray" aria-labelledby="tray-h">
       <div class="ls-card-head">
-        <h2 id="tray-h"><svg class="step-ic" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="2.5" width="5.4" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="8.8" y="2.5" width="5.4" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span data-i18n="tray">Compare</span></h2>
+        <h2 id="tray-h"><span class="circ" aria-hidden="true">3</span><span data-i18n="tray">Comparison</span></h2>
         <span id="ls-valbadge" class="val-badge-slot"></span>
       </div>
-      <!-- empty state (Chaei #15): title + one line only -->
+      <!-- empty state: title + one line only -->
       <p class="tray-empty" data-i18n="trayEmpty">Pin sites in Candidates to compare them here</p>
       <div class="tray-main">
-        <!-- time bar stays at the top of the tray while the comparison below scrolls (#16) -->
-        <div class="tray-sticky">
-          <div class="tray-time">
-            <span class="lbl" data-i18n="selTimeUTC">Selected time (UTC)</span>
-            <div class="tray-time-in"><input id="t-date" type="date" required data-i18n-aria="tDateAria" aria-label="Selected date (UTC)"><input id="t-tod" type="time" step="60" required data-i18n-aria="tTimeAria" aria-label="Selected time of day (UTC)"></div>
-          </div>
-          <div class="scrub-row">
-            <div class="scrub-wrap">
-              <div class="scrub-ends num"><span id="scrub-a"></span><span id="scrub-b"></span></div>
-              <div class="scrub" id="scrub">
-                <canvas id="scrub-cv" aria-hidden="true"></canvas>
-                <span id="scrub-needle" class="needle" aria-hidden="true"></span>
-                <span id="scrub-tip" class="scrub-tip num" hidden></span>
-                <input id="slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="scrubAria">
-              </div>
-            </div>
-            <label class="speed"><span class="sr" data-i18n="speedAria"></span><select id="speed" data-i18n-aria="speedAria"><option value="1">1h/s</option><option value="6" selected>6h/s</option><option value="24">24h/s</option></select></label>
-            <button type="button" id="play" class="play" aria-pressed="false"></button>
-          </div>
-          <p class="scrub-note"><span id="scrub-for"></span> · <span data-i18n="speedNote"></span></p>
-        </div>
-        <!-- view: three segment buttons, no label (#17) -->
-        <div class="ls-seg tray-seg" id="tray-view" role="group" data-i18n-aria="trayView">
+        <div class="tray-sub"><h3 data-i18n="trayCmpH">Compare candidates</h3><span class="cmp-n num"><b id="tray-n">0</b><small>/ 10</small></span></div>
+        <p class="tray-period num" id="tray-period"></p>
+        <!-- view tabs (the copy's tab block; labels = this build's three views) -->
+        <div class="tray-tabs" id="tray-view" role="group" data-i18n-aria="trayView">
           <button type="button" data-v="table" aria-pressed="true" data-i18n="tv_table">Table</button><button type="button" data-v="dial" aria-pressed="false" data-i18n="tv_dial">Lunar-day clock</button><button type="button" data-v="alt" aria-pressed="false" data-i18n="tv_alt">Sun & Earth elevation</button>
         </div>
+        <p class="tray-desc" id="tray-desc"></p>
         <div id="tray-body" class="tray-body" aria-live="off"></div>
-        <a class="ls-btn primary block" href="#ls-compare" data-i18n="details">See details below ↓</a>
+        <a class="tray-more" href="#ls-compare"><span data-i18n="trayMore">Detailed comparison</span> <span aria-hidden="true">↓</span></a>
       </div>
     </aside>
 
     <!-- C2. layer / camera toolbar -->
+    <!-- bottom toolbar (the copy's 800 x 52 bar): light layer | play · timeline · UTC chip · speed | long-term layers | camera -->
     <div class="ls-toolbar" role="toolbar" data-i18n-aria="tbAria">
       <div class="tb-group" role="group">
         <button type="button" data-layer="light" aria-pressed="true" data-tip="tbt_light" data-i18n-aria="tb_light"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+      </div>
+      <button type="button" id="play" class="play" aria-pressed="false"></button>
+      <div class="tb-time">
+        <div class="scrub" id="scrub">
+          <canvas id="scrub-cv" aria-hidden="true"></canvas>
+          <span id="scrub-needle" class="needle" aria-hidden="true"></span>
+          <span id="scrub-tip" class="scrub-tip num" hidden></span>
+          <input id="slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="scrubAria">
+        </div>
+        <div class="tl-ticks num" id="tl-ticks" aria-hidden="true"></div>
+        <span id="scrub-a" hidden></span><span id="scrub-b" hidden></span><span id="scrub-for" class="sr"></span>
+      </div>
+      <div class="tb-utc">
+        <button type="button" class="utc-chip" id="utc-chip" aria-expanded="false" aria-controls="utc-pop"><small>UTC</small><b class="num" id="utc-val"></b></button>
+        <div class="ls-pop utc-pop" id="utc-pop" role="dialog" hidden>
+          <span class="lbl" data-i18n="selTimeUTC">Selected time (UTC)</span>
+          <div class="tray-time-in"><input id="t-date" type="date" required data-i18n-aria="tDateAria" aria-label="Selected date (UTC)"><input id="t-tod" type="time" step="60" required data-i18n-aria="tTimeAria" aria-label="Selected time of day (UTC)"></div>
+        </div>
+      </div>
+      <div class="tb-speed speed" role="group" data-i18n-aria="speedAria">
+        <button type="button" data-sp="-1" data-i18n-aria="speedDown">‹</button><span class="num" id="speed-val">6h/s</span><button type="button" data-sp="1" data-i18n-aria="speedUp">›</button>
+        <select id="speed" data-dd-skip hidden data-i18n-aria="speedAria"><option value="1">1h/s</option><option value="6" selected>6h/s</option><option value="24">24h/s</option></select>
+      </div>
+      <span class="tb-sep" aria-hidden="true"></span>
+      <div class="tb-group" role="group">
         <button type="button" data-layer="sun" aria-pressed="false" data-tip="tbt_mean" data-i18n-aria="tb_mean"><svg class="ic" viewBox="0 0 16 16"><path d="M2 12h12" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 12a3.5 3.5 0 0 1 7 0" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v2M3.5 6l1.2 1.2M12.5 6l-1.2 1.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
         <button type="button" data-layer="earth" aria-pressed="false" data-tip="tbt_earthmap" data-i18n-aria="tb_earthmap"><svg class="ic" viewBox="0 0 16 16"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></button>
       </div>

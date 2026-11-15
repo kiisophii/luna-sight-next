@@ -37,6 +37,11 @@ jobs:
         run: node pipeline/build_detail_dates.mjs
       - name: Full author aggregation and legacy regression checks
         run: python pipeline/check_detail_dates_run.py
+      - name: Diagnose pre-existing exact-float coordinate failures
+        run: |
+          git fetch --depth=1 origin 300b8499e3ea4cadf1e9f2c36a267ba91e935aee
+          python pipeline/check_local250_portability.py
+          python -m pytest pipeline/test_local250_portability.py -q | tee docs/z3_checks/local250_tests.txt
       - name: Complete repository contract
         run: |
           set -o pipefail

@@ -1,0 +1,23 @@
+{
+  "stations": 4,
+  "window_count": 7058,
+  "minute_samples": 10517764,
+  "max_edge_diff_s": 1.0029296875,
+  "window_failures": [],
+  "unmatched_windows": {},
+  "station_hour_bit_mismatches": 0,
+  "site_station_pairs": 132,
+  "link_bit_mismatches": 0,
+  "max_link_hours_diff": 0,
+  "app_totals_mismatches": [],
+  "historical_total_mismatches": [],
+  "daily_mismatched_dates": 6,
+  "daily_dates": 1826,
+  "daily_rows": 2516,
+  "invalid_json": [
+    "windows_dsn_goldstone.json",
+    "windows_dsn_madrid.json"
+  ],
+  "runtime_s": 0.7450745105743408,
+  "full_recomputation_wall_s": 128.8433027267456
+}

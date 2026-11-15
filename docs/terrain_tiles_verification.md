@@ -26,7 +26,7 @@ Per-sample tables (tile, lat/lon, original and tile height, |Δ|) are in the led
 |---|---|---|
 | LOLA LDEM_64 float V3.1 (64 ppd) | `data/raw/global/ldem_64_float.img` | Size = PDS Content-Length 1,061,683,200 B. **All 64 byte ranges used were re-fetched from PDS by HTTP Range: identical.** Label: PC_REAL 32-bit, km, OFFSET 1737.4, CENTER_LONGITUDE 180, LINE/SAMPLE_PROJECTION_OFFSET 5759.5 / 11519.5 → pixel centres lat = 90 − (r+0.5)/64, lon = (c+0.5)/64 (0–360 E); no MISSING_CONSTANT; frame "MEAN EARTH/POLAR AXIS OF DE421" |
 | LOLA LDEM_16 float V3.1 (16 ppd) | `data/raw/global/ldem_16_float.img` | Size = PDS 66,355,200 B; 3 ranges re-fetched: identical; same label conventions |
-| PGDA `LDEM_80S_20MPP_ADJ.TIF` | https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/ over HTTP (rasterio `/vsicurl/`), no local cache | 30,400², float32, NaN no-data, transform (20, −304000, 304000), AREA_OR_POINT = Area, `+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400`; Content-Length 2,696,082,051, Last-Modified 2023-07-07 |
+| PGDA `LDEM_80S_20MPP_ADJ.TIF` | https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF over HTTP (product page https://pgda.gsfc.nasa.gov/products/90) (rasterio `/vsicurl/`), no local cache | 30,400², float32, NaN no-data, transform (20, −304000, 304000), AREA_OR_POINT = Area, `+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400`; Content-Length 2,696,082,051, Last-Modified 2023-07-07 |
 | PGDA `LDEM_60S_60MPP_ADJ.TIF` | same | 31,040², transform (60, −931200, 931200), Area; 3,089,110,093 B |
 | PGDA `LDEM_60S_240MPP_ADJ.TIF` | same | 7,760², transform (240, −931200, 931200), Area; 218,961,039 B |
 

@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "tests": 13,
+  "test_command": "python -m unittest discover -s pipeline/tests -p test_task_pq.py",
+  "test_output": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.629s\n\nOK\n",
+  "runs": [
+    {
+      "command": "python pipeline/task_pq_check.py ",
+      "status": "PASS",
+      "csv_sha256": "e9fb5f2dd7511356a201b187df0008f742cfb9666c59c814173810ddc42e4685",
+      "resumed_sites": 0,
+      "elapsed_seconds": 1.611341200012248
+    },
+    {
+      "command": "python pipeline/task_pq_check.py --resume",
+      "status": "PASS",
+      "csv_sha256": "e9fb5f2dd7511356a201b187df0008f742cfb9666c59c814173810ddc42e4685",
+      "resumed_sites": 33,
+      "elapsed_seconds": 1.3939310999703594
+    },
+    {
+      "command": "python pipeline/task_pq_check.py ",
+      "status": "PASS",
+      "csv_sha256": "e9fb5f2dd7511356a201b187df0008f742cfb9666c59c814173810ddc42e4685",
+      "resumed_sites": 0,
+      "elapsed_seconds": 1.7142620999948122
+    }
+  ],
+  "identical_comparison_csv": true,
+  "report_exit_code": 0,
+  "elapsed_seconds": 7.450226699991617
+}

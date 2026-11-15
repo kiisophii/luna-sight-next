@@ -8,7 +8,7 @@ No card 9 output was overwritten, and the global map was not recomputed.
 ## 1. PGDA comparison (card 9 check in `docs/2단계_분배.md`)
 
 ### Truth: `AVGVISIB_75S_120M_201608.TIF` (+ `_EARTH`)
-- Source: https://pgda.gsfc.nasa.gov/products/69 (Mazarico et al. 2011, Icarus 211, 1066–1081), downloaded from https://pgda.gsfc.nasa.gov/data/MoonIllumination/.
+- Source: https://pgda.gsfc.nasa.gov/products/69 (Mazarico et al. 2011, Icarus 211, 1066–1081), downloaded from the `AVGVISIB_*.TIF` file links on that page (e.g. https://pgda.gsfc.nasa.gov/data/MoonIllumination/AVGVISIB_75S_120M_201608.TIF; the folder itself has no listing page).
 - Grid: 7624 × 7624 int16, value = DN × 4e-5, no-data −32768.
 - Projection: polar stereographic, `+R=1737400`, 120 m/px, pixel-is-area, corner ±457.44 km. This is the same projection formula as ours (checked by reading the GeoTIFF tie point and pixel scale).
 - Definition (product page): solar illumination of the **finite disc**, and Earth "visible if **any part** of its disc is not obscured".

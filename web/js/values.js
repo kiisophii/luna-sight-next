@@ -102,17 +102,19 @@ export const validation = () => getJSON(`${core.state.base}validation.json`).cat
 export const hindcast = () => getJSON(`${core.state.base}hindcast.json`).catch(() => null);
 
 // ------------------------------------------------------------ neighbourhood grid (local250 → local fallback)
-// Contract §22: web/data/local250/<ID>.json (41 x 41 nodes, 250 m apart, ±5 km) exists only for catalogue sites at
-// lat ≤ −75°. Everything else, or a failed/missing 250 m file, falls back to §15 web/data/local/<ID>.json
-// (21 x 21 nodes, 1 km apart, ±10 km). Same fields and metric definitions in both.
-export const LOCAL250_MAX_LAT = -75;
+// Contract §22: web/data/local250/<ID>.json (41 x 41 nodes, 250 m apart, ±5 km), listed in local250/index.json
+// (all 33 catalogue sites since v37). A site missing from the index, or a failed/missing 250 m file, falls back to
+// §15 web/data/local/<ID>.json (21 x 21 nodes, 1 km apart, ±10 km). Same fields and metric definitions in both.
+let index250 = null;
+const local250Ids = () => (index250 ||= fetch(`${core.state.base}local250/index.json`, { cache: 'no-cache' })
+  .then(r => (r.ok ? r.json() : null)).then(j => new Set((j?.sites || []).map(s => s.id))).catch(() => new Set()));
 const gridCache = new Map();
 /** {data, dir, spacing_m, half_km, fine, fellBack, ms} or null (no grid at all, e.g. a custom point). */
 export function localGrid(id) {
   if (!gridCache.has(id)) gridCache.set(id, (async () => {
     const site = core.state.sites?.find(s => s.id === id);
     if (!site || site.user || site.group === 'custom') return null;
-    const want250 = site.lat <= LOCAL250_MAX_LAT;
+    const want250 = (await local250Ids()).has(id);
     const t0 = performance.now();
     for (const dir of want250 ? ['local250', 'local'] : ['local']) {
       try {

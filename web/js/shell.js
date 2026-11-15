@@ -201,6 +201,16 @@ function stitch(idx, layerId) {
   return p;
 }
 let layer = 'light', layerNoted = false;
+// elevation layer: colour scale of the designer's copy (Chaei: navy -4.5 km -> pink +5.5 km), values beyond the ends clamp.
+// The legend also states the real min / max of the LOLA tiles in use (data/globe/index.json, all levels).
+const ELEV_MIN = -4.5, ELEV_MAX = 5.5;
+const ELEV_RAMP = ['#0E2147', '#2A4677', '#56729F', '#4F8C8E', '#9CB463', '#E3D46C', '#E9A55F', '#DE7C64', '#F2D2C6'];
+let elevR = null;
+const elevRange = () => (elevR ||= fetch(`${LL().state?.base || 'data/'}globe/index.json`).then(r => r.json()).then(j => {
+  let a = Infinity, b = -Infinity;
+  for (const list of Object.values(j.tiles || {})) for (const t of list) { if (t[3] < a) a = t[3]; if (t[4] > b) b = t[4]; }
+  return isFinite(a) ? [a / 1000, b / 1000] : null;
+}).catch(() => null));
 // a long-term (time-independent) layer is on and the user moves the time: say so once, offer Sunlight (Chaei #22)
 window.addEventListener('llsn:time', () => {
   if (layer === 'light' || layerNoted) return;
@@ -214,6 +224,22 @@ window.addEventListener('llsn:time', () => {
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
   tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  LL().globe?.setElevation?.(null);
+  { const h1 = document.getElementById('hud-1'); if (h1) h1.style.display = k === 'light' ? '' : 'none'; }   // one legend at a time: the LROC/Earth-set line belongs to the Sunlight view
+  if (k === 'elev') {                                              // elevation: LOLA height colour over the same fixed-light hillshade (relief merged in)
+    layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
+    const g0 = LL().globe; if (!g0) return;
+    await g0.setColorMap(null);
+    g0.setElevation({ min: ELEV_MIN, max: ELEV_MAX, stops: ELEV_RAMP });
+    const r = await elevRange();
+    if (layer !== 'elev') return;
+    const leg = $('#map-legend'); leg.hidden = false;
+    const km = x => `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x).toFixed(1)}`;
+    leg.innerHTML = `<div>${esc(t('lgElev'))}</div>
+      <div class="bar" style="background:linear-gradient(90deg, ${ELEV_RAMP.join(', ')})"></div><div class="ends"><span>≤ ${km(ELEV_MIN)} km</span><span>${km((ELEV_MIN + ELEV_MAX) / 2)}</span><span>≥ ${km(ELEV_MAX)} km</span></div>
+      <div class="muted" style="margin-top:3px">${esc(fill(t('lgElevNote'), { x: 3, a: r ? km(r[0]) : '—', b: r ? km(r[1]) : '—' }))}</div>`;
+    return;
+  }
   if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
     layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
     const g0 = LL().globe; if (!g0) return;

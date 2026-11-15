@@ -226,3 +226,9 @@ html .ls #ls-tray .tc-h.wide .tc-subs, #ls-tray .tc-h.wide .tc-subs { flex: 1 0 
 
 /* Site check page: one centred body column, max 1392 px with at least 24 px each side (Chaei 23:00 request); text stays left-aligned */
 @media (min-width: 761px) { html .ls #ls-brief { box-sizing: border-box; width: auto; max-width: 1392px; margin-left: max(24px, calc((100% - 1392px) / 2)); margin-right: max(24px, calc((100% - 1392px) / 2)); } }
+
+/* Site check summary numbers: two per row like a dashboard (Sua 23:3x); one column on phones; values and labels unchanged */
+html .ls #ls-brief .sc-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
+html .ls #ls-brief .sc-sum .sc-cell:nth-child(odd) { border-left: 0; padding-left: 0; }
+html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 1px solid var(--sc-line); padding-left: 16px; }
+@media (max-width: 600px) { html .ls #ls-brief .sc-sum { grid-template-columns: minmax(0, 1fr); } html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 0; padding-left: 0; } }

@@ -102,7 +102,7 @@ let i0 = 0, i1 = 0;            // analysis period (inclusive hour indices)
 let periodDays = 29.5;
 let playing = false, raf = 0, lastTs = 0;
 let pins = [];                 // [{id, n}] in pin order; n = stable display number (#1, #2, …), never reused while pinned
-let sortKey = 'both', relayOn = false, showAll = false;
+let sortKey = 'both', relayOn = false, showAll = true;   // the whole list scrolls inside the panel (no 'Show n more')
 
 // ------------------------------------------------------------ formatting
 const byId = id => core.state.sites.find(s => s.id === id);
@@ -227,7 +227,7 @@ function renderList() {
   $('#c2-other').textContent = rest.length;
   const hidden = rest.length - shown.length;
   const more = $('#pk-more');
-  more.hidden = rest.length <= Math.max(0, LIST_FIRST - pinned.length);
+  more.hidden = true;
   more.textContent = showAll ? t('less') : fill(t('more'), { n: hidden });
   $('#c2-count').textContent = fill(t('c2Count'), { n: core.state.sites.length });
   $('#c2-pinned').textContent = pins.length;

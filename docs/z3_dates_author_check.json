@@ -1,0 +1,208 @@
+{
+  "author_checks_only": true,
+  "sites": 33,
+  "valid_base_windows_checked": 179190,
+  "failures": 0,
+  "legacy_comparisons": 96360,
+  "max_legacy_fraction_rounding_difference": 4.7619047619074095e-05,
+  "records": [
+    {
+      "id": "APOLLO11",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "APOLLO12",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "APOLLO14",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "APOLLO15",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "APOLLO16",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "APOLLO17",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "LUNA16",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "LUNA20",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "LUNA24",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CHANGE3",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CHANGE4",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CHANGE5",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CHANGE6",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "SLIM",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "IM1",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "IM2",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "valid_base_windows_checked": 5430,
+      "out_of_range_base_rows": 48,
+      "legacy_rows_checked": 2920
+    }
+  ]
+}

@@ -1,0 +1,2650 @@
+[
+  {
+    "state": "before",
+    "width": 1920,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 586,
+        "y": 1010,
+        "width": 700,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 592,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 636,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 690.75,
+          "y": 999,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 967,
+          "y": 1017,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 1023,
+          "y": 1017,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 1059,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 1103,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 1147,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 1198,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 1242,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1514,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1599,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1684,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1769,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 1344,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 1172,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1920,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 586,
+        "y": 1010,
+        "width": 700,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 592,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 636,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 690.75,
+          "y": 999,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 967,
+          "y": 1017,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 1023,
+          "y": 1017,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 1059,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 1103,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 1147,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 1198,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 1242,
+          "y": 1016,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1514,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1599,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1684,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1769,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 1344,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 1222,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1440,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 416,
+        "y": 830,
+        "width": 560,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 422,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 466,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 657,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 713,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 749,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 793,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 837,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 888,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 932,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1034,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1119,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1204,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1289,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 864,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 692,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1440,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 416,
+        "y": 830,
+        "width": 560,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 422,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 466,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 657,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 713,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 749,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 793,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 837,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 888,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 932,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1034,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1119,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1204,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1289,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 864,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 742,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1280,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 374,
+        "y": 724,
+        "width": 500,
+        "height": 100
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 488,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 419,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 750,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 806,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 539,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 583,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 627,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 678,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 722,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 922,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 995,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1068,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1141,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 752,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 580,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1280,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 374,
+        "y": 724,
+        "width": 500,
+        "height": 100
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 488,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 419,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 750,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 806,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 539,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 583,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 627,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 678,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 722,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 922,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 995,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1068,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1141,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 752,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 630,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1100,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 366,
+        "y": 724,
+        "width": 340,
+        "height": 100
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 400,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 385,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 608,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 664,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 451,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 495,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 539,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 590,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 634,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 754,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 824,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 894,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 964,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 584,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 412,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1100,
+      "viewport": 1100,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 1100,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 366,
+        "y": 724,
+        "width": 340,
+        "height": 100
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 400,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 385,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 608,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 664,
+          "y": 781,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 451,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 495,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 539,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 590,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 634,
+          "y": 730,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 754,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 824,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 894,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 964,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 584,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 462,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1100,
+      "viewport": 1100,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 390,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 12,
+        "y": 545.515625,
+        "width": 366,
+        "height": 140
+      },
+      "bottom": 158.484375,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 60,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 19,
+          "y": 640.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 74.21875,
+          "y": 623.515625,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 105,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 161,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 197,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 241,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 285,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 110,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 154,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "south",
+          "x": 198,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "x": 242,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 38,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 117.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 197,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 276.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 282,
+        "y": 56,
+        "width": 96,
+        "height": 142
+      },
+      "legend": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "before",
+    "width": 390,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 12,
+        "y": 545.515625,
+        "width": 366,
+        "height": 140
+      },
+      "bottom": 158.484375,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 60,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 19,
+          "y": 640.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 74.21875,
+          "y": 623.515625,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 105,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 161,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 197,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 241,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 285,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 110,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 154,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "south",
+          "x": 198,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "x": 242,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 38,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 117.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 197,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 276.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 282,
+        "y": 56,
+        "width": 96,
+        "height": 142
+      },
+      "legend": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1920,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 536,
+        "y": 1008,
+        "width": 800,
+        "height": 52
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 592,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 636,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 690.75,
+          "y": 998,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 967,
+          "y": 1016,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 1023,
+          "y": 1016,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 1059,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 1103,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 1147,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 1198,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 1242,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1514,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1599,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1684,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1769,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 1344,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 1172,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1920,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 536,
+        "y": 1008,
+        "width": 800,
+        "height": 52
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 592,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 636,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 690.75,
+          "y": 998,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 967,
+          "y": 1016,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 1023,
+          "y": 1016,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 1059,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 1103,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 1147,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 1198,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 1242,
+          "y": 1015,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1514,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1599,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1684,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1769,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 1344,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 1222,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1440,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 416,
+        "y": 830,
+        "width": 560,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 422,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 466,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 657,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 713,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 749,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 793,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 837,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 888,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 932,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1034,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1119,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1204,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1289,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 864,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 692,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1440,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 416,
+        "y": 830,
+        "width": 560,
+        "height": 50
+      },
+      "bottom": 20,
+      "gap": "6px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 422,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 466,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 657,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 713,
+          "y": 837,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 749,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 793,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 837,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 888,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 932,
+          "y": 836,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 1034,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1119,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1204,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        },
+        {
+          "x": 1289,
+          "y": 198.4375,
+          "width": 81,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 864,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 742,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1280,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 368,
+        "y": 730,
+        "width": 512,
+        "height": 94
+      },
+      "bottom": 20,
+      "gap": "4px 6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 488,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 375,
+          "y": 779,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 794,
+          "y": 780,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 850,
+          "y": 780,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 539,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 583,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 627,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 678,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 722,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 922,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 995,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1068,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1141,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 752,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 580,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1280,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 368,
+        "y": 730,
+        "width": 512,
+        "height": 94
+      },
+      "bottom": 20,
+      "gap": "4px 6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 488,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 375,
+          "y": 779,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 794,
+          "y": 780,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 850,
+          "y": 780,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 539,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 583,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 627,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 678,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 722,
+          "y": 737,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 922,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 995,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1068,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        },
+        {
+          "x": 1141,
+          "y": 198.4375,
+          "width": 69,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 752,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 630,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1100,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 360,
+        "y": 739,
+        "width": 352,
+        "height": 85
+      },
+      "bottom": 20,
+      "gap": "3px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 428.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "play",
+          "x": 366,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 627,
+          "y": 784,
+          "width": 22,
+          "height": 30
+        },
+        {
+          "id": "1",
+          "x": 683,
+          "y": 784,
+          "width": 22,
+          "height": 30
+        },
+        {
+          "id": "sun",
+          "x": 467.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "earth",
+          "x": 502.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "relief",
+          "x": 537.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "whole",
+          "x": 576.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "focus",
+          "x": 611.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        }
+      ],
+      "tabs": [
+        {
+          "x": 754,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 824,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 894,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 964,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 584,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 412,
+        "y": 236,
+        "width": 300,
+        "height": 44
+      },
+      "documentWidth": 1100,
+      "viewport": 1100,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 1100,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 360,
+        "y": 739,
+        "width": 352,
+        "height": 85
+      },
+      "bottom": 20,
+      "gap": "3px",
+      "padding": "5px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 428.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "play",
+          "x": 366,
+          "y": 780,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "-1",
+          "x": 627,
+          "y": 784,
+          "width": 22,
+          "height": 30
+        },
+        {
+          "id": "1",
+          "x": 683,
+          "y": 784,
+          "width": 22,
+          "height": 30
+        },
+        {
+          "id": "sun",
+          "x": 467.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "earth",
+          "x": 502.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "relief",
+          "x": 537.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "whole",
+          "x": 576.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        },
+        {
+          "id": "focus",
+          "x": 611.5,
+          "y": 745,
+          "width": 32,
+          "height": 32
+        }
+      ],
+      "tabs": [
+        {
+          "x": 754,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 824,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 894,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        },
+        {
+          "x": 964,
+          "y": 198.4375,
+          "width": 66,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 584,
+        "y": 64,
+        "width": 128,
+        "height": 164
+      },
+      "legend": {
+        "x": 462,
+        "y": 236,
+        "width": 250,
+        "height": 29
+      },
+      "documentWidth": 1100,
+      "viewport": 1100,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 390,
+    "lang": "en",
+    "metrics": {
+      "dock": {
+        "x": 12,
+        "y": 545.515625,
+        "width": 366,
+        "height": 140
+      },
+      "bottom": 158.484375,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 60,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 19,
+          "y": 640.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 74.21875,
+          "y": 623.515625,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 105,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 161,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 197,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 241,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 285,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 110,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 154,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "south",
+          "x": 198,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "x": 242,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 38,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 117.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 197,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 276.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 282,
+        "y": 56,
+        "width": 96,
+        "height": 142
+      },
+      "legend": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "state": "after",
+    "width": 390,
+    "lang": "ko",
+    "metrics": {
+      "dock": {
+        "x": 12,
+        "y": 545.515625,
+        "width": 366,
+        "height": 140
+      },
+      "bottom": 158.484375,
+      "gap": "6px",
+      "padding": "6px",
+      "buttons": [
+        {
+          "id": "light",
+          "x": 60,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "play",
+          "x": 19,
+          "y": 640.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "utc-chip",
+          "x": 74.21875,
+          "y": 623.515625,
+          "width": 86,
+          "height": 16
+        },
+        {
+          "id": "-1",
+          "x": 105,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "1",
+          "x": 161,
+          "y": 553.515625,
+          "width": 22,
+          "height": 36
+        },
+        {
+          "id": "sun",
+          "x": 197,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "earth",
+          "x": 241,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "relief",
+          "x": 285,
+          "y": 552.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "whole",
+          "x": 110,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "focus",
+          "x": 154,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "south",
+          "x": 198,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "x": 242,
+          "y": 596.515625,
+          "width": 38,
+          "height": 38
+        }
+      ],
+      "tabs": [
+        {
+          "x": 38,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 117.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 197,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        },
+        {
+          "x": 276.5,
+          "y": 1558.953125,
+          "width": 75.5,
+          "height": 39
+        }
+      ],
+      "minimap": {
+        "x": 282,
+        "y": 56,
+        "width": 96,
+        "height": 142
+      },
+      "legend": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  }
+]

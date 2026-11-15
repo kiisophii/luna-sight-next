@@ -1,0 +1,61 @@
+{
+  "head": "beedb67e7993258720ebfc9219e140636f6e4b11",
+  "source": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF",
+  "results": [
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "inside": false,
+      "center_m": 104.56034555847415,
+      "center_bearing": 198.52174862146006,
+      "boundary_m": 94.50507843195801,
+      "boundary_bearing": 200.5140373154369,
+      "unsearched_lower_bound_m": 11193.656338953433,
+      "window": [
+        10049,
+        11170,
+        12922,
+        14043
+      ],
+      "raw_sha256": "7695da6c245fcfbf9c69d626b76cd133352085b4eaa4808abbc1bf94965caa41",
+      "center_relative_error": 4.035456232937804e-12,
+      "boundary_relative_error": 7.653750530193775e-12
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "inside": false,
+      "center_m": 164.66084073147894,
+      "center_bearing": 220.15586113512916,
+      "boundary_m": 150.876148561831,
+      "boundary_bearing": 221.30421428145152,
+      "unsearched_lower_bound_m": 11200.589988174095,
+      "window": [
+        15093,
+        16214,
+        14499,
+        15620
+      ],
+      "raw_sha256": "15e565a984527237e6e842d93f49009a31168fb95295b75952f16bd07a3c116c",
+      "center_relative_error": 9.148201801470886e-15,
+      "boundary_relative_error": 0.0
+    },
+    {
+      "id": "IM1",
+      "inside": false,
+      "center_m": 559.2821210252947,
+      "center_bearing": 302.0570251452242,
+      "boundary_m": 545.5340435297463,
+      "boundary_bearing": 301.76298858849725,
+      "unsearched_lower_bound_m": 4029.999535233301,
+      "window": [
+        0,
+        764,
+        15016,
+        16137
+      ],
+      "raw_sha256": "897e2fc2ca85835fa5d790e5347607ef8316226b5a58f215bce2229d136c0d51",
+      "center_relative_error": 5.175325259968283e-13,
+      "boundary_relative_error": 8.815129491294004e-14
+    }
+  ],
+  "passed": true
+}

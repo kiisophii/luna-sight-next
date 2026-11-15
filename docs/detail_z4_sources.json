@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "purpose": "Official mission context links; coordinates and landing times remain exactly the Task R CSV input. These pages do not override coordinate precision or resolve Task R time-source conflicts.",
+  "missions": {
+    "APOLLO11": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "APOLLO12": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "APOLLO14": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "APOLLO15": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "APOLLO16": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "APOLLO17": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "source_bytes_sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9"
+    },
+    "LUNA16": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:55.585865Z",
+      "source_bytes_sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f"
+    },
+    "LUNA20": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:55.585865Z",
+      "source_bytes_sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f"
+    },
+    "LUNA24": {
+      "agency": "NASA",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "title": "NASA lunar landing catalogue",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:55.585865Z",
+      "source_bytes_sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f"
+    },
+    "CHANGE3": {
+      "agency": "CNSA",
+      "url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+      "title": "CHANGE3 landing source",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:29:02.646841Z",
+      "source_bytes_sha256": "a8422e65fdacd4e91a514bef295f53fb033d8bafcde51b3eb2ccd834d1290413"
+    },
+    "CHANGE4": {
+      "agency": "CNSA",
+      "url": "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html",
+      "title": "China's Chang'e-4 probe makes historic landing on moon's far side",
+      "verification": "opened official page",
+      "checked_date": "2026-11-15"
+    },
+    "CHANGE5": {
+      "agency": "CNSA",
+      "url": "https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html",
+      "title": "Chang'e 5's reentry capsule lands with moon samples",
+      "verification": "official search result; full-page open timed out",
+      "checked_date": "2026-11-15"
+    },
+    "CHANGE6": {
+      "agency": "CNSA",
+      "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+      "title": "CHANGE6 landing source",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:30:18.495670Z",
+      "source_bytes_sha256": "4a02c365d5cb65fe34c22f35f197c0fcacb025bb8f7bdfd9a44b686ea4e5ce60"
+    },
+    "CHANDRAYAAN3": {
+      "agency": "ISRO",
+      "url": "https://www.isro.gov.in/Chandrayaan3.html",
+      "title": "Chandrayaan-3 mission",
+      "verification": "official search result",
+      "checked_date": "2026-11-15"
+    },
+    "SLIM": {
+      "agency": "JAXA",
+      "url": "https://darts.isas.jaxa.jp/en/missions/slim",
+      "title": "SLIM mission archive",
+      "verification": "opened official page",
+      "checked_date": "2026-11-15"
+    },
+    "IM1": {
+      "agency": "NASA",
+      "url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/",
+      "title": "NASA LRO images Odysseus",
+      "verification": "opened official page",
+      "checked_date": "2026-11-15"
+    },
+    "IM2": {
+      "agency": "NASA",
+      "url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+      "title": "IM2 landing source",
+      "verification": "Reused Task R retrieved source manifest",
+      "retrieved_utc": "2026-11-15T00:28:59.520607Z",
+      "source_bytes_sha256": "d924722fdcd1152f72cff3db8fefce7559bf03047f67c64d4b7476bfcb892fb3"
+    },
+    "BLUE_GHOST1": {
+      "agency": "NASA",
+      "url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/",
+      "title": "NASA science touches down aboard Firefly lander",
+      "verification": "official search result",
+      "checked_date": "2026-11-15"
+    }
+  }
+}

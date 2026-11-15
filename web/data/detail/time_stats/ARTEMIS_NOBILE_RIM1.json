@@ -1,0 +1,83 @@
+{
+  "format": "detail-time-stats-v1",
+  "id": "ARTEMIS_NOBILE_RIM1",
+  "lat": -85.295,
+  "lon": 36.917,
+  "window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc": "2031-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "sunlit_h": 31944,
+  "earth_visible_h": 29790,
+  "both_h": 19205,
+  "dark_runs": {
+    "count": 100,
+    "total_h": 11880,
+    "mean_h": 118.8,
+    "longest_h": 411,
+    "complete_count": 100,
+    "complete_mean_h": 118.8,
+    "complete_longest_h": 411,
+    "clipped_runs": []
+  },
+  "no_earth_runs": {
+    "count": 67,
+    "total_h": 14034,
+    "mean_h": 209.46268656716418,
+    "longest_h": 236,
+    "complete_count": 67,
+    "complete_mean_h": 209.46268656716418,
+    "complete_longest_h": 236,
+    "clipped_runs": []
+  },
+  "sunlit_runs": {
+    "count": 101,
+    "total_h": 31944,
+    "mean_h": 316.2772277227723,
+    "longest_h": 3426,
+    "complete_count": 99,
+    "complete_mean_h": 311.3838383838384,
+    "complete_longest_h": 3426,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 1096,
+        "duration_h": 1096,
+        "clipped_start": true,
+        "clipped_end": false
+      },
+      {
+        "start_i": 43803,
+        "end_i": 43824,
+        "duration_h": 21,
+        "clipped_start": false,
+        "clipped_end": true
+      }
+    ]
+  },
+  "station_link_h": {
+    "kdsa_h": 13118,
+    "at_least_1_h": 29558,
+    "at_least_2_h": 18410
+  },
+  "parity": {
+    "metrics_exact": true,
+    "windows_exact": true
+  },
+  "source": {
+    "core_sha256": "e9edd76f1d0f6f58917409a2b6a29e43309439ae1ac2306c79511d8ba4d28434",
+    "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_meta_sha256": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "sites_sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "stations_sha256": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "producer_sha256": "bf61dfa580130afb33ff11d26469ea3ba51b009a74200d1035717b03e1ecfd72",
+    "helper_sha256": "beb7bbcb0c98e962ff74e6d28378949ec20989f544a68cacaa5501d6bbda4363",
+    "horizon_sha256": "5f64896417bb8bc27d41fd0b14c53dd87da816e97de68898ddf1e3956bdcbcd8",
+    "metrics_sha256": "5cc277a2f501adf4e88d4d19cbc2901f47c754e9d0b1a09bec6f33603c7d3ca2",
+    "windows_sha256": "a9bcc18eaa4f7f4d0e1b600b133ca45b803488cbbd46b27cf02f62e071a33283"
+  },
+  "complete": true,
+  "mock": false
+}

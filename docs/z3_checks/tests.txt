@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: binary prefixes and fully lit/dark windows use exact requested length
+ok 1 - binary prefixes and fully lit/dark windows use exact requested length
+  ---
+  duration_ms: 1.543281
+  type: 'test'
+  ...
+# Subtest: last 23:00 cell is included, later windows are not shortened
+ok 2 - last 23:00 cell is included, later windows are not shortened
+  ---
+  duration_ms: 0.246209
+  type: 'test'
+  ...
+# Subtest: censored dark edges distinguish a real transition at the stay boundary
+ok 3 - censored dark edges distinguish a real transition at the stay boundary
+  ---
+  duration_ms: 0.144266
+  type: 'test'
+  ...
+# Subtest: 29.5 days is 708 cells, leap day is a real landing day
+ok 4 - 29.5 days is 708 cells, leap day is a real landing day
+  ---
+  duration_ms: 0.519488
+  type: 'test'
+  ...
+# Subtest: signed shifts retain exact count differences and flag both invalid cases
+ok 5 - signed shifts retain exact count differences and flag both invalid cases
+  ---
+  duration_ms: 0.298006
+  type: 'test'
+  ...
+# Subtest: all 1826 daily starts retain explicit invalid tails
+ok 6 - all 1826 daily starts retain explicit invalid tails
+  ---
+  duration_ms: 20.914944
+  type: 'test'
+  ...
+# Subtest: stale and modified cache records are rejected
+ok 7 - stale and modified cache records are rejected
+  ---
+  duration_ms: 0.713508
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 80.717961

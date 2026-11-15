@@ -1,0 +1,83 @@
+{
+  "format": "detail-time-stats-v1",
+  "id": "CHANDRAYAAN3",
+  "lat": -69.3741,
+  "lon": 32.32,
+  "window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc": "2031-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "sunlit_h": 21010,
+  "earth_visible_h": 43824,
+  "both_h": 21010,
+  "dark_runs": {
+    "count": 62,
+    "total_h": 22814,
+    "mean_h": 367.96774193548384,
+    "longest_h": 385,
+    "complete_count": 62,
+    "complete_mean_h": 367.96774193548384,
+    "complete_longest_h": 385,
+    "clipped_runs": []
+  },
+  "no_earth_runs": {
+    "count": 0,
+    "total_h": 0,
+    "mean_h": null,
+    "longest_h": 0,
+    "complete_count": 0,
+    "complete_mean_h": null,
+    "complete_longest_h": 0,
+    "clipped_runs": []
+  },
+  "sunlit_runs": {
+    "count": 63,
+    "total_h": 21010,
+    "mean_h": 333.4920634920635,
+    "longest_h": 357,
+    "complete_count": 61,
+    "complete_mean_h": 340.72131147540983,
+    "complete_longest_h": 357,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 176,
+        "duration_h": 176,
+        "clipped_start": true,
+        "clipped_end": false
+      },
+      {
+        "start_i": 43774,
+        "end_i": 43824,
+        "duration_h": 50,
+        "clipped_start": false,
+        "clipped_end": true
+      }
+    ]
+  },
+  "station_link_h": {
+    "kdsa_h": 18213,
+    "at_least_1_h": 43246,
+    "at_least_2_h": 25717
+  },
+  "parity": {
+    "metrics_exact": true,
+    "windows_exact": true
+  },
+  "source": {
+    "core_sha256": "e9edd76f1d0f6f58917409a2b6a29e43309439ae1ac2306c79511d8ba4d28434",
+    "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_meta_sha256": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "sites_sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "stations_sha256": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "producer_sha256": "bf61dfa580130afb33ff11d26469ea3ba51b009a74200d1035717b03e1ecfd72",
+    "helper_sha256": "beb7bbcb0c98e962ff74e6d28378949ec20989f544a68cacaa5501d6bbda4363",
+    "horizon_sha256": "e5b1829ee6c4cfdd58f482275410dfdee5b68a6080ba0bcc615e9bac28a5bcf4",
+    "metrics_sha256": "d7f8b04ddff7a9c74a2b965d14413f7df2e7c55baaf11fd5d309249a2a70f21a",
+    "windows_sha256": "7c0102e64fea34edd73bf426f3a48b6003f977ad9209362ad6d2d3c192a554cf"
+  },
+  "complete": true,
+  "mock": false
+}

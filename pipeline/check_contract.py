@@ -600,8 +600,12 @@ def main():
     check_local250(data, sites, err, warn)
     check_monthly(data, sites)
     check_uncertainty(data, sites)
+    from check_detail import check_detail
+    check_detail(data, sites, err, warn)
     from check_terrain_y import check_terrain_y
     check_terrain_y(data, sites, err)
+    from check_detail_dates import check_detail_dates
+    check_detail_dates(data, sites, err)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

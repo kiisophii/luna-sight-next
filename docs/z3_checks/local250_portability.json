@@ -1,0 +1,374 @@
+{
+  "baseline_main": "300b8499e3ea4cadf1e9f2c36a267ba91e935aee",
+  "baseline_errors": [
+    {
+      "where": "local250/APOLLO11.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/APOLLO12.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/APOLLO14.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/APOLLO15.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/APOLLO16.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/APOLLO17.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_CABEUS_B.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_DE_GERLACHE_RIM2.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_HAWORTH.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_MALAPERT.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_MOUTON.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_MOUTON_PLATEAU.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_NOBILE_RIM1.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_NOBILE_RIM2.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/ARTEMIS_SLATER_PLAIN.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/BLUE_GHOST1.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CHANDRAYAAN3.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CHANGE3.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CHANGE4.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CHANGE5.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CHANGE6.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/CONNECTING_RIDGE.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/DE_GERLACHE_RIM1.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/IM1.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/IM2.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/IM3_REINER_GAMMA.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/LUNA16.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/LUNA20.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/LUNA24.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/PEAK_NEAR_SHACKLETON.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/SHACKLETON_RIM.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/SHOEMAKER_RIM_A.json",
+      "message": "node order/coordinate mismatch"
+    },
+    {
+      "where": "local250/SLIM.json",
+      "message": "node order/coordinate mismatch"
+    }
+  ],
+  "max_abs_coordinate_difference_deg": 2.842170943040401e-14,
+  "tolerance_deg": 1e-09,
+  "noncoordinate_mismatches": [],
+  "sites": [
+    {
+      "id": "APOLLO11",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 203,
+      "max_lat_deg": 1.1102230246251565e-16,
+      "max_lon_deg": 3.552713678800501e-15
+    },
+    {
+      "id": "APOLLO12",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 1279,
+      "max_lat_deg": 8.881784197001252e-16,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "APOLLO14",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 347,
+      "max_lat_deg": 8.881784197001252e-16,
+      "max_lon_deg": 3.552713678800501e-15
+    },
+    {
+      "id": "APOLLO15",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 355,
+      "max_lat_deg": 3.552713678800501e-15,
+      "max_lon_deg": 8.881784197001252e-16
+    },
+    {
+      "id": "APOLLO16",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 196,
+      "max_lat_deg": 1.7763568394002505e-15,
+      "max_lon_deg": 3.552713678800501e-15
+    },
+    {
+      "id": "APOLLO17",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 150,
+      "max_lat_deg": 3.552713678800501e-15,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "LUNA16",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 49,
+      "max_lat_deg": 1.1102230246251565e-16,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "LUNA20",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 237,
+      "max_lat_deg": 8.881784197001252e-16,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "LUNA24",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 98,
+      "max_lat_deg": 1.7763568394002505e-15,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "CHANGE3",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 1466,
+      "max_lat_deg": 7.105427357601002e-15,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "CHANGE4",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 332,
+      "max_lat_deg": 7.105427357601002e-15,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "CHANGE5",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 207,
+      "max_lat_deg": 7.105427357601002e-15,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "CHANGE6",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 131,
+      "max_lat_deg": 7.105427357601002e-15,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 287,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "SLIM",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 1325,
+      "max_lat_deg": 3.552713678800501e-15,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "IM1",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 464,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 8.881784197001252e-16
+    },
+    {
+      "id": "IM2",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 435,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 109,
+      "max_lat_deg": 3.552713678800501e-15,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 553,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 464,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 498,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.7763568394002505e-15
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 391,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 7.105427357601002e-15
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 1181,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 473,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 440,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 486,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 581,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 446,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 706,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 624,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 2.842170943040401e-14
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 483,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 1.4210854715202004e-14
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 468,
+      "max_lat_deg": 1.4210854715202004e-14,
+      "max_lon_deg": 4.440892098500626e-15
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "nodes": 1681,
+      "exact_coordinate_mismatches": 73,
+      "max_lat_deg": 1.7763568394002505e-15,
+      "max_lon_deg": 1.4210854715202004e-14
+    }
+  ],
+  "production_data_changed": false
+}

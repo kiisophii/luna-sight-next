@@ -10,6 +10,11 @@ def index_hash(path):
     """Portable digest for Git text files on Windows and deployed LF checkouts."""
     return hashlib.sha256(Path(path).read_bytes().replace(b'\r\n',b'\n')).hexdigest()
 
+COORDINATE_ATOL_DEG = 1e-9  # <= 0.031 mm on the reference sphere; libm/NumPy portability only
+
+def same_grid_node(point,want):
+    return all((np.isfinite(point[k]) and abs(point[k]-v)<=COORDINATE_ATOL_DEG) if k in ('lat','lon') else point[k]==v for k,v in want.items())
+
 def validate_record(obj,site,baseline):
     def require(condition,message):
         if not condition:raise ValueError(message)
@@ -20,7 +25,7 @@ def validate_record(obj,site,baseline):
     require(obj['frame']=='MOON_ME_DE421' and obj['radius_m']==1737400.,'frame/radius mismatch')
     require(obj['complete'] is True and obj['mock'] is False,'partial or mock map')
     for point,want in zip(obj['points'],grid_points(site)):
-        require(all(point[k]==v for k,v in want.items()),'node order/coordinate mismatch')
+        require(same_grid_node(point,want),'node order/coordinate mismatch')
         require(valid_metrics(point),'invalid node metrics')
         require(np.isfinite(point['h0_m']) and point['ground_resolution_m']>0,'invalid terrain metadata')
     require(all(obj['points'][840][k]==baseline[k] for k in METRICS),'centre metrics mismatch')

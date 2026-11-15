@@ -1,0 +1,93 @@
+{
+  "method": "Spherical geodesic from published crater centre through point; +/-3 km radial search, bilinear native 20 m pixels; 5 m sampling does not create 5 m terrain resolution.",
+  "limits": "Local radial maximum is not a surveyed geological crest. USGS centre precision and DEM/product choice affect the result. Exact catalogue source match is a separate question.",
+  "rows": [
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "lat": -88.0792,
+      "lon": 11.88866,
+      "crater_centre": [
+        -88.14,
+        45.91
+      ],
+      "crater_source": "https://planetarynames.wr.usgs.gov/Feature/5494",
+      "source_dem": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "cache_path": "data\\processed\\local250\\raw\\polar\\20\\SHOEMAKER_RIM_A.npz",
+      "cache_sha256": "d57e9dbdd78ddca88092bc28d59477983900118ed7002e644d10bbe7cbae8333",
+      "centre_distance_m": 33580.56602011328,
+      "height_m": -619.432362618938,
+      "profiles": [
+        {
+          "sampling_step_m": 20,
+          "point_outward_of_local_radial_max_m": 540.0,
+          "point_below_local_radial_max_m": 27.72180920101721,
+          "inward_1km_drop_m": 3.251476888591583
+        },
+        {
+          "sampling_step_m": 5,
+          "point_outward_of_local_radial_max_m": 530.0,
+          "point_below_local_radial_max_m": 27.832805338318167,
+          "inward_1km_drop_m": 3.251476888591583
+        }
+      ]
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "lat": -89.6866,
+      "lon": -162.81,
+      "crater_centre": [
+        -89.67,
+        129.78
+      ],
+      "crater_source": "https://planetarynames.wr.usgs.gov/Feature/5450",
+      "source_dem": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "cache_path": "data\\processed\\local250\\raw\\polar\\20\\SHACKLETON_RIM.npz",
+      "cache_sha256": "1ab59d935c9bdc051cce285d32634e97266882a868ec9febd8445d2da0bef4a5",
+      "centre_distance_m": 10834.511574200296,
+      "height_m": 1729.9638644633478,
+      "profiles": [
+        {
+          "sampling_step_m": 20,
+          "point_outward_of_local_radial_max_m": -0.0,
+          "point_below_local_radial_max_m": 0.0,
+          "inward_1km_drop_m": 373.2600043040925
+        },
+        {
+          "sampling_step_m": 5,
+          "point_outward_of_local_radial_max_m": -0.0,
+          "point_below_local_radial_max_m": 0.0,
+          "inward_1km_drop_m": 373.2600043040925
+        }
+      ]
+    },
+    {
+      "id": "OLD_R04_POLYGON_CENTRE",
+      "lat": -89.7668,
+      "lon": -171.87,
+      "crater_centre": [
+        -89.67,
+        129.78
+      ],
+      "crater_source": "https://planetarynames.wr.usgs.gov/Feature/5450",
+      "source_dem": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "cache_path": "data\\processed\\local250\\raw\\polar\\20\\SHACKLETON_RIM.npz",
+      "cache_sha256": "1ab59d935c9bdc051cce285d32634e97266882a868ec9febd8445d2da0bef4a5",
+      "centre_distance_m": 8710.760069280119,
+      "height_m": 770.9146381137347,
+      "profiles": [
+        {
+          "sampling_step_m": 20,
+          "point_outward_of_local_radial_max_m": -1820.0,
+          "point_below_local_radial_max_m": 933.7912561898535,
+          "inward_1km_drop_m": 652.8920367515502
+        },
+        {
+          "sampling_step_m": 5,
+          "point_outward_of_local_radial_max_m": -1835.0,
+          "point_below_local_radial_max_m": 934.1126744350933,
+          "inward_1km_drop_m": 652.8920367515502
+        }
+      ]
+    }
+  ]
+}

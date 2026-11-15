@@ -1,0 +1,652 @@
+{
+  "schema_version": 1,
+  "task": "Task S original-source robotic audit",
+  "generated_utc": "2026-11-15T03:53:18.232469+00:00",
+  "method": "Independently reopen cited pages with web tool; separately HTTP GET raw responses via requests; SHA256 over response.content bytes, not rendered text. Compare exact printed coordinates using decimal normalization.",
+  "scope": "Nine catalogue entries and five separately reopened alternate/context sources; no production data changed.",
+  "limitations": [
+    "This audits source transcription and point role, not independent geodetic ground truth.",
+    "Cited posts do not name coordinate frame realization.",
+    "Alternate search is targeted and not an exhaustive literature review.",
+    "No numerical uncertainty inferred from decimal places or image pixel scale."
+  ],
+  "rows": [
+    {
+      "id": "CHANGE3",
+      "catalogue": {
+        "lat": 44.1214,
+        "lon": -19.5116,
+        "source_url": "https://lroc.im-ldi.com/images/637"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/637",
+      "accessed_url": "https://lroc.im-ldi.com/images/637",
+      "http_status": 200,
+      "sha256": "122695503e4cf9a63c3bf3e5e7769bf195b83672f4c066481f070ac0e55fbbc9",
+      "retrieved_utc": "2026-11-15T03:51:56.817489+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/CHANGE3.html",
+      "source_coordinates_printed": {
+        "lat": "44.1214°N",
+        "lon": "340.4884°E"
+      },
+      "coordinate_excerpt": "44.1214°N, 340.4884°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Paragraph beginning Since the rover; lander coordinates sentence",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "east-positive; 0 to 360 representation",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": 44.1214,
+        "lon": -19.5116
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Source calls map coordinates accurate but provides no numerical accuracy or confidence level."
+      ],
+      "alternate_sources": [],
+      "source_lat_decimal": "44.1214",
+      "source_lon_decimal": "340.4884"
+    },
+    {
+      "id": "CHANGE4",
+      "catalogue": {
+        "lat": -45.4562,
+        "lon": 177.5885,
+        "source_url": "https://lroc.im-ldi.com/images/1168"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1168",
+      "accessed_url": "https://lroc.im-ldi.com/images/1168",
+      "http_status": 200,
+      "sha256": "e6d45a0c7b90f08564ea88bf04ce4098c4b535980726dc8ea750c5b7495afa9e",
+      "retrieved_utc": "2026-11-15T03:51:56.876099+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/CHANGE4.html",
+      "source_coordinates_printed": {
+        "lat": "45.4562°S",
+        "lon": "177.5885 °E"
+      },
+      "coordinate_excerpt": "45.4562°S, 177.5885 °E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Final paragraph after rover distance table",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -45.4562,
+        "lon": 177.5885
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": {
+        "value_m": 13,
+        "kind": "uncertainty",
+        "confidence": "95% confidence interval"
+      },
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "The lander coordinates are a later refinement, not rover positions."
+      ],
+      "alternate_sources": [
+        {
+          "requested_url": "https://lroc.im-ldi.com/images/1087",
+          "accessed_url": "https://lroc.im-ldi.com/images/1087",
+          "http_status": 200,
+          "sha256": "7031cbc27e02c572d0e48a1cd8ce3547f0543972bc5e7475061f6d77efa5f95b",
+          "retrieved_utc": "2026-11-15T03:51:57.521191+00:00",
+          "raw_file": "data/processed/task_s_jiyong/robotic/CHANGE4_earlier.html",
+          "bytes": 45497,
+          "source_coordinates_printed": {
+            "lat": "45.457°S",
+            "lon": "177.589°E"
+          },
+          "coordinate_excerpt": "45.457°S, 177.589°E",
+          "point_role": "earlier actual lander coordinate estimate",
+          "locator": "Second image caption",
+          "normalized_coordinates": {
+            "lat": -45.457,
+            "lon": 177.589
+          },
+          "delta_from_catalogue_deg": {
+            "lat": -0.0008,
+            "lon": 0.0005
+          },
+          "separation_from_catalogue_m": 26.488,
+          "distance_method": "Great-circle on contract sphere R=1737400 m; no frame alignment.",
+          "source_stated_uncertainty": {
+            "value_m": 20,
+            "kind": "plus or minus",
+            "confidence": null
+          },
+          "source_stated_frame": null,
+          "interpretation": "January 2019 estimate predates the December 2020 refinement used by the catalogue.",
+          "source_lat_decimal": "-45.457",
+          "source_lon_decimal": "177.589"
+        }
+      ],
+      "source_lat_decimal": "-45.4562",
+      "source_lon_decimal": "177.5885"
+    },
+    {
+      "id": "CHANGE5",
+      "catalogue": {
+        "lat": 43.0576,
+        "lon": -51.9161,
+        "source_url": "https://lroc.im-ldi.com/images/1172.2020"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1172.2020",
+      "accessed_url": "https://lroc.im-ldi.com/images/1172.2020",
+      "http_status": 200,
+      "sha256": "83e05ba689a93405b11f96dd6b57eddc1a4a7dd64d75e80ebf9393bccb0e947d",
+      "retrieved_utc": "2026-11-15T03:51:56.884100+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/CHANGE5.html",
+      "source_coordinates_printed": {
+        "lat": "43.0576° N",
+        "lon": "308.0839°E"
+      },
+      "coordinate_excerpt": "43.0576° N, 308.0839°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "First body paragraph after opening image",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "east-positive; 0 to 360 representation",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": 43.0576,
+        "lon": -51.9161
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": {
+        "value_m": 20,
+        "kind": "estimated accuracy plus-or-minus",
+        "confidence": null,
+        "horizontal_explicit": false
+      },
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Post does not explicitly restrict its estimated accuracy to horizontal or state a confidence level. Catalogue note adds horizontal."
+      ],
+      "alternate_sources": [],
+      "source_lat_decimal": "43.0576",
+      "source_lon_decimal": "308.0839"
+    },
+    {
+      "id": "CHANGE6",
+      "catalogue": {
+        "lat": -41.6385,
+        "lon": -153.9852,
+        "source_url": "https://lroc.im-ldi.com/images/1374"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1374",
+      "accessed_url": "https://lroc.im-ldi.com/images/1374",
+      "http_status": 200,
+      "sha256": "532dab369d17127819d9e042244a80b02a88483ccf02f7a82474eb4bb2b5df90",
+      "retrieved_utc": "2026-11-15T03:51:56.835057+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/CHANGE6.html",
+      "source_coordinates_printed": {
+        "lat": "41.6385°S",
+        "lon": "206.0148°E"
+      },
+      "coordinate_excerpt": "41.6385°S, 206.0148°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Second body paragraph: coordinates computed by the LROC team",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "east-positive; 0 to 360 representation",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -41.6385,
+        "lon": -153.9852
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": {
+        "value_m": 30,
+        "kind": "estimated horizontal accuracy plus-or-minus",
+        "confidence": null,
+        "horizontal_explicit": true
+      },
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Other coordinates in this page refer to the Apollo basin centre, not the lander."
+      ],
+      "alternate_sources": [],
+      "source_lat_decimal": "-41.6385",
+      "source_lon_decimal": "206.0148"
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "catalogue": {
+        "lat": -69.3741,
+        "lon": 32.32,
+        "source_url": "https://lroc.im-ldi.com/images/1314"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1314",
+      "accessed_url": "https://lroc.im-ldi.com/images/1314",
+      "http_status": 200,
+      "sha256": "2d686b9a46df897e0be236a1f1cb7dad865743d9537a7ccd427a876455b3d7b3",
+      "retrieved_utc": "2026-11-15T03:51:56.727188+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/CHANDRAYAAN3.html",
+      "source_coordinates_printed": {
+        "lat": "69.3741°S",
+        "lon": "32.32°E"
+      },
+      "coordinate_excerpt": "69.3741°S, 32.32°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Caption below annotated orbital image, before Full NAC image",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -69.3741,
+        "lon": 32.32
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 2
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Post-landing location from orbital imagery; unequal displayed precision in latitude and longitude."
+      ],
+      "alternate_sources": [
+        {
+          "requested_url": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html",
+          "accessed_url": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html",
+          "http_status": 200,
+          "sha256": "1cd93453d0c774e35ed58b52a2d9a87eba81be65433f30ae421e8f6add92eded",
+          "retrieved_utc": "2026-11-15T03:51:58.383885+00:00",
+          "raw_file": "data/processed/task_s_jiyong/robotic/CHANDRAYAAN3_target.html",
+          "bytes": 33528,
+          "source_coordinates_printed": {
+            "lat": "69.367621 S",
+            "lon": "32.348126 E"
+          },
+          "coordinate_excerpt": "69.367621 S, 32.348126 E",
+          "point_role": "prime pre-launch landing ellipse reference",
+          "locator": "Overall specifications table, row 2 Landing Site (Prime)",
+          "normalized_coordinates": {
+            "lat": -69.367621,
+            "lon": 32.348126
+          },
+          "delta_from_catalogue_deg": {
+            "lat": 0.006479,
+            "lon": 0.028126
+          },
+          "separation_from_catalogue_m": 359.01,
+          "distance_method": "Great-circle on contract sphere R=1737400 m; no frame alignment.",
+          "source_stated_uncertainty": null,
+          "source_stated_frame": null,
+          "interpretation": "ISRO page defines a 4 km by 2.4 km prime landing area and uses future-launch wording. Do not replace post-landing LROC point with this planning coordinate.",
+          "source_lat_decimal": "-69.367621",
+          "source_lon_decimal": "32.348126"
+        }
+      ],
+      "source_lat_decimal": "-69.3741",
+      "source_lon_decimal": "32.32"
+    },
+    {
+      "id": "SLIM",
+      "catalogue": {
+        "lat": -13.316,
+        "lon": 25.251,
+        "source_url": "https://lroc.im-ldi.com/images/1358"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1358",
+      "accessed_url": "https://lroc.im-ldi.com/images/1358",
+      "http_status": 200,
+      "sha256": "a473cd5f6c1a7ad23a9adc2f3b1a2bfb5f5f6dadfed33ef4771bd167e9b96e55",
+      "retrieved_utc": "2026-11-15T03:51:56.704156+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/SLIM.html",
+      "source_coordinates_printed": {
+        "lat": "13.3160°S",
+        "lon": "25.2510°E"
+      },
+      "coordinate_excerpt": "13.3160°S, 25.2510°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Opening image caption",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -13.316,
+        "lon": 25.251
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Catalogue floats drop trailing zeros; source prints four decimals for each coordinate."
+      ],
+      "alternate_sources": [],
+      "source_lat_decimal": "-13.3160",
+      "source_lon_decimal": "25.2510"
+    },
+    {
+      "id": "IM1",
+      "catalogue": {
+        "lat": -80.13,
+        "lon": 1.44,
+        "source_url": "https://lroc.im-ldi.com/images/1360"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1360",
+      "accessed_url": "https://lroc.im-ldi.com/images/1360",
+      "http_status": 200,
+      "sha256": "f04ff18404e0e3b286c92efae32cb16f43f76b8589adcfd5847766d58a30978a",
+      "retrieved_utc": "2026-11-15T03:51:57.293191+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/IM1.html",
+      "source_coordinates_printed": {
+        "lat": "80.13°S",
+        "lon": "1.44°E"
+      },
+      "coordinate_excerpt": "80.13°S, 1.44°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Second image caption: Odysseus came to rest",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -80.13,
+        "lon": 1.44
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 2,
+        "lon": 2
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Two-decimal source coordinates must not be interpreted as metre accuracy."
+      ],
+      "alternate_sources": [
+        {
+          "requested_url": "https://lroc.im-ldi.com/images/1321",
+          "accessed_url": "https://lroc.im-ldi.com/images/1321",
+          "http_status": 200,
+          "sha256": "312a091e2fd700c84f84b9f6d934a8a9b2db227794d932ffd0829826ef56e475",
+          "retrieved_utc": "2026-11-15T03:51:57.607195+00:00",
+          "raw_file": "data/processed/task_s_jiyong/robotic/IM1_target.html",
+          "bytes": 45139,
+          "source_coordinates_printed": {
+            "lat": "80.2°S",
+            "lon": "1.0°E"
+          },
+          "coordinate_excerpt": "80.2°S, 1.0°E",
+          "point_role": "nominal pre-landing area centre",
+          "locator": "High-resolution mosaic caption",
+          "normalized_coordinates": {
+            "lat": -80.2,
+            "lon": 1.0
+          },
+          "delta_from_catalogue_deg": {
+            "lat": -0.07,
+            "lon": -0.44
+          },
+          "separation_from_catalogue_m": 3114.384,
+          "distance_method": "Great-circle on contract sphere R=1737400 m; no frame alignment.",
+          "source_stated_uncertainty": null,
+          "source_stated_frame": null,
+          "interpretation": "Planned area, not an alternate measurement of actual touchdown.",
+          "source_lat_decimal": "-80.2",
+          "source_lon_decimal": "1.0"
+        }
+      ],
+      "source_lat_decimal": "-80.13",
+      "source_lon_decimal": "1.44"
+    },
+    {
+      "id": "IM2",
+      "catalogue": {
+        "lat": -84.7906,
+        "lon": 29.1957,
+        "source_url": "https://lroc.im-ldi.com/images/1408"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1408",
+      "accessed_url": "https://lroc.im-ldi.com/images/1408",
+      "http_status": 200,
+      "sha256": "809a1f796a4474e00346974546863e198c6c0af046bb1c5680612e111b3ae261",
+      "retrieved_utc": "2026-11-15T03:51:57.349758+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/IM2.html",
+      "source_coordinates_printed": {
+        "lat": "84.7906° S",
+        "lon": "29.1957° E"
+      },
+      "coordinate_excerpt": "84.7906° S, 29.1957° E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Second image caption: lander on its side in crater",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": -84.7906,
+        "lon": 29.1957
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "Actual final surface location; not the earlier intended target."
+      ],
+      "alternate_sources": [
+        {
+          "requested_url": "https://lroc.im-ldi.com/images/1401",
+          "accessed_url": "https://lroc.im-ldi.com/images/1401",
+          "http_status": 200,
+          "sha256": "1728760d739385bbee5ef0fa73a5b65c6e6ca8b427fe5a801461425c1a71c606",
+          "retrieved_utc": "2026-11-15T03:51:57.988690+00:00",
+          "raw_file": "data/processed/task_s_jiyong/robotic/IM2_target.html",
+          "bytes": 46003,
+          "source_coordinates_printed": {
+            "lat": "-84.78°",
+            "lon": "29.13°E"
+          },
+          "coordinate_excerpt": "-84.78°, 29.13°E",
+          "point_role": "intended pre-landing site",
+          "locator": "First body paragraph",
+          "normalized_coordinates": {
+            "lat": -84.78,
+            "lon": 29.13
+          },
+          "delta_from_catalogue_deg": {
+            "lat": 0.0106,
+            "lon": -0.0657
+          },
+          "separation_from_catalogue_m": 368.921,
+          "distance_method": "Great-circle on contract sphere R=1737400 m; no frame alignment.",
+          "source_stated_uncertainty": null,
+          "source_stated_frame": null,
+          "interpretation": "Intended target, not an alternate measurement of actual touchdown.",
+          "source_lat_decimal": "-84.78",
+          "source_lon_decimal": "29.13"
+        }
+      ],
+      "source_lat_decimal": "-84.7906",
+      "source_lon_decimal": "29.1957"
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "catalogue": {
+        "lat": 18.562,
+        "lon": 61.81,
+        "source_url": "https://lroc.im-ldi.com/images/1406"
+      },
+      "source_url": "https://lroc.im-ldi.com/images/1406",
+      "accessed_url": "https://lroc.im-ldi.com/images/1406",
+      "http_status": 200,
+      "sha256": "8680bc9fecefe909f0131127ca14a87f98dd17901ec8fd18a48a1ea307d75e66",
+      "retrieved_utc": "2026-11-15T03:51:57.432980+00:00",
+      "raw_file": "data/processed/task_s_jiyong/robotic/BLUE_GHOST1.html",
+      "source_coordinates_printed": {
+        "lat": "18.562°N",
+        "lon": "61.810°E"
+      },
+      "coordinate_excerpt": "18.562°N, 61.810°E",
+      "excerpt_note": "Visible text transcribed; HTML entities decoded and whitespace normalized. Raw response retained.",
+      "locator": "Second image caption: lander pixel in the middle of the box",
+      "point_role": "actual landed spacecraft location",
+      "hemisphere_convention": {
+        "latitude": "N positive, S negative",
+        "longitude": "explicit E east longitude",
+        "source_prints_west_longitude": false
+      },
+      "normalized_source_coordinates": {
+        "lat": 18.562,
+        "lon": 61.81
+      },
+      "normalization": "Apply S negative; subtract 360 from E longitude above 180; no geodetic frame transformation.",
+      "source_displayed_decimal_places": {
+        "lat": 3,
+        "lon": 3
+      },
+      "source_stated_uncertainty": null,
+      "source_stated_frame": null,
+      "frame_status": "Named frame and DE421 realization not stated in cited post; MOON_ME agreement remains unverified by this post alone.",
+      "transcription_check": {
+        "matches_catalogue_exactly_after_normalization": true,
+        "delta_lat_deg": 0.0,
+        "delta_lon_deg": 0.0
+      },
+      "accuracy_check": "Exact transcription does not establish absolute geolocation accuracy. Decimal digits are display precision, not uncertainty.",
+      "notes": [
+        "LRO imaging-position coordinates 19.294 N, 67.956 E in following paragraph are a different object; catalogue uses the lander."
+      ],
+      "alternate_sources": [
+        {
+          "requested_url": "https://lroc.im-ldi.com/images/1407",
+          "accessed_url": "https://lroc.im-ldi.com/images/1407",
+          "http_status": 200,
+          "sha256": "a5fd0d685794dcdc41ecda5512b29a6373c9830fb3fffafa1a1739d5da8975d0",
+          "retrieved_utc": "2026-11-15T03:51:57.462123+00:00",
+          "raw_file": "data/processed/task_s_jiyong/robotic/BLUE_GHOST1_later.html",
+          "bytes": 45014,
+          "source_coordinates_printed": {
+            "lat": "18.5623°N",
+            "lon": "61.8103°E"
+          },
+          "coordinate_excerpt": "18.5623°N, 61.8103°E",
+          "point_role": "actual lander location",
+          "locator": "Body paragraph before full-resolution image",
+          "normalized_coordinates": {
+            "lat": 18.5623,
+            "lon": 61.8103
+          },
+          "delta_from_catalogue_deg": {
+            "lat": 0.0003,
+            "lon": 0.0003
+          },
+          "separation_from_catalogue_m": 12.535,
+          "distance_method": "Great-circle on contract sphere R=1737400 m; no frame alignment.",
+          "source_stated_uncertainty": null,
+          "source_stated_frame": null,
+          "interpretation": "Published 7 March 2025, three days after cited oblique post. Adds a fourth decimal. Consistent with rounding to cited three decimals, but do not equate more digits with proven improved accuracy.",
+          "source_lat_decimal": "18.5623",
+          "source_lon_decimal": "61.8103"
+        }
+      ],
+      "source_lat_decimal": "18.562",
+      "source_lon_decimal": "61.810"
+    }
+  ]
+}

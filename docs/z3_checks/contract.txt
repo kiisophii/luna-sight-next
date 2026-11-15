@@ -1,0 +1,16 @@
+sites.json: 33 sites
+ephem: n=43824, |sun| 1.467e+08..1.525e+08 km, |earth| 3.567e+05..4.067e+05 km
+horizon: 33 files
+windows: 33 site files
+validation.json: 240 points
+relay: 33 computed, 0 pending terrain
+korea: danuri 15 sites with terrain, 19 pending terrain
+hterrain: near 947.6 m, far 1895.2 m
+hterrain.polar_s: [('p5', 5, 3.0), ('p10', 10, 3.0), ('p20', 20, 3.0), ('p60', 60, 3.0), ('p240', 240, 150.0)], 275.5 MB
+local: 33 21x21 maps checked
+local250: 33 site maps checked
+monthly: 33 site files checked
+uncertainty: 33 site file(s) checked
+detail/dates: 33 sites, full daily/stay/slip arrays checked
+
+PASS: 0 errors, 0 warnings

@@ -1,0 +1,200 @@
+{
+  "scope": "Author-side separate analytic formulas; all class1 pixels and known interfaces in all 16 original native windows",
+  "method": "Closed-form south-polar stereographic chord distances and quadratic stationary roots on every pixel-union edge; no producer or PROJ imports",
+  "independent_team_verification": "pending",
+  "rows": [
+    {
+      "id": "IM1",
+      "centre_diff_m": 3.70391717297025e-10,
+      "boundary_diff_m": 2.623892214614898e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        7080.0,
+        300240.0
+      ],
+      "window_sha256": "4e9a30a930acea57e132d604c358cc125832abb56f9c89fca25eed385ba1fc56"
+    },
+    {
+      "id": "IM2",
+      "centre_diff_m": 3.0809133022557944e-11,
+      "boundary_diff_m": 8.634515324956737e-11,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        77540.0,
+        137780.0
+      ],
+      "window_sha256": "ba9602336780f987f715472849b9b5fe692b67203517804404a91eea935accfd"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "centre_diff_m": 3.2440539143863134e-10,
+      "boundary_diff_m": 2.8262547857593745e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -177660.0,
+        64920.0
+      ],
+      "window_sha256": "79943bcd41c1d3594366efecc318fb3317b2f524fc187d788c1558c76d6faf52"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "centre_diff_m": 1.7326726720057195e-09,
+      "boundary_diff_m": 1.419152795278933e-09,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -34353.63791522565,
+        91720.0
+      ],
+      "window_sha256": "2529c57658b65ee173141f42acaf8b7a105eb65d23906f5fe074d67c3a19bbc1"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "centre_diff_m": 2.114575181622058e-11,
+      "boundary_diff_m": 7.211156116682105e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -2040.0,
+        122680.0
+      ],
+      "window_sha256": "04ef50ff442efc7e09f2bc9447ba8ddbec372c1a3b467d10a55829ee232695d9"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "centre_diff_m": 3.764739631151315e-10,
+      "boundary_diff_m": 2.2217250261746813e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        66800.0,
+        132700.0
+      ],
+      "window_sha256": "c15e694a3abd47dc7e07cda37a401fbc47596b92ed2207a931c549fdf312b9e5"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "centre_diff_m": 5.812808012706228e-10,
+      "boundary_diff_m": 3.204831955372356e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        73220.0,
+        118500.0
+      ],
+      "window_sha256": "ce6d4ab2d1d2905586d9e9678bb41ae4515e4a708e5e0c7792135e5d77ca55cc"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "centre_diff_m": 3.0320279620354995e-10,
+      "boundary_diff_m": 9.619327556720236e-11,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        85800.0,
+        114060.0
+      ],
+      "window_sha256": "df26ecad384a55e53bd336c3a9666f9f39a21b31d71f69be2fbd9d45365bcd19"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "centre_diff_m": 3.7562131183221936e-10,
+      "boundary_diff_m": 2.3243273972184397e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        150160.0,
+        99620.0
+      ],
+      "window_sha256": "793543f930ec63e48633a21cb91bb0cbc5f4dc5306860ad9cea864137d427807"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "centre_diff_m": 2.850413238775218e-09,
+      "boundary_diff_m": 8.12605094324681e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -45700.0,
+        17680.0
+      ],
+      "window_sha256": "4e609995f6b3d3811deb7be67b97720cdd95cb858918d21c000262a1224dbcf7"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "centre_diff_m": 2.9194779926910996e-10,
+      "boundary_diff_m": 6.023981313774129e-10,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        62860.0,
+        -43160.0
+      ],
+      "window_sha256": "8f54acdda5793e71955b95a0dbc9c1b5f351b8982a0ae48fea80560b3e26c4ef"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "centre_diff_m": 1.2836352425438236e-08,
+      "boundary_diff_m": 1.0925816695817048e-08,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -2680.0,
+        -9000.0
+      ],
+      "window_sha256": "6a44be68192d0a1157f0b0acc8ef1883b6e51c7720d96e62fa62abd8f9e14492"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "centre_diff_m": 8.200572665373329e-09,
+      "boundary_diff_m": 4.580670065479353e-09,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -10900.0,
+        -11620.0
+      ],
+      "window_sha256": "f8e3a2f4e2d00b8bc57015d8f8e9457a7fb846ec40d3cdfa5503e65b83c8e0af"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "centre_diff_m": 6.774598659831099e-10,
+      "boundary_diff_m": 3.151740202156361e-09,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        30080.0,
+        -20000.0
+      ],
+      "window_sha256": "e56b9eae5b852c3e93ba3a1941bb6a972f2e5c0c655ad4813b1c7e34a337527f"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "centre_diff_m": 2.3335360310738906e-09,
+      "boundary_diff_m": 3.1798492727830308e-09,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        -37140.0,
+        15000.207119271607
+      ],
+      "window_sha256": "3f8585bcb584200c98024290c38e2b6d6aa25588cf9be53cb621536490169806"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "centre_diff_m": 2.886167749238666e-09,
+      "boundary_diff_m": 1.8115429156750906e-09,
+      "centre_row_col_exact": true,
+      "inside_class_exact": true,
+      "independent_boundary_xy_m": [
+        12000.225264809627,
+        57280.0
+      ],
+      "window_sha256": "889ac4c4e60eab2d8a226992cd99e279e7cd2a0cdacc8eaa94bdab2a9ac62f39"
+    }
+  ],
+  "elapsed_s": 0.4943513000034727
+}

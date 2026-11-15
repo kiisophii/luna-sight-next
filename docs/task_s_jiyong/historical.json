@@ -1,0 +1,639 @@
+{
+  "schema_version": 1,
+  "task": "S",
+  "audit_part": "historical",
+  "generated_utc": "2026-11-15T03:53:10.624799+00:00",
+  "method": "Fresh direct web opens of original cited pages, followed by fresh requests retrieval and raw SHA256. Coordinates manually inspected in web output and parsed again from freshly saved source text. No earlier audit answers were consulted. Only hemisphere/sign normalization and trailing-zero equivalence applied; no frame transformation.",
+  "catalogue_path": "web/data/sites.json",
+  "catalogue_raw_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+  "summary": {
+    "rows": 10,
+    "numeric_transcription_matches": 10,
+    "actual_landing_locations": 9,
+    "planned_targets": 1,
+    "cited_source_retrieval_failures": 0,
+    "supplemental_mission_link_content_failures": 3,
+    "physical_accuracy_independently_verified": 0
+  },
+  "limitations": [
+    "Luna supplemental LROC mission-specific links now redirect to a generic page; HTTP 200 must not be reported as successfully retrieved mission evidence.",
+    "No disagreement among the inspected NASA Apollo table, corresponding artifact rows, Luna artifact rows, and repeated Frontiers captions was found. This is not an exhaustive literature comparison.",
+    "Initial extraction attempt failed before any HTTP request because bs4 is unavailable; retried successfully using standard-library HTML tag stripping. Raw HTML was retained for inspection."
+  ],
+  "sources": [
+    {
+      "source_id": "apollo",
+      "requested_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "raw_path": "data/processed/task_s_jiyong/historical/apollo.html",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "bytes": 5220,
+      "content_type": "text/html; charset=UTF-8",
+      "redirects": [],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": true,
+      "web_reopened": true,
+      "web_result": "Opened successfully with visible coordinate content."
+    },
+    {
+      "source_id": "artifacts",
+      "requested_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "http_status": 200,
+      "sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f",
+      "raw_path": "data/processed/task_s_jiyong/historical/artifacts.html",
+      "retrieved_utc": "2026-11-15T03:51:46.548670+00:00",
+      "bytes": 77567,
+      "content_type": "text/html; charset=UTF-8",
+      "redirects": [],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": true,
+      "web_reopened": true,
+      "web_result": "Opened successfully with visible coordinate content."
+    },
+    {
+      "source_id": "frontiers",
+      "requested_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "accessed_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "http_status": 200,
+      "sha256": "7391f4d53d2c9474188b55f80bfd9496d4cfbed1a37468fec3e82b97c184458a",
+      "raw_path": "data/processed/task_s_jiyong/historical/frontiers.html",
+      "retrieved_utc": "2026-11-15T03:51:47.932856+00:00",
+      "bytes": 1695491,
+      "content_type": "text/html;charset=utf-8",
+      "redirects": [],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": true,
+      "web_reopened": true,
+      "web_result": "Opened successfully with visible coordinate content."
+    },
+    {
+      "source_id": "lroc_luna16",
+      "requested_url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2016/feature_highlights",
+      "retrieved_utc": "2026-11-15T03:52:18.135605+00:00",
+      "accessed_url": "https://lroc.im-ldi.com/featured_sites",
+      "http_status": 200,
+      "sha256": "7ebf00bd549899f8ef17006fc0cab864b6245c3be8bf054c84a306976692c0a7",
+      "raw_path": "data/processed/task_s_jiyong/historical/lroc_luna16.html",
+      "bytes": 79000,
+      "content_type": "text/html; charset=utf-8",
+      "redirects": [
+        {
+          "status": 301,
+          "url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2016/feature_highlights"
+        },
+        {
+          "status": 301,
+          "url": "https://lroc.im-ldi.com/featured_sites/lroc_features/Luna%2016/feature_highlights"
+        }
+      ],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": false,
+      "web_reopened": true,
+      "content_failure": "Legacy mission-specific URL redirected twice to generic /featured_sites page. HTTP 200 is not retrieval of the mission coordinate content.",
+      "web_result": "Failed: inaccessible redirected URL (Luna 16/24) or timeout (Luna 20)."
+    },
+    {
+      "source_id": "lroc_luna20",
+      "requested_url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2020/feature_highlights",
+      "retrieved_utc": "2026-11-15T03:52:18.135605+00:00",
+      "accessed_url": "https://lroc.im-ldi.com/featured_sites",
+      "http_status": 200,
+      "sha256": "7df736965e7eae035e0511c4faacc7a544f48d90823f18471bb353c9cfca9032",
+      "raw_path": "data/processed/task_s_jiyong/historical/lroc_luna20.html",
+      "bytes": 79000,
+      "content_type": "text/html; charset=utf-8",
+      "redirects": [
+        {
+          "status": 301,
+          "url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2020/feature_highlights"
+        },
+        {
+          "status": 301,
+          "url": "https://lroc.im-ldi.com/featured_sites/lroc_features/Luna%2020/feature_highlights"
+        }
+      ],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": false,
+      "web_reopened": true,
+      "content_failure": "Legacy mission-specific URL redirected twice to generic /featured_sites page. HTTP 200 is not retrieval of the mission coordinate content.",
+      "web_result": "Failed: inaccessible redirected URL (Luna 16/24) or timeout (Luna 20)."
+    },
+    {
+      "source_id": "lroc_luna24",
+      "requested_url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2024/feature_highlights",
+      "retrieved_utc": "2026-11-15T03:52:19.972600+00:00",
+      "accessed_url": "https://lroc.im-ldi.com/featured_sites",
+      "http_status": 200,
+      "sha256": "277a726d3094c3b95ca30f4856dad65cff5b32246239dc9cd8272d646481a40a",
+      "raw_path": "data/processed/task_s_jiyong/historical/lroc_luna24.html",
+      "bytes": 79000,
+      "content_type": "text/html; charset=utf-8",
+      "redirects": [
+        {
+          "status": 301,
+          "url": "https://www.lroc.asu.edu/featured_sites/lroc_features/Luna%2024/feature_highlights"
+        },
+        {
+          "status": 301,
+          "url": "https://lroc.im-ldi.com/featured_sites/lroc_features/Luna%2024/feature_highlights"
+        }
+      ],
+      "retrieval_method": "Python requests GET; response.content bytes saved without newline normalization",
+      "coordinate_content_retrieved": false,
+      "web_reopened": true,
+      "content_failure": "Legacy mission-specific URL redirected twice to generic /featured_sites page. HTTP 200 is not retrieval of the mission coordinate content.",
+      "web_result": "Failed: inaccessible redirected URL (Luna 16/24) or timeout (Luna 20)."
+    }
+  ],
+  "rows": [
+    {
+      "id": "APOLLO11",
+      "catalogue_coordinates": {
+        "lat": 0.67416,
+        "lon": 23.47314
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "0.67416",
+        "longitude": "23.47314",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": 0.67416,
+        "lon": 23.47314
+      },
+      "short_excerpt": "Lunar Module 0.67416 23.47314",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 11, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 5 latitude and 5 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 11 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "0.67416",
+      "source_lon_decimal": "23.47314"
+    },
+    {
+      "id": "APOLLO12",
+      "catalogue_coordinates": {
+        "lat": -3.0128,
+        "lon": -23.4219
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "-3.0128",
+        "longitude": "-23.4219",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "S",
+        "longitude_hemisphere": "W"
+      },
+      "normalized_source_coordinates": {
+        "lat": -3.0128,
+        "lon": -23.4219
+      },
+      "short_excerpt": "Lunar Module -3.0128 -23.4219",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 12, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 4 latitude and 4 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 12 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "-3.0128",
+      "source_lon_decimal": "-23.4219"
+    },
+    {
+      "id": "APOLLO14",
+      "catalogue_coordinates": {
+        "lat": -3.64589,
+        "lon": -17.47194
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "-3.64589",
+        "longitude": "-17.47194",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "S",
+        "longitude_hemisphere": "W"
+      },
+      "normalized_source_coordinates": {
+        "lat": -3.64589,
+        "lon": -17.47194
+      },
+      "short_excerpt": "Lunar Module -3.64589 -17.47194",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 14, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 5 latitude and 5 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 14 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "-3.64589",
+      "source_lon_decimal": "-17.47194"
+    },
+    {
+      "id": "APOLLO15",
+      "catalogue_coordinates": {
+        "lat": 26.13239,
+        "lon": 3.6333
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "26.13239",
+        "longitude": "3.63330",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": 26.13239,
+        "lon": 3.6333
+      },
+      "short_excerpt": "Lunar Module 26.13239 3.63330",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 15, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 5 latitude and 5 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 15 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "26.13239",
+      "source_lon_decimal": "3.63330"
+    },
+    {
+      "id": "APOLLO16",
+      "catalogue_coordinates": {
+        "lat": -8.9734,
+        "lon": 15.5011
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "-8.9734",
+        "longitude": "15.5011",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "S",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": -8.9734,
+        "lon": 15.5011
+      },
+      "short_excerpt": "Lunar Module -8.9734 15.5011",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 16, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 4 latitude and 4 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 16 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "-8.9734",
+      "source_lon_decimal": "15.5011"
+    },
+    {
+      "id": "APOLLO17",
+      "catalogue_coordinates": {
+        "lat": 20.1911,
+        "lon": 30.7723
+      },
+      "catalogue_note": "Historical crewed landing; lunar module location (not ALSEP or retroreflector).",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "source_id": "apollo",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "http_status": 200,
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "retrieved_utc": "2026-11-15T03:51:45.330130+00:00",
+      "source_coordinates_printed": {
+        "latitude": "20.1911",
+        "longitude": "30.7723",
+        "column_headers": "degrees N latitude; degrees E longitude",
+        "hemisphere_representation": "Signed values under N/E-positive column headers",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": 20.1911,
+        "lon": 30.7723
+      },
+      "short_excerpt": "Lunar Module 20.1911 30.7723",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 17, Lunar Module row (not LRRR or ALSEP).",
+      "point_role": "actual_lunar_module_landing_location",
+      "precision_caveat": "Printed 4 latitude and 4 longitude decimal places; last digit is reporting resolution, not demonstrated physical accuracy. This audit does not independently remeasure the lander.",
+      "frame_caveat": "Explicit planetocentric Mean Earth/Polar Axis Lunar Reference System, DE421 ephemeris; LRO image coordinates attributed to Wagner et al. (2017). Compatible in stated frame with catalogue MOON_ME_DE421.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "artifacts",
+        "locator": "Apollo 17 LM descent stage row",
+        "result": "Same coordinates after hemisphere/sign and 0..360 longitude normalization; ascent-stage impact coordinates and ALSEP/LRRR positions are different physical objects."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "20.1911",
+      "source_lon_decimal": "30.7723"
+    },
+    {
+      "id": "LUNA16",
+      "catalogue_coordinates": {
+        "lat": -0.5137,
+        "lon": 56.3638
+      },
+      "catalogue_note": "Historical robotic sample-return landing; NSSDCA/LROC location.",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "source_id": "artifacts",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "http_status": 200,
+      "sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f",
+      "retrieved_utc": "2026-11-15T03:51:46.548670+00:00",
+      "source_coordinates_printed": {
+        "latitude": "0.5137 S",
+        "longitude": "56.3638 E",
+        "signed_column_latitude": "-0.5137",
+        "signed_column_longitude": "56.3638",
+        "column_headers": "Latitude, Longitude; Latitude, Longitude (N, E Positive)",
+        "latitude_hemisphere": "S",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": -0.5137,
+        "lon": 56.3638
+      },
+      "short_excerpt": "Luna 16 Soft Landing 20 September 1970 0.5137 S, 56.3638 E -0.5137, 56.3638",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 16 Soft Landing row; note d.",
+      "point_role": "actual_robotic_soft_landing_location",
+      "precision_caveat": "Four decimal places are printed. Note d attributes location to an object imaged on the surface by LROC; no row-specific uncertainty is given. Decimal agreement does not demonstrate sub-metre or metre physical accuracy.",
+      "frame_caveat": "N/E-positive sign convention explicit. The opened NASA artifact table does not explicitly identify the lunar reference frame for these rows; MOON_ME_DE421 compatibility is not independently established by this page alone.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "lroc_luna16",
+        "result": "Mission-specific link content unavailable: redirects to generic featured-sites index; not used as independent coordinate evidence."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "-0.5137",
+      "source_lon_decimal": "56.3638"
+    },
+    {
+      "id": "LUNA20",
+      "catalogue_coordinates": {
+        "lat": 3.7863,
+        "lon": 56.6242
+      },
+      "catalogue_note": "Historical robotic sample-return landing; NSSDCA/LROC location.",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "source_id": "artifacts",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "http_status": 200,
+      "sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f",
+      "retrieved_utc": "2026-11-15T03:51:46.548670+00:00",
+      "source_coordinates_printed": {
+        "latitude": "3.7863 N",
+        "longitude": "56.6242 E",
+        "signed_column_latitude": "3.7863",
+        "signed_column_longitude": "56.6242",
+        "column_headers": "Latitude, Longitude; Latitude, Longitude (N, E Positive)",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": 3.7863,
+        "lon": 56.6242
+      },
+      "short_excerpt": "Luna 20 Soft Landing 21 February 1972 3.7863 N, 56.6242 E 3.7863, 56.6242",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 20 Soft Landing row; note d.",
+      "point_role": "actual_robotic_soft_landing_location",
+      "precision_caveat": "Four decimal places are printed. Note d attributes location to an object imaged on the surface by LROC; no row-specific uncertainty is given. Decimal agreement does not demonstrate sub-metre or metre physical accuracy.",
+      "frame_caveat": "N/E-positive sign convention explicit. The opened NASA artifact table does not explicitly identify the lunar reference frame for these rows; MOON_ME_DE421 compatibility is not independently established by this page alone.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "lroc_luna20",
+        "result": "Mission-specific link content unavailable: redirects to generic featured-sites index; not used as independent coordinate evidence."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "3.7863",
+      "source_lon_decimal": "56.6242"
+    },
+    {
+      "id": "LUNA24",
+      "catalogue_coordinates": {
+        "lat": 12.7142,
+        "lon": 62.2129
+      },
+      "catalogue_note": "Historical robotic sample-return landing; NSSDCA/LROC location.",
+      "catalogue_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "source_id": "artifacts",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "accessed_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "http_status": 200,
+      "sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f",
+      "retrieved_utc": "2026-11-15T03:51:46.548670+00:00",
+      "source_coordinates_printed": {
+        "latitude": "12.7142 N",
+        "longitude": "62.2129 E",
+        "signed_column_latitude": "12.7142",
+        "signed_column_longitude": "62.2129",
+        "column_headers": "Latitude, Longitude; Latitude, Longitude (N, E Positive)",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "E"
+      },
+      "normalized_source_coordinates": {
+        "lat": 12.7142,
+        "lon": 62.2129
+      },
+      "short_excerpt": "Luna 24 Soft Landing 18 August 1976 12.7142 N, 62.2129 E 12.7142, 62.2129",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 24 Soft Landing row; note d.",
+      "point_role": "actual_robotic_soft_landing_location",
+      "precision_caveat": "Four decimal places are printed. Note d attributes location to an object imaged on the surface by LROC; no row-specific uncertainty is given. Decimal agreement does not demonstrate sub-metre or metre physical accuracy.",
+      "frame_caveat": "N/E-positive sign convention explicit. The opened NASA artifact table does not explicitly identify the lunar reference frame for these rows; MOON_ME_DE421 compatibility is not independently established by this page alone.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "lroc_luna24",
+        "result": "Mission-specific link content unavailable: redirects to generic featured-sites index; not used as independent coordinate evidence."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "12.7142",
+      "source_lon_decimal": "62.2129"
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "catalogue_coordinates": {
+        "lat": 7.585,
+        "lon": -58.725
+      },
+      "catalogue_note": "Planned science target, not an observed landing or a confirmed touchdown point. KASI associates LUSEM with IM-3/CP-11 at Reiner Gamma; https://pda.kasi.re.kr/lusem.php?lang=en .",
+      "catalogue_source_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "source_id": "frontiers",
+      "source_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "accessed_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "http_status": 200,
+      "sha256": "7391f4d53d2c9474188b55f80bfd9496d4cfbed1a37468fec3e82b97c184458a",
+      "retrieved_utc": "2026-11-15T03:51:47.932856+00:00",
+      "source_coordinates_printed": {
+        "latitude": "7.585°N",
+        "longitude": "58.725°W",
+        "latitude_hemisphere": "N",
+        "longitude_hemisphere": "W"
+      },
+      "normalized_source_coordinates": {
+        "lat": 7.585,
+        "lon": -58.725
+      },
+      "short_excerpt": "The targeted LVx landing site (7.585°N, 58.725°W) is denoted by a yellow star",
+      "locator": "Figure 3 caption; same numeric coordinates appear in Figures 9 and 10 captions.",
+      "point_role": "planned_lunar_vertex_science_landing_target",
+      "precision_caveat": "Three decimal places; planned target published 11 August 2022, not a measured touchdown. The paper alone does not establish the final IM-3 mission point or current mission status.",
+      "frame_caveat": "Figure captions specify N/W hemispheres but do not explicitly declare ME/PA DE421. LROC WAC basemap context does not by itself prove frame identity or a frame conversion.",
+      "transcription_equality": true,
+      "physical_accuracy_verified": false,
+      "source_discrepancies": [],
+      "additional_check": {
+        "source_id": "frontiers",
+        "locator": "Figures 9 and 10 captions",
+        "result": "Same 7.585°N, 58.725°W; Figure 3 explicitly calls the point targeted."
+      },
+      "verdict": "MATCH_TO_CITED_SOURCE_WITH_PHYSICAL_ACCURACY_CAVEAT",
+      "source_lat_decimal": "7.585",
+      "source_lon_decimal": "-58.725"
+    }
+  ],
+  "supplemental_cross_source_checks": [
+    {
+      "mission": "Chang'e 3",
+      "catalogue": [
+        {
+          "id": "CHANGE3",
+          "name": "Chang'e 3",
+          "name_ko": "창어 3호",
+          "short": "Chang'e 3",
+          "group": "change",
+          "lat": 44.1214,
+          "lon": -19.5116,
+          "elev_m": null,
+          "source_url": "https://lroc.im-ldi.com/images/637",
+          "coord_quality": "primary",
+          "note": "Historical robotic landing. LROC lander position; source longitude 340.4884 E converted to -19.5116 E."
+        }
+      ],
+      "source_id": "artifacts",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "locator": "Chang'e 3 Soft Landing row; note d",
+      "source_latitude_printed": "44.1214 N",
+      "source_longitude_printed": "19.5117 W",
+      "source_lat_decimal": "44.1214",
+      "source_lon_decimal": "340.4883",
+      "source_longitude_convention": "0..360 E in signed numeric column; hemisphere column preserved separately",
+      "short_excerpt": "Chang'e 3 Soft Landing 14 December 2013 44.1214 N, 19.5117 W 44.1214, 340.4883",
+      "precision_caveat": "Four decimal places printed here; note d says object imaged by LROC but gives no row-specific uncertainty. No 2.2 m or 3 m uncertainty is asserted by this evidence."
+    },
+    {
+      "mission": "Chang'e 4",
+      "catalogue": [
+        {
+          "id": "CHANGE4",
+          "name": "Chang'e 4",
+          "name_ko": "창어 4호",
+          "short": "Chang'e 4",
+          "group": "change",
+          "lat": -45.4562,
+          "lon": 177.5885,
+          "elev_m": null,
+          "source_url": "https://lroc.im-ldi.com/images/1168",
+          "coord_quality": "primary",
+          "note": "Historical robotic landing. Refined LROC lander position; source reports 13 m uncertainty at 95% confidence. Not the Chang'e-2-map coordinate used in some papers."
+        }
+      ],
+      "source_id": "artifacts",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "locator": "Chang'e 4 Soft Landing row; note d",
+      "source_latitude_printed": "45.4561 S",
+      "source_longitude_printed": "177.5885 E",
+      "source_lat_decimal": "-45.4561",
+      "source_lon_decimal": "177.5885",
+      "source_longitude_convention": "0..360 E in signed numeric column; hemisphere column preserved separately",
+      "short_excerpt": "Chang'e 4 Soft Landing 3 January 2019 45.4561 S, 177.5885 E -45.4561, 177.5885",
+      "precision_caveat": "Four decimal places printed here; note d says object imaged by LROC but gives no row-specific uncertainty. No 2.2 m or 3 m uncertainty is asserted by this evidence."
+    }
+  ]
+}

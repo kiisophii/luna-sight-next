@@ -1,0 +1,14 @@
+## Proposed detail Z1 — hourly time statistics
+
+`node pipeline/detail_time_stats.mjs` writes `web/data/detail/time_stats/<ID>.json` for all 33 catalogue sites and an index only after all sites succeed. Format `detail-time-stats-v1`, real inputs only, `complete:true`, `mock:false`.
+
+- Site fields: `id, lat, lon`, `window:{start_utc:"2026-01-01T00:00:00Z",end_utc:"2031-01-01T00:00:00Z",step_h:1,n:43824}`.
+- Integer hours `sunlit_h`, `earth_visible_h`, `both_h`. Actual unchanged `core.js` predicates at hour i are held over `[i,i+1)`: solar disk fraction >=0.5; Earth centre strictly above terrain horizon. Observer 2 m, MOON_ME_DE421.
+- `dark_runs`, `no_earth_runs`, `sunlit_runs` each contain `count,total_h,mean_h,longest_h,complete_count,complete_mean_h,complete_longest_h,clipped_runs`. Unqualified values count **all observed runs**, including clipped runs; `complete_*` exclude every run touching either period edge. Means are null when their respective count is zero; longest is zero when absent. `sunlit_runs.longest_h` is longest continuous observed sunlight. Dark total + sunlight total =43824; no-Earth total + Earth hours =43824.
+- Each `clipped_runs` item is `{start_i,end_i,duration_h,clipped_start,clipped_end}` with exclusive `end_i`; duration = end-start. A whole-period run appears once with both flags true. Its recorded duration is a lower bound on the unobserved full run; no extrapolation is made. Complete count + clipped array length = count.
+- `station_link_h:{kdsa_h,at_least_1_h,at_least_2_h}` counts Earth-visible cells AND station availability from `korea/stations.json`, decoded LSB-first. The four stations are KDSA, DSN Goldstone, Madrid and Canberra. Availability means apparent Moon centre >=10 degrees above station ellipsoidal horizon. No sunlight condition. `kdsa_h<=at_least_1_h<=earth_visible_h`, `at_least_2_h<=at_least_1_h`.
+- `parity:{metrics_exact:true,windows_exact:true}` asserts exact equality to every overlapping metric and all existing Sun/Earth visible intervals, clipping flags and top-10 gaps in `windows/`.
+- `source` holds SHA256 for core, binary ephemeris, ephemeris metadata, catalogue, station data, this horizon, baseline metrics/windows, producer, and imported helper. UTF-8 text normalizes CRLF to LF; binary bytes unchanged. No rounding of statistics.
+- Index fields: `format,window,ids,sha256` (ID-to-output-hash map with the same text normalization), `hash_convention,station_ids,definitions,source_urls,verification,complete,mock`. All 33 IDs must be present. Only complete results receive an index; regeneration removes the old index before changing site files. Each site/report/index write is atomic. Resume requires exact current input and cached output hashes; runtime and failures are in `docs/detail_z1_generation.json`.
+
+Verification here is author-side parity, not the required independent team-member recomputation at three sites. That team check remains pending.

@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "task": "Task S / Jiyong / independent original-source ARTEMIS audit",
+  "audited_at_utc": "2026-11-15T03:54:34.164256+00:00",
+  "scope": "All nine ARTEMIS_* rows only; no other polar sites",
+  "catalogue": {
+    "path": "web/data/sites.json",
+    "sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017"
+  },
+  "publication": {
+    "title": "Assessing Potential Landing Sites With Favorable Illumination and Accessible, Potentially Volatile-Rich Permanently Shadowed Regions Within Artemis Candidate Landing Regions",
+    "authors_short": "Wueller et al.",
+    "doi": "10.1029/2025JE009434",
+    "journal": "Journal of Geophysical Research: Planets",
+    "volume_issue": "131(3)",
+    "article": "e2025JE009434",
+    "year": 2026,
+    "version": "Published journal article / publisher-formatted version with ETH generated cover",
+    "version_evidence": "ETH cover identifies original journal, volume/issue and DOI; following page has matching title/authors/DOI, journal layout, accepted date 8 FEB 2026, copyright 2026, article pagination 1 of 34; journal pages carry Wiley download footer dated 11/03/2026. No byte-identity claim against blocked direct Wiley download.",
+    "eth_record_url": "https://www.research-collection.ethz.ch/items/828482bf-3641-40d8-a6b3-86378841d4e2",
+    "identity_visual_pages": [
+      1,
+      2
+    ]
+  },
+  "sources": [
+    {
+      "id": "wiley_original",
+      "requested_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "http_status": 403,
+      "retrieved_at_utc": "2026-11-15T03:51:47.250355+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 5626,
+      "sha256": "5c36f3d4b5a794b13dad7726324595d022a3a39aec6a319172bca0c34e4e887a",
+      "local_path": "data/processed/task_s_jiyong/artemis/wiley_original.html"
+    },
+    {
+      "id": "eth_published_pdf",
+      "requested_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "http_status": 429,
+      "retrieved_at_utc": "2026-11-15T03:51:49.814491+00:00",
+      "content_type": "text/html; charset=iso-8859-1",
+      "bytes": 1560,
+      "sha256": "fb4a51d9adadc0df799f7964600b78e6a42f641be7836565ff7cd8dd870eca60",
+      "local_path": "data/processed/task_s_jiyong/artemis/eth_published_pdf.html"
+    },
+    {
+      "id": "eth_record",
+      "requested_url": "https://www.research-collection.ethz.ch/items/828482bf-3641-40d8-a6b3-86378841d4e2",
+      "accessed_url": "https://www.research-collection.ethz.ch/items/828482bf-3641-40d8-a6b3-86378841d4e2",
+      "http_status": 429,
+      "retrieved_at_utc": "2026-11-15T03:51:50.558377+00:00",
+      "content_type": "text/html; charset=iso-8859-1",
+      "bytes": 1560,
+      "sha256": "fb4a51d9adadc0df799f7964600b78e6a42f641be7836565ff7cd8dd870eca60",
+      "local_path": "data/processed/task_s_jiyong/artemis/eth_record.html"
+    },
+    {
+      "id": "wiley_pdf",
+      "requested_url": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2025JE009434",
+      "accessed_url": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2025JE009434",
+      "http_status": 403,
+      "retrieved_at_utc": "2026-11-15T03:52:32.437036+00:00",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 5623,
+      "sha256": "1913053364605acc11a86acb45f9c2506de7eb8c0e496c1affb10f51775a2394",
+      "local_path": "data/processed/task_s_jiyong/artemis/wiley_pdf.html"
+    },
+    {
+      "id": "eth_download",
+      "requested_url": "https://www.research-collection.ethz.ch/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/download",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-11-15T03:53:00.879418+00:00",
+      "content_type": "application/pdf;charset=UTF-8",
+      "bytes": 6498129,
+      "sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "local_path": "data/processed/task_s_jiyong/artemis/eth_download.pdf"
+    }
+  ],
+  "additional_retrieval_channels": [
+    {
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "channel": "web retrieval",
+      "status": "full HTML readable; HTTP status/raw bytes not exposed",
+      "sha256": null,
+      "observation": "Table A1 rows independently read with visible minus signs; agrees with downloaded ETH publisher PDF."
+    },
+    {
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2025JE009434",
+      "channel": "web retrieval",
+      "status": "34-page PDF text readable; screenshot calls returned references but no image bytes exposed in tool wrapper",
+      "sha256": null,
+      "observation": "PDF page locators agree with ETH copy, with one extra ETH cover page."
+    }
+  ],
+  "method": [
+    "Read AGENTS.md, data contract, and current catalogue. No previous audit conclusions used as evidence.",
+    "Attempted original source directly; saved 403 response bytes and metadata, separate from actual evidence.",
+    "Retrieved ETH published PDF through /bitstreams/.../download; it redirected to /server/api/core/bitstreams/.../content with HTTP 200 after earlier HTTP 429 attempts.",
+    "Matched title and DOI on ETH cover and journal first page; viewed both.",
+    "Read Table A1 and independently viewed PyMuPDF renders of ETH PDF pages 26–28, corresponding to article pages 25–27.",
+    "Compared exact signed decimal strings using Decimal; all nine numeric values match."
+  ],
+  "rendering_warning": "System Poppler emitted missing-font warnings and visibly omitted some minus/leading digits in its PNGs. Those renders are not evidence; verified-page-*.png were independently generated by PyMuPDF and all selected coordinates were visually confirmed.",
+  "summary": {
+    "rows": 9,
+    "exact_decimal_matches": 9,
+    "coordinate_mismatches": 0,
+    "exact_frame_confirmed": 0,
+    "new_coordinate_changes_needed": 0
+  },
+  "rows": [
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "catalogue_lat": -83.763,
+      "catalogue_lon": -69.983,
+      "source_lat_decimal": "-83.7630",
+      "source_lon_decimal": "-69.9830",
+      "source_lat_printed": "−83.7630",
+      "source_lon_printed": "−69.9830",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "W",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "PCB01 | −83.7630 | −69.9830",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "PCB01",
+        "region_label": "Peak Near Cabeus B",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-27.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "catalogue_lat": -86.768,
+      "catalogue_lon": -20.514,
+      "source_lat_decimal": "-86.7680",
+      "source_lon_decimal": "-20.5140",
+      "source_lat_printed": "−86.7680",
+      "source_lon_printed": "−20.5140",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "W",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "HW01 | −86.7680 | −20.5140",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "HW01",
+        "region_label": "Haworth",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-26.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "catalogue_lat": -85.942,
+      "catalogue_lon": -0.944,
+      "source_lat_decimal": "-85.9420",
+      "source_lon_decimal": "-0.9440",
+      "source_lat_printed": "−85.9420",
+      "source_lon_printed": "−0.9440",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "W",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "MMA01 | −85.9420 | −0.9440",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMA01",
+        "region_label": "Mons Malapert",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-26.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "catalogue_lat": -85.111,
+      "catalogue_lon": 26.71,
+      "source_lat_decimal": "-85.1110",
+      "source_lon_decimal": "26.7100",
+      "source_lat_printed": "−85.1110",
+      "source_lon_printed": "26.7100",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "E",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "MMP01 | −85.1110 | 26.7100",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMP01",
+        "region_label": "Mons Mouton Plateau",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-27.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "catalogue_lat": -85.416,
+      "catalogue_lon": 31.851,
+      "source_lat_decimal": "-85.4160",
+      "source_lon_decimal": "31.8510",
+      "source_lat_printed": "−85.4160",
+      "source_lon_printed": "31.8510",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "E",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "MMO01 | −85.4160 | 31.8510",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMO01",
+        "region_label": "Mons Mouton",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-26.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "catalogue_lat": -85.295,
+      "catalogue_lon": 36.917,
+      "source_lat_decimal": "-85.2950",
+      "source_lon_decimal": "36.9170",
+      "source_lat_printed": "−85.2950",
+      "source_lon_printed": "36.9170",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "E",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "NR101 | −85.2950 | 36.9170",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "NR101",
+        "region_label": "Nobile Rim 1",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-27.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "catalogue_lat": -84.054,
+      "catalogue_lon": 56.481,
+      "source_lat_decimal": "-84.0540",
+      "source_lon_decimal": "56.4810",
+      "source_lat_printed": "−84.0540",
+      "source_lon_printed": "56.4810",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "E",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "NR201 | −84.0540 | 56.4810",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "NR201",
+        "region_label": "Nobile Rim 2",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-27.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "catalogue_lat": -88.389,
+      "catalogue_lon": -68.865,
+      "source_lat_decimal": "-88.3890",
+      "source_lon_decimal": "-68.8650",
+      "source_lat_printed": "−88.3890",
+      "source_lon_printed": "−68.8650",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "W",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "dGR201 | −88.3890 | −68.8650",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "dGR201",
+        "region_label": "de Gerlache Rim 2",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-26.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "catalogue_lat": -87.478,
+      "catalogue_lon": 124.521,
+      "source_lat_decimal": "-87.4780",
+      "source_lon_decimal": "124.5210",
+      "source_lat_printed": "−87.4780",
+      "source_lon_printed": "124.5210",
+      "source_hemisphere_notation": "Signed latitude/longitude; no printed N/S/E/W suffixes. Negative latitude is south; negative longitude is west under east-positive interpretation.",
+      "source_lat_hemisphere": "S",
+      "source_lon_hemisphere": "E",
+      "printed_decimal_places": {
+        "lat": 4,
+        "lon": 4
+      },
+      "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "accessed_url": "https://www.research-collection.ethz.ch/server/api/core/bitstreams/fdbbd74d-ec07-4adc-9869-51a416cce9f1/content",
+      "retrieval_id": "eth_download",
+      "access_status": "HTTP 200 published PDF; original direct Wiley request HTTP 403, original Wiley HTML/PDF readable through web retrieval",
+      "source_sha256": "46bdd0636b169225c89a9860cdd99307ac513c6355873845e8790ec69568df95",
+      "source_excerpt": "SP01 | −87.4780 | 124.5210",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "SP01",
+        "region_label": "Slater Plain",
+        "printed_article_page": 27,
+        "eth_pdf_page_1based": 28
+      },
+      "visual_evidence": {
+        "path": "data/processed/task_s_jiyong/artemis/verified-page-28.png",
+        "method": "PyMuPDF render at 1.5 scale, independently viewed; negative glyph and all digits confirmed"
+      },
+      "coordinate_role": "Manually selected representative candidate landing site (research CLS) within the candidate landing region; not the NASA region centre or a NASA-selected touchdown point.",
+      "role_evidence_locator": "Section 3 (Candidate Landing Sites), article p. 6, and Table A1",
+      "frame_status": "unverified_exact_MOON_ME_DE421",
+      "frame_limitation": "Paper gives geographic coordinates and uses LRO imagery/LOLA DEMs; inspected table and text do not explicitly establish MOON_ME_DE421, planetocentric latitude, or a datum transformation. No frame conversion performed.",
+      "precision_limitation": "Table prints four fractional digits, with a trailing zero in each selected value. This is numerical representation, not a stated accuracy/uncertainty. Representative research sites are not surveyed landing locations.",
+      "normalization": "Signed degrees copied without coordinate transformation; trailing zeros may be omitted by JSON numeric serialization.",
+      "comparison_status": "exact_decimal_match",
+      "difference_deg": {
+        "lat": "0.0000",
+        "lon": "0.0000"
+      },
+      "recommended_action": "retain coordinate; preserve research CLS role and frame/precision caveat"
+    }
+  ]
+}

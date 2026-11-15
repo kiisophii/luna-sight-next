@@ -33,6 +33,8 @@ addStrings({
 
 const $ = s => document.querySelector(s);
 const sec = $('#llsn-globe');
+// Keep the minimap clear of the redundant Earth-set/basemap caption.
+$('#hud-1')?.remove();
 const stage = $('#globe-stage');
 let g = null;
 let lastFly = { id: null, t: 0 };

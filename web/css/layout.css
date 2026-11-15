@@ -1561,3 +1561,11 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls-minimap .mm-dest-icon { grid-row:1 / 3; }
   .ls-minimap .mm-tag { grid-column:2; max-width:none; }
 }
+
+/* elevation legend (shell.js): the copy's vertical bar, centred above the toolbar */
+.ls-toolbar .elev-legend { position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); display: grid; gap: 6px; justify-items: center; padding: 8px 10px; border-radius: 8px; background: rgba(12, 12, 13, .82); border: 1px solid rgba(237, 237, 237, .10); font-size: 11px; color: var(--n-text, #EDEDED); white-space: nowrap; pointer-events: auto; }
+.ls-toolbar .elev-legend[hidden] { display: none; }
+.ls-toolbar .elev-legend b { font-weight: 500; }
+.ls-toolbar .elev-legend .el-row { display: flex; gap: 6px; align-items: stretch; }
+.ls-toolbar .elev-legend .el-ends { display: flex; flex-direction: column; justify-content: space-between; text-align: right; color: var(--n-mute, #9C9CA1); }
+.ls-toolbar .elev-legend .el-bar { width: 8px; height: 96px; border-radius: 2px; }

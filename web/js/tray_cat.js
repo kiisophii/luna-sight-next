@@ -35,7 +35,7 @@ addStrings({
   tNoTerrain: 'No terrain file', tHzMax: 'max horizon', tLoading: 'loading…',
 }, {
   tcRelayTab: '중계탑', tcSun: '일조', tcEarth: '지구 가시', tcRelay: '중계탑', tcTerrain: '지형',
-  tsRate: '일조율', tsDark: '최장 어둠', teRate: '가시율', teGap: '최장 안 보임', trMix: '교신율', trGap: '최장 끊김',
+  tsRate: '일조율', tsDark: '최장 어둠', teRate: '지구 가시율', teGap: '최장 지구 안 보임', trMix: '탑 경유 가시율', trGap: '최장 끊김',
   ttSlope: '경사', ttHz: '지평선',
   tdSunRate: '분석 기간 동안 일조율이 시간에 따라 어떻게 쌓이는지 봅니다.',
   tdSunDark: '기간 중 햇빛이 없는 가장 긴 연속 시간입니다.',
@@ -49,7 +49,7 @@ addStrings({
   tiEarth: '지구 보임 = 지구 중심이 지형 지평선 위 (직접 교신 기하, 1시간마다).',
   tiRelay: 'data/relay의 15 m 중계탑을 가정합니다. 기하학적 가시선만 보며 전파 성능은 아닙니다.',
   tiTerrain: 'data/terrain: 남쪽 16곳은 5–20 m PGDA LOLA 정밀값(꼬리표에 착륙지별 해상도 표시), 나머지는 250 m 범위 경사만 있는 거친 값입니다. 8°·15°는 참고값이며 착륙 안전 기준이 아닙니다.',
-  tRelayAll: '탑 필요 없음: 기간 내내 지구가 보임', tRelayNone: '이 착륙지는 탑 자료 없음', tRelayFar: '이곳은 직접 교신이 없어 근처 탑으로도 이어지지 않음',
+  tRelayAll: '탑 없이도 지구가 계속 보임', tRelayNone: '이 착륙지는 탑 자료 없음', tRelayFar: '이곳은 직접 교신이 없어 근처 탑으로도 이어지지 않음',
   tDirect: '직접', tVia: '탑 경유', tFine: '정밀', tCoarse: '거친 250 m', tFlat: '500 m 안 8° / 15° 이하', tRough: '거칠기 (중앙값, 500 m)', tRef: '참고값',
   tNoTerrain: '지형 파일 없음', tHzMax: '최고 지평선', tLoading: '불러오는 중…',
 });

@@ -10,17 +10,17 @@ import { relayFor, segmentHours, siteStationLink } from './diff_data.js';
 addStrings({
   saTitle: 'The communication story for this site', saAria: 'Communication story: direct link, tower, Korea',
   sa1: '1 · Direct link to Earth', sa3: '2 · A relay tower', sa4: '3 · Yeoju sees the Moon too',
-  sa1fail: 'Earth is hidden by terrain or libration for {x} of the period.', sa1ok: 'Earth is in view for the whole period — the direct link works here.',
+  sa1fail: 'Earth is hidden by terrain or libration for {x} of the period.', sa1ok: 'Earth is in view for the whole period — a direct line of sight to Earth here.',
   sa3txt: 'With {n} tower(s) of {h} m: link {a} → {b} of the period.', sa3none: 'No buildable tower within 10 km improves this site at {h} m.', sa3ok: 'Not needed: this site already sees Earth all the time in the 5-year data.',
-  sa4txt: 'Direct link to Yeoju (KDSA, 35 m) for {x} of the period ({hrs}): the site sees Earth and the Moon is ≥ 10° above Yeoju. With the 3 NASA DSN 70 m sites: {d}.',
+  sa4txt: 'Yeoju (KDSA, 35 m) in view for {x} of the period ({hrs}) — geometry only: the site sees Earth and the Moon is ≥ 10° above Yeoju. With the 3 NASA DSN 70 m sites: {d}.',
   saPending: 'Terrain pending', saPendingTip: 'Real LOLA terrain for this site is still being computed; this step is shown only from real terrain.',
   saPeriod: 'Period', saChange: 'change in Analysis window ↓',
 }, {
   saTitle: '이 착륙지의 통신 이야기', saAria: '통신 이야기: 직접 통신, 타워, 한국',
   sa1: '1 · 지구와 직접 통신', sa3: '2 · 중계 타워', sa4: '3 · 여주에서도 달이 보인다',
-  sa1fail: '기간의 {x} 동안 지형이나 칭동 때문에 지구가 가려진다.', sa1ok: '기간 내내 지구가 보인다 — 여기서는 직접 통신이 된다.',
+  sa1fail: '기간의 {x} 동안 지형이나 칭동 때문에 지구가 가려진다.', sa1ok: '기간 내내 지구가 보인다 — 여기서는 지구와 직접 가시선이 있다.',
   sa3txt: '{h} m 타워 {n}기: 통신 {a} → {b} (기간 대비).', sa3none: '{h} m에서는 10 km 안에 세울 수 있는 타워로 개선되지 않는다.', sa3ok: '필요 없음: 이 착륙지는 5년 자료 내내 지구가 보인다.',
-  sa4txt: '기간의 {x} 동안 여주(KDSA, 35 m)와 직접 통신 가능 ({hrs}): 착륙지에서 지구가 보이고 여주에서 달이 10° 이상. NASA DSN 70 m 세 곳 합계: {d}.',
+  sa4txt: '기간의 {x} 동안 여주(KDSA, 35 m) 가시 ({hrs}, 기하만): 착륙지에서 지구가 보이고 여주에서 달이 10° 이상. NASA DSN 70 m 세 곳 합계: {d}.',
   saPending: '지형 대기 중', saPendingTip: '이 착륙지의 실제 LOLA 지형을 아직 계산 중이다. 이 단계는 실제 지형으로만 보여 준다.',
   saPeriod: '기간', saChange: '분석 기간에서 바꾸기 ↓',
 });

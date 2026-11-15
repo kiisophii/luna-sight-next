@@ -22,14 +22,14 @@ addStrings({
   bSumOne: 'Only one site is compared, so no ranking was made.', bNoneS: 'none', bRule: 'Decision rule (example thresholds)',
   bRuleTxt: 'Strength = first among the compared sites (ties included) or direct-to-Earth ≥ {hi} %. Caution = longest shadow > {dark} h, direct-to-Earth < {lo} %, or last among the compared sites. Badges count only these. No hidden score or weights. The thresholds are examples for discussion, not mission requirements.',
   sFirst: '{l} {v} — first of {n}', sLast: '{l} {v} — last of {n}', sHigh: 'Direct-to-Earth {v} — at least {hi} %', sDarkRule: 'Longest shadow {v} — over {dark} h', sLow: 'Direct-to-Earth {v} — under {lo} %',
-  bNow: 'State at the selected time', nSun: 'Sunlit', nDark: 'In shadow', nEarth: 'Direct-to-Earth possible', nNoEarth: 'No direct-to-Earth',
+  bNow: 'State at the selected time', nSun: 'Sunlit', nDark: 'In shadow', nEarth: 'Earth in view', nNoEarth: 'Earth not in view',
   nNext: 'next change in {x}', nNone: 'no change in the period', sunEl: 'Sun elevation', earthEl: 'Earth elevation',
   kSun: 'Sunlight', kEarth: 'Direct-to-Earth', kBoth: 'Sun + Earth together', kDark: 'Longest shadow',
   kSunSub: '{h} h sunlit · {g} gap(s)', kEarthSub: '{g} gap(s) · longest {x}', kBothSub: '{h} h with Sun and Earth both in view', kDarkSub: 'over {dark} h (caution rule)', kDarkOk: 'within {dark} h',
   kUnc: 'within 300 m: {a}–{b} (p10–p90, 2026–2030)', daily: 'daily',
   tipSun: 'Share of hours in the period with ≥ 50 % of the solar disc above the terrain horizon (observer 2 m).',
   tipEarth: 'Share of hours with the Earth center above the terrain horizon — direct-to-Earth geometry, not radio performance.',
-  tipBoth: 'Share of hours that are sunlit AND see the Earth at the same time.', tipDark: 'Longest continuous run of hours without sunlight inside the period (clipped at the period ends).',
+  tipBoth: 'Share of hours when the Sun disc is at least 50 % above the terrain horizon AND the Earth centre is above it, at the same hour. Geometry only — not power or radio performance.', tipDark: 'Longest continuous run of hours without sunlight inside the period (clipped at the period ends).',
   bComm: 'Link: relay tower and ground stations', cDirect: 'Direct link → incl. relay tower', cTowerTxt: '{h} m tower(s), nearest {k} km from the site · geometric line of sight',
   cNoTower: 'No relay-tower calculation for this site.', cNoTowerNeed: 'No tower placed: no tower site adds link time here (data/relay).', cKdsa: 'Yeoju KDSA in view (Moon ≥ 10°, site sees Earth)', cAny: 'any ground station (union): {h} h', hrs: 'h',
   bTrust: 'Validation and limits', tCoord: 'Coordinate source', tCoordOk: 'checked', tCoordUser: 'user input', tPgda: 'This site vs NASA PGDA',
@@ -42,11 +42,11 @@ addStrings({
   d_date: 'If the landing date slips', d_dateD: 'Full 2026–2030 landing-date table (data/detail/dates), the landing-day scan (computed in the browser from the ephemeris and the terrain horizon) and the 2026–2027 date-slip file.',
   d_seasons: 'Seasons 2026–2030', d_seasonsD: 'Monthly values for 60 months. Click a month to start the analysis period there.',
   d_relay: 'With a relay tower', d_relayD: 'Geometric visibility only (lander ↔ tower line of sight, tower sees the Earth). Radio strength and equipment are estimates. Concept: NASA Glenn BEACON (NTRS 20240014584).',
-  d_gs: 'Ground stations in view (geometry only)', d_gsD: 'Site sees the Earth AND the Moon is ≥ 10° above the station. Totals are unions. Coordinates: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
+  d_gs: 'Ground stations in view (geometry only)', d_gsD: 'Site sees the Earth AND the Moon is ≥ 10° above the station. Geometry only — reception was not modelled. Totals are unions. Coordinates: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
   d_hz: 'Horizon and what blocks the view', d_hzD: 'Margin = body elevation − terrain height in that direction; positive = visible (Sun: disc center).',
   d_more: 'More analysis and readiness', d_moreD: 'What this tool has NOT analyzed yet, said plainly — no invented numbers.',
   d_trust: 'Can I trust these numbers?', d_trustD: 'Comparison with NASA PGDA maps, mission hindcast and the files used for this site.',
-  tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility (data/windows) — click a year position to move the analysis period there',
+  rawT: 'Raw table', sumPer: 'Analysis period {a} – {b} ({h} h).', sumGap: 'Longest Earth gap: {g}', sumDarkL: 'longest dark: {d}.', tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility (data/windows) — click a year position to move the analysis period there',
   rowSun: 'Sunlight', rowEarth: 'Direct-to-Earth', rowBoth: 'Sun + Earth together', startUTC: 'Start (UTC)', endUTC: 'End (UTC)', dur: 'Length',
   nNearH: '① Registered sites within 20 km', nNearNone: 'No other catalogue site within 20 km.', nDist: 'Distance', nDiff: 'vs this site',
   nUncH: '② Coordinate uncertainty (data/uncertainty, 100 m grid)', nUncR: 'Radius', nUncNo: 'No coordinate-uncertainty file for this site.',
@@ -70,14 +70,14 @@ addStrings({
   bSumOne: '비교 대상이 1곳이라 순위 비교는 하지 않았습니다.', bNoneS: '해당 없음', bRule: '판정 규칙 (예시 기준값)',
   bRuleTxt: '강점 = 비교 중 1위(동점 포함) 또는 직접 교신 ≥ {hi} %. 주의 = 최장 연속 그늘 > {dark}시간, 직접 교신 < {lo} %, 또는 비교 중 꼴찌. 배지는 이 개수로만 정합니다. 숨은 점수·가중치 없음. 기준값은 토론용 예시이며 임무 요구 조건이 아닙니다.',
   sFirst: '{l} {v} — {n}곳 중 1위', sLast: '{l} {v} — {n}곳 중 꼴찌', sHigh: '지구 직접 교신 {v} — {hi} % 이상', sDarkRule: '최장 그늘 {v} — {dark}시간 초과', sLow: '지구 직접 교신 {v} — {lo} % 미만',
-  bNow: '선택 시각의 상태', nSun: '햇빛 있음', nDark: '그늘', nEarth: '지구 보임', nNoEarth: '지구 교신 없음',
+  bNow: '선택 시각의 상태', nSun: '햇빛 있음', nDark: '그늘', nEarth: '지구 보임', nNoEarth: '지구 안 보임',
   nNext: '다음 변화까지 {x}', nNone: '기간 안에 변화 없음', sunEl: '태양 고도', earthEl: '지구 고도',
   kSun: '일조율', kEarth: '직접 교신율', kBoth: '해·지구 동시', kDark: '최장 그늘',
   kSunSub: '햇빛 있는 시간 {h}시간 · 끊김 {g}번', kEarthSub: '끊김 {g}번 · 최장 {x}', kBothSub: '해와 지구가 함께 보이는 시간 {h}시간', kDarkSub: '{dark}시간 기준 초과 (주의 규칙)', kDarkOk: '{dark}시간 이내',
   kUnc: '300 m 안: {a}–{b} (p10–p90, 2026–2030)', daily: '일별',
   tipSun: '기간 중 태양 원반의 50 % 이상이 지형 지평선 위에 있는 시간 비율(관측 높이 2 m).',
   tipEarth: '지구 중심이 지형 지평선 위에 있는 시간 비율 — 직접 교신 기하이며 전파 성능이 아님.',
-  tipBoth: '햇빛이 있고 동시에 지구가 보이는 시간 비율.', tipDark: '기간 안에서 햇빛 없이 이어진 가장 긴 시간(기간 끝에서 잘림).',
+  tipBoth: '같은 시각에 태양 원반의 50 % 이상과 지구 중심이 함께 지형 지평선 위에 있는 시간 비율. 기하만 — 전력·전파 성능 아님.', tipDark: '기간 안에서 햇빛 없이 이어진 가장 긴 시간(기간 끝에서 잘림).',
   bComm: '교신: 중계탑과 지상국', cDirect: '직접 교신 → 중계탑 포함', cTowerTxt: '{h} m 탑, 가장 가까운 탑까지 {k} km · 기하학적 가시성',
   cNoTower: '이 착륙지는 중계탑 계산 없음.', cNoTowerNeed: '탑을 세우지 않음: 여기서는 교신 시간을 늘리는 탑 자리가 없음 (data/relay).', cKdsa: '여주 KDSA 가시 (달 ≥ 10°, 착륙지에서 지구 보임)', cAny: '어느 지상국이든(합집합) {h}시간', hrs: '시간',
   bTrust: '검증과 한계', tCoord: '좌표 출처 확인', tCoordOk: '확인됨', tCoordUser: '사용자 입력', tPgda: '이 지점 · NASA PGDA 비교',
@@ -90,11 +90,11 @@ addStrings({
   d_date: '날짜가 밀리면?', d_dateD: '2026–2030 전체 착륙일 표(data/detail/dates), 착륙일 훑기(천체력과 지형 지평선으로 브라우저에서 계산), 2026–2027 날짜 밀림 파일.',
   d_seasons: '계절 2026–2030', d_seasonsD: '60개월의 월별 값. 달을 누르면 분석 기간이 그 달에서 시작합니다.',
   d_relay: '중계탑을 세우면', d_relayD: '기하학적 가시성만 계산(착륙선↔탑 시선, 탑에서 지구가 지평선 위). 전파 세기·장비 성능은 추정. 개념: NASA Glenn BEACON (NTRS 20240014584).',
-  d_gs: '지상국이 보이는 시간 (기하만)', d_gsD: '착륙지에서 지구가 지평선 위이고 지상국에서 달이 10° 이상일 때. 합계는 합집합. 좌표: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
+  d_gs: '지상국이 보이는 시간 (기하만)', d_gsD: '착륙지에서 지구가 지평선 위이고 지상국에서 달이 10° 이상일 때. 기하만 — 수신 성능은 계산하지 않음. 합계는 합집합. 좌표: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
   d_hz: '지평선과 가림 원인', d_hzD: '여유각 = 천체 고도 − 그 방향 지형 높이. 양수면 보임(태양은 원반 중심 기준).',
   d_more: '추가 분석과 준비 상태', d_moreD: '이 도구가 아직 분석하지 않은 것을 솔직하게 적습니다 — 숫자를 지어내지 않습니다.',
   d_trust: '이 숫자 믿어도 되나', d_trustD: 'NASA PGDA 지도 비교, 실제 임무 되짚기, 이 착륙지에 쓴 파일.',
-  tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간(data/windows) — 누르면 분석 기간이 그 위치로 이동',
+  rawT: '원자료 표', sumPer: '분석 기간 {a} – {b} ({h}시간).', sumGap: '최장 지구 끊김: {g}', sumDarkL: '최장 어둠: {d}.', tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간(data/windows) — 누르면 분석 기간이 그 위치로 이동',
   rowSun: '햇빛', rowEarth: '지구 직접 교신', rowBoth: '해+지구 동시', startUTC: '시작 (UTC)', endUTC: '끝 (UTC)', dur: '길이',
   nNearH: '① 반경 20 km 안의 등록 착륙지', nNearNone: '20 km 안에 다른 카탈로그 착륙지가 없습니다.', nDist: '거리', nDiff: '이곳 대비',
   nUncH: '② 좌표 불확실성 (data/uncertainty, 100 m 격자)', nUncR: '반경', nUncNo: '이 착륙지는 좌표 불확실성 파일이 없습니다.',
@@ -437,7 +437,8 @@ function timeKpis(bits) {
 function periodBars(bits) {
   const n = bits.length, w = LLSN().window;
   const row = (lbl, m, col) => `<div class="sc-row"><span>${esc(t(lbl))}</span><svg viewBox="0 0 ${n} 1" preserveAspectRatio="none" aria-hidden="true"><rect width="${n}" height="1" fill="var(--sc-off)"/>${runs(bits, m).map(r => `<rect x="${r.start}" width="${r.len}" height="1" fill="${col}"/>`).join('')}</svg></div>`;
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => `<span style="left:${f * 100}%">${esc(isoDay(w.i0 + Math.min(n - 1, Math.round(f * (n - 1)))).slice(5).replace('-', '.'))}</span>`).join('');
+  const tick = i => getLang() === 'ko' ? isoDay(i).slice(5).replace('-', '.') : core.hourToDate(i).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => `<span style="left:${f * 100}%">${esc(tick(w.i0 + Math.min(n - 1, Math.round(f * (n - 1)))))}</span>`).join('');
   return `<div class="sc-bars" role="img" aria-label="${esc(t('c_time'))}">
     <div class="sc-leg"><span><i style="background:var(--sun)"></i>${esc(t('legSunUp'))}</span><span><i style="background:var(--earth)"></i>${esc(t('legEarthIn'))}</span><span><i style="background:var(--n-text)"></i>${esc(t('legBothIn'))}</span><span><i style="background:var(--sc-off)"></i>${esc(t('legNone'))}</span></div>
     ${row('rSun', 1, 'var(--sun)')}${row('rEarth', 2, 'var(--earth)')}${row('rBoth', 3, 'var(--n-text)')}<div class="sc-axis">${ticks}</div></div>`;
@@ -467,9 +468,13 @@ async function timeBlock(s) {
           <table class="mini-tbl"><thead><tr><th>◍ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01 · data/windows/${esc(s.id)}.json</p></details>`;
   }
-  body.innerHTML = `${timeKpis(bits)}${periodBars(bits)}<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
+  const offRun = m => { let best = null, st = -1; for (let k = 0; k <= bits.length; k++) { const off = k < bits.length && !(bits[k] & m); if (off && st < 0) st = k; else if (!off && st >= 0) { if (!best || k - st > best[1] - best[0]) best = [st, k]; st = -1; } } return best; };
+  const md = i => fmtUTC(i).slice(5);
+  const eg = offRun(2), dk = offRun(1);
+  const sentence = `${fill(t('sumPer'), { a: fmtUTC(w.i0), b: fmtUTC(w.i1), h: bits.length })} ${fill(t('sumGap'), { g: eg ? `${md(w.i0 + eg[0])} – ${md(w.i0 + eg[1] - 1)}` : '–' })}; ${fill(t('sumDarkL'), { d: dk ? `${md(w.i0 + dk[0])} – ${md(w.i0 + dk[1] - 1)}` : '–' })}`;
+  body.innerHTML = `${timeKpis(bits)}${periodBars(bits)}<p class="sc-d">${esc(sentence)}</p><details class="sc-raw"><summary>${esc(t('rawT'))}</summary><table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
     <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">${esc(fill(t('tRuns'), { n: sr.length }))}</summary>
-      <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details>${five}${await z1Html(s)}`;
+      <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details></details>${five}${await z1Html(s)}`;
   body.querySelector('.five-strip')?.addEventListener('click', e => {
     const sv = e.currentTarget, r = sv.getBoundingClientRect(), f = (e.clientX - r.left) / r.width;
     const ms = Number(sv.dataset.t0) + f * (Number(sv.dataset.t1) - Number(sv.dataset.t0));

@@ -2,7 +2,7 @@
 export const STR = {
   en: {
     title: 'Lunar Landing Site Navigator',
-    tagline: 'Compare landing sites and dates: can a lander see the Sun (power) and the Earth (direct-to-Direct-to-Earth)?',
+    tagline: 'Compare landing sites and dates: can a lander see the Sun and the Earth (geometry only)?',
     mock: 'MOCK DATA — placeholder files for building the interface. Do not quote these numbers.',
     play: 'Play', pause: 'Pause', speed: 'Speed', time: 'Time (UTC)',
     sunEl: 'Sun elevation', earthEl: 'Earth elevation',

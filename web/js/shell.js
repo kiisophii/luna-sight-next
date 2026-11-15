@@ -214,6 +214,8 @@ let layer = 'light', layerNoted = false;
 // elevation layer: colour scale of the designer's copy (Chaei: navy -4.5 km -> pink +5.5 km), values beyond the ends clamp.
 // The legend also states the real min / max of the LOLA tiles in use (data/globe/index.json, all levels).
 const ELEV_MIN = -4.5, ELEV_MAX = 5.5;
+// average-sunlight ramp of Chaei's copy (Turbo colour map samples, Google, Apache-2.0)
+const SUN_RAMP = ['#30123b', '#4686fb', '#1ae4b6', '#a2fc3c', '#fabb39', '#e4460a', '#7a0403'];
 const ELEV_RAMP = ['#0E2147', '#2A4677', '#56729F', '#4F8C8E', '#9CB463', '#E3D46C', '#E9A55F', '#DE7C64', '#F2D2C6'];
 let elevR = null;
 const elevRange = () => (elevR ||= fetch(`${LL().state?.base || 'data/'}globe/index.json`).then(r => r.json()).then(j => {
@@ -270,18 +272,23 @@ async function setLayer(k) {
   const idx = await gmapsIndex();
   const L = idx?.layers?.find(x => x.id === k);
   if (!L) { leg.hidden = true; return; }
-  await g.setColorMap(`data/${idx.dir}/${L.overview}`, { flat: true });
-  const stops = L.colormap.map(([v, c]) => `${c} ${v * 100}%`).join(', ');
+  // colours (team review 11/15): average sunlight on the vivid ramp of Chaei's copy, stretched to the real maximum of the
+  // map; Earth view keeps its blue ramp but is drawn at full strength (no grey hillshade mixed in) for more contrast
+  const src = L.colormap.map(s => s[1]);
+  const remap = k === 'sun' ? { src, dst: SUN_RAMP, vmax: L.stats?.max || 1 } : { src, dst: src, vmax: 1, strength: 'strong' };
+  await g.setColorMap(`data/${idx.dir}/${L.overview}`, { flat: true, remap });
+  const top = Math.round(remap.vmax * 100);
+  const stops = remap.dst.map((c, i) => `${c} ${(i / (remap.dst.length - 1) * 100).toFixed(1)}%`).join(', ');
   const kmpx = lv => (2 * Math.PI * 1737.4 / lv).toFixed(2);
   const draw = lvl => {
     leg.hidden = false;
     leg.innerHTML = `<div>${esc(t(k === 'sun' ? 'legendMean' : 'legendEarth'))} <span class="chip-st long">${esc(t('chipLong'))}</span></div>
-      <div class="bar" style="background:linear-gradient(90deg, ${stops})"></div><div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+      <div class="bar" style="background:linear-gradient(90deg, ${stops})"></div><div class="ends"><span>0%</span><span>${Math.round(top / 2)}%</span><span>${top}%</span></div>
       <div class="muted" style="margin-top:3px">${esc(L.definition)} · ${esc(fill(t('gmRes'), { c: idx.grid_res_km, d: kmpx(lvl) }))} · ${esc(idx.dem_sources?.map(d => d.name).join(' + ') || '')}</div>`;
   };
   draw(idx.overview_size?.[0] || 4096);
   const st = await stitch(idx, k);
-  if (st && layer === k) { await g.setColorMap(st.canvas, { flat: true }); draw(st.level.width); }
+  if (st && layer === k) { await g.setColorMap(st.canvas, { flat: true, remap }); draw(st.level.width); }
 }
 addStrings({ gmRes: 'computed on a {c} km grid, shown at {d} km/px' }, { gmRes: '{c} km 격자로 계산, 화면은 {d} km/px' });
 addStrings({ chipLong: 'long-term 2026–2030' }, { chipLong: '장기 평균 2026–2030' });

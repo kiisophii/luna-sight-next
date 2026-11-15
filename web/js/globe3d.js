@@ -168,6 +168,10 @@ export async function createGlobe(container, opts = {}) {
   // elevation layer (setElevation): colour from the displayed LOLA height of each fragment, (|p| - R) / exaggeration
   const elevOn = { value: 0 }, elevExag = { value: 3 }, elevRange = { value: new THREE.Vector2(-4.5, 5.5) };
   const elevRamp = { value: Array.from({ length: 9 }, () => new THREE.Color()) };
+  // data-layer recolour (setColorMap opts.remap): the baked overview colours are read back to a value through the
+  // luminance of their own 5-stop ramp (values 0, .25, .5, .75, 1), then drawn on a new 9-step ramp over 0..vmax
+  const remapOn = { value: 0 }, remapSrcL = { value: [0, 0.25, 0.5, 0.75, 1] }, remapVmax = { value: 1 }, layerVivid = { value: 0 };
+  const remapDst = { value: Array.from({ length: 9 }, () => new THREE.Color()) };
   const LAYER_OPACITY = 0.72;               // layer colour share; the rest is a fixed-light LOLA hillshade so craters stay visible
   function loadHires() {
     if (hiresState !== 'none') return;
@@ -205,6 +209,7 @@ export async function createGlobe(container, opts = {}) {
     m.onBeforeCompile = sh => {
       sh.uniforms.uColor = colorTex; sh.uniforms.uLayer = layerU; sh.uniforms.uLayerA = layerA;
       sh.uniforms.uElev = elevOn; sh.uniforms.uElevExag = elevExag; sh.uniforms.uElevRange = elevRange; sh.uniforms.uElevRamp = elevRamp;
+      sh.uniforms.uRemap = remapOn; sh.uniforms.uSrcL = remapSrcL; sh.uniforms.uVmax = remapVmax; sh.uniforms.uDst = remapDst; sh.uniforms.uVivid = layerVivid;
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vMoonP;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMoonP = (modelMatrix * vec4(transformed, 1.0)).xyz;');
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
@@ -213,6 +218,7 @@ uniform sampler2D uColor;
 uniform sampler2D uLayer;
 uniform float uLayerA;
 uniform float uElev; uniform float uElevExag; uniform vec2 uElevRange; uniform vec3 uElevRamp[9];
+uniform float uRemap; uniform float uSrcL[5]; uniform float uVmax; uniform vec3 uDst[9]; uniform float uVivid;
 vec3 gLayer; float gLum; vec3 gBase;`)
         .replace('#include <map_fragment>', `{
   vec3 dd = normalize(vMoonP);
@@ -226,6 +232,13 @@ vec3 gLayer; float gLum; vec3 gBase;`)
   diffuseColor.rgb *= base;
   gLum = dot(base, vec3(0.2126, 0.7152, 0.0722));
   gLayer = uLayerA > 0.0 ? texture2D(uLayer, vec2(uu, v)).rgb : vec3(0.0);
+  if (uRemap > 0.5 && uLayerA > 0.0) {
+    float lm = dot(gLayer, vec3(0.2126, 0.7152, 0.0722)), vv = 0.0;
+    for (int k = 0; k < 4; k++) { if (lm >= uSrcL[k]) vv = (float(k) + clamp((lm - uSrcL[k]) / max(uSrcL[k + 1] - uSrcL[k], 1e-5), 0.0, 1.0)) * 0.25; }
+    float fr = clamp(vv / uVmax, 0.0, 1.0) * 8.0;
+    int j0 = int(min(floor(fr), 7.0));
+    gLayer = mix(uDst[j0], uDst[j0 + 1], fr - float(j0));
+  }
   if (uElev > 0.5) {
     float hk = (length(vMoonP) - ${R.toFixed(1)}) / uElevExag;                     // km above 1737.4 km (true height)
     float f = clamp((hk - uElevRange.x) / (uElevRange.y - uElevRange.x), 0.0, 1.0) * 8.0;
@@ -253,8 +266,10 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   vec3 L = normalize(up * 0.70711 + (no - ea) * 0.5);
   float relief = clamp(1.0 + 1.6 * (dot(nW, L) / 0.70711 - 1.0), 0.08, 1.8);   // 1 on level ground, steeper contrast on slopes
   vec3 ground = vec3(clamp(0.05 + 1.6 * gLum, 0.04, 0.5)) * relief;
-  gl_FragColor.rgb = uElev > 0.5
-    ? gLayer * mix(1.0, relief, 0.35)                                            // elevation: full colour, light relief (as vivid as the copy)
+  gl_FragColor.rgb = (uElev > 0.5 || (uVivid > 0.5 && uVivid < 1.5))
+    ? gLayer * mix(1.0, relief, 0.35)                                            // elevation / average sunlight: full colour, light relief (as vivid as the copy)
+    : uVivid > 1.5
+    ? mix(ground, gLayer * mix(1.0, relief, 0.75), 0.86)                         // Earth view: no dimming, more colour share (higher contrast), terrain still faintly visible
     : mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
 }`);
     };
@@ -1056,10 +1071,18 @@ if (uLayerA > 0.0 || uElev > 0.5) {
    *  e.g. the 2026-2030 mean-sunlight overview; null restores the LROC colour. The layer is drawn at LAYER_OPACITY
    *  over a fixed-light LOLA hillshade (shader above), so terrain stays visible and the selected time's night side
    *  does not darken a long-term average. `flat` is kept for API compatibility. */
-  async function setColorMap(url, { flat = true } = {}) {
+  async function setColorMap(url, { flat = true, remap = null } = {}) {
     if (!baseTex) baseTex = colorTex.value;
     layerUrl = url || null;
+    remapOn.value = 0; layerVivid.value = 0;
+    if (remap) {   // {src: 5 hex stops the image was baked with, dst: hex stops to draw with, vmax: value at the top of dst}
+      const lumL = h => { const c = new THREE.Color(h); return 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b; };
+      remapSrcL.value = remap.src.map(lumL);
+      for (let k = 0; k < 9; k++) remapDst.value[k].set(remap.dst[Math.round(k * (remap.dst.length - 1) / 8)]);
+      remapVmax.value = remap.vmax || 1; remapOn.value = 1; layerVivid.value = remap.strength === 'strong' ? 2 : 1;
+    }
     if (!url) {
+      remapOn.value = 0; layerVivid.value = 0;
       layerA.value = 0; layerU.value = null;
       if (layerTex) { layerTex.dispose(); layerTex = null; }
       colorTex.value = baseTex; dirty = true; return;

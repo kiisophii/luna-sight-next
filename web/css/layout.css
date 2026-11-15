@@ -1444,3 +1444,13 @@ body.on-about .ls-export { display: none; }
   @media (max-height: 760px) and (min-width: 861px) { #view-about .abh-lead { display: none; } }
   @media (max-width: 860px) { #view-about .abh-text h1 { font-size: 20px; } #view-about .abh-lead { display: none; } }
 }
+
+/* ---- four-item check against the copy (18:41): mean-error rows, typed value box */
+.val-pop .vp-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 4px; font-size: 11px; color: #6E6E74; }
+.val-pop .vp-cap b { font-size: 13px; font-weight: 600; color: #EDEDED; }
+.val-pop .vp-rows { border-top: 0; }
+.val-pop .vp-rows > div { grid-template-columns: 14px 1fr auto; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 0; }
+.val-pop .vp-ic { width: 14px; height: 14px; display: block; }
+.val-pop .vp-rows b { font-size: 15px; font-weight: 600; color: #EDEDED; }
+.val-pop .vp-rows b small { font-size: 11px; font-weight: 400; color: #9C9CA1; }
+.ls .fc-val .fc-num { height: 26px; min-height: 0; }

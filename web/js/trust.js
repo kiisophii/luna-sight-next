@@ -102,7 +102,7 @@ function label() {
 function place() {
   if (!pop || pop.hidden) return;
   const sc = document.querySelector('.ls-screen').getBoundingClientRect(), bd = badge.getBoundingClientRect();
-  const w = Math.min(340, sc.width - 24), left = Math.max(12, Math.min(sc.width - w - 12, bd.right - sc.left - w + 8));
+  const w = Math.min(340, sc.width - 24), left = Math.max(12, Math.min(sc.width - w - 12, bd.right - sc.left - w));
   Object.assign(pop.style, { top: `${bd.bottom - sc.top + 8}px`, left: `${left}px`, right: 'auto', width: `${w}px`, maxHeight: `${Math.max(240, sc.height - (bd.bottom - sc.top) - 28)}px` });
 }
 async function render() {
@@ -112,13 +112,14 @@ async function render() {
   const name = site ? (getLang() === 'ko' && site.name_ko ? site.name_ko : site.name) : '';
   pop.innerHTML = `<h3>${esc(t('vpTitle'))}</h3>
     <p class="vp-lead">${esc(fill(t('vpLead'), { n: v.n_points, w: v.window.replace('..', ' – ') }))}</p>
-    <p class="vp-cap">${esc(t('vpAvg'))}</p>
+    <p class="vp-cap"><b>${esc(t('vpAvg').split(' · ')[0])}</b><span>${esc(t('vpAvg').split(' · ').slice(1).join(' · '))}</span></p>
     <div class="vp-rows">
-      <div><span>${esc(t('vpSun'))}</span><b class="num" style="color:var(--sun)">${H.sun}<small> pp</small></b><small class="num">r ${H.sunR}</small></div>
-      <div><span>${esc(t('vpEarth'))}</span><b class="num" style="color:var(--earth)">${H.earth}<small> pp</small></b><small class="num">r ${H.earthR}</small></div>
+      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--sun)"><circle cx="8" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.6v1.8M8 12.6v1.8M1.6 8h1.8M12.6 8h1.8M3.5 3.5l1.3 1.3M11.2 11.2l1.3 1.3M3.5 12.5l1.3-1.3M11.2 4.8l1.3-1.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>${esc(t('vpSun'))}</span><b class="num">${H.sun}<small> pp</small></b></div>
+      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--earth)"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 8h12M8 2c2.2 2 2.2 10 0 12M8 2c-2.2 2-2.2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>${esc(t('vpEarth'))}</span><b class="num">${H.earth}<small> pp</small></b></div>
     </div>
     <p class="vp-note">${esc(t('vpSmall'))}</p>
     <p class="vp-note">${esc(fill(t('vScopeTxt'), { n: v.n_points, seed: v.seed }))}</p>
+    <p class="vp-note">r · ${esc(t('vpSun'))} ${H.sunR} · ${esc(t('vpEarth'))} ${H.earthR}</p>
     <div class="vp-site"><b>${esc(t('vSite'))}${name ? ` · ${esc(name)}` : ''}</b><span class="num">${await siteLine(site)}</span></div>
     <details><summary>${esc(t('vAlt'))}</summary><ul class="num">${Object.entries(v.alt_definitions || {}).map(([k, a]) =>
       `<li>${esc(fill(t('vAltRow'), { k: t('alt_' + k), m: pp(a.mae_pp), r: a.r.toFixed(3) }))}</li>`).join('')}</ul></details>

@@ -1,0 +1,28 @@
+{
+  "git_snapshot": "D:\\NASA-Lunar\\verification\\z3-lf-aa1e1fb",
+  "archive_options": "-c core.autocrlf=false",
+  "working_tree_contract_errors": 66,
+  "working_tree_errors_by_type": {
+    "windows_producer_hash": 33,
+    "z3_index_file_hash": 33
+  },
+  "contract_exit_code": 0,
+  "examples": {
+    "pipeline/build_windows.mjs": {
+      "working_sha256": "33caf6932f93eec2784bfd78f597b5386000cba3e3d105a98a4b1c68a86ea5fa",
+      "git_blob_sha256": "29b5476f6793ae9a2097691970ce6cdbb88070836ac79a9b5f2bc5a7890e66b9",
+      "working_crlf_count": 92,
+      "git_blob_crlf_count": 0,
+      "working_lf_normalized_equals_blob": true,
+      "snapshot_equals_blob": true
+    },
+    "web/data/detail/dates/SHACKLETON_RIM.json": {
+      "working_sha256": "0fea140ee948936e13c45de9ef1ae4a98194308c0a61739840a1e2072360bf87",
+      "git_blob_sha256": "b99215410d4ffed03614565fb92311792908601ac5c57d2c53f8d43c18e8df08",
+      "working_crlf_count": 1,
+      "git_blob_crlf_count": 0,
+      "working_lf_normalized_equals_blob": true,
+      "snapshot_equals_blob": true
+    }
+  }
+}

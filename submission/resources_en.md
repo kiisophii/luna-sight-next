@@ -1,5 +1,51 @@
 # Resources and acknowledgements — Team Ginkgo Orbit
 
+## Current submission data list — 15 November 2026
+
+Source snapshot: [main aa1e1fb5f0d1a6216fe5453642374a70d14357c9](https://github.com/kiisophii/lunar-landing-site-navigator/tree/aa1e1fb5f0d1a6216fe5453642374a70d14357c9). This update adds the afternoon terrain/PSR/history attribution; older inventories below remain dated snapshots, including their historical file counts and UI-credit status.
+
+### Text for the submission form
+
+Luna Sight uses NASA/JPL NAIF SPICE ephemerides (DE440s and DE421 lunar orientation) for Sun/Earth geometry, NASA LRO LOLA/PGDA and NASA/JAXA SLDEM2015 elevation data for terrain horizons and local terrain analysis, NASA PGDA illumination/Earth-visibility maps for comparison, NASA SVS CGI Moon Kit/LROC data for lunar colour, and KARI/NAIF KDSA plus NASA DSN handbook station coordinates for ground-link geometry. New detail products use PGDA native 5/10/20 m elevation models, the PGDA native 20 m permanent-shadow classification, and officially sourced coordinates/landing times for 18 real landers. All visibility, terrain statistics, PSR distances, historical proximity and date/stay/slip results are team calculations; the source datasets do not certify mission safety or communication performance. PSR is not confirmed ice. Full credits, exact product URLs and item-specific terms follow below.
+
+### New source products and their use
+
+**Native south-polar terrain (Task Y).** NASA LRO LOLA data distributed by NASA GSFC Planetary Geodesy Data Archive (PGDA): [5 m mosaic, product 81](https://pgda.gsfc.nasa.gov/products/81), [10/20 m adjusted DEMs, product 90](https://pgda.gsfc.nasa.gov/products/90). Exact rasters: [5 m](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif), [10 m](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF), [20 m](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF). Cite Barker et al. (2021), https://doi.org/10.1016/j.pss.2020.105119; Barker et al. (2023), https://doi.org/10.3847/PSJ/acf3e1; dataset https://doi.org/10.60903/gsfcpgda-lola-spole. Team-derived point slopes, slope distributions, reference-threshold area fractions and DEM plane-residual roughness are in `web/data/terrain/`. These are not NASA landing-safety certifications; DEM roughness is not the separate PGDA laser-spot roughness product. Native pixel spacing is not a claim of effective resolution or geolocation accuracy.
+
+**Permanent shadow (Task Z2).** NASA GSFC PGDA [product 90](https://pgda.gsfc.nasa.gov/products/90), [LPSR_80S_20MPP_ADJ.TIF](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF), native 20 m pixels. Credit Barker et al. (2023), https://doi.org/10.3847/PSJ/acf3e1 and dataset https://doi.org/10.60903/gsfcpgda-lola-spole. [CSV polygons](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.CSV) and [PRJ](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.PRJ) support class/projection checks. Team-derived nearest-pixel/boundary distances and inside/outside classifications are in `web/data/detail/psr/`. **PSR does not mean confirmed water ice.** Distances are spherical proximity, not traversable routes. Unknown data remain unknown; absence within a fully covered search radius is a lower bound, not a guessed distance.
+
+**Historical landings (Task Z4).** The team compares all 33 catalogue query sites to the 18 actual landers in [Task R's coordinate/time table](../docs/task_r_landings.csv), with [retrieval evidence](../docs/task_r_manifest.json) and [official mission-context links](../docs/detail_z4_sources.json). NASA NSSDCA, LROC, CNSA, ISRO, JAXA and NASA mission/NTRS pages are credited individually below. `web/data/detail/history.json` contains team-derived nearest-three ranks, spherical distances and initial bearings; planned sites and the query's own mission ID are excluded from candidates. This is a task-defined sample, not an exhaustive landing inventory or evidence of usable infrastructure. Context links do not replace coordinate/time sources, and unresolved source disagreements remain recorded.
+
+The CNSA Chang'e-5 context URL describes the **Earth-return capsule landing**, not lunar touchdown; it must not be used to substantiate lunar coordinates/time. The four CNSA context pages were opened successfully on 15 November 2026; this resolves the earlier Chang'e-5 access timeout, without changing the immutable producer provenance.
+
+### Actual landing missions: official context and numeric provenance
+
+| Mission | Agency | Official mission context | Coordinate source | Landing-time source |
+|---|---|---|---|---|
+| Apollo 11 (`APOLLO11`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Apollo 12 (`APOLLO12`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Apollo 14 (`APOLLO14`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Apollo 15 (`APOLLO15`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Apollo 16 (`APOLLO16`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Apollo 17 (`APOLLO17`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html | https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html |
+| Luna 16 (`LUNA16`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html |
+| Luna 20 (`LUNA20`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html |
+| Luna 24 (`LUNA24`) | NASA | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html | https://www.nasa.gov/wp-content/uploads/2023/04/1976.pdf |
+| Chang'e 3 (`CHANGE3`) | CNSA | https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html | https://lroc.im-ldi.com/images/637 | https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html |
+| Chang'e 4 (`CHANGE4`) | CNSA | https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html | https://lroc.im-ldi.com/images/1168 | https://lroc.im-ldi.com/images/1168 |
+| Chang'e 5 (`CHANGE5`) | CNSA | https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html | https://lroc.im-ldi.com/images/1172.2020 | https://lroc.im-ldi.com/images/1172.2020 |
+| Chang'e 6 (`CHANGE6`) | CNSA | https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html | https://lroc.im-ldi.com/images/1374 | https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html |
+| Chandrayaan-3 (`CHANDRAYAAN3`) | ISRO | https://www.isro.gov.in/Chandrayaan3.html | https://lroc.im-ldi.com/images/1314 | https://www.eoibahrain.gov.in/pdf/PR-%20Chandrayaan%203sd.pdf |
+| SLIM (`SLIM`) | JAXA | https://darts.isas.jaxa.jp/en/missions/slim | https://lroc.im-ldi.com/images/1358 | https://lroc.im-ldi.com/images/1358 |
+| IM-1 Odysseus (`IM1`) | NASA | https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/ | https://lroc.im-ldi.com/images/1360 | https://lroc.im-ldi.com/images/1360 |
+| IM-2 Athena (`IM2`) | NASA | https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf | https://lroc.im-ldi.com/images/1408 | https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf |
+| Blue Ghost Mission 1 (`BLUE_GHOST1`) | NASA | https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/ | https://lroc.im-ldi.com/images/1406 | https://fireflyspace.com/missions/blue-ghost-mission-1/ |
+
+Source values and URLs are copied from the pinned Z4 product and Task R provenance; no numeric input was changed. Only the four CNSA context pages and PGDA products 81/90 were opened during this credit follow-up; other agency URLs retain prior documented checks. Public access is not a blanket licence determination. We use cited factual metadata and team numerical derivatives, not copied articles, paper artwork or agency logos. Existing item-specific REVIEW flags remain in force where exact reuse terms are not established. Writing this inventory does not claim that the live About UI has already been updated.
+
+---
+
+
 NASA Space Apps Challenge 2026, Luna Sight — Lunar Landing Site Navigator. Prepared 14 November 2026 (KST).
 
 Current web-asset/license status is in the dated **Third-party assets and web datasets** section below. Earlier inventory snapshots and superseded REVIEW flags remain explicitly historical.

@@ -1,0 +1,302 @@
+{
+  "reviewed_head": "beedb67e7993258720ebfc9219e140636f6e4b11",
+  "main_base": "b085c298ac8f1b9ff2a2f0fb8e99093c52ee9ef9",
+  "reviewer": "Minchul Kim",
+  "producer": "Jiyong Sung",
+  "generated_utc": "2026-11-15T04:52:17.448Z",
+  "elapsed_s": 0.22276033699999997,
+  "checks": 309,
+  "failures": [],
+  "z1": [
+    {
+      "id": "APOLLO17",
+      "sunlit_h": 20925,
+      "earth_visible_h": 43824,
+      "both_h": 20925,
+      "dark_runs": {
+        "count": 62,
+        "total_h": 22899,
+        "mean_h": 369.33870967741933,
+        "longest_h": 371,
+        "complete_count": 62,
+        "complete_mean_h": 369.33870967741933,
+        "complete_longest_h": 371,
+        "clipped_runs": []
+      },
+      "no_earth_runs": {
+        "count": 0,
+        "total_h": 0,
+        "mean_h": null,
+        "longest_h": 0,
+        "complete_count": 0,
+        "complete_mean_h": null,
+        "complete_longest_h": 0,
+        "clipped_runs": []
+      },
+      "sunlit_runs": {
+        "count": 63,
+        "total_h": 20925,
+        "mean_h": 332.14285714285717,
+        "longest_h": 341,
+        "complete_count": 61,
+        "complete_mean_h": 339.39344262295083,
+        "complete_longest_h": 341,
+        "clipped_runs": [
+          {
+            "start_i": 0,
+            "end_i": 176,
+            "duration_h": 176,
+            "clipped_start": true,
+            "clipped_end": false
+          },
+          {
+            "start_i": 43778,
+            "end_i": 43824,
+            "duration_h": 46,
+            "clipped_start": false,
+            "clipped_end": true
+          }
+        ]
+      },
+      "station_link_h": {
+        "kdsa_h": 18213,
+        "at_least_1_h": 43246,
+        "at_least_2_h": 25717
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "sunlit_h": 21594,
+      "earth_visible_h": 0,
+      "both_h": 0,
+      "dark_runs": {
+        "count": 62,
+        "total_h": 22230,
+        "mean_h": 358.5483870967742,
+        "longest_h": 367,
+        "complete_count": 61,
+        "complete_mean_h": 360.344262295082,
+        "complete_longest_h": 367,
+        "clipped_runs": [
+          {
+            "start_i": 0,
+            "end_i": 249,
+            "duration_h": 249,
+            "clipped_start": true,
+            "clipped_end": false
+          }
+        ]
+      },
+      "no_earth_runs": {
+        "count": 1,
+        "total_h": 43824,
+        "mean_h": 43824,
+        "longest_h": 43824,
+        "complete_count": 0,
+        "complete_mean_h": null,
+        "complete_longest_h": 0,
+        "clipped_runs": [
+          {
+            "start_i": 0,
+            "end_i": 43824,
+            "duration_h": 43824,
+            "clipped_start": true,
+            "clipped_end": true
+          }
+        ]
+      },
+      "sunlit_runs": {
+        "count": 62,
+        "total_h": 21594,
+        "mean_h": 348.2903225806452,
+        "longest_h": 355,
+        "complete_count": 61,
+        "complete_mean_h": 348.42622950819674,
+        "complete_longest_h": 355,
+        "clipped_runs": [
+          {
+            "start_i": 43484,
+            "end_i": 43824,
+            "duration_h": 340,
+            "clipped_start": false,
+            "clipped_end": true
+          }
+        ]
+      },
+      "station_link_h": {
+        "kdsa_h": 0,
+        "at_least_1_h": 0,
+        "at_least_2_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "sunlit_h": 37174,
+      "earth_visible_h": 21887,
+      "both_h": 19441,
+      "dark_runs": {
+        "count": 225,
+        "total_h": 6650,
+        "mean_h": 29.555555555555557,
+        "longest_h": 75,
+        "complete_count": 225,
+        "complete_mean_h": 29.555555555555557,
+        "complete_longest_h": 75,
+        "clipped_runs": []
+      },
+      "no_earth_runs": {
+        "count": 67,
+        "total_h": 21937,
+        "mean_h": 327.4179104477612,
+        "longest_h": 353,
+        "complete_count": 67,
+        "complete_mean_h": 327.4179104477612,
+        "complete_longest_h": 353,
+        "clipped_runs": []
+      },
+      "sunlit_runs": {
+        "count": 226,
+        "total_h": 37174,
+        "mean_h": 164.4867256637168,
+        "longest_h": 2817,
+        "complete_count": 224,
+        "complete_mean_h": 161.45089285714286,
+        "complete_longest_h": 2817,
+        "clipped_runs": [
+          {
+            "start_i": 0,
+            "end_i": 981,
+            "duration_h": 981,
+            "clipped_start": true,
+            "clipped_end": false
+          },
+          {
+            "start_i": 43796,
+            "end_i": 43824,
+            "duration_h": 28,
+            "clipped_start": false,
+            "clipped_end": true
+          }
+        ]
+      },
+      "station_link_h": {
+        "kdsa_h": 9986,
+        "at_least_1_h": 21807,
+        "at_least_2_h": 13940
+      }
+    }
+  ],
+  "z4": [
+    {
+      "id": "APOLLO11",
+      "nearest": [
+        {
+          "id": "APOLLO16",
+          "distance_m": 378912.88555971294,
+          "bearing_status": "defined",
+          "bearing_deg": 219.28275358175577
+        },
+        {
+          "id": "SLIM",
+          "distance_m": 427581.76075248857,
+          "bearing_status": "defined",
+          "bearing_deg": 172.88158622755577
+        },
+        {
+          "id": "APOLLO17",
+          "distance_m": 630177.9216390504,
+          "bearing_status": "defined",
+          "bearing_deg": 19.637732743379786
+        }
+      ]
+    },
+    {
+      "id": "CHANGE4",
+      "nearest": [
+        {
+          "id": "CHANGE6",
+          "distance_m": 631954.719810226,
+          "bearing_status": "defined",
+          "bearing_deg": 89.61979373578657
+        },
+        {
+          "id": "IM2",
+          "distance_m": 1487064.1004418796,
+          "bearing_status": "defined",
+          "bearing_deg": 183.61277195338778
+        },
+        {
+          "id": "IM1",
+          "distance_m": 1649428.4991273186,
+          "bearing_status": "defined",
+          "bearing_deg": 180.81142116434583
+        }
+      ]
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "nearest": [
+        {
+          "id": "IM2",
+          "distance_m": 167273.58101304556,
+          "bearing_status": "defined",
+          "bearing_deg": 191.3305051466442
+        },
+        {
+          "id": "IM1",
+          "distance_m": 308448.68607853213,
+          "bearing_status": "defined",
+          "bearing_deg": 164.7243535429883
+        },
+        {
+          "id": "CHANDRAYAAN3",
+          "distance_m": 634624.9449593567,
+          "bearing_status": "defined",
+          "bearing_deg": 194.91589028002673
+        }
+      ]
+    }
+  ],
+  "hashes": {
+    "web/data/sites.json": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "web/data/ephem.json": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "web/data/ephem.bin": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "web/data/korea/stations.json": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "web/data/horizon/APOLLO17.json": "a4eac336dfbc703ba64fad76aa98fe423211a8935660738429fd151b54ab8dda",
+    "web/data/detail/time_stats/APOLLO17.json": "5aaaa94e8fdfa616b7074f0265a7ce069c148510af0bdedd4c5542933b1def12",
+    "web/data/metrics/APOLLO17.json": "19d38e4fd223314fd223a507ea0ab28ef4264bca02bfcc9dea269e427ca92f2c",
+    "web/data/windows/APOLLO17.json": "b2b0057591558e45ada01448ddeccfb051335c9677eda80c0f006fb24139bfd2",
+    "web/data/horizon/CHANGE4.json": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21",
+    "web/data/detail/time_stats/CHANGE4.json": "9e5b03f3fbbd64c70a3163947b9652ce4bcedb18e0aa94051b574c6d3b629ac5",
+    "web/data/metrics/CHANGE4.json": "9a944575fb227022082c18d75ce8da7463ffacaa0c1291e9ea14f126588b8edd",
+    "web/data/windows/CHANGE4.json": "8de1ba5f8a767e5349359c7144f0075a80a57eb553e4bab89922c5e48710563d",
+    "web/data/horizon/SHACKLETON_RIM.json": "e58f5e53704a552774d49447ae575bf098031f3ea45f7f6763146ae27bc729b9",
+    "web/data/detail/time_stats/SHACKLETON_RIM.json": "4a291ab317b56f8a69c636160a271b3d84eaa115dba28e1d67e5819be9a56291",
+    "web/data/metrics/SHACKLETON_RIM.json": "5ad89bb8bdb5936037ede71a7f70ef6c52df82b9dc34160721e5ac4b1913cb0d",
+    "web/data/windows/SHACKLETON_RIM.json": "b148af67c3775bfaa46465e559194b1a960bc4e62a58f8ed4b949cacb49fb2ca",
+    "docs/task_r_landings.csv": "9eb5e214245cb7cdf3100d07627cb8c05b1b9b61d15eddbb803cec3e0e8433a2",
+    "web/data/detail/history.json": "6163962c208cc92ef78cc1b8ba290ab3483e37cde7591d1b0cc29a27f6221068",
+    "docs/detail_z4_sources.json": "a4c8cfc016ab853d424c2bf81b58dd5066a58e85e9b76eff52494965f03d0f65"
+  },
+  "source_urls": [
+    "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/",
+    "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+    "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+    "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+    "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html",
+    "https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html",
+    "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+    "https://www.isro.gov.in/Chandrayaan3.html",
+    "https://darts.isas.jaxa.jp/en/missions/slim",
+    "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/",
+    "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+    "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/"
+  ],
+  "limitations": [
+    "Three sites per product, not all 33 numerical outputs.",
+    "Ephemeris, horizons and station bits are independent-verifier inputs, not rederived from kernels/DEMs here.",
+    "Task R coordinates/source metadata preserved and cross-checked; official pages not re-fetched in this run.",
+    "One CPU worker; no production numerical imports; no production data modified.",
+    "No physical link availability or usable landing infrastructure is certified."
+  ]
+}

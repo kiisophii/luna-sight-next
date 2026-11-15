@@ -37,13 +37,13 @@
       "label": "this PR",
       "ref": "WORKTREE",
       "commit": null,
-      "si_utf8_lf_sha256": "73fd3489d5f3700d38bcc75e57f5b9d11103ff4312e5d74c34e1707661bc9460",
-      "jiyong_rows": 29,
-      "new_unique_rows": 4
+      "si_utf8_lf_sha256": "5b67b5775d893ce7800085158d734495979b093db897ebf8793d5c58e08c8ee5",
+      "jiyong_rows": 30,
+      "new_unique_rows": 5
     }
   ],
-  "unique_rows": 34,
-  "pending_human_cells_rows": 16,
+  "unique_rows": 35,
+  "pending_human_cells_rows": 17,
   "rows": [
     {
       "time": "2026-11-14 09:42 (KST)",
@@ -1204,6 +1204,23 @@
         }
       ],
       "raw": "| 2026-11-15 09:34 (KST) | Jiyong | Task K SI record recount | OpenAI Codex (High), separate AI review | Count Jiyong SI rows on pinned main, current branch and three pending PR branches; deduplicate inherited exact rows, list pending human-review cells and preserve all original entries | pipeline/task_k_si_audit.py, docs/task_k_si_audit.md, docs/task_k_si_audit.json; docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 10:05 (KST)",
+      "member": "Jiyong",
+      "role": "Local NASA data storage migration",
+      "tool": "OpenAI Codex (High)",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "this PR",
+          "line": 146,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 10:05 (KST) | Jiyong | Local NASA data storage migration | OpenAI Codex (High) | Move downloaded NASA rasters, kernels, numeric caches and handoff archives from C to D; preserve nested junctions and existing pipeline paths, verify every moved file hash and unchanged Git states, redirect seven GPU benchmark archives and verify 37,888 saved points | D:/NASA-Lunar/README.md and migration-20261115 manifests/scripts; local benchmark.py, check_production_rows.py, verify_results.py data paths; docs/SI_USAGE.md, docs/task_k_si_audit.md/json | TO CHECK | TO CHECK |"
     }
   ]
 }

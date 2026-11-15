@@ -8,11 +8,11 @@ This is a dated administrative recount, not a new scientific verification or a h
 | PR 66 | `dc140bbd24eff9c1869adda4097f812cdd5ae208` | 23 | 1 |
 | PR 67 | `e50d4362f769ff811c8c85509abb027c4f22842a` | 26 | 1 |
 | PR 68 | `cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf` | 28 | 3 |
-| this PR | `current SI file (hash in JSON)` | 29 | 4 |
+| this PR | `current SI file (hash in JSON)` | 30 | 5 |
 
-**34 unique Jiyong entries**, of which **16** still have an empty/`TO CHECK` human-review or human-change cell. The remaining nonempty cells are reproduced as written; AI does not infer or add human approval. Older `Confirmed by Jiyong — ... relayed by Sua` cells are historical attributions, not reconfirmed by this audit.
+**35 unique Jiyong entries**, of which **17** still have an empty/`TO CHECK` human-review or human-change cell. The remaining nonempty cells are reproduced as written; AI does not infer or add human approval. Older `Confirmed by Jiyong — ... relayed by Sua` cells are historical attributions, not reconfirmed by this audit.
 
-The current four R/U/V/K rows are included. C, D and X/P/Q live in pending PR branches and must be merged before a main-only final submission recount. The existing `submission/si_disclosure_en.md` is pinned to an older commit; its historical count must not be presented as this latest total.
+The four R/U/V/K rows and the subsequent local NASA storage-migration entry are included. C, D and X/P/Q live in pending PR branches and must be merged before a main-only final submission recount. The existing `submission/si_disclosure_en.md` is pinned to an older commit; its historical count must not be presented as this latest total.
 
 ## Entries still requiring human cells
 
@@ -34,6 +34,7 @@ The current four R/U/V/K rows are included. C, D and X/P/Q live in pending PR br
 | [this PR L143](SI_USAGE.md#L143) | 2026-11-15 09:34 (KST) | Task U independent north-polar terrain audit | TO CHECK | TO CHECK |
 | [this PR L144](SI_USAGE.md#L144) | 2026-11-15 09:34 (KST) | Task V independent Earth-definition audit | TO CHECK | TO CHECK |
 | [this PR L145](SI_USAGE.md#L145) | 2026-11-15 09:34 (KST) | Task K SI record recount | TO CHECK | TO CHECK |
+| [this PR L146](SI_USAGE.md#L146) | 2026-11-15 10:05 (KST) | Local NASA data storage migration | TO CHECK | TO CHECK |
 
 ## Reproduce
 

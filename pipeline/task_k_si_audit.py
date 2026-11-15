@@ -47,7 +47,7 @@ def main():
            '| Snapshot | Commit | Jiyong rows | Additional unique entries |','|---|---|---:|---:|']
     lines += [f"| {s['label']} | `{s['commit'] or 'current SI file (hash in JSON)'}` | {s['jiyong_rows']} | {s['new_unique_rows']} |" for s in snapshots]
     lines += ['',f"**{len(values)} unique Jiyong entries**, of which **{len(pending)}** still have an empty/`TO CHECK` human-review or human-change cell. The remaining nonempty cells are reproduced as written; AI does not infer or add human approval. Older `Confirmed by Jiyong — ... relayed by Sua` cells are historical attributions, not reconfirmed by this audit.",'',
-              'The current four R/U/V/K rows are included. C, D and X/P/Q live in pending PR branches and must be merged before a main-only final submission recount. The existing `submission/si_disclosure_en.md` is pinned to an older commit; its historical count must not be presented as this latest total.','',
+              'The four R/U/V/K rows and the subsequent local NASA storage-migration entry are included. C, D and X/P/Q live in pending PR branches and must be merged before a main-only final submission recount. The existing `submission/si_disclosure_en.md` is pinned to an older commit; its historical count must not be presented as this latest total.','',
               '## Entries still requiring human cells','',
               '| First listed source / line | Time | Role | Human check | Human changed? |','|---|---|---|---|---|']
     for r in pending:

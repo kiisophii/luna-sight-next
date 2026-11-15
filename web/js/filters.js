@@ -58,7 +58,7 @@ async function loadSlopes() {
   apply();
 }
 
-const info = k => `<button type="button" class="fc-i" aria-label="${t(k)}" data-tip="${k}">i</button>`;
+const info = k => `<button type="button" class="fc-i" aria-label="${t(k)}" data-tip="${k}"><svg class="ic-i" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7.3v3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="4.9" r=".9" fill="currentColor"/></svg></button>`;
 function build() {
   sec = mountSection('llsn-filters', 'flAria');
   sec.innerHTML = `

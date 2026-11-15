@@ -1414,3 +1414,15 @@ body.on-about .ls-export { display: none; }
     #view-about .abh-btns { margin-top: 5px; }
   }
 }
+
+/* ---- first-screen leftovers (tracker check 18:4x): direction chips, round info icons, tray button width, add-site corner */
+.ls-globe .g3-chip { display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 10px 0 9px; font: 500 12px/16px var(--font); }
+.ls-globe .g3-chip .g3-arr { width: 12px; height: 12px; flex: none; margin: 0; }
+.ls .fc-i, .ls .tc-i { padding: 0; display: inline-grid; place-items: center; }
+.ls .fc-i .ic-i { width: 10px; height: 10px; display: block; }
+.ls .tc-i { width: 20px; height: 20px; border: 0; border-radius: 50%; background: none; color: #9C9CA1; }
+.ls .tc-i:hover { color: #EDEDED; }
+.ls .tc-i .ic-i { width: 15px; height: 15px; display: block; }
+.ls-tray .val-badge { padding: 2px 0; }
+.ls .ls-add { border-radius: 0 0 14px 14px; }
+@media (min-width: 1100px) { .ls-tray .tray-more { width: calc(100% - 30px); align-self: flex-start; } }

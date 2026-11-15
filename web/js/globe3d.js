@@ -541,7 +541,7 @@ if (uLayerA > 0.0) {
     return { s, el: b, dir: dirFromLatLon(s.lat, s.lon), h: null };
   });
   const mk = (cls, text) => { const d = document.createElement('div'); d.className = cls; d.textContent = text; overlay.appendChild(d); return d; };
-  const chipSun = mk('g3-chip sun', '☀ Sun'), chipEarth = mk('g3-chip earth', '◉ Earth');
+  const chipSun = mk('g3-chip sun', 'Sun'), chipEarth = mk('g3-chip earth', 'Earth');
   const labSun = mk('g3-label sun', 'Sun'), labEarth = mk('g3-label earth', 'Earth');
   const dock = mk('g3-dock', '');
   const note = document.createElement('div'); note.className = 'g3-note'; note.setAttribute('role', 'note'); dock.appendChild(note);
@@ -553,7 +553,7 @@ if (uLayerA > 0.0) {
       : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
   }
   updateNote();
-  for (const [c, t] of [[chipSun, lang === 'ko' ? '☀ 태양' : '☀ Sun'], [chipEarth, lang === 'ko' ? '◉ 지구' : '◉ Earth']]) c.innerHTML = `<span class="g3-arr">➤</span>${t}`;
+  for (const [c, t] of [[chipSun, lang === 'ko' ? '태양' : 'Sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth']]) c.innerHTML = `<svg class="g3-arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7.5M6.5 2.8 9.7 6 6.5 9.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>${t}`;
 
   const tmp = v3();
   function project(p) {                         // -> {x, y, behind, on}

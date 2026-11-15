@@ -1583,3 +1583,18 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .ls-drawer { left: var(--mapL); right: auto; top: auto; bottom: var(--BOT); height: min(620px, calc(100% - var(--TOP) - var(--BOT))); }
   .ls .c1-sum { margin-top: 16px; }
 }
+
+/* ---- bundle 18 (copy 20:27, map and dock): zoom − / + at the dock's right end, one legend box for the static layers */
+.ls-toolbar .tb-zoom, .ls-toolbar .tb-zoom-sep { display: none; }
+@media (min-width: 1100px) {
+  .ls-toolbar .tb-zoom { display: flex; gap: 2px; flex: none; }
+  .ls-toolbar .tb-zoom-sep { display: block; }
+  .ls .ls-toolbar .tb-zoom button { width: 32px; height: 32px; padding: 0; border: 0; border-radius: 9px; background: none; color: #9C9CA1; display: grid; place-items: center; }
+  .ls .ls-toolbar .tb-zoom button:hover { color: #EDEDED; background: rgba(237, 237, 237, .06); }
+  .ls .map-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; box-sizing: border-box; width: 252px; min-height: 32px; padding: 6px 10px; background: rgba(6, 8, 12, .72); border: 1px solid rgba(255, 255, 255, .12); border-radius: 6px; color: #9AA4B5; font: 12px var(--font); }
+  .ls .map-legend[hidden] { display: none; }
+  .ls .map-legend > div:first-child { flex: 1 1 auto; }
+  .ls .map-legend .bar { flex: 0 0 100%; height: 6px; margin: 0; }
+  .ls .map-legend .ends, .ls .map-legend .muted { flex: 0 0 100%; margin: 0 !important; font-size: 11px; }
+}
+@media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 554px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */

@@ -234,6 +234,7 @@ window.addEventListener('llsn:time', () => {
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
   tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  if (tb.classList.contains('time-off')) { const pb = document.getElementById('play'); if (pb?.getAttribute('aria-pressed') === 'true') pb.click(); }   // 18-4: folding the time part stops playback
   LL().globe?.setElevation?.(null);
   { const h1 = document.getElementById('hud-1'); if (h1) h1.style.display = k === 'light' ? '' : 'none'; }   // one legend at a time: the LROC/Earth-set line belongs to the Sunlight view
   if (k === 'elev') {                                              // elevation: LOLA height colour over the same fixed-light hillshade (relief merged in)

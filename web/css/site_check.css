@@ -128,3 +128,53 @@ html:not([lang="ko"]) #ls-brief { --font: 'Geist', 'Pretendard', system-ui, sans
   #ls-brief .sc-axis { margin-left: 60px; }
   #ls-brief .sc-src { flex-wrap: wrap; }
 }
+
+/* Korean screen: site names have no Hangul glyphs in the number font, so the name uses the text font (no wide letter gaps) */
+html[lang="ko"] #ls-brief .brief-head h2.sc-name { font-family: var(--font); letter-spacing: -0.26px; }
+/* card 01 under the bars: one summary sentence (copy), then the hourly table folded under "Raw table" */
+#ls-brief .sc-d { margin: 0 0 6px; font-size: 13px; line-height: 20px; color: var(--sc-mute); }
+#ls-brief .sc-raw { margin: 0 0 14px; }
+#ls-brief .sc-raw > summary { cursor: pointer; width: max-content; font-size: 12px; color: var(--sc-dim); }
+#ls-brief .sc-raw > summary:hover { color: var(--sc-text); }
+#ls-brief .sc-raw[open] > summary { margin-bottom: 6px; }
+
+/* Chaei 17: terrain-data icon at the end of the kicker line; popover attached to body (position: fixed), selectable text */
+#ls-brief .sc-kick { display: flex; align-items: center; gap: 6px; }
+#ls-brief .sc-dem { display: inline-grid; place-items: center; width: 28px; height: 28px; margin: -6px 0 -6px 2px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--sc-mute); cursor: pointer; transition: color .12s, background-color .12s; }
+#ls-brief .sc-dem:hover, #ls-brief .sc-dem:focus-visible, #ls-brief .sc-dem[aria-expanded="true"] { color: #FFFFFF; background: rgba(237, 237, 237, .06); }
+body > .sc-pop { position: fixed; z-index: 120; max-width: 360px; padding: 12px 14px; background: #16171A; border: 1px solid #2A2A2D; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+  user-select: text; animation: sc-fade .12s ease-out; }
+body > .sc-pop .h { margin: 0 0 4px; font: 400 12px var(--font, sans-serif); color: #A3A3A8; }
+body > .sc-pop .v { margin: 0; font: 400 13px/1.5 var(--font-num, monospace); color: #FFFFFF; overflow-wrap: anywhere; }
+body > .sc-pop .v span { display: block; }
+body > .sc-pop .v i { font-style: normal; color: #6E6E74; font-size: 11px; }
+/* Chaei 24/25: (i) beside the gs / relay card titles, translucent explanation card */
+#ls-brief .ls-detail > header { align-items: center; }
+#ls-brief .sc-info { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-left: -2px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #6E6E74; cursor: pointer; transition: color .12s, background-color .12s; }
+#ls-brief .sc-info:hover, #ls-brief .sc-info:focus-visible, #ls-brief .sc-info[aria-expanded="true"] { color: #FFFFFF; background: rgba(237, 237, 237, .07); }
+body > .sc-tip { position: fixed; z-index: 120; max-width: 320px; padding: 14px 16px; background: rgba(22, 22, 24, .78); -webkit-backdrop-filter: blur(12px) saturate(120%); backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, .10); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, .45); font: 400 13px/1.6 var(--font, sans-serif); color: #D6D6DA; animation: sc-fade .15s ease-out; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { body > .sc-tip { background: rgba(22, 22, 24, .96); } }
+body > .sc-tip p { margin: 0 0 8px; }
+body > .sc-tip p:last-child { margin-bottom: 0; }
+body > .sc-tip b { color: #FFFFFF; font-weight: 600; }
+body > .sc-tip .sw { display: inline-block; width: 10px; height: 6px; border-radius: 1px; margin-right: 5px; vertical-align: 1px; }
+body > .sc-tip p.note { padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, .08); font-size: 12px; color: #8E8E94; }
+body > .sc-pop[hidden], body > .sc-tip[hidden] { display: none; }
+@keyframes sc-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { body > .sc-pop, body > .sc-tip { animation: none; } }
+html:not([lang="ko"]) body > .sc-pop, html:not([lang="ko"]) body > .sc-tip { --font: 'Geist', 'Pretendard', system-ui, sans-serif; --font-num: 'Geist Mono', 'Oxanium', ui-monospace, monospace; }
+
+/* ---- phones (<= 760 px): long period lines wrap, touch targets at least 32 px; also touch tablets; desktop mouse unchanged ---- */
+@media (max-width: 760px), (pointer: coarse) {
+  #ls-brief .ls-detail .rl-period, #ls-brief .ls-detail .kr-period, #ls-brief .ls-detail .sa-period, #ls-brief .ls-detail .now-link { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+  #ls-brief .sc-info { width: 32px; height: 32px; margin-left: -6px; }
+  #ls-brief .sc-dem { width: 32px; height: 32px; }
+  #ls-brief .sc-mv { padding: 8px 0; margin: -8px 0; }
+  #ls-brief .ls-detail .info { min-width: 32px; min-height: 32px; }
+}
+/* access / routes cards: short KPI rows (4 per row), ice warning */
+#ls-brief .sc-kpis.ac { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 4px; }
+#ls-brief .sc-kpis.ac + .sc-d, #ls-brief .tbl-x + .sc-kpis.ac { margin-top: 10px; }
+#ls-brief .warn-ice { color: #F5B841; font-weight: 600; }
+@media (max-width: 760px) { #ls-brief .sc-kpis.ac { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

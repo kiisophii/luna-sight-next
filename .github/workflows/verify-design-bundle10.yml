@@ -1,0 +1,36 @@
+name: Verify bundle 10 dock
+on:
+  push:
+    branches: [s13-design-bundle10-minchul]
+    paths: ['web/css/layout.css', 'verification/design_bundle10/**', '.github/workflows/verify-design-bundle10.yml']
+permissions:
+  contents: write
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          sparse-checkout: |
+            web
+            verification/design_bundle10
+            docs/design_sync/bundle10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Verify integrated main
+        run: |
+          python -m http.server 8788 --directory web >/tmp/bundle10-server.log 2>&1 &
+          BASELINE=58bbc449692185698f2d9eb6a2d52cb2a4707293 node verification/design_bundle10/subtabs.mjs
+      - name: Save evidence
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse docs/design_sync/bundle10
+          git diff --cached --quiet || git commit -m "Record bundle 10 browser measurements"
+          git push

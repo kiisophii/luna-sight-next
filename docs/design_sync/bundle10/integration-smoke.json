@@ -1,0 +1,387 @@
+{
+  "checks": [
+    {
+      "width": 800,
+      "lang": "en",
+      "height": 52,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 800,
+      "lang": "ko",
+      "height": 52,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 581,
+      "lang": "en",
+      "height": 50,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 575,
+      "lang": "ko",
+      "height": 50,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 512,
+      "lang": "en",
+      "height": 94,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 512,
+      "lang": "ko",
+      "height": 94,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 352,
+      "lang": "en",
+      "height": 85,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 352,
+      "lang": "ko",
+      "height": 85,
+      "bottom": 20,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 366,
+      "lang": "en",
+      "height": 140,
+      "bottom": 158.484375,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 366,
+      "lang": "ko",
+      "height": 140,
+      "bottom": 158.484375,
+      "overflow": false,
+      "buttons": [
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        },
+        {
+          "inside": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "failures": []
+}

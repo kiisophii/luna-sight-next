@@ -37,6 +37,18 @@ export const CREDITS = [
     ["C18", "Oxanium — Copyright 2019 The Oxanium Project Authors, SIL Open Font License 1.1."],
     ["C19", "three.js r170 — Copyright © 2010–2024 three.js authors, MIT License."],
     ["C20", "Luna Sight source code: Apache License 2.0, github.com/kiisophii/lunar-landing-site-navigator."],
+    ["C25", "Inter — Copyright 2020 The Inter Project Authors, SIL Open Font License 1.1. Served by Google Fonts."],
+    ["C26", "Geist — Copyright 2024 The Geist Project Authors (Vercel), SIL Open Font License 1.1. Served by Google Fonts."],
+    ["C27", "Geist Mono — Copyright 2024 The Geist Project Authors (Vercel), SIL Open Font License 1.1. Served by Google Fonts."],
+    ["C28", "JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors, SIL Open Font License 1.1. Served by Google Fonts (intro and About band)."],
+  ]],
+  ["Design", [
+    ["C29", "Visual design, icon set, favicon, intro animation and About band graphic: Chaei Oh (Team Ginkgo Orbit), made during the contest and drawn in code. They contain no AI-generated images and no third-party images. The Luna Sight logo is a text wordmark, not an image."],
+  ]],
+  ["New detail-analysis sources (15 November 2026)", [
+    ["C22", "Local terrain descriptors: NASA LRO LOLA / NASA GSFC PGDA, native 5 m mosaic (product 81 (https://pgda.gsfc.nasa.gov/products/81)) and adjusted 10/20 m DEMs (product 90 (https://pgda.gsfc.nasa.gov/products/90)). Barker et al. (2021), doi:10.1016/j.pss.2020.105119; Barker et al. (2023), doi:10.3847/PSJ/acf3e1; data doi:10.60903/gsfcpgda-lola-spole. Slopes, flat-area reference fractions and DEM plane-residual roughness are team-derived, not certified landing-safety values."],
+    ["C23", "Permanent-shadow proximity: NASA GSFC PGDA product 90, 20 m PSR raster (https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF); Barker et al. (2023), doi:10.3847/PSJ/acf3e1; data doi:10.60903/gsfcpgda-lola-spole. Nearest-region distances are team-derived. PSR does not mean confirmed water ice."],
+    ["C24", "Historical landing context: NASA NSSDCA / LROC and official CNSA, ISRO, JAXA and NASA mission records; all 18 mission links and coordinate/time sources. The nearest-three rankings are team-derived from Task R's actual landers, excluding self and planned targets; proximity does not imply usable infrastructure. Official context links do not replace coordinate/time sources."],
   ]],
   ["Disclaimer", [
     ["C21", "Luna Sight uses public NASA data and imagery and credits NASA as the source. No NASA logos or insignia are used. NASA has not reviewed, approved or endorsed this project."],

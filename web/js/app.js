@@ -16,6 +16,7 @@ import * as core from './core.js';
 import { t, applyI18n, toggleLang, getLang } from './i18n.js';
 import { setFocus, addStrings } from './ui_shared.js';
 import { relayPeriod, relayPeek, hourBits, TOWER_H } from './values.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: 'About this tool',
@@ -42,7 +43,7 @@ addStrings({
   periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site checks', expH: 'Export this analysis', expLead: 'Save the current conditions, candidates, and comparison as a file.', expPdf: 'PDF report', expPdfSub: 'For print and sharing',
   hudLine1: 'Earth-set edge (Earth-visibility limit) · LROC color · LOLA terrain',
   exportPdf: 'Export PDF', exportPdfTip: 'Print or save this comparison as a PDF (browser print dialog)', hudLine2: '{t}', hudSrc: 'Sun and Earth positions: JPL DE440s ephemeris (selected time, UTC)', pickOn: 'Click the Moon to place a point · Esc to cancel', cancel: 'Cancel',
-  spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
+  spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_elev: 'Elevation (LOLA)', tbt_elev: 'LOLA terrain height in colour, over the same fixed-light terrain shading. No time dependence.', lgElev: 'Elevation, LOLA', lgElevNote: 'true height above 1737.4 km (3D shape ×{x} for display only) · colours clamp at the ends · data range {a} … {b} km · fixed light from the north-west', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
   tb_whole: 'Whole Moon', tb_south: 'South pole', tb_pick: 'Place a point on the Moon',
   tbt_light: 'Shadows for the Sun direction at the selected time (not necessarily the real current time).',
   tbt_mean: 'Mean visible fraction of the solar disc over 2026–2030 on a 948 m whole-Moon grid (data/gmaps_ppd32). Long-term average, not this period.',
@@ -75,7 +76,7 @@ addStrings({
   periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증', expH: '이 분석 내보내기', expLead: '지금 조건, 후보, 비교를 파일로 저장합니다.', expPdf: 'PDF 보고서', expPdfSub: '인쇄·공유용',
   hudLine1: '지구가 지는 경계 · LROC 컬러 · LOLA 지형',
   exportPdf: 'PDF로 내보내기', exportPdfTip: '이 비교를 인쇄하거나 PDF로 저장합니다 (브라우저 인쇄 창)', hudLine2: '{t}', hudSrc: '태양·지구 위치: JPL DE440s 천체력 (선택 시각, UTC)', pickOn: '달을 눌러 지점을 고르세요 · Esc 취소', cancel: '취소',
-  spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_light: '선택 시각의 햇빛', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
+  spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_elev: '고도 (LOLA)', tbt_elev: 'LOLA 지형 높이를 색으로, 같은 고정 조명 지형 음영 위에 표시. 시간에 따라 바뀌지 않습니다.', lgElev: '고도, LOLA', lgElevNote: '기준 반지름 1737.4 km 대비 실제 높이 (3D 모양만 ×{x} 과장) · 양 끝 밖은 끝 색 · 자료 범위 {a} … {b} km · 북서쪽 고정 조명', tb_light: '선택 시각의 햇빛', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
   tb_whole: '달 전체', tb_south: '남극', tb_pick: '달에서 지점 찍기',
   tbt_light: '선택 시각의 태양 방향으로 그림자. 실제 현재 시각이 아닐 수 있음.',
   tbt_mean: '태양 원반이 보이는 시간 비율, 달 전체 2026–2030 평균, 948 m 격자(data/gmaps_ppd32). 이 기간 값이 아닌 장기 평균.',
@@ -119,11 +120,11 @@ const isoDay = i => core.hourToDate(i).toISOString().slice(0, 10);
 const dayStart = i => Math.floor(i / 24) * 24;
 const fmtDaysShort = d => (Math.abs(d - Math.round(d)) < 0.05 ? String(Math.round(d)) : d.toFixed(1));
 const pctHTML = f => (f == null || !isFinite(f) ? '<span class="na">—</span>' : `${Math.round(f * 100)}<small>%</small>`);
-export const SUN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
-export const EARTH_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>';
-const ADD_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 6.8v8.4M6.8 11h8.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
-const REM_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="currentColor"/><path d="M6.8 11h8.4" stroke="#0A0A0B" stroke-width="1.8" stroke-linecap="round"/></svg>';
-export const PIN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.5h5l-.8 4.2 2.3 2.3v1H4v-1l2.3-2.3z" fill="var(--pin-fill, none)" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 9v5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+export const SUN_ICON = iconSvg('sun', { size: 14 });
+export const EARTH_ICON = iconSvg('earth', { size: 14 });
+const ADD_ICON = iconSvg('pin-add', { size: 20, cls: 'pk-ic' });
+const REM_ICON = iconSvg('pin-remove-filled', { size: 20, cls: 'pk-ic' });
+export const PIN_ICON = iconSvg('pin', { size: 14 });
 
 // ------------------------------------------------------------ pins (no limit; stable numbers)
 const pinOf = id => pins.find(p => p.id === id);
@@ -195,7 +196,7 @@ function relayLine(s, m) {
   if (!relayOn || !m || m.pending) return '';
   const r = relayPeek(s.id, i0, i1); if (!r || r.state !== 'ok' || !r.total) return '';
   const d = Math.round((r.direct / r.total) * 100), w = Math.round(((r.direct + r.via) / r.total) * 100);
-  return `<span class="pk-relay"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 9v9M6.5 18h7M10 9l-3 9M10 9l3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="7.5" r="1.8" fill="currentColor"/></svg><b>${t('rlTower')}</b><span class="num">${d}% → <em>${w}%</em></span>${r.distKm != null ? `<span>· ${fill(t('rlKm'), { k: r.distKm.toFixed(1) })}</span>` : ''}</span>`;
+  return `<span class="pk-relay">${iconSvg('relay-tower', { size: 14 })}<b>${t('rlTower')}</b><span class="num">${d}% → <em>${w}%</em></span>${r.distKm != null ? `<span>· ${fill(t('rlKm'), { k: r.distKm.toFixed(1) })}</span>` : ''}</span>`;
 }
 function rowHTML(s, rank) {
   const p = pinOf(s.id), m = metricsOf(s.id), focus = window.LLSN.focus === s.id;
@@ -209,7 +210,7 @@ function rowHTML(s, rank) {
   return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}"${p ? ` style="--sc:var(--c${p.n})"` : ''}>
     ${chip}
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
-      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(rowName(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
+      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(rowName(s))}</span>${rank === 1 && sortKey !== 'name' ? ` <span class="star" aria-label="1st">${iconSvg('star', { size: 12 })}</span>` : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${relayOn && !L.tower ? tower : ''}</span></span>
       <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}<span class="n">${sunV}</span></span><i class="pk-div" aria-hidden="true"></i><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}<span class="n">${earthV}</span></span></span>
     </button>
@@ -303,8 +304,7 @@ function setPlaying(on) {
   const b = $('#play');
   b.setAttribute('aria-pressed', String(on));
   b.setAttribute('aria-label', t(on ? 'pause' : 'play'));
-  b.innerHTML = on ? '<svg viewBox="0 0 16 16" class="ic"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>'
-    : '<svg viewBox="0 0 16 16" class="ic"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>';
+  b.innerHTML = iconSvg(on ? 'pause' : 'play', { size: 16 });
   cancelAnimationFrame(raf);
   if (on) {
     if (now >= i1) setTime(i0);
@@ -545,7 +545,7 @@ async function main() {
     setTime(dayStart(now) + hh + (mm || 0) / 60);
   });
   $('#play').addEventListener('click', () => setPlaying(!playing));
-  new ResizeObserver(() => drawScrub()).observe($('#scrub'));
+  new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => drawScrub())).observe($('#scrub'));
 
   window.dispatchEvent(new CustomEvent('llsn:ready', { detail: { state: core.state } }));
   window.dispatchEvent(new CustomEvent('llsn:pins', { detail: { pins: pins.slice() } }));

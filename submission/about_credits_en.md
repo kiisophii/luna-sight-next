@@ -2,7 +2,17 @@
 
 > **팀용 (한국어):** 앱 About 페이지 "Data & credits" 칸에 그대로 붙여 넣을 영어 문구다. 바탕은 `submission/resources_en.md`(민철님 라이선스 표, main `8eff7ac`)이고, 각 제공처가 요구하는 표기는 2026-11-14에 원문 페이지를 직접 열어 확인했다.
 > 본문(아래 "Text for the page")에는 확인 표시를 넣지 않았다. 각 줄 번호(C1…)의 확인 상태는 아래 **"Check status"** 표에 있다. **⚠ = 제공처가 요구하는 정확한 문구를 확인하지 못한 항목**(문구는 우리가 쓴 일반적인 인용 형식).
-> 글꼴 Pretendard·Oxanium은 수아님 디자인 브랜치(`s5-design-impl-sua` `46cd9a2`)에서만 쓰고 main에는 아직 없다. 디자인이 합쳐질 때 C17–C18을 같이 넣는다.
+> **2026-11-15 갱신 (main v45 `e40961f` + PR #113 기준):**
+> - **웹 글꼴 6종을 실제로 쓴다(모두 SIL OFL 1.1).**
+>   - Google Fonts: Inter, Oxanium, Geist, Geist Mono.
+>   - jsDelivr: Pretendard.
+>   - Google Fonts, 인트로: JetBrains Mono. 인트로는 PR #113으로 들어온다.
+>   - 예전 문구 "Pretendard·Oxanium은 디자인 브랜치에서만"은 더 이상 맞지 않는다.
+> - **디자인 자산은 팀원 채이님이 대회 중에 만든 원작이다.**
+>   - 대상: 아이콘 세트, 파비콘, 인트로 애니메이션 `luna-intro.js`, About 띠 그래픽 `about-journey.js`.
+>   - 모두 코드로 그렸고, AI 그림이나 외부 이미지가 아니다(팀 확인: 수아님, 2026-11-15).
+> - **로고는 이미지가 아니라 글자 워드마크다.**
+> - **앱 About 목록에는 아직 Inter 줄이 없다.** 넣을 문구는 아래 C25다.
 
 ## Text for the page
 
@@ -51,6 +61,15 @@
 - C18. Oxanium — Copyright 2019 The Oxanium Project Authors, SIL Open Font License 1.1.
 - C19. three.js r170 — Copyright © 2010–2024 three.js authors, MIT License.
 - C20. Luna Sight source code: Apache License 2.0, github.com/kiisophii/lunar-landing-site-navigator.
+- C25. Inter — Copyright 2020 The Inter Project Authors, SIL Open Font License 1.1. Served by Google Fonts.
+- C26. Geist — Copyright 2024 The Geist Project Authors (Vercel), SIL Open Font License 1.1. Served by Google Fonts.
+- C27. Geist Mono — Copyright 2024 The Geist Project Authors (Vercel), SIL Open Font License 1.1. Served by Google Fonts.
+- C28. JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors, SIL Open Font License 1.1. Served by Google Fonts (intro and About band).
+- Pretendard (C17) is served by jsDelivr; Oxanium (C18) by Google Fonts. Fonts are loaded from these services, not redistributed as files.
+
+**Design**
+
+- C29. Visual design, icon set, favicon, intro animation and About band graphic: Chaei Oh (Team Ginkgo Orbit), made during the contest and drawn in code. They contain no AI-generated images and no third-party images. The Luna Sight logo is a text wordmark, not an image.
 
 **New detail-analysis sources — 15 November 2026**
 
@@ -84,13 +103,20 @@ Opened on 14 November 2026 (KST) unless the source column says "resources_en.md"
 | C14 | **Confirmed in the repository:** "Keep NASA/KARI/ASU and NAIF source credits" (docs/source_permissions.md:14); links and label metadata only, no images redistributed. ShadowCam site not reopened | docs/source_permissions.md |
 | C15 | ⚠ **Not confirmed.** ALSJ terms REVIEW; numbers only | resources_en.md |
 | C16 | ⚠ **Not confirmed.** Citation only | resources_en.md |
-| C17 | **Confirmed.** LICENSE first line "Copyright (c) 2021, Kil Hyung-jin … with Reserved Font Name 'Pretendard'"; OFL 1.1. OFL requires the notice when the font files are redistributed; the design loads them from jsDelivr, so this line is a courtesy credit. **Only if the design branch is merged** | https://github.com/orioncactus/pretendard/blob/main/LICENSE |
-| C18 | **Confirmed.** OFL.txt first line "Copyright 2019 The Oxanium Project Authors (https://github.com/sevmeyer/oxanium)"; loaded from Google Fonts. **Only if the design branch is merged** | https://github.com/google/fonts/blob/main/ofl/oxanium/OFL.txt |
+| C17 | **Confirmed.** LICENSE first line "Copyright (c) 2021, Kil Hyung-jin … with Reserved Font Name 'Pretendard'"; OFL 1.1. OFL requires the notice when the font files are redistributed; the app loads them from jsDelivr, so this line is a courtesy credit. **Used on main v45** (index.html:13, jsDelivr v1.3.9) | https://github.com/orioncactus/pretendard/blob/main/LICENSE |
+| C18 | **Confirmed.** OFL.txt first line "Copyright 2019 The Oxanium Project Authors (https://github.com/sevmeyer/oxanium)"; loaded from Google Fonts. **Used on main v45** (index.html:12) | https://github.com/google/fonts/blob/main/ofl/oxanium/OFL.txt |
 | C19 | **Confirmed.** r170 LICENSE "Copyright © 2010-2024 three.js authors", MIT. MIT asks that the notice stay with copies of the software; we load it from cdnjs, so the line plus a link to the LICENSE is enough for the About page | https://github.com/mrdoob/three.js/blob/r170/LICENSE |
 | C20 | **Confirmed.** Repository LICENSE = Apache License 2.0 | ../LICENSE |
 | C21 | **Basis confirmed: NASA Images and Media Usage Guidelines.** NASA content "used in a factual manner that does not imply endorsement may be used"; "NASA should be acknowledged as the source"; the Insignia and Logotype "are not in the public domain"; for SI uses, "do not imply any review or permission was granted by NASA". The Space Apps brand guidelines and 2026 participant terms pages were also opened: neither shows a required disclaimer text, so C21 is our own wording based on the NASA page | https://www.nasa.gov/nasa-brand-center/images-and-media/ ; https://www.spaceappschallenge.org/brand/ ; https://www.spaceappschallenge.org/legal/ |
+| C25 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)"; SIL OFL 1.1. Loaded from Google Fonts (index.html:12); Korean-screen UI text. **Not yet in the app's About list** (credits.js) | https://github.com/google/fonts/blob/main/ofl/inter/OFL.txt |
+| C26 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git)"; SIL OFL 1.1. Loaded from Google Fonts (index.html:12, site_check.css:3); English-screen UI text. The app's About credits it in about.js:149 as "(Vercel)" | https://github.com/google/fonts/blob/main/ofl/geist/OFL.txt |
+| C27 | **Confirmed 2026-11-15.** Same holder as Geist; SIL OFL 1.1. English-screen numbers, dates and site names | https://github.com/google/fonts/blob/main/ofl/geistmono/OFL.txt |
+| C28 | **Confirmed 2026-11-15.** OFL.txt first line "Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)"; SIL OFL 1.1. Loaded by the intro (luna-intro.js:91, PR #113). PR #113 numbers this font "C22" in credits.js; that number is already used by the terrain line, so keep one entry (suggest C28) when merging | https://github.com/google/fonts/blob/main/ofl/jetbrainsmono/OFL.txt |
+| C29 | **Team statement (Sua Kim, 2026-11-15), checked in code.** Chaei Oh designed the icon set, favicon, intro and About band during the contest. Checked: no raster image data in web/index.html, web/js or web/css; luna-intro.js and about-journey.js (PR #113) draw on canvas/SVG and fetch no images; the favicon is an inline SVG drawn in code; the wordmark is text (index.html:32). PR #113 removed the AI-traced logo vector from the designer's original intro | ../web/index.html ; PR #113 |
 
 ## Differences from the current About source table (`s5-design-impl-sua`, `web/js/about.js`)
+
+> Historical (checked 14 November against `46cd9a2`). For the current app see the 2026-11-15 note at the top and C25–C29.
 
 Checked against `46cd9a2`, for the integrator to decide; nothing in that branch was changed.
 

@@ -12,9 +12,10 @@ import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, fmtHours, LLSN } from './ui_shared.js';
 import { hourBits, gapStats, relayPeriod, getJSON } from './values.js';
 import * as core from './core.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
-  tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay', tcTerrain: 'Terrain',
+  tcRelayTab: 'Relay', tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay', tcTerrain: 'Terrain',
   tsRate: 'Sunlit time', tsDark: 'Longest dark', teRate: 'Visible share', teGap: 'Longest hidden', trMix: 'Link share', trGap: 'Longest gap',
   ttSlope: 'Slope', ttHz: 'Horizon',
   tdSunRate: 'How the sunlit share builds up over the analysis period.',
@@ -33,7 +34,7 @@ addStrings({
   tDirect: 'direct', tVia: 'via tower', tFine: 'detailed', tCoarse: 'coarse 250 m', tFlat: '≤ 8° / ≤ 15° within 500 m', tRough: 'roughness (median, 500 m)', tRef: 'reference',
   tNoTerrain: 'No terrain file', tHzMax: 'max horizon', tLoading: 'loading…',
 }, {
-  tcSun: '일조', tcEarth: '지구 가시', tcRelay: '중계탑', tcTerrain: '지형',
+  tcRelayTab: '중계탑', tcSun: '일조', tcEarth: '지구 가시', tcRelay: '중계탑', tcTerrain: '지형',
   tsRate: '일조율', tsDark: '최장 어둠', teRate: '가시율', teGap: '최장 안 보임', trMix: '교신율', trGap: '최장 끊김',
   ttSlope: '경사', ttHz: '지평선',
   tdSunRate: '분석 기간 동안 일조율이 시간에 따라 어떻게 쌓이는지 봅니다.',
@@ -83,7 +84,7 @@ function cumulative(bits, m) {
 }
 
 function chartSVG(series, n, i0) {
-  const W = 360, H = 156, L = 26, R = 30, T = 8, B = 20, pw = W - L - R, ph = H - T - B;
+  const W = 301, H = 100, L = 26, R = 30, T = 8, B = 20, pw = W - L - R, ph = H - T - B;
   const X = k => L + (k / Math.max(1, n - 1)) * pw, Y = v => T + (1 - v / 100) * ph;
   let g = [0, 50, 100].map(v => `<line x1="${L}" x2="${L + pw}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--n-line)" ${v === 50 ? 'stroke-dasharray="2 3"' : ''}/><text x="${L - 5}" y="${Y(v) + 3}" text-anchor="end">${v}</text>`).join('');
   g += Array.from({ length: 5 }, (_, j) => { const k = Math.round((n - 1) * j / 4); return `<text x="${X(k)}" y="${H - 5}" text-anchor="${j === 0 ? 'start' : j === 4 ? 'end' : 'middle'}">${md(i0 + k)}</text>`; }).join('');
@@ -95,13 +96,13 @@ function chartSVG(series, n, i0) {
   return `<svg class="tc-chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
 }
 const bar = (f, col, n) => `<span class="tc-bar"><i style="width:${Math.max(0, Math.min(100, f * 100)).toFixed(1)}%;background:${col}"></i></span>`;
-const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row"><svg class="tc-sw" viewBox="0 0 24 4" aria-hidden="true"><line x1="0" y1="2" x2="24" y2="2" stroke="var(--c${it.n})" stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
+const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row"><svg class="tc-sw" viewBox="0 0 24 6" aria-hidden="true"><line x1="0" y1="3" x2="24" y2="3" stroke="var(--c${it.n})" stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
 
 async function render() {
   const root = document.getElementById('tray-cat'), W = LLSN().window; if (!root || !W) return;
   const my = ++seq, list = sites(), C = CATS[cat], sk = sub[cat], subDef = C.subs.find(x => x[0] === sk) || C.subs[0];
   root.querySelectorAll('.tc-tabs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.c === cat)));
-  root.querySelector('.tc-h').innerHTML = `<h4>${esc(t(C.tab))}</h4><button type="button" class="tc-i" aria-label="${esc(t(C.info))}" title="${esc(t(C.info))}">i</button>
+  root.querySelector('.tc-h').innerHTML = `<h4>${esc(t(C.tab))}</h4><button type="button" class="tc-i" aria-label="${esc(t(C.info))}" title="${esc(t(C.info))}">${iconSvg('info')}</button>
     <span class="tc-subs" role="group">${C.subs.map(([k, lab]) => `<button type="button" data-s="${k}" aria-pressed="${k === subDef[0]}">${esc(t(lab))}</button>`).join('')}</span>`;
   root.querySelector('.tc-desc').textContent = t(subDef[2]);
   const body = root.querySelector('.tc-body');
@@ -157,18 +158,20 @@ async function render() {
 }
 
 function build() {
+  const moreArrow = document.querySelector('#ls-tray .tray-more > span[aria-hidden="true"]');
+  if (moreArrow) moreArrow.innerHTML = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m-4-4 4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const host = document.getElementById('tray-cat'); if (!host) return;
-  host.innerHTML = `<div class="tc-tabs" role="group">${Object.entries(CATS).map(([k, c]) => `<button type="button" data-c="${k}" aria-pressed="${k === cat}" style="--ul:${k === 'sun' ? 'var(--sun)' : 'var(--n-mute)'}">${esc(t(c.tab))}</button>`).join('')}</div>
+  host.innerHTML = `<div class="tc-tabs" role="group">${Object.entries(CATS).map(([k, c]) => `<button type="button" data-c="${k}" aria-pressed="${k === cat}" style="--ul:${k === 'sun' ? 'var(--sun)' : 'var(--n-mute)'}">${esc(t(k === 'relay' ? 'tcRelayTab' : c.tab))}</button>`).join('')}</div>
     <div class="tc-scroll"><div class="tc-h"></div><p class="tc-desc"></p><div class="tc-body"></div></div>`;
   // the middle part scrolls; fade its last 28 px only while more content is below
   const sc = host.querySelector('.tc-scroll');
   const fade = () => sc.classList.toggle('more', sc.scrollTop + sc.clientHeight < sc.scrollHeight - 2);
-  sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver(fade).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
+  sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => fade())).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
   host.addEventListener('click', e => {
     const c = e.target.closest('.tc-tabs button'); if (c) { cat = c.dataset.c; save(); render(); relabel(); return; }
     const s = e.target.closest('.tc-subs button'); if (s) { sub[cat] = s.dataset.s; save(); render(); }
   });
-  const relabel = () => host.querySelectorAll('.tc-tabs button').forEach(b => { b.textContent = t(CATS[b.dataset.c].tab); });
+  const relabel = () => host.querySelectorAll('.tc-tabs button').forEach(b => { b.textContent = t(b.dataset.c === 'relay' ? 'tcRelayTab' : CATS[b.dataset.c].tab); b.title = t(CATS[b.dataset.c].tab); });
   ['llsn:pins', 'llsn:window', 'llsn:sites'].forEach(ev => window.addEventListener(ev, render));
   window.addEventListener('llsn:lang', () => { relabel(); render(); });
   render();

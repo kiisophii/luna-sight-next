@@ -1,9 +1,11 @@
 // shell.js — page chrome for the 3-column layout (design spec v65 §3.1–3.3, 3.7, 3.10, 6): header, intro, panel folding,
 // sort help, layer/camera toolbar, mean-map layers (948 m whole-Moon grid), click-to-place points, add-site drawer,
-// scroll hint, About routing. Loaded BEFORE app.js (so the intro can count real data requests). No numbers computed here.
+// scroll hint, About routing. Loaded BEFORE app.js (so the intro hears the first load events). No numbers computed here.
 import { t, getLang } from './i18n.js';
 import { addStrings } from './ui_shared.js';
 import { enhanceSelect, autoEnhance } from './ui_select.js';
+import { iconSvg, hydrateIcons } from './icons.js';
+hydrateIcons();
 // ?gv= (shared camera) is read here, before app.js rewrites the address bar, so the late-loading globe still gets it
 window.__llsnGV = new URLSearchParams(location.search).get('gv');
 
@@ -41,52 +43,35 @@ const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ------------------------------------------------------------ I. intro (first visit, ≤ 3 s, real progress)
+// ------------------------------------------------------------ I. intro (first visit; js/luna-intro.js, Chaei Oh)
+// The bar follows real loading: window load + the Moon colour map (llsn:globe) + the site data (llsn:ready).
+// A failed load counts as done, and each wait is capped, so the intro can never block the app.
 (function intro() {
   const el = $('#ls-intro');
   const q = new URLSearchParams(location.search);
   let seen = false; try { seen = localStorage.getItem('ls.introSeen') === '1'; } catch (e) { /* storage blocked */ }
-  if (seen || reduced() || q.has('sites') || q.has('nointro') || location.hash) return;
+  const force = q.get('intro') === '1';   // ?intro=1: play again even when seen before, with sites= or a hash (for checking)
+  if (!el || !window.LunaIntro || (!force && (seen || q.has('sites') || q.has('nointro') || location.hash))) return;
   try { localStorage.setItem('ls.introSeen', '1'); } catch (e) { /* ignore */ }
-  // real progress: completed data/ requests of the first load (sites, ephemeris, horizon index, 33 horizons)
-  let done = 0, expect = 37, ready = false;
-  const orig = window.fetch.bind(window);
-  window.fetch = (...a) => {
-    const p = orig(...a);
-    const u = String(a[0]?.url || a[0]);
-    if (/data\/(sites|ephem|horizon)/.test(u)) p.then(r => { done++; if (/sites\.json/.test(u)) r.clone().json().then(j => { expect = 4 + j.length; }).catch(() => {}); }).catch(() => { done++; });
-    return p;
-  };
-  el.hidden = false;
-  el.innerHTML = `<div class="stars"></div><button type="button" class="skip">${t('introSkip')} ⏩</button>
-    <div class="moon"><svg class="lander" viewBox="0 0 34 30" aria-hidden="true"><path d="M10 4h14l3 10H7z M7 14h20v4H7z M9 18l-5 10M25 18l5 10M3 28h4M27 28h4M17 18v4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
-    <div class="bar"><i></i></div>
-    <div class="word"><b>LUNA SIGHT</b><span>Lunar Landing Site Navigator</span></div>
-    <div class="pct num">${t('introLoading')} 000%</div><div class="clock num">T+ 00:00.00</div>`;
-  const t0 = performance.now();
-  let raf = 0, finished = false;
-  const finish = () => {
-    if (finished) return; finished = true;
-    cancelAnimationFrame(raf); window.fetch = orig;
-    el.classList.add('done'); setTimeout(() => { el.hidden = true; el.innerHTML = ''; }, 400);
-    window.removeEventListener('keydown', onKey);
-  };
-  const onKey = e => { if (e.key === 'Escape') finish(); };
-  el.addEventListener('click', finish);
-  window.addEventListener('keydown', onKey);
-  window.addEventListener('llsn:ready', () => { ready = true; });
-  window.addEventListener('llsn:loadfail', finish);
-  const tick = () => {
-    const ms = performance.now() - t0;
-    const pct = ready ? 100 : Math.min(99, Math.round((done / expect) * 100));
-    el.querySelector('.bar i').style.width = pct + '%';
-    el.querySelector('.clock').textContent = `T+ ${String(Math.floor(ms / 60000)).padStart(2, '0')}:${(ms / 1000 % 60).toFixed(2).padStart(5, '0')}`;
-    if (ready || ms > 2100) { el.classList.add('touch'); el.querySelector('.pct').textContent = ready ? t('introTouch') : `${t('introLoading')} ${String(pct).padStart(3, '0')}%`; }
-    else el.querySelector('.pct').textContent = `${t('introLoading')} ${String(pct).padStart(3, '0')}%`;
-    if (ms > 3000 || (ready && ms > 1600)) { finish(); return; }          // never longer than 3 s
-    raf = requestAnimationFrame(tick);
-  };
-  raf = requestAnimationFrame(tick);
+  const when = (events, capMs, failed) => new Promise(res => {
+    events.forEach(ev => window.addEventListener(ev, res, { once: true }));
+    setTimeout(res, capMs);
+    if (failed) { const iv = setInterval(() => { if (failed()) { clearInterval(iv); res(); } }, 250); setTimeout(() => clearInterval(iv), capMs); }
+  });
+  const globeFailed = () => document.getElementById('globe-stage')?.classList.contains('failed');   // no WebGL: no texture event
+  // While the intro covers the page nothing may scroll it (WebKit scrolled ~890 px down to the comparison on a first
+  // visit: a focus()/scrollIntoView() from start-up code moves the page even with overflow hidden). The page is held
+  // at the top and starts there when the intro ends. A URL hash keeps its own target.
+  const hold = !location.hash;
+  const pin = () => { if (window.scrollY > 0) window.scrollTo(0, 0); };
+  const pinIv = hold ? setInterval(pin, 100) : 0;   // scroll events can be late or missing while the page is busy
+  if (hold) window.addEventListener('scroll', pin, { passive: true });
+  const introH = window.LunaIntro.mount({
+    onDone: () => { if (!hold) return; clearInterval(pinIv); window.removeEventListener('scroll', pin); window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0)); },
+    el, label: getLang() === 'ko' ? 'Luna Sight 불러오는 중' : 'Loading Luna Sight',
+    waitFor: [when(['llsn:globe', 'llsn:loadfail'], 12000, globeFailed), when(['llsn:ready', 'llsn:loadfail'], 12000)],
+  });
+  setTimeout(() => introH?.complete?.(), 15000);   // the window 'load' event has no cap of its own (a hung font or image): finish anyway
 })();
 
 // ------------------------------------------------------------ header background on scroll, scroll hint
@@ -112,11 +97,11 @@ document.addEventListener('click', e => {
 });
 
 // ------------------------------------------------------------ panel folding
-const CHEV = up => `<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="${up ? 'M4 10l4-4 4 4' : 'M4 6l4 4 4-4'}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const CHEV = up => iconSvg('chevron-down', { cls: up ? 'ic flip-v' : 'ic' });
 function foldLabel(b, open) {
   const left = b.dataset.fold === 'ls-cond';
   if (left) { b.innerHTML = CHEV(open); b.setAttribute('aria-label', t(open ? 'collapse' : 'expand')); return; }
-  b.textContent = open ? (left ? '‹' : '›') : (left ? '›' : `‹ ${t('openTray')}`);
+  b.innerHTML = open ? iconSvg('chevron-right') : `${iconSvg('chevron-right', { cls: 'ic flip' })} ${t('openTray')}`;
   b.classList.toggle('wide', !open && !left);
   b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : (left ? 'expand' : 'openTray')));
 }
@@ -127,7 +112,7 @@ document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', (
   const open = phone ? !box.classList.contains('unfolded') : box.classList.contains('folded');
   if (phone) box.classList.toggle('unfolded', open); else box.classList.toggle('folded', !open);
   if (box.id === 'ls-cond' && b.dataset.userClick === '1') {
-    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable input, .ls-foldable .dd-btn, .ls-foldable select')?.focus());
+    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable .dd-btn, .ls-foldable input:not(#c1-date)')?.focus());
     else b.focus();
   }
   delete b.dataset.userClick;
@@ -226,6 +211,16 @@ function stitch(idx, layerId) {
   return p;
 }
 let layer = 'light', layerNoted = false;
+// elevation layer: colour scale of the designer's copy (Chaei: navy -4.5 km -> pink +5.5 km), values beyond the ends clamp.
+// The legend also states the real min / max of the LOLA tiles in use (data/globe/index.json, all levels).
+const ELEV_MIN = -4.5, ELEV_MAX = 5.5;
+const ELEV_RAMP = ['#0E2147', '#2A4677', '#56729F', '#4F8C8E', '#9CB463', '#E3D46C', '#E9A55F', '#DE7C64', '#F2D2C6'];
+let elevR = null;
+const elevRange = () => (elevR ||= fetch(`${LL().state?.base || 'data/'}globe/index.json`).then(r => r.json()).then(j => {
+  let a = Infinity, b = -Infinity;
+  for (const list of Object.values(j.tiles || {})) for (const t of list) { if (t[3] < a) a = t[3]; if (t[4] > b) b = t[4]; }
+  return isFinite(a) ? [a / 1000, b / 1000] : null;
+}).catch(() => null));
 // a long-term (time-independent) layer is on and the user moves the time: say so once, offer Sunlight (Chaei #22)
 window.addEventListener('llsn:time', () => {
   if (layer === 'light' || layerNoted) return;
@@ -239,6 +234,22 @@ window.addEventListener('llsn:time', () => {
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
   tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  LL().globe?.setElevation?.(null);
+  { const h1 = document.getElementById('hud-1'); if (h1) h1.style.display = k === 'light' ? '' : 'none'; }   // one legend at a time: the LROC/Earth-set line belongs to the Sunlight view
+  if (k === 'elev') {                                              // elevation: LOLA height colour over the same fixed-light hillshade (relief merged in)
+    layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
+    const g0 = LL().globe; if (!g0) return;
+    await g0.setColorMap(null);
+    g0.setElevation({ min: ELEV_MIN, max: ELEV_MAX, stops: ELEV_RAMP });
+    const r = await elevRange();
+    if (layer !== 'elev') return;
+    const leg = $('#map-legend'); leg.hidden = false;
+    const km = x => `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x).toFixed(1)}`;
+    leg.innerHTML = `<div>${esc(t('lgElev'))}</div>
+      <div class="bar" style="background:linear-gradient(90deg, ${ELEV_RAMP.join(', ')})"></div><div class="ends"><span>≤ ${km(ELEV_MIN)} km</span><span>${km((ELEV_MIN + ELEV_MAX) / 2)}</span><span>≥ ${km(ELEV_MAX)} km</span></div>
+      <div class="muted" style="margin-top:3px">${esc(fill(t('lgElevNote'), { x: 3, a: r ? km(r[0]) : '—', b: r ? km(r[1]) : '—' }))}</div>`;
+    return;
+  }
   if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
     layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
     const g0 = LL().globe; if (!g0) return;
@@ -314,7 +325,7 @@ function showComputing() {
 // ------------------------------------------------------------ 3.10 add-site drawer
 const drawer = $('#ls-add');
 drawer.innerHTML = `
-  <div class="ls-card-head"><h2 id="add-h">${esc(t('addT'))}</h2><button type="button" class="ls-icon add-x" aria-label="${esc(t('close'))}">×</button></div>
+  <div class="ls-card-head"><h2 id="add-h">${esc(t('addT'))}</h2><button type="button" class="ls-icon add-x" aria-label="${esc(t('close'))}">${iconSvg('close')}</button></div>
   <div class="ls-tabs" role="tablist"><button type="button" role="tab" data-tab="cat" aria-selected="true">${esc(t('tabCat'))}</button><button type="button" role="tab" data-tab="coord" aria-selected="false">${esc(t('tabCoord'))}</button></div>
   <div class="tab-cat" role="tabpanel">
     <div style="display:flex;gap:6px"><input type="search" class="cat-q" style="flex:1" aria-label="${esc(t('catSearch'))}" placeholder="${esc(t('catSearch'))}"><select class="cat-g" aria-label="group"></select></div>
@@ -366,8 +377,8 @@ function renderCat() {
     const m = w.metrics.get(s.id), n = LL().pinNo?.(s.id);
     return `<li class="${pass && !pass.has(s.id) ? 'out' : ''}"><button type="button" class="ls-link add-go" data-id="${s.id}" style="text-align:left;color:var(--text);text-decoration:none">
       ${n ? `<span class="pin-no">#${n}</span>` : ''}${esc(name(s))}<br><small class="muted">${esc(t('g_' + s.group))}</small></button>
-      <span class="num"><span class="v sun">☼ ${m && !m.pending ? pctTxt(m.sun_frac) : '—'}</span> <span class="v earth">◍ ${m && !m.pending ? pctTxt(m.earth_frac) : '—'}</span></span>
-      <button type="button" class="ls-icon add-pin" data-id="${s.id}" aria-pressed="${!!n}" aria-label="${esc(t(n ? 'unpin' : 'pin'))}" style="${n ? 'background:var(--text);color:var(--bg)' : ''}">${n ? '✓' : '+'}</button></li>`;
+      <span class="num"><span class="v sun">${iconSvg('sun', { size: 12 })} ${m && !m.pending ? pctTxt(m.sun_frac) : '—'}</span> <span class="v earth">${iconSvg('earth', { size: 12 })} ${m && !m.pending ? pctTxt(m.earth_frac) : '—'}</span></span>
+      <button type="button" class="ls-icon add-pin" data-id="${s.id}" aria-pressed="${!!n}" aria-label="${esc(t(n ? 'unpin' : 'pin'))}" style="${n ? 'background:var(--text);color:var(--bg)' : ''}">${iconSvg(n ? 'check' : 'plus')}</button></li>`;
   }).join('');
 }
 ['llsn:window', 'llsn:pins', 'llsn:filter', 'llsn:lang', 'llsn:sites'].forEach(ev => window.addEventListener(ev, renderCat));
@@ -382,10 +393,12 @@ async function route() {
   $('#view-about').hidden = !on;
   if (on) {
     if (!aboutLoaded) { aboutLoaded = true; await import('./about.js').catch(e => console.error('about failed', e)); }
+    if (!wasOn || location.hash === '#about') { const sc = document.getElementById('abScroll'); if (sc) sc.scrollTop = 0; }
     window.dispatchEvent(new CustomEvent('llsn:about'));
+    window.dispatchEvent(new Event('resize'));
     const target = location.hash.length > 6 ? document.getElementById(location.hash.slice(1)) : null;
     if (target) { target.closest('details')?.setAttribute('open', ''); target.scrollIntoView(); } else window.scrollTo(0, 0);
-    $('#view-about h1')?.focus({ preventScroll: true });
+    $('#view-about h1')?.focus({ preventScroll: true });   // ring only when the keyboard was used last (html[data-kbd])
   } else if (wasOn) {
     window.scrollTo(0, 0);
     window.dispatchEvent(new Event('resize'));          // the globe canvas was hidden: let it re-measure
@@ -440,7 +453,7 @@ fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('
       const col = sc.querySelector('thead th:not(.lbl)')?.getBoundingClientRect().width || 178;
       sc.scrollBy({ left: Number(b.dataset.dir) * col, behavior: 'smooth' });
     });
-    sc.addEventListener('scroll', upd, { passive: true }); new ResizeObserver(upd).observe(sc); upd();
+    sc.addEventListener('scroll', upd, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => upd())).observe(sc); upd();
     // mouse drag (touch already scrolls natively); clicks on buttons/links still work
     let d = null;
     sc.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('button, a, [role=button], input, select')) return; d = { x: e.clientX, l: sc.scrollLeft, moved: false }; });
@@ -556,3 +569,7 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 // date box: the formatted label button opens the native picker; typing still works in the input when it has focus
 (() => { const b = document.getElementById('c1-date-btn'), i = document.getElementById('c1-date'); if (!b || !i) return;
   b.addEventListener('click', () => { try { i.showPicker(); } catch (e) { i.focus(); } }); })();
+
+// last input was the keyboard? (used to hide the focus ring on headings that receive script focus after a mouse click)
+(() => { const h = document.documentElement; window.addEventListener('keydown', e => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ' || e.key.startsWith('Arrow')) h.dataset.kbd = '1'; }, true);
+  for (const ev of ['pointerdown', 'mousedown', 'touchstart']) window.addEventListener(ev, () => { delete h.dataset.kbd; }, { capture: true, passive: true }); })();

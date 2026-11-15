@@ -13,6 +13,7 @@
 //   avoid: [elements | CSS selectors] the off-screen Sun/Earth chips must never cover (header, panels, buttons, minimap),
 //   chipInsets: {top, right, bottom, left} px kept free for chips.
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.170.0/three.module.min.js';
+import { iconSvg } from './icons.js';
 
 const R = 1737.4;                       // km, contract section 0
 const T0_MS = Date.UTC(2026, 0, 1);     // hour index 0
@@ -142,12 +143,16 @@ export async function createGlobe(container, opts = {}) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.0005, 1e8);
-  const sun = new THREE.DirectionalLight(0xffffff, 3.2);
+  // Moon look matched to the designer's copy (Chaei, 18:41): warm sunlight 0xfff4e2 at 2.5 and a faint blue earthshine,
+  // applied to the colour map in display (sRGB) space like her three.js r128 page; see the moon shader below.
+  const sun = new THREE.DirectionalLight(new THREE.Color().setRGB(1, 0xf4 / 255, 0xe2 / 255, THREE.LinearSRGBColorSpace), 2.5 * Math.PI);
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
   scene.add(sun, sun.target);
-  const ambient = new THREE.AmbientLight(0x8899bb, 0.10);   // stand-in for earthshine so the night side reads as night, not as a blank screen
-  scene.add(ambient);
+  // night side: ambient ~0.25 of the colour map (copy dark-side median ~44/255) + earthshine from the Earth for crater relief
+  const ambient = new THREE.AmbientLight(0xffffff, 0.25 * Math.PI);
+  const earthshine = new THREE.DirectionalLight(0xffffff, 0.12 * Math.PI);
+  scene.add(ambient, earthshine, earthshine.target);
 
   // colour map: 2k first (0.4 MB), the 8k (6.6 MB) only once the camera comes closer than HIRES_RANGE km (lazy)
   const HIRES_RANGE = 3000;
@@ -160,6 +165,9 @@ export async function createGlobe(container, opts = {}) {
   let baseTex = null;                       // LROC colour texture currently loaded (2k or 8k)
   let layerTex = null, layerUrl = null;     // optional data layer drawn over the terrain (setColorMap)
   const layerU = { value: null }, layerA = { value: 0 };   // layer texture + opacity (0 = off) for the moon shader
+  // elevation layer (setElevation): colour from the displayed LOLA height of each fragment, (|p| - R) / exaggeration
+  const elevOn = { value: 0 }, elevExag = { value: 3 }, elevRange = { value: new THREE.Vector2(-4.5, 5.5) };
+  const elevRamp = { value: Array.from({ length: 9 }, () => new THREE.Color()) };
   const LAYER_OPACITY = 0.72;               // layer colour share; the rest is a fixed-light LOLA hillshade so craters stay visible
   function loadHires() {
     if (hiresState !== 'none') return;
@@ -196,6 +204,7 @@ export async function createGlobe(container, opts = {}) {
     const m = new THREE.MeshLambertMaterial({ normalMap: normalTex, normalMapType: THREE.ObjectSpaceNormalMap });
     m.onBeforeCompile = sh => {
       sh.uniforms.uColor = colorTex; sh.uniforms.uLayer = layerU; sh.uniforms.uLayerA = layerA;
+      sh.uniforms.uElev = elevOn; sh.uniforms.uElevExag = elevExag; sh.uniforms.uElevRange = elevRange; sh.uniforms.uElevRamp = elevRamp;
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vMoonP;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMoonP = (modelMatrix * vec4(transformed, 1.0)).xyz;');
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
@@ -203,7 +212,8 @@ varying vec3 vMoonP;
 uniform sampler2D uColor;
 uniform sampler2D uLayer;
 uniform float uLayerA;
-vec3 gLayer; float gLum;`)
+uniform float uElev; uniform float uElevExag; uniform vec2 uElevRange; uniform vec3 uElevRamp[9];
+vec3 gLayer; float gLum; vec3 gBase;`)
         .replace('#include <map_fragment>', `{
   vec3 dd = normalize(vMoonP);
   ${kind === 'band' ? '' : `if (abs(dd.z) < ${SIN_CAP.toFixed(6)}) discard;`}
@@ -212,12 +222,26 @@ vec3 gLayer; float gLum;`)
   float u2 = fract(u + 0.5) - 0.5;            // Tarini's seamless longitude trick
   float uu = fwidth(u) <= fwidth(u2) + 1e-6 ? u : u2;
   vec3 base = texture2D(uColor, vec2(uu, v)).rgb;
+  gBase = base;
   diffuseColor.rgb *= base;
   gLum = dot(base, vec3(0.2126, 0.7152, 0.0722));
   gLayer = uLayerA > 0.0 ? texture2D(uLayer, vec2(uu, v)).rgb : vec3(0.0);
+  if (uElev > 0.5) {
+    float hk = (length(vMoonP) - ${R.toFixed(1)}) / uElevExag;                     // km above 1737.4 km (true height)
+    float f = clamp((hk - uElevRange.x) / (uElevRange.y - uElevRange.x), 0.0, 1.0) * 8.0;
+    int i0 = int(min(floor(f), 7.0));
+    gLayer = mix(uElevRamp[i0], uElevRamp[i0 + 1], f - float(i0));
+  }
 }`)
         .replace('#include <opaque_fragment>', `#include <opaque_fragment>
-if (uLayerA > 0.0) {
+if (uLayerA <= 0.0 && uElev < 0.5) {
+  // display-space lighting (designer's copy): colour map in sRGB x light factor, clipped, then back to linear for output.
+  // light factor = what the Lambert pass delivered per unit albedo (keeps terrain shadows and the normal map).
+  vec3 irr = outgoingLight / max(diffuseColor.rgb, vec3(1e-4));
+  vec3 sb = sRGBTransferOETF(vec4(gBase, 1.0)).rgb;
+  gl_FragColor.rgb = sRGBTransferEOTF(vec4(clamp(sb * irr, 0.0, 1.0), 1.0)).rgb;
+}
+if (uLayerA > 0.0 || uElev > 0.5) {
   const float LAYER_DIM = 0.78;
   // Data layer over a cartographic hillshade: light fixed from the local north-west, 45 deg up, independent of the
   // selected time, so a long-term average is never darkened by tonight's shadow and the terrain stays readable.
@@ -229,7 +253,7 @@ if (uLayerA > 0.0) {
   vec3 L = normalize(up * 0.70711 + (no - ea) * 0.5);
   float relief = clamp(1.0 + 1.6 * (dot(nW, L) / 0.70711 - 1.0), 0.08, 1.8);   // 1 on level ground, steeper contrast on slopes
   vec3 ground = vec3(clamp(0.05 + 1.6 * gLum, 0.04, 0.5)) * relief;
-  gl_FragColor.rgb = mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
+  gl_FragColor.rgb = mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uElev > 0.5 ? ${LAYER_OPACITY.toFixed(2)} : uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
 }`);
     };
     m.customProgramCacheKey = () => 'moon-' + (kind === 'band' ? 'b' : 'c');
@@ -305,7 +329,11 @@ if (uLayerA > 0.0) {
     try {
       const blob = await fetch(base + 'globe/' + idx.url.replace('{kind}', t.kind).replace('{z}', t.z).replace('{x}', t.x).replace('{y}', t.y)).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); });
       const bmp = await createImageBitmap(blob, { colorSpaceConversion: 'none', premultiplyAlpha: 'none' });
-      const cv = new OffscreenCanvas(bmp.width, bmp.height), g = cv.getContext('2d', { willReadFrequently: true });
+      // #104: OffscreenCanvas only where it exists (Safari < 16.4 and some WebKit builds lack it) — same check as the 8k path above
+      const cv = typeof OffscreenCanvas === 'function'
+        ? new OffscreenCanvas(bmp.width, bmp.height)
+        : Object.assign(document.createElement('canvas'), { width: bmp.width, height: bmp.height });
+      const g = cv.getContext('2d', { willReadFrequently: true });
       g.drawImage(bmp, 0, 0); bmp.close();
       const px = g.getImageData(0, 0, cv.width, cv.height).data;
       const n = cv.width * cv.height, h = new Float32Array(n);
@@ -541,7 +569,7 @@ if (uLayerA > 0.0) {
     return { s, el: b, dir: dirFromLatLon(s.lat, s.lon), h: null };
   });
   const mk = (cls, text) => { const d = document.createElement('div'); d.className = cls; d.textContent = text; overlay.appendChild(d); return d; };
-  const chipSun = mk('g3-chip sun', '☀ Sun'), chipEarth = mk('g3-chip earth', '◉ Earth');
+  const chipSun = mk('g3-chip sun', 'Sun'), chipEarth = mk('g3-chip earth', 'Earth');
   const labSun = mk('g3-label sun', 'Sun'), labEarth = mk('g3-label earth', 'Earth');
   const dock = mk('g3-dock', '');
   const note = document.createElement('div'); note.className = 'g3-note'; note.setAttribute('role', 'note'); dock.appendChild(note);
@@ -553,7 +581,7 @@ if (uLayerA > 0.0) {
       : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
   }
   updateNote();
-  for (const [c, t] of [[chipSun, lang === 'ko' ? '☀ 태양' : '☀ Sun'], [chipEarth, lang === 'ko' ? '◉ 지구' : '◉ Earth']]) c.innerHTML = `<span class="g3-arr">➤</span>${t}`;
+  for (const [c, t, ic] of [[chipSun, lang === 'ko' ? '태양' : 'Sun', 'sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth', 'earth']]) c.innerHTML = `<span class="g3-arr">${iconSvg('marker-down', { size: 12 })}</span>${iconSvg(ic, { size: 12 })} ${t}`;
 
   const tmp = v3();
   function project(p) {                         // -> {x, y, behind, on}
@@ -593,7 +621,7 @@ if (uLayerA > 0.0) {
     let dx = pc.x, dy = -pc.y;
     if (Math.hypot(dx, dy) < 1e-9) dy = 1;
     el.style.display = '';
-    el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D}deg)`;
+    el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D - 90}deg)`;   // marker-down points down (90°)
     const W = overlay.clientWidth, H = overlay.clientHeight, ins = { top: 0, right: 0, bottom: 0, left: 0, ...((typeof opts.chipInsets === 'function' ? opts.chipInsets() : opts.chipInsets) || {}) };
     const m = 8, cw = el.offsetWidth || 70, ch = el.offsetHeight || 22;
     // centre-line rectangle the chip centre may travel on
@@ -648,6 +676,7 @@ if (uLayerA > 0.0) {
     const depth = Math.min(view.range > 1500 ? 3600 : 600, S + 250);         // casters up to ~250 km beyond the box toward the Sun
     sun.target.position.copy(P);
     sun.position.copy(P).addScaledVector(sunDir, depth);
+    earthshine.target.position.copy(P); earthshine.position.copy(P).add(earthPos.clone().setLength(1000));
     const sc = sun.shadow.camera;
     sc.left = sc.bottom = -S; sc.right = sc.top = S; sc.near = 0.5; sc.far = depth + S + 20;
     sc.updateProjectionMatrix();
@@ -770,15 +799,16 @@ if (uLayerA > 0.0) {
   });
 
   // ---------------- resize, loop
+  let roW = 0, roH = 0;
   function resize() {
-    const w = container.clientWidth || 300, h = container.clientHeight || 300;
+    const w = container.clientWidth || 300, h = container.clientHeight || 300; roW = w; roH = h;
     renderer.setSize(w, h, false); camera.aspect = w / h;
     // optional: put the projection centre at the middle of the free map area (panels float over the stage)
     const shift = typeof opts.centerShift === 'function' ? Math.round(opts.centerShift(w, h) || 0) : 0;
     if (shift) camera.setViewOffset(w, h, shift, 0, w, h); else camera.clearViewOffset();
     camera.updateProjectionMatrix(); dirty = true;
   }
-  const ro = new ResizeObserver(resize); ro.observe(container); resize();
+  const ro = new ResizeObserver(() => { if ((container.clientWidth || 300) !== roW || (container.clientHeight || 300) !== roH) resize(); }); ro.observe(container); resize();   // same size: skip
 
   // Pause completely while the globe is scrolled out of view (the page has panels below it).
   let onScreen = true;
@@ -883,8 +913,8 @@ if (uLayerA > 0.0) {
     hour = hNew;
     updateBodies(); dirty = true; emit('time', hour);
   }
-  function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
-  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? '☀ 태양' : '☀ Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? '◉ 지구' : '◉ Earth'; }
+  function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
+  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth'; }
 
   setTime(opts.hour ?? 0);
   if (opts.view) setView(opts.view);
@@ -910,6 +940,15 @@ if (uLayerA > 0.0) {
     dirty = true;
   }
 
+  /** Elevation layer: colour each fragment by its true LOLA height (the same decoded tile heights as the terrain mesh)
+   *  on a ramp of hex colours from min to max km (clamped), over the fixed-light hillshade. null/false turns it off. */
+  function setElevation(opt) {
+    if (!opt) { elevOn.value = 0; dirty = true; return; }
+    const st = opt.stops; elevRange.value.set(opt.min, opt.max);
+    for (let k = 0; k < 9; k++) elevRamp.value[k].set(st[Math.round(k * (st.length - 1) / 8)]);   // hex -> linear
+    elevExag.value = exag; elevOn.value = 1; dirty = true;
+  }
+
   /** lat/lon (deg) of the terrain under a client (page) pixel, or null when the ray misses the Moon. */
   const ray = new THREE.Raycaster();
   function screenToLatLon(clientX, clientY) {
@@ -928,7 +967,7 @@ if (uLayerA > 0.0) {
   }
 
   const api = {
-    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, screenToLatLon,
+    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, setElevation, screenToLatLon,
     maxTextureSize: () => renderer.capabilities.maxTextureSize,
     // manual frames (tests / hidden tabs where requestAnimationFrame is paused); also loads tiles until idle
     async step(maxMs = 20000) {

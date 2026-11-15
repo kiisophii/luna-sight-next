@@ -3,7 +3,8 @@
 // reading .value and listening to 'change'. This only draws a button + option list and writes back to the select.
 //   variant 'box'  : 32 px control, radius 6, options as 32 px cards, chosen = 10 % white
 //   variant 'text' : plain text button "label ∨" (24 px), list opens aligned to the right edge
-const CHEV = '<svg class="dd-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+import { iconSvg } from './icons.js';
+const CHEV = iconSvg('chevron-updown', { size: 14, cls: 'dd-chev' });
 const all = new Set();
 let uid = 0;
 

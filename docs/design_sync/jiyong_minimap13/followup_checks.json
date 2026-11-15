@@ -1,0 +1,102 @@
+[
+  {
+    "width": 390,
+    "language": "en",
+    "closed": {
+      "x": 152,
+      "y": 582,
+      "width": 222,
+      "height": 228
+    },
+    "globe": {
+      "x": 0,
+      "y": 48,
+      "width": 390,
+      "height": 522
+    },
+    "opened": {
+      "x": 16,
+      "y": 582,
+      "width": 358,
+      "height": 358
+    },
+    "errors": [],
+    "overflow": false,
+    "checks": "icon boxes, coordinates/categories, Escape with focus outside, separate minimap row"
+  },
+  {
+    "width": 390,
+    "language": "ko",
+    "closed": {
+      "x": 152,
+      "y": 582,
+      "width": 222,
+      "height": 228
+    },
+    "globe": {
+      "x": 0,
+      "y": 48,
+      "width": 390,
+      "height": 522
+    },
+    "opened": {
+      "x": 16,
+      "y": 582,
+      "width": 358,
+      "height": 358
+    },
+    "errors": [],
+    "overflow": false,
+    "checks": "icon boxes, coordinates/categories, Escape with focus outside, separate minimap row"
+  },
+  {
+    "width": 768,
+    "language": "en",
+    "closed": {
+      "x": 530,
+      "y": 582,
+      "width": 222,
+      "height": 228
+    },
+    "globe": {
+      "x": 0,
+      "y": 48,
+      "width": 768,
+      "height": 522
+    },
+    "opened": {
+      "x": 172,
+      "y": 582,
+      "width": 580,
+      "height": 358
+    },
+    "errors": [],
+    "overflow": false,
+    "checks": "icon boxes, coordinates/categories, Escape with focus outside, separate minimap row"
+  },
+  {
+    "width": 768,
+    "language": "ko",
+    "closed": {
+      "x": 530,
+      "y": 582,
+      "width": 222,
+      "height": 228
+    },
+    "globe": {
+      "x": 0,
+      "y": 48,
+      "width": 768,
+      "height": 522
+    },
+    "opened": {
+      "x": 172,
+      "y": 582,
+      "width": 580,
+      "height": 358
+    },
+    "errors": [],
+    "overflow": false,
+    "checks": "icon boxes, coordinates/categories, Escape with focus outside, separate minimap row"
+  }
+]

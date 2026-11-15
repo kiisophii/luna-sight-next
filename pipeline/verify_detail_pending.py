@@ -4,9 +4,10 @@ from playwright.async_api import async_playwright
 async def main():
  async with async_playwright() as p:
   b=await p.chromium.launch();pg=await b.new_page(viewport={'width':390,'height':900});errors=[]
+  pg.on('response',lambda r:print(r.status,r.url,flush=True) if r.status>=400 else None)
   pg.on('pageerror',lambda e:errors.append(str(e)));pg.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
-  await pg.goto('http://127.0.0.1:8021/');await pg.wait_for_selector('.sc-hidden-toggle',state='attached')
-  await pg.locator('#ls-compare [data-tab="alt"]').click();await pg.wait_for_selector('.alt-needle',state='attached')
+  await pg.add_init_script("sessionStorage.setItem('ls-intro-played','1')");await pg.goto('http://127.0.0.1:8021/?nointro=1');await pg.wait_for_selector('.sc-pick [data-chip]',state='attached')
+  await pg.wait_for_selector('.alt-needle',state='attached')
   await pg.evaluate('()=>LLSN.setTime(LLSN.window.i0+100)');await pg.wait_for_timeout(250)
   needle=await pg.locator('#ls-compare .alt-needle').first.evaluate('e=>({x:+e.getAttribute("x1"),expected:+e.dataset.x0+100.5/+e.dataset.n*+e.dataset.w})');assert abs(needle['x']-needle['expected'])<.01,needle
   # A test-only pending user point verifies data absence without running a DEM computation.

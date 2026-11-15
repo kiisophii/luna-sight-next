@@ -9,19 +9,23 @@ async def main():
    for lang in ('en','ko'):
     browser=await p.chromium.launch();page=await browser.new_page(viewport={'width':width,'height':900},reduced_motion='reduce');errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
-    await page.goto('http://127.0.0.1:8021/');await page.wait_for_selector('.sc-hidden-toggle',state='attached');await page.wait_for_timeout(500)
+    await page.add_init_script("sessionStorage.setItem('ls-intro-played','1')");await page.goto('http://127.0.0.1:8021/?nointro=1');await page.wait_for_selector('.sc-pick [data-chip]',state='attached');await page.wait_for_timeout(500)
     if lang=='ko':await page.locator('[data-lang="ko"]').click();await page.wait_for_timeout(500)
-    await page.locator('#ls-compare [data-tab="alt"]').click();await page.wait_for_selector('#ls-compare .alt-geometry')
-    await page.evaluate("()=>{const e=document.querySelector('#ls-compare .alt-card');window.scrollTo(0,e.getBoundingClientRect().top+scrollY-60)}")
+    await page.wait_for_selector('#ls-compare .alt-geometry')
+    await page.evaluate("()=>{const e=document.querySelector('#ls-compare .detail-charts');window.scrollTo(0,e.getBoundingClientRect().top+scrollY-60)}")
     assert await page.locator('#ls-compare [data-visibility="sun"]').count()>=1
+    assert await page.locator('#ls-compare .detail-see').first.evaluate("e=>getComputedStyle(e).backgroundColor")=="rgba(255, 255, 255, 0.1)"
+    assert await page.locator('#ls-compare .geometry-legend').first.evaluate("e=>getComputedStyle(e).display")=="flex"
     assert await page.locator('#ls-compare .alt-needle').first.get_attribute('stroke-width')=='2.5'
     # Cross-check visible SVG run hours against the existing hourly geometry bits.
-    data=await page.evaluate('''async()=>{const {hourBits}=await import('./js/values.js');const w=LLSN.window;const site=LLSN.state.sites.find(s=>s.id===document.querySelector('#ls-compare .alt-now').dataset.id);const bits=hourBits(site,w.i0,w.i1);const svg=document.querySelector('#ls-compare .alt-geometry');return ['sun','earth'].map((key,j)=>({key,expected:[...bits].filter(b=>b&(1<<j)).length,actual:[...svg.querySelectorAll(`[data-visibility="${key}"] [data-len]`)].reduce((s,e)=>s+Number(e.dataset.len),0)}))}''')
+    data=await page.evaluate('''async()=>{const {hourBits}=await import('./js/values.js');const w=LLSN.window;const site=LLSN.state.sites.find(s=>s.id===document.querySelector('#ls-compare [data-chart-site]').dataset.chartSite);const bits=hourBits(site,w.i0,w.i1);const svg=document.querySelector('#ls-compare .alt-geometry');return ['sun','earth'].map((key,j)=>({key,expected:[...bits].filter(b=>b&(1<<j)).length,actual:[...svg.querySelectorAll(`[data-visibility="${key}"] [data-len]`)].reduce((s,e)=>s+Number(e.dataset.len),0)}))}''')
     assert all(x['expected']==x['actual'] for x in data),data
+    await page.wait_for_timeout(250)
+    assert await page.locator('#ls-compare .cw').first.evaluate("e=>e.querySelector('.geometry-legend').getBoundingClientRect().bottom<=e.nextElementSibling.getBoundingClientRect().top")
     await page.screenshot(path=str(OUT/f'alt_{width}_{lang}.png'))
-    await page.locator('.big-cmp .r-why .why-btn').first.click();await page.wait_for_timeout(500)
+    await page.locator('#ls-compare .detail-see').first.click();await page.evaluate("async()=>{const {setFocus}=await import('./js/ui_shared.js');setFocus('APOLLO17');}");await page.wait_for_timeout(500)
     toggle=page.locator('.sc-hidden-toggle');await toggle.click();assert await page.locator('#sc-unavailable').is_visible()
-    assert await page.locator('#sc-unavailable .sc-chip').count()>=2
+    assert await page.locator('#sc-unavailable .sc-chip').count()>=1
     await toggle.click();assert await page.locator('#sc-unavailable').is_hidden()
     await page.locator('[data-chip="gs"]').click();await page.locator('[data-chip="relay"]').click()
     for block in ['gs','relay']:

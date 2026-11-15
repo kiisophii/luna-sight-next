@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "id": "SHACKLETON_RIM",
+  "lat": -89.6866,
+  "lon": -162.81,
+  "frame": "MOON_ME_DE421",
+  "kind": "polar_detailed",
+  "mock": false,
+  "thresholds_deg": [
+    8,
+    15
+  ],
+  "thresholds_label": "reference_only",
+  "source": {
+    "dem_name": "PGDA_LOLA_5M",
+    "resolution_m": 5,
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+    "window_path": "data/processed/terrain_y/raw/5/SHACKLETON_RIM.npz",
+    "window_sha256": "630357a9b6f08a00bc839e61c7f80497d9bbb24768d8890df587a05fb8912c62",
+    "metadata": {
+      "bounds": [
+        21575,
+        22056,
+        19198,
+        19679
+      ],
+      "etag": "W/\"ce8c1052-17c7ede95a8\"",
+      "frame": "MOON_ME_DE421",
+      "last_modified": "Thu, 14 Oct 2021 12:54:49 GMT",
+      "pixel_registration": "center",
+      "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+      "radius_m": 1200,
+      "reference_radius_m": 1737400.0,
+      "resolution_m": 5,
+      "site": {
+        "coord_quality": "primary",
+        "elev_m": null,
+        "group": "polar_peak",
+        "id": "SHACKLETON_RIM",
+        "lat": -89.6866,
+        "lon": -162.81,
+        "name": "Shackleton Rim (S)",
+        "name_ko": "\uc100\ud074\ud134 \ud14c\ub450\ub9ac \uc5f0\uad6c \uc9c0\uc810",
+        "note": "Published Shackleton crater rim research point (S), Table 2 first row; observer 2 m. Source longitude 197.19 E converted to -162.81 E. Replaces the old R04 regional polygon centre; not a landed vehicle or a claimed summit. Exact MOON_ME_DE421 datum unverified; terrain height and site results require recomputation.",
+        "short": "Shackleton Rim",
+        "source_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf"
+      },
+      "source_geotiff": "{'KeyDirectoryVersion': 1, 'KeyRevision': 1, 'KeyRevisionMinor': 0, 'GTModelTypeGeoKey': <ModelType.Projected: 1>, 'GTRasterTypeGeoKey': <RasterPixel.IsArea: 1>, 'GTCitationGeoKey': 'Moon2000_spole', 'GeographicTypeGeoKey': <GCS.User_Defined: 32767>, 'GeogCitationGeoKey': 'GCS Name = GCS_Moon|Datum = D_Moon_2000|Ellipsoid = Moon_2000_IAU_IAG|Primem = Reference_Meridian|', 'GeogGeodeticDatumGeoKey': 32767, 'GeogAngularUnitsGeoKey': <Angular.Degree: 9102>, 'GeogEllipsoidGeoKey': <Ellipse.User_Defined: 32767>, 'GeogSemiMajorAxisGeoKey': 1737400.0, 'GeogSemiMinorAxisGeoKey': 1737400.0, 'GeogPrimeMeridianLongGeoKey': 0.0, 'ProjectedCSTypeGeoKey': <PCS.User_Defined: 32767>, 'ProjectionGeoKey': <Proj.User_Defined: 32767>, 'ProjCoordTransGeoKey': <CT.PolarStereographic: 15>, 'ProjLinearUnitsGeoKey': <Linear.Meter: 9001>, 'ProjNatOriginLatGeoKey': -90.0, 'ProjFalseEastingGeoKey': 0.0, 'ProjFalseNorthingGeoKey': 0.0, 'ProjScaleAtNatOriginGeoKey': 1.0, 'ProjStraightVertPoleLongGeoKey': 0.0, 'ModelPixelScale': [5.0, 5.0, 0.0], 'ModelTiepoint': [0.0, 0.0, 0.0, -100000.0, 100000.0, 0.0]}",
+      "source_size_bytes": 3465285714,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+      "units": "m"
+    },
+    "finer_unavailable": []
+  },
+  "method": {
+    "slope": "Least-squares vertical DEM-height plane over 3x3 native-spaced samples; landing samples are bilinear and centred on the exact catalogue coordinate; distributions use native pixel centres.",
+    "slope_window_cells": 3,
+    "slope_center_span_projected_m": 10,
+    "slope_footprint_projected_m": 15,
+    "reference_radius_m": 1737400.0,
+    "slope_ground_scale": "Projected gradient multiplied by stereographic k=1+(rho/(2R))^2 and R/(R+h), with local centre height h.",
+    "radius_rule": "Great-circle distance on the reference sphere; include native sample centres at distance <= radius.",
+    "percentile_rule": "Unweighted sample-centre percentiles; NumPy linear interpolation.",
+    "flat_fraction_rule": "Sum res^2/k^2 for centres with slope <= threshold, divided by summed represented horizontal area on the reference sphere; no fractional boundary pixels.",
+    "roughness": "RMS vertical DEM-height residual about a local least-squares plane, with heights centred before fitting. DEM-derived roughness, not boulder detection or raw laser-spot roughness.",
+    "roughness_window_width_ground_m": 50,
+    "roughness_window_cells": 11,
+    "roughness_sample_center_span_ground_m": 49.99962600857072,
+    "roughness_window_rule": "Include native centres within +/-25m along each projected axis converted to reference-sphere ground distance using site k, held constant for all windows; odd N=2*floor(25*k/res)+1.",
+    "roughness_site_projection_scale": 1.0000074798845338,
+    "thresholds_label": "Reference comparisons only; not safe-landing criteria."
+  },
+  "landing_slope_deg": 2.123954880007956,
+  "slope_by_radius_m": {
+    "100": {
+      "n": 1258,
+      "median_deg": 6.831078797934982,
+      "p95_deg": 15.247608826134938,
+      "max_deg": 22.23521670164881,
+      "flat_fraction": {
+        "8": 0.6343401934251205,
+        "15": 0.9411764590982117
+      },
+      "sampled_area_m2": 31449.529460510104
+    },
+    "500": {
+      "n": 31418,
+      "median_deg": 14.397657311355147,
+      "p95_deg": 23.292634611407724,
+      "max_deg": 36.32686946078299,
+      "flat_fraction": {
+        "8": 0.15615255402437558,
+        "15": 0.5400726031212106
+      },
+      "sampled_area_m2": 785438.233556244
+    },
+    "1000": {
+      "n": 125663,
+      "median_deg": 15.557439778703698,
+      "p95_deg": 27.28888898713135,
+      "max_deg": 38.76684590117316,
+      "flat_fraction": {
+        "8": 0.0980400009765252,
+        "15": 0.4671222819661044
+      },
+      "sampled_area_m2": 3141527.742957238
+    }
+  },
+  "roughness_within_500m": {
+    "n": 31418,
+    "median_m": 0.4762029595208659,
+    "p95_m": 0.8704554938909598
+  },
+  "relay_box": {
+    "slope_deg": 1.0,
+    "box_m": 250,
+    "source_path": "web/data/relay/SHACKLETON_RIM.json",
+    "source_sha256": "f9c6125f05b32c96c92d9ff72c83c39866828a0093e597dfce5a6f3e5021225e",
+    "candidate_index": 2512,
+    "e_m": 0,
+    "n_m": 0,
+    "provenance": {
+      "description": "Copied existing stored rounded 250m-box slope at relay centre; not recomputed.",
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_5M",
+          "res_m": 5.0
+        },
+        {
+          "name": "PGDA_LOLA_10M",
+          "res_m": 10.0
+        },
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8
+        },
+        {
+          "name": "LDEM_16",
+          "res_m": 1895.2
+        }
+      ],
+      "input_identity": {
+        "dem": [
+          {
+            "name": "PGDA_LOLA_5M",
+            "radius_km": 3.0,
+            "size": 4907798,
+            "mtime_ns": 1794634276770481600
+          },
+          {
+            "name": "PGDA_LOLA_10M",
+            "radius_km": 25.0,
+            "size": 89857936,
+            "mtime_ns": 1794634282730673600
+          },
+          {
+            "name": "PGDA_LOLA_20M",
+            "radius_km": 25.0,
+            "size": 22582018,
+            "mtime_ns": 1794634285030438100
+          },
+          {
+            "name": "PGDA_LOLA_60M",
+            "radius_km": 60.0,
+            "size": 14528301,
+            "mtime_ns": 1794634286771349300
+          },
+          {
+            "name": "PGDA_LOLA_80M",
+            "radius_km": 60.0,
+            "size": 8183147,
+            "mtime_ns": 1794634288236839500
+          },
+          {
+            "name": "PGDA_LOLA_240M",
+            "radius_km": 200.0,
+            "size": 10061252,
+            "mtime_ns": 1794634289851477100
+          },
+          {
+            "name": "LDEM_64",
+            "radius_km": 300.0,
+            "size": 1061683200,
+            "mtime_ns": 1794623197433035400,
+            "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+          },
+          {
+            "name": "LDEM_16",
+            "radius_km": 300.0,
+            "size": 66355200,
+            "mtime_ns": 1794623000270986100,
+            "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+          }
+        ],
+        "ephem_sha256": "da06ed0d1762dd77d0c92d97efefbc47cfd2a63ee01b98b61093090631aa9a52",
+        "start": "2026-01-01T00:00:00Z",
+        "n": 43824,
+        "mock": false
+      }
+    }
+  },
+  "inputs": {
+    "producer_sha256": "940f7beb9b93329cc1b51af0f96f9816bc4ac7b8b178098381a1c7f3db7a8550",
+    "sites_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+    "site_sha256": "b2999a7607293b44b91200cdf9b0f3205f19b798a1c5fceb4db69b3e8c648e23",
+    "relay_sha256": "f9c6125f05b32c96c92d9ff72c83c39866828a0093e597dfce5a6f3e5021225e",
+    "source_sha256": "630357a9b6f08a00bc839e61c7f80497d9bbb24768d8890df587a05fb8912c62",
+    "code_sha256": {
+      "fetch_polar.py": "15cd3b79e27038f948a4450a127ba4d778b60ba86fdeee2b2a788b5edbc55245",
+      "polar_prefetch.py": "5e335638d7039ac9140c9d5f97d7374c8161b79d34104ba858f5a253715fde4b"
+    },
+    "parameters": {
+      "thresholds_deg": [
+        8,
+        15
+      ],
+      "thresholds_label": "reference_only",
+      "radii_m": [
+        100,
+        500,
+        1000
+      ],
+      "roughness_radius_m": 500,
+      "roughness_window_width_ground_m": 50,
+      "projected_storage_radius_m": 1200,
+      "resolution_preference_m": [
+        5,
+        10,
+        20
+      ],
+      "source_metadata_sha256": "3de2d99bbb62a9276ead32baeda89f8663efe220536967b3ee32d6b7f36e1148"
+    },
+    "signature": "f8ebf0467076b792c9ea262e9c60ea4cc50746bf16b0730c72469ff76ca33ab4"
+  },
+  "verification_status": "author_checks_only_team_verification_pending",
+  "content_sha256": "58a55d5fee09d09a1d95dd1f6f0cd4946fed12b15d9616491c3c819c9e3eef2c"
+}

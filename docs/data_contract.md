@@ -511,3 +511,18 @@ Task X's 10 km summary uses the existing section 15 1 km grid, explicitly
 labelled `spacing_m:1000`; it is not a 10 km fine-grid estimate. Same spacing
 does not imply the same underlying DEM resolution between different sites.
 
+
+## 23. Proposed — `web/data/terrain/` local terrain descriptors (Task Y, Jiyong, 2026-11-15)
+
+New optional product; no change to horizon/metric/relay definitions. `index.json` has `schema_version:1`, `mock:false`, `thresholds_deg` (default `[8,15]`), `thresholds_label:"reference_only"`, and `sites` entries `{id,path,kind,dem_resolution_m}`. Paths are `<ID>.json`. Sixteen southern sites have `kind:"polar_detailed"`; the other 17 have `kind:"coarse_relay_comparison"`.
+
+Every site file has `schema_version:1`, `id,lat,lon`, `frame:"MOON_ME_DE421"`, `kind`, `mock:false`, `thresholds_deg`, `thresholds_label:"reference_only"`, `source`, `method`, `landing_slope_deg`, `slope_by_radius_m`, `roughness_within_500m`, `relay_box`, `inputs`, `content_sha256`, and `verification_status:"author_checks_only_team_verification_pending"`. `content_sha256` hashes the complete object excluding itself with Python canonical JSON (`sort_keys=True, separators=(',', ':'), ensure_ascii=True, allow_nan=False`), encoded as UTF-8; it detects modified cached results before resuming.
+
+- `source`: polar source `dem_name,resolution_m,url,window_path,window_sha256,metadata`, including original native grid and source validators; `finer_unavailable` records coverage reasons. For coarse-only products, record existing relay `dem_sources` and the label `coarse (SLDEM2015 59 m / LDEM_64)`.
+- `method`: exact algorithm descriptions, `slope_window_cells:3`, `slope_center_span_projected_m:2*resolution`, `slope_footprint_projected_m:3*resolution`, `reference_radius_m:1737400`, projection/height scale correction, `roughness_window_width_ground_m:50`, odd `roughness_window_cells`, and `roughness_sample_center_span_ground_m`. Slopes are least-squares height-plane gradients. Site slope uses 3x3 bilinear samples centred on the coordinate; distributions use native pixel centres. Roughness is RMS height residual about a plane, not raw laser-spot or obstacle roughness.
+- `landing_slope_deg`: finite degrees in [0,90]. `slope_by_radius_m` has keys `100,500,1000`, each `{n,median_deg,p95_deg,max_deg,flat_fraction,sampled_area_m2}`. `flat_fraction` maps each threshold string to a fraction [0,1], area weighted on the reference sphere; all centres within the geodesic radius must have valid derivative neighborhoods. Percentiles are across native sample centres. `sampled_area_m2` is the sum of represented horizontal pixel areas, not an exact fractional-pixel circle integration.
+- `roughness_within_500m`: `{n,median_m,p95_m}` across valid native centres within 500 m. Native sample centres inside a nominal +/-25 m ground square determine the odd window count; actual span is explicit, especially for 10/20 m source pixels.
+- `relay_box`: `{slope_deg,box_m:250,source_path,source_sha256,candidate_index,e_m:0,n_m:0,provenance}`. Copy the stored rounded slope; do not claim a new high-resolution recomputation of it.
+- `inputs`: source/site/relay/producer hashes, configuration and resume signature. Coarse-only products set `method`, `landing_slope_deg`, `slope_by_radius_m`, and `roughness_within_500m` to null; they carry only the existing 250 m comparison.
+
+The reference thresholds do not certify landing safety. Another team member must independently recompute 3 sites (slope <=0.5 deg difference; flat fractions <=1 percentage point). Producer tests, separate AI review and another algorithm run by Jiyong remain author checks, not that member verification.

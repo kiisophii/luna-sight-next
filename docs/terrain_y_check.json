@@ -1,0 +1,1377 @@
+{
+  "schema_version": 1,
+  "verification_status": "author_checks_only_team_verification_pending",
+  "verifier_member": "Jiyong",
+  "human_other_member_verification": false,
+  "method": "Independent original-DEM bilinear samples and batched explicit numpy.linalg.lstsq planes; analytic spherical stereographic inversion and haversine; explicit residual RMS.",
+  "thresholds": {
+    "slope_max_abs_difference_deg": 0.5,
+    "flat_max_abs_difference_pp": 1
+  },
+  "generated_utc": "2026-11-15T02:49:06.834461+00:00",
+  "fixtures": {
+    "tests_run": 5,
+    "passed": true
+  },
+  "hashes": {
+    "verifier_sha256": "c77371b7e7e195627284d6eab11186faa7dcba07b5486176aef54bc7a526c632",
+    "verifier_test_sha256": "45c9ed3b05f9650446a17befc2c8a1e048560812e4a57d60479d8922d0ea4fba",
+    "producer_sha256": "940f7beb9b93329cc1b51af0f96f9816bc4ac7b8b178098381a1c7f3db7a8550",
+    "sites_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017"
+  },
+  "sites": [
+    {
+      "id": "SHACKLETON_RIM",
+      "independent": {
+        "landing_slope_deg": 2.1239548800082244,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 1258,
+            "median_deg": 6.831078797934984,
+            "p95_deg": 15.24760882613494,
+            "max_deg": 22.23521670164881,
+            "flat_fraction": {
+              "8": 0.6343401934251205,
+              "15": 0.9411764590982117
+            },
+            "sampled_area_m2": 31449.529460510104
+          },
+          "500": {
+            "n": 31418,
+            "median_deg": 14.39765731135515,
+            "p95_deg": 23.292634611407728,
+            "max_deg": 36.32686946078299,
+            "flat_fraction": {
+              "8": 0.15615255402437558,
+              "15": 0.5400726031212106
+            },
+            "sampled_area_m2": 785438.233556244
+          },
+          "1000": {
+            "n": 125663,
+            "median_deg": 15.557439778703694,
+            "p95_deg": 27.28888898713136,
+            "max_deg": 38.76684590117317,
+            "flat_fraction": {
+              "8": 0.0980400009765252,
+              "15": 0.4671222819661044
+            },
+            "sampled_area_m2": 3141527.742957238
+          }
+        },
+        "roughness_within_500m": {
+          "n": 31418,
+          "median_m": 0.476202959520866,
+          "p95_m": 0.8704554938909598
+        },
+        "roughness_window_cells": 11,
+        "roughness_sample_center_span_ground_m": 49.99962600857072,
+        "resolution_m": 5.0,
+        "source_path": "C:\\Users\\jy02s\\Documents\\lunar-crosscheck-jiyong\\data\\processed\\terrain_y\\raw\\5\\SHACKLETON_RIM.npz",
+        "source_sha256": "630357a9b6f08a00bc839e61c7f80497d9bbb24768d8890df587a05fb8912c62",
+        "source_radius_frame_registration_units_match": true,
+        "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+        "source_metadata": {
+          "bounds": [
+            21575,
+            22056,
+            19198,
+            19679
+          ],
+          "etag": "W/\"ce8c1052-17c7ede95a8\"",
+          "frame": "MOON_ME_DE421",
+          "last_modified": "Thu, 14 Oct 2021 12:54:49 GMT",
+          "pixel_registration": "center",
+          "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+          "radius_m": 1200,
+          "reference_radius_m": 1737400.0,
+          "resolution_m": 5,
+          "site": {
+            "coord_quality": "primary",
+            "elev_m": null,
+            "group": "polar_peak",
+            "id": "SHACKLETON_RIM",
+            "lat": -89.6866,
+            "lon": -162.81,
+            "name": "Shackleton Rim (S)",
+            "name_ko": "\uc100\ud074\ud134 \ud14c\ub450\ub9ac \uc5f0\uad6c \uc9c0\uc810",
+            "note": "Published Shackleton crater rim research point (S), Table 2 first row; observer 2 m. Source longitude 197.19 E converted to -162.81 E. Replaces the old R04 regional polygon centre; not a landed vehicle or a claimed summit. Exact MOON_ME_DE421 datum unverified; terrain height and site results require recomputation.",
+            "short": "Shackleton Rim",
+            "source_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf"
+          },
+          "source_geotiff": "{'KeyDirectoryVersion': 1, 'KeyRevision': 1, 'KeyRevisionMinor': 0, 'GTModelTypeGeoKey': <ModelType.Projected: 1>, 'GTRasterTypeGeoKey': <RasterPixel.IsArea: 1>, 'GTCitationGeoKey': 'Moon2000_spole', 'GeographicTypeGeoKey': <GCS.User_Defined: 32767>, 'GeogCitationGeoKey': 'GCS Name = GCS_Moon|Datum = D_Moon_2000|Ellipsoid = Moon_2000_IAU_IAG|Primem = Reference_Meridian|', 'GeogGeodeticDatumGeoKey': 32767, 'GeogAngularUnitsGeoKey': <Angular.Degree: 9102>, 'GeogEllipsoidGeoKey': <Ellipse.User_Defined: 32767>, 'GeogSemiMajorAxisGeoKey': 1737400.0, 'GeogSemiMinorAxisGeoKey': 1737400.0, 'GeogPrimeMeridianLongGeoKey': 0.0, 'ProjectedCSTypeGeoKey': <PCS.User_Defined: 32767>, 'ProjectionGeoKey': <Proj.User_Defined: 32767>, 'ProjCoordTransGeoKey': <CT.PolarStereographic: 15>, 'ProjLinearUnitsGeoKey': <Linear.Meter: 9001>, 'ProjNatOriginLatGeoKey': -90.0, 'ProjFalseEastingGeoKey': 0.0, 'ProjFalseNorthingGeoKey': 0.0, 'ProjScaleAtNatOriginGeoKey': 1.0, 'ProjStraightVertPoleLongGeoKey': 0.0, 'ModelPixelScale': [5.0, 5.0, 0.0], 'ModelTiepoint': [0.0, 0.0, 0.0, -100000.0, 100000.0, 0.0]}",
+          "source_size_bytes": 3465285714,
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+          "units": "m"
+        },
+        "grid_shape": [
+          481,
+          481
+        ],
+        "landing_height_m": 1729.6151409646072
+      },
+      "producer": {
+        "landing_slope_deg": 2.123954880007956,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 1258,
+            "median_deg": 6.831078797934982,
+            "p95_deg": 15.247608826134938,
+            "max_deg": 22.23521670164881,
+            "flat_fraction": {
+              "8": 0.6343401934251205,
+              "15": 0.9411764590982117
+            },
+            "sampled_area_m2": 31449.529460510104
+          },
+          "500": {
+            "n": 31418,
+            "median_deg": 14.397657311355147,
+            "p95_deg": 23.292634611407724,
+            "max_deg": 36.32686946078299,
+            "flat_fraction": {
+              "8": 0.15615255402437558,
+              "15": 0.5400726031212106
+            },
+            "sampled_area_m2": 785438.233556244
+          },
+          "1000": {
+            "n": 125663,
+            "median_deg": 15.557439778703698,
+            "p95_deg": 27.28888898713135,
+            "max_deg": 38.76684590117316,
+            "flat_fraction": {
+              "8": 0.0980400009765252,
+              "15": 0.4671222819661044
+            },
+            "sampled_area_m2": 3141527.742957238
+          }
+        },
+        "roughness_within_500m": {
+          "n": 31418,
+          "median_m": 0.4762029595208659,
+          "p95_m": 0.8704554938909598
+        }
+      },
+      "slope_abs_difference_deg": {
+        "landing": 2.682298827494378e-13,
+        "100.median_deg": 1.7763568394002505e-15,
+        "100.p95_deg": 1.7763568394002505e-15,
+        "100.max_deg": 0.0,
+        "500.median_deg": 3.552713678800501e-15,
+        "500.p95_deg": 3.552713678800501e-15,
+        "500.max_deg": 0.0,
+        "1000.median_deg": 3.552713678800501e-15,
+        "1000.p95_deg": 1.0658141036401503e-14,
+        "1000.max_deg": 7.105427357601002e-15
+      },
+      "flat_abs_difference_pp": {
+        "100.8": 0.0,
+        "100.15": 0.0,
+        "500.8": 0.0,
+        "500.15": 0.0,
+        "1000.8": 0.0,
+        "1000.15": 0.0
+      },
+      "max_slope_abs_difference_deg": 2.682298827494378e-13,
+      "max_flat_abs_difference_pp": 0.0,
+      "roughness_abs_difference_m": {
+        "median_m": 1.1102230246251565e-16,
+        "p95_m": 0.0
+      },
+      "roughness_tolerance": null,
+      "roughness_note": "Actual differences reported; no formal roughness tolerance was specified.",
+      "counts_equal": true,
+      "roughness_window_cells_equal": true,
+      "roughness_sample_center_span_abs_difference_m": 0.0,
+      "sampled_area_abs_difference_m2": {
+        "100": 0.0,
+        "500": 0.0,
+        "1000": 0.0
+      },
+      "passed": true,
+      "product_sha256": "2d54b645342a43799f4d2d33cf0a7218832ef020625155935c98c12cb31e6059"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "independent": {
+        "landing_slope_deg": 3.843317155816151,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 316,
+            "median_deg": 3.6580103242039126,
+            "p95_deg": 8.184387501575197,
+            "max_deg": 13.320215097117853,
+            "flat_fraction": {
+              "8": 0.9430379456303423,
+              "15": 1.0
+            },
+            "sampled_area_m2": 31520.825663453703
+          },
+          "500": {
+            "n": 7872,
+            "median_deg": 5.373158060636465,
+            "p95_deg": 12.615347851040921,
+            "max_deg": 20.3330958594196,
+            "flat_fraction": {
+              "8": 0.7674060874773695,
+              "15": 0.9937754455283543
+            },
+            "sampled_area_m2": 785227.6400927332
+          },
+          "1000": {
+            "n": 31491,
+            "median_deg": 7.7126239616474,
+            "p95_deg": 17.18247853680092,
+            "max_deg": 30.404398053761664,
+            "flat_fraction": {
+              "8": 0.5292977904545692,
+              "15": 0.9108027426179912
+            },
+            "sampled_area_m2": 3141209.631322462
+          }
+        },
+        "roughness_within_500m": {
+          "n": 7872,
+          "median_m": 0.23488123629173363,
+          "p95_m": 0.5330402864439312
+        },
+        "roughness_window_cells": 5,
+        "roughness_sample_center_span_ground_m": 39.949858506106494,
+        "resolution_m": 10.0,
+        "source_path": "C:\\Users\\jy02s\\Documents\\lunar-crosscheck-jiyong\\data\\processed\\terrain_y\\raw\\10\\ARTEMIS_MALAPERT.npz",
+        "source_sha256": "5764994f199d8f79934c4192d8d60d33530d5fd43c87c3f9e365a8c38cd27a32",
+        "source_radius_frame_registration_units_match": true,
+        "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+        "source_metadata": {
+          "bounds": [
+            9211,
+            9452,
+            21317,
+            21558
+          ],
+          "etag": "W/\"130facac0-189325a1dd0\"",
+          "frame": "MOON_ME_DE421",
+          "last_modified": "Fri, 07 Jul 2023 21:55:14 GMT",
+          "pixel_registration": "center",
+          "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+          "radius_m": 1200,
+          "reference_radius_m": 1737400.0,
+          "resolution_m": 10,
+          "site": {
+            "coord_quality": "primary",
+            "elev_m": null,
+            "group": "artemis3_region",
+            "id": "ARTEMIS_MALAPERT",
+            "lat": -85.942,
+            "lon": -0.944,
+            "name": "Malapert Massif (region)",
+            "name_ko": "\uc544\ub974\ud14c\ubbf8\uc2a4 \ud6c4\ubcf4: \ub9d0\ub77c\ud37c\ud2b8 \uc0b0\uad34 (\ub300\ud45c\uc810)",
+            "note": "region representative point; research CLS MMA01, not a region centre or a NASA-selected touchdown point. NASA 2024 candidate set.",
+            "short": "Malapert area",
+            "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434"
+          },
+          "source_geotiff": "{'KeyDirectoryVersion': 1, 'KeyRevision': 1, 'KeyRevisionMinor': 0, 'GTModelTypeGeoKey': <ModelType.Projected: 1>, 'GTRasterTypeGeoKey': <RasterPixel.IsArea: 1>, 'GTCitationGeoKey': 'Moon (2015) - Sphere / Ocentric / South Polar', 'GeographicTypeGeoKey': <GCS.User_Defined: 32767>, 'GeogCitationGeoKey': 'GCS Name = Moon (2015) - Sphere / Ocentric|Datum = Moon (2015) - Sphere|Ellipsoid = Moon (2015) - Sphere|Primem = Reference Meridian|', 'GeogGeodeticDatumGeoKey': 32767, 'GeogAngularUnitsGeoKey': <Angular.Degree: 9102>, 'GeogEllipsoidGeoKey': <Ellipse.User_Defined: 32767>, 'GeogSemiMajorAxisGeoKey': 1737400.0, 'GeogSemiMinorAxisGeoKey': 1737400.0, 'GeogPrimeMeridianLongGeoKey': 0.0, 'ProjectedCSTypeGeoKey': <PCS.User_Defined: 32767>, 'ProjectionGeoKey': <Proj.User_Defined: 32767>, 'ProjCoordTransGeoKey': <CT.PolarStereographic: 15>, 'ProjLinearUnitsGeoKey': <Linear.Meter: 9001>, 'ProjNatOriginLatGeoKey': -90.0, 'ProjFalseEastingGeoKey': 0.0, 'ProjFalseNorthingGeoKey': 0.0, 'ProjScaleAtNatOriginGeoKey': 1.0, 'ProjStraightVertPoleLongGeoKey': 0.0, 'ModelPixelScale': [10.0, 10.0, 0.0], 'ModelTiepoint': [0.0, 0.0, 0.0, -216400.0, 216400.0, 0.0]}",
+          "source_size_bytes": 5116709568,
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+          "units": "m"
+        },
+        "grid_shape": [
+          241,
+          241
+        ],
+        "landing_height_m": 4728.307021563982
+      },
+      "producer": {
+        "landing_slope_deg": 3.8433171558139203,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 316,
+            "median_deg": 3.658010324203912,
+            "p95_deg": 8.184387501575195,
+            "max_deg": 13.32021509711785,
+            "flat_fraction": {
+              "8": 0.9430379456303423,
+              "15": 1.0
+            },
+            "sampled_area_m2": 31520.825663453703
+          },
+          "500": {
+            "n": 7872,
+            "median_deg": 5.373158060636463,
+            "p95_deg": 12.61534785104092,
+            "max_deg": 20.333095859419586,
+            "flat_fraction": {
+              "8": 0.7674060874773695,
+              "15": 0.9937754455283543
+            },
+            "sampled_area_m2": 785227.6400927332
+          },
+          "1000": {
+            "n": 31491,
+            "median_deg": 7.712623961647399,
+            "p95_deg": 17.182478536800915,
+            "max_deg": 30.40439805376165,
+            "flat_fraction": {
+              "8": 0.5292977904545692,
+              "15": 0.9108027426179912
+            },
+            "sampled_area_m2": 3141209.631322462
+          }
+        },
+        "roughness_within_500m": {
+          "n": 7872,
+          "median_m": 0.2348812362917336,
+          "p95_m": 0.5330402864439312
+        }
+      },
+      "slope_abs_difference_deg": {
+        "landing": 2.2306601010768645e-12,
+        "100.median_deg": 4.440892098500626e-16,
+        "100.p95_deg": 1.7763568394002505e-15,
+        "100.max_deg": 1.7763568394002505e-15,
+        "500.median_deg": 1.7763568394002505e-15,
+        "500.p95_deg": 1.7763568394002505e-15,
+        "500.max_deg": 1.4210854715202004e-14,
+        "1000.median_deg": 8.881784197001252e-16,
+        "1000.p95_deg": 7.105427357601002e-15,
+        "1000.max_deg": 1.4210854715202004e-14
+      },
+      "flat_abs_difference_pp": {
+        "100.8": 0.0,
+        "100.15": 0.0,
+        "500.8": 0.0,
+        "500.15": 0.0,
+        "1000.8": 0.0,
+        "1000.15": 0.0
+      },
+      "max_slope_abs_difference_deg": 2.2306601010768645e-12,
+      "max_flat_abs_difference_pp": 0.0,
+      "roughness_abs_difference_m": {
+        "median_m": 2.7755575615628914e-17,
+        "p95_m": 0.0
+      },
+      "roughness_tolerance": null,
+      "roughness_note": "Actual differences reported; no formal roughness tolerance was specified.",
+      "counts_equal": true,
+      "roughness_window_cells_equal": true,
+      "roughness_sample_center_span_abs_difference_m": 0.0,
+      "sampled_area_abs_difference_m2": {
+        "100": 0.0,
+        "500": 0.0,
+        "1000": 0.0
+      },
+      "passed": true,
+      "product_sha256": "49e6ac27e9c29fd779263307b0f7ff511f3390966dcd9b8c452b338eede116d3"
+    },
+    {
+      "id": "IM1",
+      "independent": {
+        "landing_slope_deg": 12.720838623587689,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 80,
+            "median_deg": 12.0466444939396,
+            "p95_deg": 13.316859057854737,
+            "max_deg": 14.419289761920496,
+            "flat_fraction": {
+              "8": 0.0,
+              "15": 1.0
+            },
+            "sampled_area_m2": 31528.12429405805
+          },
+          "500": {
+            "n": 1992,
+            "median_deg": 11.435171870170949,
+            "p95_deg": 16.380910800753753,
+            "max_deg": 18.72936368649802,
+            "flat_fraction": {
+              "8": 0.09839108443386997,
+              "15": 0.86847058739076
+            },
+            "sampled_area_m2": 785050.2795599506
+          },
+          "1000": {
+            "n": 7969,
+            "median_deg": 9.541239744956684,
+            "p95_deg": 16.306553042244225,
+            "max_deg": 20.775167567307722,
+            "flat_fraction": {
+              "8": 0.34370203753746265,
+              "15": 0.8954668570645251
+            },
+            "sampled_area_m2": 3140595.377910993
+          }
+        },
+        "roughness_within_500m": {
+          "n": 1992,
+          "median_m": 0.14143318280600936,
+          "p95_m": 0.3533537110546042
+        },
+        "roughness_window_cells": 3,
+        "roughness_sample_center_span_ground_m": 39.70398425960804,
+        "resolution_m": 20.0,
+        "source_path": "C:\\Users\\jy02s\\Documents\\lunar-crosscheck-jiyong\\data\\processed\\terrain_y\\raw\\20\\IM1.npz",
+        "source_sha256": "e8ea5dde8c7fbe73605073e938ff904901f704f5d0eebd8747de5e13cf89ef71",
+        "source_radius_frame_registration_units_match": true,
+        "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+        "source_metadata": {
+          "bounds": [
+            143,
+            264,
+            15516,
+            15637
+          ],
+          "etag": "W/\"a0b2f283-189327867b8\"",
+          "frame": "MOON_ME_DE421",
+          "last_modified": "Fri, 07 Jul 2023 22:28:19 GMT",
+          "pixel_registration": "center",
+          "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+          "radius_m": 1200,
+          "reference_radius_m": 1737400.0,
+          "resolution_m": 20,
+          "site": {
+            "coord_quality": "primary",
+            "elev_m": null,
+            "group": "clps",
+            "id": "IM1",
+            "lat": -80.13,
+            "lon": 1.44,
+            "name": "IM-1 Odysseus",
+            "name_ko": "IM-1 \uc624\ub514\uc138\uc6b0\uc2a4",
+            "note": "Historical landed location. Source publishes only two decimal places; do not infer metre-level accuracy.",
+            "short": "IM-1 Odysseus",
+            "source_url": "https://lroc.im-ldi.com/images/1360"
+          },
+          "source_geotiff": "{'KeyDirectoryVersion': 1, 'KeyRevision': 1, 'KeyRevisionMinor': 0, 'GTModelTypeGeoKey': <ModelType.Projected: 1>, 'GTRasterTypeGeoKey': <RasterPixel.IsArea: 1>, 'GTCitationGeoKey': 'Moon (2015) - Sphere / Ocentric / South Polar', 'GeographicTypeGeoKey': <GCS.User_Defined: 32767>, 'GeogCitationGeoKey': 'GCS Name = Moon (2015) - Sphere / Ocentric|Datum = Moon (2015) - Sphere|Ellipsoid = Moon (2015) - Sphere|Primem = Reference Meridian|', 'GeogGeodeticDatumGeoKey': 32767, 'GeogAngularUnitsGeoKey': <Angular.Degree: 9102>, 'GeogEllipsoidGeoKey': <Ellipse.User_Defined: 32767>, 'GeogSemiMajorAxisGeoKey': 1737400.0, 'GeogSemiMinorAxisGeoKey': 1737400.0, 'GeogPrimeMeridianLongGeoKey': 0.0, 'ProjectedCSTypeGeoKey': <PCS.User_Defined: 32767>, 'ProjectionGeoKey': <Proj.User_Defined: 32767>, 'ProjCoordTransGeoKey': <CT.PolarStereographic: 15>, 'ProjLinearUnitsGeoKey': <Linear.Meter: 9001>, 'ProjNatOriginLatGeoKey': -90.0, 'ProjFalseEastingGeoKey': 0.0, 'ProjFalseNorthingGeoKey': 0.0, 'ProjScaleAtNatOriginGeoKey': 1.0, 'ProjStraightVertPoleLongGeoKey': 0.0, 'ModelPixelScale': [20.0, 20.0, 0.0], 'ModelTiepoint': [0.0, 0.0, 0.0, -304000.0, 304000.0, 0.0]}",
+          "source_size_bytes": 2696082051,
+          "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+          "units": "m"
+        },
+        "grid_shape": [
+          121,
+          121
+        ],
+        "landing_height_m": 2591.9656707531312
+      },
+      "producer": {
+        "landing_slope_deg": 12.72083862358805,
+        "slope_by_radius_m": {
+          "100": {
+            "n": 80,
+            "median_deg": 12.046644493939592,
+            "p95_deg": 13.316859057854733,
+            "max_deg": 14.419289761920496,
+            "flat_fraction": {
+              "8": 0.0,
+              "15": 1.0
+            },
+            "sampled_area_m2": 31528.12429405805
+          },
+          "500": {
+            "n": 1992,
+            "median_deg": 11.435171870170947,
+            "p95_deg": 16.38091080075375,
+            "max_deg": 18.72936368649801,
+            "flat_fraction": {
+              "8": 0.09839108443386997,
+              "15": 0.86847058739076
+            },
+            "sampled_area_m2": 785050.2795599506
+          },
+          "1000": {
+            "n": 7969,
+            "median_deg": 9.541239744956682,
+            "p95_deg": 16.306553042244214,
+            "max_deg": 20.775167567307715,
+            "flat_fraction": {
+              "8": 0.34370203753746265,
+              "15": 0.8954668570645251
+            },
+            "sampled_area_m2": 3140595.377910993
+          }
+        },
+        "roughness_within_500m": {
+          "n": 1992,
+          "median_m": 0.14143318280600925,
+          "p95_m": 0.3533537110546042
+        }
+      },
+      "slope_abs_difference_deg": {
+        "landing": 3.6060043839825084e-13,
+        "100.median_deg": 7.105427357601002e-15,
+        "100.p95_deg": 3.552713678800501e-15,
+        "100.max_deg": 0.0,
+        "500.median_deg": 1.7763568394002505e-15,
+        "500.p95_deg": 3.552713678800501e-15,
+        "500.max_deg": 7.105427357601002e-15,
+        "1000.median_deg": 1.7763568394002505e-15,
+        "1000.p95_deg": 1.0658141036401503e-14,
+        "1000.max_deg": 7.105427357601002e-15
+      },
+      "flat_abs_difference_pp": {
+        "100.8": 0.0,
+        "100.15": 0.0,
+        "500.8": 0.0,
+        "500.15": 0.0,
+        "1000.8": 0.0,
+        "1000.15": 0.0
+      },
+      "max_slope_abs_difference_deg": 3.6060043839825084e-13,
+      "max_flat_abs_difference_pp": 0.0,
+      "roughness_abs_difference_m": {
+        "median_m": 1.1102230246251565e-16,
+        "p95_m": 0.0
+      },
+      "roughness_tolerance": null,
+      "roughness_note": "Actual differences reported; no formal roughness tolerance was specified.",
+      "counts_equal": true,
+      "roughness_window_cells_equal": true,
+      "roughness_sample_center_span_abs_difference_m": 0.0,
+      "sampled_area_abs_difference_m2": {
+        "100": 0.0,
+        "500": 0.0,
+        "1000": 0.0
+      },
+      "passed": true,
+      "product_sha256": "f301219fb660d6637559d7f669bdbf7fee3cca3cd5b7d93b3a74689459038fe0"
+    }
+  ],
+  "limitations": [
+    "Same original PGDA rasters; checks the implementation, not the true physical terrain or source vertical accuracy.",
+    "Three detailed sites checked numerically; all catalogue relay centres checked exactly.",
+    "Another human team member verification remains pending."
+  ],
+  "relay_centres": [
+    {
+      "id": "APOLLO11",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.2,
+      "relay_sha256": "550569fca50e9dfec1a6c9a0be65daa9a7a825f2080f0336b5a84c79eac33849",
+      "product_sha256": "95492a7fb6fe92290658980286af07d7975a56d1a607698ca3292b0b7a70ed5b",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO12",
+      "candidate_index": 2512,
+      "stored_slope_deg": 2.0,
+      "relay_sha256": "aa5ebf5786390ba0fc76f3368d0eb4b57f27aaeee1db15b92c66639e9a2c9d7e",
+      "product_sha256": "3ce87e1eba18df4473941aa48265881079e787fd9b8f8eb26160e7835fbbad6e",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO14",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.5,
+      "relay_sha256": "d190e9e12d8e81030d9a43d6209c9f042c2efe3be99f2375da5fb77456af8f96",
+      "product_sha256": "2ad1653f960f76e8580cee38bf53b985e7fc207ee34b9f4e5f1e49a421889e57",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO15",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.3,
+      "relay_sha256": "f61facc8d9b5156d177969f54fba7637fc0d9fc53cc5cb2fe783224e717e04b6",
+      "product_sha256": "e5976d35dbb040d584aace0c71ad56f4ec1d4df025253b6c5cfe05cdd366e3ce",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO16",
+      "candidate_index": 2512,
+      "stored_slope_deg": 2.7,
+      "relay_sha256": "0fc72588b6235a4606224703308aa6b78b6112f17f7f2a0aaff96bc60c8d5d0d",
+      "product_sha256": "71a0ea67a9d26a819234ea462c173112444202fe62998e8570b9d0e0f6c62063",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "APOLLO17",
+      "candidate_index": 2512,
+      "stored_slope_deg": 2.0,
+      "relay_sha256": "1930edce8c1af443c3c2082371b110fd0a24e50645010c69bf7211390e355bf4",
+      "product_sha256": "a4fd95094d65a6f49c9d26c7653b74d232fd5cf9b4d3e393eb275e6b889d77a3",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "LUNA16",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.3,
+      "relay_sha256": "98a29981fe73abc651abfce4294ca20569884e79c19c3c0211e4950a0c695f81",
+      "product_sha256": "5be4c1cbfcf7133e9e934ebb68c10b09161bca588b52452533877659912bef65",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "LUNA20",
+      "candidate_index": 2512,
+      "stored_slope_deg": 8.5,
+      "relay_sha256": "eb5cc2ce06053cd78cd60a20c512b485415f8e6d04be1289df564914417c8b99",
+      "product_sha256": "72baca12fb20030870ec8cbdcd008dbc27546e131fabaaeeb6c38f2947754624",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "LUNA24",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.5,
+      "relay_sha256": "79f5b08fa8be7c21ea82c1d1cc7211c01f1af336b707736cd6064adea8feb706",
+      "product_sha256": "7caed44826755a4d8d0cdb33efb3e2887bf5846ff82b5152966112c08a4d1f25",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE3",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.8,
+      "relay_sha256": "5e80e9339d34a32b0b1cd12ac21e3fd669788021b283be936d7f03b59c9ee623",
+      "product_sha256": "6e9e2c1d44db548debc9074e08c3909e3232fa8d4463e4419e4c25bdba5d26f6",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE4",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.7,
+      "relay_sha256": "898797c2b0aeba016c9786b691de0e359fad0f5f2d007e274382a379123e6e80",
+      "product_sha256": "600935941641400658033fad689111c61e4a5cc3afe14f5d0d66573197bb9717",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE5",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.6,
+      "relay_sha256": "fa1163a7610cab9b890df89868c5791e94c241726004ae3691756a6de1c1cb8f",
+      "product_sha256": "c13b96fc3d7952fa741c2ea9b5ddb9e3839987b940f198bffb2120521995d155",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANGE6",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.7,
+      "relay_sha256": "4f5aba5c44da36e15442f783899619a469d77d71d72dc33a18ade0df1e000336",
+      "product_sha256": "f6f3a28594d395cc7b99cea0e253b6c9977d46c200a295e3f80ab34cd7bf535a",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "candidate_index": 2512,
+      "stored_slope_deg": 0.6,
+      "relay_sha256": "2d9d0fe5a4aaba8de6bb3fd9eaba32fa8967f0c43d250c10448272a7db236c72",
+      "product_sha256": "7a0ded3a63c96a856fa81f3fbfff0e9d7d995d48fe673219a212e6da39eda13a",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "SLIM",
+      "candidate_index": 2512,
+      "stored_slope_deg": 8.4,
+      "relay_sha256": "d0ac59063dc35985230c93d2c6e164f7b957c3c3996abf8ecbbf9e6b1b590786",
+      "product_sha256": "aa27d640aa5c5c9ff1ddb9a134e34b3f653ac1404ff0b9386f33faddaf12f7da",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "IM1",
+      "candidate_index": 2512,
+      "stored_slope_deg": 11.5,
+      "relay_sha256": "270126731461ac68150a4c685543a6f1b41742a1b9129a3d39be282ac6477500",
+      "product_sha256": "f301219fb660d6637559d7f669bdbf7fee3cca3cd5b7d93b3a74689459038fe0",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "IM2",
+      "candidate_index": 2512,
+      "stored_slope_deg": 2.1,
+      "relay_sha256": "3922cada45782cba2e32663e0289b5bba1754c012531868fae025725c1282b74",
+      "product_sha256": "f61d6d53ba96d75787dd496e1222d39835413934921a122fcf220ab66b4f9863",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.2,
+      "relay_sha256": "7357857aa6665204c53d12f161ee15b315da55ae14cccdf89e2ed5b3391a8f27",
+      "product_sha256": "674c7f07236d84c16f5b1fdc1016ea626d3e92b6dac6374cae5cc9143ac0a824",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.6,
+      "relay_sha256": "8bf41cf49a230d1838827760b4471169927574863382cbc93eec3bbca0a218a3",
+      "product_sha256": "d1911c53fbd2e9be49ccbbc7c8b1212bb45e21aebc14f1124a264f3507bcfd27",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.5,
+      "relay_sha256": "5f267c2d40d3a7acd1c4d441b799232b010a2dcd939638eeae4d1b8d67b31143",
+      "product_sha256": "19a30fd15c2319815c974f96c934d0d259e468e950722a90dfe782f6359ed9f7",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.3,
+      "relay_sha256": "03d860bf789a62e9fbd715899d34dca64def0b7f8d812c5cabfe4317a8431dfe",
+      "product_sha256": "49e6ac27e9c29fd779263307b0f7ff511f3390966dcd9b8c452b338eede116d3",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.0,
+      "relay_sha256": "4524b88599ed5bb5ed074dbd6ad4c2b2d575326eb26056e6c19cf8814a076858",
+      "product_sha256": "6aca67479a3a1d39f49a16acf77a5db4b2f653bc6cbcf1b1405a4fb16ac29766",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.5,
+      "relay_sha256": "97967523140876d9c61e9935287bb3fd1ff29a6bc64e1b8eea18bcf4f57132d5",
+      "product_sha256": "a2d73fa7f52040c216561d2c4fbf266e9b577535d0b9d4f2e3825a03d5928551",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "candidate_index": 2512,
+      "stored_slope_deg": 4.0,
+      "relay_sha256": "8772b9e328eb90680383b86d5670accd250dbdd25b647f5c44cb1accd8c9697a",
+      "product_sha256": "3b0d25c99a5d8a8a483e0344c010ffd5c311073156abe33e58086ab0a70270a1",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.1,
+      "relay_sha256": "fd80f6a06b80976fd0655e006c74d259d445848da675f1ed98fa5db437ad66cc",
+      "product_sha256": "d989333a9f10518a1fc054d25e55ad20d8f74e3532406ce5bab0a85a179555d5",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.1,
+      "relay_sha256": "777016cb5126aec6765b6b1324cffae2c7f1c3c09eb98009974a34a7cfbf3e07",
+      "product_sha256": "74b658604922770cb32c71e75de19672bb4ddeae2ea3661984b4c2203d56c909",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.4,
+      "relay_sha256": "806662e54fe83c1a0262f186bb8a46efff601f50eca84d329e6055e8389b31d0",
+      "product_sha256": "b1ae2cbd3ed23969887d1ead6653e38fce46465330f61d309cb8d890acb552b0",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.0,
+      "relay_sha256": "f9c6125f05b32c96c92d9ff72c83c39866828a0093e597dfce5a6f3e5021225e",
+      "product_sha256": "2d54b645342a43799f4d2d33cf0a7218832ef020625155935c98c12cb31e6059",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.5,
+      "relay_sha256": "66417ef61120b3a7182f3e5447eaf5db8d1ba7488ff71abac7584ae0304bde3c",
+      "product_sha256": "21d153660edc238be4b84be2c0737913d45c01ef8d180e19401a02d09d919399",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "candidate_index": 2512,
+      "stored_slope_deg": 2.4,
+      "relay_sha256": "23c4a8f99b1b51f6da5fdcd4ebdc31b73cd7a0f60805c580aa6bf54cd3bd0433",
+      "product_sha256": "5abc4cdc56995ed2fc50e1ee229b2ec323462ebcfe6fdf630dea8a93a217140b",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "candidate_index": 2512,
+      "stored_slope_deg": 3.6,
+      "relay_sha256": "990ed0348ad6e801fb83be2024034ebbb1a97e0b6e5a59e9c6441241c67d38da",
+      "product_sha256": "488243ebb67c9b48dbed433431518732706455088721ed5c813d60e4aca3dc72",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "candidate_index": 2512,
+      "stored_slope_deg": 6.7,
+      "relay_sha256": "0f606ae75d26e4415773c5ed5cec99fa20b448b95b844485a17ad90d5041044b",
+      "product_sha256": "27160405dbf74b2cabdbd040f032dbef086d026ac62b9e7da22b228a264b3ce7",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "candidate_index": 2512,
+      "stored_slope_deg": 1.4,
+      "relay_sha256": "6d83bfa34c1415aa349841b9becee49835bf7d60a2cbe5729913b6df332e78dc",
+      "product_sha256": "708945c048c8fc6c88dd80e59f3e9105bf8a04d3aeb10b603338b99933f5210d",
+      "tests": {
+        "id_equal": true,
+        "coordinates_equal": true,
+        "centre_index_equal": true,
+        "centre_offsets_zero": true,
+        "slope_exact_equal": true,
+        "stored_one_decimal": true,
+        "source_sha256_equal": true,
+        "input_relay_sha256_equal": true,
+        "input_producer_sha256_equal": true,
+        "input_sites_sha256_equal": true,
+        "source_path_equal": true,
+        "box_m_equal": true,
+        "kind_equal": true,
+        "nonpolar_details_null": true,
+        "human_verification_pending": true
+      },
+      "passed": true
+    }
+  ],
+  "max_slope_abs_difference_deg": 2.2306601010768645e-12,
+  "max_flat_abs_difference_pp": 0.0,
+  "max_roughness_abs_difference_m": 1.1102230246251565e-16,
+  "passed": true,
+  "elapsed_seconds": 0.662759900034871
+}

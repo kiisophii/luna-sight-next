@@ -259,3 +259,9 @@ Producer: card 10, PR #12 (Dongju, with Minchul's PR #6); SHACKLETON_RIM re-run 
 | `metrics/`, all 33 sites, default window 2026-01-01..2030-12-31 | `web/data/ephem.bin` (43,824 hourly rows) + `web/data/horizon/<ID>.json` masks and `h0_m` + `sites.json` lat/lon; topocentric az/el, linear mask interpolation, half-disk sunlit rule, Earth centre, longest not-sunlit run | **33/33 sites × 4 metrics** | Sun / Earth / both **0.000000 pp** (every count identical to the hour), longest dark **0 h** | **PASS, 0 failures** (criterion 0.1 pp, 1 h) |
 
 [Full table](crosscheck_metrics_dongju.md), [machine-readable](crosscheck_metrics_dongju.json). This checks the metrics given the published masks; the masks themselves are task A.
+
+## Task Y terrain descriptors — Jiyong, 2026-11-15
+
+| Product | Author checks | Status |
+|---|---|---|
+| `terrain/` (16 detailed polar + 17 coarse comparisons) | Native PGDA 5/10/20 m: 8/7/1 sites. Separate explicit least-squares checker on Shackleton/Malapert/IM1: maximum slope difference 2.230660101e-12 deg, flat fraction 0 pp, roughness summary 1.110223025e-16 m. All 33 stored relay-centre values/hashes exact. 22 focused tests and 2 subtests pass; full contract 0 errors. [Report](terrain_y.md), [check](terrain_y_check.json). | Author-verified only. Different team member must independently check 3 sites (≤0.5 deg, ≤1 pp); separate AI code/review does not satisfy that requirement. |

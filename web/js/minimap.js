@@ -8,11 +8,11 @@ import { addStrings, whenReady, setFocus, LLSN } from './ui_shared.js';
 addStrings({
   mmAria: 'Mini map: where the 3D view is looking. Open for coordinate search.', mmSearch: 'Coordinates', mmPh: 'e.g. −89.45, −136.2 or 89.45S 136.2W',
   mmGo: 'Go', mmAnalyse: 'Analyse this point', mmBadLat: 'Latitude must be −90…90', mmBadLon: 'Longitude must be −180…180', mmBad: 'Use “lat, lon” or “89.45S 136.2W”',
-  mmPinned: 'Pinned', mmTop: 'Top 5 (current sort)', mmRecent: 'Recently viewed', mmHere: 'Moved to {c}. Press “Analyse this point” to compute its terrain horizon.',
+  mmOpen: 'Expand the minimap', mmClose: 'Shrink the minimap', mmPinned: 'Pinned', mmTop: 'Top 5 (current sort)', mmRecent: 'Recently viewed', mmHere: 'Moved to {c}. Press “Analyse this point” to compute its terrain horizon.',
 }, {
   mmAria: '미니맵: 3D가 보고 있는 곳. 열면 좌표 검색.', mmSearch: '좌표', mmPh: '예: −89.45, −136.2 또는 89.45S 136.2W',
   mmGo: '이동', mmAnalyse: '이 지점 분석', mmBadLat: '위도는 −90~90', mmBadLon: '경도는 −180~180', mmBad: '"위도, 경도" 또는 "89.45S 136.2W" 형식',
-  mmPinned: '고정한 후보', mmTop: '대표 후보 (지금 정렬 상위 5)', mmRecent: '최근 방문', mmHere: '{c}(으)로 이동했습니다. "이 지점 분석"을 누르면 지형 지평선을 계산합니다.',
+  mmOpen: '미니맵 크게 보기', mmClose: '미니맵 작게', mmPinned: '고정한 후보', mmTop: '대표 후보 (지금 정렬 상위 5)', mmRecent: '최근 방문', mmHere: '{c}(으)로 이동했습니다. "이 지점 분석"을 누르면 지형 지평선을 계산합니다.',
 });
 
 const D2R = Math.PI / 180, R2D = 180 / Math.PI;
@@ -36,9 +36,8 @@ export function parseCoords(str) {
 
 function build() {
   box = document.getElementById('ls-minimap'); if (!box) return;
-  box.tabIndex = 0;
   box.setAttribute('role', 'region');
-  box.innerHTML = `<canvas class="mm-ball" style="display:block;margin:6px auto 0;cursor:pointer;touch-action:none"></canvas>
+  box.innerHTML = `<button type="button" class="mm-exp" aria-expanded="false"></button><canvas class="mm-ball" style="display:block;margin:6px auto 0;cursor:pointer;touch-action:none"></canvas>
     <div class="mm-side" hidden style="position:absolute;top:10px;right:10px;width:205px;bottom:10px;display:flex;flex-direction:column;gap:6px;font-size:12px;overflow:auto">
       <label class="sr" for="mm-q"></label>
       <div style="display:flex;gap:4px"><input id="mm-q" type="search" style="flex:1;min-width:0;height:28px;font-size:11.5px"><button type="button" class="ls-btn mm-go" style="height:28px;padding:0 .6em"></button></div>
@@ -56,12 +55,13 @@ function build() {
   // open / close
   const openIt = () => { clearTimeout(closeT); if (!box.classList.contains('open')) { box.classList.add('open'); own = null; box.querySelector('.mm-side').hidden = false; sizeBall(); lists(); } };
   const closeSoon = () => { clearTimeout(closeT); closeT = setTimeout(() => { if (box.contains(document.activeElement)) return; box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); }, 300); };
-  box.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') openIt(); });
-  box.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') closeSoon(); });
-  box.addEventListener('focusin', openIt);
-  box.addEventListener('focusout', closeSoon);
-  box.addEventListener('click', e => { if (!box.classList.contains('open')) openIt(); });
-  document.addEventListener('pointerdown', e => { if (!box.contains(e.target) && box.classList.contains('open')) { box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); } });
+  // opens only with the expand button (Chaei #14: no hover growth); grows up and to the left from the bottom-right corner
+  const exp = box.querySelector('.mm-exp');
+  const closeIt = () => { clearTimeout(closeT); box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); expLabel(); };
+  exp.addEventListener('click', () => { if (box.classList.contains('open')) closeIt(); else { openIt(); expLabel(); } });
+  box.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) { closeIt(); exp.focus(); } });
+  document.addEventListener('pointerdown', e => { if (!box.contains(e.target) && box.classList.contains('open')) closeIt(); });
+  void closeSoon;
   // drag rotates the minimap only; a click flies the 3D view there
   let drag = null;
   cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, moved: false, c: own || { lat: view.lat, lon: view.lon } }; cv.setPointerCapture(e.pointerId); });
@@ -87,7 +87,14 @@ function build() {
   sizeBall();
   setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; draw(); } }, 400);
 }
+function expLabel() {
+  const b = box.querySelector('.mm-exp'), open = box.classList.contains('open');
+  b.setAttribute('aria-expanded', String(open)); b.setAttribute('aria-label', t(open ? 'mmClose' : 'mmOpen')); b.title = t(open ? 'mmClose' : 'mmOpen');
+  b.innerHTML = open ? '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 7l5-5M10 2h4v4M7 9l-5 5M2 10v4h4" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(180 8 8)"/></svg>'
+    : '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14l5-5M2 10v4h4M14 2L9 7M10 2h4v4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
+}
 function relabel() {
+  expLabel();
   box.setAttribute('aria-label', t('mmAria'));
   const s = box.querySelector('.mm-side');
   s.querySelector('label').textContent = t('mmSearch');

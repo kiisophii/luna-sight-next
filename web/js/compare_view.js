@@ -312,10 +312,12 @@ async function renderTray() {
   const pinned = (LLSN().compare?.() || []).length;
   const sites = shown();
   const my = ++seq;
-  if (!pinned) {
-    root.innerHTML = `<div class="cmp-empty">${PIN_SVG}<span>${esc(t('cmpEmptyTray'))}</span></div>`;
-    return;
+  const trayEl = $('#ls-tray');
+  if (trayEl && trayEl.classList.contains('empty') !== !pinned) {
+    trayEl.classList.toggle('empty', !pinned);
+    if (pinned) window.dispatchEvent(new Event('resize'));          // scrubber canvas re-measures once it is shown
   }
+  if (!pinned) { root.innerHTML = ''; return; }
   if (trayView === 'table') {
     loadAsync(sites, () => { if (my === seq) renderTray(); });
     root.innerHTML = tableHTML(sites, TRAY_ROWS, false, asyncVals);
@@ -404,7 +406,12 @@ function onTimeSlow() {          // summary cards contain "until sunset" — ref
 }
 
 function wire() {
-  $('#tray-view').addEventListener('change', e => { trayView = e.target.value; renderTray(); });
+  $('#tray-view').addEventListener('click', e => {
+    const b = e.target.closest('button[data-v]'); if (!b) return;
+    trayView = b.dataset.v;
+    $('#tray-view').querySelectorAll('button[data-v]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    renderTray();
+  });
   const click = e => {
     const why = e.target.closest('[data-why]');
     if (why) { setFocus(why.dataset.why); LLSN().goTo?.('#ls-brief'); return; }

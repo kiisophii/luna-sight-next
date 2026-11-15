@@ -95,33 +95,39 @@
     <div class="ls-minimap" id="ls-minimap"></div>
 
     <!-- R. comparison tray -->
-    <aside class="ls-tray" id="ls-tray" aria-labelledby="tray-h">
+    <aside class="ls-tray empty" id="ls-tray" aria-labelledby="tray-h">
       <div class="ls-card-head">
         <h2 id="tray-h"><span class="tray-pin" aria-hidden="true"></span><span data-i18n="tray">Compare</span></h2>
         <span id="ls-valbadge" class="val-badge-slot"></span>
-        <button type="button" class="ls-icon ls-fold" data-fold="ls-tray" aria-expanded="true" data-i18n-aria="collapseTray">›</button>
       </div>
-      <div class="ls-foldable">
-        <label class="tray-view"><span data-i18n="trayView">View</span><select id="tray-view">
-          <option value="table" data-i18n="tv_table">Table</option><option value="dial" data-i18n="tv_dial">Lunar-day clock</option><option value="alt" data-i18n="tv_alt">Sun & Earth elevation</option></select></label>
-        <div class="tray-time">
-          <span class="lbl" data-i18n="selTimeUTC">Selected time (UTC)</span>
-          <div class="tray-time-in"><input id="t-date" type="date" required aria-label="date"><input id="t-tod" type="time" step="60" required aria-label="time"></div>
-        </div>
-        <div class="scrub-row">
-          <div class="scrub-wrap">
-            <div class="scrub-ends num"><span id="scrub-a"></span><span id="scrub-b"></span></div>
-            <div class="scrub" id="scrub">
-              <canvas id="scrub-cv" aria-hidden="true"></canvas>
-              <span id="scrub-needle" class="needle" aria-hidden="true"></span>
-              <span id="scrub-tip" class="scrub-tip num" hidden></span>
-              <input id="slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="scrubAria">
-            </div>
+      <!-- empty state (Chaei #15): title + one line only -->
+      <p class="tray-empty" data-i18n="trayEmpty">Pin sites in Candidates to compare them here</p>
+      <div class="tray-main">
+        <!-- time bar stays at the top of the tray while the comparison below scrolls (#16) -->
+        <div class="tray-sticky">
+          <div class="tray-time">
+            <span class="lbl" data-i18n="selTimeUTC">Selected time (UTC)</span>
+            <div class="tray-time-in"><input id="t-date" type="date" required aria-label="date"><input id="t-tod" type="time" step="60" required aria-label="time"></div>
           </div>
-          <label class="speed"><span class="sr" data-i18n="speedAria"></span><select id="speed" data-i18n-aria="speedAria"><option value="1">1h/s</option><option value="6" selected>6h/s</option><option value="24">24h/s</option></select></label>
-          <button type="button" id="play" class="play" aria-pressed="false"></button>
+          <div class="scrub-row">
+            <div class="scrub-wrap">
+              <div class="scrub-ends num"><span id="scrub-a"></span><span id="scrub-b"></span></div>
+              <div class="scrub" id="scrub">
+                <canvas id="scrub-cv" aria-hidden="true"></canvas>
+                <span id="scrub-needle" class="needle" aria-hidden="true"></span>
+                <span id="scrub-tip" class="scrub-tip num" hidden></span>
+                <input id="slider" type="range" min="0" max="0" value="0" step="0.25" data-i18n-aria="scrubAria">
+              </div>
+            </div>
+            <label class="speed"><span class="sr" data-i18n="speedAria"></span><select id="speed" data-i18n-aria="speedAria"><option value="1">1h/s</option><option value="6" selected>6h/s</option><option value="24">24h/s</option></select></label>
+            <button type="button" id="play" class="play" aria-pressed="false"></button>
+          </div>
+          <p class="scrub-note"><span id="scrub-for"></span> · <span data-i18n="speedNote"></span></p>
         </div>
-        <p class="scrub-note"><span id="scrub-for"></span> · <span data-i18n="speedNote"></span></p>
+        <!-- view: three segment buttons, no label (#17) -->
+        <div class="ls-seg tray-seg" id="tray-view" role="group" data-i18n-aria="trayView">
+          <button type="button" data-v="table" aria-pressed="true" data-i18n="tv_table">Table</button><button type="button" data-v="dial" aria-pressed="false" data-i18n="tv_dial">Lunar-day clock</button><button type="button" data-v="alt" aria-pressed="false" data-i18n="tv_alt">Sun & Earth elevation</button>
+        </div>
         <div id="tray-body" class="tray-body" aria-live="off"></div>
         <a class="ls-btn primary block" href="#ls-compare" data-i18n="details">See details below ↓</a>
       </div>

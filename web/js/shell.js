@@ -111,11 +111,7 @@ function foldLabel(b, open) {
   b.classList.toggle('wide', !open && !left);
   b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : (left ? 'expand' : 'openTray')));
 }
-// ~1100–1279 px: the tray starts folded so it does not cover the Moon (≥ 1280 open; < 1100 it sits below the Moon)
-if (window.innerWidth >= 1100 && window.innerWidth < 1280) {
-  const tr = $('#ls-tray'), b = tr.querySelector('.ls-fold');
-  tr.classList.add('folded'); b.setAttribute('aria-expanded', 'false'); foldLabel(b, false);
-}
+// The tray has no fold button any more (Chaei #18): it is sized to its content and always open.
 document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', () => {
   const box = document.getElementById(b.dataset.fold);
   const phone = window.matchMedia('(max-width: 899px)').matches && box.id === 'ls-cond';

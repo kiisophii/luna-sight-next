@@ -1,0 +1,55 @@
+/* Bundle 8 — measurements from docs/design_sync; no practice code. */
+@media (min-width: 1100px) {
+  #ls-tray .tray-main { margin-top: 37px; gap: 15px; }
+  /* Keep the header, tabs, scroll content and footer on one 316px line at 1440. */
+  #ls-tray > .ls-card-head,
+  #ls-tray > .tray-empty,
+  #ls-tray > .tray-main { margin-right: 30px; min-width: 0; }
+  #ls-tray .tc-scroll { margin-right: -25px; padding-right: 15px; scrollbar-width: thin; }
+}
+#ls-tray .tc-chart { width: calc(100% - 15px); max-width: 100%; height: 100px; flex: none; }
+#ls-tray .tc-row { min-height: 42px; }
+#ls-tray .tc-h { flex-wrap: wrap; }
+#ls-tray .tc-subs { min-width: 0; flex-wrap: wrap; }
+#ls-tray .val-badge { padding: 2px 0; border: 0; border-radius: 0; background: transparent; }
+#ls-tray .tray-more svg { width: 16px; height: 16px; flex: none; }
+/* Same circular 15px glyph; existing enlarged hit areas and accessible labels remain. */
+.ls button.info, .ls button.info-i, .ls button.info-i.round, .ls button.fc-i, .ls button.tc-i {
+  border: 0; border-radius: 50%; color: #9C9CA1; font-size: 0;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'%3E%3Ccircle cx='7.5' cy='7.5' r='6.25' fill='none' stroke='%239C9CA1' stroke-width='1.25'/%3E%3Cpath d='M7.5 6.5v4M7.5 4.5v.1' fill='none' stroke='%239C9CA1' stroke-width='1.25' stroke-linecap='round'/%3E%3C/svg%3E") center / 15px 15px no-repeat;
+}
+#ls-tray .tc-i { width: 22px; height: 22px; flex: none; }
+@media (max-width: 1099px) {
+  #ls-tray .tray-main { min-width: 0; }
+  #ls-tray .tc-tabs button { white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* Reference sub-tabs occupy their own line below the category heading. */
+#ls-tray .tc-h { row-gap: 14px; }
+#ls-tray .tc-subs { flex: 1 0 100%; margin-left: 0; gap: 12px; }
+@media (min-width: 1100px) and (max-width: 1439px) {
+  #ls-tray > .ls-card-head, #ls-tray > .tray-empty, #ls-tray > .tray-main { margin-right: 60px; }
+  #ls-tray .tc-tabs button { white-space: normal; line-height: 1.15; }
+}
+
+@media (min-width: 1100px) { #ls-tray .tray-cat { margin-top: 3px; } }
+
+/* PR #97 review: reference 17:49, supersedes the earlier equal-width/sub-tab layout. */
+#ls-tray .tc-tabs { grid-template-columns: minmax(0,77fr) minmax(0,89fr) minmax(0,61fr) minmax(0,68fr); }
+#ls-tray .tc-h { flex-wrap: nowrap; gap: 6px; row-gap: 0; }
+#ls-tray .tc-h h4 { flex: none; }
+#ls-tray .tc-subs { flex: 0 1 auto; flex-wrap: nowrap; margin-left: auto; gap: 10px; }
+#ls-tray .tc-subs button { font-size: 14px; white-space: nowrap; }
+#ls-tray .tc-rows { width: calc(100% - 15px); max-width: 100%; }
+#ls-tray .tc-sw { width: 24px; height: 6px; }
+#ls-tray .tc-val { color: #9C9CA1 !important; }
+#ls-tray .val-badge-slot { flex: none; min-width: 0; }
+#ls-tray .val-badge { display: inline-block; visibility: visible; opacity: 1; white-space: nowrap; }
+@media (min-width:1100px) and (max-width:1439px) {
+  #ls-tray > .ls-card-head, #ls-tray > .tray-empty, #ls-tray > .tray-main { margin-right: 30px; }
+  #ls-tray .tc-h { flex-wrap: wrap; }
+  #ls-tray .tc-subs { margin-left: auto; }
+}
+
+/* The outer tray is not a scroll container; only tc-scroll scrolls vertically. */
+#ls-tray .tray-main { overflow: clip; }

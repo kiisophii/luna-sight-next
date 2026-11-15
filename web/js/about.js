@@ -24,10 +24,10 @@ addStrings({
   abDefs: 'How to read the numbers',
   df1: 'Sunlight', df1t: 'Share of hours in the period when at least half of the solar disc (radius 0.2666°) is above the local terrain horizon, seen from 2 m above the ground.',
   df2: 'Direct-to-Earth', df2t: 'Share of hours when the Earth’s center is above the terrain horizon (conservative). Geometry only — not radio performance.',
-  df3: 'Sun + Earth together', df3t: 'Sunlit and Earth in view at the same hour.', df4: 'Longest shadow', df4t: 'Longest continuous run of hours without sunlight inside the period.',
+  df3: 'Sun + Earth together', df3t: 'Sun disc ≥ 50 % and Earth centre above the terrain horizon at the same hour. Geometry only — not power or radio performance.', df4: 'Longest shadow', df4t: 'Longest continuous run of hours without sunlight inside the period.',
   df5: 'Margin', df5t: 'Body elevation minus the terrain horizon in that direction; positive = visible.',
   df6: 'Via relay tower', df6t: 'Hours when the lander sees a tower (line of sight, up to 3 towers within 10 km on slopes ≤ 15°) and the tower sees the Earth.',
-  df7: 'Yeoju KDSA in view', df7t: 'The site sees the Earth AND the Moon is at least 10° above the Korea Deep Space Antenna in Yeoju.',
+  df7: 'Yeoju KDSA in view', df7t: 'The site sees the Earth AND the Moon is at least 10° above the Korea Deep Space Antenna in Yeoju. Geometry only — reception was not modelled.',
   df8: 'Analysis period vs long-term', df8t: 'Period values (chip “this period”) come from the dates you chose. Long-term values (chip “long-term”) are 2026–2030 or 18.6-year averages. Do not mix them.',
   df9: 'Example verdict thresholds', df9t: 'Caution: longest shadow > {dark} h, direct link < {lo} %, or last among the compared sites. Strength: direct link ≥ {hi} % or first. These are published examples for discussion, not mission requirements. No hidden scores.',
   abVal: 'Can I trust these numbers?', abValLead: 'Average sunlight over 18.6 years at {n} random points (85–90°S) compared with NASA PGDA maps: mean absolute error',
@@ -39,7 +39,7 @@ addStrings({
   abK3: 'KASA partner', abK3t: 'The Korea AeroSpace Administration is a 2026 Space Apps partner.', abKMore: 'Ground-station block →',
   abMore: 'Team, sources and AI use', abSrc: 'Data & credits', abSrcLead: 'Every dataset and number on this site comes from these sources (full list with sizes and checks: data/DATASETS.md in the repository).',
   sName: 'Data', sOrg: 'From', sUse: 'Used for', sLic: 'Terms',
-  abLim: 'Assumptions and limits', abLimT: 'Observer 2 m above the ground · hourly steps · no atmosphere / refraction · link = geometric visibility · tower heights 5/15/30/50 m, up to 3 towers · data window 2026-01-01 to 2030-12-31 UTC · your own points use coarser browser terrain (~948 m north of 75°S; PGDA terrain near the south pole) · slope not computed.',
+  abLim: 'Assumptions and limits', abLimT: 'Observer 2 m above the ground · hourly steps · no atmosphere / refraction · link = geometric visibility · tower heights 5/15/30/50 m, up to 3 towers · data window 2026-01-01 to 2030-12-31 UTC · your own points use coarser browser terrain (~948 m north of 75°S; PGDA terrain near the south pole) · slope: catalogue sites only, from data/terrain (16 southern sites at lander scale from 5–20 m PGDA LOLA terrain, the other 17 from a 250 m box); none for your own points.',
   abTeam: 'Team and SI (AI) use', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (Seoul).',
   abSI: 'All solution ideas and design decisions came from our six team members. SI tools (Claude Code with Claude Opus 5.5; OpenAI Codex) helped with code, data processing, documentation and verification. Every SI task is logged in docs/SI_USAGE.md. No AI-generated images or video are used; any added later must carry a visible “AI-generated” watermark.',
   abCTA: 'Find your own landing site', abCTAb: 'Find my landing site →',
@@ -57,10 +57,10 @@ addStrings({
   abDefs: '숫자 읽는 법',
   df1: '일조율', df1t: '기간 중 태양 원반(반지름 0.2666°)의 절반 이상이 지형 지평선 위에 있는 시간 비율, 지면 2 m 높이 기준.',
   df2: '지구 직접 교신', df2t: '지구 중심이 지형 지평선 위에 있는 시간 비율(보수적). 기하만 — 전파 성능 아님.',
-  df3: '해+지구 동시', df3t: '같은 시각에 햇빛도 있고 지구도 보임.', df4: '최장 그늘', df4t: '기간 안에서 햇빛 없이 이어진 가장 긴 시간.',
+  df3: '해+지구 동시', df3t: '같은 시각에 태양 원반 50 % 이상과 지구 중심이 함께 지형 지평선 위. 기하만 — 전력·전파 성능 아님.', df4: '최장 그늘', df4t: '기간 안에서 햇빛 없이 이어진 가장 긴 시간.',
   df5: '여유각', df5t: '천체 고도 − 그 방향 지형 지평선 높이. 양수면 보임.',
   df6: '중계탑 경유', df6t: '착륙선이 탑을 보고(시선, 10 km 안 경사 15° 이하 자리에 최대 3기) 탑이 지구를 보는 시간.',
-  df7: '여주 KDSA 가시', df7t: '착륙지에서 지구가 보이고 여주 심우주 안테나에서 달이 10° 이상 떠 있는 시간.',
+  df7: '여주 KDSA 가시', df7t: '착륙지에서 지구가 보이고 여주 심우주 안테나에서 달이 10° 이상 떠 있는 시간. 기하만 — 수신 성능은 계산하지 않음.',
   df8: '분석 기간 vs 장기 평균', df8t: '기간 값(칩 "이 기간")은 고른 날짜의 값, 장기 값(칩 "장기 평균")은 2026–2030 또는 18.6년 평균. 섞지 않습니다.',
   df9: '예시 판정 기준값', df9t: '주의: 최장 그늘 > {dark}시간, 직접 교신 < {lo} %, 또는 비교 중 꼴찌. 강점: 직접 교신 ≥ {hi} % 또는 1위. 토론용으로 공개한 예시이며 임무 요구 조건이 아닙니다. 숨은 점수 없음.',
   abVal: '이 숫자 믿어도 되나', abValLead: '남위 85–90° 무작위 {n}점의 18.6년 평균 일조를 NASA PGDA 지도와 비교한 평균 절대 오차',
@@ -72,7 +72,7 @@ addStrings({
   abK3: 'KASA 파트너', abK3t: '우주항공청(KASA)은 2026 Space Apps 파트너입니다.', abKMore: '지상국 블록 →',
   abMore: '만든 사람 · 데이터 출처 · AI 사용', abSrc: '데이터 출처와 표기 (Data & credits)', abSrcLead: '이 사이트의 모든 자료와 숫자는 아래 출처에서 왔습니다. 제공처 표기 원문이라 영어 그대로 둡니다 (전체 목록: 저장소 data/DATASETS.md).',
   sName: '자료', sOrg: '기관', sUse: '쓴 곳', sLic: '조건',
-  abLim: '가정과 한계', abLimT: '관측 높이 2 m · 1시간 간격 · 대기·굴절 없음 · 교신 = 기하학적 가시성 · 탑 높이 5/15/30/50 m, 최대 3기 · 자료 기간 2026-01-01 ~ 2030-12-31 UTC · 사용자 지점은 더 거친 브라우저 지형(남위 75° 북쪽 약 948 m, 남극 근처는 PGDA 지형) · 경사 미계산.',
+  abLim: '가정과 한계', abLimT: '관측 높이 2 m · 1시간 간격 · 대기·굴절 없음 · 교신 = 기하학적 가시성 · 탑 높이 5/15/30/50 m, 최대 3기 · 자료 기간 2026-01-01 ~ 2030-12-31 UTC · 사용자 지점은 더 거친 브라우저 지형(남위 75° 북쪽 약 948 m, 남극 근처는 PGDA 지형) · 경사: 카탈로그 착륙지만, data/terrain 값(남쪽 16곳은 5–20 m PGDA LOLA 지형의 착륙선 규모 경사, 나머지 17곳은 250 m 상자 경사). 사용자 지점은 경사 값 없음.',
   abTeam: '팀과 SI(AI) 사용', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (서울).',
   abSI: '해결 아이디어와 설계 결정은 모두 6명 팀원이 냈습니다. SI 도구(Claude Code · Claude Opus 5.5, OpenAI Codex)는 코드, 자료 처리, 문서, 검증을 도왔습니다. 모든 SI 작업은 docs/SI_USAGE.md에 기록합니다. AI가 만든 그림·영상은 쓰지 않았고, 나중에 넣으면 눈에 보이는 "AI-generated" 표시를 붙입니다.',
   abCTA: '내 착륙지를 직접 찾아보세요', abCTAb: '내 착륙지 찾아보기 →',
@@ -146,6 +146,7 @@ async function render() {
     <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></section>
   <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
     <details id="about-sources" open><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
+      <p class="credits-add" lang="en">Fonts (added 2026-11-15): Geist, Geist Mono — SIL Open Font License 1.1 (Vercel), served by Google Fonts.</p>
       <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li><span class="muted num">${id}.</span> ${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
     <details id="about-limits"><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
@@ -162,7 +163,17 @@ async function render() {
   window.addEventListener('scroll', sync, { passive: true }); sync();
   // buttons: leave About for the app (and open the right block / tab), or jump inside About
   const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-  const openBlock = k => setTimeout(() => { const b = document.querySelector(`#ls-brief [data-open="${k}"]`); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+  // leaving About: the app may still be drawing, so retry until the target exists, then re-align twice — stop as soon as the user scrolls
+  const settle = (find, act) => {
+    let tries = 0, stop = false; const quit = () => { stop = true; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(ev => window.addEventListener(ev, quit, { once: true, passive: true }));
+    const go = () => { if (stop) return; const el = find(); if (!el) { if (++tries < 16) setTimeout(go, 250); return; }
+      act(el); [600, 1500].forEach(ms => setTimeout(() => { if (!stop) act(find() || el, true); }, ms)); };
+    setTimeout(go, 250);
+  };
+  const openBlock = k => settle(() => document.querySelector(`#ls-brief [data-open="${k}"]`), (b, again) => {
+    if (!again && b.getAttribute('aria-expanded') !== 'true') b.click();
+    document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); });
   root.addEventListener('click', e => {
     const a = e.target.closest('[data-act]'); if (!a) return; e.preventDefault();
     const act = a.dataset.act;
@@ -171,7 +182,9 @@ async function render() {
     else if (act === 'dates') { leave(); openBlock('date'); }
     else if (act === 'near') { leave(); openBlock('near'); }
     else if (act === 'korea') { leave(); openBlock('gs'); }
-    else if (act === 'relay') { leave(); setTimeout(() => { window.scrollTo({ top: 0 }); document.querySelector('#tray-cat .tc-tabs [data-c="relay"]')?.click(); }, 150); }
+    else if (act === 'relay') { leave(); settle(() => document.querySelector('#tray-cat .tc-tabs [data-c="relay"]'), (b, again) => {
+      if (b.getAttribute('aria-pressed') !== 'true') b.click();
+      if (window.innerWidth < 1100) document.getElementById('ls-tray')?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); else if (!again) window.scrollTo({ top: 0 }); }); }
     else if (act === 'sources' || act === 'credits') goIn('#about-sources', true);
     else if (act === 'methods') goIn('#about-validation');
     else if (act === 'limits') goIn('#about-limits', true);

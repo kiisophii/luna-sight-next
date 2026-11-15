@@ -28,7 +28,7 @@ addStrings({
   skipBelow: '비교로 건너뛰기', footSources: '출처',
   footNote: '모든 시각은 UTC. 3D의 태양·지구 원반은 보기 쉽게 크게 그렸고, 고도 축은 과장했습니다.',
   verdictNote: '다른 곳의 판정 배지는 공개한 예시 기준값만 씁니다(최장 그늘 72시간, 직접 교신 50 % / 90 %).',
-  tbAria: '지도 레이어와 카메라',
+  tbAria: '지도 보기와 시간',
   addT: '착륙지 추가', close: '닫기', tabCat: '카탈로그', tabCoord: '좌표',
   catSearch: '이름으로 찾기', catAll: '모든 종류', catN: '{n}곳',
   catNote: '값은 ① 미션 조건의 분석 기간 기준이며, 조건 밖은 흐리게 보입니다.',
@@ -462,7 +462,7 @@ fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('
   };
   new MutationObserver(arrows).observe(host, { childList: true, subtree: true }); arrows();
 })();
-addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 열', colNext: '다음 열' });
+addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 후보 열', colNext: '다음 후보 열' });
 
 // ------------------------------------------------------------ bottom toolbar time parts (the copy's bar): ticks, UTC chip, speed stepper
 (() => {

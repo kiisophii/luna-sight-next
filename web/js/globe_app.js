@@ -111,6 +111,19 @@ async function start() {
       wheelNeedsFocus: true,
       hud: false,
       // site names stay clear of the floating panels (3-column layout): px covered at the left / right / top of the stage
+      // map area = between the left panel and the tray (desktop layout); chips stay inside it, the 3D centre sits in its middle
+      chipInsets: () => {
+        const st = stage.getBoundingClientRect(), L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
+        if (window.innerWidth < 1100 || !L || !T) return {};
+        return { left: Math.max(0, L.right + 20 - st.left), right: Math.max(0, st.right - T.left + 20), top: 64 - st.top, bottom: 20 };
+      },
+      centerShift: w => {
+        if (window.innerWidth < 1100) return 0;
+        const L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
+        if (!L || !T) return 0;
+        const cx = (L.right + 20 + T.left - 20) / 2;
+        return w / 2 - cx;
+      },
       labelInsets: () => {
         const st = stage.getBoundingClientRect(), r = sel => document.querySelector(sel)?.getBoundingClientRect();
         const L = r('.ls-left'), T = r('.ls-tray'), H = r('.ls-head');

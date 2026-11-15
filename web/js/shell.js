@@ -511,3 +511,5 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const place = () => { lab.style.left = nd.style.left || '0%'; };
   new MutationObserver(place).observe(nd, { attributes: true, attributeFilter: ['style'] }); place();
 })();
+
+document.getElementById('sp-btn')?.addEventListener('click', () => document.querySelector('.ls-toolbar [data-view="south"]')?.click());

@@ -582,7 +582,7 @@ if (uLayerA > 0.0) {
     if (Math.hypot(dx, dy) < 1e-9) dy = 1;
     el.style.display = '';
     el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D}deg)`;
-    const W = overlay.clientWidth, H = overlay.clientHeight, ins = { top: 0, right: 0, bottom: 0, left: 0, ...(opts.chipInsets || {}) };
+    const W = overlay.clientWidth, H = overlay.clientHeight, ins = { top: 0, right: 0, bottom: 0, left: 0, ...((typeof opts.chipInsets === 'function' ? opts.chipInsets() : opts.chipInsets) || {}) };
     const m = 8, cw = el.offsetWidth || 70, ch = el.offsetHeight || 22;
     // centre-line rectangle the chip centre may travel on
     const x0 = ins.left + m + cw / 2, x1 = W - ins.right - m - cw / 2, y0 = ins.top + m + ch / 2, y1 = H - ins.bottom - m - ch / 2;
@@ -759,7 +759,11 @@ if (uLayerA > 0.0) {
   // ---------------- resize, loop
   function resize() {
     const w = container.clientWidth || 300, h = container.clientHeight || 300;
-    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); dirty = true;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    // optional: put the projection centre at the middle of the free map area (panels float over the stage)
+    const shift = typeof opts.centerShift === 'function' ? Math.round(opts.centerShift(w, h) || 0) : 0;
+    if (shift) camera.setViewOffset(w, h, shift, 0, w, h); else camera.clearViewOffset();
+    camera.updateProjectionMatrix(); dirty = true;
   }
   const ro = new ResizeObserver(resize); ro.observe(container); resize();
 

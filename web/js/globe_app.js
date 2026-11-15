@@ -138,7 +138,7 @@ async function start() {
       },                 // layout HUD lines live in index.html (.ls-hud); the ×3 note stays
       // off-screen Sun/Earth chips never cover these (all other page UI is outside the globe stage)
       avoid: ['#globe-stage .gl-zoom', '#globe-stage .gl-progress', '#globe-stage .gl-hint', '#globe-stage .g3-site',
-        '.ls-head', '.ls-left', '.ls-tray', '.ls-minimap', '.ls-toolbar', '.ls-hud', '.ls-scrollhint', '.ls-drawer:not([hidden])'],
+        '.ls-head', '.ls-left', '.ls-tray', '.ls-minimap', '.ls-toolbar', '.ls-hud .hud-t', '#hud-1', '#sp-btn', '#map-legend', '#globe-stage .g3-note', '.ls-drawer:not([hidden])'],
       view: initialView(focus),
     });
   } catch (e) {

@@ -69,31 +69,39 @@
       </section>
 
       <section class="ls-card ls-sites" id="picker" aria-labelledby="c2-h">
-        <div class="ls-card-head">
-          <h2 id="c2-h"><svg class="step-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4h8M6 8h8M6 12h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="2.8" cy="4" r="1" fill="currentColor"/><circle cx="2.8" cy="8" r="1" fill="currentColor"/><circle cx="2.8" cy="12" r="1" fill="currentColor"/></svg><span data-i18n="c2">Sites</span> <span id="c2-count" class="num big-n"></span> <small id="c2-pinned" class="muted"></small></h2>
-          <button type="button" class="ls-icon" id="sort-help-btn" aria-expanded="false" aria-controls="sort-help" data-i18n-aria="sortHelpT">i</button>
-        </div>
-        <div id="sort-help" class="ls-pop" role="dialog" hidden>
-          <h3 data-i18n="sortHelpT"></h3>
-          <p><strong data-i18n="sortHelp1"></strong> <span data-i18n="sortHelp2"></span></p>
-          <ul><li data-i18n="sortHelpBoth"></li><li data-i18n="sortHelpSun"></li><li data-i18n="sortHelpEarth"></li><li data-i18n="sortHelpDark"></li></ul>
-          <p class="muted" data-i18n="sortHelp3"></p>
-          <p class="muted" data-i18n="verdictNote"></p>
-        </div>
-        <!-- sort (Chaei #8): a text button "<key> ∨" (ui_select.js draws it over the native select, which stays the source of truth) -->
-        <div class="sort-row"><select id="sort" data-i18n-aria="sortBy"></select></div>
-        <!-- relay assumption (Chaei #9): card = tower icon | two lines | 52 x 28 switch -->
+        <div class="ls-card-head c2-head"><h2 id="c2-h"><span data-i18n="c2">Candidates</span></h2><span id="c2-count" class="c2-count num"></span></div>
+        <p class="c2-desc" data-i18n="c2Desc">Sites that meet every mission condition. Press + to add one to the comparison.</p>
+        <!-- relay assumption: card = tower icon | two lines | switch -->
         <label class="relay-card">
           <svg class="rc-ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 9v9M6.5 18h7M10 9l-3 9M10 9l3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="7.5" r="1.6" fill="currentColor"/><path d="M6.6 4.2a4.8 4.8 0 0 0 0 6.6M13.4 4.2a4.8 4.8 0 0 1 0 6.6M4.4 2.2a7.8 7.8 0 0 0 0 10.6M15.6 2.2a7.8 7.8 0 0 1 0 10.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          <span class="rc-txt"><b data-i18n="relayAssume">Assume a relay tower</b><small class="num" data-i18n="relayTowerH">15 m tower</small></span>
+          <span class="rc-txt"><b data-i18n="relayAssume">Relay tower</b><small class="num" data-i18n="relayTowerH">Assumed · 15 m tower</small></span>
           <input type="checkbox" id="relay-on" class="switch" role="switch">
         </label>
         <p id="relay-status" class="lsn-note" aria-live="polite"></p>
-        <p id="c2-pass" class="lsn-note" aria-live="polite"></p>
-        <p id="c2-none" class="lsn-note" hidden><span data-i18n="noneMatch"></span> <button type="button" id="c2-reset" class="ls-link" data-i18n="resetCond"></button></p>
-        <ul id="pk-list" class="pk-list"><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li></ul>
-        <button type="button" id="pk-more" class="ls-link more" hidden></button>
-        <button type="button" id="add-open" class="ls-add" data-i18n="addSite">+ Add a landing site</button>
+        <div class="pk-scroll">
+          <!-- comparing (pinned) sites -->
+          <div class="cmp-headrow"><span data-i18n="comparing">Comparing</span><span class="cmp-n num"><b id="c2-pinned">0</b><small>/ 10</small></span></div>
+          <ul id="pk-pinned" class="pk-list pk-pinned"></ul>
+          <p id="pk-pinned-empty" class="pk-empty" data-i18n="pinnedEmpty" hidden>No sites in the comparison yet.</p>
+          <!-- other candidates, with the sort on the right -->
+          <div class="other-head">
+            <span><span data-i18n="otherCand">Other candidates</span> <b id="c2-other" class="num"></b></span>
+            <span class="sort-wrap"><div class="sort-row"><select id="sort" data-i18n-aria="sortBy"></select></div>
+              <button type="button" class="ls-icon info-i" id="sort-help-btn" aria-expanded="false" aria-controls="sort-help" data-i18n-aria="sortHelpT">i</button></span>
+          </div>
+          <div id="sort-help" class="ls-pop" role="dialog" hidden>
+            <h3 data-i18n="sortHelpT"></h3>
+            <p><strong data-i18n="sortHelp1"></strong> <span data-i18n="sortHelp2"></span></p>
+            <ul><li data-i18n="sortHelpBoth"></li><li data-i18n="sortHelpSun"></li><li data-i18n="sortHelpEarth"></li><li data-i18n="sortHelpDark"></li></ul>
+            <p class="muted" data-i18n="sortHelp3"></p>
+            <p class="muted" data-i18n="verdictNote"></p>
+          </div>
+          <p id="c2-pass" class="lsn-note" aria-live="polite"></p>
+          <p id="c2-none" class="lsn-note" hidden><span data-i18n="noneMatch"></span> <button type="button" id="c2-reset" class="ls-link" data-i18n="resetCond"></button></p>
+          <ul id="pk-list" class="pk-list"><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li><li class="pk-skel"></li></ul>
+          <button type="button" id="pk-more" class="ls-link more" hidden></button>
+        </div>
+        <button type="button" id="add-open" class="ls-add"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> <span data-i18n="addSite">Add a site</span></button>
       </section>
     </aside>
 

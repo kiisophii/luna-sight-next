@@ -22,9 +22,9 @@ addStrings({
   langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operating period',
   p7: '7 days', p295: 'One lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
   c1Clipped: 'Computed only to 2030-12-31 (end of the ephemeris)', collapse: 'Collapse panel', expand: 'Expand panel',
-  c2: 'Candidates', c2Count: '{n}', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',
+  c2: 'Candidates', c2Count: '{n} sites', c2Desc: 'Sites that meet every mission condition. Press + to add one to the comparison.', comparing: 'Comparing', otherCand: 'Other candidates', pinnedEmpty: 'No sites in the comparison yet.', pinMax: 'Up to 10 sites can be compared', pinNoTip: 'Comparison number (colour in the comparison)', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',
   sortBy: 'Sort by', s_both: 'Sun + Earth together', s_sun: 'Sunlight', s_earth: 'Direct-to-Earth', s_dark: 'Shortest longest-shadow', s_name: 'Name',
-  relayAssume: 'Assume a relay tower', relayTowerH: '15 m tower', relayTag: 'with tower', relayNone: 'no tower calc.', relayLoading: 'loading towers…',
+  relayAssume: 'Relay tower', relayTowerH: 'Assumed · 15 m tower', relayTag: 'with tower', relayNone: 'no tower calc.', relayLoading: 'loading towers…',
   relayHint: '{h} m towers (up to 3) from data/relay — geometric line of sight only',
   sortHelpT: 'Sort order', sortHelp1: 'A sort, not a recommendation.', sortHelp2: 'Sites are ordered by one value only. There is no hidden weighting.',
   sortHelpBoth: 'Sun + Earth together: share of the period that is sunlit AND sees the Earth.',
@@ -32,7 +32,7 @@ addStrings({
   sortHelpEarth: 'Direct-to-Earth: share of hours with the Earth center above the terrain horizon (direct-to-Earth geometry).',
   sortHelpDark: 'Shortest longest-shadow: the longest continuous stretch without sunlight, shortest first.',
   sortHelp3: 'Pinned sites stay on top in the order you pinned them. The rank (1.) and ★ only show the position for the chosen sort.',
-  more: 'Show {n} more', less: 'Show fewer', addSite: '+ Add a landing site',
+  more: 'Show {n} more', less: 'Show fewer', addSite: 'Add a site',
   pin: 'Pin to compare', unpin: 'Unpin', outside: 'outside ①', pendingShort: 'terrain pending',
   noneMatch: 'No site meets all conditions.', resetCond: 'Reset conditions',
   tDateAria: 'Selected date (UTC)', tTimeAria: 'Selected time of day (UTC)', tray: 'Comparison', trayEmpty: 'Pin sites in Candidates to compare them here', trayView: 'View', tv_table: 'Table', tv_dial: 'Lunar-day clock', tv_alt: 'Sun & Earth elevation',
@@ -55,9 +55,9 @@ addStrings({
   langAria: '언어', c1: '미션 조건', c1Date: '착륙 날짜 (UTC)', c1Period: '운용 기간',
   p7: '7일', p295: '달의 하루 (29.5일)', p90: '90일', p365: '1년', pCustom: '{d}일',
   c1Clipped: '2030-12-31까지만 계산됨 (천체력 끝)', collapse: '패널 접기', expand: '패널 펼치기',
-  c2: '후보지', c2Count: '{n}곳', c2Pinned: '· 비교 {n}곳', c2Pass: '{n}곳이 ① 조건을 모두 만족',
+  c2: '후보지', c2Count: '{n}곳', c2Desc: '모든 미션 조건을 만족하는 착륙지입니다. + 를 누르면 비교에 넣습니다.', comparing: '비교 중', otherCand: '다른 후보', pinnedEmpty: '아직 비교 중인 곳이 없습니다.', pinMax: '최대 10곳까지 비교할 수 있습니다', pinNoTip: '비교 번호 (비교에서 쓰는 색)', c2Pinned: '· 비교 {n}곳', c2Pass: '{n}곳이 ① 조건을 모두 만족',
   sortBy: '정렬 기준', s_both: '해+지구 동시', s_sun: '일조율', s_earth: '지구 가시율', s_dark: '가장 긴 그늘 짧은 순', s_name: '이름순',
-  relayAssume: '중계탑 있다고 가정', relayTowerH: '15 m 탑', relayTag: '탑 포함', relayNone: '탑 계산 없음', relayLoading: '탑 자료 불러오는 중…',
+  relayAssume: '중계탑', relayTowerH: '가정 · 15 m 탑', relayTag: '탑 포함', relayNone: '탑 계산 없음', relayLoading: '탑 자료 불러오는 중…',
   relayHint: '{h} m 탑(최대 3기), data/relay · 기하학적 가시성만',
   sortHelpT: '정렬 기준', sortHelp1: '정렬일 뿐, 추천이 아닙니다.', sortHelp2: '한 가지 기준으로만 줄 세웁니다. 숨은 가중치는 없습니다.',
   sortHelpBoth: '해+지구 동시: 기간 중 햇빛이 있고 동시에 지구가 보이는 시간 비율.',
@@ -65,7 +65,7 @@ addStrings({
   sortHelpEarth: '지구 가시율: 지구 중심이 지형 지평선 위에 있는 시간 비율(직접 교신 기하).',
   sortHelpDark: '가장 긴 그늘 짧은 순: 햇빛 없이 이어지는 가장 긴 시간이 짧은 곳부터.',
   sortHelp3: '고정한 곳은 기준과 상관없이 맨 위(고정한 순서대로). 순위(1.)와 ★는 지금 기준에서의 순서일 뿐.',
-  more: '{n}곳 더 보기', less: '접기', addSite: '+ 착륙지 추가',
+  more: '{n}곳 더 보기', less: '접기', addSite: '착륙지 추가',
   pin: '비교에 고정', unpin: '고정 해제', outside: '조건 밖', pendingShort: '지형 계산 전',
   noneMatch: '조건을 모두 만족하는 곳이 없습니다.', resetCond: '조건 초기화',
   tDateAria: '선택 날짜 (UTC)', tTimeAria: '선택 시각 (UTC)', tray: '비교', trayEmpty: '후보지에서 핀을 누르면 여기서 비교합니다', trayView: '비교 보기', tv_table: '표', tv_dial: '달의 하루 시계', tv_alt: '태양·지구 고도',
@@ -116,6 +116,8 @@ const fmtDaysShort = d => (Math.abs(d - Math.round(d)) < 0.05 ? String(Math.roun
 const pctHTML = f => (f == null || !isFinite(f) ? '<span class="na">—</span>' : `${Math.round(f * 100)}<small>%</small>`);
 export const SUN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
 export const EARTH_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>';
+const ADD_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9.3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 6.8v8.4M6.8 11h8.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const REM_ICON = '<svg class="pk-ic" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="currentColor"/><path d="M6.8 11h8.4" stroke="#0A0A0B" stroke-width="1.8" stroke-linecap="round"/></svg>';
 export const PIN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.5h5l-.8 4.2 2.3 2.3v1H4v-1l2.3-2.3z" fill="var(--pin-fill, none)" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 9v5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
 
 // ------------------------------------------------------------ pins (no limit; stable numbers)
@@ -126,7 +128,12 @@ function pinsChanged() {
   savePins(); renderList(); saveURL();
   window.dispatchEvent(new CustomEvent('llsn:pins', { detail: { pins: pins.slice() } }));
 }
-function pin(id) { if (!byId(id) || pinOf(id)) return; pins.push({ id, n: nextNumber() }); pinsChanged(); }
+export const PIN_MAX = 10;             // the copy compares up to 10 sites (colours 01-10)
+function pin(id) {
+  if (!byId(id) || pinOf(id)) return;
+  if (pins.length >= PIN_MAX) { window.dispatchEvent(new CustomEvent('llsn:toast', { detail: { key: 'pinMax' } })); return; }
+  pins.push({ id, n: nextNumber() }); pinsChanged();
+}
 function unpin(id) { if (!pinOf(id)) return; pins = pins.filter(p => p.id !== id); pinsChanged(); }
 const togglePin = id => (pinOf(id) ? unpin(id) : pin(id));
 /** Globe marker click / list click: focus the site (3D flies there, brief follows). Pinning is the pin button. */
@@ -184,14 +191,16 @@ function rowHTML(s, rank) {
   const sunV = m && !m.pending ? pctHTML(m.sun_frac) : '<span class="na">—</span>';
   const earthV = L.v == null ? '<span class="na">—</span>' : pctHTML(L.v);
   const tower = relayOn ? (L.tower ? `<span class="tag relay">${t('relayTag')}</span>` : L.noTower ? `<span class="tag">${t('relayNone')}</span>` : L.loading ? `<span class="tag">…</span>` : '') : '';
-  return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}">
-    <span class="pk-rank num" title="${esc(t('rankTip'))}"><span class="sr">${t('rankLbl')} </span>${rank}.</span>
+  const chip = p ? `<span class="pk-chip num on" style="--sc:var(--c${p.n})" title="${esc(t('pinNoTip'))}">${String(p.n).padStart(2, '0')}</span>`
+    : `<span class="pk-chip num" title="${esc(t('rankTip'))}"><span class="sr">${t('rankLbl')} </span>${rank}</span>`;
+  return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}"${p ? ` style="--sc:var(--c${p.n})"` : ''}>
+    ${chip}
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
       <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(nameOf(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${tower}</span></span>
       <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}<span class="n">${sunV}</span></span><i class="pk-div" aria-hidden="true"></i><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}<span class="n">${earthV}</span></span></span>
     </button>
-    <button type="button" class="pk-pin" data-id="${s.id}" aria-pressed="${!!p}" aria-label="${esc(t(p ? 'unpin' : 'pin'))}: ${esc(nameOf(s))}" title="${esc(t(p ? 'unpin' : 'pin'))}">${PIN_ICON}</button>
+    <button type="button" class="pk-pin" data-id="${s.id}" aria-pressed="${!!p}" aria-label="${esc(t(p ? 'unpin' : 'pin'))}: ${esc(nameOf(s))}" title="${esc(t(p ? 'unpin' : 'pin'))}">${p ? REM_ICON : ADD_ICON}</button>
   </li>`;
 }
 
@@ -201,13 +210,16 @@ function renderList() {
   const pinned = pins.map(p => byId(p.id)).filter(Boolean);
   const rest = sorted.filter(s => !pinOf(s.id));
   const shown = showAll ? rest : rest.slice(0, Math.max(0, LIST_FIRST - pinned.length));
-  $('#pk-list').innerHTML = [...pinned, ...shown].map(s => rowHTML(s, rank.get(s.id))).join('');
+  $('#pk-pinned').innerHTML = pinned.map(s => rowHTML(s, rank.get(s.id))).join('');
+  $('#pk-pinned-empty').hidden = pinned.length > 0;
+  $('#pk-list').innerHTML = shown.map(s => rowHTML(s, rank.get(s.id))).join('');
+  $('#c2-other').textContent = rest.length;
   const hidden = rest.length - shown.length;
   const more = $('#pk-more');
   more.hidden = rest.length <= Math.max(0, LIST_FIRST - pinned.length);
   more.textContent = showAll ? t('less') : fill(t('more'), { n: hidden });
   $('#c2-count').textContent = fill(t('c2Count'), { n: core.state.sites.length });
-  $('#c2-pinned').textContent = fill(t('c2Pinned'), { n: pins.length });
+  $('#c2-pinned').textContent = pins.length;
   const pass = window.LLSN.filterPass;
   $('#c2-pass').textContent = pass ? fill(t('c2Pass'), { n: pass.size }) : '';
   $('#c2-none').hidden = !(pass && pass.size === 0);
@@ -467,10 +479,12 @@ async function main() {
     relayOn = e.target.checked; store.set('relay', relayOn); saveURL();
     if (relayOn) primeRelay(); else { $('#relay-status').textContent = ''; renderList(); window.dispatchEvent(new CustomEvent('llsn:relay', { detail: { on: false } })); }
   });
-  $('#pk-list').addEventListener('click', e => {
+  const onRows = e => {
     const pb = e.target.closest('.pk-pin'); if (pb) { togglePin(pb.dataset.id); return; }
     const it = e.target.closest('.pk-item'); if (it) pick(it.dataset.id);
-  });
+  };
+  $('#pk-list').addEventListener('click', onRows);
+  $('#pk-pinned').addEventListener('click', onRows);
   $('#pk-more').addEventListener('click', () => { showAll = !showAll; renderList(); });
   $('#c2-reset').addEventListener('click', () => document.querySelector('#llsn-filters .fl-reset')?.click());
   window.addEventListener('llsn:focus', () => { renderList(); drawScrub(); saveURL(); });

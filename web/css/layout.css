@@ -623,3 +623,70 @@ body.on-about .ls-pages { display: none; }
 .ls-globe .gl-zoom button:hover { color: var(--n-text); }
 /* 'Compare in detail' pill */
 .ls .ls-scrollhint { color: #E6EAF2; font-size: 12.5px; font-weight: 500; background: rgba(11, 13, 16, .55); border-color: rgba(230, 234, 242, .28); padding: 0 14px; backdrop-filter: blur(6px); }
+
+/* ================================================================ bundle B: one left panel (368 wide, top 56 to bottom), ① and ② inside */
+:root { --left-w: 368px; }
+@media (max-width: 1439px) { :root { --left-w: 368px; } }
+.ls-left { top: 56px; bottom: 16px; gap: 0; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 10px; padding: 16px; box-sizing: border-box;
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); overflow: hidden; }
+.ls-left > .ls-card { background: none; border: 0; border-radius: 0; padding: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.ls-left > .ls-sites { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--n-line); }
+/* ② head */
+.c2-head { align-items: baseline; }
+.c2-head h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.18px; color: var(--n-text); }
+.c2-count { font: 13px var(--font-num); color: var(--n-mute); }
+.c2-desc { margin: 6px 0 0; font-size: 13px; line-height: 1.45; color: var(--n-mute); }
+/* relay card: no fill, grey icon, 40 x 22 switch */
+.relay-card { background: none; border: 1px solid var(--n-line); border-radius: 8px; padding: 12px 14px; margin-top: 12px; }
+.relay-card .rc-ic { color: var(--n-dim); }
+.relay-card .rc-txt b { font-size: 13px; font-weight: 600; color: var(--n-text); }
+.relay-card .rc-txt small { font: 12px var(--font-num); color: var(--n-dim); }
+.relay-card .switch { width: 40px; height: 22px; background: var(--n-sw); border-color: var(--n-line); }
+.relay-card .switch::after { top: 2px; left: 2px; width: 16px; height: 16px; background: var(--n-mute); }
+.relay-card .switch:checked { background: var(--relay); border-color: var(--relay); }
+.relay-card .switch:checked::after { transform: translateX(18px); background: #06261d; }
+/* scroll area: comparing + other candidates; 'Add a site' stays at the bottom */
+.pk-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 12px -6px 0 0; padding-right: 6px; }
+.cmp-headrow { display: flex; align-items: baseline; justify-content: space-between; height: 32px; padding-top: 12px; border-top: 1px solid var(--n-line); font-size: 12px; color: var(--n-mute); }
+.cmp-n b { font: 500 22px var(--font-num); color: var(--n-text); }
+.cmp-n small { font-size: 13px; color: var(--n-mute); opacity: 1; margin-left: 3px; }
+.pk-empty { margin: 6px 0 4px; font-size: 12px; color: var(--n-dim); }
+.other-head { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; padding: 6px 0; background: #0E1013; border-top: 1px solid var(--n-line); font-size: 12px; color: var(--n-mute); }
+.other-head b { color: var(--n-text); font-weight: 600; font-family: var(--font); }
+.sort-wrap { display: inline-flex; align-items: center; gap: 4px; }
+.other-head .sort-row { margin: 0; }
+.other-head .dd-text .dd-btn { height: 28px; font-size: 12px; color: var(--n-mute); border: 1px solid transparent; border-radius: 6px; padding: 0 6px; }
+.other-head .dd-list { left: auto; right: 0; }
+.info-i { width: 20px; height: 20px; font-size: 11px; border-color: var(--n-line); color: var(--n-mute); }
+#sort-help { left: auto; right: 0; top: 40px; width: 320px; }
+.pk-list { overflow: visible; margin: 6px 0 0; padding: 0; gap: 6px; min-height: 0; }
+.ls-link.more { color: var(--n-mute); }
+/* rows (A): pinned = #1B1B1D, line #2A2A2D, 2 px site-colour bar on the left; others = no fill */
+.pk-row { position: relative; grid-template-columns: 24px minmax(0, 1fr) 36px; column-gap: 10px; align-items: center; height: auto; min-height: 60px; padding: 10px 10px 10px 12px;
+  border: 1px solid transparent; border-radius: 8px; background: none; box-sizing: border-box; }
+.pk-row.pinned { background: var(--n-1); border-color: var(--n-line); }
+.pk-row.pinned::before { content: ''; position: absolute; left: -1px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: var(--sc); }
+.pk-row.focus { box-shadow: none; border-color: rgba(237, 237, 237, .3); }
+.pk-chip { display: inline-grid; place-items: center; width: 24px; height: 20px; border-radius: 5px; border: 1px solid var(--n-line); font-size: 11px; color: var(--n-dim); box-sizing: border-box; }
+.pk-chip.on { background: var(--sc); border-color: var(--sc); color: #0A0A0B; font-weight: 600; }
+.pk-item { padding: 0; gap: 10px; border-radius: 6px; }
+.pk-name { font: 500 14px/1.3 var(--font-num); letter-spacing: .14px; color: var(--n-text); }
+.pk-name .nm { white-space: normal; overflow: visible; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pk-grp { font-size: 12px; color: var(--n-mute); }
+.pk-vals { gap: 10px; font-size: 14px; font-weight: 400; }
+.pk-row.pinned .pk-vals { font-weight: 400; }
+.pk-vals .v { width: 58px; justify-content: flex-end; gap: 4px; }
+.pk-vals .v .n { min-width: 0; }
+.pk-vals .v .ic { width: 13px; height: 13px; }
+.pk-vals .v small { font-size: 10px; font-weight: 500; color: var(--n-dim); opacity: 1; margin-left: 1px; }
+.pk-div { display: none; }
+.pk-pin { width: 36px; height: 36px; border: 0; border-radius: 50%; color: var(--n-text); background: none; align-self: center; }
+.pk-pin .pk-ic { width: 22px; height: 22px; }
+.pk-pin:hover { background: var(--fill-1); }
+.pk-pin:focus-visible { outline: 2px solid var(--n-text); outline-offset: 0; border-radius: 9px; }
+.pk-row.out { opacity: .45; }
+.ls-add { flex: none; height: 32px; margin-top: 12px; font-size: 12px; font-weight: 500; border: 1px solid rgba(230, 234, 242, .18); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.ls-add .ic { width: 15px; height: 15px; }
+@media (max-width: 1099px) { .ls-left { position: static; margin: 12px 16px 0; height: auto; } .pk-scroll { max-height: 560px; } }
+.ls .cmp-n small { font-size: 13px; }
+.pk-name .nm { overflow-wrap: anywhere; }

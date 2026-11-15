@@ -140,7 +140,7 @@ async function start() {
   window.addEventListener('llsn:time', e => g.setTime(e.detail.i));
   window.addEventListener('llsn:focus', e => flySite(e.detail.id));
   window.addEventListener('llsn:lang', () => { g.setLang(getLang()); translate(sec); });
-  $('#pk-list')?.addEventListener('click', e => { const b = e.target.closest('.pk-item'); if (b) flySite(b.dataset.id, true); });
+  ['#pk-list', '#pk-pinned'].forEach(sel => $(sel)?.addEventListener('click', e => { const b = e.target.closest('.pk-item'); if (b) flySite(b.dataset.id, true); }));
   $('#cards')?.addEventListener('click', e => {
     if (e.target.closest('.rm')) return;
     const c = e.target.closest('.card[data-id]'); if (c) flySite(c.dataset.id, true);

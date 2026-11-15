@@ -1669,9 +1669,37 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .map-legend .lg-tip p { margin: 0 0 4px; } .ls .map-legend .lg-tip p:last-child { margin: 0; } .ls .map-legend .lg-tip p:first-child { color: #EDEDED; font-weight: 500; }
   .ls .map-legend .lg-i:hover ~ .lg-tip, .ls .map-legend .lg-row:has(.lg-i:hover) + .lg-tip, .ls .map-legend .lg-row:has(.lg-i:focus-visible) + .lg-tip, .ls .map-legend.tip-on .lg-tip { display: block; }
 }
-@media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 554px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
+@media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 537px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
+/* Chaei review: minimap expand icon centred in its 30 px box (the 11 px side padding pushed the 14 px icon right) */
+.ls-minimap .mm-exp, .ls-minimap.open .mm-exp { padding: 0; }
+
+/* ---- relay towers on the map (Relay tower switch): icon at the computed tower position + thin line from the site */
+.ls-globe .g3-marklines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.ls-globe .g3-mark { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -26px 0 0 -11px; display: grid; place-items: center; border-radius: 50%; background: rgba(10, 10, 11, .86); border: 1px solid var(--mk, #3CC6A0); color: var(--mk, #3CC6A0); pointer-events: auto; cursor: help; }
+.ls-globe .g3-mark::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: 4px; background: var(--mk, #3CC6A0); }
+.ls-globe .g3-mark svg { width: 14px; height: 14px; display: block; }
+#hud-1, #globe-stage .g3-note { pointer-events: none; }   /* a tower icon under these boxes stays hoverable */
+.ls-globe .g3-mark { z-index: 16; }
+
+/* ---- copy check: dock 910 x 52 at 1920 (x 495), 580 at 1440 (the time axis takes the extra width) */
+@media (min-width: 1900px) { .ls .ls-toolbar { width: 910px; } .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 710px), 390px); } }
+
+/* Preserve exact UTC editing in the compact desktop dock. */
+#utc-chip .ic-calendar { display: none; }
+@media (min-width: 1100px) and (max-width: 1599px) {
+  .ls-toolbar #utc-chip { display: inline-flex; justify-content: center; top: -28px; left: 8px !important; width: 28px; height: 24px; padding: 0; font-size: 0; transform: none; }
+  .ls-toolbar > .utc-pop { left: 8px; right: auto; bottom: calc(100% + 8px); }
+  #utc-chip #utc-val { display: none; }
+  #utc-chip .ic-calendar { display: block; flex: none; }
+}
 
 /* Chaei: compact left-card sort/summary, with separate condition and panel controls. */
+.ls-left .pk-row { --candidate-action-size: 28px; --candidate-glyph-size: 19px; grid-template-columns: 22px minmax(0, 1fr) var(--candidate-action-size); column-gap: 8px; padding-right: 6px; }
+.ls-left .pk-row .pk-pin { width: var(--candidate-action-size); height: var(--candidate-action-size); padding: 0; display: grid; place-items: center; box-sizing: border-box; }
+.ls-left .pk-row .pk-pin .pk-ic { width: var(--candidate-glyph-size); height: var(--candidate-glyph-size); }
+.ls-left .pk-row .pk-relay { grid-column: 2 / -1; display: grid; grid-template-columns: 12px auto minmax(0, 1fr); align-items: center; gap: 4px 6px; min-width: 0; box-sizing: border-box; margin: 0 calc((var(--candidate-action-size) - var(--candidate-glyph-size)) / 2) 8px 0; padding: 6px 8px; }
+.ls-left .pk-relay > .num { white-space: nowrap; }
+.ls-left .pk-relay > span:not(.num) { grid-column: 2 / -1; min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 .ls-left .c2-bar .left-sort-value { display: inline-flex; align-items: center; gap: 4px; overflow: visible; }
 .ls-left .c2-bar .sort-row .dd-btn .dd-val.left-sort-value::before { content: none; }
 .ls-left .left-sort-icons { display: inline-flex; align-items: center; gap: 1px; flex: none; }

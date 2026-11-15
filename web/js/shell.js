@@ -519,7 +519,8 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   $('#utc-chip')?.insertAdjacentHTML('afterbegin', iconSvg('calendar', { size: 16 }));
   const utcButton = $('#utc-chip'), utcPop = $('#utc-pop'), utcHome = utcButton.parentElement;
   const compactUTC = matchMedia('(min-width: 1100px) and (max-width: 1599px)');
-  const placeUTC = () => (compactUTC.matches ? $('.ls-toolbar') : utcHome).append(utcButton, utcPop);
+  // compact dock: the calendar button sits inside the dock, right after the speed stepper (it used to float above the dock)
+  const placeUTC = () => { if (!compactUTC.matches) { utcHome.append(utcButton, utcPop); return; } const tbar = $('.ls-toolbar'), sp = tbar.querySelector('.tb-speed'); if (sp) sp.after(utcButton); else tbar.append(utcButton); tbar.append(utcPop); };
   compactUTC.addEventListener('change', placeUTC); placeUTC();
   popover(utcButton, $('#utc-pop'));
   // speed: ‹ 6h/s › stepper over the native select (app.js keeps reading #speed)

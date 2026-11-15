@@ -1,0 +1,716 @@
+{
+  "testedAt": "2026-11-15T13:42:44.907Z",
+  "baseline": null,
+  "scope": "Local integration app, fixed camera; Windows WebKit is not actual Safari/iOS hardware",
+  "results": [
+    {
+      "name": "chromium-1440-en-light",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "light",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [
+        "[.WebGL-0x47a402adce00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x47a402adce00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x47a402adce00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x47a402adce00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 667.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 667.4375,
+          "right": 750.015625,
+          "bottom": 693.4375,
+          "left": 708.46875
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 709.078125,
+          "y": 392,
+          "width": 240,
+          "height": 271,
+          "top": 392,
+          "right": 949.078125,
+          "bottom": 663,
+          "left": 709.078125
+        },
+        "button": {
+          "x": 708.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 750.015625,
+          "bottom": 694.4375,
+          "left": 708.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "chromium-1440-ko-elev",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1440,
+      "height": 900,
+      "lang": "ko",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 668.4375,
+          "width": 43.734375,
+          "height": 26,
+          "top": 668.4375,
+          "right": 752.203125,
+          "bottom": 694.4375,
+          "left": 708.46875
+        },
+        "legend": {
+          "x": 768,
+          "y": 337,
+          "width": 252,
+          "height": 32,
+          "top": 337,
+          "right": 1020,
+          "bottom": 369,
+          "left": 768
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 709.109375,
+          "y": 377,
+          "width": 240,
+          "height": 287,
+          "top": 377,
+          "right": 949.109375,
+          "bottom": 664,
+          "left": 709.109375
+        },
+        "button": {
+          "x": 708.46875,
+          "y": 668.4375,
+          "width": 43.734375,
+          "height": 26,
+          "top": 668.4375,
+          "right": 752.203125,
+          "bottom": 694.4375,
+          "left": 708.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "chromium-1280-en-elev",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1280,
+      "height": 800,
+      "lang": "en",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": {
+          "x": 656,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 908,
+          "bottom": 370,
+          "left": 656
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.234375,
+          "y": 378,
+          "width": 240,
+          "height": 211,
+          "top": 378,
+          "right": 877.234375,
+          "bottom": 589,
+          "left": 637.234375
+        },
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    },
+    {
+      "name": "chromium-1280-ko-light",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1280,
+      "height": 800,
+      "lang": "ko",
+      "layer": "light",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 43.734375,
+          "height": 26,
+          "top": 593.28125,
+          "right": 680.359375,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.265625,
+          "y": 374,
+          "width": 240,
+          "height": 215,
+          "top": 374,
+          "right": 877.265625,
+          "bottom": 589,
+          "left": 637.265625
+        },
+        "button": {
+          "x": 636.625,
+          "y": 594.171875,
+          "width": 43.734375,
+          "height": 26,
+          "top": 594.171875,
+          "right": 680.359375,
+          "bottom": 620.171875,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    },
+    {
+      "name": "chromium-1440-en-elev-folded",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "elev",
+      "fold": true,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 532.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 574.015625,
+          "bottom": 694.4375,
+          "left": 532.46875
+        },
+        "legend": {
+          "x": 768,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 1020,
+          "bottom": 370,
+          "left": 768
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 533.078125,
+          "y": 378,
+          "width": 240,
+          "height": 286,
+          "top": 378,
+          "right": 773.078125,
+          "bottom": 664,
+          "left": 533.078125
+        },
+        "button": {
+          "x": 532.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 574.015625,
+          "bottom": 694.4375,
+          "left": 532.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "webkit-1440-en-light",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "light",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 667.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 667.4375,
+          "right": 750.015625,
+          "bottom": 693.4375,
+          "left": 708.46875
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 709.09375,
+          "y": 392,
+          "width": 240,
+          "height": 271,
+          "top": 392,
+          "right": 949.09375,
+          "bottom": 663,
+          "left": 709.09375
+        },
+        "button": {
+          "x": 708.46875,
+          "y": 667.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 667.4375,
+          "right": 750.015625,
+          "bottom": 693.4375,
+          "left": 708.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "webkit-1440-ko-elev",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1440,
+      "height": 900,
+      "lang": "ko",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 750.015625,
+          "bottom": 694.4375,
+          "left": 708.46875
+        },
+        "legend": {
+          "x": 768,
+          "y": 337,
+          "width": 252,
+          "height": 32,
+          "top": 337,
+          "right": 1020,
+          "bottom": 369,
+          "left": 768
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 709.09375,
+          "y": 377,
+          "width": 240,
+          "height": 287,
+          "top": 377,
+          "right": 949.09375,
+          "bottom": 664,
+          "left": 709.09375
+        },
+        "button": {
+          "x": 708.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 750.015625,
+          "bottom": 694.4375,
+          "left": 708.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "webkit-1280-en-elev",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1280,
+      "height": 800,
+      "lang": "en",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": {
+          "x": 656,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 908,
+          "bottom": 370,
+          "left": 656
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.25,
+          "y": 378,
+          "width": 240,
+          "height": 211,
+          "top": 378,
+          "right": 877.25,
+          "bottom": 589,
+          "left": 637.25
+        },
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    },
+    {
+      "name": "webkit-1280-ko-light",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1280,
+      "height": 800,
+      "lang": "ko",
+      "layer": "light",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.25,
+          "y": 374,
+          "width": 240,
+          "height": 215,
+          "top": 374,
+          "right": 877.25,
+          "bottom": 589,
+          "left": 637.25
+        },
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    },
+    {
+      "name": "webkit-1440-en-elev-folded",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "elev",
+      "fold": true,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 532.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 574.015625,
+          "bottom": 694.4375,
+          "left": 532.46875
+        },
+        "legend": {
+          "x": 768,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 1020,
+          "bottom": 370,
+          "left": 768
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 533.09375,
+          "y": 378,
+          "width": 240,
+          "height": 286,
+          "top": 378,
+          "right": 773.09375,
+          "bottom": 664,
+          "left": 533.09375
+        },
+        "button": {
+          "x": 532.46875,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 574.015625,
+          "bottom": 694.4375,
+          "left": 532.46875
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    }
+  ]
+}

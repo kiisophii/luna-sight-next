@@ -128,3 +128,6 @@ html:not([lang="ko"]) #ls-brief { --font: 'Geist', 'Pretendard', system-ui, sans
   #ls-brief .sc-axis { margin-left: 60px; }
   #ls-brief .sc-src { flex-wrap: wrap; }
 }
+
+/* Korean screen: site names have no Hangul glyphs in the number font, so the name uses the text font (no wide letter gaps) */
+html[lang="ko"] #ls-brief .brief-head h2.sc-name { font-family: var(--font); letter-spacing: -0.26px; }

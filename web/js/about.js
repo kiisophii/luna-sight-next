@@ -10,6 +10,12 @@ import { CREDITS } from './credits.js';
 import { mountHero } from './about_hero.js';
 import { ABOUT_COPY } from './about_copy.js';
 
+// Keep the designer's About layout isolated from the map and other owners' views.
+const layout = document.createElement('link');
+layout.rel = 'stylesheet';
+layout.href = new URL('../css/about_layout.css', import.meta.url).href;
+document.head.append(layout);
+
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
   abH1: 'Where can a lander see the Sun and the Earth?', abLead: 'Luna Sight compares lunar landing sites and dates side by side: sunlight for power, a direct line to Earth for the radio link, and how long the dark lasts — from NASA terrain and ephemeris data, hour by hour. A comparison tool, not a “best site” picker.',
@@ -109,6 +115,11 @@ async function render() {
   const inRange = v?.named ? v.named.filter(n => n.ours_sun >= n.pgda_sun_min300 && n.ours_sun <= n.pgda_sun_max300).length : null;
   const ap = h?.apollo_sun_elevation || [], rb = h?.robotic_sunset || [];
   const C = ABOUT_COPY[getLang() === 'ko' ? 'ko' : 'en'], X = esc;
+  const trustCards = H ? `    <div class="ab-trust">
+      <div class="tr-big"><b class="num" style="color:var(--sun)">${H.sun}<small> pp</small></b><span>${E('abVc1')} · MAE · <span class="num">r ${H.sunR}</span></span></div>
+      <div class="tr-sm"><b class="num" style="color:var(--earth)">${H.earth}<small> pp</small></b><span>${E('abVc2')} · MAE · <span class="num">r ${H.earthR}</span></span></div>
+      <div class="tr-sm"><b class="num">${inRange}<small> / ${v.named.length}</small></b><span>${E('abVc3')}</span></div>
+    </div>` : '';
   root.innerHTML = `
   <div class="ab-hero" id="ab-hero">
     <div class="abh-scene"></div><div class="abh-shade" aria-hidden="true"></div>
@@ -122,7 +133,7 @@ async function render() {
   <section class="ab-sec" id="about-results"><div><span class="ab-no num">04</span><h2>${X(C.results.h2)}</h2></div><div class="ab-body">
     <table class="src-tbl ab-measures"><thead><tr><th>${X(C.results.head[0])}</th><th>${X(C.results.head[1])}</th></tr></thead><tbody>${C.results.rows.map(r => `<tr><th scope="row">${X(r[0])}</th><td>${X(r[1])}</td></tr>`).join('')}</tbody></table>
     ${C.results.p.map(x => `<p>${X(x)}</p>`).join('')}</div></section>
-  <section class="ab-sec" id="about-data"><div><span class="ab-no num">05</span><h2>${X(C.data.h2)}</h2></div><div class="ab-body">${C.data.p.map(x => `<p>${X(x)}</p>`).join('')}
+  <section class="ab-sec" id="about-data"><div><span class="ab-no num">05</span><h2>${X(C.data.h2)}</h2></div><div class="ab-body">${C.data.p.map((x, k) => `<p>${X(x)}</p>${k === 0 ? trustCards : ''}`).join('')}
     <p class="ab-links">${C.data.btns.map((x, k) => `<a class="ls-btn" href="#" data-act="${['sources', 'methods', 'limits'][k]}">${X(x)}</a>`).join('')}</p></div></section>
   <section class="ab-sec" id="about-korea"><div><span class="ab-no num">06</span><h2>${X(C.korea.h2)}</h2></div><div class="ab-body">${C.korea.p.map(x => `<p>${X(x)}</p>`).join('')}
     <p class="ab-links"><a class="ls-btn ab-act" href="#" data-act="korea">${X(C.korea.btn)} →</a></p></div></section>
@@ -131,21 +142,17 @@ async function render() {
     <p class="ab-by"><em>${X(C.start.by)}</em></p>
     <p class="ab-links small">${C.start.links.map((x, k) => `<a class="ls-link" href="#" data-act="${['team', 'credits', 'ai'][k]}">${X(x)}</a>`).join('<span aria-hidden="true"> · </span>')}</p></div></section>
   <div class="ab-ref-sep" role="presentation"></div>
-  <section class="ab-sec" id="about-defs"><h2>${E('abDefs')}</h2><dl class="defs">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => `<dt>${E('df' + k)}</dt><dd>${esc(fill(t('df' + k + 't'), { dark: RULE.darkH, lo: RULE.directLow * 100, hi: RULE.directHigh * 100 }))}</dd>`).join('')}</dl></section>
-  <section class="ab-sec" id="about-validation"><h2>${E('abVal')}</h2><div>
+  <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
+  <details id="about-defs"><summary>${E('abDefs')}</summary><dl class="defs">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => `<dt>${E('df' + k)}</dt><dd>${esc(fill(t('df' + k + 't'), { dark: RULE.darkH, lo: RULE.directLow * 100, hi: RULE.directHigh * 100 }))}</dd>`).join('')}</dl></details>
+  <details id="about-validation"><summary>${E('abVal')}</summary><div>
     ${H ? `<p>${esc(fill(t('abValLead'), { n: v.n_points }))}</p>
-    <div class="ab-trust">
-      <div class="tr-big"><b class="num" style="color:var(--sun)">${H.sun}<small> pp</small></b><span>${E('abVc1')} · MAE · <span class="num">r ${H.sunR}</span></span></div>
-      <div class="tr-sm"><b class="num" style="color:var(--earth)">${H.earth}<small> pp</small></b><span>${E('abVc2')} · MAE · <span class="num">r ${H.earthR}</span></span></div>
-      <div class="tr-sm"><b class="num">${inRange}<small> / ${v.named.length}</small></b><span>${E('abVc3')}</span></div>
-    </div>` : ''}
+` : ''}
     ${h?.ephemeris_check ? `<p class="muted">${esc(fill(t('abEph'), { d: h.ephemeris_check.max_deg.toExponential(1), n: h.ephemeris_check.sample_hours }))}</p>` : ''}
     <h3 style="margin-top:20px">${E('abHind')}</h3>
     <table class="src-tbl"><thead><tr><th></th><th>UTC</th><th>ALSJ</th><th>Luna Sight</th><th>Δ</th></tr></thead><tbody>${ap.map(a => `<tr><td>${esc(a.mission)}</td><td class="num">${a.landing_utc.slice(0, 16).replace('T', ' ')}</td><td class="num">${a.reported_sun_el_deg.toFixed(2)}°</td><td class="num">${a.ours_sun_el_deg_catalogue_point.toFixed(2)}°</td><td class="num">${a.difference_deg_catalogue.toFixed(2)}°</td></tr>`).join('')}</tbody></table>
     <table class="src-tbl" style="margin-top:10px"><tbody>${rb.map(r => `<tr><td>${esc(r.mission)}</td><td>${r.difference_text ? esc(r.difference_text) : esc(t('hcNoSrc'))}${r.source_url ? ` · <a href="${esc(r.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}</tbody></table>
-    <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></section>
-  <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
-    <details id="about-sources" open><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
+    <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></details>
+    <details id="about-sources"><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
       <div class="credits" lang="en">${CREDITS.map(([h, items]) => `<h4>${esc(h)}</h4><ul>${items.map(([id, txt]) => `<li><span class="muted num">${id}.</span> ${md(txt)}</li>`).join('')}</ul>`).join('')}</div></details>
     <details id="about-limits"><summary>${E('abLim')}</summary><p class="muted">${E('abLimT')}</p></details>
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
@@ -173,7 +180,7 @@ async function render() {
     else if (act === 'korea') { leave(); openBlock('gs'); }
     else if (act === 'relay') { leave(); setTimeout(() => { window.scrollTo({ top: 0 }); document.querySelector('#tray-cat .tc-tabs [data-c="relay"]')?.click(); }, 150); }
     else if (act === 'sources' || act === 'credits') goIn('#about-sources', true);
-    else if (act === 'methods') goIn('#about-validation');
+    else if (act === 'methods') goIn('#about-validation', true);
     else if (act === 'limits') goIn('#about-limits', true);
     else if (act === 'team') goIn('#about-team', true);
     else if (act === 'ai') goIn('#about-si', true);

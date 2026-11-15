@@ -87,7 +87,7 @@ Script: `pipeline/task_t_gmaps_ppd8_raw.py`.
    - shape (1440, 2880) and dtype `<f4`;
    - **identical float32 bit patterns** (compared as `uint32`) and identical NaN positions;
    - `done` is all 1, and `meta.json` is byte-identical.
-2. **Published map vs the released grid.** The production export steps were re-run on the released arrays: `global_maps.resample` and `colorize`, PIL JPEG quality 88. Output: `docs/task_t/integrity_check.json`.
+2. **Published map vs the released grid.** The production export steps were re-run on the arrays downloaded back from the release: `global_maps.resample` and `colorize`, PIL JPEG quality 88. Output: `docs/task_t/integrity_check.json`.
    - Values PNGs: **8,388,608 / 8,388,608 DN identical** per layer (sun, earth, both); maximum |ΔDN| 0; no no-data pixels.
    - Overview JPEGs: **byte-identical** (3/3).
    - Tiles: **126 / 126 byte-identical** (42 per layer, z0–z2).

@@ -1,5 +1,5 @@
 {
- "source_dir": "data\\processed\\task_t_release\\gmaps_ppd8_float32_v1",
+ "source_dir": "data\\processed\\task_t_download",
  "pillow": "13.0.0",
  "layers": {
   "sun": {

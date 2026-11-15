@@ -3,7 +3,7 @@
 // labels = pinned sites. The expand button opens coordinates and catalogue destinations.
 // Drag the ball to rotate it; click to fly the 3D view. Box movement/resize lives in minimap_drag.js.
 import { t, getLang } from './i18n.js';
-import { addStrings, whenReady, setFocus, LLSN, mapSiteColors } from './ui_shared.js';
+import { addStrings, whenReady, setFocus, LLSN } from './ui_shared.js';
 
 addStrings({
   mmAria: 'Mini map: where the 3D view is looking. Open for coordinate search.', mmSearch: 'Coordinates', mmPh: 'e.g. −89.45, −136.2 or 89.45S 136.2W',
@@ -56,6 +56,7 @@ function build() {
   const openIt = () => { if (!box.classList.contains('open')) { box.classList.add('open'); own = null; box.querySelector('.mm-side').hidden = false; sizeBall(); lists(); } };
   // Expand left and down; positioning and size persistence are managed by minimap_drag.js.
   const exp = box.querySelector('.mm-exp');
+  new MutationObserver(() => { const o = box.classList.contains('open'); if (String(o) !== exp.getAttribute('aria-expanded')) expLabel(); }).observe(box, { attributes: true, attributeFilter: ['class'] });   // icon and name follow the box, however it was opened or closed
   const closeIt = () => { box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); expLabel(); };
   exp.addEventListener('click', () => { if (box.classList.contains('open')) closeIt(); else { openIt(); expLabel(); } });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) { e.preventDefault(); closeIt(); exp.focus(); } });
@@ -67,7 +68,8 @@ function build() {
     if (!drag) return;
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     if (Math.hypot(dx, dy) > 3) drag.moved = true;
-    if (drag.moved && box.classList.contains('open')) { own = { lat: Math.max(-89, Math.min(89, drag.c.lat + dy * 0.8)), lon: drag.c.lon - dx * 0.8 }; draw(); }
+    // the small (folded) ball turns too: the rotation used to be limited to the open box
+    if (drag.moved) { own = { lat: Math.max(-89, Math.min(89, drag.c.lat + dy * 0.8)), lon: drag.c.lon - dx * 0.8 }; draw(); }
   });
   cv.addEventListener('pointerup', e => {
     if (drag && !drag.moved) { const ll = ballToLatLon(e); if (ll) { lastPick = ll; fly(ll.lat, ll.lon); draw(); } }
@@ -95,12 +97,12 @@ function build() {
   new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(sizeBall, 60); }).observe(box);
   sizeBall();
   window.dispatchEvent(new Event('llsn:minimap-ready'));
-  setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; draw(); } }, 400);
+  setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; if (!box.classList.contains('open')) own = null; draw(); } }, 400);   // folded: a hand-turned ball goes back to following the 3D view when that view moves
 }
 function expLabel() {
   const b = box.querySelector('.mm-exp'), open = box.classList.contains('open');
   b.setAttribute('aria-expanded', String(open)); b.setAttribute('aria-label', t(open ? 'mmClose' : 'mmOpen')); b.title = t(open ? 'mmClose' : 'mmOpen');
-  b.innerHTML = open ? '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 7l5-5M10 2h4v4M7 9l-5 5M2 10v4h4" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(180 8 8)"/></svg>'
+  b.innerHTML = open ? '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M14 2L9.5 6.5M9.5 3v3.5H13M2 14l4.5-4.5M6.5 13V9.5H3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     : '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14l5-5M2 10v4h4M14 2L9 7M10 2h4v4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 }
 function relabel() {
@@ -165,14 +167,8 @@ function draw() {
   for(let lat=-60;lat<=60;lat+=30)curve(Array.from({length:181},(_,i)=>[lat,i*2-180]));
   for(let lon=-180;lon<180;lon+=30)curve(Array.from({length:91},(_,i)=>[i*2-90,lon]));
   // All candidates share their 3D colours; draw numbered comparison pins last.
-  const colors = mapSiteColors(), pins = LLSN().pins?.() || [];
-  const pinnedIds = new Set(pins.map(p => p.id));
-  for (const s of LLSN().state.sites) {
-    if (pinnedIds.has(s.id)) continue;
-    const q = project(s.lat, s.lon); if (!q.front) continue;
-    g.fillStyle = colors.get(s.id) || '#EDEDED'; g.strokeStyle = '#0a0a0b'; g.lineWidth = dpr;
-    g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 2 * dpr, 0, 7); g.fill(); g.stroke();
-  }
+  // Only the candidates selected in the left card are drawn (their numbered pins, below); none selected: an empty Moon.
+  const pins = LLSN().pins?.() || [];
   // relay towers of the compared candidates (Relay tower switch): green ring at the tower's own position, thin line from the site
   for (const k of LLSN().relayMarks || []) {
     const q = project(k.lat, k.lon), q0 = project(k.from.lat, k.from.lon); if (!q.front) continue;
@@ -199,7 +195,8 @@ function draw() {
   }
   if(lastPick){const q=project(lastPick.lat,lastPick.lon);if(q.front){g.fillStyle='#fff';g.font=`${16*dpr}px sans-serif`;g.fillText('★',R+q.x*R-7*dpr,R-q.y*R);}}
   const f = LLSN().state.sites.find(x => x.id === LLSN().focus);
-  if (f) { const q = project(f.lat, f.lon); if (q.front) { g.strokeStyle = colors.get(f.id) || '#EDEDED'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 4 * dpr, 0, 7); g.stroke(); } }
+  const fp = f && pins.find(p => p.id === f.id);   // the focus ring is drawn for a selected candidate only, in its list colour
+  if (fp) { const q = project(f.lat, f.lon); if (q.front) { g.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--c' + fp.n).trim() || '#EDEDED'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 4 * dpr, 0, 7); g.stroke(); } }
 }
 function fly(lat, lon) {
   const g = LLSN().globe; if (!g) return;

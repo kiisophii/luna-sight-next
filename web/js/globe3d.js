@@ -576,6 +576,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   .g3-cluster-panel.g3-fit button span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
   .g3-site.g3-dotonly{color:transparent!important;text-shadow:none!important}.g3-site.g3-dotonly:hover,.g3-site.g3-dotonly:focus-visible{color:inherit!important;z-index:2}
+  .g3-site.g3-unpinned{display:none!important}
   .ls-globe .g3-site[data-map-color]:not([data-n]){color:var(--map-site-color)}
   .ls-globe .g3-site[data-map-color]:not([data-n])::before{background:var(--map-site-color)}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
@@ -670,8 +671,13 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   }
   // declutter() runs every few frames and every 400 ms: rewriting the +N text each time replaced the text node under a
   // pressed mouse, and the browser then fired no click (first click on +16 sometimes did nothing). Write only on change.
-  function setClusterButton(button,text,members,label){
-    if(button.textContent!==text)button.textContent=text;
+  // A group made of selected candidates only (up to 4) shows their numbers in the list colours ('#1 #2'); otherwise '+N'.
+  function clusterLab(members){
+    const ns=members.map(m=>m.el.dataset.n).filter(Boolean).sort((x,y)=>x-y);
+    return ns.length===members.length&&ns.length<=4?{text:ns.map(n=>'#'+n).join(' '),html:ns.map(n=>`<b style="color:var(--c${n});font-weight:600">#${n}</b>`).join(' ')}:{text:'+'+members.length};
+  }
+  function setClusterButton(button,text,members,label,html){
+    if(button.dataset.lab!==text){button.dataset.lab=text;if(html)button.innerHTML=html;else button.textContent=text;}
     if(button.dataset.members!==members)button.dataset.members=members;
     if(button.getAttribute('aria-label')!==label)button.setAttribute('aria-label',label);
   }
@@ -685,7 +691,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     const blockers=(typeof opts.labelBlockers==='function'?opts.labelBlockers():[]).map(q=>({x0:q.left,y0:q.top,w:q.width,h:q.height}));
     const overlaps=(a,b,pad=3)=>a.x0<b.x0+b.w+pad&&b.x0<a.x0+a.w+pad&&a.y0<b.y0+b.h+pad&&b.y0<a.y0+a.h+pad;
     const kept=[...blockers], candidates=[], blocked=new Map();   // blocker index -> sites whose dot sits under that box
-    for(const m of siteEls){m.el.style.visibility='';m.el.classList.remove('g3-dotonly');if(!m.box||!m.point)continue;
+    for(const m of siteEls){m.el.style.visibility='';m.el.classList.remove('g3-dotonly');if(!m.box||!m.point||m.el.classList.contains('g3-unpinned'))continue;   // unpinned sites are not on the map: no label, no dot, not counted in a +N group
       m.lw=m.el.offsetWidth||m.lw||80;
       m.el.style.transform=`translate(${m.flip?m.point.x-m.lw+7:m.point.x-7}px,${m.point.y-7}px)`;
       const edge=m.point.x<(labelIns?.left||0)+7?'left':m.point.x>overlay.clientWidth-(labelIns?.right||0)-7?'right':m.point.y<(labelIns?.top||0)+7?'top':null;
@@ -705,7 +711,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     for(const members of groups.filter(g=>g.length>1)){
       const key=members.map(m=>m.s.id).sort().join('|');used.add(key);
       let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster';overlay.append(button);clusterButtons.set(key,button);}
-      setClusterButton(button,`+${members.length}`,key,lang==='ko'?`가까운 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} nearby landing sites`);
+      {const cl=clusterLab(members);setClusterButton(button,cl.text,key,lang==='ko'?`가까운 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} nearby landing sites`,cl.html);}
       button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
       const x=members.reduce((n,m)=>n+m.point.x,0)/members.length,y=members.reduce((n,m)=>n+m.point.y,0)/members.length;
       const bw=button.offsetWidth,bh=button.offsetHeight;
@@ -717,7 +723,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     for(const [bi,members]of blocked){
       const key='under:'+bi+':'+members.map(m=>m.s.id).sort().join('|');used.add(key);
       let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster g3-under';overlay.append(button);clusterButtons.set(key,button);}
-      setClusterButton(button,`+${members.length}`,members.map(m=>m.s.id).join('|'),lang==='ko'?`패널·상자에 가려진 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} landing sites hidden under a panel`);
+      {const cl=clusterLab(members);setClusterButton(button,cl.text,members.map(m=>m.s.id).join('|'),lang==='ko'?`패널·상자에 가려진 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} landing sites hidden under a panel`,cl.html);}
       button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
       const bw=button.offsetWidth||34,bh=button.offsetHeight||26;
       const mx=members.reduce((n,m)=>n+m.point.x,0)/members.length+origin.left, my=members.reduce((n,m)=>n+m.point.y,0)/members.length+origin.top;   // keep the button near the hidden dots

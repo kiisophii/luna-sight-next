@@ -82,7 +82,7 @@ function cumulative(bits, m) {
 }
 
 function chartSVG(series, n, i0) {
-  const W = 360, H = 156, L = 26, R = 30, T = 8, B = 20, pw = W - L - R, ph = H - T - B;
+  const W = 301, H = 100, L = 26, R = 30, T = 8, B = 20, pw = W - L - R, ph = H - T - B;
   const X = k => L + (k / Math.max(1, n - 1)) * pw, Y = v => T + (1 - v / 100) * ph;
   let g = [0, 50, 100].map(v => `<line x1="${L}" x2="${L + pw}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--n-line)" ${v === 50 ? 'stroke-dasharray="2 3"' : ''}/><text x="${L - 5}" y="${Y(v) + 3}" text-anchor="end">${v}</text>`).join('');
   g += Array.from({ length: 5 }, (_, j) => { const k = Math.round((n - 1) * j / 4); return `<text x="${X(k)}" y="${H - 5}" text-anchor="${j === 0 ? 'start' : j === 4 ? 'end' : 'middle'}">${md(i0 + k)}</text>`; }).join('');
@@ -156,6 +156,8 @@ async function render() {
 }
 
 function build() {
+  const moreArrow = document.querySelector('#ls-tray .tray-more > span[aria-hidden="true"]');
+  if (moreArrow) moreArrow.innerHTML = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v11m-4-4 4 4 4-4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const host = document.getElementById('tray-cat'); if (!host) return;
   host.innerHTML = `<div class="tc-tabs" role="group">${Object.entries(CATS).map(([k, c]) => `<button type="button" data-c="${k}" aria-pressed="${k === cat}" style="--ul:${k === 'sun' ? 'var(--sun)' : 'var(--n-mute)'}">${esc(t(c.tab))}</button>`).join('')}</div>
     <div class="tc-scroll"><div class="tc-h"></div><p class="tc-desc"></p><div class="tc-body"></div></div>`;

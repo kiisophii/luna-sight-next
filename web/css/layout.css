@@ -1179,3 +1179,29 @@ body.on-about { overflow-x: clip; }
 .ls-left > .ls-cond.folded { padding-bottom: 0; }
 .ls .pk-item { padding: 0; }
 .ls-left > .ls-cond.folded { min-height: 113px; box-sizing: border-box; }
+
+/* Bundle 8 — measurements from docs/design_sync; no practice code. */
+@media (min-width: 1100px) {
+  #ls-tray .tray-main { margin-top: 37px; gap: 15px; }
+  /* Keep the header, tabs, scroll content and footer on one 316px line at 1440. */
+  #ls-tray > .ls-card-head,
+  #ls-tray > .tray-empty,
+  #ls-tray > .tray-main { margin-right: 30px; min-width: 0; }
+  #ls-tray .tc-scroll { margin-right: -15px; padding-right: 15px; scrollbar-width: thin; }
+}
+#ls-tray .tc-chart { width: calc(100% - 15px); max-width: 100%; height: 100px; flex: none; }
+#ls-tray .tc-row { min-height: 42px; }
+#ls-tray .tc-h { flex-wrap: wrap; }
+#ls-tray .tc-subs { min-width: 0; flex-wrap: wrap; }
+#ls-tray .val-badge { padding: 2px 0; border: 0; border-radius: 0; background: transparent; }
+#ls-tray .tray-more svg { width: 16px; height: 16px; flex: none; }
+/* Same circular 15px glyph; existing enlarged hit areas and accessible labels remain. */
+.ls :is(.info, .info-i, .fc-i, .tc-i) {
+  border: 0; border-radius: 50%; color: #9C9CA1; font-size: 0;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'%3E%3Ccircle cx='7.5' cy='7.5' r='6.25' fill='none' stroke='%239C9CA1' stroke-width='1.25'/%3E%3Cpath d='M7.5 6.5v4M7.5 4.5v.1' fill='none' stroke='%239C9CA1' stroke-width='1.25' stroke-linecap='round'/%3E%3C/svg%3E") center / 15px 15px no-repeat;
+}
+#ls-tray .tc-i { width: 22px; height: 22px; flex: none; }
+@media (max-width: 1099px) {
+  #ls-tray .tray-main { min-width: 0; }
+  #ls-tray .tc-tabs button { white-space: normal; overflow-wrap: anywhere; }
+}

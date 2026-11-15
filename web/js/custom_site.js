@@ -114,7 +114,7 @@ function init() {
     if (mv) { e.preventDefault(); setInputs(Math.max(-90, Math.min(90, p.lat + mv[0])), wrapLon(p.lon + mv[1])); }
     else if (e.key === 'Enter') { e.preventDefault(); submit(); }
   });
-  new ResizeObserver(drawMap).observe(canvas);
+  new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => drawMap())).observe(canvas);
   window.addEventListener('llsn:lang', relabel);
   window.addEventListener('llsn:sites', drawMap);
   window.addEventListener('llsn:pickpoint', e => { const d = e.detail || {}; window.LLSN.pickPoint(d.lat, d.lon, d); });

@@ -1528,3 +1528,6 @@ body.on-about .ls-export { display: none; }
 .ls-minimap .mm-nw,.ls-minimap .mm-se { cursor:nwse-resize; } .ls-minimap .mm-ne,.ls-minimap .mm-sw { cursor:nesw-resize; }
 .ls-minimap :focus-visible { outline:2px solid #ededed; outline-offset:-2px; }
 @media (prefers-reduced-motion:reduce) { .ls-minimap,.ls-minimap.mm-anim { transition:none; } }
+
+/* ---- headings and sections that take script focus: no ring after a mouse / touch move (Safari), ring stays for keyboard users */
+html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabindex="-1"]:focus-visible { outline: none; }

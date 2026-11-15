@@ -61,7 +61,7 @@ function build() {
   document.getElementById('cards')?.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) setFocus(c.dataset.id); });
   canvas.addEventListener('pointermove', onHover);
   canvas.addEventListener('pointerleave', () => { hoverLine.innerHTML = '&nbsp;'; });
-  new ResizeObserver(throttle(draw, 50)).observe(sec.querySelector('.hz-wrap'));
+  { const th = throttle(draw, 50); let q = 0; new ResizeObserver(() => { if (!q) q = requestAnimationFrame(() => { q = 0; th(); }); }).observe(sec.querySelector('.hz-wrap')); }   // redraw after layout, not inside the observer
 
   const redraw = throttle(draw, 60);
   window.addEventListener('llsn:time', redraw);

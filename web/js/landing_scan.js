@@ -98,7 +98,7 @@ function init() {
   window.addEventListener('llsn:sites', run);
   window.addEventListener('llsn:window', () => { if (scan) { markCurrent(); draw(); } });
   window.addEventListener('llsn:lang', () => { translate(sec); draw(); });
-  new ResizeObserver(() => draw()).observe(svg);
+  new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => draw())).observe(svg);
   run();
 }
 

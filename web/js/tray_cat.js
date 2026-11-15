@@ -166,7 +166,7 @@ function build() {
   // the middle part scrolls; fade its last 28 px only while more content is below
   const sc = host.querySelector('.tc-scroll');
   const fade = () => sc.classList.toggle('more', sc.scrollTop + sc.clientHeight < sc.scrollHeight - 2);
-  sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver(fade).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
+  sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => fade())).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
   host.addEventListener('click', e => {
     const c = e.target.closest('.tc-tabs button'); if (c) { cat = c.dataset.c; save(); render(); relabel(); return; }
     const s = e.target.closest('.tc-subs button'); if (s) { sub[cat] = s.dataset.s; save(); render(); }

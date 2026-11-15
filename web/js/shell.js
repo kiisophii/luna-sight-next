@@ -362,7 +362,7 @@ async function route() {
     window.dispatchEvent(new Event('resize'));
     const target = location.hash.length > 6 ? document.getElementById(location.hash.slice(1)) : null;
     if (target) { target.closest('details')?.setAttribute('open', ''); target.scrollIntoView(); } else window.scrollTo(0, 0);
-    $('#view-about h1')?.focus({ preventScroll: true });
+    $('#view-about h1')?.focus({ preventScroll: true });   // ring only when the keyboard was used last (html[data-kbd])
   } else if (wasOn) {
     window.scrollTo(0, 0);
     window.dispatchEvent(new Event('resize'));          // the globe canvas was hidden: let it re-measure
@@ -417,7 +417,7 @@ fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('
       const col = sc.querySelector('thead th:not(.lbl)')?.getBoundingClientRect().width || 178;
       sc.scrollBy({ left: Number(b.dataset.dir) * col, behavior: 'smooth' });
     });
-    sc.addEventListener('scroll', upd, { passive: true }); new ResizeObserver(upd).observe(sc); upd();
+    sc.addEventListener('scroll', upd, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => upd())).observe(sc); upd();
     // mouse drag (touch already scrolls natively); clicks on buttons/links still work
     let d = null;
     sc.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('button, a, [role=button], input, select')) return; d = { x: e.clientX, l: sc.scrollLeft, moved: false }; });
@@ -533,3 +533,7 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 // date box: the formatted label button opens the native picker; typing still works in the input when it has focus
 (() => { const b = document.getElementById('c1-date-btn'), i = document.getElementById('c1-date'); if (!b || !i) return;
   b.addEventListener('click', () => { try { i.showPicker(); } catch (e) { i.focus(); } }); })();
+
+// last input was the keyboard? (used to hide the focus ring on headings that receive script focus after a mouse click)
+(() => { const h = document.documentElement; window.addEventListener('keydown', e => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ' || e.key.startsWith('Arrow')) h.dataset.kbd = '1'; }, true);
+  for (const ev of ['pointerdown', 'mousedown', 'touchstart']) window.addEventListener(ev, () => { delete h.dataset.kbd; }, { capture: true, passive: true }); })();

@@ -154,15 +154,21 @@ async function start() {
     return;
   }
   window.LLSN.globe = g;
-  // First view faces the sunlit side: the camera longitude turns to the sub-solar longitude of the start time (the
-  // latitude stays as chosen above, so the south-polar candidates remain in view). A low-latitude focus site pulls
-  // the centre toward itself by at most 50 deg, which keeps more than 80 % of the disc lit. A shared camera (?gv=) wins.
+  // First view: the pole of the focus site in the middle and the sunlit side toward the camera. With a polar focus
+  // (all default candidates) the camera sits at about 60 deg latitude on that side and at the sub-solar longitude of
+  // the start time; if less than half of the disc would be lit, the latitude moves toward the equator in 5 deg steps.
+  // A low-latitude focus keeps its own latitude and pulls the longitude toward itself by at most 50 deg. ?gv= wins.
   if (!(window.__llsnGV ?? new URLSearchParams(location.search).get('gv'))) {
     try {
-      const d = g.sunDirection(), sunLon = Math.atan2(d.y, d.x) * 180 / Math.PI, v0 = g.getView(), s0 = siteById(focus);
+      const d = g.sunDirection(), R2 = 180 / Math.PI, sunLon = Math.atan2(d.y, d.x) * R2, v0 = g.getView(), s0 = siteById(focus);
       const wrap = x => ((x % 360) + 540) % 360 - 180;
-      const off = s0 && Math.abs(s0.lat) < 70 ? Math.max(-50, Math.min(50, wrap(s0.lon - sunLon))) : 0;
-      if (isFinite(sunLon)) g.setView({ lat: v0.lat, lon: wrap(sunLon + off), range: v0.range, tilt: v0.tilt, heading: v0.heading });
+      const lit = (lat, lon) => { const a = lat / R2, b = lon / R2; return (1 + Math.cos(a) * Math.cos(b) * d.x + Math.cos(a) * Math.sin(b) * d.y + Math.sin(a) * d.z) / 2; };   // lit share of the disc seen from above (lat, lon)
+      const polar = !s0 || Math.abs(s0.lat) >= 70;
+      const off = polar ? 0 : Math.max(-50, Math.min(50, wrap(s0.lon - sunLon)));
+      const lon = wrap(sunLon + off);
+      let lat = polar ? (s0 && s0.lat > 0 ? 60 : -60) : v0.lat;
+      if (polar) while (lit(lat, lon) < 0.5 && Math.abs(lat) > 5) lat -= 5 * Math.sign(lat);
+      if (isFinite(sunLon)) { g.setView({ lat, lon, range: v0.range, tilt: v0.tilt, heading: v0.heading }); window.LLSN.firstViewLit = Math.round(lit(lat, lon) * 100); }
     } catch (e) { /* keep the default view */ }
   }
   stage.classList.add('ready');

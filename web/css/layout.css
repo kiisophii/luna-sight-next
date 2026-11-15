@@ -559,8 +559,7 @@ body:not(.on-about) .ab-next { display: none; }
 .ls-scrollhint { height: var(--ctl-m); border-radius: var(--r-pill); padding: 0 var(--sp-4); font-weight: 500; font-size: var(--fs-body); border-color: var(--line-2); }
 /* #26 three screens: gentle snap at the start of each screen (proximity, so long sections still scroll freely) */
 @media (min-width: 1100px) {
-  html:not(:has(body.on-about)) { scroll-snap-type: y proximity; }
-  .ls-screen, #ls-compare, #ls-brief { scroll-snap-align: start; }
+  /* no scroll snap: at the top of the comparison the proximity snap pulled the page back on every wheel notch upward (it felt stuck) */
   #ls-compare, #ls-brief { scroll-margin-top: var(--head-h); }
 }
 .ls-pages { position: fixed; z-index: 42; right: 4px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: var(--sp-2); }
@@ -1656,6 +1655,8 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls-toolbar .tb-zoom-sep { display: block; }
   .ls .ls-toolbar .tb-zoom button { width: 32px; height: 32px; padding: 0; border: 0; border-radius: 9px; background: none; color: #9C9CA1; display: grid; place-items: center; }
   .ls .ls-toolbar .tb-zoom button:hover { color: #EDEDED; background: rgba(237, 237, 237, .06); }
+}
+/* one-row legend at every width (phones too: the box sits over the lower-left of the map, see shell.js) */
   .ls .map-legend { display: block; box-sizing: border-box; width: 252px; height: 32px; padding: 0 5px 0 8px; background: rgba(6, 8, 12, .72); border: 1px solid rgba(255, 255, 255, .12); border-radius: 6px; color: #9AA4B5; font: 12px var(--font); overflow: visible; }
   .ls .map-legend[hidden] { display: none; }
   .ls .map-legend .lg-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; height: 30px; margin: 0; }
@@ -1668,7 +1669,6 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .map-legend .lg-tip { display: none; position: absolute; inset: auto; right: 0; left: auto; bottom: auto; top: calc(100% + 6px); transform: none; margin: 0; pointer-events: none; width: 252px; box-sizing: border-box; padding: 8px 10px; background: #16171A; border: 1px solid #2A2A2D; border-radius: 8px; color: #C9CBCE; font-size: 11.5px; line-height: 1.45; box-shadow: 0 8px 24px rgba(0, 0, 0, .45); z-index: 30; }
   .ls .map-legend .lg-tip p { margin: 0 0 4px; } .ls .map-legend .lg-tip p:last-child { margin: 0; } .ls .map-legend .lg-tip p:first-child { color: #EDEDED; font-weight: 500; }
   .ls .map-legend .lg-i:hover ~ .lg-tip, .ls .map-legend .lg-row:has(.lg-i:hover) + .lg-tip, .ls .map-legend .lg-row:has(.lg-i:focus-visible) + .lg-tip, .ls .map-legend.tip-on .lg-tip { display: block; }
-}
 @media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 537px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
 /* Chaei review: minimap expand icon centred in its 30 px box (the 11 px side padding pushed the 14 px icon right) */
 .ls-minimap .mm-exp, .ls-minimap.open .mm-exp { padding: 0; }
@@ -1767,3 +1767,8 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
   #ls-brief h4 { break-after: avoid; page-break-after: avoid; }   /* a small heading stays with what follows */
   #ls-brief .sc-sum, #ls-brief .mini-tbl, #ls-brief .ls-detail .ls-panel { break-inside: avoid; page-break-inside: avoid; }
 }
+/* ---- dock time axis with two labels (short axis): first date left-aligned, last date right-aligned so they never touch */
+#tl-ticks .lb.start { transform: none; }
+#tl-ticks .lb.end { transform: translateX(-100%); }
+
+@media (max-width: 1099px) { .ls .map-legend { left: 12px; right: auto; bottom: auto; top: var(--lg-top, 440px) !important; max-width: calc(100vw - 24px); z-index: 20; } .ls .map-legend .lg-tip { left: 0; right: auto; top: auto; bottom: calc(100% + 6px); max-width: calc(100vw - 24px); } }

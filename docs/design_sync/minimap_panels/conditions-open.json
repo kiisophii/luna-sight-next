@@ -1,0 +1,258 @@
+[
+  {
+    "width": 1920,
+    "lang": "en",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1920,
+    "lang": "ko",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1440,
+    "lang": "ko",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1280,
+    "lang": "en",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1280,
+    "lang": "ko",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1100,
+    "lang": "en",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "width": 1100,
+    "lang": "ko",
+    "actions": [
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      },
+      {
+        "action": "add condition",
+        "open": true
+      },
+      {
+        "action": "header toggle",
+        "open": true
+      }
+    ],
+    "errors": [],
+    "requests": []
+  }
+]

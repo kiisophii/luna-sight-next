@@ -48,7 +48,9 @@ def check_terrain_y(data, sites, err):
             require(obj['thresholds_deg']==thresholds,'thresholds differ from index')
             require(obj['verification_status']=='author_checks_only_team_verification_pending','unexpected verification status')
             polar=site['lat']<=-75;kind='polar_detailed' if polar else 'coarse_relay_comparison'
-            assert obj['kind']==entry['kind']==kind,'product kind does not match catalogue latitude'
+            # nonpolar_detailed: SLDEM2015 lander-scale slope from pipeline/nonpolar_slope.py (|lat| < 60 only)
+            fine_np=not polar and obj['kind']=='nonpolar_detailed' and abs(site['lat'])<60
+            assert obj['kind']==entry['kind']==('nonpolar_detailed' if fine_np else kind),'product kind does not match catalogue latitude'
             inputs=obj['inputs']
             for key in ('producer_sha256','sites_sha256','relay_sha256','signature'):
                 require(isinstance(inputs.get(key),str) and re.fullmatch('[0-9a-f]{64}',inputs[key]) is not None,f'invalid input {key}')
@@ -64,7 +66,20 @@ def check_terrain_y(data, sites, err):
             require(box['slope_deg']==c['slope_deg'][i] and number(box['slope_deg']) and 0<=box['slope_deg']<=90,'relay stored slope mismatch')
             assert box['provenance'],'relay provenance missing'
             source=obj['source']
-            if not polar:
+            if fine_np:
+                res=source['resolution_m'];assert source['dem_name']=='SLDEM2015' and res==59.2 and entry['dem_resolution_m']==res,'unexpected SLDEM2015 resolution'
+                assert all(k in source for k in ('url','window_path','window_sha256','download_sha256')),'missing source provenance'
+                assert re.fullmatch('[0-9a-f]{64}',source['window_sha256']),'bad source window hash'
+                require(obj['method']['slope_window_cells']==3 and obj['method']['reference_radius_m']==1737400,'slope method mismatch')
+                require(number(obj['landing_slope_deg']) and 0<=obj['landing_slope_deg']<=90,'invalid landing slope')
+                assert set(obj['slope_by_radius_m'])=={'100','500','1000'},'missing radius distributions'
+                for radius,stats in obj['slope_by_radius_m'].items():
+                    vals=[stats[k] for k in ('median_deg','p95_deg','max_deg')]
+                    require(isinstance(stats['n'],int) and stats['n']>0 and all(number(v) and 0<=v<=90 for v in vals) and vals==sorted(vals),f'{radius}: invalid slope distribution')
+                    values=[stats['flat_fraction'][format(t,'g')] for t in thresholds]
+                    require(all(number(v) and 0<=v<=1 for v in values) and values==sorted(values),f'{radius}: invalid flat fraction')
+                require(obj['roughness_within_500m'] is None,'59 m product must not claim 50 m roughness')
+            elif not polar:
                 require(source['label']=='coarse (SLDEM2015 59 m / LDEM_64)','coarse source label missing')
                 require(entry['dem_resolution_m'] is None,'coarse index must not claim precise resolution')
                 for key in ('method','landing_slope_deg','slope_by_radius_m','roughness_within_500m'):

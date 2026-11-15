@@ -39,7 +39,7 @@ addStrings({
   selTimeUTC: 'Selected time (UTC)', speedAria: 'Playback speed (animation only)', speedNote: 'speed changes the animation only',
   play: 'Play', pause: 'Pause', scrubAria: 'Selected time within the period. Arrow keys = 1 hour, Shift + arrow = 1 day.',
   scrubFor: 'Bands: {s} · top band = sunlit, bottom band = Earth in view', details: 'See details below ↓', collapseTray: 'Collapse tray',
-  periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site check',
+  periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site checks', expH: 'Export this analysis', expLead: 'Save the current conditions, candidates, and comparison as a file.', expPdf: 'PDF report', expPdfSub: 'For print and sharing',
   hudLine1: 'Earth-set edge (Earth-visibility limit) · LROC color · LOLA terrain',
   exportPdf: 'Export PDF', exportPdfTip: 'Print or save this comparison as a PDF (browser print dialog)', hudLine2: '{t}', hudSrc: 'Sun and Earth positions: JPL DE440s ephemeris (selected time, UTC)', pickOn: 'Click the Moon to place a point · Esc to cancel', cancel: 'Cancel',
   spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
@@ -72,7 +72,7 @@ addStrings({
   selTimeUTC: '선택 시간 (UTC)', speedAria: '재생 속도 (애니메이션만)', speedNote: '속도는 애니메이션만 바꿈',
   play: '재생', pause: '일시정지', scrubAria: '기간 안의 선택 시각. 화살표 = 1시간, Shift + 화살표 = 1일.',
   scrubFor: '띠: {s} · 위 띠 = 햇빛, 아래 띠 = 지구 보임', details: '아래 상세 보기 ↓', collapseTray: '비교 접기',
-  periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증',
+  periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증', expH: '이 분석 내보내기', expLead: '지금 조건, 후보, 비교를 파일로 저장합니다.', expPdf: 'PDF 보고서', expPdfSub: '인쇄·공유용',
   hudLine1: '지구가 지는 경계 · LROC 컬러 · LOLA 지형',
   exportPdf: 'PDF로 내보내기', exportPdfTip: '이 비교를 인쇄하거나 PDF로 저장합니다 (브라우저 인쇄 창)', hudLine2: '{t}', hudSrc: '태양·지구 위치: JPL DE440s 천체력 (선택 시각, UTC)', pickOn: '달을 눌러 지점을 고르세요 · Esc 취소', cancel: '취소',
   spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_light: '선택 시각의 햇빛', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
@@ -111,7 +111,10 @@ const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko : s.name);
 const rowName = s => (getLang() === 'ko' && s.name_ko ? s.name_ko.replace(/^아르테미스 후보:\s*/, '').replace(/\s*\([^)]*\)\s*$/, '') : (s.short || s.name));
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
-const fmtUTC = i => core.hourToDate(i).toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** Selected time: EN 'Nov 15, 2026 · 04:00 UTC', KR '2026-11-15 04:00 UTC'. */
+const fmtUTC = i => { const d = core.hourToDate(i), iso = d.toISOString();
+  return getLang() === 'ko' ? iso.replace('T', ' ').slice(0, 16) + ' UTC' : `${MON[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()} · ${iso.slice(11, 16)} UTC`; };
 const isoDay = i => core.hourToDate(i).toISOString().slice(0, 10);
 const dayStart = i => Math.floor(i / 24) * 24;
 const fmtDaysShort = d => (Math.abs(d - Math.round(d)) < 0.05 ? String(Math.round(d)) : d.toFixed(1));

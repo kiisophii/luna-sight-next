@@ -14,8 +14,8 @@ import { hourBits, gapStats, relayPeriod, getJSON } from './values.js';
 import * as core from './core.js';
 
 addStrings({
-  tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay tower', tcTerrain: 'Terrain',
-  tsRate: 'Sunlit share', tsDark: 'Longest dark', teRate: 'Visible share', teGap: 'Longest hidden', trMix: 'Link share', trGap: 'Longest gap',
+  tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay', tcTerrain: 'Terrain',
+  tsRate: 'Sunlit time', tsDark: 'Longest dark', teRate: 'Visible share', teGap: 'Longest hidden', trMix: 'Link share', trGap: 'Longest gap',
   ttSlope: 'Slope', ttHz: 'Horizon',
   tdSunRate: 'How the sunlit share builds up over the analysis period.',
   tdSunDark: 'Longest continuous stretch without sunlight in the period.',
@@ -68,7 +68,8 @@ const pct = f => (f == null || !isFinite(f) ? '—' : `${Math.round(f * 100)}`);
 const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko.replace(/^아르테미스 후보:\s*/, '').replace(/\s*\([^)]*\)\s*$/, '') : (s.short || s.name));
 const p2 = n => String(n).padStart(2, '0');
 const chip = n => `<span class="tc-chip num" style="--sc:var(--c${n})">${p2(n)}</span>`;
-const H0 = Date.UTC(2026, 0, 1), md = i => { const d = new Date(H0 + i * 3600e3); return `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())}`; };
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const H0 = Date.UTC(2026, 0, 1), md = i => { const d = new Date(H0 + i * 3600e3); return getLang() === 'ko' ? `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())}` : `${MON[d.getUTCMonth()]} ${d.getUTCDate()}`; };
 const sites = () => {
   const L = LLSN(); const st = L.state?.sites || [];
   return (L.pins?.() || []).map(p => ({ s: st.find(x => x.id === (p.id || p)), n: p.n || L.pinNo?.(p.id || p) })).filter(x => x.s);

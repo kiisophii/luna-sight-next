@@ -3,6 +3,10 @@
 // scroll hint, About routing. Loaded BEFORE app.js (so the intro can count real data requests). No numbers computed here.
 import { t, getLang } from './i18n.js';
 import { addStrings } from './ui_shared.js';
+import { enhanceSelect } from './ui_select.js';
+
+// sort = text-button dropdown (Chaei #8)
+enhanceSelect(document.getElementById('sort'), { variant: 'text', align: 'left' });
 
 addStrings({
   skipBelow: 'Skip to the comparison', footSources: 'Sources',

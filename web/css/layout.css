@@ -113,10 +113,37 @@ body.ls { background: var(--bg); font-size: var(--fs-body, 13px); line-height: v
 #llsn-filters .fl-reset { height: 24px; padding: 0 .7em; font-size: 11.5px; }
 
 .ls-sites { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; position: relative; }
-.sort-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; font-size: 12px; }
-.sort-row select { flex: 0 1 200px; }
-.relay-row { display: flex; align-items: center; gap: .45em; margin-top: 8px; font-size: 12px; cursor: pointer; }
-.relay-row input { accent-color: var(--relay); width: 15px; height: 15px; }
+.sort-row { display: flex; align-items: center; margin-top: var(--sp-2); }
+/* relay card (Chaei #9) */
+.relay-card { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: var(--sp-3); margin-top: var(--sp-3); padding: var(--sp-3); border: 1px solid var(--line-1); border-radius: var(--r-card); background: var(--fill-1); cursor: pointer; }
+.relay-card .rc-ic { width: 20px; height: 20px; color: var(--relay); }
+.relay-card .rc-txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+.relay-card .rc-txt b { font-weight: 600; font-size: var(--fs-body); }
+.relay-card .rc-txt small { color: var(--muted); font-size: var(--fs-cap); }
+.switch { appearance: none; -webkit-appearance: none; margin: 0; width: 52px; height: 28px; border-radius: var(--r-pill); background: var(--fill-3); border: 1px solid var(--line-2); position: relative; cursor: pointer; transition: background var(--t-mid); flex: none; }
+.switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--text); transition: transform var(--t-mid); }
+.switch:checked { background: var(--relay); border-color: var(--relay); }
+.switch:checked::after { transform: translateX(24px); background: #06261d; }
+.switch:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+/* one dropdown look (ui_select.js; Chaei #8 #12) */
+.dd { position: relative; display: inline-flex; min-width: 0; }
+.dd .dd-native { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; }
+.dd-btn { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--sp-2); min-width: 0; width: 100%; font: inherit; color: var(--text); cursor: pointer; }
+.dd-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd-chev { width: 12px; height: 12px; flex: none; color: var(--muted); }
+.dd-box .dd-btn { height: var(--ctl-m); padding: 0 10px; border: 1px solid var(--line-2); border-radius: var(--r-ctl); background: var(--surface-2); }
+.dd-text .dd-btn { height: var(--ctl-s); padding: 0 var(--sp-1); border: 0; border-radius: var(--r-sm); background: transparent; font-size: var(--fs-body); }
+.dd-btn:hover { background: var(--fill-2); }
+.dd-btn[aria-expanded="true"] .dd-chev { transform: rotate(180deg); }
+.dd-list { position: absolute; z-index: 50; top: calc(100% + 4px); min-width: 100%; width: max-content; max-width: 320px; max-height: 320px; overflow: auto; padding: var(--sp-1); display: flex; flex-direction: column; gap: 2px;
+  background: #0C0E12; border: 1px solid var(--line-2); border-radius: var(--r-card); box-shadow: 0 12px 40px rgba(0,0,0,.6); }
+.dd-list.dd-left { left: 0; } .dd-list.dd-right { right: 0; }
+.dd-opt { all: unset; box-sizing: border-box; display: flex; align-items: center; min-height: var(--ctl-m); padding: 0 10px; border-radius: var(--r-ctl); font-size: var(--fs-body); color: var(--text); cursor: pointer; white-space: nowrap; }
+.dd-opt:hover { background: var(--fill-1); }
+.dd-opt[aria-selected="true"] { background: var(--fill-2); font-weight: 600; }
+.dd-opt:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.dd-opt[disabled] { opacity: .45; cursor: not-allowed; }
 .pk-list { list-style: none; margin: var(--sp-3) -4px 0 0; padding: 0 4px 0 0; overflow-y: auto; flex: 1 1 auto; min-height: 80px; display: flex; flex-direction: column; gap: var(--sp-2); }
 .pk-skel { height: 46px; flex: none; border-radius: var(--r-card); background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%); background-size: 200% 100%; animation: sk 1.4s infinite linear; }
 @keyframes sk { to { background-position: -200% 0; } }

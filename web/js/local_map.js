@@ -238,7 +238,7 @@ function drawCursor() {
   const p = grid.points[k], r = Math.floor(k / n), c = k % n;
   if (g) g.innerHTML = cursor >= 0 ? `<rect x="${PAD + c * P}" y="${PAD + (n - 1 - r) * P}" width="${P}" height="${P}" fill="none" stroke="${css('--text')}" stroke-width="1.4"/>` : '';
   const where = cursor >= 0 ? `${p.e_m / 1000} km ${t('lmEast')}, ${p.n_m / 1000} km ${t('lmNorth')}` : t('lmCentre');
-  readout.innerHTML = `${t('lmAt')}: ${where} · ${Math.abs(p.lat).toFixed(4)}°S ${p.lon.toFixed(4)}°E · ${t('lmHeight')} ${Math.round(p.h0_m)} m<br>` +
+  readout.innerHTML = `${t('lmAt')}: ${where} · ${Math.abs(p.lat).toFixed(4)}°${p.lat < 0 ? 'S' : 'N'} ${Math.abs(p.lon).toFixed(4)}°${p.lon < 0 ? 'W' : 'E'} · ${t('lmHeight')} ${Math.round(p.h0_m)} m<br>` +
     `<b class="sun">${t('lmSun')} ${pct(p.sun_frac)}</b> · <b class="earth">${t('lmEarth')} ${pct(p.earth_frac)}</b> · ` +
     `<b class="both">${t('lmBoth')} ${pct(p.both_frac)}</b> · ${t('lmDark')} ${fmtHours(p.longest_dark_h)}`;
 }

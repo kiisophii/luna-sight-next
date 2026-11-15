@@ -17,6 +17,8 @@ addStrings({
   vSiteNone: 'No PGDA point comparison for this site (outside the south-polar map).', vSiteUser: 'Your own point — no PGDA point comparison.',
   vLinks: 'PGDA product 69 · Mazarico et al. 2011 · About → validation',
   vNotNasa: 'A comparison with public data — not a NASA approval or endorsement.',
+  vpDefSun: 'PGDA-matched definition: mean visible disc fraction', vpDefEarth: 'PGDA-matched definition: any part of Earth’s disc',
+  vpApp: 'With the app’s own metric rules (Sun ≥ half the disc · Earth centre above the horizon): {s} pp / {e} pp',
   vAlt: 'Other definitions (details)', vAltRow: '{k}: MAE {m} pp, r {r}',
   alt_sun_mean_disc_fraction: 'Sun, mean disc fraction (headline)', alt_sun_any_part: 'Sun, any part of the disc', alt_sun_half_disc: 'Sun, ≥ half disc',
   alt_earth_centre: 'Earth, center above the horizon', alt_earth_any_part: 'Earth, any part of the disc (headline)',
@@ -34,6 +36,8 @@ addStrings({
   vSiteNone: '이 착륙지는 PGDA 지점 비교 없음 (남극 정밀 지도 범위 밖).', vSiteUser: '사용자 지점 — PGDA 지점 비교 없음.',
   vLinks: 'PGDA 제품 69 · Mazarico et al. 2011 · About → 검증',
   vNotNasa: '공개 자료와 비교한 결과이며 NASA의 승인이나 보증이 아닙니다.',
+  vpDefSun: 'PGDA와 같은 정의: 보이는 태양 원반 평균 비율', vpDefEarth: 'PGDA와 같은 정의: 지구 원반 일부라도 보임',
+  vpApp: '앱 지표 정의(태양 원반 절반 이상 · 지구 중심이 지평선 위)로는 {s}%p / {e}%p',
   vAlt: '다른 정의 (자세히)', vAltRow: '{k}: MAE {m}%p, r {r}',
   alt_sun_mean_disc_fraction: '태양, 원반 평균 비율 (대표값)', alt_sun_any_part: '태양, 원반 일부라도', alt_sun_half_disc: '태양, 원반 절반 이상',
   alt_earth_centre: '지구, 중심이 지평선 위', alt_earth_any_part: '지구, 원반 일부라도 (대표값)',
@@ -114,9 +118,10 @@ async function render() {
     <p class="vp-lead">${esc(fill(t('vpLead'), { n: v.n_points, w: v.window.replace('..', ' – ') }))}</p>
     <p class="vp-cap"><b>${esc(t('vpAvg').split(' · ')[0])}</b><span>${esc(t('vpAvg').split(' · ').slice(1).join(' · '))}</span></p>
     <div class="vp-rows">
-      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--sun)"><circle cx="8" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.6v1.8M8 12.6v1.8M1.6 8h1.8M12.6 8h1.8M3.5 3.5l1.3 1.3M11.2 11.2l1.3 1.3M3.5 12.5l1.3-1.3M11.2 4.8l1.3-1.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>${esc(t('vpSun'))}</span><b class="num">${H.sun}<small> pp</small></b></div>
-      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--earth)"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 8h12M8 2c2.2 2 2.2 10 0 12M8 2c-2.2 2-2.2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>${esc(t('vpEarth'))}</span><b class="num">${H.earth}<small> pp</small></b></div>
+      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--sun)"><circle cx="8" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.6v1.8M8 12.6v1.8M1.6 8h1.8M12.6 8h1.8M3.5 3.5l1.3 1.3M11.2 11.2l1.3 1.3M3.5 12.5l1.3-1.3M11.2 4.8l1.3-1.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>${esc(t('vpSun'))}<small class="vp-def">${esc(t('vpDefSun'))}</small></span><b class="num">${H.sun}<small> pp</small></b></div>
+      <div><svg class="vp-ic" viewBox="0 0 16 16" aria-hidden="true" style="color:var(--earth)"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 8h12M8 2c2.2 2 2.2 10 0 12M8 2c-2.2 2-2.2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>${esc(t('vpEarth'))}<small class="vp-def">${esc(t('vpDefEarth'))}</small></span><b class="num">${H.earth}<small> pp</small></b></div>
     </div>
+    ${v.alt_definitions?.sun_half_disc && v.alt_definitions?.earth_centre ? `<p class="vp-note vp-app">${esc(fill(t('vpApp'), { s: pp(v.alt_definitions.sun_half_disc.mae_pp), e: pp(v.alt_definitions.earth_centre.mae_pp) }))}</p>` : ''}
     <p class="vp-note">${esc(t('vpSmall'))}</p>
     <p class="vp-note">${esc(fill(t('vScopeTxt'), { n: v.n_points, seed: v.seed }))}</p>
     <p class="vp-note">r · ${esc(t('vpSun'))} ${H.sunR} · ${esc(t('vpEarth'))} ${H.earthR}</p>

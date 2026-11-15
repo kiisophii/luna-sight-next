@@ -40,3 +40,6 @@
 .ls-logo-slot:not(:empty) ~ .ls-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ls-brand:has(.ls-logo-slot:not(:empty)) .ls-out { align-self: center; }
 @media (max-width: 1180px) { .ls-logo-slot:not(:empty) { height: 30px; } .ls .ls-logo-slot img { height: 8.8px; } }
+
+/* validation popup: short definition under each headline label (trust.js) */
+.val-pop .vp-def { display: block; font-size: 10.5px; line-height: 1.3; color: var(--n-mute, #9C9CA1); font-weight: 400; margin-top: 1px; }

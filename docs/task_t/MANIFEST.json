@@ -1,0 +1,259 @@
+{
+ "name": "gmaps_ppd8_float32_v1",
+ "format": "NumPy .npy v1.0, little-endian float32 ('<f4'), C order (row-major); files are the original memmaps of the producing run, copied byte for byte (no recompression, no quantisation)",
+ "producer": "Soyun Jeong (card 9 run, PR #9, commit 7de0271); engine pipeline/global_maps.py by Sua Kim",
+ "release": {
+  "repo": "kiisophii/lunar-landing-site-navigator",
+  "tag": "task-t-gmaps-ppd8-float32-v1",
+  "url": "https://github.com/kiisophii/lunar-landing-site-navigator/releases/tag/task-t-gmaps-ppd8-float32-v1",
+  "download": "https://github.com/kiisophii/lunar-landing-site-navigator/releases/download/task-t-gmaps-ppd8-float32-v1/<file>"
+ },
+ "grid": {
+  "ppd": 8,
+  "shape": [
+   1440,
+   2880
+  ],
+  "rows": "r = 0..1439, north to south",
+  "cols": "c = 0..2879, west to east",
+  "lat_centre_deg": "90 - (r + 0.5) / 8",
+  "lon_centre_deg": "-180 + (c + 0.5) / 8",
+  "frame": "MOON_ME (mean Earth / polar axis, DE421), sphere R = 1737.4 km",
+  "spacing_deg": 0.125,
+  "spacing_km_equator": 3.7904,
+  "note": "pixel centres; meta.json 'grid' string is the producer's own statement"
+ },
+ "no_data": "NaN = cell not computed (rows with done.npy == 0). This run has done = 1 for all 1440 rows and 0 NaN in every field",
+ "fields": {
+  "sun": "mean visible fraction of the solar disc (radius 0.2666 deg) above the 360-azimuth horizon mask, averaged over 21,912 ephemeris samples (every 2 h, 2026-01-01T00Z..2030-12-31T22Z); 0..1. NOT the sunlit-hours fraction of core.js",
+  "earth": "fraction of the same samples with the Earth centre (topocentric) strictly above the mask; 0..1",
+  "both": "fraction of the same samples with disc fraction >= 0.5 AND Earth centre above the mask; 0..1",
+  "h0": "terrain height (m) at the cell centre above the 1737.4 km sphere, bilinear from LDEM_64 (LDEM_16 if NaN)",
+  "maskmax": "maximum of the 360-azimuth horizon mask elevation (deg) at the cell centre (observer h0 + 2 m)"
+ },
+ "files": [
+  {
+   "name": "sun.npy",
+   "bytes": 16588928,
+   "sha256": "b1f39c54e634b62f58066f026b59dd67540931bc526409cb716328cba0347f6c",
+   "npy": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 0.7604305744171143,
+   "definition": "mean visible fraction of the solar disc (radius 0.2666 deg) above the 360-azimuth horizon mask, averaged over 21,912 ephemeris samples (every 2 h, 2026-01-01T00Z..2030-12-31T22Z); 0..1. NOT the sunlit-hours fraction of core.js"
+  },
+  {
+   "name": "earth.npy",
+   "bytes": 16588928,
+   "sha256": "82a7bcdb249c4a5a19a91e36fd39011dcc97a43db7440ea56665d249777c6613",
+   "npy": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 1.0,
+   "definition": "fraction of the same samples with the Earth centre (topocentric) strictly above the mask; 0..1"
+  },
+  {
+   "name": "both.npy",
+   "bytes": 16588928,
+   "sha256": "f8d5903ac6a6de957f83cc85c129af9e66a0430b19fe5ef46236a2e1f706d073",
+   "npy": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 0.5795910954475403,
+   "definition": "fraction of the same samples with disc fraction >= 0.5 AND Earth centre above the mask; 0..1"
+  },
+  {
+   "name": "h0.npy",
+   "bytes": 16588928,
+   "sha256": "0075b4dbc7d9fb71ff9ab4016a02f6780910c4461c2440e2d151ee6fdba124a3",
+   "npy": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": -8956.4248046875,
+   "max": 10689.5654296875,
+   "definition": "terrain height (m) at the cell centre above the 1737.4 km sphere, bilinear from LDEM_64 (LDEM_16 if NaN)"
+  },
+  {
+   "name": "maskmax.npy",
+   "bytes": 16588928,
+   "sha256": "af20e8c2053f1f72b281a9962504107bf341ef8db6b1b7e21d21e0f230d6ce88",
+   "npy": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": -0.16269974410533905,
+   "max": 79.03247833251953,
+   "definition": "maximum of the 360-azimuth horizon mask elevation (deg) at the cell centre (observer h0 + 2 m)"
+  },
+  {
+   "name": "done.npy",
+   "bytes": 1568,
+   "sha256": "0a7b0388f6e4ea09a0a0cd0475110256bfc56bbd2352e6957034e74772c52551",
+   "npy": {
+    "version": "1.0",
+    "descr": "|u1",
+    "shape": [
+     1440
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "all_rows_done": true,
+   "rows_done": 1440
+  },
+  {
+   "name": "meta.json",
+   "bytes": 771,
+   "sha256": "d6241fe542dca126909fc0cbfc8845b285056168308c8fcabefcad155c4e65d0"
+  }
+ ],
+ "computation": {
+  "meta_json": {
+   "ppd": 8,
+   "nlat": 1440,
+   "nlon": 2880,
+   "signature": {
+    "engine_version": 1,
+    "naz": 360,
+    "near_km": 150.0,
+    "max_km": 300.0,
+    "step_frac": 0.01,
+    "n_steps": 283,
+    "obs_height_m": 2.0,
+    "sun_radius_deg": 0.2666,
+    "near": {
+     "name": "LDEM_64",
+     "file": "ldem_64_float.img",
+     "bytes": 1061683200,
+     "res_m": 473.8
+    },
+    "far": {
+     "name": "LDEM_16",
+     "file": "ldem_16_float.img",
+     "bytes": 66355200,
+     "res_m": 1895.2
+    },
+    "ephem": {
+     "file": "ephem.bin",
+     "step_h": 2,
+     "n_used": 21912,
+     "sha1_12": "bf98b99edc04",
+     "start": "2026-01-01T00:00:00Z",
+     "mock": false
+    }
+   },
+   "created_utc": "2026-11-14T02:02:31Z",
+   "grid": "pixel centres; lat 90 - (r+0.5)/ppd, lon -180 + (c+0.5)/ppd (MOON_ME)"
+  },
+  "ephemeris": {
+   "file": "web/data/ephem.bin",
+   "step_h": 2,
+   "n_used": 21912,
+   "samples": "hours 0, 2, 4, ..., 43822 from 2026-01-01T00:00:00Z (2026-01-01T00Z..2030-12-31T22Z)",
+   "sha1_12_in_signature": "bf98b99edc04",
+   "sha1_12_of_current_file": "bf98b99edc04",
+   "n_used_of_current_file": 21912,
+   "current_file_matches": true,
+   "sha256_current_file": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+   "ephem_bin_last_commit": "d89c42a 2026-11-14T09:55:45+09:00"
+  },
+  "dems": [
+   {
+    "role": "near",
+    "name": "LDEM_64",
+    "file": "ldem_64_float.img",
+    "res_m": 473.8,
+    "bytes_in_signature": 1061683200,
+    "bytes_local": 1061683200,
+    "sha256_local": "4dd151f230984316602f13df36214563ff575683cb5612f1a7bc4699188ec25b",
+    "to_km": 150.0,
+    "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_64_float.img"
+   },
+   {
+    "role": "far",
+    "name": "LDEM_16",
+    "file": "ldem_16_float.img",
+    "res_m": 1895.2,
+    "bytes_in_signature": 66355200,
+    "bytes_local": 66355200,
+    "sha256_local": "c6b790f14409f0a74d6640b69ddb0c48b8cd3e330117366162669f85f567a432",
+    "to_km": 300.0,
+    "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ldem_16_float.img"
+   }
+  ],
+  "engine": {
+   "file": "pipeline/global_maps.py",
+   "sha256_current": "64ec674b79ca1aa7426902c8eabc236ef62ddcca101b6933c7b00375839eb71d",
+   "last_commit": "48929ec 2026-11-14T10:27:17+09:00 Phase 2 C5/C6: whole-Moon sun / Earth visibility map engine",
+   "run_commit": "7de0271 (card 9, PR #9)",
+   "engine_version": 1,
+   "command": "python pipeline/global_maps.py run --ppd 8 (then export --ppd 8)"
+  },
+  "params": {
+   "naz": 360,
+   "near_km": 150.0,
+   "max_km": 300.0,
+   "step_frac": 0.01,
+   "n_steps": 283,
+   "obs_height_m": 2.0,
+   "sun_radius_deg": 0.2666
+  }
+ },
+ "derived_products": {
+  "web_gmaps_index_sha256": "b372643301832f13bd9ee3d2d54226f2826d5aa78b37d0e7b0734d0536a22c97",
+  "note": "web/data/gmaps/ (JPEG tiles, overviews, 8-bit values PNG) were exported from these arrays; see docs/task_t/integrity_check.json"
+ },
+ "independent_verification": "PENDING - must be done by a team member other than Soyun Jeong (producer)"
+}

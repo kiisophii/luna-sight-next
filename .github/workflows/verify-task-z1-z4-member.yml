@@ -1,0 +1,47 @@
+name: Independent Z1 Z4 member check
+on:
+  push:
+    branches: [s9-z1-z4-verify-minchul]
+    paths: ['verification/task_z1_z4/**', '.github/workflows/verify-task-z1-z4-member.yml']
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            verification/task_z1_z4
+            docs
+      - uses: actions/checkout@v4
+        with:
+          ref: beedb67e7993258720ebfc9219e140636f6e4b11
+          path: target
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /web/data/ephem.bin
+            /web/data/ephem.json
+            /web/data/sites.json
+            /web/data/horizon/
+            /web/data/korea/stations.json
+            /web/data/detail/time_stats/
+            /web/data/detail/history.json
+            /web/data/metrics/
+            /web/data/windows/
+            /docs/task_r_landings.csv
+            /docs/detail_z4_sources.json
+      - name: Independent computation and comparisons
+        id: verify
+        continue-on-error: true
+        run: node verification/task_z1_z4/verify.mjs target
+      - name: Preserve every result including failures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse docs/task_z1_z4_independent docs/verification_ledger.md docs/SI_USAGE.md
+          git commit -m "Record independent Z1 and Z4 member comparisons"
+          git push
+      - name: Require passing comparisons
+        if: steps.verify.outcome != 'success'
+        run: exit 1

@@ -17,3 +17,7 @@ JavaScript syntax checks passed for the two changed modules. `git diff --exit-co
 ## Integration refresh
 
 Merged the new integration base `1675728` (version 51) while final regression was running. Preserved both SI log additions. Reran 390/1100 × EN/KR on the combined PR branch: all four cases passed errors, overflow, clipping and outside-control checks; both mobile cases passed the 24 px check. Separately checked that the About disclosure arrows remain visible and the summaries are at least 24 px in EN/KR. See `refreshed-results.json`. The original 10-case evidence above remains labelled with its original base.
+
+## Final D regression
+
+[Integration 1675728 regression results and remaining visual findings](regression.md): all 10 requested viewport/language cases passed console, overflow and navigation checks. Two pre-existing visual findings are documented without application-code fixes.

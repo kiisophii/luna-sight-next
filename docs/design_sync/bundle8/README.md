@@ -1,3 +1,5 @@
+> **Current result:** the 17:49 designer review supersedes this initial snapshot. See [review follow-up and new screenshots](review_1749/README.md).
+
 # Bundle 8 — comparison tray design sync
 
 Implemented from the bundle-8 measurements and the reference PNG only. No practice HTML/CSS/JS was read or copied. Base main: be9aeab5b18fbe3d8e86c6295b8af9e5247c8ce2. Runtime scope: web/css/layout.css (appended bundle-8 selectors) and web/js/tray_cat.js (chart viewport dimensions and footer SVG only). No index.html, calculation, data, picker logic or other members' page modules changed. Shared information-icon glyphs are the one intentional cross-panel visual rule specified by item 8-6; existing labels, tooltips and enlarged hit areas remain.

@@ -1542,6 +1542,7 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   html:lang(en) #ls-tray .tc-i { width: 16px; padding: 0; flex: none; }
   html:lang(en) #ls-tray .tc-subs { flex: 0 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: auto; gap: 2px; }
   html:lang(en) #ls-tray .tc-subs button { padding: 0; font-size: 14px; white-space: nowrap; }
+}
 
 /* Phones/tablets: keep the minimap in its own row below the globe. */
 @media (max-width:899px) {

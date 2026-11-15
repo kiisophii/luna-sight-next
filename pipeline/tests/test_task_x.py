@@ -4,7 +4,8 @@ import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 
 def test_gpu_latlon_window_wrap_and_range(tmp_path):
-    import cupy as cp
+    import pytest
+    cp = pytest.importorskip('cupy')  # CUDA test: skipped where CuPy is not installed
     import horizon as hz
     from task_x_gpu import NonpolarGPU
     path=tmp_path/'window.npz'

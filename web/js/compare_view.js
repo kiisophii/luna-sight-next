@@ -444,12 +444,12 @@ function placeReadouts(root) {
   const ko = getLang() === 'ko';
   root.querySelectorAll('.rd-now').forEach(p => {
     const s = byId(p.dataset.id); if (!s) return;
-    p.innerHTML = `<span class="k-sun">${ko ? '태양' : 'Sun'} ${core.sunAzEl(s, now).el.toFixed(1)}°</span><span class="k-earth">${ko ? '지구' : 'Earth'} ${core.earthAzEl(s, now).el.toFixed(1)}°</span>`;
+    p.innerHTML = `<span class="k-sun">${iconSvg('sun', { size: 12, cls: 'ic rd-ic' })}${ko ? '태양' : 'Sun'} ${core.sunAzEl(s, now).el.toFixed(1)}°</span><span class="k-earth">${iconSvg('earth', { size: 12, cls: 'ic rd-ic' })}${ko ? '지구' : 'Earth'} ${core.earthAzEl(s, now).el.toFixed(1)}°</span>`;
   });
 }
 const altLegend = ko => `<ul class="detail-lg">${[
-  ['<span class="sw ln" style="background:var(--sun)"></span>', ko ? '태양 고도' : 'Sun elevation'],
-  ['<span class="sw ln" style="background:var(--earth)"></span>', ko ? '지구 고도' : 'Earth elevation'],
+  ['<span class="sw ln" style="background:var(--sun)"></span>' + iconSvg('sun', { size: 14, cls: 'ic lg-ic k-sun' }), ko ? '태양 고도' : 'Sun elevation'],
+  ['<span class="sw ln" style="background:var(--earth)"></span>' + iconSvg('earth', { size: 14, cls: 'ic lg-ic k-earth' }), ko ? '지구 고도' : 'Earth elevation'],
   ['<span class="sw ln thin" style="background:#8D96A4"></span>', ko ? '지형 지평선 (태양 방향)' : 'Terrain horizon (Sun direction)'],
   ['<span class="sw dash"></span>', ko ? '0° 기준선' : '0° level'],
   ['<span class="sw vl"></span>', ko ? '선택 시각' : 'Selected time']].map(([sw, l]) => `<li>${sw}${esc(l)}</li>`).join('')}</ul>`;

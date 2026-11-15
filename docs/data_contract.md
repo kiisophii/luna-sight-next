@@ -628,4 +628,3 @@ and nearest-order verification should independently recompute all eligible
 distances (not only the three exported records). Team verification still needs
 a different person to recompute at least three sites with their own code and
 distance agreement <=1%; AI author checks do not satisfy that requirement.
-

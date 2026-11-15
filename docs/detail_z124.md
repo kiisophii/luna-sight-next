@@ -38,3 +38,11 @@ python -X utf8 pipeline/check_contract.py
 ```
 
 The PSR verification needs the original windows identified in each output. The other checks use committed ephemeris/catalogue/station data. Product schemas are proposed under named Z1/Z2/Z4 headings in data_contract.md so pending Y/Z3 section numbers are not overwritten. Sources and SI appended; human SI cells remain TO CHECK. Sua reviews and merges.
+
+## Final integrated validation
+
+Latest main `564fac3` (version38, including Y and its external verification, S and other audits) was merged before the PR. Shared source/SI/contract/ledger files preserve main and append the new detail material; both terrain-Y and detail checks are registered. The 52 web-file changes relative to main are all under `web/data/detail/`.
+
+After fixing the fixture integration and setting NUMBA_NUM_THREADS=1 before imports, the latest-main full Python run completed in118.65s: **354passed,1skipped,2subtests passed**, plus one missing-input failure in the pre-existing ephemeris validation test. The missing ignored18.6-year NPZ was found in D-backed card8/card23 caches with identical SHA256 `358526e031babbe9944695b253ad36f2f63f15cb0175225dfcf04c62886ccabe`, copied into this checkout's ignored D-backed processed folder, and that test then **passed in0.41s**. Thus355 distinct Python tests and2subtests passed across the full run and targeted rerun; this is not represented as one clean full-suite invocation. One optional CuPy test skipped in the CPU environment. No production ephemeris was regenerated or modified. Earlier targeted window/Numba/detail rerun:20passed. Node detail tests:5passed.
+
+Final contract was rerun with the documented committed-LF workaround; ledger verifier0failures. Final AI integration review found no blocking issue and confirmed append-only preservation and that arbitrary candidate `--data` roots retain provenance checks. SI human sign-off and independent other-member3site checks remain pending.

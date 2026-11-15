@@ -1532,6 +1532,31 @@ body.on-about .ls-export { display: none; }
 /* ---- headings and sections that take script focus: no ring after a mouse / touch move (Safari), ring stays for keyboard users */
 html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabindex="-1"]:focus-visible { outline: none; }
 
+/* v46 regressions: narrow tray layout and wide collapsed dock. */
+@media (min-width: 1100px) and (max-width: 1439px) {
+  html:lang(en) .ls #ls-tray .tray-main { overflow: visible; }
+  html:lang(en) .ls #ls-tray .tc-scroll { margin-right: -42px; padding-right: 3px; }
+  html:lang(en) .ls #ls-tray .tc-desc,
+  html:lang(en) .ls #ls-tray .tc-body { margin-right: 29px; }
+  html:lang(en) .ls #ls-tray .tc-h { width: auto; flex-wrap: nowrap; gap: 1px; }
+  html:lang(en) .ls #ls-tray .tc-h h4 { flex: none; }
+  html:lang(en) .ls #ls-tray .tc-i { width: 16px; padding: 0; flex: none; }
+  html:lang(en) .ls #ls-tray .tc-subs { flex: 0 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: auto; gap: 2px; }
+  html:lang(en) .ls #ls-tray .tc-subs button { padding: 0; font-size: 14px; white-space: nowrap; }
+
+  #ls-tray .tc-rows.bars .tc-row { display: grid; grid-template-columns: 24px 22px minmax(0, 1fr) max-content; column-gap: 8px; }
+  #ls-tray .tc-rows.bars .tc-sw { grid-column: 1; grid-row: 1; }
+  #ls-tray .tc-rows.bars .tc-row > :nth-child(2) { grid-column: 2; grid-row: 1; }
+  #ls-tray .tc-rows.bars .tc-nm { grid-column: 3; grid-row: 1; min-width: 0; }
+  #ls-tray .tc-rows.bars .tc-val { grid-column: 4; grid-row: 1; margin-left: 0; white-space: nowrap; }
+  #ls-tray .tc-rows.bars .tc-bar { grid-column: 2 / -1; grid-row: 2; width: auto; max-width: none; margin-left: 0; }
+  #ls-tray .tc-rows.bars .tc-note { grid-column: 2 / -1; grid-row: 3; max-width: none; }
+}
+@media (min-width: 1600px) {
+  .ls-toolbar.time-off { width: max-content; }
+  .ls-toolbar.time-off .tb-timewrap { display: none; }
+}
+
 /* Bundle 10 follow-up: compact English tray headings below 1440; keep 14px labels. */
 @media (min-width: 1280px) and (max-width: 1439px) {
   html:lang(en) #ls-tray .tray-main { overflow: visible; }

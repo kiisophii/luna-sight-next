@@ -1663,3 +1663,12 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .map-legend .ends, .ls .map-legend .muted { flex: 0 0 100%; margin: 0 !important; font-size: 11px; }
 }
 @media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 554px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
+
+/* Preserve exact UTC editing in the compact desktop dock. */
+#utc-chip .ic-calendar { display: none; }
+@media (min-width: 1100px) and (max-width: 1599px) {
+  .ls-toolbar #utc-chip { display: inline-flex; justify-content: center; top: -28px; left: 8px !important; width: 28px; height: 24px; padding: 0; font-size: 0; transform: none; }
+  .ls-toolbar > .utc-pop { left: 8px; right: auto; bottom: calc(100% + 8px); }
+  #utc-chip #utc-val { display: none; }
+  #utc-chip .ic-calendar { display: block; flex: none; }
+}

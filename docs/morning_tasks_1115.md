@@ -11,7 +11,7 @@
 |---|---|---|---|
 | A | 지평선 **33곳 전부** 독립 재계산 (지금 1곳뿐) | 지용 | 2–3시간 |
 | B | 남극 밖 **17곳 전부** 좌표 오차 독립 재계산 (지금 작성자=검증자) | 수아 | 1–2시간 |
-| C | 한국 연결 분 단위 창·KDSA 일정표 **33곳 전부** 대조 | 동주 | 1–2시간 |
+| C | 한국 연결 다시 계산 — **(1)** 지상국 4곳(여주 KDSA, DSN 3곳)의 '달 고도 ≥ 10°' 뜨고 지는 시각 전체 기간 (`windows_*.json`), **(2)** 여주 KST 일정표 전체 (`kdsa_daily_kst.json`), **(3)** 33곳 × 지상국 교신 시간 (`stations.json`) | 동주 | 1–2시간 |
 | D | 3D 지구본 타일 빈칸: 띠 z4–z7, 남극 z3–z6, 알베도 | 수아 (소윤님은 z8 말고 나머지만) | 1–2시간 |
 | E | 250 m 지도 16곳: 1 km 대비 차이표 + **노드 전부** 재계산 | 지용 | 2시간+ |
 | F | 남극 사용자 지점 지형 +0.2–2.4 %p 오차 줄이기 (더 고운 타일) | 수아 | 3시간+ |
@@ -26,14 +26,15 @@
 | U | 북극 75–90° N 사용자 지점 검증 (지금 '미검증' 배지) — PGDA 북극 DEM 30점 | 수아 | 2시간+ |
 | V | 지구 가시 기준을 PGDA와 같게(any-part) 바꿔 다시 비교 → 3.87 %p 차이가 정말 정의 차이인지 증명 | 만든 사람 | 1–2시간 |
 | W | 민감도 33곳 전부: 관측 높이 0/2/10 m, 200 m 안쪽 지형 포함/제외 → 한계 숫자 근거 | — | 2시간+ |
+| X | 남극 밖 **17곳 250 m 주변 격자** 새로 만들기 (SLDEM2015 59 m, #61과 같은 정의·형식) → 검증은 다른 사람 | 만들기: 누구나(GPU 있으면 빠름) / 검증: 만든 사람 X | 2–3시간 + 검증 1시간 |
 
 **A 프롬프트**: Pick all 33 sites in `web/data/horizon/` (not ones I produced). For each, choose 10 random azimuths and recompute the horizon elevation by brute force directly from the DEM listed in `docs/DATASETS`/the horizon file header (same observer height 2 m, curvature, near-field rule), with my own code, no imports from `pipeline/`. Report a table site × azimuth: stored vs mine, difference. Criterion ≤ 0.05°. Then recompute sun_frac for those 10 sites from ephem + my horizons; criterion ≤ 1 %p. Add a row to `docs/verification_ledger.md` (row `horizon/`) with my name and numbers.
 
 **B 프롬프트**: For all 17 non-polar sites in `web/data/uncertainty/`, independently recompute — the ±500 m / ±100 m sample points' sun_frac, earth_frac and the reported min/max — with my own loop over ephem + horizons. Criterion ≤ 1 %p. Update the `uncertainty/` gap line in `docs/verification_ledger.md`.
 
-**C 프롬프트**: Compare `web/data/korea/windows_*.json` and `kdsa_daily_kst.json` against my own recomputation for all 33 sites over the full published period: Earth centre above the site horizon AND Moon ≥ 10° at the station (coordinates from the cited NAIF/DSN files), minute steps. Report start/end differences (criterion ≤ 2 min) and total hours (≤ 1 %). Update the `korea/` gap line.
+**C 프롬프트** (11/15 07:40 지용님 지적 반영 — `windows_*.json`은 착륙지별이 아니라 지상국별 달 관측 창): (1) For each of the 4 stations (coordinates from the cited NAIF kdsa01.tf / DSN 810-005 files), recompute every Moon rise/set at 10° elevation over the full period of `web/data/korea/windows_<station>.json` with my own code (Skyfield or JPL Horizons, not `pipeline/korea_links.py`); report count of windows, max edge difference (criterion ≤ 60 s) and any missing/extra window. (2) Recompute every day of `kdsa_daily_kst.json` from (1) (KST split at midnight); all rows must match. (3) For all 33 sites, recompute from `web/data/ephem.bin` + `web/data/horizon/` + my station Moon elevations the hourly site×station link bits in `stations.json` (Earth centre above site horizon AND Moon ≥ 10° at station) and compare the per-site totals (criterion ≤ 1 h) and bit agreement. Update the `korea/` ledger row.
 
-**D 프롬프트**: In `web/data/globe/`, decode 10 random vertices per zoom level for the equatorial band z4–z7 and compare with SLDEM2015 / PGDA 60 m; for south z3–z6 first reconstruct the window origin from the tile metadata (write it down), then compare 10 vertices per level. Criterion: within the encoding step. Update the `globe/` gap line.
+**D 프롬프트**: In `web/data/globe/`, decode 10 random vertices per zoom level for the equatorial band z4–z7 and compare with SLDEM2015 / PGDA 60 m; for south z3–z6 use the source-window origins now published in `docs/globe_south_window_origins.json` (18 PGDA windows: 20 m site windows, 60 m, and the 80 m 80S cap, with first-pixel centres and source URLs), then compare 10 vertices per level. Criterion: within the encoding step. Update the `globe/` gap line.
 
 **E 프롬프트** (#61이 main에 들어간 뒤): For the 16 polar sites, compare `web/data/local250/` with `web/data/local/` (1 km) at shared nodes: table of differences per site (median, max). Then recompute 5 random 250 m nodes from the DEM by brute force; criterion ≤ 1 %p. Add a ledger row.
 
@@ -60,3 +61,5 @@
 - #61 독립 확인 → 합치기 → 남극 주변 지도 250 m 연결
 - 디자인 브랜치 미리보기 → main 합치기
 - 들어오는 PR 독립 재계산 후 합치기 → 최종 QA → 제출
+
+**X 프롬프트**: Using the same runner and exact definitions as PR #61 (`web/data/local250/`, contract section for local grids), compute 250 m 41×41 local grids for the 17 non-polar sites from SLDEM2015 59 m (LDEM_64 where SLDEM2015 does not cover, e.g. CHANDRAYAAN3 per card 3), 2026–2030 hourly, observer 2 m. Write `web/data/local250/<ID>.json` + index entries, run `check_contract.py`, and in the PR give per-site min/max/IQR within 1/3/5/10 km and the difference vs the 1 km grid at shared nodes. **Verification (another person)**: recompute 5 random nodes per 3 sites by brute force from the DEM with own code; ≤ 1 %p.

@@ -87,7 +87,7 @@ FACTS = [
     (("docs/globe3d.md", 30), "projection + height-encoding self-check"),
     (("docs/card14.md", 102), "within **0.251 m**"),
     (("docs/card14.md", 103), "**462 shared tile edges identical**"),
-    (("ROW", 14), "catalogue median RMS 0.975° → **0.085°**"),
+    (("ROW", 14), "catalogue median RMS 0.975° → **0.027°**"),
     (("ROW", 14), "random median 0.652° → **0.027°**"),
     ("d300e04", "own PGDA horizon vs hterrain.js in Node"),
     # merges that list no check (the ledger says "none recorded")
@@ -121,7 +121,7 @@ AUTH = {
     "web/data/gmaps": {"Soyun Jeong"}, "web/data/gmaps_ppd32": {"Soyun Jeong"},
     "web/data/date_slip": {"Dongju Kim"}, "web/data/monthly": {"kiisophii"},
     "web/data/windows": {"hmkmc9095-cell"}, "web/data/hindcast.json": {"Dongju Kim"},
-    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii"},
+    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii", "Jiyong"},
     "web/data/local": {"Jiyong", "Dongju Kim"}, "web/data/uncertainty": {"Jiyong", "kiisophii"},
     "web/data/korea": {"kiisophii", "hmkmc9095-cell"}, "web/data/globe": {"kiisophii", "Soyun Jeong"},
 }

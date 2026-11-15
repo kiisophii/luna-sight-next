@@ -75,6 +75,13 @@ class WebPolarSampler:
         return out.reshape(shape)
 
 
+def level_text(lv, pidx):
+    """Short level description for the app; sparse near-field patches (task F) say where they exist."""
+    if lv.get("patch_radius_m"):
+        return f'{lv["res_m"]:g} m to {lv["to_km"]:g} km (only within {lv["patch_radius_m"] / 1000:g} km of the 16 south-polar catalogue sites)'
+    return f'{lv["res_m"]:g} m to {lv["to_km"]:g} km (points ≥ {-lv.get("lat_edge_deg", pidx["lat_edge_deg"]):g}°S)'
+
+
 def band_of(lat):
     for name, lo, hi in BANDS:
         if lo <= lat <= hi:
@@ -171,7 +178,7 @@ def main():
                   polar_levels=[{k: lv[k] for k in ("name", "source", "res_m", "q_m", "to_km", "lat_edge_deg", "bytes")}
                                 for lv in pidx["levels"]],
                   implementation_js_vs_python=impl, summary=groups, points=rows)
-    a.out.write_text(json.dumps(report, indent=1), encoding="utf-8")
+    a.out.write_text(json.dumps(report, indent=1), encoding="utf-8", newline="\n")
     print(json.dumps(groups["after"], indent=1))
     print("wrote", a.out)
 
@@ -180,12 +187,11 @@ def main():
     v = json.loads(vf.read_text(encoding="utf-8"))
     v["polar"] = dict(source="pipeline/validate_custom_polar.py -> docs/custom_polar_validation.json",
                       target=report["target"], lat_edge_deg=pidx["lat_edge_deg"],
-                      levels=[f'{lv["res_m"]:g} m to {lv["to_km"]:g} km (points ≥ {-lv.get("lat_edge_deg", pidx["lat_edge_deg"]):g}°S)'
-                              for lv in pidx["levels"]],
+                      levels=[level_text(lv, pidx) for lv in pidx["levels"]],
                       bands={name: groups["after"][f"all_{name}"] for name, _, _ in BANDS},
                       bands_before={name: groups["before"][f"all_{name}"] for name, _, _ in BANDS},
                       impl_rms_deg_max=max((r["rms_deg"] for r in impl), default=None))
-    vf.write_text(json.dumps(v, indent=1), encoding="utf-8")
+    vf.write_text(json.dumps(v, indent=1), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

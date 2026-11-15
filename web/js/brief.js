@@ -46,6 +46,14 @@ addStrings({
   d_hz: 'Horizon and what blocks the view', d_hzD: 'Margin = body elevation − terrain height in that direction; positive = visible (Sun: disc center).',
   d_more: 'More analysis and readiness', d_moreD: 'What this tool has NOT analyzed yet, said plainly — no invented numbers.',
   d_trust: 'Can I trust these numbers?', d_trustD: 'Comparison with NASA PGDA maps, mission hindcast and the files used for this site.',
+  demBtn: 'View terrain data', demH: 'Terrain data', aboutX: 'About: {x}',
+  tipGs: ['<sw style="background:var(--earth)"></sw><b>Bars</b> show the hours when the Moon is at least 10° above each antenna (Yeoju in <sw style="background:var(--relay)"></sw><b>green</b>), so the station can point at the landing region.',
+    'As Earth rotates, the Moon rises and sets at each station, so the hours come in daily passes.',
+    'The lower bars add the site\'s own condition: Earth must also be above the site\'s terrain horizon. Percentages are shares of the analysis period.',
+    '※ Geometry only: antenna schedules and link performance are not included.'],
+  tipRelay: ['From higher ground, Earth stays in view longer above the surrounding terrain.',
+    'When terrain hides Earth from the lander, a <sw style="background:var(--relay)"></sw><b>relay tower</b> that sees both the lander and Earth adds hours with a line of sight to Earth through the tower.',
+    '※ Results vary with the tower\'s location and height. Geometry only (line of sight), not radio performance.'],
   rawT: 'Raw table', sumPer: 'Analysis period {a} – {b} ({h} h).', sumGap: 'Longest Earth gap: {g}', sumDarkL: 'longest dark: {d}.', tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility (data/windows) — click a year position to move the analysis period there',
   rowSun: 'Sunlight', rowEarth: 'Direct-to-Earth', rowBoth: 'Sun + Earth together', startUTC: 'Start (UTC)', endUTC: 'End (UTC)', dur: 'Length',
   nNearH: '① Registered sites within 20 km', nNearNone: 'No other catalogue site within 20 km.', nDist: 'Distance', nDiff: 'vs this site',
@@ -94,6 +102,14 @@ addStrings({
   d_hz: '지평선과 가림 원인', d_hzD: '여유각 = 천체 고도 − 그 방향 지형 높이. 양수면 보임(태양은 원반 중심 기준).',
   d_more: '추가 분석과 준비 상태', d_moreD: '이 도구가 아직 분석하지 않은 것을 솔직하게 적습니다 — 숫자를 지어내지 않습니다.',
   d_trust: '이 숫자 믿어도 되나', d_trustD: 'NASA PGDA 지도 비교, 실제 임무 되짚기, 이 착륙지에 쓴 파일.',
+  demBtn: '지형 자료 보기', demH: '지형 자료', aboutX: '설명 보기: {x}',
+  tipGs: ['<sw style="background:var(--earth)"></sw><b>막대</b>는 각 안테나에서 달이 10° 이상 떠 있는 시간입니다(여주는 <sw style="background:var(--relay)"></sw><b>초록</b>). 이때 지상국이 착륙 지역 쪽을 향할 수 있습니다.',
+    '지구가 자전하면서 지상국마다 달이 뜨고 지기 때문에 시간이 하루 단위로 끊겨 나타납니다.',
+    '아래 막대는 착륙지 조건을 더한 것입니다. 착륙지 지형 위로 지구도 보여야 합니다. 비율은 분석 기간에 대한 비율입니다.',
+    '※ 기하만 계산했습니다. 안테나 사용 일정과 통신 성능은 반영하지 않았습니다.'],
+  tipRelay: ['높은 곳에서는 주변 지형 너머로 지구를 더 오래 볼 수 있습니다.',
+    '착륙선에서 지구가 가려져도, 착륙선과 지구가 모두 보이는 <sw style="background:var(--relay)"></sw><b>중계탑</b>을 거치면 지구가 보이는 시간이 늘어납니다.',
+    '※ 탑의 위치와 높이에 따라 결과가 달라집니다. 기하(시선)만 계산했고 전파 성능은 아닙니다.'],
   rawT: '원자료 표', sumPer: '분석 기간 {a} – {b} ({h}시간).', sumGap: '최장 지구 끊김: {g}', sumDarkL: '최장 어둠: {d}.', tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간(data/windows) — 누르면 분석 기간이 그 위치로 이동',
   rowSun: '햇빛', rowEarth: '지구 직접 교신', rowBoth: '해+지구 동시', startUTC: '시작 (UTC)', endUTC: '끝 (UTC)', dur: '길이',
   nNearH: '① 반경 20 km 안의 등록 착륙지', nNearNone: '20 km 안에 다른 카탈로그 착륙지가 없습니다.', nDist: '거리', nDiff: '이곳 대비',
@@ -271,6 +287,8 @@ function demChain(s) {
 
 // ------------------------------------------------------------ head + share
 const IC = {
+  layers: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12 4L21 8.5L12 13L3 8.5Z"/><path d="M3 12.5L12 17L21 12.5"/><path d="M3 16.5L12 21L21 16.5"/></svg>',
+  info: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
   swap: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h9.5M10 2.5 12.5 5 10 7.5M13 11H3.5M6 8.5 3.5 11 6 13.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   bars: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 13.5h11M4.5 11V6.5M8 11V3.5M11.5 11V8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
   link: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.6 9.4a2.6 2.6 0 0 0 3.7 0l2.4-2.4a2.6 2.6 0 0 0-3.7-3.7l-.9.9M9.4 6.6a2.6 2.6 0 0 0-3.7 0L3.3 9a2.6 2.6 0 0 0 3.7 3.7l.9-.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
@@ -290,7 +308,7 @@ function renderHead(s) {
   const opts = [...new Set([...(LLSN().compare?.() || []), s.id])].map(byId).filter(Boolean);
   const grp = s.user ? t('userPoint') : (t('g_' + s.group) !== 'g_' + s.group ? t('g_' + s.group) : s.group);
   $('#ls-brief .brief-head').innerHTML = `<div class="sc-top">
-      <div class="sc-id"><p class="sc-kick">${esc(t('scKick'))} · ${esc(grp)}</p>
+      <div class="sc-id"><p class="sc-kick">${esc(t('scKick'))} · ${esc(grp)}${demChain(s) !== '—' ? `<button type="button" class="sc-dem" aria-label="${esc(t('demBtn'))}" aria-expanded="false" data-dem="${esc(demChain(s))}">${IC.layers}</button>` : ''}</p>
         <h2 id="brief-h" class="sc-name">${s.user ? `${esc(t('userPoint'))} (${s.lat.toFixed(2)}°, ${s.lon.toFixed(2)}°)` : esc(nameOf(s))}</h2>
         <p class="sc-meta"><span><span class="k">${esc(t('scLatLon'))}</span> <span class="v">${ll(s)}</span></span>
           <span><span class="k">${esc(t('scPeriod'))}</span> <span class="v">${dot(w.i0)} – ${dot(w.i1)}</span> <small class="v">(${dh(hours)})</small></span></p></div>
@@ -409,7 +427,7 @@ async function trustCard(s, embed = false) {
 function blockShell(k, chips) {
   const el = document.getElementById(`blk-${k}`), chipped = PICKABLE.includes(k);
   // 7-6 card shell: number + title (the chip label) · body · "Assumptions & limits" · sources line + "Method & validation"
-  el.querySelector('header').innerHTML = `<span class="sc-no" aria-hidden="true"></span><h3>${esc(t(chipped ? 'c_' + k : 'd_' + k))}</h3>${chipped ? '' : `<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">×</button>`}`;
+  el.querySelector('header').innerHTML = `<span class="sc-no" aria-hidden="true"></span><h3>${esc(t(chipped ? 'c_' + k : 'd_' + k))}</h3>${k === 'gs' || k === 'relay' ? `<button type="button" class="sc-info" data-tip="${k}" aria-label="${esc(fill(t('aboutX'), { x: t('c_' + k) }))}" aria-expanded="false">${IC.info}</button>` : ''}${chipped ? '' : `<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">×</button>`}`;
   el.querySelector('.desc').textContent = '';
   let f = el.querySelector(':scope > .sc-foot');
   if (!f) { f = document.createElement('footer'); f.className = 'sc-foot'; el.appendChild(f); }
@@ -740,6 +758,67 @@ function setOpen(k, on, scroll = true) {
   }
   LLSN().saveURL?.();
 }
+
+// ------------------------------------------------------------ Chaei 17 / 24-25: terrain-data popover and (i) explanation cards
+const popState = { el: null, btn: null, pinned: false, timer: 0 };
+function popEl(cls, role) {
+  let el = document.querySelector('body > .' + cls);
+  if (!el) { el = document.createElement('div'); el.className = cls; el.setAttribute('role', role); el.id = cls + '-pop'; el.hidden = true; document.body.appendChild(el); }
+  return el;
+}
+function closePop() {
+  clearTimeout(popState.timer);
+  if (popState.el) popState.el.hidden = true;
+  if (popState.btn) popState.btn.setAttribute('aria-expanded', 'false');
+  popState.el = popState.btn = null; popState.pinned = false;
+}
+function placePop(el, btn, alignRight) {
+  const r = btn.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight, gap = btn.classList.contains('sc-dem') ? 6 : 8;
+  let x = alignRight ? r.right - w : r.left, y = r.bottom + gap;
+  if (y + h > innerHeight - 8) y = Math.max(8, r.top - gap - h);
+  x = Math.max(8, Math.min(x, innerWidth - w - 8));
+  el.style.left = x + 'px'; el.style.top = y + 'px';
+}
+function openPop(btn) {
+  if (popState.btn === btn) { clearTimeout(popState.timer); return; }
+  closePop();
+  const dem = btn.classList.contains('sc-dem');
+  const el = dem ? popEl('sc-pop', 'dialog') : popEl('sc-tip', 'tooltip');
+  if (dem) {
+    const steps = (btn.dataset.dem || '').split(' → ');
+    el.setAttribute('aria-label', t('demH'));
+    el.innerHTML = `<p class="h">${esc(t('demH'))}</p><p class="v">${steps.map((x, i) => `<span>${i ? '<i>→</i> ' : ''}${esc(x)}</span>`).join('')}</p>`;
+  } else {
+    const paras = t(btn.dataset.tip === 'gs' ? 'tipGs' : 'tipRelay');
+    el.innerHTML = paras.map(x => `<p${x.startsWith('※') ? ' class="note"' : ''}>${x.replace(/<sw /g, '<i class="sw" ').replace(/<\/sw>/g, '</i>')}</p>`).join('');
+    btn.setAttribute('aria-describedby', el.id);
+  }
+  el.hidden = false; placePop(el, btn, dem);
+  btn.setAttribute('aria-expanded', 'true');
+  popState.el = el; popState.btn = btn;
+}
+function laterClose() { clearTimeout(popState.timer); if (!popState.pinned) popState.timer = setTimeout(closePop, 150); }
+document.addEventListener('pointerover', e => {
+  const btn = e.target.closest?.('#ls-brief .sc-dem, #ls-brief .sc-info');
+  if (btn) { clearTimeout(popState.timer); if (popState.btn !== btn && !popState.pinned) popState.timer = setTimeout(() => openPop(btn), btn.classList.contains('sc-info') ? 120 : 0); return; }
+  if (popState.el && popState.el.contains(e.target)) { clearTimeout(popState.timer); return; }
+});
+document.addEventListener('pointerout', e => {
+  const from = e.target.closest?.('#ls-brief .sc-dem, #ls-brief .sc-info, body > .sc-pop, body > .sc-tip');
+  if (!from || (e.relatedTarget && (from.contains(e.relatedTarget) || popState.el?.contains(e.relatedTarget) || popState.btn?.contains(e.relatedTarget)))) return;
+  if (!popState.btn) { clearTimeout(popState.timer); return; }
+  laterClose();
+});
+document.addEventListener('focusin', e => { const btn = e.target.closest?.('#ls-brief .sc-dem, #ls-brief .sc-info'); if (btn) openPop(btn); });
+document.addEventListener('focusout', e => { if (e.target.closest?.('#ls-brief .sc-dem, #ls-brief .sc-info') && !popState.pinned && !popState.el?.contains(e.relatedTarget)) laterClose(); });
+document.addEventListener('click', e => {
+  const btn = e.target.closest?.('#ls-brief .sc-dem, #ls-brief .sc-info');
+  if (btn) { if (popState.btn === btn && popState.pinned) { closePop(); return; } openPop(btn); popState.pinned = true; return; }
+  if (popState.el && !popState.el.contains(e.target)) closePop();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && popState.el) { const b = popState.btn; closePop(); b?.focus(); } });
+window.addEventListener('scroll', () => { if (popState.el && !popState.pinned) closePop(); else if (popState.el) placePop(popState.el, popState.btn, popState.btn.classList.contains('sc-dem')); }, { passive: true });
+window.addEventListener('llsn:lang', closePop);
 
 function wire() {
   const root = $('#ls-brief');

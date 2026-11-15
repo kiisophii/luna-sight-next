@@ -1,3 +1,4 @@
+import { visibilityRows } from './visibility_graph.js';
 import './design_lower.js';
 // compare_view.js — comparison tray (spec §3.9) + "Compare pinned sites" section (§4): table with best-value marks,
 // lunar-day clock, Sun/Earth elevation, timeline. No limit on pinned sites (horizontal scroll, stable #numbers).
@@ -236,7 +237,7 @@ function altSVG(s, W, H, bounds = null) {
     lo = Math.min(lo, su.el, ea.el); hi = Math.max(hi, su.el, ea.el, hz ?? 0);
   }
   lo = bounds ? bounds[0] : Math.floor(lo - 1); hi = bounds ? bounds[1] : Math.ceil(hi + 1);
-  const X = k => 28 + (k / (n - 1)) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
+  const X = k => 28 + ((k+.5) / n) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
     <line x1="28" x2="${W - 6}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--muted')}" stroke-dasharray="3 3" stroke-width="1"/>
@@ -247,7 +248,7 @@ function altSVG(s, W, H, bounds = null) {
 function placeAltNeedles(root) {
   const now = LLSN().now();
   root.querySelectorAll('.alt-needle').forEach(l => {
-    const x = Number(l.dataset.x0) + ((now - Number(l.dataset.i0)) / (Number(l.dataset.n) - 1)) * Number(l.dataset.w);
+    const x = Number(l.dataset.x0) + ((now - Number(l.dataset.i0)+.5) / Number(l.dataset.n)) * Number(l.dataset.w);
     l.setAttribute('x1', x); l.setAttribute('x2', x);
   });
   root.querySelectorAll('.alt-now').forEach(p => {
@@ -405,7 +406,7 @@ function detailCell(row, site, w) {
 function detailAltSVG(s, W, H, bounds) {
   const w = LLSN().window, n = w.i1 - w.i0 + 1, step = Math.max(1, Math.ceil(n / 480));
   const [lo, hi] = bounds, L = 30, R = 4, T = 8, B = 22;
-  const X = k => L + (k / (n - 1)) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const X = k => L + ((k+.5) / n) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
   const pts = { sun: [], earth: [], hz: [] };
   for (let k = 0; k < n; k += step) {
     const i = w.i0 + k, su = core.sunAzEl(s, i), ea = core.earthAzEl(s, i);
@@ -420,11 +421,12 @@ function detailAltSVG(s, W, H, bounds) {
     grid += `${v === 0 ? '' : `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="rgba(237,237,237,.05)" stroke-width="1"/>`}<text x="0" y="${(Y(v) + 3).toFixed(1)}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${v}°</text>`;
   }
   const d0 = core.hourToDate(w.i0).toISOString().slice(5, 10), d1 = core.hourToDate(w.i1).toISOString().slice(5, 10);
-  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">${grid}
+  const bits=hourBits(s,w.i0,w.i1), strips=bits?visibilityRows(bits,[{key:'sun',on:b=>!!(b&1)},{key:'earth',on:b=>!!(b&2)}],{x:L,y:H+2,width:W-L-R}):'';
+  return `<svg class="alt-geometry" viewBox="0 0 ${W} ${H+34}" width="100%" height="${H+34}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">${grid}
     <line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#6E6E74" stroke-dasharray="3 3" stroke-width="0.75"/>
     ${pts.hz.length ? line(pts.hz, '#8D96A4', 0.75) : ''}${line(pts.earth, css('--earth'), 1.8)}${line(pts.sun, css('--sun'), 1.8)}
     <text x="${L}" y="${H - 6}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d0}</text><text x="${W - R}" y="${H - 6}" text-anchor="end" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d1}</text>
-    <line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="${L}" data-w="${W - L - R}" x1="0" x2="0" y1="${T - 4}" y2="${H - B + 2}" stroke="${css('--text')}" stroke-width="1.5"/></svg>`;
+    ${strips}<line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="${L}" data-w="${W - L - R}" x1="0" x2="0" y1="${T - 4}" y2="${H+26}" stroke="${css('--text')}" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><div class="geometry-legend"><i class="sun-swatch"></i>${esc(t('visSun'))}<i class="earth-swatch"></i>${esc(t('visEarth'))}</div>`;
 }
 function placeReadouts(root) {
   const now = LLSN().now?.(); if (now == null) return;
@@ -471,7 +473,7 @@ async function renderBig() {
   const sites = allSites.slice(firstColumn, firstColumn + capacity);
   const ko = getLang() === 'ko', labels = detailLabels[ko ? 'ko' : 'en'];
   loadAsync(allSites, () => { if (my === bigSeq) renderBig(); });
-  const terrainJobs = allSites.filter(s => !terrainValues.has(s.id)).map(async site => {
+  const terrainJobs = allSites.filter(s => !s.user && !terrainValues.has(s.id)).map(async site => {
     terrainValues.set(site.id, null);
     try {
       const response = await fetch(`${core.state.base}terrain/${encodeURIComponent(site.id)}.json`);
@@ -521,7 +523,7 @@ async function renderBig() {
     box.addEventListener('pointermove', event => {
       const svgBox = box.querySelector('svg') || box, rect = svgBox.getBoundingClientRect(), vbW = svgBox.viewBox?.baseVal?.width || 264;
       const fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * vbW - 30) / (vbW - 34)));
-      const i = w.i0 + fraction * (w.i1 - w.i0), site = byId(box.dataset.chartSite);
+      const i = w.i0 + Math.max(0,Math.min(w.i1-w.i0,fraction*(w.i1-w.i0+1)-.5)), site = byId(box.dataset.chartSite);
       const tip = root.querySelector('.detail-tooltip');
       tip.classList.remove('tl-tip');
       tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t('lgSunEl')} ${core.sunAzEl(site,i).el.toFixed(1)}° · ${t('lgEarthEl')} ${core.earthAzEl(site,i).el.toFixed(1)}°`;

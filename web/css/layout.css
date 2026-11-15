@@ -1232,3 +1232,6 @@ body.on-about { overflow-x: clip; }
   #ls-tray .tc-h { flex-wrap: wrap; }
   #ls-tray .tc-subs { margin-left: auto; }
 }
+
+/* The outer tray is not a scroll container; only tc-scroll scrolls vertically. */
+#ls-tray .tray-main { overflow: clip; }

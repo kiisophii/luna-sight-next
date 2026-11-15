@@ -56,6 +56,6 @@ await browser.close();
 fs.writeFileSync(dir+'/checks.json',JSON.stringify(checks,null,2));
 const valuesStable=checks.filter(c=>c.state==='after').every(c=>JSON.stringify(c.metrics.values)===JSON.stringify(checks.find(b=>b.state==='before'&&b.width===c.width&&b.lang===c.lang).metrics.values));
 if(!valuesStable)throw Error('Contest values changed');
-const failures=checks.filter(c=>c.state==='after'&&(c.errors.length||c.metrics.documentWidth>c.metrics.viewport||Math.abs(c.metrics.chart.height-100)>.1||Math.abs(c.metrics.row.height-42)>.1));
+const failures=checks.filter(c=>c.state==='after'&&(c.errors.length||c.metrics.documentWidth>c.metrics.viewport||Math.abs(c.metrics.main.x-c.metrics.title.x)>.1||Math.abs(c.metrics.chart.height-100)>.1||Math.abs(c.metrics.row.height-42)>.1));
 fs.writeFileSync(dir+'/result.json',JSON.stringify({failures,checks:checks.length},null,2));
 if(failures.length)process.exitCode=1;

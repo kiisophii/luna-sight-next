@@ -9,7 +9,7 @@ import { relayFor, segmentHours, siteStationLink } from './diff_data.js';
 
 addStrings({
   saTitle: 'The communication story for this site', saAria: 'Communication story: direct link, tower, Korea',
-  sa1: '1 · Direct link to Earth', sa3: '2 · A relay tower', sa4: '3 · Korea receives too',
+  sa1: '1 · Direct link to Earth', sa3: '2 · A relay tower', sa4: '3 · Yeoju sees the Moon too',
   sa1fail: 'Earth is hidden by terrain or libration for {x} of the period.', sa1ok: 'Earth is in view for the whole period — the direct link works here.',
   sa3txt: 'With {n} tower(s) of {h} m: link {a} → {b} of the period.', sa3none: 'No buildable tower within 10 km improves this site at {h} m.', sa3ok: 'Not needed: this site already sees Earth all the time in the 5-year data.',
   sa4txt: 'Direct link to Yeoju (KDSA, 35 m) for {x} of the period ({hrs}): the site sees Earth and the Moon is ≥ 10° above Yeoju. With the 3 NASA DSN 70 m sites: {d}.',
@@ -17,7 +17,7 @@ addStrings({
   saPeriod: 'Period', saChange: 'change in Analysis window ↓',
 }, {
   saTitle: '이 착륙지의 통신 이야기', saAria: '통신 이야기: 직접 통신, 타워, 한국',
-  sa1: '1 · 지구와 직접 통신', sa3: '2 · 중계 타워', sa4: '3 · 한국도 받는다',
+  sa1: '1 · 지구와 직접 통신', sa3: '2 · 중계 타워', sa4: '3 · 여주에서도 달이 보인다',
   sa1fail: '기간의 {x} 동안 지형이나 칭동 때문에 지구가 가려진다.', sa1ok: '기간 내내 지구가 보인다 — 여기서는 직접 통신이 된다.',
   sa3txt: '{h} m 타워 {n}기: 통신 {a} → {b} (기간 대비).', sa3none: '{h} m에서는 10 km 안에 세울 수 있는 타워로 개선되지 않는다.', sa3ok: '필요 없음: 이 착륙지는 5년 자료 내내 지구가 보인다.',
   sa4txt: '기간의 {x} 동안 여주(KDSA, 35 m)와 직접 통신 가능 ({hrs}): 착륙지에서 지구가 보이고 여주에서 달이 10° 이상. NASA DSN 70 m 세 곳 합계: {d}.',

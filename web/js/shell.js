@@ -4,6 +4,8 @@
 import { t, getLang } from './i18n.js';
 import { addStrings } from './ui_shared.js';
 import { enhanceSelect, autoEnhance } from './ui_select.js';
+// ?gv= (shared camera) is read here, before app.js rewrites the address bar, so the late-loading globe still gets it
+window.__llsnGV = new URLSearchParams(location.search).get('gv');
 
 // sort = text-button dropdown (Chaei #8); every other select = the one box dropdown (Chaei #12)
 enhanceSelect(document.getElementById('sort'), { variant: 'text', align: 'left' });
@@ -110,8 +112,10 @@ document.addEventListener('click', e => {
 });
 
 // ------------------------------------------------------------ panel folding
+const CHEV = up => `<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="${up ? 'M4 10l4-4 4 4' : 'M4 6l4 4 4-4'}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 function foldLabel(b, open) {
   const left = b.dataset.fold === 'ls-cond';
+  if (left) { b.innerHTML = CHEV(open); b.setAttribute('aria-label', t(open ? 'collapse' : 'expand')); return; }
   b.textContent = open ? (left ? '‹' : '›') : (left ? '›' : `‹ ${t('openTray')}`);
   b.classList.toggle('wide', !open && !left);
   b.setAttribute('aria-label', t(open ? (left ? 'collapse' : 'collapseTray') : (left ? 'expand' : 'openTray')));
@@ -122,6 +126,11 @@ document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', (
   const phone = window.matchMedia('(max-width: 899px)').matches && box.id === 'ls-cond';
   const open = phone ? !box.classList.contains('unfolded') : box.classList.contains('folded');
   if (phone) box.classList.toggle('unfolded', open); else box.classList.toggle('folded', !open);
+  if (box.id === 'ls-cond' && b.dataset.userClick === '1') {
+    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable input, .ls-foldable .dd-btn, .ls-foldable select')?.focus());
+    else b.focus();
+  }
+  delete b.dataset.userClick;
   b.setAttribute('aria-expanded', String(open));
   foldLabel(b, open);
   if (open && box.id === 'ls-tray') window.dispatchEvent(new Event('resize'));   // scrubber canvas re-measures
@@ -229,6 +238,16 @@ window.addEventListener('llsn:time', () => {
 });
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
+  tb.classList.toggle('time-off', k !== 'light');                // the time block folds for time-independent layers
+  if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
+    layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
+    const g0 = LL().globe; if (!g0) return;
+    const cv = document.createElement('canvas'); cv.width = 4; cv.height = 2; const c2 = cv.getContext('2d'); c2.fillStyle = '#9a9aa0'; c2.fillRect(0, 0, 4, 2);
+    await g0.setColorMap(cv, { flat: true });
+    const leg = $('#map-legend'); leg.hidden = false;
+    leg.innerHTML = `<div>${esc(t('lgRelief'))}</div><div class="muted" style="margin-top:3px">${esc(t('lgReliefNote'))}</div>`;
+    return;
+  }
   const g = LL().globe; if (!g) return;
   layer = k;
   tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
@@ -437,9 +456,13 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const md = i => { const x = d(i); return `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}`; };
   const ticks = () => {
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
-    const n = 5; el.innerHTML = Array.from({ length: n }, (_, k) => `<span>${md(Math.round(w.i0 + (w.i1 - w.i0) * k / (n - 1)))}</span>`).join('');
+    const span = w.i1 - w.i0 || 1, days = Math.floor(span / 24);
+    let html = '';
+    for (let dd = 0; dd <= days; dd++) { const f = (dd * 24) / span; html += `<i class="tk${dd % 7 === 0 ? ' big' : ''}" style="left:${(f * 100).toFixed(2)}%"></i>`; }
+    html += [0, 0.5, 1].map(f => `<span class="lb" style="left:${f * 100}%">${md(Math.round(w.i0 + span * f))}</span>`).join('');
+    el.innerHTML = html;
     const per = document.getElementById('tray-period');
-    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)} d`; }
+    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)}${getLang() === 'ko' ? '일' : ' d'}`; }
   };
   const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
   window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
@@ -473,14 +496,20 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
     const x = new Date(Date.UTC(2026, 0, 1) + w.i0 * 3600e3);
     const day = getLang() === 'ko' ? `${x.getUTCMonth() + 1}월 ${x.getUTCDate()}일` : `${MON.en[x.getUTCMonth()]} ${x.getUTCDate()}`;
     const per = document.getElementById('c1-period'); const pt = per?.options[per.selectedIndex]?.textContent || '';
-    document.getElementById('c1-sum-1').textContent = `${fill(t('c1Landing'), { d: day })} · ${pt}`;
+    void pt; const days = Math.round(w.days * 10) / 10;
+    document.getElementById('c1-sum-1').textContent = `${fill(t('c1Landing'), { d: day })} · ${days}${getLang() === 'ko' ? '일' : ' d'}`;
     const on = [...document.querySelectorAll('#llsn-filters .fc-val')].filter(o => !o.classList.contains('unset') && o.dataset.k)
       .map(o => `${o.closest('.fc-cell').querySelector('.fc-lbl').textContent} ${o.textContent}`);
-    document.getElementById('c1-sum-2').innerHTML = (on.length ? on : [t('c1NoCond')]).map(c => `<i>${c.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]))}</i>`).join('');
+    document.getElementById('c1-sum-2').innerHTML = (on.length ? on : [t('c1NoCond')]).map(c => `<i>${c.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]))}</i>`).join('') + `<button type="button" class="c1-add">${t('c1AddCond')}</button>`;
   };
   const sync = () => { const folded = box.classList.contains('folded'); sum.hidden = !folded; if (folded) fillS(); };
   new MutationObserver(sync).observe(box, { attributes: true, attributeFilter: ['class'] });
-  sum.addEventListener('click', () => fb.click());
+  sum.addEventListener('click', e => { if (e.target.closest('.c1-add')) fb.click(); });
+  foldLabel(fb, !box.classList.contains('folded'));
+  // first view: when sites are already in the comparison, start with the conditions folded (the copy)
+  window.addEventListener('llsn:ready', () => setTimeout(() => {
+    if ((LL().pins?.() || []).length && !box.classList.contains('folded') && !window.matchMedia('(max-width: 1099px)').matches) fb.click();
+  }, 0), { once: true });
   ['llsn:window', 'llsn:filter', 'llsn:lang'].forEach(ev => window.addEventListener(ev, () => { if (!sum.hidden) fillS(); }));
   let last = null;
   window.addEventListener('llsn:pins', e => {
@@ -490,3 +519,21 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   });
   sync();
 })();
+
+// time label follows the handle (the calculation time is always on screen while the time block is open)
+(() => {
+  const nd = document.getElementById('scrub-needle'), lab = document.getElementById('utc-chip'); if (!nd || !lab) return;
+  const place = () => { lab.style.left = nd.style.left || '0%'; };
+  new MutationObserver(place).observe(nd, { attributes: true, attributeFilter: ['style'] }); place();
+})();
+
+document.getElementById('sp-btn')?.addEventListener('click', () => document.querySelector('.ls-toolbar [data-view="south"]')?.click());
+
+// relay pill tooltip follows the language
+(() => { const rp = document.querySelector('.relay-pill'); if (!rp) return; const set = () => { rp.title = t('relayPillTip'); };
+  ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set(); })();
+
+// a real click / key press on the conditions toggle (not the automatic fold) moves focus as in the copy
+document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('pointerdown', () => { b.dataset.userClick = '1'; }, true));
+document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') b.dataset.userClick = '1'; }, true));
+document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const b = document.querySelector('.ls-fold[data-fold="ls-cond"]'); if (b) b.dataset.userClick = '1'; }, true);

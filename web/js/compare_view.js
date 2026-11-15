@@ -16,17 +16,17 @@ addStrings({
   cmpEmptyTray: 'No pinned sites yet. Press a pin in Candidates on the left to compare them here side by side.',
   cmpCaption: 'Whole Moon: LROC color (NASA SVS CGI Moon Kit) on LOLA terrain, lit by the real Sun at the selected time.', cmpEdge: 'Earth-set edge (moves with libration)',
   r_item: 'Item', r_sun: 'Sunlight (period)', r_earth: 'Direct-to-Earth', r_both: 'Sun + Earth together', r_dark: 'Longest shadow',
-  r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA link', r_gs: 'NASA DSN (any of 3):',
+  r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA in view', r_gs: 'NASA DSN (any of 3):',
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
   noChange: 'no change in data', why: 'Site check ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
   tabDial: '◷ Lunar-day clock', tabAlt: '↗ Sun & Earth elevation', changeH: 'Change over time',
   dialDesc: 'One turn = the analysis period, 12 o’clock = start.',
-  lgSun: 'sunlight', lgEarth: 'direct-to-Earth', lgRelay: 'via relay tower', lgCut: 'no link even with the tower', lgNeedle: 'selected time', lgKdsa: 'Yeoju KDSA can receive',
+  lgSun: 'sunlight', lgEarth: 'direct-to-Earth', lgRelay: 'via relay tower', lgCut: 'no link even with the tower', lgNeedle: 'selected time', lgKdsa: 'Yeoju sees the Moon (≥ 10°) while the site sees Earth — geometry only',
   altDesc: 'A body is visible only above the terrain line.', lgSunEl: 'Sun elevation', lgEarthEl: 'Earth elevation', lgHzSun: 'terrain horizon (Sun direction)', lgZero: '0° (flat horizon)', lgSunPart: 'Sun partly visible', lgSunDial: 'sunlight (stronger = more of the disc)', altAria: 'Sun and Earth elevation with the terrain horizon over the period',
   tlH: 'Timeline', tlDesc: 'Click or drag to move the selected time.',
   sNextSet: 'Until sunset', sNextRise: 'Until sunrise', sNextESet: 'Until Earthset', sNextERise: 'Until Earthrise', sDark: 'Longest shadow',
-  sRelayNeed: 'Longest direct-link gap', sTower: 'Via tower ({h} m)', sCut: 'Still no link with tower', sKdsa: 'Yeoju KDSA link',
+  sRelayNeed: 'Longest direct-link gap', sTower: 'Via tower ({h} m)', sCut: 'Still no link with tower', sKdsa: 'Yeoju KDSA in view',
   vGood: '✓ No flags', vCond: '! Check conditions', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
   sumLine: '{n}: {s} strength(s), {c} caution(s) under the example rule.', allSites: 'All sites — period table',
   coordsH: '{c} · h {h} m',
@@ -36,17 +36,17 @@ addStrings({
   cmpEmptyTray: '아직 고정한 후보지가 없습니다. 왼쪽 ② 후보지의 핀을 누르면 여기서 나란히 비교합니다.',
   cmpCaption: '달 전체: LROC 컬러(NASA SVS CGI Moon Kit)에 LOLA 지형, 선택한 시각의 실제 태양.', cmpEdge: '지구가 지는 경계 (칭동으로 출렁임)',
   r_item: '항목', r_sun: '햇빛 (운용 기간)', r_earth: '지구 직접 교신', r_both: '해+지구 동시', r_dark: '최장 연속 그늘',
-  r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 교신', r_gs: 'NASA DSN (3곳 중 하나):',
+  r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 가시', r_gs: 'NASA DSN (3곳 중 하나):',
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '교신 · {x} 남음', nowNoEarth: '교신 없음 · 뜨기까지 {x}',
   noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
   tabDial: '◷ 달의 하루 시계', tabAlt: '↗ 태양·지구 고도', changeH: '시간에 따른 변화',
   dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작.',
-  lgSun: '햇빛', lgEarth: '지구 직접 교신', lgRelay: '중계탑 경유', lgCut: '탑이 있어도 끊김', lgNeedle: '선택 시각', lgKdsa: '여주 KDSA 수신 가능',
+  lgSun: '햇빛', lgEarth: '지구 직접 교신', lgRelay: '중계탑 경유', lgCut: '탑이 있어도 끊김', lgNeedle: '선택 시각', lgKdsa: '여주에서 달 ≥ 10° 이고 착륙지에서 지구가 보임 — 기하만',
   altDesc: '지형 선보다 위에 있어야 보입니다.', lgSunEl: '태양 고도', lgEarthEl: '지구 고도', lgHzSun: '지형 지평선 (태양 방향)', lgZero: '0° (평평한 지평선)', lgSunPart: '태양 일부만 보임', lgSunDial: '햇빛 (진할수록 원반이 많이 보임)', altAria: '기간 동안의 태양·지구 고도와 지형 지평선',
   tlH: '타임라인', tlDesc: '누르거나 끌어서 선택 시각을 옮깁니다.',
   sNextSet: '다음 일몰까지', sNextRise: '다음 일출까지', sNextESet: '다음 지구몰까지', sNextERise: '다음 지구돋이까지', sDark: '최장 연속 그늘',
-  sRelayNeed: '직접 교신 최장 끊김', sTower: '탑 경유 ({h} m)', sCut: '탑 있어도 끊김', sKdsa: '여주 KDSA 교신',
+  sRelayNeed: '직접 교신 최장 끊김', sTower: '탑 경유 ({h} m)', sCut: '탑 있어도 끊김', sKdsa: '여주 KDSA 가시',
   vGood: '✓ 주의 없음', vCond: '! 조건 확인', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
   sumLine: '{n}: 예시 규칙으로 강점 {s}개, 주의 {c}개.', allSites: '전체 착륙지 — 기간 표',
   coordsH: '{c} · 높이 {h} m',
@@ -257,22 +257,23 @@ function placeAltNeedles(root) {
 // ------------------------------------------------------------ timeline (SVG)
 let bitsKD = null;
 async function timelineSVG(sites) {
-  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = 1100, rowH = 14, gap = 10, top = 22;
+  const cw = document.querySelector('#ls-compare .tl')?.clientWidth || 1100;
+  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(720, Math.min(1100, Math.round(cw - 34))), LW = W < 900 ? 124 : 150, rowH = 14, gap = 10, top = 22;
   const kd = await (bitsKD ||= stationBits().catch(() => null));
   const H = top + sites.length * (rowH * 2 + 8 + gap) + 4;
-  const X = k => 150 + (k / n) * (W - 160);
+  const X = k => LW + (k / n) * (W - LW - 10);
   const sunC = css('--sun'), earthC = css('--earth'), relayC = css('--relay'), kdC = css('--kdsa');
   let out = '';
-  const dStep = n / 24 > 60 ? 7 : n / 24 > 20 ? 2 : 1;
-  for (let d = 0; d * 24 < n; d += dStep) out += `<line x1="${X(d * 24)}" x2="${X(d * 24)}" y1="${top - 4}" y2="${H}" stroke="${css('--border')}" stroke-width="1"/><text x="${X(d * 24) + 2}" y="12" font-size="9.5" fill="${css('--muted')}" font-family="Oxanium,monospace">${core.hourToDate(w.i0 + d * 24).toISOString().slice(5, 10)}</text>`;
+  const dStep = [1, 2, 7, 14, 30, 60, 120].find(st => ((W - LW - 10) / (n / 24)) * st >= 42) || 240;   // axis labels at least 42 px apart
+  for (let d = 0; d * 24 < n; d += dStep) out += `<line x1="${X(d * 24)}" x2="${X(d * 24)}" y1="${top - 4}" y2="${H}" stroke="${css('--border')}" stroke-width="1"/><text x="${X(d * 24) + 2}" y="12" font-size="11" fill="${css('--muted')}" font-family="Oxanium,monospace">${core.hourToDate(w.i0 + d * 24).toISOString().slice(5, 10)}</text>`;
   for (let r = 0; r < sites.length; r++) {
     const s = sites[r], y = top + r * (rowH * 2 + 8 + gap), bits = hourBits(s, w.i0, w.i1);
     const pn = LLSN().pinNo?.(s.id);
-    out += `<text x="0" y="${y + rowH}" font-size="11.5" fill="${css('--text')}">${pn ? `#${pn} ` : ''}${esc(nameOf(s)).slice(0, 22)}</text>`;
-    if (!bits) { out += `<text x="150" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
+    out += `<text x="0" y="${y + rowH}" font-size="11.5" fill="${css('--text')}">${pn ? `#${pn} ` : ''}${esc(nameOf(s).slice(0, W < 900 ? 16 : 22))}</text>`;
+    if (!bits) { out += `<text x="${LW}" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
     const codes = await relayCodes(s.id, w.i0, w.i1).catch(() => null);
     const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"/>`; st = -1; } } };
-    out += `<rect x="150" y="${y}" width="${W - 160}" height="${rowH}" fill="${css('--surface-2')}"/><rect x="150" y="${y + rowH + 2}" width="${W - 160}" height="${rowH}" fill="${css('--surface-2')}"/>`;
+    out += `<rect x="${LW}" y="${y}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/><rect x="${LW}" y="${y + rowH + 2}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/>`;
     runsDraw(k => bits[k] & 1, sunC, y, rowH);
     runsDraw(k => !(bits[k] & 1) && core.sunVisibleFraction(s, w.i0 + k) > 0, sunC, y, rowH, 0.35);
     runsDraw(k => bits[k] & 2, earthC, y + rowH + 2, rowH);
@@ -280,11 +281,11 @@ async function timelineSVG(sites) {
     if (kd?.KDSA) runsDraw(k => (bits[k] & 2) && kd.KDSA[w.i0 + k], kdC, y + rowH * 2 + 4, 3);
   }
   return `<svg viewBox="0 0 ${W} ${H}" class="tl-svg" role="img" aria-label="${esc(t('tlH'))}">${out}
-    <g class="tl-needle" data-n="${n}" data-i0="${w.i0}"><line x1="0" x2="0" y1="${top - 6}" y2="${H}" stroke="${css('--text')}" stroke-width="1.6"/><path d="M-5,${top - 10} L5,${top - 10} L0,${top - 3}z" fill="${css('--text')}"/></g></svg>`;
+    <g class="tl-needle" data-n="${n}" data-i0="${w.i0}" data-w="${W}" data-lw="${LW}"><line x1="0" x2="0" y1="${top - 6}" y2="${H}" stroke="${css('--text')}" stroke-width="1.6"/><path d="M-5,${top - 10} L5,${top - 10} L0,${top - 3}z" fill="${css('--text')}"/></g></svg>`;
 }
 function placeTlNeedle(root) {
   const g = root.querySelector('.tl-needle'); if (!g) return;
-  const n = Number(g.dataset.n), x = 150 + ((LLSN().now() - Number(g.dataset.i0)) / n) * (1100 - 160);
+  const n = Number(g.dataset.n), W = Number(g.dataset.w) || 1100, LW = Number(g.dataset.lw) || 150, x = LW + ((LLSN().now() - Number(g.dataset.i0)) / n) * (W - LW - 10);
   g.setAttribute('transform', `translate(${x.toFixed(1)},0)`);
 }
 
@@ -381,8 +382,9 @@ async function renderBig() {
 function wireTimeline(box) {
   const svg = box.querySelector('svg'); if (!svg) return;
   const toTime = e => {
-    const r = svg.getBoundingClientRect(), x = ((e.clientX - r.left) / r.width) * 1100;
-    const w = LLSN().window, n = w.i1 - w.i0 + 1, f = (x - 150) / (1100 - 160);
+    const nd = svg.querySelector('.tl-needle'), W = Number(nd?.dataset.w) || 1100, LW = Number(nd?.dataset.lw) || 150;
+    const r = svg.getBoundingClientRect(), x = ((e.clientX - r.left) / r.width) * W;
+    const w = LLSN().window, n = w.i1 - w.i0 + 1, f = (x - LW) / (W - LW - 10);
     if (f < 0 || f > 1) return;
     (LLSN().setTimeSoon || LLSN().setTime)(w.i0 + f * n);
   };

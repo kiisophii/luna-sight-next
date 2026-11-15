@@ -39,8 +39,10 @@ let lastFly = { id: null, t: 0 };
 function siteById(id) { return LLSN().state?.sites.find(s => s.id === id); }
 
 /** Fly to a site (deduplicated: a click and the focus event it causes start only one flight). */
+const GV_HOLD = (window.__llsnGV || new URLSearchParams(location.search).get('gv')) ? performance.now() + 4000 : 0;   // ?gv=: ignore automatic focus flights while the page starts
 function flySite(id, force = false) {
   if (!g || !id || !siteById(id)) return;
+  if (!force && performance.now() < GV_HOLD) return;
   const now = performance.now();
   if (!force && lastFly.id === id && now - lastFly.t < 2500) return;
   lastFly = { id, t: now };
@@ -48,7 +50,7 @@ function flySite(id, force = false) {
 }
 
 function initialView(focus) {
-  const p = new URLSearchParams(location.search).get('gv');      // ?gv=lat,lon,range,tilt,heading (read only)
+  const p = window.__llsnGV ?? new URLSearchParams(location.search).get('gv');      // ?gv=lat,lon,range,tilt,heading (read only; captured by shell.js)
   if (p) {
     const [lat, lon, range, tilt, heading] = p.split(',').map(Number);
     if ([lat, lon, range].every(isFinite)) return { lat, lon, range, tilt: tilt || 0, heading: heading || 0 };
@@ -111,6 +113,21 @@ async function start() {
       wheelNeedsFocus: true,
       hud: false,
       // site names stay clear of the floating panels (3-column layout): px covered at the left / right / top of the stage
+      // map area = between the left panel and the tray (desktop layout); chips stay inside it, the 3D centre sits in its middle
+      chipInsets: () => {
+        const st = stage.getBoundingClientRect(), L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
+        if (window.innerWidth < 1100 || !L || !T) return {};
+        return { left: Math.max(0, L.right + 20 - st.left), right: Math.max(0, st.right - T.left + 20), top: 64 - st.top, bottom: 20 };
+      },
+      centerShift: w => {
+        if (window.innerWidth < 1100) return 0;
+        const L = document.querySelector('.ls-left')?.getBoundingClientRect(), T = document.querySelector('.ls-tray')?.getBoundingClientRect();
+        if (!L || !T) return 0;
+        const cx = (L.right + 20 + T.left - 20) / 2;
+        return w / 2 - cx;
+      },
+      labelBlockers: () => ['.map-legend:not([hidden])', '.ls-hud #hud-1', '.ls-hud #hud-2', '#globe-stage .g3-note', '.ls-minimap', '#sp-btn', '#globe-stage .gl-zoom']
+        .map(sel => document.querySelector(sel)).filter(e => e && e.offsetParent !== null).map(e => e.getBoundingClientRect()).filter(r => r.width && r.height),
       labelInsets: () => {
         const st = stage.getBoundingClientRect(), r = sel => document.querySelector(sel)?.getBoundingClientRect();
         const L = r('.ls-left'), T = r('.ls-tray'), H = r('.ls-head');
@@ -154,8 +171,9 @@ async function start() {
   g.on('wheelhint', wheelHint);
 
   // view buttons + zoom buttons
-  sec.querySelector('.gl-views')?.addEventListener('click', e => {
-    const v = e.target.closest('button')?.dataset.view;
+  // the camera buttons live in the bottom toolbar (outside this section): listen on the document
+  document.addEventListener('click', e => {
+    const v = e.target.closest('.ls-toolbar [data-view], .gl-views [data-view]')?.dataset.view; if (!v) return;
     if (v === 'whole') { const c = g.getView(); g.flyTo({ lat: Math.max(-30, Math.min(30, c.lat)), lon: c.lon, range: 6500, tilt: 0, heading: 0 }); }
     else if (v === 'south') g.flyTo({ lat: -89, lon: 0, range: 420, tilt: 35, heading: 0 });
     else if (v === 'focus') flySite(LLSN().focus, true);

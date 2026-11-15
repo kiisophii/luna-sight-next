@@ -568,10 +568,15 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   .g3-chip .g3-arr{display:inline-block;margin-right:4px}
   .g3-hud b.sun{color:#ffd23f}.g3-hud b.earth{color:#7fb6ff}`;
   overlay.appendChild(css);
+  const siteName = s => lang === 'ko' && s.name_ko ? s.name_ko : s.name;
+  function updateSiteLabel(s, el) {
+    el.textContent = lang === 'ko' ? siteName(s) : (s.short || s.name);
+    el.title = `${siteName(s)} (${s.lat.toFixed(3)}, ${s.lon.toFixed(3)})`;
+  }
   const siteEls = sites.map(s => {
     const b = document.createElement('button');
     b.className = 'g3-site g3-' + s.group; b.type = 'button'; b.dataset.siteId = s.id;
-    b.textContent = s.short || s.name; b.title = `${s.name} (${s.lat.toFixed(3)}, ${s.lon.toFixed(3)})`;
+    updateSiteLabel(s, b);
     b.addEventListener('click', ev => { ev.stopPropagation(); focusSite(s.id); emit('siteclick', s); });
     overlay.appendChild(b);
     return { s, el: b, dir: dirFromLatLon(s.lat, s.lon), h: null };
@@ -991,7 +996,19 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     updateBodies(); dirty = true; emit('time', hour);
   }
   function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
-  function setLang(l) { closeCluster(); lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth'; }
+  function setLang(l) {
+    closeCluster();
+    lang = l === 'ko' ? 'ko' : 'en';
+    for (const m of siteEls) {
+      updateSiteLabel(m.s, m.el);
+      m.lw = 0;
+    }
+    updateNote();
+    chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun';
+    chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth';
+    dirty = true;
+    declutter();
+  }
 
   setTime(opts.hour ?? 0);
   if (opts.view) setView(opts.view);

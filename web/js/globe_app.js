@@ -7,7 +7,7 @@
 //   globe marker click ('siteclick')            -> LLSN.pick(id)          comparison card + horizon panorama + period table
 //   language ('llsn:lang')                      -> globe.setLang()
 // The display exaggeration stays at ×3 (team decision 11/14); globe3d.js shows the persistent note.
-import { addStrings, whenReady, translate, LLSN, mapSiteColors } from './ui_shared.js';
+import { addStrings, whenReady, translate, LLSN } from './ui_shared.js';
 import { iconSvg } from './icons.js';
 import { t, getLang } from './i18n.js';
 
@@ -222,12 +222,12 @@ whenReady(start);
 
 // Comparison labels keep their numbered list colours; other labels/dots share the minimap palette.
 function markPinnedLabels() {
-  const L = window.LLSN || {}, colors = mapSiteColors();
+  const L = window.LLSN || {};
   document.querySelectorAll('#globe-stage .g3-site').forEach(b => {
     const id = b.dataset.siteId, n = id ? L.pinNo?.(id) : null;
-    const color = colors.get(id);
-    b.toggleAttribute('data-map-color', !!color);
-    if (color) b.style.setProperty('--map-site-color', color); else b.style.removeProperty('--map-site-color');
+    // team rule (Chaei): the map shows the candidates selected in the left card only; the others get no pin at all
+    b.classList.toggle('g3-unpinned', !n);
+    b.removeAttribute('data-map-color'); b.style.removeProperty('--map-site-color');
     if (n) { b.dataset.n = n; b.style.setProperty('--sc', `var(--c${n})`); } else { delete b.dataset.n; b.style.removeProperty('--sc'); }
   });
 }

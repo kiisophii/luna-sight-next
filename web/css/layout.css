@@ -1692,3 +1692,55 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   #utc-chip #utc-val { display: none; }
   #utc-chip .ic-calendar { display: block; flex: none; }
 }
+/* ---- a site shown as a dot only (its name would overlap another) uses the same 4 px dot as every other site, in its own colour */
+.ls-globe .g3-site.g3-dotonly::before { width: 4px !important; height: 4px !important; border: 0; background: var(--map-site-color, #E6EAF2); box-shadow: 0 0 3px #000; }
+
+/* Resizable side cards and fully visible vertical reopen labels. */
+@media (min-width:1100px) {
+  :root { --panel-base-left:360px; --panel-base-right:380px; --left-w:var(--panel-user-left,var(--panel-base-left)); --tray-w:var(--panel-user-right,var(--panel-base-right)); }
+  .pn-resize { position:absolute; top:8px; bottom:8px; width:8px; z-index:4; cursor:col-resize; touch-action:none; user-select:none; }
+  .pn-resize.l { right:0; } .pn-resize.r { left:0; }
+  .pn-resize::after { content:""; position:absolute; top:calc(50% - 16px); left:3px; width:2px; height:32px; border-radius:2px; background:rgba(237,237,237,.28); }
+  .pn-resize:hover::after,.pn-resize:focus-visible::after { background:#EDEDED; }
+  .ls .pn-edge:not([hidden]) { width:28px; height:max-content; inline-size:max-content; block-size:28px; min-inline-size:56px; max-inline-size:calc(100vh - 128px); padding:12px 6px; line-height:14px; text-align:center; text-orientation:mixed; overflow:visible; }
+  html.pn-narrow-r .ls #ls-tray .tc-h { flex-wrap:wrap; }
+  html.pn-narrow-r .ls #ls-tray .tc-subs { flex-wrap:wrap; }
+}
+@media (min-width:1100px) and (max-width:1439px) { :root { --panel-base-left:328px; --panel-base-right:332px; } }
+@media (min-width:1100px) and (max-width:1279px) { :root { --panel-base-left:320px; --panel-base-right:320px; } }
+@media (max-width:1099px) { .pn-resize { display:none; } }
+html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:none !important; }
+
+/* Chaei: compact left-card sort/summary, with separate condition and panel controls. */
+.ls-left .pk-row { --candidate-action-size: 28px; --candidate-glyph-size: 19px; grid-template-columns: 22px minmax(0, 1fr) var(--candidate-action-size); column-gap: 8px; padding-right: 6px; }
+.ls-left .pk-row .pk-pin { width: var(--candidate-action-size); height: var(--candidate-action-size); padding: 0; display: grid; place-items: center; box-sizing: border-box; }
+.ls-left .pk-row .pk-pin .pk-ic { width: var(--candidate-glyph-size); height: var(--candidate-glyph-size); }
+.ls-left .pk-row .pk-relay { grid-column: 2 / -1; display: grid; grid-template-columns: 12px auto minmax(0, 1fr); align-items: center; gap: 4px 6px; min-width: 0; box-sizing: border-box; margin: 0 calc((var(--candidate-action-size) - var(--candidate-glyph-size)) / 2) 8px 0; padding: 6px 8px; }
+.ls-left .pk-relay > .num { white-space: nowrap; }
+.ls-left .pk-relay > span:not(.num) { grid-column: 2 / -1; min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+.ls-left .c2-bar .left-sort-value { display: inline-flex; align-items: center; gap: 4px; overflow: visible; }
+.ls-left .c2-bar .sort-row .dd-btn .dd-val.left-sort-value::before { content: none; }
+.ls-left .left-sort-icons { display: inline-flex; align-items: center; gap: 1px; flex: none; }
+.ls-left .left-sort-icons .ic { width: 12px; height: 12px; }
+.ls-left .c2-bar .dd-btn { gap: 3px; white-space: nowrap; }
+.ls-left .c2-bar .dd-chev { flex: none; width: 12px; }
+.ls-left #c1-sum { display: flex; width: 100%; box-sizing: border-box; gap: 4px; margin-top: 12px; padding-bottom: 14px; }
+.ls-left #c1-sum[hidden] { display: none; }
+.ls-left #c1-sum-1 { display: flex; align-items: center; flex-wrap: wrap; gap: 3px; font: 500 12px/20px var(--font-num); }
+.ls-left #c1-sum-1 button { border: 0; border-radius: 4px; background: none; color: var(--n-text); padding: 0 2px; font: inherit; cursor: pointer; }
+.ls-left #c1-sum-2 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; overflow: visible; }
+.ls-left #c1-sum-2 .c1-condition, .ls-left #c1-sum-2 .c1-add { display: inline-flex; align-items: center; gap: 4px; flex: none; min-height: 20px; height: auto; padding: 1px 5px; border: 1px solid transparent; border-radius: 5px; background: none; color: var(--n-text); font: 500 11px/16px var(--font); white-space: nowrap; cursor: pointer; }
+.ls-left .c1-condition .ic { width: 12px; height: 12px; flex: none; color: var(--n-mute); }
+.ls-left .c1-condition[data-cond-edit="sun"] .ic { color: var(--sun); }
+.ls-left .c1-condition[data-cond-edit="earth"] .ic { color: var(--earth); }
+.ls-left #c1-sum-2 .c1-add { border: 1px dashed var(--n-line); background: var(--fill-1); color: var(--n-mute); }
+.ls-left .c1-no-condition { font: 11px/20px var(--font); color: var(--n-mute); }
+.ls-left #c1-sum button:hover { background: var(--fill-1); color: var(--n-text); }
+.ls-left #c1-sum button:focus-visible { outline: 2px solid var(--n-text); outline-offset: 1px; }
+@media (min-width: 1100px) {
+  .ls-left #ls-cond > .ls-card-head { display: grid; grid-template-columns: minmax(0, 1fr) 28px 28px; align-items: center; gap: 6px; }
+  .ls-left #ls-cond > .ls-card-head h2 { min-width: 0; margin: 0; }
+  .ls-left #ls-cond .c1-tog, .ls-left #pn-fold-l { position: relative; inset: auto; transform: none; width: 28px; height: 28px; margin: 0; justify-self: end; }
+  .ls-left #ls-cond .c1-tog::before { inset: 0; transform: none; width: 100%; height: 100%; }
+  .ls-left #ls-cond.folded { min-height: 113px; }
+}

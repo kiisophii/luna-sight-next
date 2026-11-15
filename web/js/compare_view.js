@@ -477,7 +477,7 @@ async function renderBig() {
   const root = sec(); if (!root || !LLSN().window) return;
   const my = ++bigSeq, allSites = shown(), w = LLSN().window;
   // phones: a 96 px label column and two candidates side by side (#120); wider screens: 248 px + 300 px columns
-  const capacity = innerWidth <= 760 ? Math.max(1, Math.min(2, Math.floor((root.clientWidth - 96) / 120))) : Math.max(1, Math.floor((root.clientWidth - 248) / 300));
+  const capacity = innerWidth <= 760 ? Math.max(1, Math.min(2, Math.floor((root.clientWidth - 96) / 120))) : Math.max(1, Math.floor((root.clientWidth - 248) / 150));   // desktop: as many 150-300 px columns as fit (copy 6-3)
   firstColumn = Math.min(firstColumn, Math.max(0, allSites.length - capacity));
   const sites = allSites.slice(firstColumn, firstColumn + capacity);
   const ko = getLang() === 'ko', labels = detailLabels[ko ? 'ko' : 'en'];

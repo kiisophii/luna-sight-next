@@ -230,6 +230,8 @@ let layer = 'light', layerNoted = false;
 const ELEV_MIN = -4.5, ELEV_MAX = 5.5;
 // average-sunlight ramp of Chaei's copy (Turbo colour map samples, Google, Apache-2.0)
 const SUN_RAMP = ['#30123b', '#4686fb', '#1ae4b6', '#a2fc3c', '#fabb39', '#e4460a', '#7a0403'];
+// Earth-view ramp from Chaei's copy (designer reference, 11/15): 0% -> 100% of hours with the Earth in view.
+const EARTH_RAMP = ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'];
 const ELEV_RAMP = ['#0E2147', '#2A4677', '#56729F', '#4F8C8E', '#9CB463', '#E3D46C', '#E9A55F', '#DE7C64', '#F2D2C6'];
 let elevR = null;
 const elevRange = () => (elevR ||= fetch(`${LL().state?.base || 'data/'}globe/index.json`).then(r => r.json()).then(j => {
@@ -289,7 +291,7 @@ async function setLayer(k) {
   // colours (team review 11/15): average sunlight on the vivid ramp of Chaei's copy, stretched to the real maximum of the
   // map; Earth view keeps its blue ramp but is drawn at full strength (no grey hillshade mixed in) for more contrast
   const src = L.colormap.map(s => s[1]);
-  const remap = k === 'sun' ? { src, dst: SUN_RAMP, vmax: L.stats?.max || 1 } : { src, dst: src, vmax: 1, strength: 'strong' };
+  const remap = k === 'sun' ? { src, dst: SUN_RAMP, vmax: L.stats?.max || 1 } : { src, dst: EARTH_RAMP, vmax: 1, strength: 'strong' };
   await g.setColorMap(`data/${idx.dir}/${L.overview}`, { flat: true, remap });
   const top = Math.round(remap.vmax * 100);
   const stops = remap.dst.map((c, i) => `${c} ${(i / (remap.dst.length - 1) * 100).toFixed(1)}%`).join(', ');

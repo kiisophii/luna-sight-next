@@ -165,7 +165,7 @@ function draw() {
   for(let lon=-180;lon<180;lon+=30)curve(Array.from({length:91},(_,i)=>[i*2-90,lon]));
   // Pinned labels use separate pills, including nearby polar candidates.
   const pills=[];
-  g.font = `${10 * dpr}px Oxanium, monospace`; g.textBaseline = 'middle';
+  g.font = `${10 * dpr}px ${getComputedStyle(document.documentElement).getPropertyValue('--font-num').trim() || 'Oxanium, monospace'}`;   // the screen's number font (Geist Mono in English) g.textBaseline = 'middle';
   for (const pn of LLSN().pins?.() || []) {
     const s = LLSN().state.sites.find(x => x.id === pn.id); if (!s) continue;
     const q = project(s.lat, s.lon); if (!q.front) continue;

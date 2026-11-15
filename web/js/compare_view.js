@@ -207,14 +207,14 @@ async function dialSVG(s, size) {
     const col = e ? earthC : c === 2 ? relayC : (codes ? cutC : off), wdt = e || c === 2 ? size * 0.07 : size * 0.025;
     parts.push(`<path d="${arc(cx, cy, R2, a0, a1)}" stroke="${col}" stroke-width="${wdt}" fill="none"/>`);
   }
-  const ticks = [7, 14, 21].filter(d => d * 24 < n).map(d => { const a = (d * 24 / n) * 2 * Math.PI; return `<line x1="${cx + (R1 + size * .05) * Math.sin(a)}" y1="${cy - (R1 + size * .05) * Math.cos(a)}" x2="${cx + (R1 + size * .085) * Math.sin(a)}" y2="${cy - (R1 + size * .085) * Math.cos(a)}" stroke="${css('--muted')}" stroke-width="1.5"/><text x="${cx + (R1 + size * .06) * Math.sin(a) * 0.86}" y="${cy - (R1 + size * .06) * Math.cos(a) * 0.86 + 3}" font-size="${size * .045}" fill="${css('--muted')}" text-anchor="middle" font-family="Oxanium, monospace">+${d}d</text>`; }).join('');
+  const ticks = [7, 14, 21].filter(d => d * 24 < n).map(d => { const a = (d * 24 / n) * 2 * Math.PI; return `<line x1="${cx + (R1 + size * .05) * Math.sin(a)}" y1="${cy - (R1 + size * .05) * Math.cos(a)}" x2="${cx + (R1 + size * .085) * Math.sin(a)}" y2="${cy - (R1 + size * .085) * Math.cos(a)}" stroke="${css('--muted')}" stroke-width="1.5"/><text x="${cx + (R1 + size * .06) * Math.sin(a) * 0.86}" y="${cy - (R1 + size * .06) * Math.cos(a) * 0.86 + 3}" font-size="${size * .045}" fill="${css('--muted')}" text-anchor="middle" style="font-family:var(--font-num)">+${d}d</text>`; }).join('');
   const m = w.metrics.get(s.id);
   return `<svg class="dial" viewBox="0 0 ${size} ${size}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('lgSun'))} ${Math.round(m.sun_frac * 100)}%, ${esc(t('lgEarth'))} ${Math.round(m.earth_frac * 100)}%">
     <line x1="${cx}" y1="${cy - R1 - size * .05}" x2="${cx}" y2="${cy - R1 + size * .05}" stroke="${css('--text')}" stroke-width="1"/>
     ${parts.join('')}${ticks}
     <g class="dial-needle" data-n="${n}" data-i0="${w.i0}"><line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - R1 - size * .02}" stroke="${css('--text')}" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="3" fill="${css('--text')}"/></g>
-    <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-size="${size * .08}" fill="${sunC}" font-family="Oxanium, monospace">☼ ${Math.round(m.sun_frac * 100)}%</text>
-    <text x="${cx}" y="${cy + size * .09}" text-anchor="middle" font-size="${size * .08}" fill="${earthC}" font-family="Oxanium, monospace">◍ ${Math.round(m.earth_frac * 100)}%</text></svg>`;
+    <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-size="${size * .08}" fill="${sunC}" style="font-family:var(--font-num)">☼ ${Math.round(m.sun_frac * 100)}%</text>
+    <text x="${cx}" y="${cy + size * .09}" text-anchor="middle" font-size="${size * .08}" fill="${earthC}" style="font-family:var(--font-num)">◍ ${Math.round(m.earth_frac * 100)}%</text></svg>`;
 }
 function placeDialNeedles(root) {
   const now = LLSN().now();
@@ -240,7 +240,7 @@ function altSVG(s, W, H, bounds = null) {
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
     <line x1="28" x2="${W - 6}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--muted')}" stroke-dasharray="3 3" stroke-width="1"/>
-    <text x="2" y="${Y(hi) + 8}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${hi}°</text><text x="2" y="${Y(lo)}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${lo}°</text><text x="2" y="${Y(0) + 3}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">0°</text>
+    <text x="2" y="${Y(hi) + 8}" font-size="9" fill="${css('--muted')}" style="font-family:var(--font-num)">${hi}°</text><text x="2" y="${Y(lo)}" font-size="9" fill="${css('--muted')}" style="font-family:var(--font-num)">${lo}°</text><text x="2" y="${Y(0) + 3}" font-size="9" fill="${css('--muted')}" style="font-family:var(--font-num)">0°</text>
     ${pts.hz.length ? line(pts.hz, css('--muted'), 1) : ''}${line(pts.earth, css('--earth'), 1.6)}${line(pts.sun, css('--sun'), 1.6)}
     <line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="28" data-w="${W - 34}" x1="0" x2="0" y1="4" y2="${H - 12}" stroke="${css('--text')}" stroke-width="1.5"/></svg>`;
 }

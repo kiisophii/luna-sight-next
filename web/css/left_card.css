@@ -35,3 +35,30 @@
 /* relay block inside the same row card: change and distance on one line when it fits */
 .ls .ls-left .pk-row .pk-relay { display: flex; flex-wrap: wrap; align-items: center; column-gap: 6px; row-gap: 2px; line-height: 1.35; }
 .ls .ls-left .pk-row .pk-relay > span, .ls .ls-left .pk-row .pk-relay > span:not(.num) { grid-column: auto; white-space: nowrap; overflow-wrap: normal; }
+
+/* ---------------- P1 (layout and styling only; map pins are the design session's work) */
+/* P1-1 All n · sort · relay toggle: one row when it fits, the toggle drops to its own row on narrow cards;
+   a divider and even spacing separate this row from the list */
+.ls .ls-left .c2-bar { flex-wrap: wrap; row-gap: 8px; padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(237, 237, 237, .08); margin-bottom: 10px; height: auto; min-height: 42px; box-sizing: border-box; }
+.ls .ls-left .c2-bar .relay-pill { margin-left: auto; }
+/* toggle ON is clear but quieter than the data: thin relay outline, no filled box */
+.ls .ls-left .relay-pill:has(.switch:checked) { background: transparent; border-color: rgba(60, 198, 160, .32); color: var(--n-text); }
+
+/* P1-2 rows: unpinned candidates stay neutral (no accent); only pinned rows carry their colour bar and chip */
+.ls .ls-left .pk-row:not(.pinned) { --sc: transparent; }
+.ls .ls-left .pk-row:not(.pinned) .pk-chip { color: var(--n-mute); }
+
+/* P1-3 Add a site: fixed footer, separated from the scrolling list */
+.ls .ls-left .ls-add { border-top: 1px solid rgba(237, 237, 237, .10); }
+
+/* chaei-sync v50 measurements: 8 px between candidate cards (was 3 px) */
+.ls .ls-left .pk-list { display: flex; flex-direction: column; gap: 8px; }
+.ls .ls-left .pk-list > li { margin-top: 0; margin-bottom: 0; }
+/* relay block: a row without relay values gets no box at all */
+.ls .ls-left .pk-relay:empty, .ls .ls-left .pk-relay:not(:has(.num)) { display: none; }
+/* thin dark scrollbar for the candidate list (scrolling itself unchanged) */
+.ls .ls-left .pk-scroll { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .18) transparent; }
+.ls .ls-left .pk-scroll::-webkit-scrollbar { width: 6px; }
+.ls .ls-left .pk-scroll::-webkit-scrollbar-track { background: transparent; }
+.ls .ls-left .pk-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .18); border-radius: 3px; }
+.ls .ls-left .pk-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .30); }

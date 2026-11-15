@@ -139,6 +139,9 @@ body.ls { background: var(--bg); font-size: var(--fs-body, 13px); line-height: v
 .dd-list { position: absolute; z-index: 50; top: calc(100% + 4px); min-width: 100%; width: max-content; max-width: 320px; max-height: 320px; overflow: auto; padding: var(--sp-1); display: flex; flex-direction: column; gap: 2px;
   background: #0C0E12; border: 1px solid var(--line-2); border-radius: var(--r-card); box-shadow: 0 12px 40px rgba(0,0,0,.6); }
 .dd-list.dd-left { left: 0; } .dd-list.dd-right { right: 0; }
+.dd.dd-fill { display: flex; width: 100%; }
+.speed .dd { width: 76px; } .speed .dd-btn { font-family: var(--font-num); font-size: var(--fs-label); padding: 0 8px; }
+.tray-sticky .dd-list, .speed .dd-list { right: 0; left: auto; }
 .dd-opt { all: unset; box-sizing: border-box; display: flex; align-items: center; min-height: var(--ctl-m); padding: 0 10px; border-radius: var(--r-ctl); font-size: var(--fs-body); color: var(--text); cursor: pointer; white-space: nowrap; }
 .dd-opt:hover { background: var(--fill-1); }
 .dd-opt[aria-selected="true"] { background: var(--fill-2); font-weight: 600; }

@@ -13,6 +13,11 @@ export function enhanceSelect(sel, { variant = 'box', align = 'left' } = {}) {
   const id = `dd-${++uid}`;
   const wrap = document.createElement('span');
   wrap.className = `dd dd-${variant}`;
+  // keep the select's footprint: full width where it filled its box, otherwise its own width
+  const r = sel.getBoundingClientRect(), pr = sel.parentElement?.getBoundingClientRect();
+  if (variant === 'box' && r.width > 0) {
+    if (pr && r.width >= pr.width - 4) wrap.classList.add('dd-fill'); else wrap.style.minWidth = `${Math.round(r.width)}px`;
+  }
   sel.after(wrap);
   wrap.append(sel);
   sel.classList.add('dd-native');
@@ -64,6 +69,13 @@ export function enhanceSelect(sel, { variant = 'box', align = 'left' } = {}) {
   all.add(api);
   refresh();
   return api;
+}
+/** Enhance every <select> under root now and whenever modules add new ones (brief, horizon, local map, …). */
+export function autoEnhance(root = document.body) {
+  const run = n => (n.matches?.('select') ? [n] : [...(n.querySelectorAll?.('select') || [])])
+    .filter(x => !x.dataset.dd && !x.hasAttribute('data-dd-skip') && !x.multiple).forEach(x => enhanceSelect(x));
+  run(root);
+  new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1) run(n); }).observe(root, { childList: true, subtree: true });
 }
 /** Re-read every enhanced select (a module may set .value without firing 'change'). */
 export function refreshSelects() { for (const d of all) d.refresh(); }

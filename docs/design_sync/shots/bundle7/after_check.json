@@ -1,0 +1,50 @@
+{
+ "1920_en": {
+  "console_errors": [],
+  "sw": 1920,
+  "iw": 1920,
+  "over": 0
+ },
+ "1440_en": {
+  "console_errors": [],
+  "sw": 1440,
+  "iw": 1440,
+  "over": 0,
+  "sw2": 1440,
+  "chips": 3,
+  "nos": "01,02,03"
+ },
+ "1280_en": {
+  "console_errors": [],
+  "sw": 1280,
+  "iw": 1280,
+  "over": 0,
+  "sw2": 1280,
+  "chips": 3,
+  "nos": "01,02,03"
+ },
+ "1920_ko": {
+  "console_errors": [],
+  "sw": 1920,
+  "iw": 1920,
+  "over": 0
+ },
+ "1440_ko": {
+  "console_errors": [],
+  "sw": 1440,
+  "iw": 1440,
+  "over": 0,
+  "sw2": 1440,
+  "chips": 3,
+  "nos": "01,02,03"
+ },
+ "1280_ko": {
+  "console_errors": [],
+  "sw": 1280,
+  "iw": 1280,
+  "over": 0,
+  "sw2": 1280,
+  "chips": 3,
+  "nos": "01,02,03"
+ }
+}

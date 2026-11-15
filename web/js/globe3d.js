@@ -911,13 +911,14 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   // ---------------- resize, loop
   let roW = 0, roH = 0;
   function resize() {
-    const w = container.clientWidth || 300, h = container.clientHeight || 300; roW = w; roH = h;
-    renderer.setSize(w, h, false); camera.aspect = w / h;
+    const w = container.clientWidth || 300, h = container.clientHeight || 300;
+    if(w!==roW||h!==roH){roW=w;roH=h;renderer.setSize(w,h,false);camera.aspect=w/h;}
     // optional: put the projection centre at the middle of the free map area (panels float over the stage)
     const shift = typeof opts.centerShift === 'function' ? Math.round(opts.centerShift(w, h) || 0) : 0;
     if (shift) camera.setViewOffset(w, h, shift, 0, w, h); else camera.clearViewOffset();
-    camera.updateProjectionMatrix(); dirty = true;
+    camera.updateProjectionMatrix(); labelIns=null; dirty = true;
   }
+  window.addEventListener('llsn:layout',resize);
   const ro = new ResizeObserver(() => { if ((container.clientWidth || 300) !== roW || (container.clientHeight || 300) !== roH) resize(); }); ro.observe(container); resize();   // same size: skip
 
   // Pause completely while the globe is scrolled out of view (the page has panels below it).
@@ -1134,7 +1135,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     sunDirection: () => sunDir.clone(), earthPosition: () => earthPos.clone(),
     waitIdle: async (timeout = 30000) => { const t0 = performance.now(); let calm = 0; while (performance.now() - t0 < timeout) { await new Promise(r => setTimeout(r, 100)); calm = stats.pending === 0 && !fly ? calm + 1 : 0; if (calm >= 5) return true; } return false; },
     on(ev, fn) { (listeners[ev] ||= []).push(fn); return () => { listeners[ev] = listeners[ev].filter(f => f !== fn); }; },
-    dispose() { stopped = true; clearInterval(declutterTimer); colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
+    dispose() { stopped = true; clearInterval(declutterTimer); colorWorker?.terminate(); colorWorker = null; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); window.removeEventListener('llsn:layout',resize); for (const t of tiles.values()) disposeTile(t); colorTex.value?.dispose(); renderer.dispose(); overlay.remove(); el.remove(); },
     _internal: { scene, camera, renderer, tiles },
   };
   return api;

@@ -1692,3 +1692,19 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   #utc-chip #utc-val { display: none; }
   #utc-chip .ic-calendar { display: block; flex: none; }
 }
+
+/* Resizable side cards and fully visible vertical reopen labels. */
+@media (min-width:1100px) {
+  :root { --panel-base-left:360px; --panel-base-right:380px; --left-w:var(--panel-user-left,var(--panel-base-left)); --tray-w:var(--panel-user-right,var(--panel-base-right)); }
+  .pn-resize { position:absolute; top:8px; bottom:8px; width:8px; z-index:4; cursor:col-resize; touch-action:none; user-select:none; }
+  .pn-resize.l { right:0; } .pn-resize.r { left:0; }
+  .pn-resize::after { content:""; position:absolute; top:calc(50% - 16px); left:3px; width:2px; height:32px; border-radius:2px; background:rgba(237,237,237,.28); }
+  .pn-resize:hover::after,.pn-resize:focus-visible::after { background:#EDEDED; }
+  .ls .pn-edge:not([hidden]) { width:28px; height:max-content; inline-size:max-content; block-size:28px; min-inline-size:56px; max-inline-size:calc(100vh - 128px); padding:12px 6px; line-height:14px; text-align:center; text-orientation:mixed; overflow:visible; }
+  html.pn-narrow-r .ls #ls-tray .tc-h { flex-wrap:wrap; }
+  html.pn-narrow-r .ls #ls-tray .tc-subs { flex-wrap:wrap; }
+}
+@media (min-width:1100px) and (max-width:1439px) { :root { --panel-base-left:328px; --panel-base-right:332px; } }
+@media (min-width:1100px) and (max-width:1279px) { :root { --panel-base-left:320px; --panel-base-right:320px; } }
+@media (max-width:1099px) { .pn-resize { display:none; } }
+html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:none !important; }

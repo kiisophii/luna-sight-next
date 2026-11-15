@@ -327,3 +327,12 @@ Product `web/data/detail/time_stats/` (producer Jiyong Sung, PR #80, main `aa1e1
 | `detail/time_stats/` (Z1) | Jiyong Sung | Soyun Jeong | Every hourly Sun/Earth state recomputed twice (literal scalar loop and NumPy, bit-identical); own run state machine with start/end clipping; own station-bit decoder; Earth-gated station counts without a sunlight condition | 3 sites × 43,824 h; 108 Z1 fields; metrics/ (4 fields) and windows/ (Sun/Earth visible intervals, top-10 gaps, visible hours) per site | **0 pp, 0 h; all counts, clipped-run lists and station-hour counts exact** (criteria ≤ 0.1 pp, ≤ 1 h, exact) | **Independently verified by another team member (3 sites)** |
 
 The same code also reproduces all 33 sites exactly (1,188 fields, metrics and windows exact); that supplement is not a second implementation. Closest hour to a threshold among the three sites: Sun fraction 1.75 × 10⁻⁴ from 0.5, Earth centre 1.9 × 10⁻⁴ ° from the mask. Ephemeris, horizons and station bits are inputs, not regenerated here. [Report](z1_independent_soyun.md), [all numbers and hashes](z1_independent_soyun.json). No production data changed.
+
+
+## Task Z3 independent full verification — Jiyong Sung, 2026-11-15
+
+| Product | Producer / independent checker | Scope | Result | Evidence / limits |
+|---|---|---|---|---|
+| `detail/dates/` | Minchul Kim (PR #79) / Jiyong Sung, AI-assisted independent Python/NumPy code; no production numerical imports or cached bits | All 33 sites x 43,824 hours; all 1,826 daily starts x 168/336/708 h stays and six signed shifts. 179,190 valid + 1,584 invalid base rows; 1,072,962 valid + 11,682 invalid shift rows; 8,315,604 scalar comparisons | **Independently verified (other member, full): PASS.** Maximum/median fraction difference 0 pp, duration difference 0 h; every status/null/target index/censor flag exact. Criteria <=0.1 pp / <=1 h. | [Report](z3_independent_jiyong/report.md), [all 33 sites](z3_independent_jiyong/sites.csv), [hashes/boundary evidence](z3_independent_jiyong/summary.json), [all discrepancies](z3_independent_jiyong/discrepancies.csv). Main aa1e1fb inputs equal PR head 3939a3b. Shared DEM/ephemeris physical accuracy is outside this check. Windows CRLF checkout has 66 hash errors; exact Git-LF snapshot full contract passes 0 errors/0 warnings. No production changes or human numerical rerun claimed. |
+
+This appendix supersedes the pending Jiyong check in the historical author-only Z3 entry above. The product's hashed `verification_status` remains unchanged; this ledger records the new evidence.

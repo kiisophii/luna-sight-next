@@ -131,3 +131,9 @@ html:not([lang="ko"]) #ls-brief { --font: 'Geist', 'Pretendard', system-ui, sans
 
 /* Korean screen: site names have no Hangul glyphs in the number font, so the name uses the text font (no wide letter gaps) */
 html[lang="ko"] #ls-brief .brief-head h2.sc-name { font-family: var(--font); letter-spacing: -0.26px; }
+/* card 01 under the bars: one summary sentence (copy), then the hourly table folded under "Raw table" */
+#ls-brief .sc-d { margin: 0 0 6px; font-size: 13px; line-height: 20px; color: var(--sc-mute); }
+#ls-brief .sc-raw { margin: 0 0 14px; }
+#ls-brief .sc-raw > summary { cursor: pointer; width: max-content; font-size: 12px; color: var(--sc-dim); }
+#ls-brief .sc-raw > summary:hover { color: var(--sc-text); }
+#ls-brief .sc-raw[open] > summary { margin-bottom: 6px; }

@@ -46,7 +46,7 @@ addStrings({
   d_hz: 'Horizon and what blocks the view', d_hzD: 'Margin = body elevation − terrain height in that direction; positive = visible (Sun: disc center).',
   d_more: 'More analysis and readiness', d_moreD: 'What this tool has NOT analyzed yet, said plainly — no invented numbers.',
   d_trust: 'Can I trust these numbers?', d_trustD: 'Comparison with NASA PGDA maps, mission hindcast and the files used for this site.',
-  tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility (data/windows) — click a year position to move the analysis period there',
+  rawT: 'Raw table', sumPer: 'Analysis period {a} – {b} ({h} h).', sumGap: 'Longest Earth gap: {g}', sumDarkL: 'longest dark: {d}.', tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility (data/windows) — click a year position to move the analysis period there',
   rowSun: 'Sunlight', rowEarth: 'Direct-to-Earth', rowBoth: 'Sun + Earth together', startUTC: 'Start (UTC)', endUTC: 'End (UTC)', dur: 'Length',
   nNearH: '① Registered sites within 20 km', nNearNone: 'No other catalogue site within 20 km.', nDist: 'Distance', nDiff: 'vs this site',
   nUncH: '② Coordinate uncertainty (data/uncertainty, 100 m grid)', nUncR: 'Radius', nUncNo: 'No coordinate-uncertainty file for this site.',
@@ -94,7 +94,7 @@ addStrings({
   d_hz: '지평선과 가림 원인', d_hzD: '여유각 = 천체 고도 − 그 방향 지형 높이. 양수면 보임(태양은 원반 중심 기준).',
   d_more: '추가 분석과 준비 상태', d_moreD: '이 도구가 아직 분석하지 않은 것을 솔직하게 적습니다 — 숫자를 지어내지 않습니다.',
   d_trust: '이 숫자 믿어도 되나', d_trustD: 'NASA PGDA 지도 비교, 실제 임무 되짚기, 이 착륙지에 쓴 파일.',
-  tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간(data/windows) — 누르면 분석 기간이 그 위치로 이동',
+  rawT: '원자료 표', sumPer: '분석 기간 {a} – {b} ({h}시간).', sumGap: '최장 지구 끊김: {g}', sumDarkL: '최장 어둠: {d}.', tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간(data/windows) — 누르면 분석 기간이 그 위치로 이동',
   rowSun: '햇빛', rowEarth: '지구 직접 교신', rowBoth: '해+지구 동시', startUTC: '시작 (UTC)', endUTC: '끝 (UTC)', dur: '길이',
   nNearH: '① 반경 20 km 안의 등록 착륙지', nNearNone: '20 km 안에 다른 카탈로그 착륙지가 없습니다.', nDist: '거리', nDiff: '이곳 대비',
   nUncH: '② 좌표 불확실성 (data/uncertainty, 100 m 격자)', nUncR: '반경', nUncNo: '이 착륙지는 좌표 불확실성 파일이 없습니다.',
@@ -437,7 +437,8 @@ function timeKpis(bits) {
 function periodBars(bits) {
   const n = bits.length, w = LLSN().window;
   const row = (lbl, m, col) => `<div class="sc-row"><span>${esc(t(lbl))}</span><svg viewBox="0 0 ${n} 1" preserveAspectRatio="none" aria-hidden="true"><rect width="${n}" height="1" fill="var(--sc-off)"/>${runs(bits, m).map(r => `<rect x="${r.start}" width="${r.len}" height="1" fill="${col}"/>`).join('')}</svg></div>`;
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => `<span style="left:${f * 100}%">${esc(isoDay(w.i0 + Math.min(n - 1, Math.round(f * (n - 1)))).slice(5).replace('-', '.'))}</span>`).join('');
+  const tick = i => getLang() === 'ko' ? isoDay(i).slice(5).replace('-', '.') : core.hourToDate(i).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => `<span style="left:${f * 100}%">${esc(tick(w.i0 + Math.min(n - 1, Math.round(f * (n - 1)))))}</span>`).join('');
   return `<div class="sc-bars" role="img" aria-label="${esc(t('c_time'))}">
     <div class="sc-leg"><span><i style="background:var(--sun)"></i>${esc(t('legSunUp'))}</span><span><i style="background:var(--earth)"></i>${esc(t('legEarthIn'))}</span><span><i style="background:var(--n-text)"></i>${esc(t('legBothIn'))}</span><span><i style="background:var(--sc-off)"></i>${esc(t('legNone'))}</span></div>
     ${row('rSun', 1, 'var(--sun)')}${row('rEarth', 2, 'var(--earth)')}${row('rBoth', 3, 'var(--n-text)')}<div class="sc-axis">${ticks}</div></div>`;
@@ -467,9 +468,13 @@ async function timeBlock(s) {
           <table class="mini-tbl"><thead><tr><th>◍ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01 · data/windows/${esc(s.id)}.json</p></details>`;
   }
-  body.innerHTML = `${timeKpis(bits)}${periodBars(bits)}<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
+  const offRun = m => { let best = null, st = -1; for (let k = 0; k <= bits.length; k++) { const off = k < bits.length && !(bits[k] & m); if (off && st < 0) st = k; else if (!off && st >= 0) { if (!best || k - st > best[1] - best[0]) best = [st, k]; st = -1; } } return best; };
+  const md = i => fmtUTC(i).slice(5);
+  const eg = offRun(2), dk = offRun(1);
+  const sentence = `${fill(t('sumPer'), { a: fmtUTC(w.i0), b: fmtUTC(w.i1), h: bits.length })} ${fill(t('sumGap'), { g: eg ? `${md(w.i0 + eg[0])} – ${md(w.i0 + eg[1] - 1)}` : '–' })}; ${fill(t('sumDarkL'), { d: dk ? `${md(w.i0 + dk[0])} – ${md(w.i0 + dk[1] - 1)}` : '–' })}`;
+  body.innerHTML = `${timeKpis(bits)}${periodBars(bits)}<p class="sc-d">${esc(sentence)}</p><details class="sc-raw"><summary>${esc(t('rawT'))}</summary><table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
     <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">${esc(fill(t('tRuns'), { n: sr.length }))}</summary>
-      <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details>${five}${await z1Html(s)}`;
+      <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details></details>${five}${await z1Html(s)}`;
   body.querySelector('.five-strip')?.addEventListener('click', e => {
     const sv = e.currentTarget, r = sv.getBoundingClientRect(), f = (e.clientX - r.left) / r.width;
     const ms = Number(sv.dataset.t0) + f * (Number(sv.dataset.t1) - Number(sv.dataset.t0));

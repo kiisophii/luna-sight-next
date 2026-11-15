@@ -1803,3 +1803,6 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
   #ls-compare .detail-table.cmp-tbl { margin-left: auto; margin-right: auto; }
   #ls-compare .detail-table.cmp-tbl tbody th.lbl { font-size: 13px; line-height: 16px; }
 }
+
+/* Sua 11/15 23:3x: the folded minimap Moon at 70% of its former size (222x228 -> 155x160); the opened view keeps its size. */
+@media (min-width:900px) { .ls-minimap:not(.open) { width:155px; height:160px; } }

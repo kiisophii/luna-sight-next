@@ -2,7 +2,7 @@
 // (Sunlight · Earth view / Slope · Longest dark), a reset icon button and a "Done" button (tracker bundle 11).
 // Sunlight / Earth view / Longest dark use the per-site metrics of the current analysis window (LLSN.window,
 // core.metrics). Slope uses web/data/terrain/<ID>.json (contract §23): the lander-scale slope at the landing
-// point for the 16 southern sites (PGDA LOLA 5 m), the coarse 250 m box slope for the other 17 sites.
+// point for the 16 southern sites (PGDA LOLA 5–20 m), the coarse 250 m box slope for the other 17 sites.
 // 'Sun + Earth' and 'Ground link' are not conditions in the base version (kept as "any").
 // Publishes LLSN.filterPass (Set of ids) and fires 'llsn:filter'.
 import * as core from './core.js';
@@ -15,7 +15,7 @@ addStrings({
   fcSun: 'Sunlight', fcEarth: 'Earth view', fcSlope: 'Slope', fcDark: 'Longest dark',
   fiSun: 'Share of hours in the period with at least half of the solar disc above the local terrain horizon. Minimum.',
   fiEarth: 'Share of hours with the Earth centre above the local terrain horizon (geometric visibility, not a working link). Minimum.',
-  fiSlope: 'Slope at the landing point, maximum. South-polar sites: lander-scale slope (PGDA LOLA 5 m); others: coarse 250 m slope (SLDEM2015). 8° and 15° are reference values only, not landing criteria.',
+  fiSlope: 'Slope at the landing point, maximum. 16 southern sites: lander-scale slope from 5–20 m PGDA LOLA terrain. Other 17 sites: coarse slope over a 250 m box (SLDEM2015). Your own points have no slope value and drop out when this condition is set. 8° and 15° are reference values only, not landing criteria.',
   fiDark: 'Longest continuous stretch without sunlight in the period. Maximum.',
   flAny: 'any', flDayUnit: 'd', flReset: 'Reset all', flDone: 'Done', flNone: 'No site matches. Loosen a condition.', flEdit: 'Type a value',
 }, {
@@ -23,7 +23,7 @@ addStrings({
   fcSun: '일조', fcEarth: '지구 가시', fcSlope: '경사', fcDark: '최장 어둠',
   fiSun: '기간 중 태양 원반의 절반 이상이 지형 지평선 위에 있는 시간 비율. 최솟값.',
   fiEarth: '지구 중심이 지형 지평선 위에 있는 시간 비율 (기하학적 가시, 실제 교신 보장 아님). 최솟값.',
-  fiSlope: '착륙 지점 경사, 최댓값. 남극 착륙지는 착륙선 규모 경사(PGDA LOLA 5 m), 나머지는 250 m 거친 경사(SLDEM2015). 8°·15°는 참고값이며 착륙 기준이 아닙니다.',
+  fiSlope: '착륙 지점 경사, 최댓값. 남쪽 16곳은 5–20 m PGDA LOLA 지형의 착륙선 규모 경사, 나머지 17곳은 250 m 상자의 거친 경사(SLDEM2015)입니다. 사용자 지점은 경사 값이 없어 이 조건을 걸면 빠집니다. 8°·15°는 참고값이며 착륙 기준이 아닙니다.',
   fiDark: '기간 중 햇빛이 없는 가장 긴 연속 시간. 최댓값.',
   flAny: '상관없음', flDayUnit: '일', flReset: '모두 초기화', flDone: '완료', flNone: '맞는 착륙지가 없습니다. 조건을 풀어 보세요.', flEdit: '값 직접 입력',
 });

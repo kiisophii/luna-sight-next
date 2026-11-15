@@ -29,7 +29,7 @@ addStrings({
   df8: 'Analysis period vs long-term', df8t: 'Period values (chip “this period”) come from the dates you chose. Long-term values (chip “long-term”) are 2026–2030 or 18.6-year averages. Do not mix them.',
   df9: 'Example verdict thresholds', df9t: 'Caution: longest shadow > {dark} h, direct link < {lo} %, or last among the compared sites. Strength: direct link ≥ {hi} % or first. These are published examples for discussion, not mission requirements. No hidden scores.',
   abVal: 'Can I trust these numbers?', abValLead: 'Average sunlight over 18.6 years at {n} random points (85–90°S) compared with NASA PGDA maps: mean absolute error',
-  abVc1: 'Sunlight', abVc2: 'Earth visibility', abVc3: 'Named sites inside PGDA’s ±300 m range', abVc3t: '{a} of {b} catalogue sites (sunlight)',
+  abNext: 'Next section', abVc1: 'Sunlight', abVc2: 'Earth visibility', abVc3: 'Named sites inside PGDA’s ±300 m range', abVc3t: '{a} of {b} catalogue sites (sunlight)',
   abEph: 'Ephemeris check against an independent run: max difference {d}° over {n} samples.',
   abHind: 'Mission hindcast', abNotNasa: 'Comparisons with public data — not a NASA approval or endorsement.',
   abKorea: 'Korea links', abK1: 'ShadowCam on Danuri', abK1t: 'A NASA camera on Korea’s Danuri orbiter images inside permanently shadowed craters (NASA / KARI / ASU). Links only — Danuri does not relay for landers.',
@@ -62,7 +62,7 @@ addStrings({
   df8: '분석 기간 vs 장기 평균', df8t: '기간 값(칩 "이 기간")은 고른 날짜의 값, 장기 값(칩 "장기 평균")은 2026–2030 또는 18.6년 평균. 섞지 않습니다.',
   df9: '예시 판정 기준값', df9t: '주의: 최장 그늘 > {dark}시간, 직접 교신 < {lo} %, 또는 비교 중 꼴찌. 강점: 직접 교신 ≥ {hi} % 또는 1위. 토론용으로 공개한 예시이며 임무 요구 조건이 아닙니다. 숨은 점수 없음.',
   abVal: '이 숫자 믿어도 되나', abValLead: '남위 85–90° 무작위 {n}점의 18.6년 평균 일조를 NASA PGDA 지도와 비교한 평균 절대 오차',
-  abVc1: '일조', abVc2: '지구 가시', abVc3: 'PGDA ±300 m 범위 안에 든 이름 있는 착륙지', abVc3t: '카탈로그 {b}곳 중 {a}곳 (일조)',
+  abNext: '다음 섹션', abVc1: '일조', abVc2: '지구 가시', abVc3: 'PGDA ±300 m 범위 안에 든 이름 있는 착륙지', abVc3t: '카탈로그 {b}곳 중 {a}곳 (일조)',
   abEph: '독립 계산과 천체력 비교: {n}개 표본에서 최대 차 {d}°.',
   abHind: '실제 임무 되짚기', abNotNasa: '공개 자료와 비교한 결과이며 NASA의 승인이나 보증이 아닙니다.',
   abKorea: '한국과의 연결', abK1: '다누리의 ShadowCam', abK1t: '한국 다누리 궤도선에 실린 NASA 카메라가 영구음영 분화구 안을 찍습니다(NASA / KARI / ASU). 링크만 — 다누리는 착륙선을 중계하지 않습니다.',
@@ -79,6 +79,22 @@ addStrings({
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const E = k => esc(t(k));
+// about 40 fixed stars for the picture band (seeded, same every load)
+const STARS = (() => { let x = 7, out = ''; const r = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+  for (let k = 0; k < 40; k++) out += `<i style="left:${(r() * 100).toFixed(1)}%;top:${(r() * 100).toFixed(1)}%;opacity:${(0.25 + r() * 0.6).toFixed(2)};${r() > 0.85 ? 'width:2px;height:2px;' : ''}"></i>`;
+  return out; })();
+const SV = d => `<svg class="ab-ic" viewBox="0 0 20 20" aria-hidden="true">${d}</svg>`;
+const IC = {
+  why: [SV('<path d="M4 15l4-6 3 4 2-3 3 5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3 15h14" stroke="currentColor" stroke-width="1.4"/>'),
+    SV('<circle cx="10" cy="10" r="3.2" fill="none" stroke="var(--sun)" stroke-width="1.4"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4" stroke="var(--sun)" stroke-width="1.3" stroke-linecap="round"/>'),
+    SV('<circle cx="10" cy="10" r="6.5" fill="none" stroke="var(--earth)" stroke-width="1.4"/><path d="M4 8.5c3 1 5-1.5 7 0s3.5 2 5 1M5.5 14c2-1 4 .5 6 0" fill="none" stroke="var(--earth)" stroke-width="1.2"/>')],
+  how: [SV('<rect x="3" y="4" width="14" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 8h14M7 2.5v3M13 2.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>'),
+    SV('<path d="M6 3h8l-1 5 3 3v1H4v-1l3-3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 12v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>'),
+    SV('<rect x="2.5" y="4" width="6.5" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="11" y="4" width="6.5" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>')],
+  kr: [SV('<path d="M5 9a5 5 0 0 1 10 0z" fill="none" stroke="var(--kdsa)" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 9v8M7 17h6M10 9l3-4" stroke="var(--kdsa)" stroke-width="1.4" stroke-linecap="round"/>'),
+    SV('<ellipse cx="10" cy="10" rx="8" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-25 10 10)"/><circle cx="10" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>'),
+    SV('<rect x="3" y="6" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="10" cy="11" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 6l1.2-2h3.6L13 6" fill="none" stroke="currentColor" stroke-width="1.4"/>')],
+};
 /** the credits text uses *italics* only */
 const md = x => esc(x).replace(/\*([^*]+)\*/g, '<i>$1</i>');
 
@@ -91,29 +107,30 @@ async function render() {
   const inRange = v?.named ? v.named.filter(n => n.ours_sun >= n.pgda_sun_min300 && n.ours_sun <= n.pgda_sun_max300).length : null;
   const ap = h?.apollo_sun_elevation || [], rb = h?.robotic_sunset || [];
   root.innerHTML = `
-  <div class="ab-hero">
+  <div class="ab-hero"><div class="ab-stars" aria-hidden="true">${STARS}</div>
     <div><div class="ab-kicker">${E('abKicker')}</div><h1 tabindex="-1">${E('abH1')}</h1><p>${E('abLead')}</p>
       <p style="margin-top:20px"><a class="ls-btn primary" href="#" data-explore style="height:40px;border-radius:999px;padding:0 1.4em">${E('abExplore')} →</a></p></div>
     <figure style="margin:0"><div class="ab-art"><canvas class="ab-moon" width="360" height="360" style="width:62%;aspect-ratio:1"></canvas>
       <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"><path d="M70 6 C64 20 60 30 56 38" stroke="#fff" stroke-dasharray="2 2" fill="none" stroke-width=".5"/><g transform="translate(51 36) scale(.25)" fill="none" stroke="#fff" stroke-width="2"><path d="M10 4h14l3 10H7z M7 14h20v4H7z M9 18l-5 10M25 18l5 10M17 18v4"/></g></svg></div>
       <figcaption class="ls-caption"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</figcaption></figure>
   </div>
-  <section class="ab-sec" id="about-why"><h2>${E('abWhy')}</h2><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel"><h3>${E('abW' + k)}</h3><p>${E('abW' + k + 't')}</p></div>`).join('')}</div></section>
-  <section class="ab-sec" id="about-how"><h2>${E('abHow')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel"><h3><span class="circ">${k}</span> ${E('abH' + k + 's')}</h3><p>${E('abH' + k + 't')}</p></div>`).join('')}</div>
+  <section class="ab-sec" id="about-why"><h2>${E('abWhy')}</h2><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.why[k - 1]}<h3>${E('abW' + k)}</h3><p>${E('abW' + k + 't')}</p></div>`).join('')}</div></section>
+  <section class="ab-sec" id="about-how"><h2>${E('abHow')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.how[k - 1]}<h3>${E('abH' + k + 's')}</h3><p>${E('abH' + k + 't')}</p></div>`).join('')}</div>
     <details><summary>${E('abKeys')}</summary><p class="muted">${E('abKeysT')}</p></details></div></section>
   <section class="ab-sec" id="about-defs"><h2>${E('abDefs')}</h2><dl class="defs">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(k => `<dt>${E('df' + k)}</dt><dd>${esc(fill(t('df' + k + 't'), { dark: RULE.darkH, lo: RULE.directLow * 100, hi: RULE.directHigh * 100 }))}</dd>`).join('')}</dl></section>
   <section class="ab-sec" id="about-validation"><h2>${E('abVal')}</h2><div>
-    ${H ? `<p>${esc(fill(t('abValLead'), { n: v.n_points }))}</p><div class="ab-big" style="color:var(--sun)">${H.sun}<small style="font-size:.4em"> pp</small></div>
-    <div class="ab-cards" style="margin-top:12px">
-      <div class="ls-panel"><h3>${E('abVc1')}</h3><p class="num" style="font-size:18px;color:var(--sun)">MAE ${H.sun} pp · r ${H.sunR}</p></div>
-      <div class="ls-panel"><h3>${E('abVc2')}</h3><p class="num" style="font-size:18px;color:var(--earth)">MAE ${H.earth} pp · r ${H.earthR}</p></div>
-      <div class="ls-panel"><h3>${E('abVc3')}</h3><p class="num" style="font-size:18px">${esc(fill(t('abVc3t'), { a: inRange, b: v.named.length }))}</p></div></div>` : ''}
+    ${H ? `<p>${esc(fill(t('abValLead'), { n: v.n_points }))}</p>
+    <div class="ab-trust">
+      <div class="tr-big"><b class="num" style="color:var(--sun)">${H.sun}<small> pp</small></b><span>${E('abVc1')} · MAE · <span class="num">r ${H.sunR}</span></span></div>
+      <div class="tr-sm"><b class="num" style="color:var(--earth)">${H.earth}<small> pp</small></b><span>${E('abVc2')} · MAE · <span class="num">r ${H.earthR}</span></span></div>
+      <div class="tr-sm"><b class="num">${inRange}<small> / ${v.named.length}</small></b><span>${E('abVc3')}</span></div>
+    </div>` : ''}
     ${h?.ephemeris_check ? `<p class="muted">${esc(fill(t('abEph'), { d: h.ephemeris_check.max_deg.toExponential(1), n: h.ephemeris_check.sample_hours }))}</p>` : ''}
     <h3 style="margin-top:20px">${E('abHind')}</h3>
     <table class="src-tbl"><thead><tr><th></th><th>UTC</th><th>ALSJ</th><th>Luna Sight</th><th>Δ</th></tr></thead><tbody>${ap.map(a => `<tr><td>${esc(a.mission)}</td><td class="num">${a.landing_utc.slice(0, 16).replace('T', ' ')}</td><td class="num">${a.reported_sun_el_deg.toFixed(2)}°</td><td class="num">${a.ours_sun_el_deg_catalogue_point.toFixed(2)}°</td><td class="num">${a.difference_deg_catalogue.toFixed(2)}°</td></tr>`).join('')}</tbody></table>
     <table class="src-tbl" style="margin-top:10px"><tbody>${rb.map(r => `<tr><td>${esc(r.mission)}</td><td>${r.difference_text ? esc(r.difference_text) : esc(t('hcNoSrc'))}${r.source_url ? ` · <a href="${esc(r.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}</tbody></table>
     <p class="muted">${E('hcProxy')} · <a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · ${E('abNotNasa')}</p></div></section>
-  <section class="ab-sec" id="about-korea"><h2>${E('abKorea')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel"><h3>${E('abK' + k)}</h3><p>${E('abK' + k + 't')}</p></div>`).join('')}</div>
+  <section class="ab-sec" id="about-korea"><h2>${E('abKorea')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.kr[k - 1]}<h3>${E('abK' + k)}</h3><p>${E('abK' + k + 't')}</p></div>`).join('')}</div>
     <p><a href="#" data-gs>${E('abKMore')}</a></p></div></section>
   <section class="ab-sec" id="about-more"><h2>${E('abMore')}</h2><div>
     <details id="about-sources" open><summary>${E('abSrc')}</summary><p class="muted">${E('abSrcLead')}</p>
@@ -123,6 +140,13 @@ async function render() {
       <p>${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>
   </div></section>
   <section class="ab-sec"><h2>${E('abCTA')}</h2><div><a class="ls-btn primary" href="#" data-mine style="height:40px;border-radius:999px;padding:0 1.4em">${E('abCTAb')}</a></div></section>`;
+  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`);
+  const nextBtn = root.querySelector('.ab-next');
+  const secs = () => [...root.querySelectorAll('.ab-sec')];
+  const upcoming = () => { const line = (document.querySelector('.ab-hero')?.getBoundingClientRect().bottom || 0) + 12; return secs().find(x => x.getBoundingClientRect().top > line + 4); };
+  nextBtn.addEventListener('click', () => upcoming()?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
+  const sync = () => { nextBtn.hidden = !upcoming(); };
+  window.addEventListener('scroll', sync, { passive: true }); sync();
   drawMoon(root.querySelector('.ab-moon'));
   root.querySelector('[data-explore]').addEventListener('click', e => { e.preventDefault(); leave(); });
   root.querySelector('[data-mine]').addEventListener('click', e => { e.preventDefault(); leave(); setTimeout(() => LLSN().openAdd?.('coord'), 100); });

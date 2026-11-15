@@ -427,7 +427,7 @@ export function mountHero(host, label, sc) {
     if (!visible()) { stop(); return; }
     if (!journey) {
       journey = window.LunaJourney.mount(host, {mode:'manual', fit:'band', showLabels:false,
-        bandPadTop:20, bandPadBot:65, grain:media.matches ? 0 : .075, focusAt:innerWidth > 860 ? .72 : .78});
+        bandPadTop:20, bandPadBot:65, grain:media.matches ? 0 : .075, focusAt:innerWidth > 860 ? .676 : .78});   // desktop: scene anchor moved left to the copy's position (launch pad x 936 at 1440); the journey file itself is untouched
     }
     if (!raf) tick();
   }

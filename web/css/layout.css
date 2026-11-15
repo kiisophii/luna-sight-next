@@ -1669,7 +1669,7 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .map-legend .lg-tip p { margin: 0 0 4px; } .ls .map-legend .lg-tip p:last-child { margin: 0; } .ls .map-legend .lg-tip p:first-child { color: #EDEDED; font-weight: 500; }
   .ls .map-legend .lg-i:hover ~ .lg-tip, .ls .map-legend .lg-row:has(.lg-i:hover) + .lg-tip, .ls .map-legend .lg-row:has(.lg-i:focus-visible) + .lg-tip, .ls .map-legend.tip-on .lg-tip { display: block; }
 }
-@media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 554px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
+@media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 537px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
 /* Chaei review: minimap expand icon centred in its 30 px box (the 11 px side padding pushed the 14 px icon right) */
 .ls-minimap .mm-exp, .ls-minimap.open .mm-exp { padding: 0; }
 
@@ -1680,3 +1680,6 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
 .ls-globe .g3-mark svg { width: 14px; height: 14px; display: block; }
 #hud-1, #globe-stage .g3-note { pointer-events: none; }   /* a tower icon under these boxes stays hoverable */
 .ls-globe .g3-mark { z-index: 16; }
+
+/* ---- copy check: dock 910 x 52 at 1920 (x 495), 580 at 1440 (the time axis takes the extra width) */
+@media (min-width: 1900px) { .ls .ls-toolbar { width: 910px; } .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 710px), 390px); } }

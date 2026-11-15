@@ -1,0 +1,9 @@
+{
+  "before": 222,
+  "middle": 548.03125,
+  "after": 580,
+  "duration": "0.26s, 0.26s, 0.26s, 0.26s, 0.26s",
+  "pointer_drag_and_reset": "pass",
+  "closed_larger_than_open": "left and bottom edges reachable",
+  "page_errors": []
+}

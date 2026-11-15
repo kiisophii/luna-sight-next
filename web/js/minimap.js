@@ -1,7 +1,7 @@
 // minimap.js — where the 3D view is looking (design spec v65 §3.8). A small orthographic Moon drawn from the same
 // colour map as the 3D globe (NASA SVS CGI Moon Kit, data/globe/moon_color_2k.jpg); white ring = current view,
-// labels = pinned sites. Hover / focus / tap opens: bigger ball (drag = rotate the minimap only), coordinate search,
-// pinned / top-5 (current sort) / recent lists. Click on the ball = fly the 3D view there.
+// labels = pinned sites. The expand button opens coordinates and catalogue destinations.
+// Drag the ball to rotate it; click to fly the 3D view. Box movement/resize lives in minimap_drag.js.
 import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, setFocus, LLSN } from './ui_shared.js';
 
@@ -15,11 +15,13 @@ addStrings({
   mmOpen: '미니맵 크게 보기', mmClose: '미니맵 작게', mmPinned: '고정한 후보', mmTop: '대표 후보 (지금 정렬 상위 5)', mmRecent: '최근 방문', mmHere: '{c}(으)로 이동했습니다. "이 지점 분석"을 누르면 지형 지평선을 계산합니다.',
 });
 
+addStrings({mmLat:'Lat',mmLon:'Lon',mmGoto:'Go to',mmSouth:'South Pole',mmNorth:'North Pole',mmPole:'Pole',mmTerrain:'Terrain',mmPast:'Past landing',mmLatitude:'Latitude',mmLongitude:'Longitude'}, {mmLat:'위도',mmLon:'경도',mmGoto:'이동 목록',mmSouth:'남극',mmNorth:'북극',mmPole:'극',mmTerrain:'지형',mmPast:'지난 착륙지',mmLatitude:'위도',mmLongitude:'경도'});
+
 const D2R = Math.PI / 180, R2D = 180 / Math.PI;
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko : s.name);
-let box, cv, img = null, pix = null, IW = 0, IH = 0, view = { lat: 0, lon: 0, range: 6000 }, own = null, recent = [], closeT = 0, lastPick = null;
+let box, cv, img = null, pix = null, IW = 0, IH = 0, view = { lat: 0, lon: 0, range: 6000 }, own = null, lastPick = null;
 
 /** "lat, lon" | "89.45S 136.2W" | with ° → {lat, lon} or {err}. */
 export function parseCoords(str) {
@@ -37,13 +39,11 @@ export function parseCoords(str) {
 function build() {
   box = document.getElementById('ls-minimap'); if (!box) return;
   box.setAttribute('role', 'region');
-  box.innerHTML = `<button type="button" class="mm-exp" aria-expanded="false"></button><canvas class="mm-ball" style="display:block;margin:6px auto 0;cursor:pointer;touch-action:none"></canvas>
-    <div class="mm-side" hidden style="position:absolute;top:10px;right:10px;width:205px;bottom:10px;display:flex;flex-direction:column;gap:6px;font-size:12px;overflow:auto">
-      <label class="sr" for="mm-q"></label>
-      <div style="display:flex;gap:4px"><input id="mm-q" type="search" style="flex:1;min-width:0;height:28px;font-size:11.5px"><button type="button" class="ls-btn mm-go" style="height:28px;padding:0 .6em"></button></div>
-      <p class="mm-err" style="margin:0;color:var(--bad);font-size:11px" aria-live="polite"></p>
-      <button type="button" class="ls-btn mm-an" hidden style="height:28px"></button>
-      <div class="mm-lists"></div></div>`;
+  box.innerHTML = `<button type="button" class="mm-exp" aria-expanded="false"></button><canvas class="mm-ball"></canvas>
+    <div class="mm-side" hidden>
+      <form class="mm-coords" novalidate>${[['lat','S','N','00.00',90],['lon','E','W','000.00',180]].map(([axis,a,b,placeholder,max]) => `<div class="mm-coord"><label for="mm-${axis}" data-axis="${axis}"></label><input id="mm-${axis}" type="number" min="0" max="${max}" step="any" inputmode="decimal" placeholder="${placeholder}"><span aria-hidden="true">°</span><div class="mm-hemis" role="group">${[a,b].map((h,i)=>`<button type="button" data-axis="${axis}" data-hemi="${h}" aria-pressed="${i===0}">${h}</button>`).join('')}</div></div>`).join('')}<button type="submit" class="sr mm-submit"></button></form>
+      <p class="mm-err" aria-live="polite"></p><button type="button" class="ls-btn mm-an" hidden></button>
+      <div class="mm-list-title"></div><div class="mm-lists"></div></div>`;
   cv = box.querySelector('canvas');
   const im = new Image();
   im.onload = () => {
@@ -53,15 +53,13 @@ function build() {
   im.src = `${LLSN().state.base}globe/moon_color_2k.jpg`;
   relabel();
   // open / close
-  const openIt = () => { clearTimeout(closeT); if (!box.classList.contains('open')) { box.classList.add('open'); own = null; box.querySelector('.mm-side').hidden = false; sizeBall(); lists(); } };
-  const closeSoon = () => { clearTimeout(closeT); closeT = setTimeout(() => { if (box.contains(document.activeElement)) return; box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); }, 300); };
-  // opens only with the expand button (Chaei #14: no hover growth); grows up and to the left from the bottom-right corner
+  const openIt = () => { if (!box.classList.contains('open')) { box.classList.add('open'); own = null; box.querySelector('.mm-side').hidden = false; sizeBall(); lists(); } };
+  // Expand left and down; positioning and size persistence are managed by minimap_drag.js.
   const exp = box.querySelector('.mm-exp');
-  const closeIt = () => { clearTimeout(closeT); box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); expLabel(); };
+  const closeIt = () => { box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); expLabel(); };
   exp.addEventListener('click', () => { if (box.classList.contains('open')) closeIt(); else { openIt(); expLabel(); } });
   box.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) { closeIt(); exp.focus(); } });
   document.addEventListener('pointerdown', e => { if (!box.contains(e.target) && box.classList.contains('open')) closeIt(); });
-  void closeSoon;
   // drag rotates the minimap only; a click flies the 3D view there
   let drag = null;
   cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, moved: false, c: own || { lat: view.lat, lon: view.lon } }; cv.setPointerCapture(e.pointerId); });
@@ -72,19 +70,30 @@ function build() {
     if (drag.moved && box.classList.contains('open')) { own = { lat: Math.max(-89, Math.min(89, drag.c.lat + dy * 0.8)), lon: drag.c.lon - dx * 0.8 }; draw(); }
   });
   cv.addEventListener('pointerup', e => {
-    if (drag && !drag.moved) { const ll = ballToLatLon(e); if (ll) fly(ll.lat, ll.lon); }
+    if (drag && !drag.moved) { const ll = ballToLatLon(e); if (ll) { lastPick = ll; fly(ll.lat, ll.lon); draw(); } }
     drag = null;
   });
+  cv.addEventListener('pointercancel', () => { drag = null; });
   const side = box.querySelector('.mm-side');
-  side.querySelector('.mm-go').addEventListener('click', go);
-  side.querySelector('#mm-q').addEventListener('keydown', e => { if (e.key === 'Enter') go(); if (e.key === 'Escape') box.blur(); });
+  side.querySelector('form').addEventListener('submit', e => { e.preventDefault(); go(); });
+  side.querySelectorAll('[data-hemi]').forEach(button => button.addEventListener('click', () => {
+    side.querySelectorAll(`[data-hemi][data-axis="${button.dataset.axis}"]`).forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+  }));
   side.querySelector('.mm-an').addEventListener('click', () => { if (lastPick) LLSN().pickPoint?.(lastPick.lat, lastPick.lon, { compute: true }); side.querySelector('.mm-an').hidden = true; });
-  side.addEventListener('click', e => { const b = e.target.closest('[data-site]'); if (b) setFocus(b.dataset.site); });
+  side.addEventListener('click', e => {
+    const b = e.target.closest('[data-site], [data-pole]'); if (!b) return;
+    if (b.dataset.pole) { own = {lat:Number(b.dataset.pole),lon:0}; fly(own.lat,0); }
+    else { const s = LLSN().state.sites.find(s => s.id === b.dataset.site); if(s) { setFocus(s.id); own = {lat:s.lat,lon:s.lon}; fly(s.lat,s.lon); } }
+    draw();
+  });
   window.addEventListener('llsn:lang', () => { relabel(); lists(); });
   window.addEventListener('llsn:pins', () => { draw(); lists(); });
   window.addEventListener('llsn:sort', lists);
-  window.addEventListener('llsn:focus', e => { recent = [e.detail.id, ...recent.filter(x => x !== e.detail.id)].slice(0, 5); lists(); draw(); });
+  window.addEventListener('llsn:focus', () => { lists(); draw(); });
+  let resizeTimer = 0;
+  new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(sizeBall, 60); }).observe(box);
   sizeBall();
+  window.dispatchEvent(new Event('llsn:minimap-ready'));
   setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; draw(); } }, 400);
 }
 function expLabel() {
@@ -97,17 +106,27 @@ function relabel() {
   expLabel();
   box.setAttribute('aria-label', t('mmAria'));
   const s = box.querySelector('.mm-side');
-  s.querySelector('label').textContent = t('mmSearch');
-  s.querySelector('#mm-q').placeholder = t('mmPh'); s.querySelector('#mm-q').setAttribute('aria-label', t('mmSearch'));
-  s.querySelector('.mm-go').textContent = t('mmGo'); s.querySelector('.mm-an').textContent = t('mmAnalyse');
+  for (const axis of ['lat','lon']) {
+    const label = t(axis === 'lat' ? 'mmLatitude' : 'mmLongitude');
+    s.querySelector(`label[data-axis="${axis}"]`).textContent = t(axis === 'lat' ? 'mmLat' : 'mmLon');
+    s.querySelector(`#mm-${axis}`).setAttribute('aria-label',label);
+    s.querySelector(`#mm-${axis}`).closest('.mm-coord').querySelector('[role="group"]').setAttribute('aria-label',label);
+  }
+  s.querySelector('.mm-submit').textContent = t('mmGo'); s.querySelector('.mm-an').textContent = t('mmAnalyse');
+  s.querySelector('.mm-list-title').textContent = `⌖ ${t('mmGoto')}`;
 }
 function sizeBall() {
-  const open = box.classList.contains('open'), phone = window.matchMedia('(max-width: 899px)').matches;
-  const d = open ? (phone ? 220 : 200) : (phone ? 86 : 114), dpr = Math.min(2, window.devicePixelRatio || 1);
-  cv.width = d * dpr; cv.height = d * dpr; cv.style.width = cv.style.height = d + 'px';
-  cv.style.margin = open ? '12px 0 0 12px' : '6px auto 0';
+  const open = box.classList.contains('open'), width = box.clientWidth, height = box.clientHeight;
+  const panel = open ? Math.min(214, Math.max(150, width * .37)) : 0;
+  const d = Math.max(1, Math.floor(Math.min(width - (open ? panel + 34 : 20), height - 26)));
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  box.style.setProperty('--mm-panel', panel + 'px');
+  box.style.setProperty('--mm-ball', d + 'px');
+  cv.width = Math.round(d * dpr); cv.height = Math.round(d * dpr);
+  cv.style.width = cv.style.height = d + 'px';
   draw();
 }
+
 function center() { return own || view; }
 function ballToLatLon(e) {
   const r = cv.getBoundingClientRect(), x = ((e.clientX - r.left) / r.width) * 2 - 1, y = 1 - ((e.clientY - r.top) / r.height) * 2;
@@ -140,6 +159,10 @@ function draw() {
     g.putImageData(im, 0, 0);
   } else { g.fillStyle = '#555'; g.beginPath(); g.arc(R, R, R, 0, 7); g.fill(); }
   const dpr = W / parseFloat(cv.style.width || W);
+  g.strokeStyle = 'rgba(237,237,237,.18)'; g.lineWidth = .6 * dpr;
+  const curve = points => { g.beginPath(); let pen=false; for(const [lat,lon] of points) { const q=project(lat,lon); if(!q.front){pen=false;continue;} const x=R+q.x*R,y=R-q.y*R; if(pen)g.lineTo(x,y);else g.moveTo(x,y);pen=true; } g.stroke(); };
+  for(let lat=-60;lat<=60;lat+=30)curve(Array.from({length:181},(_,i)=>[lat,i*2-180]));
+  for(let lon=-180;lon<180;lon+=30)curve(Array.from({length:91},(_,i)=>[i*2-90,lon]));
   // current 3D view: ring sized by the camera range (≈ half the visible width), centre dot
   const p = project(view.lat, view.lon);
   if (p.front) {
@@ -147,26 +170,35 @@ function draw() {
     const rr = Math.max(3 * dpr, Math.sin(ang) * R);
     g.strokeStyle = '#fff'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.ellipse(R + p.x * R, R - p.y * R, rr, rr * 0.8, 0, 0, 7); g.stroke();
   }
-  // pinned sites
+  // Pinned labels use separate pills, including nearby polar candidates.
+  const pills=[];
   g.font = `${10 * dpr}px Oxanium, monospace`; g.textBaseline = 'middle';
   for (const pn of LLSN().pins?.() || []) {
     const s = LLSN().state.sites.find(x => x.id === pn.id); if (!s) continue;
     const q = project(s.lat, s.lon); if (!q.front) continue;
     const x = R + q.x * R, y = R - q.y * R;
     g.fillStyle = '#fff'; g.beginPath(); g.arc(x, y, 2.4 * dpr, 0, 7); g.fill();
-    g.lineWidth = 3 * dpr; g.strokeStyle = '#000'; g.strokeText(`#${pn.n}`, x + 4 * dpr, y); g.fillText(`#${pn.n}`, x + 4 * dpr, y);
+    const label=`#${pn.n}`, tw=g.measureText(label).width, tx=Math.min(W-tw-8*dpr,Math.max(4*dpr,x+4*dpr));
+    let ty=Math.max(8*dpr,Math.min(H-8*dpr,y));
+    while(pills.some(p=>Math.abs(p.y-ty)<16*dpr&&tx<p.x+p.w&&tx+tw+6*dpr>p.x)&&ty>24*dpr)ty-=16*dpr;
+    pills.push({x:tx,y:ty,w:tw+6*dpr});
+    g.fillStyle='#ededed'; g.beginPath(); g.roundRect(tx-3*dpr,ty-7*dpr,tw+6*dpr,14*dpr,7*dpr); g.fill();g.fillStyle='#0a0a0b';g.fillText(label,tx,ty);
   }
+  if(lastPick){const q=project(lastPick.lat,lastPick.lon);if(q.front){g.fillStyle='#fff';g.font=`${16*dpr}px sans-serif`;g.fillText('★',R+q.x*R-7*dpr,R-q.y*R);}}
   const f = LLSN().state.sites.find(x => x.id === LLSN().focus);
-  if (f) { const q = project(f.lat, f.lon); if (q.front) { g.strokeStyle = '#F5B841'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 4 * dpr, 0, 7); g.stroke(); } }
+  if (f) { const q = project(f.lat, f.lon); if (q.front) { g.strokeStyle = '#ff9b55'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 4 * dpr, 0, 7); g.stroke(); } }
 }
 function fly(lat, lon) {
   const g = LLSN().globe; if (!g) return;
   g.flyTo({ lat, lon, range: Math.min(view.range, 900), tilt: 30 });
 }
 function go() {
-  const side = box.querySelector('.mm-side'), r = parseCoords(side.querySelector('#mm-q').value), err = side.querySelector('.mm-err');
+  const side = box.querySelector('.mm-side'), err = side.querySelector('.mm-err');
+  const lat = side.querySelector('#mm-lat').value.trim(), lon = side.querySelector('#mm-lon').value.trim();
+  const h = axis => side.querySelector(`[data-hemi][data-axis="${axis}"][aria-pressed="true"]`).dataset.hemi;
+  const r = !lat || !lon ? {err:'mmBad'} : Number(lat)<0 || Number(lat)>90 ? {err:'mmBadLat'} : Number(lon)<0 || Number(lon)>180 ? {err:'mmBadLon'} : parseCoords(`${lat}${h('lat')} ${lon}${h('lon')}`);
   if (r.err) { err.textContent = t(r.err); return; }
-  err.textContent = ''; fly(r.lat, r.lon); lastPick = r;
+  err.textContent = ''; own = r; fly(r.lat, r.lon); lastPick = r; draw();
   LLSN().pickPoint?.(r.lat, r.lon, { compute: false });
   side.querySelector('.mm-an').hidden = false;
   err.style.color = 'var(--muted)'; err.textContent = fill(t('mmHere'), { c: `${r.lat.toFixed(4)}°, ${r.lon.toFixed(4)}°` });
@@ -174,13 +206,14 @@ function go() {
 }
 function lists() {
   const el = box?.querySelector('.mm-lists'); if (!el || !box.classList.contains('open')) return;
-  const st = LLSN().state, row = (s, tag) => `<button type="button" class="ls-link" data-site="${s.id}" style="display:block;text-align:left;color:${s.id === LLSN().focus ? 'var(--sun)' : 'var(--text)'};text-decoration:none;padding:1px 0">⌖ ${tag ? `<span class="pin-no">${tag}</span>` : ''}${esc(nameOf(s))}</button>`;
-  const pins = (LLSN().pins?.() || []).map(p => [st.sites.find(s => s.id === p.id), `#${p.n}`]).filter(x => x[0]);
-  const top = (LLSN().sortedSites?.() || []).slice(0, 5);
-  const rec = recent.map(id => st.sites.find(s => s.id === id)).filter(Boolean);
-  el.innerHTML = `${pins.length ? `<p class="muted" style="margin:4px 0 2px">${esc(t('mmPinned'))}</p>${pins.map(([s, n]) => row(s, n)).join('')}` : ''}
-    <p class="muted" style="margin:6px 0 2px">${esc(t('mmTop'))}</p>${top.map((s, k) => row(s, `${k + 1}.`)).join('')}
-    ${rec.length ? `<p class="muted" style="margin:6px 0 2px">${esc(t('mmRecent'))}</p>${rec.map(s => row(s)).join('')}` : ''}`;
+  const st = LLSN().state, pins = LLSN().pins?.() || [];
+  const coord = s => `${Math.abs(s.lat).toFixed(2)}°${s.lat<0?'S':'N'} ${Math.abs(s.lon).toFixed(2)}°${s.lon<0?'W':'E'}`;
+  const row = (s, tag) => `<button type="button" class="mm-destination" data-site="${esc(s.id)}"><span class="mm-dest-icon" aria-hidden="true">${tag===t('mmPast')?'⚑':'△'}</span><span class="mm-dest-copy"><span>${esc(nameOf(s))}</span><small>${coord(s)}</small></span><span class="mm-tag">${esc(tag)}</span></button>`;
+  const past = s => ['apollo','luna','change','chandrayaan','slim','clps'].includes(s.group);
+  const ordered = [...pins.map(p => st.sites.find(s => s.id===p.id)), ...(LLSN().sortedSites?.() || []).slice(0,5), ...st.sites.filter(past)].filter(Boolean);
+  const seen = new Set();
+  el.innerHTML = [-90,90].map(lat => `<button type="button" class="mm-destination" data-pole="${lat}"><span class="mm-dest-icon" aria-hidden="true">⚑</span><span class="mm-dest-copy"><span>${esc(t(lat<0?'mmSouth':'mmNorth'))}</span><small>90°${lat<0?'S':'N'} 0°E</small></span><span class="mm-tag">${esc(t('mmPole'))}</span></button>`).join('') + ordered.filter(s=>{if(seen.has(s.id))return false;seen.add(s.id);return true;}).map(s=>row(s,pins.some(p=>p.id===s.id)?`#${pins.find(p=>p.id===s.id).n}`:past(s)?t('mmPast'):t('mmTerrain'))).join('');
+
 }
 
 whenReady(build);

@@ -511,3 +511,106 @@ Task X's 10 km summary uses the existing section 15 1 km grid, explicitly
 labelled `spacing_m:1000`; it is not a 10 km fine-grid estimate. Same spacing
 does not imply the same underlying DEM resolution between different sites.
 
+
+
+## Proposed detail products Z1 / Z2 / Z4 (Jiyong, 2026-11-15)
+
+These optional products implement the explicit morning task-board specifications. Existing sections and production products are unchanged. This proposal uses stable named headings to avoid renumbering pending terrain/Y and dates/Z3 proposals. Independent verification by another team member is pending; AI author checks are recorded separately.
+
+### Z1: hourly time statistics
+
+`node pipeline/detail_time_stats.mjs` writes `web/data/detail/time_stats/<ID>.json` for all 33 catalogue sites and an index only after all sites succeed. Format `detail-time-stats-v1`, real inputs only, `complete:true`, `mock:false`.
+
+- Site fields: `id, lat, lon`, `window:{start_utc:"2026-01-01T00:00:00Z",end_utc:"2031-01-01T00:00:00Z",step_h:1,n:43824}`.
+- Integer hours `sunlit_h`, `earth_visible_h`, `both_h`. Actual unchanged `core.js` predicates at hour i are held over `[i,i+1)`: solar disk fraction >=0.5; Earth centre strictly above terrain horizon. Observer 2 m, MOON_ME_DE421.
+- `dark_runs`, `no_earth_runs`, `sunlit_runs` each contain `count,total_h,mean_h,longest_h,complete_count,complete_mean_h,complete_longest_h,clipped_runs`. Unqualified values count **all observed runs**, including clipped runs; `complete_*` exclude every run touching either period edge. Means are null when their respective count is zero; longest is zero when absent. `sunlit_runs.longest_h` is longest continuous observed sunlight. Dark total + sunlight total =43824; no-Earth total + Earth hours =43824.
+- Each `clipped_runs` item is `{start_i,end_i,duration_h,clipped_start,clipped_end}` with exclusive `end_i`; duration = end-start. A whole-period run appears once with both flags true. Its recorded duration is a lower bound on the unobserved full run; no extrapolation is made. Complete count + clipped array length = count.
+- `station_link_h:{kdsa_h,at_least_1_h,at_least_2_h}` counts Earth-visible cells AND station availability from `korea/stations.json`, decoded LSB-first. The four stations are KDSA, DSN Goldstone, Madrid and Canberra. Availability means apparent Moon centre >=10 degrees above station ellipsoidal horizon. No sunlight condition. `kdsa_h<=at_least_1_h<=earth_visible_h`, `at_least_2_h<=at_least_1_h`.
+- `parity:{metrics_exact:true,windows_exact:true}` asserts exact equality to every overlapping metric and all existing Sun/Earth visible intervals, clipping flags and top-10 gaps in `windows/`.
+- `source` holds SHA256 for core, binary ephemeris, ephemeris metadata, catalogue, station data, this horizon, baseline metrics/windows, producer, and imported helper. UTF-8 text normalizes CRLF to LF; binary bytes unchanged. No rounding of statistics.
+- Index fields: `format,window,ids,sha256` (ID-to-output-hash map with the same text normalization), `hash_convention,station_ids,definitions,source_urls,verification,complete,mock`. All 33 IDs must be present. Only complete results receive an index; regeneration removes the old index before changing site files. Each site/report/index write is atomic. Resume requires exact current input and cached output hashes; runtime and failures are in `docs/detail_z1_generation.json`.
+
+Verification here is author-side parity, not the required independent team-member recomputation at three sites. That team check remains pending.
+
+### Z2: nearest native PSR pixel and boundary
+
+`web/data/detail/psr/<ID>.json` for all 16 catalogue sites at latitude <= -80 degrees, plus `index.json`. Existing products are unchanged. Produced by `pipeline/detail_psr.py` from native full-resolution NASA PGDA `LPSR_80S_20MPP_ADJ.TIF` windows, never overview values.
+
+Each site file has:
+
+| Field | Definition |
+|---|---|
+| `schema_version`, `id`, `lat`, `lon`, `mock` | Version 1, catalogue identity/coordinates; mock=false |
+| `inside_psr` | true/false for the native pixel containing the point; null if no-data/outside coverage. Half-open raster row/column addressing on pixel boundaries. |
+| `site_class` | 1=PSR, 0=not PSR, null=unknown |
+| `nearest_pixel_center` | null if no PSR center found within radius; otherwise `{lat,lon,x_m,y_m,distance_m,bearing_deg,nearest_guaranteed,row,col}`. Row/col are 0-based in the full native raster. |
+| `nearest_boundary` | Same geographic/projected coordinate, distance, bearing and guarantee fields (without row/col), or null when no known 1/0 boundary found within radius. This is the boundary of the union of native pixel squares, inverse projected onto the sphere; internal class-1/class-1 edges, no-data interfaces and window edges are excluded. It is **not** the separately distributed interpolated vector contour. |
+| `distance_to_psr_area_m` | Zero if inside; nearest known boundary distance if outside; null for unknown site classification or no known boundary. Consult the boundary guarantee flag for completeness. |
+| `distance_lower_bound_m` | Search radius only when complete coverage finds neither PSR center nor boundary and the site is outside PSR; otherwise null. Display `> radius`, never a guessed nearest distance. |
+| `status` | `found`, `none_within_radius`, or `incomplete_coverage`; found requires a guaranteed nearest PSR center (or boundary when no center is within radius). |
+| `search` | `radius_m`, `complete_within_radius`, `unsearched_or_nodata_lower_bound_m`, `window_edge_lower_bound_m`, nullable `nodata_lower_bound_m`, `nodata_pixels`, `pixels`, `projection_max_scale`. No-data count is for the full fetched rectangle, not only the search disk. |
+| `source` | Exact raster URL/product page/DOIs, HTTP ETag/Last-Modified/size, native shape/dtype/codes/no-data, CRS/frame/radius, native first pixel center, original GDAL metadata and original vector-polygon class cross-check. |
+| `provenance` | Producer hash, native `[r0,r1,c0,c1]` exclusive-end window, first window center, little-endian float32 window SHA256 and ignored local cache path. Source codes observed exclude NaN. |
+| `input_signature` | SHA256 over site coordinates, radius, source metadata, normalized producer and fetch-module hashes; stale results are recomputed. |
+| `definitions`, `warning`, `verification` | Machine-readable explanations; warning is `PSR ≠ confirmed ice.`; independent team verification pending. |
+
+Distances are shortest spherical surface geodesics on R=1737400 m, with inverse stereographic coordinates before computing distance. Initial bearing is north=0 clockwise in [0,360); bearing is null at a geographic pole or zero distance. No surface slope, terrain traverse feasibility, observer height or ice measurement is implied. Boundary distance is positive for a point strictly inside PSR, while distance **to the PSR area** is zero there.
+
+`index.json` contains `schema_version:1`, `count:16`, `sites:[{id,file,status,sha256}]`, `source_url`, `warning`, `mock:false`, and an aggregate input signature. File hashes normalize CRLF to LF. A prior index is withdrawn before preflight; the replacement is atomically published only after all requested sites have completed. Each site JSON and cached window is also written atomically. Durable per-site checkpoints verify both input signatures and content hashes before resuming; cached class arrays carry a checked SHA256.
+
+Search completeness is conservative: the requested projected rectangle encloses the entire 10 km spherical disk plus a two-pixel margin, then clips to source extent if necessary. Maximum stereographic scale over the fetched rectangle gives a lower bound to any unseen perimeter or no-data footprint. A nearest result is guaranteed only if its spherical distance is smaller than this bound. `complete_within_radius` requires the bound >= radius. Thus unknown data never become class 0 and cannot produce a false lower-bound claim. IM1's rectangle is clipped by the northern source edge: its entire 10 km search disk is not covered, but its nearest result is guaranteed because the candidate is much closer than the missing-data lower bound.
+
+### Z4: nearest historical landings
+
+`web/data/detail/history.json`, written by `python pipeline/detail_history.py`.
+The specific Z4 task requests one aggregate file rather than per-site files/index.
+This optional product does not modify existing catalogue coordinates or other products.
+
+| Field | Definition |
+|---|---|
+| `schema_version`, `product`, `mock` | `1`, `nearest_historical_landings`, `false` |
+| `radius_m`, `frame` | `1737400`, `MOON_ME_DE421`; coordinates follow the catalogue/Task R conventions |
+| `nearest_count`, `site_count`, `mission_count` | `3`, `33`, `18` for the current inputs |
+| `reference_utc` | `2026-11-15T00:00:00Z`; only actual CSV landings on/before this instant are candidates |
+| `distance_definition`, `bearing_definition`, `tie_break`, `caveat` | Human-readable method and limitations; must remain attached when displaying this product |
+| `missions[]` | Unique `id`, catalogue `name`, Task R `lat`, `lon`, `landing_utc`, `coordinate_source`, `time_source`, `note`, plus `official_source_url`, `official_source_agency` |
+| `sites[]` | Catalogue `id`, `lat`, `lon`, and `nearest[]` |
+| `nearest[]` | Three distinct other mission IDs; each has `rank` 1–3, `id`, finite `distance_m` in [0, pi*radius_m], `bearing_deg`, `bearing_status`, `official_source_url` |
+| `bearing_status` | `defined`, `coincident`, `antipodal`, or `origin_pole` |
+| `bearing_deg` | Finite [0,360) when defined; otherwise `null` |
+| `provenance` | `sha256_normalization:"CRLF_to_LF"`, `inputs:[{path,sha256}]`, `generated_utc`, `elapsed_s`, `workers:1` |
+
+Distances are shortest great-circle arcs on the reference sphere, calculated by
+haversine with the argument clipped into [0,1]. Heights and intervening terrain
+do not enter. Initial bearing uses `atan2(east,north)` at the query point.
+Coincident and antipodal detection use an angular tolerance of 1e-14 radians;
+coincident distances within this tolerance are stored as zero. At an exact
+geographic pole, true north is singular and the initial bearing is null.
+
+Sorting uses unrounded computed distance, then lexicographic mission ID for exact
+ties. All 33 catalogue sites are queries, including planned sites. Candidates
+are exclusively the 18 actual Task R landers. Matching IDs are excluded even if
+catalogue and Task R coordinates differ. Catalogue `future`, `custom`,
+`artemis3_region`, and `polar_peak` IDs cannot enter the candidate pool; a matching
+CSV row fails the build. No filter is made relative to the query site's own
+landing date: “historical” is evaluated at the fixed reference date.
+
+The official mission URL provides mission context. It does not supersede the
+CSV coordinate/time source or resolve recorded source disagreements. In
+particular Blue Ghost 1 remains `(18.562,61.81)` from Task R. Numbers stored with
+floating-point precision do not claim corresponding geolocation accuracy.
+Historical proximity is not evidence of usable infrastructure, accessibility,
+traversable route length, or an exhaustive inventory of lunar landers.
+
+#### Suggested optional checks for the shared checker
+
+When the aggregate file exists: validate schema/constants/counts, the exact
+catalogue ID set and coordinates, unique actual mission IDs and CSV coordinates,
+three distinct other IDs per query, rank order, finite distance/bearing ranges,
+null/status correspondence, candidate date eligibility, official URL agreement
+between missions and nearest records, and normalized input hashes. Full geometry
+and nearest-order verification should independently recompute all eligible
+distances (not only the three exported records). Team verification still needs
+a different person to recompute at least three sites with their own code and
+distance agreement <=1%; AI author checks do not satisfy that requirement.
+

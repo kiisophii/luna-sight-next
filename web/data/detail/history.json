@@ -1,0 +1,1282 @@
+{
+  "schema_version": 1,
+  "product": "nearest_historical_landings",
+  "radius_m": 1737400.0,
+  "frame": "MOON_ME_DE421",
+  "nearest_count": 3,
+  "reference_utc": "2026-11-15T00:00:00Z",
+  "mission_count": 18,
+  "site_count": 33,
+  "distance_definition": "Shortest great-circle surface distance on a sphere; no terrain or elevation correction.",
+  "bearing_definition": "Initial bearing from true north, clockwise [0,360); null for coincident, antipodal or polar origin.",
+  "tie_break": "Unrounded distance_m ascending, then mission ID lexicographically for exact ties.",
+  "caveat": "Historical proximity within the 18 Task R landers only; not infrastructure, accessibility, route length, or an exhaustive lunar landing inventory. Source coordinate precision limits accuracy.",
+  "provenance": {
+    "sha256_normalization": "CRLF_to_LF",
+    "inputs": [
+      {
+        "path": "web/data/sites.json",
+        "sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b"
+      },
+      {
+        "path": "docs/task_r_landings.csv",
+        "sha256": "9eb5e214245cb7cdf3100d07627cb8c05b1b9b61d15eddbb803cec3e0e8433a2"
+      },
+      {
+        "path": "docs/detail_z4_sources.json",
+        "sha256": "a4c8cfc016ab853d424c2bf81b58dd5066a58e85e9b76eff52494965f03d0f65"
+      },
+      {
+        "path": "pipeline/detail_history.py",
+        "sha256": "c130eb44bd8b83cd699f5d64133b9e1d60b80f3fa10f3b482b44e1f1f90584dd"
+      }
+    ],
+    "generated_utc": "2026-11-15T04:06:42.855730Z",
+    "elapsed_s": 0.0034836000413633883,
+    "workers": 1
+  },
+  "missions": [
+    {
+      "id": "APOLLO11",
+      "name": "Apollo 11",
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "landing_utc": "1969-07-20T20:17:39Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "APOLLO12",
+      "name": "Apollo 12",
+      "lat": -3.0128,
+      "lon": -23.4219,
+      "landing_utc": "1969-11-19T06:54:36Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "APOLLO14",
+      "name": "Apollo 14",
+      "lat": -3.64589,
+      "lon": -17.47194,
+      "landing_utc": "1971-02-05T09:18:13Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "APOLLO15",
+      "name": "Apollo 15",
+      "lat": 26.13239,
+      "lon": 3.6333,
+      "landing_utc": "1971-07-30T22:16:29Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "APOLLO16",
+      "name": "Apollo 16",
+      "lat": -8.9734,
+      "lon": 15.5011,
+      "landing_utc": "1972-04-21T02:23:35Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "APOLLO17",
+      "name": "Apollo 17",
+      "lat": 20.1911,
+      "lon": 30.7723,
+      "landing_utc": "1972-12-11T19:54:58Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "time_source": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "official_source_agency": "NASA",
+      "note": ""
+    },
+    {
+      "id": "LUNA16",
+      "name": "Luna 16",
+      "lat": -0.5137,
+      "lon": 56.3638,
+      "landing_utc": "1970-09-20T05:18:00Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "time_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "official_source_agency": "NASA",
+      "note": "Legacy mission page coordinates differ from LRO coordinates; latter used."
+    },
+    {
+      "id": "LUNA20",
+      "name": "Luna 20",
+      "lat": 3.7863,
+      "lon": 56.6242,
+      "landing_utc": "1972-02-21T19:19:00Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "time_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "official_source_agency": "NASA",
+      "note": "NASA Beyond Earth gives 19:19:09 UT, compatible with minute precision."
+    },
+    {
+      "id": "LUNA24",
+      "name": "Luna 24",
+      "lat": 12.7142,
+      "lon": 62.2129,
+      "landing_utc": "1976-08-18T06:36:00Z",
+      "coordinate_source": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "time_source": "https://www.nasa.gov/wp-content/uploads/2023/04/1976.pdf",
+      "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "official_source_agency": "NASA",
+      "note": "Unresolved NASA source conflict: chronology August entry 06:36 GMT versus NSSDCA summary 02:00 UT. Compute both; do not declare source agreement."
+    },
+    {
+      "id": "CHANGE3",
+      "name": "Chang'e 3",
+      "lat": 44.1214,
+      "lon": -19.5116,
+      "landing_utc": "2013-12-14T13:11:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/637",
+      "time_source": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+      "official_source_url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+      "official_source_agency": "CNSA",
+      "note": "21:11 Beijing time minus 8 h; longitude 340.4884 E minus 360."
+    },
+    {
+      "id": "CHANGE4",
+      "name": "Chang'e 4",
+      "lat": -45.4562,
+      "lon": 177.5885,
+      "landing_utc": "2019-01-03T02:26:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1168",
+      "time_source": "https://lroc.im-ldi.com/images/1168",
+      "official_source_url": "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html",
+      "official_source_agency": "CNSA",
+      "note": "Refined LROC location; 13 m horizontal uncertainty, 95% confidence."
+    },
+    {
+      "id": "CHANGE5",
+      "name": "Chang'e 5",
+      "lat": 43.0576,
+      "lon": -51.9161,
+      "landing_utc": "2020-12-01T15:11:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1172.2020",
+      "time_source": "https://lroc.im-ldi.com/images/1172.2020",
+      "official_source_url": "https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html",
+      "official_source_agency": "CNSA",
+      "note": "Longitude 308.0839 E minus 360; horizontal accuracy +/-20 m."
+    },
+    {
+      "id": "CHANGE6",
+      "name": "Chang'e 6",
+      "lat": -41.6385,
+      "lon": -153.9852,
+      "landing_utc": "2024-06-01T22:23:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1374",
+      "time_source": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+      "official_source_url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+      "official_source_agency": "CNSA",
+      "note": "June 2 06:23 Beijing minus 8 h is June 1 UTC; longitude 206.0148 E minus 360; horizontal accuracy +/-30 m."
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "name": "Chandrayaan-3",
+      "lat": -69.3741,
+      "lon": 32.32,
+      "landing_utc": "2023-08-23T12:34:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1314",
+      "time_source": "https://www.eoibahrain.gov.in/pdf/PR-%20Chandrayaan%203sd.pdf",
+      "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html",
+      "official_source_agency": "ISRO",
+      "note": "Indian government post-event release: 18:04 IST minus 5h30. ISRO mission page confirms date but its 18:04 schedule is a prediction, not used as measured time."
+    },
+    {
+      "id": "SLIM",
+      "name": "SLIM",
+      "lat": -13.316,
+      "lon": 25.251,
+      "landing_utc": "2024-01-19T15:20:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1358",
+      "time_source": "https://lroc.im-ldi.com/images/1358",
+      "official_source_url": "https://darts.isas.jaxa.jp/en/missions/slim",
+      "official_source_agency": "JAXA",
+      "note": ""
+    },
+    {
+      "id": "IM1",
+      "name": "IM-1 Odysseus",
+      "lat": -80.13,
+      "lon": 1.44,
+      "landing_utc": "2024-02-22T23:23:53Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1360",
+      "time_source": "https://lroc.im-ldi.com/images/1360",
+      "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/",
+      "official_source_agency": "NASA",
+      "note": "Coordinates only 0.01 degree precision; no metre-level accuracy implied."
+    },
+    {
+      "id": "IM2",
+      "name": "IM-2 Athena",
+      "lat": -84.7906,
+      "lon": 29.1957,
+      "landing_utc": "2025-03-06T17:28:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1408",
+      "time_source": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+      "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+      "official_source_agency": "NASA",
+      "note": "PRIME-1 science-team slide 2 distinguishes target from actual site; NASA initial blog rounds to approximately 17:30 UTC. Lander on side in crater."
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "name": "Blue Ghost Mission 1",
+      "lat": 18.562,
+      "lon": 61.81,
+      "landing_utc": "2025-03-02T08:34:00Z",
+      "coordinate_source": "https://lroc.im-ldi.com/images/1406",
+      "time_source": "https://fireflyspace.com/missions/blue-ghost-mission-1/",
+      "official_source_url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/",
+      "official_source_agency": "NASA",
+      "note": "02:34 CST plus 6 h; use lander coordinates, not LRO observer position."
+    }
+  ],
+  "sites": [
+    {
+      "id": "APOLLO11",
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO16",
+          "distance_m": 378912.8855597127,
+          "bearing_deg": 219.2827535817557,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "SLIM",
+          "distance_m": 427581.7607524885,
+          "bearing_deg": 172.88158622755577,
+          "bearing_status": "defined",
+          "official_source_url": "https://darts.isas.jaxa.jp/en/missions/slim"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO17",
+          "distance_m": 630177.9216390501,
+          "bearing_deg": 19.63773274337979,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "APOLLO12",
+      "lat": -3.0128,
+      "lon": -23.4219,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO14",
+          "distance_m": 181137.17582108098,
+          "bearing_deg": 96.2512202967841,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO16",
+          "distance_m": 1186858.900863248,
+          "bearing_deg": 100.5313735131899,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO15",
+          "distance_m": 1187755.232277303,
+          "bearing_deg": 40.27965204637713,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "APOLLO14",
+      "lat": -3.64589,
+      "lon": -17.47194,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO12",
+          "distance_m": 181137.17582108098,
+          "bearing_deg": 275.90535926862105,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO16",
+          "distance_m": 1006303.4045160505,
+          "bearing_deg": 100.8428192643861,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO15",
+          "distance_m": 1095075.881799707,
+          "bearing_deg": 33.263830589985105,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "APOLLO15",
+      "lat": 26.13239,
+      "lon": 3.6333,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO17",
+          "distance_m": 776169.1048299641,
+          "bearing_deg": 97.7148947609529,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "CHANGE3",
+          "distance_m": 786623.5638567788,
+          "bearing_deg": 319.83280776548645,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO11",
+          "distance_m": 965197.943354429,
+          "bearing_deg": 139.94890827079095,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "APOLLO16",
+      "lat": -8.9734,
+      "lon": 15.5011,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "SLIM",
+          "distance_m": 318481.8696798988,
+          "bearing_deg": 115.30405516124958,
+          "bearing_status": "defined",
+          "official_source_url": "https://darts.isas.jaxa.jp/en/missions/slim"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO11",
+          "distance_m": 378912.8855597127,
+          "bearing_deg": 39.8626015520379,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO17",
+          "distance_m": 994852.6894147195,
+          "bearing_deg": 27.14458764349009,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "APOLLO17",
+      "lat": 20.1911,
+      "lon": 30.7723,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO11",
+          "distance_m": 630177.9216390501,
+          "bearing_deg": 200.98061932761811,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO15",
+          "distance_m": 776169.1048299641,
+          "bearing_deg": 288.5755868975218,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "BLUE_GHOST1",
+          "distance_m": 887965.357040895,
+          "bearing_deg": 87.84224703908465,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/"
+        }
+      ]
+    },
+    {
+      "id": "LUNA16",
+      "lat": -0.5137,
+      "lon": 56.3638,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "LUNA20",
+          "distance_m": 130628.97082402738,
+          "bearing_deg": 3.4611805057842595,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 2,
+          "id": "LUNA24",
+          "distance_m": 438009.2701711502,
+          "bearing_deg": 23.486080177553756,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 3,
+          "id": "BLUE_GHOST1",
+          "distance_m": 600773.5821789139,
+          "bearing_deg": 15.394114880746958,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/"
+        }
+      ]
+    },
+    {
+      "id": "LUNA20",
+      "lat": 3.7863,
+      "lon": 56.6242,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "LUNA16",
+          "distance_m": 130628.97082402738,
+          "bearing_deg": 183.46862146326976,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 2,
+          "id": "LUNA24",
+          "distance_m": 318368.43668217567,
+          "bearing_deg": 31.422150026955894,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 3,
+          "id": "BLUE_GHOST1",
+          "distance_m": 473707.31988966855,
+          "bearing_deg": 18.55334627272281,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/"
+        }
+      ]
+    },
+    {
+      "id": "LUNA24",
+      "lat": 12.7142,
+      "lon": 62.2129,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "BLUE_GHOST1",
+          "distance_m": 177714.3318293503,
+          "bearing_deg": 356.2568548631427,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/blogs/missions/2025/03/02/nasa-science-touches-down-on-moon-aboard-firefly-aerospace-lander/"
+        },
+        {
+          "rank": 2,
+          "id": "LUNA20",
+          "distance_m": 318368.43668217567,
+          "bearing_deg": 212.2271766658811,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 3,
+          "id": "LUNA16",
+          "distance_m": 438009.2701711502,
+          "bearing_deg": 204.11235694530967,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        }
+      ]
+    },
+    {
+      "id": "CHANGE3",
+      "lat": 44.1214,
+      "lon": -19.5116,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "CHANGE5",
+          "distance_m": 707825.2127004284,
+          "bearing_deg": 278.80368702618034,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO15",
+          "distance_m": 786623.5638567788,
+          "bearing_deg": 126.22758510054224,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO12",
+          "distance_m": 1433218.5949691776,
+          "bearing_deg": 185.31995370718394,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "CHANGE4",
+      "lat": -45.4562,
+      "lon": 177.5885,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "CHANGE6",
+          "distance_m": 631954.7198102253,
+          "bearing_deg": 89.61979373578653,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html"
+        },
+        {
+          "rank": 2,
+          "id": "IM2",
+          "distance_m": 1487064.1004418794,
+          "bearing_deg": 183.61277195338778,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 3,
+          "id": "IM1",
+          "distance_m": 1649428.4991273186,
+          "bearing_deg": 180.81142116434586,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        }
+      ]
+    },
+    {
+      "id": "CHANGE5",
+      "lat": 43.0576,
+      "lon": -51.9161,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "CHANGE3",
+          "distance_m": 707825.2127004284,
+          "bearing_deg": 76.14499207013858,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO15",
+          "distance_m": 1449290.0787392966,
+          "bearing_deg": 91.92783734103406,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO12",
+          "distance_m": 1599353.303663825,
+          "bearing_deg": 143.23335711871414,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    },
+    {
+      "id": "CHANGE6",
+      "lat": -41.6385,
+      "lon": -153.9852,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "CHANGE4",
+          "distance_m": 631954.7198102253,
+          "bearing_deg": 249.81208549293797,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html"
+        },
+        {
+          "rank": 2,
+          "id": "IM2",
+          "distance_m": 1624223.4118718442,
+          "bearing_deg": 180.35880795945243,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 3,
+          "id": "IM1",
+          "distance_m": 1741958.9549568426,
+          "bearing_deg": 175.14838464826676,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        }
+      ]
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "lat": -69.3741,
+      "lon": 32.32,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM1",
+          "distance_m": 398035.4340050297,
+          "bearing_deg": 202.79229439803098,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 2,
+          "id": "IM2",
+          "distance_m": 467790.5359733821,
+          "bearing_deg": 181.0659516655083,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 3,
+          "id": "SLIM",
+          "distance_m": 1705320.6364304284,
+          "bearing_deg": 351.71775280705987,
+          "bearing_status": "defined",
+          "official_source_url": "https://darts.isas.jaxa.jp/en/missions/slim"
+        }
+      ]
+    },
+    {
+      "id": "SLIM",
+      "lat": -13.316,
+      "lon": 25.251,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "APOLLO16",
+          "distance_m": 318481.8696798988,
+          "bearing_deg": 293.4137750144936,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO11",
+          "distance_m": 427581.7607524885,
+          "bearing_deg": 352.6843652757846,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "LUNA16",
+          "distance_m": 1011797.9803198363,
+          "bearing_deg": 69.96154864604961,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        }
+      ]
+    },
+    {
+      "id": "IM1",
+      "lat": -80.13,
+      "lon": 1.44,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 175495.8134020219,
+          "bearing_deg": 155.20824907557176,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 398035.4340050297,
+          "bearing_deg": 52.76054646289626,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        },
+        {
+          "rank": 3,
+          "id": "CHANGE4",
+          "distance_m": 1649428.4991273186,
+          "bearing_deg": 176.67776663972427,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html"
+        }
+      ]
+    },
+    {
+      "id": "IM2",
+      "lat": -84.7906,
+      "lon": 29.1957,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM1",
+          "distance_m": 175495.8134020219,
+          "bearing_deg": 307.6614442988872,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 2,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 467790.5359733821,
+          "bearing_deg": 4.138975790863465,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        },
+        {
+          "rank": 3,
+          "id": "CHANGE4",
+          "distance_m": 1487064.1004418794,
+          "bearing_deg": 150.86862015373137,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html"
+        }
+      ]
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "lat": 18.562,
+      "lon": 61.81,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "LUNA24",
+          "distance_m": 177714.3318293503,
+          "bearing_deg": 176.1481070576702,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 2,
+          "id": "LUNA20",
+          "distance_m": 473707.31988966855,
+          "bearing_deg": 199.56739005790052,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        },
+        {
+          "rank": 3,
+          "id": "LUNA16",
+          "distance_m": 600773.5821789139,
+          "bearing_deg": 196.26096599283443,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "lat": -83.763,
+      "lon": -69.983,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 264872.2180549276,
+          "bearing_deg": 143.82710092533364,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 298262.2108042856,
+          "bearing_deg": 107.98543205162483,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 689833.3046689609,
+          "bearing_deg": 117.12257555878378,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "lat": -86.768,
+      "lon": -20.514,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 120500.73541364641,
+          "bearing_deg": 87.9537143176545,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 211558.5267388566,
+          "bearing_deg": 31.842958757441785,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 571367.7050986242,
+          "bearing_deg": 60.362990230123934,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "lat": -85.942,
+      "lon": -0.944,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 80401.59934533176,
+          "bearing_deg": 80.23029122193476,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 176419.3514964915,
+          "bearing_deg": 4.03352112028223,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 526709.4287476899,
+          "bearing_deg": 40.331604138906684,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "lat": -85.111,
+      "lon": 26.71,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 11762.203397308062,
+          "bearing_deg": 35.56753737646003,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 176820.81752588332,
+          "bearing_deg": 313.9265323292797,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 478115.7972754965,
+          "bearing_deg": 7.280637731740165,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "lat": -85.416,
+      "lon": 31.851,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 20166.27398224176,
+          "bearing_deg": 338.7524534500779,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 192590.8879494456,
+          "bearing_deg": 308.3377319581047,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 486450.0850893428,
+          "bearing_deg": 0.5978548608612076,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "lat": -85.295,
+      "lon": 36.917,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 25329.928383156657,
+          "bearing_deg": 303.20058241190213,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 200790.52018187515,
+          "bearing_deg": 300.3748490127019,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 483363.4114795827,
+          "bearing_deg": 354.0995025697699,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "lat": -84.054,
+      "lon": 56.481,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 82572.10907303263,
+          "bearing_deg": 241.17730841096943,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 245005.843489481,
+          "bearing_deg": 268.21903043865734,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 466556.6578468997,
+          "bearing_deg": 327.0827972653386,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "lat": -88.389,
+      "lon": -68.865,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 171748.3570154056,
+          "bearing_deg": 114.37041697071457,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 286506.76726560283,
+          "bearing_deg": 79.45292003527574,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 636649.7503407416,
+          "bearing_deg": 105.31197247660133,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "lat": -87.478,
+      "lon": 124.521,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 181736.9371665466,
+          "bearing_deg": 239.97858777018286,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 346942.7710926185,
+          "bearing_deg": 226.38989483405015,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 632812.0499941328,
+          "bearing_deg": 261.1674325185394,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "lat": -89.6866,
+      "lon": -162.81,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 167273.58101304556,
+          "bearing_deg": 191.33050514664424,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 308448.6860785321,
+          "bearing_deg": 164.7243535429883,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 634624.9449593567,
+          "bearing_deg": 194.91589028002673,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "lat": -89.4632,
+      "lon": -137.49,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 173846.8264463365,
+          "bearing_deg": 167.9176683282328,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 311744.9119419475,
+          "bearing_deg": 140.8759544085516,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 641473.3956448754,
+          "bearing_deg": 170.0558532591748,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "lat": -88.811,
+      "lon": 123.6901,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 164749.40517898073,
+          "bearing_deg": 252.93958275208348,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 319972.44755741005,
+          "bearing_deg": 232.3376555466858,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 627299.6634496868,
+          "bearing_deg": 265.4797124170562,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "lat": -88.6834,
+      "lon": -67.9321,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 167654.59932857988,
+          "bearing_deg": 110.75648616959079,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 287639.3070355755,
+          "bearing_deg": 76.76324798251663,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 633717.7334394562,
+          "bearing_deg": 103.65032931636513,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "lat": -88.0792,
+      "lon": 11.88866,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "IM2",
+          "distance_m": 103810.73172865952,
+          "bearing_deg": 26.893455310270564,
+          "bearing_status": "defined",
+          "official_source_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf"
+        },
+        {
+          "rank": 2,
+          "id": "IM1",
+          "distance_m": 242240.33913958565,
+          "bearing_deg": 347.0745253136623,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/"
+        },
+        {
+          "rank": 3,
+          "id": "CHANDRAYAAN3",
+          "distance_m": 571211.6851703601,
+          "bearing_deg": 22.386403696774604,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.isro.gov.in/Chandrayaan3.html"
+        }
+      ]
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "lat": 7.585,
+      "lon": -58.725,
+      "nearest": [
+        {
+          "rank": 1,
+          "id": "CHANGE5",
+          "distance_m": 1090848.4901703068,
+          "bearing_deg": 8.48037393092553,
+          "bearing_status": "defined",
+          "official_source_url": "https://www.cnsa.gov.cn/english/n6465719/c6810898/content.html"
+        },
+        {
+          "rank": 2,
+          "id": "APOLLO12",
+          "distance_m": 1115381.877834681,
+          "bearing_deg": 105.46578538866348,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        },
+        {
+          "rank": 3,
+          "id": "APOLLO14",
+          "distance_m": 1293756.6008364342,
+          "bearing_deg": 103.83575818910246,
+          "bearing_status": "defined",
+          "official_source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+        }
+      ]
+    }
+  ],
+  "mock": false
+}

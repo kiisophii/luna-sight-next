@@ -1,0 +1,109 @@
+{
+  "status": "found",
+  "inside_psr": false,
+  "site_class": 0,
+  "nearest_pixel_center": {
+    "lat": -85.1031835890088,
+    "lon": 26.72198772394738,
+    "x_m": 66810.0,
+    "y_m": 132710.0,
+    "distance_m": 239.0390647631251,
+    "bearing_deg": 7.4585999391920454,
+    "nearest_guaranteed": true,
+    "row": 8564,
+    "col": 18540
+  },
+  "nearest_boundary": {
+    "lat": -85.10362562578803,
+    "lon": 26.72027717165961,
+    "x_m": 66800.0,
+    "y_m": 132700.0,
+    "distance_m": 225.18984977169592,
+    "bearing_deg": 6.783642889179316,
+    "nearest_guaranteed": true
+  },
+  "distance_to_psr_area_m": 225.18984977169592,
+  "distance_lower_bound_m": null,
+  "search": {
+    "radius_m": 10000,
+    "complete_within_radius": true,
+    "unsearched_or_nodata_lower_bound_m": 10042.689881876366,
+    "window_edge_lower_bound_m": 10042.689881876366,
+    "nodata_lower_bound_m": null,
+    "nodata_pixels": 0,
+    "pixels": 1014049,
+    "projection_max_scale": 1.0021714074567163
+  },
+  "schema_version": 1,
+  "id": "ARTEMIS_MOUTON_PLATEAU",
+  "lat": -85.111,
+  "lon": 26.71,
+  "source": {
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF",
+    "product_page": "https://pgda.gsfc.nasa.gov/products/90",
+    "paper_doi": "10.3847/PSJ/acf3e1",
+    "data_doi": "10.60903/gsfcpgda-lola-spole",
+    "byte_size": 154221202,
+    "etag": "W/\"9313a92-1887ec3cff0\"",
+    "last_modified": "Sat, 03 Jun 2023 00:59:02 GMT",
+    "resolution_m": 20.0,
+    "shape": [
+      30400,
+      30400
+    ],
+    "dtype": "float32",
+    "nodata": "nan",
+    "codes": {
+      "0": "not PSR",
+      "1": "PSR",
+      "NaN": "unknown/no-data"
+    },
+    "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+    "frame": "MOON_ME_DE421",
+    "reference_radius_m": 1737400.0,
+    "native_grid": {
+      "first_center_x_m": -303990.0,
+      "first_center_y_m": 303990.0
+    },
+    "geotiff_metadata": "<GDALMetadata>\n  <Item name=\"NC_GLOBAL#Conventions\">CF-1.7</Item>\n  <Item name=\"NC_GLOBAL#GMT_version\">6.5.0_daaa813_2022.09.22 [64-bit]</Item>\n  <Item name=\"NC_GLOBAL#node_offset\">1</Item>\n  <Item name=\"NC_GLOBAL#title\">Produced by grdcut</Item>\n  <Item name=\"x#actual_range\">{-304000,304000}</Item>\n  <Item name=\"x#axis\">X</Item>\n  <Item name=\"x#long_name\">x</Item>\n  <Item name=\"y#actual_range\">{-304000,304000}</Item>\n  <Item name=\"y#axis\">Y</Item>\n  <Item name=\"y#long_name\">y</Item>\n  <Item name=\"z#actual_range\">{0,1}</Item>\n  <Item name=\"z#long_name\">z</Item>\n  <Item name=\"z#_FillValue\">nan</Item>\n  <Item name=\"actual_range\" sample=\"0\">{0,1}</Item>\n  <Item name=\"long_name\" sample=\"0\">z</Item>\n  <Item name=\"NETCDF_VARNAME\" sample=\"0\">z</Item>\n  <Item name=\"_FillValue\" sample=\"0\">nan</Item>\n</GDALMetadata>",
+    "class_evidence": {
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.CSV",
+      "polygon_gid": 1,
+      "x_m": 42420.0,
+      "y_m": 41710.123,
+      "sampled_class": 1.0,
+      "first_record_sha256": "eb4e36d4ff76a2e2e126b86d577375adf9d18d3c2878fc224b02549c95143162",
+      "method": "Scanline midpoint strictly inside first official PSR polygon; native raster class is 1"
+    }
+  },
+  "warning": "PSR ≠ confirmed ice.",
+  "mock": false,
+  "input_signature": "461241f4f0d37689f77cbd200f655851d5ce01c04be194ac7d260db0f3e9f002",
+  "provenance": {
+    "script_sha256": "0decc8145668fafce5097fb18de199235e8184615d257b8f38fd60666234bc16",
+    "window_bounds_rc": [
+      8071,
+      9078,
+      18030,
+      19037
+    ],
+    "window_first_center_xy_m": [
+      56610.0,
+      142570.0
+    ],
+    "window_sha256": "c15e694a3abd47dc7e07cda37a401fbc47596b92ed2207a931c549fdf312b9e5",
+    "window_cache": "data/processed/detail_z2/ARTEMIS_MOUTON_PLATEAU_bc3d35108cc2d978.npz",
+    "source_codes_observed": [
+      0.0,
+      1.0
+    ]
+  },
+  "definitions": {
+    "center": "Nearest center of a native class-1 pixel within search radius",
+    "boundary": "Nearest 1/0 interface of the union of native 20 m pixel squares, inverse projected to the sphere; distance minimized continuously along edges",
+    "area": "Zero inside PSR; otherwise nearest boundary distance",
+    "bearing": "Initial true-north clockwise azimuth; null at geographic pole or zero distance",
+    "distance": "Spherical geodesic on R=1737400 m; no terrain path or elevation correction"
+  },
+  "verification": "Author checks only; independent team verification pending"
+}

@@ -600,6 +600,8 @@ def main():
     check_local250(data, sites, err, warn)
     check_monthly(data, sites)
     check_uncertainty(data, sites)
+    from check_detail import check_detail
+    check_detail(data, sites, err, warn)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

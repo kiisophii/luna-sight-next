@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "count": 16,
+  "sites": [
+    {
+      "id": "IM1",
+      "file": "IM1.json",
+      "status": "found",
+      "sha256": "e0527295d22ddca5c4d771f8aeb3c85edf7c016a932d3b96b5e4374cbed3c3e5"
+    },
+    {
+      "id": "IM2",
+      "file": "IM2.json",
+      "status": "found",
+      "sha256": "db0afd0c124d19a3e54b217c3a9414905a4aca4b3f052e6bf4118346b2c115fd"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "file": "ARTEMIS_CABEUS_B.json",
+      "status": "found",
+      "sha256": "e2c8b253dbe30e8f5908bcfcabc706ca2c7d4befe882149d7df637a4584b8869"
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "file": "ARTEMIS_HAWORTH.json",
+      "status": "found",
+      "sha256": "1de4403bea6b09f08c04ecec01e3673d66006c076623a1403904a9420a7bf645"
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "file": "ARTEMIS_MALAPERT.json",
+      "status": "found",
+      "sha256": "697873ebe7d5bf67f41725ab2213123155fb5f1f17f974a48d839f228185d254"
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "file": "ARTEMIS_MOUTON_PLATEAU.json",
+      "status": "found",
+      "sha256": "1a1ef1033dc224ff04e589f84f9419a6e3637b5857ab7fc4052b76fae2092bfb"
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "file": "ARTEMIS_MOUTON.json",
+      "status": "found",
+      "sha256": "e8f70f599946fd8b553fb9be5b5c8d1afcd5e80d86cbcf3550e661e90c89e96a"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "file": "ARTEMIS_NOBILE_RIM1.json",
+      "status": "found",
+      "sha256": "05cef735cfd7940f5166567a089063b3d1f4a84db279409a9cbece76de992304"
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "file": "ARTEMIS_NOBILE_RIM2.json",
+      "status": "found",
+      "sha256": "f80a27fa5b4cac86dc809c91ceb08d0df6f6134604d686fb8d6c4d34a5a9213a"
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "file": "ARTEMIS_DE_GERLACHE_RIM2.json",
+      "status": "found",
+      "sha256": "9376038783f1b00be236ce17e362044ead769ca4a97d7feb70a9df1f23d1b7bd"
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "file": "ARTEMIS_SLATER_PLAIN.json",
+      "status": "found",
+      "sha256": "ad0477a4e1b0fe491108c2b2b20be5278930d9afcecc81d5427c3d1dc3d35134"
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "file": "SHACKLETON_RIM.json",
+      "status": "found",
+      "sha256": "cbcf02307619e5ab82a88ec3234efa5df64b42fb86f66ea0cf4ffc503ed4bbfb"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "file": "CONNECTING_RIDGE.json",
+      "status": "found",
+      "sha256": "aa47a37ae661c62b7d780faff32acfba783e21df150598bba9cc506498349008"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "file": "PEAK_NEAR_SHACKLETON.json",
+      "status": "found",
+      "sha256": "e47129f55b1042bab6c715ffd5fe53ba1bf588117a6fc6bc88aad93fa16e8260"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "file": "DE_GERLACHE_RIM1.json",
+      "status": "found",
+      "sha256": "c4ea58b5680fdace20604436afc6dcdfaeae6c74931c7aa1aab24230a2006d28"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "file": "SHOEMAKER_RIM_A.json",
+      "status": "found",
+      "sha256": "0086da4676dd9ca4af178a753500d7a7e82c9fafc7d759cffc88a0aba5135e9a"
+    }
+  ],
+  "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF",
+  "warning": "PSR ≠ confirmed ice.",
+  "mock": false,
+  "input_signature": "2c3a5b2e0a14b18c9c6692056bedf670f129b9f0cc8eae1db326991bd7395451"
+}

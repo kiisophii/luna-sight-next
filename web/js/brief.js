@@ -7,7 +7,7 @@ import * as core from './core.js';
 import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, setFocus, fmtHours, LLSN } from './ui_shared.js';
 import { hourBits, gapStats, runs, siteFile, validation, TOWER_H, localGrid, spacingText, getJSON } from './values.js';
-import { verdict, RULE, coordText } from './compare_view.js';
+import { coordText } from './compare_view.js';
 import { headline, namedFor, siteLine, hindcastFor, PGDA_URL } from './trust.js';
 
 addStrings({
@@ -112,14 +112,14 @@ addStrings({
 // Shape only, measured from the design reference; numbers come from this build's data. Wording that would claim power or
 // radio performance is replaced (exception ④): "Earth-contact" → "Earth-view", "Ground-station links" → "Ground stations in view".
 addStrings({
-  scKick: 'Site check', scLatLon: 'Latitude/Longitude', scPeriod: 'Analysis period', scChange: 'Change site', scCompare: 'Compare with other sites',
+  scKick: 'Site checks', scLatLon: 'Latitude/Longitude', scPeriod: 'Analysis period', scChange: 'Change site', scCompare: 'Compare with other sites',
   sumSun: 'Sunlight', sumEarth: 'Earth view', sumBoth: 'Sun + Earth', sumDark: 'Longest dark',
-  vsFirst: 'first of {n}', vsLast: 'last of {n}', vsHigh: '≥ {hi} % (strength)', vsDark: 'over {dark} h (caution)', vsLow: 'under {lo} % (caution)',
-  vsHead: 'Example rule: {s} strength(s) · {c} caution(s) among {n} compared site(s) · same period',
-  pickH: 'Choose analyses', pickSub: 'Pick as many as you like · {n}/{m}',
+  pickH: 'Choose analyses', pickSub: 'Pick as many as you like · {n}/{m}', soon: 'Coming soon',
   c_time: 'Sunlight & Earth-view time', c_near: 'Nearby-location sensitivity', c_date: 'Landing date & delays', c_relay: 'Relay tower benefit',
   c_gs: 'Ground stations in view', c_hz: 'Horizon & blocking', c_terrain: 'Slope, roughness & flat areas', c_history: 'Past missions nearby',
-  c_seasons: 'Seasons 2026–2030',
+  c_seasons: 'Seasons 2026–2030', c_access: 'Access to science targets', c_routes: 'Routes & obstacles',
+  kSun: 'Sunlight', kSunT: 'Total sunlight', kEarth: 'Earth view', kEarthT: 'Total Earth view', kEgap: 'Longest Earth gap', kEgapM: 'Average Earth gap',
+  kEgapN: 'Earth gaps', kDark: 'Longest dark', kDarkN: 'Dark spells', kSunRun: 'Longest sunlit run', kBoth: 'Sun + Earth',
   limH: 'Assumptions & limits', limBase: 'Observer 2 m · hourly steps · terrain {dem}.', srcH: 'Sources', mv: 'Method & validation',
   mvAll: 'Full validation details', mvNot: 'Not analyzed yet',
   legSunUp: 'Sun up', legEarthIn: 'Earth in view', legBothIn: 'Sun + Earth', legNone: 'Not visible', rSun: 'Sun', rEarth: 'Earth', rBoth: 'Both',
@@ -138,12 +138,12 @@ addStrings({
 }, {
   scKick: '착륙지 검증', scLatLon: '위도/경도', scPeriod: '분석 기간', scChange: '착륙지 바꾸기', scCompare: '다른 착륙지와 비교',
   sumSun: '일조', sumEarth: '지구 보임', sumBoth: '해+지구', sumDark: '최장 어둠',
-  vsFirst: '{n}곳 중 1위', vsLast: '{n}곳 중 꼴찌', vsHigh: '{hi} % 이상 (강점)', vsDark: '{dark}시간 초과 (주의)', vsLow: '{lo} % 미만 (주의)',
-  vsHead: '예시 규칙: 강점 {s} · 주의 {c} · 비교 중 {n}곳 기준 · 같은 기간',
-  pickH: '분석 고르기', pickSub: '여러 개 고를 수 있어요 · {n}/{m}',
+  pickH: '분석 고르기', pickSub: '여러 개 고를 수 있어요 · {n}/{m}', soon: '준비 중',
   c_time: '햇빛·지구 보임 시간', c_near: '주변 위치 민감도', c_date: '착륙일과 지연', c_relay: '중계탑 효과',
   c_gs: '지상국 가시 시간', c_hz: '지평선·가림', c_terrain: '경사·거칠기·평탄 면적', c_history: '가까운 과거 임무',
-  c_seasons: '계절 2026–2030',
+  c_seasons: '계절 2026–2030', c_access: '과학 목표 접근', c_routes: '이동 경로·장애물',
+  kSun: '일조율', kSunT: '총 일조', kEarth: '지구 보임', kEarthT: '총 지구 보임', kEgap: '최장 지구 끊김', kEgapM: '평균 지구 끊김',
+  kEgapN: '지구 끊김 횟수', kDark: '최장 어둠', kDarkN: '어둠 횟수', kSunRun: '최장 연속 일조', kBoth: '해+지구',
   limH: '가정과 한계', limBase: '관측 높이 2 m · 1시간 간격 · 지형 {dem}.', srcH: '출처', mv: '방법과 검증',
   mvAll: '검증 자세히', mvNot: '아직 하지 않은 분석',
   legSunUp: '햇빛', legEarthIn: '지구 보임', legBothIn: '해+지구', legNone: '안 보임', rSun: '해', rEarth: '지구', rBoth: '둘 다',
@@ -160,9 +160,10 @@ addStrings({
   src_trust: 'NASA PGDA AVGVISIB 지도 (Mazarico et al. 2011) · ALSJ와 임무 보고 · data/validation.json, data/hindcast.json',
   src_more: '이 도구의 자료 목록',
 });
-// chips in the reference order. Only analyses with data in this build are shown — no 'Coming soon' chips
-// (Sua's decision, docs/design_sync/채이사본_동기화_전수_1555.md "수아 결정": "7-5 … '준비 중' 칩은 넣지 않는다").
-const PICKABLE = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'history', 'seasons'];
+// chips in the designer copy's order. 'soon' = no data in this build (dimmed, not selectable, like the copy).
+// Slope and past missions have data here, so they are real chips (copy shows them as coming soon).
+const PICK = [['time'], ['near'], ['date'], ['relay'], ['gs'], ['hz'], ['terrain'], ['access', 'soon'], ['history'], ['routes', 'soon'], ['seasons']];
+const PICKABLE = PICK.filter(p => !p[1]).map(p => p[0]);
 const CARD_ORDER = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'history', 'seasons', 'trust', 'more'];
 
 // ------------------------------------------------------------ 11/15 detail products (Y terrain, Z1 time stats, Z2 PSR, Z3 dates, Z4 history)
@@ -299,31 +300,21 @@ function renderHead(s) {
         <a class="sc-btn" href="#ls-compare">${IC.bars}${esc(t('scCompare'))}</a>
         <button type="button" class="sc-btn ghost copy-link">${IC.link}<span class="lbl">${esc(t('copyLink'))}</span></button></div></div>`;
 }
-/** 7-4: four period values, the same numbers as the comparison table (window metrics).
- *  Under each value: the strengths / cautions of the published example rule (compare_view.verdict) for that metric,
- *  and one line with the counts + the full rule — kept from the retired bento summary card. */
+/** 7-4: four period values, the same numbers as the comparison table (window metrics). */
 function renderSum(s) {
   const m = LLSN().window.metrics.get(s.id), ok = m && !m.pending;
-  const ids = (LLSN().compare?.() || []).length ? LLSN().compare() : [s.id];
-  const vIds = ids.includes(s.id) ? ids : [...ids, s.id];
-  const v = ok ? verdict(s.id, vIds) : { plus: [], bang: [] };
-  const why = it => (it.rule === 'high' ? fill(t('vsHigh'), { hi: RULE.directHigh * 100 }) : it.rule === 'dark' ? fill(t('vsDark'), { dark: RULE.darkH })
-    : it.rule === 'low' ? fill(t('vsLow'), { lo: RULE.directLow * 100 }) : fill(t(v.plus.includes(it) ? 'vsFirst' : 'vsLast'), { n: it.n }));
-  const notes = k => [...v.plus.filter(x => x.k === k).map(x => `<span class="plus">+ ${esc(why(x))}</span>`), ...v.bang.filter(x => x.k === k).map(x => `<span class="bang">! ${esc(why(x))}</span>`)].join('');
   const pc = f => (ok ? `${Math.round(f * 100)}<small>%</small>` : '—');
-  const cell = (k, mk, val, c) => `<div class="sc-cell"><span class="k">${esc(t(k))}</span><span class="v"${c ? ` style="color:${c}"` : ''}>${val}</span><span class="vr">${notes(mk)}</span></div>`;
-  $('#ls-brief .sc-sum').innerHTML = cell('sumSun', 'sun_frac', pc(m?.sun_frac), 'var(--sun)') + cell('sumEarth', 'earth_frac', pc(m?.earth_frac), 'var(--earth)')
-    + cell('sumBoth', 'both_frac', pc(m?.both_frac)) + cell('sumDark', 'longest_dark_h', ok ? dh(m.longest_dark_h) : '—')
-    + (ok ? `<div class="sc-verd"><span class="verdict${v.good ? '' : ' cond'}">${esc(t(v.good ? 'vGood' : 'vCond'))}</span>
-        <span>${esc(fill(t('vsHead'), { s: v.plus.length, c: v.bang.length, n: vIds.length }))}</span>${vIds.length < 2 ? `<span>${esc(t('bSumOne'))}</span>` : ''}
-        <details><summary>${esc(t('bRule'))}</summary><p>${esc(fill(t('bRuleTxt'), { hi: RULE.directHigh * 100, lo: RULE.directLow * 100, dark: RULE.darkH }))}</p></details></div>` : '');
+  const cell = (k, v, c) => `<div class="sc-cell"><span class="k">${esc(t(k))}</span><span class="v"${c ? ` style="color:${c}"` : ''}>${v}</span></div>`;
+  $('#ls-brief .sc-sum').innerHTML = cell('sumSun', pc(m?.sun_frac), 'var(--sun)') + cell('sumEarth', pc(m?.earth_frac), 'var(--earth)')
+    + cell('sumBoth', pc(m?.both_frac)) + cell('sumDark', ok ? dh(m.longest_dark_h) : '—');
 }
 /** 7-5: analysis chips; on = card shown below. */
 function renderPick() {
   const n = PICKABLE.filter(k => open.has(k)).length;
   $('#ls-brief .sc-pick').innerHTML = `<p class="sc-pick-h"><b>${esc(t('pickH'))}</b> <span>${esc(fill(t('pickSub'), { n, m: PICKABLE.length }))}</span></p>
-    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${PICKABLE.map(k =>
-      `<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_' + k))}</button>`).join('')}</div>`;
+    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${PICK.map(([k, soon]) => (soon
+      ? `<span class="sc-chip soon" aria-disabled="true"><i class="box"></i>${esc(t('c_' + k))}<em>${esc(t('soon'))}</em></span>`
+      : `<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_' + k))}</button>`)).join('')}</div>`;
 }
 /** Card numbers 01, 02 … follow the order of the open cards. */
 function renumber() {
@@ -432,6 +423,16 @@ function blockShell(k, chips) {
 }
 let mvHTML = '';
 
+/** Card 01 number grid (copy layout: 9 per row). Every value comes from the same hourly bits as the bars and the table. */
+function timeKpis(bits) {
+  const n = bits.length, g1 = gapStats(bits, 1), g2 = gapStats(bits, 2), g3 = gapStats(bits, 3);
+  const sunRun = runs(bits, 1).reduce((a, r) => Math.max(a, r.len), 0);
+  const pct = h => `${Math.round((h / n) * 100)}<small>%</small>`;
+  const kv = (k, v, c) => `<div class="sc-kv"><span>${esc(t(k))}</span><b class="num"${c ? ` style="color:${c}"` : ''}>${v}</b></div>`;
+  return `<div class="sc-kpis">${kv('kSun', pct(g1.on), 'var(--sun)')}${kv('kSunT', dh(g1.on))}${kv('kEarth', pct(g2.on), 'var(--earth)')}${kv('kEarthT', dh(g2.on))}`
+    + `${kv('kEgap', dh(g2.count ? g2.longest : 0), g2.count ? '#E07BB0' : '')}${kv('kEgapM', g2.count ? dh(Math.round(g2.mean)) : '—')}${kv('kEgapN', g2.count)}`
+    + `${kv('kDark', dh(g1.count ? g1.longest : 0))}${kv('kDarkN', g1.count)}${kv('kSunRun', dh(sunRun), 'var(--sun)')}${kv('kBoth', pct(g3.on))}</div>`;
+}
 /** Sun / Earth / Both over the analysis period, one rect per visible run (hourly bits of this build). */
 function periodBars(bits) {
   const n = bits.length, w = LLSN().window;
@@ -466,7 +467,7 @@ async function timeBlock(s) {
           <table class="mini-tbl"><thead><tr><th>◍ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01 · data/windows/${esc(s.id)}.json</p></details>`;
   }
-  body.innerHTML = `${periodBars(bits)}<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
+  body.innerHTML = `${timeKpis(bits)}${periodBars(bits)}<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
     <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">${esc(fill(t('tRuns'), { n: sr.length }))}</summary>
       <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details>${five}${await z1Html(s)}`;
   body.querySelector('.five-strip')?.addEventListener('click', e => {

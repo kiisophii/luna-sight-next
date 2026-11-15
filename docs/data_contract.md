@@ -511,3 +511,20 @@ Task X's 10 km summary uses the existing section 15 1 km grid, explicitly
 labelled `spacing_m:1000`; it is not a 10 km fine-grid estimate. Same spacing
 does not imply the same underlying DEM resolution between different sites.
 
+
+
+## Z3. Proposed — full-period landing-date extension, detail-dates-z3-v1 (2026-11-15)
+
+New files only under `web/data/detail/dates/<ID>.json` and `index.json`; existing `date_slip/` is unchanged. Producer: `node pipeline/build_detail_dates.mjs`. This uniquely named section avoids collision with the pending Task Y numerical section.
+
+- All 33 catalogue sites. Daily 00:00 UTC landing starts from 2026-01-01 through 2030-12-31 inclusive: 1,826 rows for each stay, including explicit invalid tails. Stays: exactly 168/336/708 hours (7/14/29.5 days). Signed shifts: [-7,-3,-1,1,3,7] calendar days.
+- Hourly cells are [i,i+1), i=0…43823. Data end is exclusive 2031-01-01T00:00Z; the last cell begins 2030-12-31T23:00Z. A stay ending at that exclusive boundary uses the final observed cell and is valid. No missing cell is clamped or silently dropped.
+- Actual unchanged core.js Sun/Earth classifications: solar-disc fraction >=0.5; Earth centre strictly above the terrain mask. Fractions are counts/stay_h with full JSON number precision, not 4-decimal legacy arrays.
+- Every product embeds `schema,id,lat,lon,mock:false,first_landing,last_landing,n_landings:1826,step_days:1,landing_time_utc:"00:00:00",hourly_cells,row_columns,delta_columns,stays,inputs,content_sha256,verification_status`.
+- `row_columns` = ["status","sun_h","earth_h","both_h","sun_frac","earth_frac","both_frac","longest_dark_h","dark_left_censored","dark_right_censored"]. A stay has `stay_days,stay_h,delta_fraction_denominator_h,rows,slips`. Each rows[d] describes landing day d. Valid rows start with "ok"; invalid rows are ["out_of_range",null,null,null,null,null,null,null,null,null].
+- `longest_dark_h` is the longest dark run within the full requested stay. A boundary dark run is censored if the adjacent outside-stay cell is dark or lies outside the dataset; actual dark-run onset/ending at the boundary is not marked censored. Counts/hours are integers.
+- Each slip contains `shift_days,rows`. `delta_columns` = ["status","target_day_index","delta_sun_h","delta_earth_h","delta_both_h","delta_longest_dark_h"]. A valid row stores target-minus-base signed integer counts/duration. The exact rational change is delta_*_h / delta_fraction_denominator_h (multiply by 100 for percentage points); the target fractions are in the base table at target_day_index. No precision is lost through rounding or duplicate float subtraction.
+- Invalid comparisons retain their signed target_day_index and set all four deltas null. Status is "base_out_of_range", "target_out_of_range" or "both_out_of_range" according to which full stay is unsupported. A shifted target before 2026-01-01 or after the full-stay limit is never clipped.
+- `inputs` fingerprints exact ephem.bin, ephem.json, sites.json, JSON.stringify(site), horizon bytes, core.js, producer and cache helper, plus parameters. `signature` hashes the other input fields. `content_sha256` hashes the entire product excluding itself. Both use recursively key-sorted objects, original array order and JavaScript JSON.stringify UTF-8 (no JSON pretty printing); exact JS serialization is checked with Node.
+- Index has `schema,mock:false,first_landing,last_landing,n_landings,stay_h,slip_days,sites`; sites entries are `{id,file,sha256,content_sha256}`, exact LF file bytes. It is written only for a full 33-site run.
+- Status starts `author_verified_independent_member_pending`; author tests do not replace Jiyong's requested independent three-site verification (fractions <=0.1 percentage point, durations <=1 hour).

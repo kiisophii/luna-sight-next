@@ -9,6 +9,7 @@ import { RULE } from './compare_view.js';
 import { CREDITS } from './credits.js';
 import { mountHero } from './about_hero.js';
 import { ABOUT_COPY } from './about_copy.js';
+import { iconSvg } from './icons.js';
 
 // Keep the designer's About layout isolated from the map and other owners' views.
 const layout = document.createElement('link');
@@ -172,7 +173,7 @@ async function render() {
   const size = () => root.style.setProperty('--about-head', `${header.getBoundingClientRect().height}px`);
   const observer = new ResizeObserver(size); observer.observe(header); size();
   disposeHero = () => { stopHero(); observer.disconnect(); };
-  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V18M6.5 12.5L12 18L17.5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>`);
+  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next">${iconSvg('arrow-down', { size: 18 })}</button>`);
   const nextBtn = root.querySelector('.ab-next');
   const behavior = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
   const upcoming = () => [...sc.querySelectorAll(':scope > section')].find(el => el.getBoundingClientRect().top > sc.getBoundingClientRect().top + 40);

@@ -13,6 +13,7 @@
 //   avoid: [elements | CSS selectors] the off-screen Sun/Earth chips must never cover (header, panels, buttons, minimap),
 //   chipInsets: {top, right, bottom, left} px kept free for chips.
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.170.0/three.module.min.js';
+import { iconSvg } from './icons.js';
 
 const R = 1737.4;                       // km, contract section 0
 const T0_MS = Date.UTC(2026, 0, 1);     // hour index 0
@@ -553,7 +554,7 @@ if (uLayerA > 0.0) {
       : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
   }
   updateNote();
-  for (const [c, t] of [[chipSun, lang === 'ko' ? '태양' : 'Sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth']]) c.innerHTML = `<svg class="g3-arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7.5M6.5 2.8 9.7 6 6.5 9.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>${t}`;
+  for (const [c, t, ic] of [[chipSun, lang === 'ko' ? '태양' : 'Sun', 'sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth', 'earth']]) c.innerHTML = `<span class="g3-arr">${iconSvg('marker-down', { size: 12 })}</span>${iconSvg(ic, { size: 12 })} ${t}`;
 
   const tmp = v3();
   function project(p) {                         // -> {x, y, behind, on}
@@ -593,7 +594,7 @@ if (uLayerA > 0.0) {
     let dx = pc.x, dy = -pc.y;
     if (Math.hypot(dx, dy) < 1e-9) dy = 1;
     el.style.display = '';
-    el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D}deg)`;
+    el.querySelector('.g3-arr').style.transform = `rotate(${Math.atan2(dy, dx) * R2D - 90}deg)`;   // marker-down points down (90°)
     const W = overlay.clientWidth, H = overlay.clientHeight, ins = { top: 0, right: 0, bottom: 0, left: 0, ...((typeof opts.chipInsets === 'function' ? opts.chipInsets() : opts.chipInsets) || {}) };
     const m = 8, cw = el.offsetWidth || 70, ch = el.offsetHeight || 22;
     // centre-line rectangle the chip centre may travel on
@@ -884,7 +885,7 @@ if (uLayerA > 0.0) {
     updateBodies(); dirty = true; emit('time', hour);
   }
   function setExaggeration(x) { exag = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
-  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? '☀ 태양' : '☀ Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? '◉ 지구' : '◉ Earth'; }
+  function setLang(l) { lang = l === 'ko' ? 'ko' : 'en'; updateNote(); chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun'; chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth'; }
 
   setTime(opts.hour ?? 0);
   if (opts.view) setView(opts.view);

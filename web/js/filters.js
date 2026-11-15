@@ -9,6 +9,7 @@ import * as core from './core.js';
 import { t } from './i18n.js';
 import { addStrings, whenReady, mountSection, translate, LLSN } from './ui_shared.js';
 import { getJSON } from './values.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   flTitle: 'Filter sites', flAria: 'Mission conditions: filter the candidate list',
@@ -28,12 +29,7 @@ addStrings({
   flAny: '상관없음', flDayUnit: '일', flReset: '모두 초기화', flDone: '완료', flNone: '맞는 착륙지가 없습니다. 조건을 풀어 보세요.', flEdit: '값 직접 입력',
 });
 
-const IC = {
-  sun: '<circle cx="8" cy="8" r="2.8" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.3 1.3M11.3 11.3l1.3 1.3M3.4 12.6l1.3-1.3M11.3 4.7l1.3-1.3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>',
-  earth: '<circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" fill="none" stroke="currentColor" stroke-width="1.1"/>',
-  slope: '<path d="M2 13h12L14 5z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>',
-  dark: '<path d="M3 13L13 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 1.6"/>',
-};
+const IC = { sun: 'sun', earth: 'earth', slope: 'slope', dark: 'shadow' };   // icon names in js/icons.js
 // kind: 'ge' = minimum % (0 = any), 'le' = maximum (slider at max = any)
 const DEFS = [
   { key: 'sun', label: 'fcSun', info: 'fiSun', field: 'sun_frac', kind: 'ge', col: 'var(--sun)' },
@@ -58,19 +54,19 @@ async function loadSlopes() {
   apply();
 }
 
-const info = k => `<button type="button" class="fc-i" aria-label="${t(k)}" data-tip="${k}"><svg class="ic-i" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7.3v3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="4.9" r=".9" fill="currentColor"/></svg></button>`;
+const info = k => `<button type="button" class="fc-i" aria-label="${t(k)}" data-tip="${k}">${iconSvg('info')}</button>`;
 function build() {
   sec = mountSection('llsn-filters', 'flAria');
   sec.innerHTML = `
     <div class="fc-grid">
       ${DEFS.map(d => `<div class="fc-cell" data-k="${d.key}">
-        <div class="fc-top"><svg class="fc-ic" viewBox="0 0 16 16" style="color:${d.col}" aria-hidden="true">${IC[d.key]}</svg><span class="fc-lbl" data-i18n="${d.label}"></span>${info(d.info)}</div>
+        <div class="fc-top">${iconSvg(IC[d.key], { size: 14, cls: 'fc-ic' }).replace('<svg ', `<svg style="color:${d.col}" `)}<span class="fc-lbl" data-i18n="${d.label}"></span>${info(d.info)}</div>
         <button type="button" class="fc-val num" data-k="${d.key}"></button>
         <span class="fc-track"><i class="fc-mid" aria-hidden="true"></i><input type="range" class="fc-range" data-k="${d.key}" style="--ac:${d.col}"></span></div>`).join('')}
     </div>
     <div class="fc-foot">
       <button type="button" class="fl-reset" data-i18n-aria="flReset"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 8a4.8 4.8 0 1 0 1.5-3.5M3 2.5v2.6h2.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button type="button" class="fl-done"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="flDone"></span></button>
+      <button type="button" class="fl-done">${iconSvg('check')}<span data-i18n="flDone"></span></button>
     </div>
     <span class="fl-count sr" aria-live="polite"></span>
     <div class="fc-tip" role="tooltip" hidden></div>`;

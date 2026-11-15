@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs>
+<radialGradient id="g" cx="32" cy="19" r="18" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#F7A43A" stop-opacity=".6"/><stop offset=".55" stop-color="#E8702A" stop-opacity=".18"/><stop offset="1" stop-color="#E8702A" stop-opacity="0"/></radialGradient>
+<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>
+</defs>
+<g clip-path="url(#c)"><g transform="matrix(1 0 0 -1 0 64)">
+<rect width="64" height="64" fill="#0B0D10"/>
+<circle cx="32" cy="-29" r="48" fill="#3A414B"/>
+<circle cx="32" cy="-29" r="47.4" fill="none" stroke="#6B7480" stroke-width="1.2"/>
+<ellipse cx="32" cy="19" rx="20" ry="12" fill="url(#g)"/>
+<g stroke="#F2EEE6" stroke-width="1.8" stroke-linecap="round" fill="none">
+<path d="M29.00 25.88L22.50 19.00M35.00 25.88L41.50 19.00"/>
+<path d="M19.50 19.00H25.00M39.00 19.00H44.50"/>
+</g>
+<ellipse cx="32" cy="19" rx="16" ry="3.6" fill="none" stroke="#F5A23D" stroke-width="1.6"/>
+<polygon points="32.00,55.25 35.25,49.62 36.25,42.75 36.25,31.50 40.75,25.25 40.75,22.75 35.25,25.88 28.75,25.88 23.25,22.75 23.25,25.25 27.75,31.50 27.75,42.75 28.75,49.62" fill="#F2EEE6"/>
+<circle cx="32" cy="38.50" r="1.7" fill="#0B0D10"/>
+</g></g>
+</svg>

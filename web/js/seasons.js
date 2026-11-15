@@ -6,6 +6,7 @@
 // Clicking a month starts the analysis period at that month (LLSN.setPeriod). Custom points: no file, no request.
 import { t } from './i18n.js';
 import { addStrings, whenReady, translate, siteName, getFocus, LLSN } from './ui_shared.js';
+import { iconSvg } from './icons.js';
 
 addStrings({
   snTitle: 'Seasons 2026–2030', snAria: 'Monthly sunlight, Earth visibility and darkness for the focused site, 2026–2030',
@@ -72,7 +73,7 @@ function init() {
   sec.innerHTML = `
     <h2><span data-i18n="snTitle"></span> <span class="sn-site muted"></span></h2>
     <p data-i18n="snWhy" style="margin:0 0 .4em"></p>
-    <details class="sn-info"><summary><span aria-hidden="true">ⓘ</span> <span data-i18n="snInfo"></span></summary><p data-i18n="snInfoText"></p></details>
+    <details class="sn-info"><summary>${iconSvg('info', { size: 14 })} <span data-i18n="snInfo"></span></summary><p data-i18n="snInfoText"></p></details>
     <div class="sn-body">
       <div class="sn-ctl"><label><span data-i18n="snMode"></span>
         <select class="sn-mode"><option value="lun" data-i18n="snModeLun"></option><option value="cal" data-i18n="snModeCal"></option></select></label>

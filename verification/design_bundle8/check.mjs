@@ -26,6 +26,9 @@ for(const state of ['before','after']){
  await page.locator('.tc-subs [data-s="rate"]').click();
  await page.locator('.lang-seg [data-lang="'+lang+'"]').click();
  await page.evaluate(()=>document.fonts.ready);
+ await page.keyboard.press('Control+Home');
+ await page.waitForFunction(()=>window.scrollY<2);
+
  const metrics=await page.evaluate(()=>{
   const rect=s=>{const e=document.querySelector(s),r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
   return {tray:rect('#ls-tray'),header:rect('#ls-tray .ls-card-head'),main:rect('#ls-tray .tray-main'),title:rect('.tray-sub'),period:rect('#tray-period'),tabs:rect('.tc-tabs'),chart:rect('.tc-chart'),tab:rect('.tc-tabs button'),row:rect('.tc-row'),documentWidth:document.documentElement.scrollWidth,viewport:innerWidth,values:[...document.querySelectorAll('#tray-cat .tc-val')].map(e=>e.textContent)};
@@ -46,6 +49,8 @@ for(const state of ['before','after']){
 }
 await browser.close();
 fs.writeFileSync(dir+'/checks.json',JSON.stringify(checks,null,2));
+const valuesStable=checks.filter(c=>c.state==='after').every(c=>JSON.stringify(c.metrics.values)===JSON.stringify(checks.find(b=>b.state==='before'&&b.width===c.width&&b.lang===c.lang).metrics.values));
+if(!valuesStable)throw Error('Contest values changed');
 const failures=checks.filter(c=>c.state==='after'&&(c.errors.length||c.metrics.documentWidth>c.metrics.viewport||Math.abs(c.metrics.chart.height-100)>.1||Math.abs(c.metrics.row.height-42)>.1));
 fs.writeFileSync(dir+'/result.json',JSON.stringify({failures,checks:checks.length},null,2));
 if(failures.length)process.exitCode=1;

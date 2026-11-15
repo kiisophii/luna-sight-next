@@ -302,7 +302,7 @@ These are new products, not independent verification of their own production. Ex
 | `detail/psr/` (16 polar sites) | Jiyong, native PGDA20m PSR | All16 original cached windows independently searched with analytic stereographic chord formulas and quadratic edge minima; max centre difference1.284e-8 m, boundary1.093e-8 m. This measures implementation agreement, not physical accuracy. IM1 full10km coverage incomplete but nearest result guaranteed. | **Independently verified by another team member** (Minchul Kim, PR #81): Haworth, Shackleton Rim, IM1 from the original LPSR_80S_20MPP_ADJ.TIF; centre/boundary distances within 7.7e-12 relative, bearings < 0.01 deg (criterion 1 %). Integrator also recomputed the nearest PSR pixel centre at SHACKLETON_RIM and ARTEMIS_MALAPERT (equal). PSR is not confirmed ice. |
 | `detail/history.json` (33 queries / 18 actual missions) | Jiyong, TaskR coordinates and official context sources | All99 exported neighbour pairs compared against independent unit-vector distances and rankings over every eligible mission; max distance6.985e-10 m / bearing1.990e-13 deg. | Pending (other member, 3 sites; distance <=1 %). Integrator recomputation 2026-11-15: IM2 and APOLLO11 nearest three landers, distance and bearing equal. |
 
-## Task T — original 3.8 km float32 grid published (Soyun Jeong, 2026-11-15, PR #TT)
+## Task T — original 3.8 km float32 grid published (Soyun Jeong, 2026-11-15, PR #87)
 
 Publication only; **no independent verification is claimed.** Soyun ran this map (card 9), so the raw-array comparison must be done by another member.
 

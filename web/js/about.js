@@ -40,7 +40,7 @@ addStrings({
   abK3: 'KASA partner', abK3t: 'The Korea AeroSpace Administration is a 2026 Space Apps partner.', abKMore: 'Ground-station block →',
   abMore: 'Team, sources and AI use', abSrc: 'Data & credits', abSrcLead: 'Every dataset and number on this site comes from these sources (full list with sizes and checks: data/DATASETS.md in the repository).',
   sName: 'Data', sOrg: 'From', sUse: 'Used for', sLic: 'Terms',
-  abLim: 'Assumptions and limits', abLimT: 'Observer 2 m above the ground · hourly steps · no atmosphere / refraction · link = geometric visibility · tower heights 5/15/30/50 m, up to 3 towers · data window 2026-01-01 to 2030-12-31 UTC · your own points use coarser browser terrain (~948 m north of 75°S; PGDA terrain near the south pole) · slope not computed.',
+  abLim: 'Assumptions and limits', abLimT: 'Observer 2 m above the ground · hourly steps · no atmosphere / refraction · link = geometric visibility · tower heights 5/15/30/50 m, up to 3 towers · data window 2026-01-01 to 2030-12-31 UTC · your own points use coarser browser terrain (~948 m north of 75°S; PGDA terrain near the south pole) · slope: catalogue sites only, from data/terrain (16 southern sites at lander scale from 5–20 m PGDA LOLA terrain, the other 17 from a 250 m box); none for your own points.',
   abTeam: 'Team and SI (AI) use', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (Seoul).',
   abSI: 'All solution ideas and design decisions came from our six team members. SI tools (Claude Code with Claude Opus 5.5; OpenAI Codex) helped with code, data processing, documentation and verification. Every SI task is logged in docs/SI_USAGE.md. No AI-generated images or video are used; any added later must carry a visible “AI-generated” watermark.',
   abCTA: 'Find your own landing site', abCTAb: 'Find my landing site →',
@@ -73,7 +73,7 @@ addStrings({
   abK3: 'KASA 파트너', abK3t: '우주항공청(KASA)은 2026 Space Apps 파트너입니다.', abKMore: '지상국 블록 →',
   abMore: '만든 사람 · 데이터 출처 · AI 사용', abSrc: '데이터 출처와 표기 (Data & credits)', abSrcLead: '이 사이트의 모든 자료와 숫자는 아래 출처에서 왔습니다. 제공처 표기 원문이라 영어 그대로 둡니다 (전체 목록: 저장소 data/DATASETS.md).',
   sName: '자료', sOrg: '기관', sUse: '쓴 곳', sLic: '조건',
-  abLim: '가정과 한계', abLimT: '관측 높이 2 m · 1시간 간격 · 대기·굴절 없음 · 교신 = 기하학적 가시성 · 탑 높이 5/15/30/50 m, 최대 3기 · 자료 기간 2026-01-01 ~ 2030-12-31 UTC · 사용자 지점은 더 거친 브라우저 지형(남위 75° 북쪽 약 948 m, 남극 근처는 PGDA 지형) · 경사 미계산.',
+  abLim: '가정과 한계', abLimT: '관측 높이 2 m · 1시간 간격 · 대기·굴절 없음 · 교신 = 기하학적 가시성 · 탑 높이 5/15/30/50 m, 최대 3기 · 자료 기간 2026-01-01 ~ 2030-12-31 UTC · 사용자 지점은 더 거친 브라우저 지형(남위 75° 북쪽 약 948 m, 남극 근처는 PGDA 지형) · 경사: 카탈로그 착륙지만, data/terrain 값(남쪽 16곳은 5–20 m PGDA LOLA 지형의 착륙선 규모 경사, 나머지 17곳은 250 m 상자 경사). 사용자 지점은 경사 값 없음.',
   abTeam: '팀과 SI(AI) 사용', abTeamLead: 'Team Ginkgo Orbit, NASA Space Apps Challenge 2026 (서울).',
   abSI: '해결 아이디어와 설계 결정은 모두 6명 팀원이 냈습니다. SI 도구(Claude Code · Claude Opus 5.5, OpenAI Codex)는 코드, 자료 처리, 문서, 검증을 도왔습니다. 모든 SI 작업은 docs/SI_USAGE.md에 기록합니다. AI가 만든 그림·영상은 쓰지 않았고, 나중에 넣으면 눈에 보이는 "AI-generated" 표시를 붙입니다.',
   abCTA: '내 착륙지를 직접 찾아보세요', abCTAb: '내 착륙지 찾아보기 →',
@@ -164,7 +164,17 @@ async function render() {
   window.addEventListener('scroll', sync, { passive: true }); sync();
   // buttons: leave About for the app (and open the right block / tab), or jump inside About
   const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-  const openBlock = k => setTimeout(() => { const b = document.querySelector(`#ls-brief [data-open="${k}"]`); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+  // leaving About: the app may still be drawing, so retry until the target exists, then re-align twice — stop as soon as the user scrolls
+  const settle = (find, act) => {
+    let tries = 0, stop = false; const quit = () => { stop = true; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(ev => window.addEventListener(ev, quit, { once: true, passive: true }));
+    const go = () => { if (stop) return; const el = find(); if (!el) { if (++tries < 16) setTimeout(go, 250); return; }
+      act(el); [600, 1500].forEach(ms => setTimeout(() => { if (!stop) act(find() || el, true); }, ms)); };
+    setTimeout(go, 250);
+  };
+  const openBlock = k => settle(() => document.querySelector(`#ls-brief [data-open="${k}"]`), (b, again) => {
+    if (!again && b.getAttribute('aria-expanded') !== 'true') b.click();
+    document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); });
   root.addEventListener('click', e => {
     const a = e.target.closest('[data-act]'); if (!a) return; e.preventDefault();
     const act = a.dataset.act;
@@ -173,7 +183,9 @@ async function render() {
     else if (act === 'dates') { leave(); openBlock('date'); }
     else if (act === 'near') { leave(); openBlock('near'); }
     else if (act === 'korea') { leave(); openBlock('gs'); }
-    else if (act === 'relay') { leave(); setTimeout(() => { window.scrollTo({ top: 0 }); document.querySelector('#tray-cat .tc-tabs [data-c="relay"]')?.click(); }, 150); }
+    else if (act === 'relay') { leave(); settle(() => document.querySelector('#tray-cat .tc-tabs [data-c="relay"]'), (b, again) => {
+      if (b.getAttribute('aria-pressed') !== 'true') b.click();
+      if (window.innerWidth < 1100) document.getElementById('ls-tray')?.scrollIntoView({ behavior: again ? 'auto' : 'smooth', block: 'start' }); else if (!again) window.scrollTo({ top: 0 }); }); }
     else if (act === 'sources' || act === 'credits') goIn('#about-sources', true);
     else if (act === 'methods') goIn('#about-validation');
     else if (act === 'limits') goIn('#about-limits', true);

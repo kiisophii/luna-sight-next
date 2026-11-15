@@ -35,3 +35,13 @@ git diff --check
 The browser loads the real app and waits for its 3D globe. Navigation tests capture the `flyTo` arguments without rendering each long-distance flight; these verify the minimap's coordinate/sign and destination wiring, not the unchanged 3D flight engine. Other interactions use actual browser pointer/keyboard input. Each language/width checks all eight resize handles, separate persisted sizes after reload, coordinate limits/hemispheres, destination selection, Escape and arrow/Home movement, and document overflow. `checks.json` and `verification.log` record results; no page or console errors are allowed.
 
 Fresh review found a reversed-size movement edge case (closed larger than open). Placement now normalizes against the current mode and preserves the upper-right expansion anchor separately. The extra browser check also verifies normal-motion intermediate dimensions, pointer movement, double-click reset and full left/bottom reach with reversed saved sizes; see `motion_check.json`.
+
+
+## PR118 review follow-up
+
+- Destination rows use 16 px line SVGs inside 28 px rounded boxes; two-decimal coordinates, comma separator and category labels replace list numbering. Narrow rows wrap coordinates instead of clipping.
+- Escape closes from outside the minimap focus. The large white camera ellipse is removed; graticule, orange focus and pinned pills remain.
+- Expand control moves 9 px right; hemisphere controls use the numeric font at 12 px/600.
+- At <=899 px the minimap occupies its own row below the globe. Desktop positions and sizing remain unchanged.
+- Run `python pipeline/verify_minimap13.py` and `python pipeline/verify_minimap13_followup.py` against a local web server on port 8020. Four desktop and four mobile/tablet EN/KR cases pass, with no page/console errors or document horizontal overflow. Mobile checks verify the globe/minimap bounding boxes do not overlap and Escape works after focus leaves the widget. A first run hit a transient resource connection refusal; the complete rerun passed without suppressing errors.
+- Follow-up screenshots and `followup_checks.json` contain the mobile evidence. Scientific data/calculations and `index.html` are unchanged.

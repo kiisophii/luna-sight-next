@@ -1,0 +1,810 @@
+{
+  "summary": {
+    "baseline_exact": 33,
+    "baseline_pass": 33,
+    "baseline_failures": [],
+    "cpu_max_angle_deg": 4.2857739579460485e-09,
+    "cpu_max_metric_diff": 0.0,
+    "total_compute_s": 99.937673330307,
+    "latest_run_s": 85.62780737876892,
+    "case_count": 198,
+    "reporting_exceedances": 159,
+    "sun_frac": {
+      "max": 46.278294998174516,
+      "median": 0.22818546914932236,
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "height_m": 0,
+      "near_field": true
+    },
+    "earth_frac": {
+      "max": 18.937112084702445,
+      "median": 0.0,
+      "id": "CONNECTING_RIDGE",
+      "height_m": 0,
+      "near_field": true
+    },
+    "both_frac": {
+      "max": 28.091913106973344,
+      "median": 0.204225994888646,
+      "id": "ARTEMIS_HAWORTH",
+      "height_m": 0,
+      "near_field": true
+    },
+    "longest_dark_h": {
+      "max": 4499.0,
+      "median": 1.0,
+      "id": "ARTEMIS_HAWORTH",
+      "height_m": 0,
+      "near_field": true
+    },
+    "baseline_max_angle_deg": 0.0,
+    "baseline_max_metric_diff": {
+      "sun_frac": 0.0,
+      "earth_frac": 0.0,
+      "both_frac": 0.0,
+      "longest_dark_h": 0
+    },
+    "controlled_contrasts": [
+      {
+        "contrast": "height0",
+        "group": "polar",
+        "sun_frac": {
+          "max": 46.278294998174516,
+          "id": "ARTEMIS_DE_GERLACHE_RIM2",
+          "signed": -46.278294998174516
+        },
+        "earth_frac": {
+          "max": 18.937112084702445,
+          "id": "CONNECTING_RIDGE",
+          "signed": -18.937112084702445
+        },
+        "both_frac": {
+          "max": 28.091913106973344,
+          "id": "ARTEMIS_HAWORTH",
+          "signed": -28.091913106973344
+        },
+        "longest_dark_h": {
+          "max": 4499,
+          "id": "ARTEMIS_HAWORTH",
+          "signed": 4499
+        }
+      },
+      {
+        "contrast": "height0",
+        "group": "nonpolar",
+        "sun_frac": {
+          "max": 0.24872216137276637,
+          "id": "IM3_REINER_GAMMA",
+          "signed": -0.24872216137276637
+        },
+        "earth_frac": {
+          "max": 0.0,
+          "id": "SLIM",
+          "signed": 0.0
+        },
+        "both_frac": {
+          "max": 0.24872216137276637,
+          "id": "IM3_REINER_GAMMA",
+          "signed": -0.24872216137276637
+        },
+        "longest_dark_h": {
+          "max": 2,
+          "id": "BLUE_GHOST1",
+          "signed": 2
+        }
+      },
+      {
+        "contrast": "height10",
+        "group": "polar",
+        "sun_frac": {
+          "max": 38.34884994523549,
+          "id": "CONNECTING_RIDGE",
+          "signed": 38.34884994523549
+        },
+        "earth_frac": {
+          "max": 10.183917488134359,
+          "id": "CONNECTING_RIDGE",
+          "signed": 10.183917488134359
+        },
+        "both_frac": {
+          "max": 25.41301569916028,
+          "id": "CONNECTING_RIDGE",
+          "signed": 25.41301569916028
+        },
+        "longest_dark_h": {
+          "max": 427,
+          "id": "PEAK_NEAR_SHACKLETON",
+          "signed": -427
+        }
+      },
+      {
+        "contrast": "height10",
+        "group": "nonpolar",
+        "sun_frac": {
+          "max": 0.4677802117561136,
+          "id": "CHANDRAYAAN3",
+          "signed": 0.4677802117561136
+        },
+        "earth_frac": {
+          "max": 0.0,
+          "id": "SLIM",
+          "signed": 0.0
+        },
+        "both_frac": {
+          "max": 0.4677802117561136,
+          "id": "CHANDRAYAAN3",
+          "signed": 0.4677802117561136
+        },
+        "longest_dark_h": {
+          "max": 4,
+          "id": "IM3_REINER_GAMMA",
+          "signed": -4
+        }
+      },
+      {
+        "contrast": "near2",
+        "group": "polar",
+        "sun_frac": {
+          "max": 13.371668492150418,
+          "id": "CONNECTING_RIDGE",
+          "signed": -13.371668492150418
+        },
+        "earth_frac": {
+          "max": 6.888919313618103,
+          "id": "ARTEMIS_HAWORTH",
+          "signed": -6.888919313618103
+        },
+        "both_frac": {
+          "max": 12.144030668127053,
+          "id": "CONNECTING_RIDGE",
+          "signed": -12.144030668127053
+        },
+        "longest_dark_h": {
+          "max": 427,
+          "id": "PEAK_NEAR_SHACKLETON",
+          "signed": 427
+        }
+      },
+      {
+        "contrast": "near2",
+        "group": "nonpolar",
+        "sun_frac": {
+          "max": 0.7986491420226394,
+          "id": "CHANGE5",
+          "signed": -0.7986491420226394
+        },
+        "earth_frac": {
+          "max": 0.0,
+          "id": "SLIM",
+          "signed": 0.0
+        },
+        "both_frac": {
+          "max": 0.7986491420226394,
+          "id": "CHANGE5",
+          "signed": -0.7986491420226394
+        },
+        "longest_dark_h": {
+          "max": 6,
+          "id": "CHANGE5",
+          "signed": 6
+        }
+      }
+    ]
+  },
+  "baselines": [
+    {
+      "id": "SHACKLETON_RIM",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "IM1",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "IM2",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO11",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO12",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO14",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO15",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO16",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "APOLLO17",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CHANGE3",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CHANGE4",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CHANGE5",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "CHANGE6",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "LUNA16",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "LUNA20",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "LUNA24",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    },
+    {
+      "id": "SLIM",
+      "metrics_difference": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      },
+      "max_angle_deg": 0.0,
+      "exact_metrics": true,
+      "passes": true
+    }
+  ],
+  "cpu_controls": [
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 0,
+      "near_field": false,
+      "max_angle_deg": 6.724132362023738e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 0,
+      "near_field": true,
+      "max_angle_deg": 4.008213927431115e-09,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 2,
+      "near_field": false,
+      "max_angle_deg": 7.750800001815605e-12,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 2,
+      "near_field": true,
+      "max_angle_deg": 3.472977461171922e-10,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 10,
+      "near_field": false,
+      "max_angle_deg": 8.18789480661053e-12,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "height_m": 10,
+      "near_field": true,
+      "max_angle_deg": 8.18789480661053e-12,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 0,
+      "near_field": false,
+      "max_angle_deg": 7.286704573061797e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 0,
+      "near_field": true,
+      "max_angle_deg": 4.2857739579460485e-09,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 2,
+      "near_field": false,
+      "max_angle_deg": 7.826117531806176e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 2,
+      "near_field": true,
+      "max_angle_deg": 7.826117531806176e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 10,
+      "near_field": false,
+      "max_angle_deg": 9.176659432341694e-12,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "APOLLO17",
+      "height_m": 10,
+      "near_field": true,
+      "max_angle_deg": 9.176659432341694e-12,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 0,
+      "near_field": false,
+      "max_angle_deg": 1.900604118532101e-10,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 0,
+      "near_field": true,
+      "max_angle_deg": 4.153682731100616e-09,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 2,
+      "near_field": false,
+      "max_angle_deg": 4.800648767400162e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 2,
+      "near_field": true,
+      "max_angle_deg": 2.6297941602138053e-10,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 10,
+      "near_field": false,
+      "max_angle_deg": 2.2699647717061566e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    },
+    {
+      "id": "CHANGE4",
+      "height_m": 10,
+      "near_field": true,
+      "max_angle_deg": 2.2699647717061566e-11,
+      "metric_diff": {
+        "sun_frac": 0.0,
+        "earth_frac": 0.0,
+        "both_frac": 0.0,
+        "longest_dark_h": 0
+      }
+    }
+  ]
+}

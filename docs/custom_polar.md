@@ -15,6 +15,7 @@ it differed from the card-8 horizons by a median 0.96° RMS (max 4.87°) — too
   | p20 | LDEM_80S_20MPP_ADJ.TIF, 20 m | 3 km | ≥ 85.5° S | 642 | 89.5 MB |
   | p60 | LDEM_60S_60MPP_ADJ.TIF, 60 m | 3 km | ≥ 75° S | 770 | 143.5 MB |
   | p240 | LDEM_60S_240MPP_ADJ.TIF, 240 m | 150 km | ≥ 75° S | 90 | 22.7 MB |
+  | p5, p10 (PR #63) | native ldem_87s_5mpp / LDEM_83S_10MPP_ADJ | 3 km | only within 4 km of the 16 catalogue sites | 118 + 92 | 19.9 MB |
 
   Beyond these, the phase-3 grids (LDEM_64 ~948 m to 150 km, LDEM_16 to 300 km).
 - **Engine** `web/js/hterrain.js`: one sampling chain (first source whose range covers the distance and has data,
@@ -41,17 +42,28 @@ at every point.
 
 | Group | n | Before: RMS median / max (°) | Before: \|Δsun\| median / max (pp) | After: RMS median / max (°) | After: \|Δsun\| median / max (pp) | After: \|ΔEarth\| max (pp) | Target |
 |---|---:|---|---|---|---|---:|---|
-| Catalogue sites | 16 | 0.975 / 4.866 | 4.45 / 33.74 | **0.085 / 0.177** | 0.30 / 2.40 | 3.17 | ✗ (1 point > 2 pp) |
-| Random points | 30 | 0.652 / 4.031 | 0.94 / 30.28 | **0.027 / 0.320** | 0.06 / 0.43 | 0.49 | ✅ |
-| All, 75–80° S | 10 | 0.772 / 3.836 | 0.82 / 30.28 | 0.021 / 0.054 | 0.03 / 0.20 | 0.38 | ✅ |
-| All, 80–85° S | 14 | 0.696 / 4.866 | 2.08 / 33.74 | 0.053 / 0.177 | 0.10 / 0.81 | 0.49 | ✅ |
-| All, 85–90° S | 22 | 0.867 / 4.031 | 2.48 / 26.91 | 0.071 / 0.320 | 0.23 / 2.40 | 3.17 | ✗ (badge) |
+Re-run 2026-11-15 on main `3086143`, after PR #63 added sparse native PGDA 5 m / 10 m tiles (to 3 km) within 4 km
+of the 16 catalogue sites. "Before" is still the global path (`--no-polar`); "after" is the current polar path.
 
-- **Known limit** — the one point over 2 pp: PEAK_NEAR_SHACKLETON, Δsun +2.40 pp (RMS 0.141°); card 8 uses 5 m there.
-  The app's "Lower accuracy here" badge text for 85–90° S states this limit (docs/VALIDATION.md row 14).
-  Largest Earth difference: ARTEMIS_HAWORTH +3.17 pp (no target was set for Earth).
+| Group | n | Before: RMS median / max (°) | Before: \|Δsun\| median / max (pp) | After: RMS median / max (°) | After: \|Δsun\| median / max (pp) | After: \|ΔEarth\| max (pp) | Target |
+|---|---:|---|---|---|---|---:|---|
+| Catalogue sites | 16 | 0.975 / 4.866 | 4.45 / 33.74 | **0.027 / 0.085** | 0.08 / 0.33 | 0.51 | ✅ |
+| Random points | 30 | 0.652 / 4.031 | 0.94 / 30.28 | **0.027 / 0.165** | 0.06 / 0.42 | 0.49 | ✅ |
+| All, 75–80° S | 10 | 0.772 / 3.836 | 0.82 / 30.28 | 0.021 / 0.054 | 0.03 / 0.20 | 0.38 | ✅ |
+| All, 80–85° S | 14 | 0.696 / 4.866 | 2.08 / 33.74 | 0.037 / 0.163 | 0.10 / 0.42 | 0.49 | ✅ |
+| All, 85–90° S | 22 | 0.867 / 4.031 | 2.48 / 26.91 | 0.028 / 0.165 | 0.10 / 0.36 | 0.51 | ✅ |
+
+- Previous run (before PR #63, 20 m / 60 m near field everywhere): catalogue 0.085 / 0.177° and |Δsun| max 2.40 pp
+  at PEAK_NEAR_SHACKLETON (the one point over 2 pp, shown in the app as "Lower accuracy here" for 85–90° S).
+  Now PEAK_NEAR_SHACKLETON is +0.08 pp (RMS 0.027°); the largest catalogue sunlight difference is IM1 +0.33 pp
+  (80° S, no 5/10 m patch there), the largest random one RANDPOLAR_2_08 +0.42 pp. No band misses the target, so the
+  south-polar "Lower accuracy here" badge no longer appears; the band accuracy line still shows the numbers.
+- **Remaining limit:** outside the 4 km patches, 85–90° S points use 20 m near-field terrain (the 10 random test points
+  there: |Δsun| ≤ 0.36 pp). Sharp peaks/rims away from the catalogue sites were not tested individually.
+  Largest Earth difference: CONNECTING_RIDGE +0.51 pp (previously ARTEMIS_HAWORTH +3.17 pp; no Earth target).
 - Implementation: browser JS vs a Python twin on the same tiles (horizon.py engine) at 6 points: RMS ≤ 1.4e-11°,
-  max 1.1e-10°.
+  max 1.1e-10°. Those 6 are random points without 5/10 m tiles; the same twin at PEAK_NEAR_SHACKLETON and
+  SHACKLETON_RIM (5 m) and ARTEMIS_CABEUS_B (10 m) gave RMS ≤ 2.3e-11°, max 2.6e-10° (separate run, not in the report).
 - Design checks (scratch runs, not committed): near-field 20 m to 3 km vs to 10 km changed the catalogue median only
   0.063° → 0.061°; 40 m / 60 m / 80 m / 120 m near field gave medians 0.098° / 0.189° / 0.224° / 0.293° on the rims.
 

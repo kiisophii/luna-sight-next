@@ -19,7 +19,7 @@ import { relayPeriod, relayPeek, hourBits, TOWER_H } from './values.js';
 
 addStrings({
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: 'About this tool',
-  langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operating period',
+  langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operations period',
   p7: '7 days', p295: 'One lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
   c1Clipped: 'Computed only to 2030-12-31 (end of the ephemeris)', collapse: 'Collapse panel', expand: 'Expand panel',
   c1Expand: 'Expand', c1Landing: '{d} landing', c1NoCond: 'No conditions · all sites', c2: 'Candidates', c2All: 'All', relayPillTip: 'Assumption: a 15 m mast near the site, adding the hours the Earth is visible through it. Geometry only; signal strength is not included.', rlTower: 'Tower', rlKm: 'tower {k} km', c1AddCond: '+ Condition', c2Count: '{n}', c2Desc: 'Sites that meet every mission condition. Press + to add one to the comparison.', comparing: 'Comparing', otherCand: 'Other candidates', pinnedEmpty: 'No sites in the comparison yet.', pinMax: 'Up to 10 sites can be compared', pinNoTip: 'Comparison number (colour in the comparison)', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',

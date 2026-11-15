@@ -1796,3 +1796,4 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
 @media (max-width: 760px) {
   #ls-compare .detail-lg.tl-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: minmax(0, 1fr); }
   #ls-compare .detail-table.cmp-tbl tr.detail-chart-heading th { padding-left: 0; padding-right: 0; }
+}

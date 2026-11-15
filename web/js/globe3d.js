@@ -754,7 +754,8 @@ if (uLayerA > 0.0) {
   // opts.wheelNeedsFocus: on a scrolling page the wheel zooms only after the globe was clicked / focused,
   // otherwise the page scrolls and a 'wheelhint' event lets the page show "click the globe first".
   el.addEventListener('wheel', e => {
-    if (opts.wheelNeedsFocus && document.activeElement !== el) { emit('wheelhint'); return; }
+    if (opts.wheelNeedsCtrl && !(e.ctrlKey || e.metaKey)) { emit('wheelhint'); return; }      // plain wheel scrolls the page
+    if (!opts.wheelNeedsCtrl && opts.wheelNeedsFocus && document.activeElement !== el) { emit('wheelhint'); return; }
     e.preventDefault(); fly = null; zoom(Math.exp(e.deltaY * (e.deltaMode ? 0.05 : 0.0015)));
   }, { passive: false });
   el.addEventListener('keydown', e => {

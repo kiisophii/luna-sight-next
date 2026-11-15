@@ -273,7 +273,7 @@ async function timelineSVG(sites) {
     out += `<text x="0" y="${y + rowH}" font-size="11.5" fill="${css('--text')}">${pn ? `#${pn} ` : ''}${esc(nameOf(s).slice(0, W < 900 ? 16 : 22))}</text>`;
     if (!bits) { out += `<text x="${LW}" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
     const codes = await relayCodes(s.id, w.i0, w.i1).catch(() => null);
-    const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"/>`; st = -1; } } };
+    const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"><title>${esc(nameOf(s))} · ${esc(col === sunC ? t('lgSun') : col === earthC ? t('lgEarth') : col === relayC ? t('lgRelay') : t('lgKdsa'))} · ${k - st} h · ${core.hourToDate(w.i0 + st).toISOString()} – ${core.hourToDate(w.i0 + k).toISOString()}</title></rect>`; st = -1; } } };
     out += `<rect x="${LW}" y="${y}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/><rect x="${LW}" y="${y + rowH + 2}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/>`;
     runsDraw(k => bits[k] & 1, sunC, y, rowH);
     runsDraw(k => !(bits[k] & 1) && core.sunVisibleFraction(s, w.i0 + k) > 0, sunC, y, rowH, 0.35);
@@ -491,7 +491,8 @@ function wireTimeline(box) {
     const width = Number(needle.dataset.w), left = Number(needle.dataset.lw);
     const fraction = Math.max(0, Math.min(1, ((e.clientX - rect.left) / rect.width * width - left) / (width - left - 10)));
     const w = LLSN().window, i = Math.min(w.i1, w.i0 + fraction * (w.i1 - w.i0 + 1));
-    tip.textContent = core.hourToDate(i).toISOString().slice(0,16).replace('T',' ') + ' UTC';
+    const interval = e.target.closest('rect')?.querySelector('title')?.textContent;
+    tip.textContent = core.hourToDate(i).toISOString().slice(0,16).replace('T',' ') + ' UTC' + (interval ? ' · ' + interval : '');
     tip.hidden = false; tip.style.left = Math.max(8, Math.min(e.clientX + 12, innerWidth - 320)) + 'px';
     tip.style.top = Math.min(e.clientY + 12, innerHeight - 80) + 'px';
   });

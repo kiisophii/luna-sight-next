@@ -1217,3 +1217,30 @@ body.on-about { overflow-x: clip; }
 .ls .pk-row .pk-pin { border-radius: 7px; }
 .ls .c2-bar .dd-text .dd-btn { background: transparent; border: 0; box-shadow: none; font-size: 11px; color: #9C9CA1; }
 .ls .c2-bar .dd-text .dd-btn:hover { background: transparent; color: #EDEDED; }
+
+/* ================================================================ baseline = the copy: no subtitle, no + / - on desktop, Export PDF, wheel hint */
+.ls-sub { display: none; }
+@media (min-width: 1100px) { .ls-globe .gl-zoom { display: none; } }
+.head-r { display: inline-flex; align-items: center; gap: 8px; }
+.ls .pdf-btn { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid rgba(237, 237, 237, .18); background: rgba(10, 10, 11, .72); color: #EDEDED; font: 600 12.5px var(--font); }
+.pdf-btn .ic { width: 14px; height: 14px; }
+.ls .pdf-btn:hover { border-color: rgba(237, 237, 237, .4); }
+@media (max-width: 600px) { .pdf-btn span { display: none; } .ls .pdf-btn { padding: 0 9px; } }
+.ls-globe .gl-hint { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 6; margin: 0; padding: 8px 14px; border-radius: 999px; background: rgba(12, 12, 13, .9); border: 1px solid rgba(237, 237, 237, .18); color: #EDEDED; font: 500 13px var(--font); pointer-events: none; }
+/* ---------------------------------------------------------------- print / Export PDF: comparison, details, sources; no map controls */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  html, body.ls { background: #0A0A0B !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ls-head { position: static; height: auto; padding: 0 0 8px; background: none !important; border: 0; }
+  .ls-screen, .ls-pages, .ls-toast, .pdf-btn, .lang-seg, .ls-skip, .ab-next, .cmp-arrows, .ls-out, .share-row, .pills, .why-btn, .ls-detail > header .x, #ls-intro { display: none !important; }
+  .ls-below { padding: 0; max-width: none; }
+  .brief-head { position: static; margin: 0 0 12px; padding: 0 0 8px; background: none; }
+  .ls-section { margin-bottom: 18px; }
+  .ls-panel, .ls-detail, .cmp-tbl tr, .tl, .dial-card, .alt-card { break-inside: avoid; }
+  .cmp-scroll, .tl, .big-cmp .cmp-scroll { overflow: visible !important; }
+  .big-cmp .cmp-tbl td, .big-cmp .cmp-tbl thead th:not(.lbl) { width: auto; min-width: 0; max-width: none; }
+  .cmp-tbl { width: 100%; }
+  .cmp-tbl thead th, .cmp-tbl th.lbl { position: static; }
+  .ls-detail.is-closed { display: none; }
+  .ls-foot { border-top: 1px solid #2A2A2D; padding: 8px 0 0; }
+}

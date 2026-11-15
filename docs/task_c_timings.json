@@ -1,0 +1,9 @@
+{
+  "full_recomputation_wall_s": 128.8433027267456,
+  "station_compute_s": {
+    "KDSA": 128.0484893321991,
+    "DSN_GOLDSTONE": 127.60645174980164,
+    "DSN_MADRID": 127.36262512207031,
+    "DSN_CANBERRA": 127.59233283996582
+  }
+}

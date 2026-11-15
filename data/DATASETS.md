@@ -118,3 +118,7 @@ Existing PGDA [5 m](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.
 ### Task W assumption sensitivity (Jiyong, 2026-11-15)
 
 Reuses the cited PGDA 5/10/20/60/80/240 m polar windows, SLDEM2015 512 ppd windows and original LOLA LDEM_64/16 float rasters for all 33 catalogue coordinates; no new data product acquisition. Source metadata, direct URLs, raw-file and label hashes, and gates are retained per site in docs/task_w_sensitivity.json. Production NAIF-derived ephem.bin/ephem.json hashes and definitions are pinned there. All modified-height/near-field results are scenario calculations, not physical-error measurements.
+
+### Task C full station/window/link recheck (Jiyong, 2026-11-15)
+
+Station coordinates re-read from NAIF https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf and DSN 810-005 module301 RevP Table5 p16 https://deepspace.jpl.nasa.gov/dsndocs/810-005/301/301P.pdf (download hashes in docs/task_c_check.json). Reuses the cited original de440s.bsp (Skyfield1.54 builtin timescale), production ephem.bin and catalogue horizons; independent minute-grid root/peak search and link-composition loops, not an independent ephemeris model. Raw PDF/kernel coordinate files and monthly arrays remain ignored.

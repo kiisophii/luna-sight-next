@@ -1,0 +1,92 @@
+{
+  "format": "detail-time-stats-v1",
+  "id": "CHANGE4",
+  "lat": -45.4562,
+  "lon": 177.5885,
+  "window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc": "2031-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "sunlit_h": 21594,
+  "earth_visible_h": 0,
+  "both_h": 0,
+  "dark_runs": {
+    "count": 62,
+    "total_h": 22230,
+    "mean_h": 358.5483870967742,
+    "longest_h": 367,
+    "complete_count": 61,
+    "complete_mean_h": 360.344262295082,
+    "complete_longest_h": 367,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 249,
+        "duration_h": 249,
+        "clipped_start": true,
+        "clipped_end": false
+      }
+    ]
+  },
+  "no_earth_runs": {
+    "count": 1,
+    "total_h": 43824,
+    "mean_h": 43824,
+    "longest_h": 43824,
+    "complete_count": 0,
+    "complete_mean_h": null,
+    "complete_longest_h": 0,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 43824,
+        "duration_h": 43824,
+        "clipped_start": true,
+        "clipped_end": true
+      }
+    ]
+  },
+  "sunlit_runs": {
+    "count": 62,
+    "total_h": 21594,
+    "mean_h": 348.2903225806452,
+    "longest_h": 355,
+    "complete_count": 61,
+    "complete_mean_h": 348.42622950819674,
+    "complete_longest_h": 355,
+    "clipped_runs": [
+      {
+        "start_i": 43484,
+        "end_i": 43824,
+        "duration_h": 340,
+        "clipped_start": false,
+        "clipped_end": true
+      }
+    ]
+  },
+  "station_link_h": {
+    "kdsa_h": 0,
+    "at_least_1_h": 0,
+    "at_least_2_h": 0
+  },
+  "parity": {
+    "metrics_exact": true,
+    "windows_exact": true
+  },
+  "source": {
+    "core_sha256": "e9edd76f1d0f6f58917409a2b6a29e43309439ae1ac2306c79511d8ba4d28434",
+    "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_meta_sha256": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "sites_sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "stations_sha256": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "producer_sha256": "bf61dfa580130afb33ff11d26469ea3ba51b009a74200d1035717b03e1ecfd72",
+    "helper_sha256": "beb7bbcb0c98e962ff74e6d28378949ec20989f544a68cacaa5501d6bbda4363",
+    "horizon_sha256": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21",
+    "metrics_sha256": "9a944575fb227022082c18d75ce8da7463ffacaa0c1291e9ea14f126588b8edd",
+    "windows_sha256": "8de1ba5f8a767e5349359c7144f0075a80a57eb553e4bab89922c5e48710563d"
+  },
+  "complete": true,
+  "mock": false
+}

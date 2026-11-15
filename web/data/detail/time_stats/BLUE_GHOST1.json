@@ -1,0 +1,83 @@
+{
+  "format": "detail-time-stats-v1",
+  "id": "BLUE_GHOST1",
+  "lat": 18.562,
+  "lon": 61.81,
+  "window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc": "2031-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "sunlit_h": 21743,
+  "earth_visible_h": 43824,
+  "both_h": 21743,
+  "dark_runs": {
+    "count": 62,
+    "total_h": 22081,
+    "mean_h": 356.14516129032256,
+    "longest_h": 359,
+    "complete_count": 62,
+    "complete_mean_h": 356.14516129032256,
+    "complete_longest_h": 359,
+    "clipped_runs": []
+  },
+  "no_earth_runs": {
+    "count": 0,
+    "total_h": 0,
+    "mean_h": null,
+    "longest_h": 0,
+    "complete_count": 0,
+    "complete_mean_h": null,
+    "complete_longest_h": 0,
+    "clipped_runs": []
+  },
+  "sunlit_runs": {
+    "count": 63,
+    "total_h": 21743,
+    "mean_h": 345.12698412698415,
+    "longest_h": 355,
+    "complete_count": 61,
+    "complete_mean_h": 352.57377049180326,
+    "complete_longest_h": 355,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 119,
+        "duration_h": 119,
+        "clipped_start": true,
+        "clipped_end": false
+      },
+      {
+        "start_i": 43707,
+        "end_i": 43824,
+        "duration_h": 117,
+        "clipped_start": false,
+        "clipped_end": true
+      }
+    ]
+  },
+  "station_link_h": {
+    "kdsa_h": 18213,
+    "at_least_1_h": 43246,
+    "at_least_2_h": 25717
+  },
+  "parity": {
+    "metrics_exact": true,
+    "windows_exact": true
+  },
+  "source": {
+    "core_sha256": "e9edd76f1d0f6f58917409a2b6a29e43309439ae1ac2306c79511d8ba4d28434",
+    "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_meta_sha256": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "sites_sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "stations_sha256": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "producer_sha256": "bf61dfa580130afb33ff11d26469ea3ba51b009a74200d1035717b03e1ecfd72",
+    "helper_sha256": "beb7bbcb0c98e962ff74e6d28378949ec20989f544a68cacaa5501d6bbda4363",
+    "horizon_sha256": "3d8d34d30b5be66253ec11b50b87cce527bbad7648d51329fc556b9183cf7d68",
+    "metrics_sha256": "9a05e13186ca54db2f56c621beab1ded2de481fe3b0a3ea60f1ec6b1df06c567",
+    "windows_sha256": "15c5b6f7b41eb270aad4e2a817a47c9b654a87e216f0b43fc7ecd977d5175fea"
+  },
+  "complete": true,
+  "mock": false
+}

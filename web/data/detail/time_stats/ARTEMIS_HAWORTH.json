@@ -1,0 +1,84 @@
+{
+  "format": "detail-time-stats-v1",
+  "id": "ARTEMIS_HAWORTH",
+  "lat": -86.768,
+  "lon": -20.514,
+  "window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc": "2031-01-01T00:00:00Z",
+    "step_h": 1,
+    "n": 43824
+  },
+  "sunlit_h": 23985,
+  "earth_visible_h": 25653,
+  "both_h": 13763,
+  "dark_runs": {
+    "count": 179,
+    "total_h": 19839,
+    "mean_h": 110.83240223463687,
+    "longest_h": 424,
+    "complete_count": 178,
+    "complete_mean_h": 109.99438202247191,
+    "complete_longest_h": 424,
+    "clipped_runs": [
+      {
+        "start_i": 43564,
+        "end_i": 43824,
+        "duration_h": 260,
+        "clipped_start": false,
+        "clipped_end": true
+      }
+    ]
+  },
+  "no_earth_runs": {
+    "count": 67,
+    "total_h": 18171,
+    "mean_h": 271.2089552238806,
+    "longest_h": 297,
+    "complete_count": 67,
+    "complete_mean_h": 271.2089552238806,
+    "complete_longest_h": 297,
+    "clipped_runs": []
+  },
+  "sunlit_runs": {
+    "count": 179,
+    "total_h": 23985,
+    "mean_h": 133.99441340782124,
+    "longest_h": 380,
+    "complete_count": 178,
+    "complete_mean_h": 132.7134831460674,
+    "complete_longest_h": 380,
+    "clipped_runs": [
+      {
+        "start_i": 0,
+        "end_i": 362,
+        "duration_h": 362,
+        "clipped_start": true,
+        "clipped_end": false
+      }
+    ]
+  },
+  "station_link_h": {
+    "kdsa_h": 11507,
+    "at_least_1_h": 25506,
+    "at_least_2_h": 16094
+  },
+  "parity": {
+    "metrics_exact": true,
+    "windows_exact": true
+  },
+  "source": {
+    "core_sha256": "e9edd76f1d0f6f58917409a2b6a29e43309439ae1ac2306c79511d8ba4d28434",
+    "ephem_sha256": "c0a226391f7a47c22c71d8b187cc98fb80101631bee37bd13b32a6870f965da3",
+    "ephem_meta_sha256": "f6fb776afba51c8b497b2d34f9de18aaa6408548d27434c31cb17f9b54579f2c",
+    "sites_sha256": "075c0d4bb175e7bf02f045fe868241080cadfa05e9a2463bf0ca9f7d8860462b",
+    "stations_sha256": "68648959897999c63f7141250ad65bc018533ebea39236b7a3a0978032d33b80",
+    "producer_sha256": "bf61dfa580130afb33ff11d26469ea3ba51b009a74200d1035717b03e1ecfd72",
+    "helper_sha256": "beb7bbcb0c98e962ff74e6d28378949ec20989f544a68cacaa5501d6bbda4363",
+    "horizon_sha256": "75051bf47e1625e387fba2267d75e776d3f0ede3ee64f44b655b2bb6ac8733f3",
+    "metrics_sha256": "83d99a0d38637f39006068ef1e458771bcc056211d4afb27d9a4aeb8ed2c8f90",
+    "windows_sha256": "75195d327b3db2fefd144a73448fcaa363fb340f0ae994da23aa0f638284bd03"
+  },
+  "complete": true,
+  "mock": false
+}

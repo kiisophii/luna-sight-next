@@ -291,3 +291,13 @@ Maximum slope difference 5.65769653349e-13 deg (criterion <=0.5); flat-area diff
 ## Task Z3 full-period landing-date extension — author checks only
 
 33 sites x 1,826 daily arrivals x 3 stays, 6 signed shifts; exact hourly core.js flags/cumulative counts; 179,190 valid base windows, 1,584 explicit out-of-range base rows. Every valid base window re-aggregated from fresh hourly bits, zero differences; 96,360 old 14-day comparisons consistent within old rounding; complete contract 0 errors/0 warnings. Fractions are exact count divisions; shift deltas are exact rational count changes, not rounded-array subtraction. [Report](z3_dates.md), [generation](z3_dates_generation.json), [checks](z3_dates_author_check.json). **Author-verified only; Jiyong independent 3-site check pending.** Existing products and status counts unchanged.
+
+## Detail Z1 / Z2 / Z4 new products - Jiyong, 2026-11-15
+
+These are new products, not independent verification of their own production. Existing ledger rows and counts remain unchanged; all three require another team member's requested three-site check.
+
+| Product | Producer | Author-side verification | Independent team status |
+|---|---|---|---|
+| `detail/time_stats/` (33 sites) | Jiyong, exact core.js hourly states | All33 metrics/windows exact parity; separate NumPy geometry and group-by run/station loop reproduces every exported statistic exactly. Boundary-clipped runs and null no-outage means tested. | Pending (other member, 3 sites; <=0.1 pp / <=1 h). [Report](detail_z1.md), [separate-formula check](detail_author_verification.json) |
+| `detail/psr/` (16 polar sites) | Jiyong, native PGDA20m PSR | All16 original cached windows independently searched with analytic stereographic chord formulas and quadratic edge minima; max centre difference1.284e-8 m, boundary1.093e-8 m. This measures implementation agreement, not physical accuracy. IM1 full10km coverage incomplete but nearest result guaranteed. | Pending (other member, 3 sites; distance<=1%). [Report](detail_z2_psr.md), [separate-formula check](detail_z2_author_verification.json) |
+| `detail/history.json` (33 queries / 18 actual missions) | Jiyong, TaskR coordinates and official context sources | All99 exported neighbour pairs compared against independent unit-vector distances and rankings over every eligible mission; max distance6.985e-10 m / bearing1.990e-13 deg. | Pending (other member, 3 sites; distance<=1%). [Report](detail_z4_report.md), [separate-formula check](detail_author_verification.json) |

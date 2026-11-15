@@ -7,7 +7,7 @@
 //   globe marker click ('siteclick')            -> LLSN.pick(id)          comparison card + horizon panorama + period table
 //   language ('llsn:lang')                      -> globe.setLang()
 // The display exaggeration stays at ×3 (team decision 11/14); globe3d.js shows the persistent note.
-import { addStrings, whenReady, translate, LLSN } from './ui_shared.js';
+import { addStrings, whenReady, translate, LLSN, mapSiteColors } from './ui_shared.js';
 import { t, getLang } from './i18n.js';
 
 addStrings({
@@ -199,12 +199,15 @@ async function start() {
 
 whenReady(start);
 
-// compared sites: the 3D label reads '#n name' in the site colour (the copy's selected label); others keep the dot
+// Comparison labels keep their numbered list colours; other labels/dots share the minimap palette.
 function markPinnedLabels() {
-  const L = window.LLSN || {};
+  const L = window.LLSN || {}, colors = mapSiteColors();
   document.querySelectorAll('#globe-stage .g3-site').forEach(b => {
     const id = b.dataset.siteId, n = id ? L.pinNo?.(id) : null;
+    const color = colors.get(id);
+    b.toggleAttribute('data-map-color', !!color);
+    if (color) b.style.setProperty('--map-site-color', color); else b.style.removeProperty('--map-site-color');
     if (n) { b.dataset.n = n; b.style.setProperty('--sc', `var(--c${n})`); } else { delete b.dataset.n; b.style.removeProperty('--sc'); }
   });
 }
-['llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:sites'].forEach(ev => window.addEventListener(ev, () => setTimeout(markPinnedLabels, 0)));
+['llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:sites', 'llsn:sort', 'llsn:window', 'llsn:lang', 'llsn:relay'].forEach(ev => window.addEventListener(ev, () => setTimeout(markPinnedLabels, 0)));

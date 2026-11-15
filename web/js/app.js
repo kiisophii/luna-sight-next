@@ -545,7 +545,7 @@ async function main() {
     setTime(dayStart(now) + hh + (mm || 0) / 60);
   });
   $('#play').addEventListener('click', () => setPlaying(!playing));
-  new ResizeObserver(() => drawScrub()).observe($('#scrub'));
+  new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => drawScrub())).observe($('#scrub'));
 
   window.dispatchEvent(new CustomEvent('llsn:ready', { detail: { state: core.state } }));
   window.dispatchEvent(new CustomEvent('llsn:pins', { detail: { pins: pins.slice() } }));

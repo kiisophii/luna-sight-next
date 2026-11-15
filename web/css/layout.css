@@ -1358,3 +1358,6 @@ body.on-about .ls-export { display: none; }
 .val-pop .vp-rows b { font-size: 15px; font-weight: 600; color: #EDEDED; }
 .val-pop .vp-rows b small { font-size: 11px; font-weight: 400; color: #9C9CA1; }
 .ls .fc-val .fc-num { height: 26px; min-height: 0; }
+
+/* ---- headings and sections that take script focus: no ring after a mouse / touch move (Safari), ring stays for keyboard users */
+html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabindex="-1"]:focus-visible { outline: none; }

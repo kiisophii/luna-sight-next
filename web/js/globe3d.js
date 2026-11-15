@@ -770,15 +770,16 @@ if (uLayerA > 0.0) {
   });
 
   // ---------------- resize, loop
+  let roW = 0, roH = 0;
   function resize() {
-    const w = container.clientWidth || 300, h = container.clientHeight || 300;
+    const w = container.clientWidth || 300, h = container.clientHeight || 300; roW = w; roH = h;
     renderer.setSize(w, h, false); camera.aspect = w / h;
     // optional: put the projection centre at the middle of the free map area (panels float over the stage)
     const shift = typeof opts.centerShift === 'function' ? Math.round(opts.centerShift(w, h) || 0) : 0;
     if (shift) camera.setViewOffset(w, h, shift, 0, w, h); else camera.clearViewOffset();
     camera.updateProjectionMatrix(); dirty = true;
   }
-  const ro = new ResizeObserver(resize); ro.observe(container); resize();
+  const ro = new ResizeObserver(() => { if ((container.clientWidth || 300) !== roW || (container.clientHeight || 300) !== roH) resize(); }); ro.observe(container); resize();   // same size: skip
 
   // Pause completely while the globe is scrolled out of view (the page has panels below it).
   let onScreen = true;

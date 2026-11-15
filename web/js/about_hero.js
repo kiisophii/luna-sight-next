@@ -102,7 +102,7 @@ export function mountHero(host, label) {
   }
   cur = target = still() ? 1 : progress();
   build();
-  new ResizeObserver(() => { const r = host.getBoundingClientRect(); if (Math.round(r.width) !== W || Math.round(r.height) !== H) build(); }).observe(host);
+  new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => { const r = host.getBoundingClientRect(); if (Math.round(r.width) !== W || Math.round(r.height) !== H) build(); })).observe(host);   // next frame, so rebuilding never re-enters the observer
   window.addEventListener('scroll', onScroll, { passive: true });
   window.matchMedia?.('(prefers-reduced-motion: reduce)').addEventListener?.('change', onScroll);
   // test / debugging hook: set the progress directly (no smoothing)

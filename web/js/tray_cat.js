@@ -14,8 +14,8 @@ import { hourBits, gapStats, relayPeriod, getJSON } from './values.js';
 import * as core from './core.js';
 
 addStrings({
-  tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay tower', tcTerrain: 'Terrain',
-  tsRate: 'Sunlit share', tsDark: 'Longest dark', teRate: 'Visible share', teGap: 'Longest hidden', trMix: 'Link share', trGap: 'Longest gap',
+  tcSun: 'Sunlight', tcEarth: 'Earth view', tcRelay: 'Relay', tcTerrain: 'Terrain',
+  tsRate: 'Sunlit time', tsDark: 'Longest dark', teRate: 'Visible share', teGap: 'Longest hidden', trMix: 'Link share', trGap: 'Longest gap',
   ttSlope: 'Slope', ttHz: 'Horizon',
   tdSunRate: 'How the sunlit share builds up over the analysis period.',
   tdSunDark: 'Longest continuous stretch without sunlight in the period.',
@@ -28,9 +28,9 @@ addStrings({
   tiSun: 'Sunlit = at least half of the solar disc above the local terrain horizon (hourly, this period).',
   tiEarth: 'Earth in view = Earth centre above the local terrain horizon (direct-to-Earth geometry, hourly).',
   tiRelay: 'Assumed relay towers 15 m tall from data/relay; geometric line of sight only, no radio budget.',
-  tiTerrain: 'data/terrain: 16 southern sites from 5 m PGDA LOLA (detailed), others only the 250 m box slope (coarse). 8° and 15° are reference values, not landing-safety criteria.',
+  tiTerrain: 'data/terrain: 16 southern sites from 5–20 m PGDA LOLA (detailed; the tag shows each site’s resolution), others only the 250 m box slope (coarse). 8° and 15° are reference values, not landing-safety criteria.',
   tRelayAll: 'No tower needed: the Earth is in view the whole period', tRelayNone: 'No tower data for this site', tRelayFar: 'No direct-to-Earth here; a tower near the site does not help',
-  tDirect: 'direct', tVia: 'via tower', tFine: 'detailed 5 m', tCoarse: 'coarse 250 m', tFlat: '≤ 8° / ≤ 15° within 500 m', tRough: 'roughness (median, 500 m)', tRef: 'reference',
+  tDirect: 'direct', tVia: 'via tower', tFine: 'detailed', tCoarse: 'coarse 250 m', tFlat: '≤ 8° / ≤ 15° within 500 m', tRough: 'roughness (median, 500 m)', tRef: 'reference',
   tNoTerrain: 'No terrain file', tHzMax: 'max horizon', tLoading: 'loading…',
 }, {
   tcSun: '일조', tcEarth: '지구 가시', tcRelay: '중계탑', tcTerrain: '지형',
@@ -47,9 +47,9 @@ addStrings({
   tiSun: '햇빛 = 태양 원반의 절반 이상이 지형 지평선 위 (기간 중 1시간마다).',
   tiEarth: '지구 보임 = 지구 중심이 지형 지평선 위 (직접 교신 기하, 1시간마다).',
   tiRelay: 'data/relay의 15 m 중계탑을 가정합니다. 기하학적 가시선만 보며 전파 성능은 아닙니다.',
-  tiTerrain: 'data/terrain: 남쪽 16곳은 5 m PGDA LOLA 정밀값, 나머지는 250 m 범위 경사만 있는 거친 값입니다. 8°·15°는 참고값이며 착륙 안전 기준이 아닙니다.',
+  tiTerrain: 'data/terrain: 남쪽 16곳은 5–20 m PGDA LOLA 정밀값(꼬리표에 착륙지별 해상도 표시), 나머지는 250 m 범위 경사만 있는 거친 값입니다. 8°·15°는 참고값이며 착륙 안전 기준이 아닙니다.',
   tRelayAll: '탑 필요 없음: 기간 내내 지구가 보임', tRelayNone: '이 착륙지는 탑 자료 없음', tRelayFar: '이곳은 직접 교신이 없어 근처 탑으로도 이어지지 않음',
-  tDirect: '직접', tVia: '탑 경유', tFine: '정밀 5 m', tCoarse: '거친 250 m', tFlat: '500 m 안 8° / 15° 이하', tRough: '거칠기 (중앙값, 500 m)', tRef: '참고값',
+  tDirect: '직접', tVia: '탑 경유', tFine: '정밀', tCoarse: '거친 250 m', tFlat: '500 m 안 8° / 15° 이하', tRough: '거칠기 (중앙값, 500 m)', tRef: '참고값',
   tNoTerrain: '지형 파일 없음', tHzMax: '최고 지평선', tLoading: '불러오는 중…',
 });
 
@@ -68,7 +68,8 @@ const pct = f => (f == null || !isFinite(f) ? '—' : `${Math.round(f * 100)}`);
 const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko.replace(/^아르테미스 후보:\s*/, '').replace(/\s*\([^)]*\)\s*$/, '') : (s.short || s.name));
 const p2 = n => String(n).padStart(2, '0');
 const chip = n => `<span class="tc-chip num" style="--sc:var(--c${n})">${p2(n)}</span>`;
-const H0 = Date.UTC(2026, 0, 1), md = i => { const d = new Date(H0 + i * 3600e3); return `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())}`; };
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const H0 = Date.UTC(2026, 0, 1), md = i => { const d = new Date(H0 + i * 3600e3); return getLang() === 'ko' ? `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())}` : `${MON[d.getUTCMonth()]} ${d.getUTCDate()}`; };
 const sites = () => {
   const L = LLSN(); const st = L.state?.sites || [];
   return (L.pins?.() || []).map(p => ({ s: st.find(x => x.id === (p.id || p)), n: p.n || L.pinNo?.(p.id || p) })).filter(x => x.s);
@@ -141,7 +142,7 @@ async function render() {
         if (!d) return row(it, '—', `<span class="tc-note">${esc(t('tNoTerrain'))}</span>`);
         if (d.kind === 'polar_detailed') {
           const r = d.slope_by_radius_m?.['500'], f = r?.flat_fraction || {}, rough = d.roughness_within_500m?.median_m;
-          return row(it, `${d.landing_slope_deg.toFixed(1)}°`, `<span class="tc-tag fine">${esc(t('tFine'))}</span><span class="tc-sub2 num">${esc(t('tFlat'))}: ${pct(f['8'])}% / ${pct(f['15'])}% <em>${esc(t('tRef'))}</em> · ${esc(t('tRough'))} ${rough != null ? rough.toFixed(2) : '—'} m</span>`);
+          return row(it, `${d.landing_slope_deg.toFixed(1)}°`, `<span class="tc-tag fine">${esc(t('tFine'))} ${d.source?.resolution_m ?? '?'} m</span><span class="tc-sub2 num">${esc(t('tFlat'))}: ${pct(f['8'])}% / ${pct(f['15'])}% <em>${esc(t('tRef'))}</em> · ${esc(t('tRough'))} ${rough != null ? rough.toFixed(2) : '—'} m</span>`);
         }
         const s = d.relay_box?.slope_deg;
         return row(it, s != null ? `${Number(s).toFixed(1)}°` : '—', `<span class="tc-tag">${esc(t('tCoarse'))}</span>`);

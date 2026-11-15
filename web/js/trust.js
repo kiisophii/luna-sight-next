@@ -8,6 +8,7 @@ import { validation, hindcast } from './values.js';
 
 addStrings({
   vBadge: 'Mean error {v} pp', vBadgeAria: 'Validation against NASA PGDA maps: mean absolute error {v} percentage points. Open details.',
+  vpTitle: 'How close is this to NASA’s data?', vpLead: 'At {n} random points near the south pole (85–90°S) this tool’s 18.6-year averages ({w}) were compared with NASA’s PGDA average illumination and Earth-visibility maps.', vpAvg: 'Average difference · pp = percentage points', vpSun: 'Sunlit time', vpEarth: 'Earth visibility', vpSmall: 'Smaller numbers mean the two results agree more closely.',
   vTitle: 'Compared with NASA PGDA maps', vRef: 'Reference', vRefTxt: 'PGDA AVGVISIB 18.6-year average illumination and Earth-visibility maps (Mazarico et al. 2011, Icarus 211; 2016 update), 60 m south-polar grid.',
   vMethod: 'Method', vMethodTxt: 'Over the same 18.6 years ({w}) this tool’s average at each point is compared with the PGDA pixel.',
   vMetric: 'Metric', vMetricTxt: 'Sunlight MAE {s} pp (r {sr}) · Earth MAE {e} pp (r {er})',
@@ -24,6 +25,7 @@ addStrings({
   hcEphem: 'Ephemeris check: max difference {d}° over {n} samples', hcTitle: 'Mission hindcast',
 }, {
   vBadge: '평균 오차 {v}%p', vBadgeAria: 'NASA PGDA 지도와 비교한 검증: 평균 절대 오차 {v}%p. 자세히 열기.',
+  vpTitle: 'NASA 자료와 얼마나 가까운가요?', vpLead: '남극 근처(남위 85–90°) 무작위 {n}곳에서 이 도구의 18.6년 평균({w})을 NASA PGDA 평균 조명·지구 가시 지도와 비교했습니다.', vpAvg: '평균 차이 · pp = 퍼센트포인트', vpSun: '일조 시간', vpEarth: '지구 가시', vpSmall: '숫자가 작을수록 두 결과가 더 가깝습니다.',
   vTitle: 'NASA PGDA 지도와 비교', vRef: '기준 자료', vRefTxt: 'PGDA AVGVISIB 18.6년 평균 조명·지구 가시 지도(Mazarico et al. 2011, Icarus 211; 2016 갱신), 남극 60 m 격자.',
   vMethod: '방법', vMethodTxt: '같은 18.6년({w}) 동안 이 도구로 계산한 각 지점의 평균을 PGDA 픽셀과 비교.',
   vMetric: '지표', vMetricTxt: '일조 MAE {s}%p (r {sr}) · 지구 MAE {e}%p (r {er})',
@@ -99,27 +101,29 @@ function label() {
 /** ≥ 1180 px: open to the left of the tray (over the 3D); narrower: below the badge. */
 function place() {
   if (!pop || pop.hidden) return;
-  const tr = document.getElementById('ls-tray').getBoundingClientRect(), sc = document.querySelector('.ls-screen').getBoundingClientRect();
-  if (window.innerWidth >= 1180) { pop.style.top = `${tr.top - sc.top}px`; pop.style.left = 'auto'; pop.style.right = `${sc.right - tr.left + 10}px`; }
-  else { const b = badge.getBoundingClientRect(); pop.style.top = `${b.bottom - sc.top + 8}px`; pop.style.right = '16px'; pop.style.left = 'auto'; }
+  const sc = document.querySelector('.ls-screen').getBoundingClientRect(), bd = badge.getBoundingClientRect();
+  const w = Math.min(340, sc.width - 24), left = Math.max(12, Math.min(sc.width - w - 12, bd.right - sc.left - w + 8));
+  Object.assign(pop.style, { top: `${bd.bottom - sc.top + 8}px`, left: `${left}px`, right: 'auto', width: `${w}px`, maxHeight: `${Math.max(240, sc.height - (bd.bottom - sc.top) - 28)}px` });
 }
 async function render() {
   if (!pop) return;
   const H = await headline(); const v = H.v;
   const site = LLSN().state?.sites.find(s => s.id === LLSN().focus);
   const name = site ? (getLang() === 'ko' && site.name_ko ? site.name_ko : site.name) : '';
-  pop.innerHTML = `<h3>${esc(t('vTitle'))}</h3>
-    <table><tbody>
-      <tr><th>${esc(t('vRef'))}</th><td>${esc(t('vRefTxt'))}</td></tr>
-      <tr><th>${esc(t('vMethod'))}</th><td>${esc(fill(t('vMethodTxt'), { w: v.window.replace('..', ' – ') }))}</td></tr>
-      <tr><th>${esc(t('vMetric'))}</th><td class="num">${esc(fill(t('vMetricTxt'), { s: H.sun, sr: H.sunR, e: H.earth, er: H.earthR }))}</td></tr>
-      <tr><th>${esc(t('vScope'))}</th><td>${esc(fill(t('vScopeTxt'), { n: v.n_points, seed: v.seed }))}</td></tr>
-      <tr><th>${esc(t('vSite'))}${name ? `<br><small>${esc(name)}</small>` : ''}</th><td class="num">${await siteLine(site)}</td></tr>
-    </tbody></table>
-    <details style="margin-top:6px"><summary>${esc(t('vAlt'))}</summary><ul class="num" style="margin:4px 0;padding-left:1.1em">${Object.entries(v.alt_definitions || {}).map(([k, a]) =>
+  pop.innerHTML = `<h3>${esc(t('vpTitle'))}</h3>
+    <p class="vp-lead">${esc(fill(t('vpLead'), { n: v.n_points, w: v.window.replace('..', ' – ') }))}</p>
+    <p class="vp-cap">${esc(t('vpAvg'))}</p>
+    <div class="vp-rows">
+      <div><span>${esc(t('vpSun'))}</span><b class="num" style="color:var(--sun)">${H.sun}<small> pp</small></b><small class="num">r ${H.sunR}</small></div>
+      <div><span>${esc(t('vpEarth'))}</span><b class="num" style="color:var(--earth)">${H.earth}<small> pp</small></b><small class="num">r ${H.earthR}</small></div>
+    </div>
+    <p class="vp-note">${esc(t('vpSmall'))}</p>
+    <p class="vp-note">${esc(fill(t('vScopeTxt'), { n: v.n_points, seed: v.seed }))}</p>
+    <div class="vp-site"><b>${esc(t('vSite'))}${name ? ` · ${esc(name)}` : ''}</b><span class="num">${await siteLine(site)}</span></div>
+    <details><summary>${esc(t('vAlt'))}</summary><ul class="num">${Object.entries(v.alt_definitions || {}).map(([k, a]) =>
       `<li>${esc(fill(t('vAltRow'), { k: t('alt_' + k), m: pp(a.mae_pp), r: a.r.toFixed(3) }))}</li>`).join('')}</ul></details>
-    <p style="margin:6px 0 0"><a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · <a href="#about-validation">About</a></p>
-    <p class="muted" style="margin:4px 0 0">${esc(t('vNotNasa'))}</p>`;
+    <p class="vp-links"><a href="${PGDA_URL}" target="_blank" rel="noopener">PGDA</a> · <a href="${PAPER_URL}" target="_blank" rel="noopener">Mazarico et al. 2011</a> · <a href="#about-validation">About</a></p>
+    <p class="vp-note">${esc(t('vNotNasa'))}</p>`;
   place();
 }
 

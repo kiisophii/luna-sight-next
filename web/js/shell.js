@@ -245,13 +245,12 @@ async function setLayer(k) {
     g0.setElevation({ min: ELEV_MIN, max: ELEV_MAX, stops: ELEV_RAMP });
     const r = await elevRange();
     if (layer !== 'elev') return;
-    $('#map-legend').hidden = true;
+    // 18-3 (copy 20:27): the static layers share one legend box under the minimap, so elevation uses #map-legend too
     const km = x => `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x).toFixed(1)}`;
-    let el = document.getElementById('elev-legend');
-    if (!el) { el = document.createElement('div'); el.id = 'elev-legend'; el.className = 'elev-legend'; tb.appendChild(el); }
-    const note = fill(t('lgElevNote'), { x: 3, a: r ? km(r[0]) : '—', b: r ? km(r[1]) : '—' });
-    el.title = note; el.hidden = false;
-    el.innerHTML = `<b>${esc(t('lgElev'))}</b><span class="el-row"><span class="el-ends num"><span>≥ ${km(ELEV_MAX)} km</span><span>≤ ${km(ELEV_MIN)} km</span></span><i class="el-bar" style="background:linear-gradient(0deg, ${ELEV_RAMP.join(', ')})"></i></span><span class="sr">${esc(note)}</span>`;
+    const leg = $('#map-legend'); leg.hidden = false;
+    leg.innerHTML = `<div>${esc(t('lgElev'))}</div>
+      <div class="bar" style="background:linear-gradient(90deg, ${ELEV_RAMP.join(', ')})"></div><div class="ends"><span>≤ ${km(ELEV_MIN)} km</span><span>${km((ELEV_MIN + ELEV_MAX) / 2)}</span><span>≥ ${km(ELEV_MAX)} km</span></div>
+      <div class="muted" style="margin-top:3px">${esc(fill(t('lgElevNote'), { x: 3, a: r ? km(r[0]) : '—', b: r ? km(r[1]) : '—' }))}</div>`;
     return;
   }
   if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade

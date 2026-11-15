@@ -233,7 +233,7 @@ window.addEventListener('llsn:time', () => {
 });
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
-  tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  tb.classList.toggle('time-off', k !== 'light');   // time part only for live Sunlight; static layers (average sunlight, Earth view, elevation) fold it and stop playback
   if (tb.classList.contains('time-off')) { const pb = document.getElementById('play'); if (pb?.getAttribute('aria-pressed') === 'true') pb.click(); }   // 18-4: folding the time part stops playback
   LL().globe?.setElevation?.(null);
   { const el = document.getElementById('elev-legend'); if (el) el.hidden = true; }

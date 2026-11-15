@@ -494,12 +494,14 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const p2 = n => String(n).padStart(2, '0');
   const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const md = i => { const x = d(i); return getLang() === 'ko' ? `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}` : `${MON[x.getUTCMonth()]} ${x.getUTCDate()}`; };
+  const mdShort = i => { const x = d(i); return getLang() === 'ko' ? `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}` : `${x.getUTCMonth() + 1}/${x.getUTCDate()}`; };   // short axis: 11/15
   const ticks = () => {
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
     const span = w.i1 - w.i0 || 1, days = Math.floor(span / 24);
     let html = '';
     for (let dd = 0; dd <= days; dd++) { const f = (dd * 24) / span; html += `<i class="tk${dd % 7 === 0 ? ' big' : ''}" style="left:${(f * 100).toFixed(2)}%"></i>`; }
-    html += [0, 0.5, 1].map(f => `<span class="lb" style="left:${f * 100}%">${md(Math.round(w.i0 + span * f))}</span>`).join('');
+    const few = el.clientWidth > 0 && el.clientWidth < 150;   // a short axis (1440 dock: 66-83 px) has room for the first and last date only
+    html += (few ? [0, 1] : [0, 0.5, 1]).map(f => `<span class="lb${few ? (f ? ' end' : ' start') : ''}" style="left:${f * 100}%">${(few ? mdShort : md)(Math.round(w.i0 + span * f))}</span>`).join('');
     el.innerHTML = html;
     const per = document.getElementById('tray-period');
     if (per) { const a = d(w.i0), b = d(w.i1), days = Math.round(w.days * 10) / 10;
@@ -507,7 +509,7 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
         : `${MON[a.getUTCMonth()]} ${a.getUTCDate()} – ${MON[b.getUTCMonth()]} ${b.getUTCDate()}, ${b.getUTCFullYear()} · UTC · ${days} d`; }
   };
   const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
-  window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
+  window.addEventListener('llsn:window', ticks); window.addEventListener('ls:ticks', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
   // Keep the precise UTC picker reachable when the dock uses a compact label.
   $('#utc-chip')?.insertAdjacentHTML('afterbegin', iconSvg('calendar', { size: 16 }));
   const utcButton = $('#utc-chip'), utcPop = $('#utc-pop'), utcHome = utcButton.parentElement;
@@ -656,7 +658,12 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 (() => { const leg = document.getElementById('map-legend'); if (!leg) return;
   const wide = window.matchMedia('(min-width: 1100px)');
   const compact = () => {
-    if (!wide.matches || leg.hidden || leg.querySelector('.lg-row')) return;
+    // phones / tablets: the box sits inside the map, above the height note (it used to land at the very end of the stacked page)
+    if (!wide.matches && !leg.hidden) { const st = document.getElementById('globe-stage'), sc = leg.offsetParent || document.querySelector('.ls-screen');
+      if (st && sc) { const a = st.getBoundingClientRect(), o = sc.getBoundingClientRect(), nt = st.querySelector('.g3-note'), nb = nt && nt.offsetParent !== null ? nt.getBoundingClientRect().top : a.bottom;
+        const top = `${Math.round(Math.min(nb, a.bottom) - o.top - 8 - 32)}px`; if (leg.style.getPropertyValue('--lg-top') !== top) leg.style.setProperty('--lg-top', top); } }   // a custom property: the minimap follower clears inline top/left
+    else if (wide.matches && leg.style.top && !leg.dataset.mmFollow) { /* desktop position is set by the minimap follower */ }
+    if (leg.hidden || leg.querySelector('.lg-row')) return;
     const first = leg.firstElementChild; if (!first) return;
     const bar = leg.querySelector(':scope > .bar'), ends = [...leg.querySelectorAll(':scope > .ends span')].map(e => e.textContent.trim());
     const title = ([...first.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join(' ').trim()) || first.textContent.trim();
@@ -677,6 +684,7 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
   leg.addEventListener('click', e => { const b = e.target.closest('.lg-i'); if (!b) return; const on = !leg.classList.contains('tip-on'); leg.classList.toggle('tip-on', on); b.setAttribute('aria-expanded', String(on)); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('click', e => { if (!leg.contains(e.target) && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
+  window.addEventListener('resize', () => setTimeout(compact, 100));
   compact();
 })();
 
@@ -698,4 +706,23 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
   });
   document.addEventListener('focusout', e => { if (e.target.closest?.(SEL)) tipEl.hidden = true; });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') tipEl.hidden = true; });
+})();
+
+// ------------------------------------------------------------ bundle 17/18 follow-up (v48 check)
+// dock zoom buttons: names follow the language; the conditions fold button: its name follows the real state
+(() => {
+  const ko = () => getLang() === 'ko';
+  const zoomNames = () => { for (const [k, en, kr] of [['in', 'Zoom in', '확대'], ['out', 'Zoom out', '축소']]) { const b = document.querySelector(`.ls-toolbar [data-zoom="${k}"]`); if (b) { b.title = ko() ? kr : en; b.setAttribute('aria-label', b.title); } } };
+  const box = document.getElementById('ls-cond'), tog = box?.querySelector('.c1-tog');
+  const foldName = () => { if (!tog) return; tog.removeAttribute('data-i18n-aria');
+    const open = getComputedStyle(box.querySelector('.ls-foldable') || box).display !== 'none';
+    const name = open ? (ko() ? '조건 패널 접기' : 'Collapse the conditions panel') : (ko() ? '조건 패널 펼치기' : 'Expand the conditions panel');
+    if (tog.getAttribute('aria-label') !== name) tog.setAttribute('aria-label', name);
+    if (tog.getAttribute('aria-expanded') !== String(open)) tog.setAttribute('aria-expanded', String(open)); };
+  if (box) new MutationObserver(() => requestAnimationFrame(foldName)).observe(box, { attributes: true, attributeFilter: ['class'] });
+  if (tog) new MutationObserver(foldName).observe(tog, { attributes: true, attributeFilter: ['aria-label'] });
+  const all = () => { zoomNames(); foldName(); };
+  ['llsn:lang', 'llsn:ready', 'resize'].forEach(ev => window.addEventListener(ev, () => setTimeout(all, 0)));
+  window.addEventListener('resize', () => setTimeout(() => window.dispatchEvent(new Event('ls:ticks')), 150));   // tick labels depend on the axis width
+  all();
 })();

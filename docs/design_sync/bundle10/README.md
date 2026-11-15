@@ -114,3 +114,7 @@ After:
 ## Concurrent-main integration follow-up
 
 After the screenshot run, main `e40961f9baec3bd564a937886f521fe5f8c13edc` added the independent Site check bundle and reformatted/appended the SI log. Integrated that commit and preserved every existing SI row byte-for-byte before appending our row. No dock or minimap/legend production changes were introduced by that integration. A [separate smoke run](https://github.com/kiisophii/lunar-landing-site-navigator/actions/runs/43702981292) at `0c6272aab97625222ca5589d533d6475f132fb63` rechecked all 10 viewport/language configurations: zero errors/overflow, exact requested dock sizes, and all visible controls inside the desktop dock. Result: `integration-smoke.json`. Full before/after capture test remains separately reproducible with `check.mjs`; CI now executes the integration smoke script.
+
+## 1280 English sub-tab follow-up
+
+[Follow-up report](subtabs/README.md): 14px inline headings across all four categories, unchanged 1440 EN/KR, no internal/document horizontal overflow. Same branch and PR #117.

@@ -174,3 +174,23 @@ html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions butto
 .detail-lg .lg-ic.k-earth { color: var(--earth); }
 .detail-charts .rd-now .rd-ic { display: inline-block; vertical-align: -2px; margin-right: 3px; }
 @media (min-width: 761px) and (pointer: fine) { .detail-charts .rd-now { flex-wrap: nowrap; white-space: nowrap; gap: 12px; } }
+
+/* ---- designer review 10 (v47): both side cards on one rule set = the copy's left panel values ----
+   left card (copy): content inset 15 px from the card edge, title 17 px / 700 at y 16, controls 20 / 24 / 28 / 40 px,
+   info buttons 20 px, chips 20 px. The right card (tray) now uses the same inset, title size and info size;
+   the head row, tabs, heading and sub-tabs get their own rows so nothing touches. */
+#ls-tray { padding: 12px 14px 16px; }
+#ls-tray .ls-card-head h2 { font-size: 17px; font-weight: 700; gap: 8px; }
+#ls-tray .ls-card-head { min-height: 28px; margin-bottom: 4px; }
+#ls-tray .tc-i { width: 20px; height: 20px; background-size: 15px 15px; }
+#ls-tray .tc-tabs { margin-top: 14px; }
+#ls-tray .tc-scroll { padding-top: 14px; }
+#ls-tray .tc-subs { gap: 14px; }
+#ls-tray .tc-desc { margin-top: 10px; }
+@media (min-width: 1440px) { #ls-tray .tc-tabs button { font-size: 14px; } }
+/* 1100-1439 px: the category heading and its sub-tabs no longer share one squeezed line (they touched at 1280) */
+@media (min-width: 1100px) and (max-width: 1439px) {
+  #ls-tray .tc-h { flex-wrap: wrap; row-gap: 10px; }
+  #ls-tray .tc-subs { flex: 1 0 100%; margin-left: 0; gap: 16px; }
+  #ls-tray .tc-tabs button { font-size: 12.5px; }
+}

@@ -1,0 +1,37 @@
+name: Independent task T comparison
+on:
+  push:
+    branches: [s11-task-t-verify-minchul]
+    paths: ['verification/task_t/**', '.github/workflows/verify-task-t-member.yml']
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            verification/task_t
+            docs
+      - uses: actions/checkout@v4
+        with:
+          ref: 0fc89ad0791d7b19c3e7d7bfe03dd188c6f6dca5
+          path: target
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/task_t/
+            /web/data/gmaps/
+            /web/data/ephem.bin
+      - run: pip install numpy pillow
+      - run: python verification/task_t/verify.py
+      - name: Save evidence
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse docs/task_t_independent docs/verification_ledger.md docs/SI_USAGE.md
+          git commit -m "Record independent raw-grid comparisons"
+          git push

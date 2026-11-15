@@ -1,0 +1,72 @@
+{
+  "seed": 15112026,
+  "head": "0fc89ad0791d7b19c3e7d7bfe03dd188c6f6dca5",
+  "integrity": [
+    {
+      "file": "sun.npy",
+      "actual": "b1f39c54e634b62f58066f026b59dd67540931bc526409cb716328cba0347f6c",
+      "expected": "b1f39c54e634b62f58066f026b59dd67540931bc526409cb716328cba0347f6c"
+    },
+    {
+      "file": "earth.npy",
+      "actual": "82a7bcdb249c4a5a19a91e36fd39011dcc97a43db7440ea56665d249777c6613",
+      "expected": "82a7bcdb249c4a5a19a91e36fd39011dcc97a43db7440ea56665d249777c6613"
+    },
+    {
+      "file": "both.npy",
+      "actual": "f8d5903ac6a6de957f83cc85c129af9e66a0430b19fe5ef46236a2e1f706d073",
+      "expected": "f8d5903ac6a6de957f83cc85c129af9e66a0430b19fe5ef46236a2e1f706d073"
+    },
+    {
+      "file": "h0.npy",
+      "actual": "0075b4dbc7d9fb71ff9ab4016a02f6780910c4461c2440e2d151ee6fdba124a3",
+      "expected": "0075b4dbc7d9fb71ff9ab4016a02f6780910c4461c2440e2d151ee6fdba124a3"
+    },
+    {
+      "file": "maskmax.npy",
+      "actual": "af20e8c2053f1f72b281a9962504107bf341ef8db6b1b7e21d21e0f230d6ce88",
+      "expected": "af20e8c2053f1f72b281a9962504107bf341ef8db6b1b7e21d21e0f230d6ce88"
+    },
+    {
+      "file": "done.npy",
+      "actual": "0a7b0388f6e4ea09a0a0cd0475110256bfc56bbd2352e6957034e74772c52551",
+      "expected": "0a7b0388f6e4ea09a0a0cd0475110256bfc56bbd2352e6957034e74772c52551"
+    },
+    {
+      "file": "meta.json",
+      "actual": "d6241fe542dca126909fc0cbfc8845b285056168308c8fcabefcad155c4e65d0",
+      "expected": "d6241fe542dca126909fc0cbfc8845b285056168308c8fcabefcad155c4e65d0"
+    }
+  ],
+  "statistics": {
+    "png": {
+      "sun": {
+        "max_abs_pp": 0.1999747168912991,
+        "median_abs_pp": 0.10089714529895044
+      },
+      "earth": {
+        "max_abs_pp": 0.19861964151123152,
+        "median_abs_pp": 0.0
+      },
+      "both": {
+        "max_abs_pp": 0.1997039432389991,
+        "median_abs_pp": 0.03072046451707
+      }
+    },
+    "dem": {
+      "sun": {
+        "max_abs_pp": 1.2729594933702515e-06,
+        "median_abs_pp": 4.934581798732296e-07
+      },
+      "earth": {
+        "max_abs_pp": 2.4851589786045736e-06,
+        "median_abs_pp": 5.576374639826298e-08
+      },
+      "both": {
+        "max_abs_pp": 1.4134069636906332e-06,
+        "median_abs_pp": 3.237017459634117e-08
+      }
+    }
+  },
+  "failures": []
+}

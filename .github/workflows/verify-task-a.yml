@@ -37,6 +37,8 @@ jobs:
           path: .
       - name: Validate every result and publish durable evidence
         run: python verification/task_a/finalize_task_a.py
+      - name: Verify historical ledger citations and snapshot counts
+        run: python pipeline/verify_ledger.py
       - name: Preserve all team changes and commit evidence on task branch only
         run: |
           git config user.name "github-actions[bot]"

@@ -85,9 +85,9 @@ lines=ledger.splitlines()
 for i,line in enumerate(lines):
     if line.startswith('| 3 | `horizon/`'):
         cols=line.split('|')
-        cols[5]=' **Other member, task A (PR #65):** full independent original-DEM recomputation by Minchul; 33/33 sites x 720 bins = 23,760 angles; all 43,824 hourly Sun states/site. 23,759 angles pass; CHANGE6 231 deg differs +0.0604630281 deg (FAIL vs 0.05 deg). Median absolute angle 0.000150406 deg. All 33 Sun fractions pass, max 0.0114092735 pp (threshold 1 pp). [Full evidence](task_a_horizons/report.md); prior integrator sample remains recorded in git history. '
+        cols[5]=' **Integrator, merge a7a0978 (PR #14):** SHACKLETON_RIM, 10 azimuths, max 0.0035 deg (historical sample). **Other member, task A (PR #65):** full independent original-DEM recomputation by Minchul; 33/33 sites x 720 bins = 23,760 angles; all 43,824 hourly Sun states/site. 23,759 angles pass; CHANGE6 231 deg differs +0.0604630281 deg (FAIL vs 0.05 deg). Median absolute angle 0.000150406 deg. All 33 Sun fractions pass, max 0.0114092735 pp (threshold 1 pp). [Full evidence](task_a_horizons/report.md); prior integrator sample remains recorded in git history. '
         cols[6]=' Original production commits unchanged; task A PR #65, calculation run 43655770217 '
-        cols[7]=' Full independent recomputation complete; angular criterion FAIL (1/23,760); sunlight PASS (33/33) '
+        cols[7]=' Independently verified (historical integrator sample); task A full recomputation complete, angular criterion FAIL (1/23,760), sunlight PASS (33/33) '
         lines[i]='|'.join(cols)
     if line.startswith('- `horizon/`:'):
         lines[i]='- `horizon/`: task A fully recomputed 33/33 sites and 23,760 angles; one unresolved angular failure at CHANGE6 231 deg (+0.0604630281 deg vs 0.05 deg). All 33 sunlight fractions pass. See PR #65 and task_a_horizons/report.md.'
@@ -97,6 +97,9 @@ ledger+='Checker: Minchul Kim; producers: Jiyong Sung (16 polar), Soyun Jeong (1
 p.write_text(ledger)
 p=root/'docs/SI_USAGE.md'
 stamp=datetime.now(timezone(timedelta(hours=9))).strftime('%Y-%m-%d %H:%M')
+if 'Morning task A independent horizons' not in p.read_text():
+    with p.open('a') as history:
+        history.write('\n' + "| 2026-11-15 07:45 (KST) | Minchul Kim | Morning task A independent horizons | ChatGPT Codex (GPT-6) | Independently recompute all 33 non-self-produced horizon masks at all 720 azimuth bins from original DEMs, retain 10 seeded random comparisons per site, then recompute full-hour sunlight at all sites | verification/task_a/, .github/workflows/verify-task-a.yml, docs/task_a_horizons/ (results pending), docs/SI_USAGE.md | AI implemented separate source readers and geometry with no pipeline/web JS imports; 6 analytic/isolation controls PASS; independent sunlight using stored masks matches all 33 published metrics exactly. This is an initial execution checkpoint, not a PASS for the new DEM horizons. Original DEM fetch and full run are pending. | No independent human rerun or complete result claimed. |" + '\n')
 with p.open('a') as f:
     f.write('\n| '+stamp+' (KST) | Minchul Kim | Task A full independent verification | ChatGPT Codex (GPT-6) | Resume complete original-DEM 33 x 720 ray calculation; preserve latest main, validate recovered artifact and input hashes, recompute 33 x 43,824 Sun states, publish every comparison including one angular failure | verification/task_a/, .github/workflows/verify-task-a.yml, docs/task_a_horizons/, docs/verification_ledger.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |\n')
 # Machine-check that no published products were mutated.

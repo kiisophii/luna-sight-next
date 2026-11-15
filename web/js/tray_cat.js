@@ -88,12 +88,12 @@ function chartSVG(series, n, i0) {
   // end labels: spread so they do not overlap
   const ends = series.map(s => ({ n: s.n, y: Y(s.pts[s.pts.length - 1][1]) })).sort((a, b) => a.y - b.y);
   for (let j = 1; j < ends.length; j++) if (ends[j].y - ends[j - 1].y < 10) ends[j].y = ends[j - 1].y + 10;
-  g += series.map(s => `<polyline points="${s.pts.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" ${lineAttr(s.n)} stroke-width="1.6" stroke-linejoin="round"/>`).join('');
+  g += series.map(s => `<polyline class="ln" data-n="${s.n}" points="${s.pts.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" ${lineAttr(s.n)} stroke-width="1.6" stroke-linejoin="round"/>`).join('');
   g += ends.map(e => `<text x="${L + pw + 4}" y="${e.y + 3}" fill="var(--c${e.n})" font-weight="600">${p2(e.n)}</text>`).join('');
   return `<svg class="tc-chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
 }
 const bar = (f, col, n) => `<span class="tc-bar"><i style="width:${Math.max(0, Math.min(100, f * 100)).toFixed(1)}%;background:${col}"></i></span>`;
-const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row"><svg class="tc-sw" viewBox="0 0 24 6" aria-hidden="true"><line x1="0" y1="3" x2="24" y2="3" ${lineAttr(it.n)} stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
+const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row" data-n="${it.n}" tabindex="0"><svg class="tc-sw" viewBox="0 0 24 6" aria-hidden="true"><line x1="0" y1="3" x2="24" y2="3" ${lineAttr(it.n)} stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
 
 const HM = i => { const d = new Date(H0 + i * 3600e3); return `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())} ${p2(d.getUTCHours())}:00 UTC`; };
 /** Longest run of hours where test(k) is false: [start, end) or null. */
@@ -165,10 +165,10 @@ async function render() {
     const ticks = [low, (low + high) / 2, high];
     let g = ticks.map(v => `<line x1="18" x2="295" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--n-line)" stroke-dasharray="2 3"/><text x="14" y="${Y(v)+3}" text-anchor="end">${v}°</text>`).join('');
     g += [0,90,180,270,360].map((az,j) => `<text x="${X(az)}" y="98" text-anchor="${j===0?'start':j===4?'end':'middle'}">${['N','E','S','W','N'][j]} ${az}°</text>`).join('');
-    g += data.map(({it,pts}) => `<polyline points="${pts.map(([az,el])=>`${X(az).toFixed(2)},${Y(el).toFixed(2)}`).join(' ')}" fill="none" ${lineAttr(it.n)} stroke-width="1"/>`).join('');
+    g += data.map(({it,pts}) => `<polyline class="ln" data-n="${it.n}" points="${pts.map(([az,el])=>`${X(az).toFixed(2)},${Y(el).toFixed(2)}`).join(' ')}" fill="none" ${lineAttr(it.n)} stroke-width="1"/>`).join('');
     html = `<svg class="tc-chart tc-horizon" viewBox="0 0 301 104" role="img" aria-label="${esc(t('tProfile'))}">${g}</svg><ul class="tc-rows horizon-rows">${data.map(({it,pts})=>row(it,pts.length?esc(t('tProfile')):'—')).join('')}</ul>`;
   }
-  if (my === seq) body.innerHTML = html;
+  if (my === seq) { body.innerHTML = html; body.classList.remove('tc-dim'); }
 }
 
 function build() {
@@ -182,6 +182,17 @@ function build() {
   const sc = host.querySelector('.tc-scroll');
   const fade = () => sc.classList.toggle('more', sc.scrollTop + sc.clientHeight < sc.scrollHeight - 2);
   sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => fade())).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
+  // hover / keyboard focus on a row or a chart line: that site's line stays, the other lines and rows fade (copy 20:51)
+  const body = host.querySelector('.tc-body');
+  const focusSite = nn => {
+    body.querySelectorAll('.hl').forEach(x => x.classList.remove('hl'));
+    body.classList.toggle('tc-dim', !!nn);
+    if (nn) body.querySelectorAll(`[data-n="${nn}"]`).forEach(x => x.classList.add('hl'));
+  };
+  body.addEventListener('mouseover', e => { const x = e.target.closest('.tc-row, .tc-chart .ln'); focusSite(x?.dataset.n || null); });
+  body.addEventListener('mouseleave', () => focusSite(null));
+  body.addEventListener('focusin', e => { const x = e.target.closest('.tc-row'); focusSite(x?.dataset.n || null); });
+  body.addEventListener('focusout', e => { if (!body.contains(e.relatedTarget)) focusSite(null); });
   host.addEventListener('click', e => {
     const c = e.target.closest('.tc-tabs button'); if (c) { cat = c.dataset.c; save(); render(); relabel(); return; }
     const s = e.target.closest('.tc-subs button'); if (s) { sub[cat] = s.dataset.s; save(); render(); }

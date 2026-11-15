@@ -24,7 +24,8 @@ let style;if(state==='after')style=await page.addStyleTag({content:fix});
 const m=await page.evaluate(()=>{
 const rect=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom}};
 const h=document.querySelector('.tc-h'),title=h.querySelector('h4'),info=h.querySelector('.tc-i'),subs=h.querySelector('.tc-subs');
-return{header:rect(h),title:rect(title),info:rect(info),subs:rect(subs),buttons:[...subs.querySelectorAll('button')].map(e=>({...rect(e),font:getComputedStyle(e).fontSize,text:e.textContent})),scroll:{width:document.querySelector('.tc-scroll').scrollWidth,client:document.querySelector('.tc-scroll').clientWidth},overflow:document.documentElement.scrollWidth>innerWidth,values:[...document.querySelectorAll('.tc-val')].map(e=>e.textContent)};
+const clips=[];for(let e=h.parentElement;e;e=e.parentElement){const s=getComputedStyle(e);if(['hidden','clip','auto','scroll'].includes(s.overflowX)){const r=e.getBoundingClientRect();clips.push({class:e.className,left:r.left,right:r.left+e.clientWidth});}}
+return{clips,header:rect(h),title:rect(title),info:rect(info),subs:rect(subs),buttons:[...subs.querySelectorAll('button')].map(e=>({...rect(e),font:getComputedStyle(e).fontSize,text:e.textContent})),scroll:{width:document.querySelector('.tc-scroll').scrollWidth,client:document.querySelector('.tc-scroll').clientWidth},overflow:document.documentElement.scrollWidth>innerWidth,values:[...document.querySelectorAll('.tc-val')].map(e=>e.textContent)};
 });
 checks.push({mode,width,lang,cat,state,metrics:m,errors:[...errors]});
 if(width===1280&&lang==='en'&&state==='after'&&(cat==='sun'||cat==='earth'))await page.locator('.tc-h').screenshot({path:dir+'/'+mode+'_'+width+'_'+lang+'_'+cat+'_'+state+'.png'});
@@ -32,7 +33,7 @@ if(state==='after'){
 const b=checks.at(-2).metrics;
 if(errors.length||m.overflow||m.scroll.width>m.scroll.client)failures.push({mode,width,lang,cat,reason:'errors/overflow',errors});
 if(width===1440&&JSON.stringify(m)!==JSON.stringify(b))failures.push({mode,width,lang,cat,reason:'1440 changed',before:b,after:m});
-if(width===1280&&lang==='en'&&(Math.abs(m.title.y+m.title.height/2-m.subs.y-m.subs.height/2)>1||m.info.right>m.subs.x+.1||m.buttons.some(t=>t.font!=='14px'||t.right>m.header.right+.1)||m.subs.right>m.header.right+.1))failures.push({mode,width,lang,cat,reason:'inline/font/containment',metrics:m});
+if(width===1280&&lang==='en'&&(Math.abs(m.title.y+m.title.height/2-m.subs.y-m.subs.height/2)>1||m.info.right>m.subs.x+.1||m.buttons.some(t=>t.font!=='14px'||t.right>m.header.right+.1)||m.subs.right>m.header.right+.1||m.clips.some(c=>m.buttons.some(b=>b.x<c.left-.1||b.right>c.right+.1))))failures.push({mode,width,lang,cat,reason:'inline/font/containment',metrics:m});
 if(JSON.stringify(m.values)!==JSON.stringify(b.values))failures.push({mode,width,lang,cat,reason:'values changed'});
 await style.evaluate(e=>e.remove());
 }

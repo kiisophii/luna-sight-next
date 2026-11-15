@@ -1,0 +1,1921 @@
+{
+ "task": "O",
+ "checker": "Dongju Kim",
+ "product": "web/data/gmaps_ppd32/ south of 75 S",
+ "cells": 5529600,
+ "rows": [
+  5280,
+  5760
+ ],
+ "png_rows": [
+  1878,
+  2048
+ ],
+ "layers": {
+  "sun_unrounded_vs_dn": {
+   "pixels": 696320,
+   "max_abs_pp": 0.20000305175781108,
+   "median_abs_pp": 0.09470329284667756,
+   "within_0p1_pp": 365691,
+   "within_0p2_pp": 696318
+  },
+  "sun": {
+   "png_pixels": 696320,
+   "identical": 696320,
+   "differing": 0,
+   "max_abs_dn": 0,
+   "max_abs_pp": 0.0,
+   "median_abs_pp": 0.0,
+   "mean_dn_diff": 0.0,
+   "no_data_mine": 0,
+   "grid_min": 0.0,
+   "grid_max": 0.8790201988670258,
+   "grid_mean": 0.2823224396461948,
+   "grid_nan": 0
+  },
+  "earth_unrounded_vs_dn": {
+   "pixels": 696320,
+   "max_abs_pp": 0.20000000000000284,
+   "median_abs_pp": 0.04365997314452841,
+   "within_0p1_pp": 473837,
+   "within_0p2_pp": 696320
+  },
+  "earth": {
+   "png_pixels": 696320,
+   "identical": 696320,
+   "differing": 0,
+   "max_abs_dn": 0,
+   "max_abs_pp": 0.0,
+   "median_abs_pp": 0.0,
+   "mean_dn_diff": 0.0,
+   "no_data_mine": 0,
+   "grid_min": 0.0,
+   "grid_max": 1.0,
+   "grid_mean": 0.2778401082505329,
+   "grid_nan": 0
+  },
+  "both_unrounded_vs_dn": {
+   "pixels": 696320,
+   "max_abs_pp": 0.1999999999999993,
+   "median_abs_pp": 0.04208340644836461,
+   "within_0p1_pp": 476712,
+   "within_0p2_pp": 696320
+  },
+  "both": {
+   "png_pixels": 696320,
+   "identical": 696320,
+   "differing": 0,
+   "max_abs_dn": 0,
+   "max_abs_pp": 0.0,
+   "median_abs_pp": 0.0,
+   "mean_dn_diff": 0.0,
+   "no_data_mine": 0,
+   "grid_min": 0.0,
+   "grid_max": 0.619592004381161,
+   "grid_mean": 0.09116483499793841,
+   "grid_nan": 0
+  }
+ },
+ "stored_cells": {
+  "n": 183,
+  "max_abs_pp": {
+   "sun": 2.151669242778098e-06,
+   "earth": 2.8986267608388516e-06,
+   "both": 1.478691352696515e-06
+  },
+  "cells": [
+   {
+    "row": 5284,
+    "col": 8028,
+    "lat": -75.140625,
+    "lon": 70.890625,
+    "backend": "GPU",
+    "sun_diff_pp": -2.905726367852246e-07,
+    "earth_diff_pp": -6.463154261782122e-07,
+    "both_diff_pp": -2.741434195537712e-09
+   },
+   {
+    "row": 5285,
+    "col": 4117,
+    "lat": -75.171875,
+    "lon": -51.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 2.046812996869818e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 8.454328015439216e-07
+   },
+   {
+    "row": 5291,
+    "col": 8879,
+    "lat": -75.359375,
+    "lon": 97.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.4586440943986645e-07,
+    "earth_diff_pp": 8.421685848691851e-07,
+    "both_diff_pp": 6.414190956149923e-07
+   },
+   {
+    "row": 5294,
+    "col": 9188,
+    "lat": -75.453125,
+    "lon": 107.140625,
+    "backend": "GPU",
+    "sun_diff_pp": -7.326938500362701e-08,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5296,
+    "col": 1762,
+    "lat": -75.515625,
+    "lon": -124.921875,
+    "backend": "GPU",
+    "sun_diff_pp": -4.6298707090386415e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5305,
+    "col": 975,
+    "lat": -75.796875,
+    "lon": -149.515625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3969474188524345e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5325,
+    "col": 3450,
+    "lat": -76.421875,
+    "lon": -72.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1209022765523713e-06,
+    "earth_diff_pp": 1.3513868024617182e-06,
+    "both_diff_pp": -4.37405389686063e-07
+   },
+   {
+    "row": 5325,
+    "col": 3878,
+    "lat": -76.421875,
+    "lon": -58.796875,
+    "backend": "GPU",
+    "sun_diff_pp": -5.052532309202107e-07,
+    "earth_diff_pp": -2.9541184776160634e-07,
+    "both_diff_pp": -1.0159882657401198e-07
+   },
+   {
+    "row": 5335,
+    "col": 8743,
+    "lat": -76.734375,
+    "lon": 93.234375,
+    "backend": "GPU",
+    "sun_diff_pp": -6.301051902468657e-08,
+    "earth_diff_pp": 7.507704458120656e-07,
+    "both_diff_pp": 5.092182120414179e-07
+   },
+   {
+    "row": 5342,
+    "col": 8715,
+    "lat": -76.953125,
+    "lon": 92.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 9.543843493275972e-09,
+    "earth_diff_pp": -2.3959369821469068e-06,
+    "both_diff_pp": -1.4362565026182494e-07
+   },
+   {
+    "row": 5347,
+    "col": 658,
+    "lat": -77.109375,
+    "lon": -159.421875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.079322387020909e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5349,
+    "col": 2132,
+    "lat": -77.171875,
+    "lon": -113.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.0125741967126345e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5349,
+    "col": 6697,
+    "lat": -77.171875,
+    "lon": 29.296875,
+    "backend": "GPU",
+    "sun_diff_pp": -6.2245852916476e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 6.20201667800302e-08
+   },
+   {
+    "row": 5353,
+    "col": 359,
+    "lat": -77.296875,
+    "lon": -168.765625,
+    "backend": "GPU",
+    "sun_diff_pp": 2.6279400877626813e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5362,
+    "col": 4405,
+    "lat": -77.578125,
+    "lon": -42.328125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.2576818420040325e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 1.439520719292986e-06
+   },
+   {
+    "row": 5371,
+    "col": 8687,
+    "lat": -77.859375,
+    "lon": 91.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.4530986969241155e-07,
+    "earth_diff_pp": 1.1710386826901953e-07,
+    "both_diff_pp": 8.85419491197803e-08
+   },
+   {
+    "row": 5372,
+    "col": 10550,
+    "lat": -77.890625,
+    "lon": 149.703125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.273376148969163e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5379,
+    "col": 3625,
+    "lat": -78.109375,
+    "lon": -66.703125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1152650081225346e-06,
+    "earth_diff_pp": -1.3513868024617182e-06,
+    "both_diff_pp": 1.3056877246064857e-07
+   },
+   {
+    "row": 5397,
+    "col": 1254,
+    "lat": -78.671875,
+    "lon": -140.796875,
+    "backend": "GPU",
+    "sun_diff_pp": -3.333031461938418e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5397,
+    "col": 3364,
+    "lat": -78.671875,
+    "lon": -74.859375,
+    "backend": "GPU",
+    "sun_diff_pp": 5.30456317759942e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5397,
+    "col": 7119,
+    "lat": -78.671875,
+    "lon": 42.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 5.643812472921894e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 1.478691352696515e-06
+   },
+   {
+    "row": 5401,
+    "col": 1721,
+    "lat": -78.796875,
+    "lon": -126.203125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.3679953281275914e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5403,
+    "col": 4548,
+    "lat": -78.859375,
+    "lon": -37.859375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.986645040285566e-07,
+    "earth_diff_pp": 1.488484013822955e-06,
+    "both_diff_pp": 6.528438650788004e-07
+   },
+   {
+    "row": 5407,
+    "col": 3111,
+    "lat": -78.984375,
+    "lon": -82.765625,
+    "backend": "GPU",
+    "sun_diff_pp": -2.615180738629874e-07,
+    "earth_diff_pp": -1.3024235079317492e-06,
+    "both_diff_pp": 2.7827469634145174e-07
+   },
+   {
+    "row": 5408,
+    "col": 2673,
+    "lat": -79.015625,
+    "lon": -96.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.0732359390086543e-06,
+    "earth_diff_pp": -1.0837208130887177e-06,
+    "both_diff_pp": -3.5498385064780535e-07
+   },
+   {
+    "row": 5409,
+    "col": 3639,
+    "lat": -79.046875,
+    "lon": -66.265625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2517896552655117e-06,
+    "earth_diff_pp": -1.9389462813101943e-06,
+    "both_diff_pp": 1.1424767798473567e-07
+   },
+   {
+    "row": 5410,
+    "col": 956,
+    "lat": -79.078125,
+    "lon": -150.109375,
+    "backend": "GPU",
+    "sun_diff_pp": -1.0766731395328577e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5421,
+    "col": 8638,
+    "lat": -79.421875,
+    "lon": 89.953125,
+    "backend": "GPU",
+    "sun_diff_pp": -4.7284261506241876e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5422,
+    "col": 6295,
+    "lat": -79.453125,
+    "lon": 16.734375,
+    "backend": "GPU",
+    "sun_diff_pp": -7.904296106531206e-08,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 8.19319051492684e-07
+   },
+   {
+    "row": 5425,
+    "col": 3434,
+    "lat": -79.546875,
+    "lon": -72.671875,
+    "backend": "GPU",
+    "sun_diff_pp": -3.652417202015812e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5432,
+    "col": 7815,
+    "lat": -79.765625,
+    "lon": 64.234375,
+    "backend": "GPU",
+    "sun_diff_pp": -4.5479910948387214e-07,
+    "earth_diff_pp": -2.8986267608388516e-06,
+    "both_diff_pp": -1.632109669635895e-07
+   },
+   {
+    "row": 5436,
+    "col": 4270,
+    "lat": -79.890625,
+    "lon": -46.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.0990605425753586e-06,
+    "earth_diff_pp": -5.25539312068446e-07,
+    "both_diff_pp": 6.00616353874095e-07
+   },
+   {
+    "row": 5439,
+    "col": 6833,
+    "lat": -79.984375,
+    "lon": 33.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.079630274070098e-08,
+    "earth_diff_pp": 2.630960771465851e-06,
+    "both_diff_pp": 1.305687780117637e-08
+   },
+   {
+    "row": 5440,
+    "col": 7345,
+    "lat": -80.015625,
+    "lon": 49.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.4889333599388266e-06,
+    "earth_diff_pp": -1.4199354025912214e-06,
+    "both_diff_pp": 3.753852229060328e-08
+   },
+   {
+    "row": 5441,
+    "col": 11032,
+    "lat": -80.046875,
+    "lon": 164.765625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1006835609617127e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5449,
+    "col": 4323,
+    "lat": -80.296875,
+    "lon": -44.890625,
+    "backend": "GPU",
+    "sun_diff_pp": -5.048804097018689e-07,
+    "earth_diff_pp": -2.657074527068204e-06,
+    "both_diff_pp": -9.760015740045702e-07
+   },
+   {
+    "row": 5456,
+    "col": 225,
+    "lat": -80.515625,
+    "lon": -172.953125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.409540784091945e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5460,
+    "col": 10181,
+    "lat": -80.640625,
+    "lon": 138.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 8.653525118695882e-09,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5461,
+    "col": 9465,
+    "lat": -80.671875,
+    "lon": 115.796875,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5468,
+    "col": 112,
+    "lat": -80.890625,
+    "lon": -176.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.312227573967988e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5469,
+    "col": 10730,
+    "lat": -80.921875,
+    "lon": 155.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 8.334059997672227e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5477,
+    "col": 1320,
+    "lat": -81.171875,
+    "lon": -138.734375,
+    "backend": "GPU",
+    "sun_diff_pp": -3.99721028498945e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5477,
+    "col": 9053,
+    "lat": -81.171875,
+    "lon": 102.921875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2092393586460304e-06,
+    "earth_diff_pp": -4.5699072304117294e-08,
+    "both_diff_pp": -1.5015408916241313e-07
+   },
+   {
+    "row": 5479,
+    "col": 692,
+    "lat": -81.234375,
+    "lon": -158.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.366249694078618e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5480,
+    "col": 1292,
+    "lat": -81.265625,
+    "lon": -139.609375,
+    "backend": "GPU",
+    "sun_diff_pp": -6.31136837236923e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5480,
+    "col": 4529,
+    "lat": -81.265625,
+    "lon": -38.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 5.08942793464584e-07,
+    "earth_diff_pp": 2.4481644933516122e-06,
+    "both_diff_pp": -5.745026010472998e-07
+   },
+   {
+    "row": 5481,
+    "col": 421,
+    "lat": -81.296875,
+    "lon": -166.828125,
+    "backend": "GPU",
+    "sun_diff_pp": -3.428531070159835e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5481,
+    "col": 2502,
+    "lat": -81.296875,
+    "lon": -101.796875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.151669242778098e-06,
+    "earth_diff_pp": -1.423199624817073e-06,
+    "both_diff_pp": -2.790907505101359e-07
+   },
+   {
+    "row": 5482,
+    "col": 792,
+    "lat": -81.328125,
+    "lon": -155.234375,
+    "backend": "GPU",
+    "sun_diff_pp": 8.272928286867653e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5486,
+    "col": 6758,
+    "lat": -81.453125,
+    "lon": 31.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3882384686247917e-06,
+    "earth_diff_pp": 1.419935405366779e-07,
+    "both_diff_pp": 1.9177288576588403e-08
+   },
+   {
+    "row": 5486,
+    "col": 10590,
+    "lat": -81.453125,
+    "lon": 150.953125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3172059998289853e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5490,
+    "col": 4048,
+    "lat": -81.578125,
+    "lon": -53.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5491,
+    "col": 5263,
+    "lat": -81.609375,
+    "lon": -15.515625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.419397338553452e-06,
+    "earth_diff_pp": -1.057607057486365e-06,
+    "both_diff_pp": -5.891915871858444e-07
+   },
+   {
+    "row": 5492,
+    "col": 9750,
+    "lat": -81.640625,
+    "lon": 124.703125,
+    "backend": "GPU",
+    "sun_diff_pp": 7.946199309660784e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5494,
+    "col": 3541,
+    "lat": -81.703125,
+    "lon": -69.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.0621883095307538e-06,
+    "earth_diff_pp": -1.836123371401488e-08,
+    "both_diff_pp": 2.9275967067254882e-08
+   },
+   {
+    "row": 5495,
+    "col": 10205,
+    "lat": -81.734375,
+    "lon": 138.921875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.562489498370013e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5498,
+    "col": 8194,
+    "lat": -81.828125,
+    "lon": 76.078125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.4585289975777016e-06,
+    "earth_diff_pp": 2.5787332602611457e-06,
+    "both_diff_pp": 1.8606050034009058e-07
+   },
+   {
+    "row": 5501,
+    "col": 3190,
+    "lat": -81.921875,
+    "lon": -80.296875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.049001974173791e-06,
+    "earth_diff_pp": 6.055126844373149e-07,
+    "both_diff_pp": -8.935800363540913e-08
+   },
+   {
+    "row": 5504,
+    "col": 3774,
+    "lat": -82.015625,
+    "lon": -62.046875,
+    "backend": "GPU",
+    "sun_diff_pp": 7.370764554259779e-08,
+    "earth_diff_pp": 2.6505460826165006e-06,
+    "both_diff_pp": 7.115998124085365e-07
+   },
+   {
+    "row": 5506,
+    "col": 4820,
+    "lat": -82.078125,
+    "lon": -29.359375,
+    "backend": "GPU",
+    "sun_diff_pp": -4.203317860440592e-07,
+    "earth_diff_pp": 1.6843371697383702e-06,
+    "both_diff_pp": -4.7657602308959213e-07
+   },
+   {
+    "row": 5508,
+    "col": 2157,
+    "lat": -82.140625,
+    "lon": -112.578125,
+    "backend": "GPU",
+    "sun_diff_pp": 7.521912953611931e-09,
+    "earth_diff_pp": -8.854194877283561e-08,
+    "both_diff_pp": -9.86916308225172e-09
+   },
+   {
+    "row": 5512,
+    "col": 5096,
+    "lat": -82.265625,
+    "lon": -20.734375,
+    "backend": "GPU",
+    "sun_diff_pp": 3.286662886292646e-07,
+    "earth_diff_pp": 4.6351914528841576e-07,
+    "both_diff_pp": 5.059540009177965e-08
+   },
+   {
+    "row": 5515,
+    "col": 26,
+    "lat": -82.359375,
+    "lon": -179.171875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.0550068707537719e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5518,
+    "col": 3391,
+    "lat": -82.453125,
+    "lon": -74.015625,
+    "backend": "GPU",
+    "sun_diff_pp": -5.416205012265252e-07,
+    "earth_diff_pp": -6.659007401044192e-07,
+    "both_diff_pp": -2.4073617543862724e-07
+   },
+   {
+    "row": 5519,
+    "col": 10214,
+    "lat": -82.484375,
+    "lon": 139.203125,
+    "backend": "GPU",
+    "sun_diff_pp": -3.9676707197511263e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5522,
+    "col": 6217,
+    "lat": -82.578125,
+    "lon": 14.296875,
+    "backend": "GPU",
+    "sun_diff_pp": -6.929907259145551e-07,
+    "earth_diff_pp": 1.534183080575957e-06,
+    "both_diff_pp": 1.1555336409951877e-06
+   },
+   {
+    "row": 5524,
+    "col": 420,
+    "lat": -82.640625,
+    "lon": -166.859375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.254942905148937e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5524,
+    "col": 731,
+    "lat": -82.640625,
+    "lon": -157.140625,
+    "backend": "GPU",
+    "sun_diff_pp": 5.416308679340176e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5527,
+    "col": 5095,
+    "lat": -82.734375,
+    "lon": -20.765625,
+    "backend": "GPU",
+    "sun_diff_pp": 3.403698933812649e-07,
+    "earth_diff_pp": -6.854860568061838e-07,
+    "both_diff_pp": -5.712383788214481e-07
+   },
+   {
+    "row": 5528,
+    "col": 10300,
+    "lat": -82.765625,
+    "lon": 141.890625,
+    "backend": "GPU",
+    "sun_diff_pp": -1.1129150101485408e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5534,
+    "col": 10661,
+    "lat": -82.953125,
+    "lon": 153.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3992146885577483e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5535,
+    "col": 8718,
+    "lat": -82.984375,
+    "lon": 92.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1424072798860152e-08,
+    "earth_diff_pp": 5.385961870940648e-07,
+    "both_diff_pp": 1.591306919568325e-07
+   },
+   {
+    "row": 5538,
+    "col": 2517,
+    "lat": -83.078125,
+    "lon": -101.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 5.890470833325168e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5538,
+    "col": 10311,
+    "lat": -83.078125,
+    "lon": 142.234375,
+    "backend": "GPU",
+    "sun_diff_pp": 5.185818052755309e-07,
+    "earth_diff_pp": 1.2975271829196444e-07,
+    "both_diff_pp": 7.976935952058728e-08
+   },
+   {
+    "row": 5540,
+    "col": 2683,
+    "lat": -83.140625,
+    "lon": -96.140625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2363837287310275e-06,
+    "earth_diff_pp": -5.026897731408297e-07,
+    "both_diff_pp": 3.6967283817412877e-07
+   },
+   {
+    "row": 5543,
+    "col": 656,
+    "lat": -83.234375,
+    "lon": -159.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 8.762930103767275e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5543,
+    "col": 4083,
+    "lat": -83.234375,
+    "lon": -52.390625,
+    "backend": "GPU",
+    "sun_diff_pp": -5.18406206850841e-07,
+    "earth_diff_pp": -8.943960960738906e-07,
+    "both_diff_pp": 1.6973940586417768e-07
+   },
+   {
+    "row": 5544,
+    "col": 7394,
+    "lat": -83.265625,
+    "lon": 51.078125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.4757385868868766e-06,
+    "earth_diff_pp": -1.201232713299305e-06,
+    "both_diff_pp": 6.495796456285063e-07
+   },
+   {
+    "row": 5546,
+    "col": 3243,
+    "lat": -83.328125,
+    "lon": -78.640625,
+    "backend": "GPU",
+    "sun_diff_pp": 6.942904917650594e-07,
+    "earth_diff_pp": -2.0956288038220805e-06,
+    "both_diff_pp": -2.2849535319391379e-07
+   },
+   {
+    "row": 5550,
+    "col": 2709,
+    "lat": -83.453125,
+    "lon": -95.328125,
+    "backend": "GPU",
+    "sun_diff_pp": -1.1086874057708584e-07,
+    "earth_diff_pp": -5.745026010472998e-07,
+    "both_diff_pp": 1.7953206282728118e-08
+   },
+   {
+    "row": 5550,
+    "col": 3061,
+    "lat": -83.453125,
+    "lon": -84.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": -1.8238825449934382e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5553,
+    "col": 5008,
+    "lat": -83.546875,
+    "lon": -23.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1844624517309832e-07,
+    "earth_diff_pp": 1.328537263534102e-06,
+    "both_diff_pp": -3.5294371245053746e-08
+   },
+   {
+    "row": 5557,
+    "col": 8903,
+    "lat": -83.671875,
+    "lon": 98.234375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.146197162326672e-08,
+    "earth_diff_pp": -3.65592561779593e-07,
+    "both_diff_pp": -1.1057542936843134e-07
+   },
+   {
+    "row": 5558,
+    "col": 11016,
+    "lat": -83.703125,
+    "lon": 164.265625,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5560,
+    "col": 1895,
+    "lat": -83.765625,
+    "lon": -120.765625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.1006662914425647e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5561,
+    "col": 9669,
+    "lat": -83.796875,
+    "lon": 122.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.0870361550073824e-07,
+    "earth_diff_pp": -9.662089184292455e-07,
+    "both_diff_pp": 8.160548348179475e-08
+   },
+   {
+    "row": 5563,
+    "col": 4974,
+    "lat": -83.859375,
+    "lon": -24.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -6.77580538899214e-07,
+    "earth_diff_pp": -2.7941717384294407e-06,
+    "both_diff_pp": -3.8844209793165163e-07
+   },
+   {
+    "row": 5565,
+    "col": 5289,
+    "lat": -83.921875,
+    "lon": -14.703125,
+    "backend": "GPU",
+    "sun_diff_pp": -6.701390997676526e-07,
+    "earth_diff_pp": -2.11521411497273e-06,
+    "both_diff_pp": 4.390374980234313e-07
+   },
+   {
+    "row": 5568,
+    "col": 6977,
+    "lat": -84.015625,
+    "lon": 38.046875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.3536398385815005e-07,
+    "earth_diff_pp": -1.1359483242934232e-06,
+    "both_diff_pp": 3.6232834510485645e-07
+   },
+   {
+    "row": 5575,
+    "col": 7293,
+    "lat": -84.234375,
+    "lon": 47.921875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.163647223023645e-06,
+    "earth_diff_pp": 2.369823226544554e-06,
+    "both_diff_pp": 4.063953062960479e-07
+   },
+   {
+    "row": 5576,
+    "col": 5912,
+    "lat": -84.265625,
+    "lon": 4.765625,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5576,
+    "col": 7566,
+    "lat": -84.265625,
+    "lon": 56.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5578,
+    "col": 8963,
+    "lat": -84.328125,
+    "lon": 100.109375,
+    "backend": "GPU",
+    "sun_diff_pp": 7.379782451799599e-07,
+    "earth_diff_pp": 1.312216169058189e-06,
+    "both_diff_pp": -3.0602056166895153e-07
+   },
+   {
+    "row": 5578,
+    "col": 9428,
+    "lat": -84.328125,
+    "lon": 114.640625,
+    "backend": "GPU",
+    "sun_diff_pp": 7.146535335733617e-07,
+    "earth_diff_pp": -6.3652276782733e-07,
+    "both_diff_pp": 3.917063201575033e-08
+   },
+   {
+    "row": 5579,
+    "col": 4810,
+    "lat": -84.359375,
+    "lon": -29.671875,
+    "backend": "GPU",
+    "sun_diff_pp": 6.012434911051301e-07,
+    "earth_diff_pp": 2.0891003371659167e-07,
+    "both_diff_pp": 6.479475345155805e-07
+   },
+   {
+    "row": 5582,
+    "col": 237,
+    "lat": -84.453125,
+    "lon": -172.578125,
+    "backend": "GPU",
+    "sun_diff_pp": -2.961908107668165e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5582,
+    "col": 995,
+    "lat": -84.453125,
+    "lon": -148.890625,
+    "backend": "GPU",
+    "sun_diff_pp": -1.1216488016163595e-06,
+    "earth_diff_pp": -5.385961870940648e-07,
+    "both_diff_pp": -3.10100833900151e-08
+   },
+   {
+    "row": 5583,
+    "col": 4962,
+    "lat": -84.484375,
+    "lon": -24.921875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.607122739917145e-07,
+    "earth_diff_pp": -5.288035342942976e-07,
+    "both_diff_pp": 4.92897117565505e-07
+   },
+   {
+    "row": 5583,
+    "col": 8359,
+    "lat": -84.484375,
+    "lon": 81.234375,
+    "backend": "GPU",
+    "sun_diff_pp": 2.2318427106426952e-07,
+    "earth_diff_pp": 1.8442839200272232e-07,
+    "both_diff_pp": -4.590308411156485e-08
+   },
+   {
+    "row": 5584,
+    "col": 4308,
+    "lat": -84.515625,
+    "lon": -45.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5587,
+    "col": 8770,
+    "lat": -84.609375,
+    "lon": 94.078125,
+    "backend": "GPU",
+    "sun_diff_pp": -5.707121608633514e-07,
+    "earth_diff_pp": 9.041887516492153e-07,
+    "both_diff_pp": -1.5097014333109726e-07
+   },
+   {
+    "row": 5591,
+    "col": 829,
+    "lat": -84.734375,
+    "lon": -154.078125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5595,
+    "col": 4865,
+    "lat": -84.859375,
+    "lon": -27.953125,
+    "backend": "GPU",
+    "sun_diff_pp": 7.974534643739872e-08,
+    "earth_diff_pp": 1.1718547354711006e-06,
+    "both_diff_pp": -4.8963289672743215e-08
+   },
+   {
+    "row": 5596,
+    "col": 7329,
+    "lat": -84.890625,
+    "lon": 49.046875,
+    "backend": "GPU",
+    "sun_diff_pp": -6.75519121196011e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5597,
+    "col": 3366,
+    "lat": -84.921875,
+    "lon": -74.796875,
+    "backend": "GPU",
+    "sun_diff_pp": 5.541942821318813e-07,
+    "earth_diff_pp": 1.478691352696515e-06,
+    "both_diff_pp": 7.426098902474365e-08
+   },
+   {
+    "row": 5597,
+    "col": 4070,
+    "lat": -84.921875,
+    "lon": -52.796875,
+    "backend": "GPU",
+    "sun_diff_pp": 5.3462611941668126e-09,
+    "earth_diff_pp": -2.480806671201208e-07,
+    "both_diff_pp": 3.060205647914538e-09
+   },
+   {
+    "row": 5597,
+    "col": 9350,
+    "lat": -84.921875,
+    "lon": 112.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 9.675201972925151e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5597,
+    "col": 10723,
+    "lat": -84.921875,
+    "lon": 155.109375,
+    "backend": "GPU",
+    "sun_diff_pp": 3.211724358687107e-07,
+    "earth_diff_pp": -6.018404385965681e-08,
+    "both_diff_pp": -5.712383864542314e-09
+   },
+   {
+    "row": 5600,
+    "col": 537,
+    "lat": -85.015625,
+    "lon": -163.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2624205736333494e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5604,
+    "col": 7195,
+    "lat": -85.140625,
+    "lon": 44.859375,
+    "backend": "GPU",
+    "sun_diff_pp": 2.734063628273553e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5610,
+    "col": 1755,
+    "lat": -85.328125,
+    "lon": -125.140625,
+    "backend": "GPU",
+    "sun_diff_pp": -2.3213189703774617e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5612,
+    "col": 5721,
+    "lat": -85.390625,
+    "lon": -1.203125,
+    "backend": "GPU",
+    "sun_diff_pp": -6.520048612124185e-07,
+    "earth_diff_pp": 9.792657795770765e-08,
+    "both_diff_pp": -8.97660307197512e-08
+   },
+   {
+    "row": 5612,
+    "col": 9252,
+    "lat": -85.390625,
+    "lon": 109.140625,
+    "backend": "GPU",
+    "sun_diff_pp": 6.683501890814014e-07,
+    "earth_diff_pp": -2.509368598330175e-08,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5614,
+    "col": 11423,
+    "lat": -85.453125,
+    "lon": 176.984375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.110638245404587e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5618,
+    "col": 3246,
+    "lat": -85.578125,
+    "lon": -78.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -9.443841153533583e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5619,
+    "col": 8725,
+    "lat": -85.609375,
+    "lon": 92.671875,
+    "backend": "GPU",
+    "sun_diff_pp": -3.606264287192573e-07,
+    "earth_diff_pp": 5.288035287431825e-07,
+    "both_diff_pp": -5.320677481934766e-07
+   },
+   {
+    "row": 5621,
+    "col": 3,
+    "lat": -85.671875,
+    "lon": -179.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3026454859232928e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5625,
+    "col": 3149,
+    "lat": -85.796875,
+    "lon": -81.578125,
+    "backend": "GPU",
+    "sun_diff_pp": -2.1571555097743556e-07,
+    "earth_diff_pp": -9.074529683239518e-07,
+    "both_diff_pp": 8.405364737562593e-08
+   },
+   {
+    "row": 5625,
+    "col": 11101,
+    "lat": -85.796875,
+    "lon": 166.921875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.5803812425385644e-08,
+    "earth_diff_pp": -1.0853529186505284e-07,
+    "both_diff_pp": 9.91379108796972e-10
+   },
+   {
+    "row": 5627,
+    "col": 3754,
+    "lat": -85.859375,
+    "lon": -62.671875,
+    "backend": "GPU",
+    "sun_diff_pp": 5.23830259724356e-07,
+    "earth_diff_pp": -1.4884840082718398e-06,
+    "both_diff_pp": -6.626365206541251e-07
+   },
+   {
+    "row": 5630,
+    "col": 7439,
+    "lat": -85.953125,
+    "lon": 52.484375,
+    "backend": "GPU",
+    "sun_diff_pp": 9.681471624389815e-07,
+    "earth_diff_pp": 3.2642193115162144e-08,
+    "both_diff_pp": -3.9578659100092395e-08
+   },
+   {
+    "row": 5633,
+    "col": 1529,
+    "lat": -86.046875,
+    "lon": -132.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2956065942315576e-07,
+    "earth_diff_pp": -4.994255564660932e-07,
+    "both_diff_pp": -1.5811062311840707e-09
+   },
+   {
+    "row": 5634,
+    "col": 6758,
+    "lat": -86.078125,
+    "lon": 31.203125,
+    "backend": "GPU",
+    "sun_diff_pp": -4.004851936190157e-08,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5634,
+    "col": 7270,
+    "lat": -86.078125,
+    "lon": 47.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 8.26011672255822e-09,
+    "earth_diff_pp": -3.353985353338196e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5638,
+    "col": 3829,
+    "lat": -86.203125,
+    "lon": -60.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 7.688062964028575e-08,
+    "earth_diff_pp": -2.1739700706291387e-06,
+    "both_diff_pp": 2.3012746153128205e-07
+   },
+   {
+    "row": 5638,
+    "col": 7302,
+    "lat": -86.203125,
+    "lon": 48.203125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5638,
+    "col": 10766,
+    "lat": -86.203125,
+    "lon": 156.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 9.592768579480548e-07,
+    "earth_diff_pp": -2.741944227224735e-07,
+    "both_diff_pp": 1.4648184193388758e-07
+   },
+   {
+    "row": 5640,
+    "col": 2655,
+    "lat": -86.265625,
+    "lon": -97.015625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.0195096045162444e-06,
+    "earth_diff_pp": 7.964695125650678e-07,
+    "both_diff_pp": -2.5868938102746597e-07
+   },
+   {
+    "row": 5641,
+    "col": 2110,
+    "lat": -86.296875,
+    "lon": -114.046875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.023297460129747e-07,
+    "earth_diff_pp": -1.4199354025912214e-06,
+    "both_diff_pp": -1.0812726478071077e-07
+   },
+   {
+    "row": 5643,
+    "col": 9160,
+    "lat": -86.359375,
+    "lon": 106.265625,
+    "backend": "GPU",
+    "sun_diff_pp": 5.254044976865657e-07,
+    "earth_diff_pp": -6.414190956149923e-07,
+    "both_diff_pp": -4.814723481016969e-08
+   },
+   {
+    "row": 5645,
+    "col": 7250,
+    "lat": -86.421875,
+    "lon": 46.578125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5645,
+    "col": 9887,
+    "lat": -86.421875,
+    "lon": 128.984375,
+    "backend": "GPU",
+    "sun_diff_pp": 3.968869122239482e-08,
+    "earth_diff_pp": -4.390374980234313e-07,
+    "both_diff_pp": 1.6157885585066367e-07
+   },
+   {
+    "row": 5646,
+    "col": 3944,
+    "lat": -86.453125,
+    "lon": -56.734375,
+    "backend": "GPU",
+    "sun_diff_pp": -9.693785274489386e-07,
+    "earth_diff_pp": 1.8540765700514328e-06,
+    "both_diff_pp": -3.8680998959428337e-07
+   },
+   {
+    "row": 5648,
+    "col": 6376,
+    "lat": -86.515625,
+    "lon": 19.265625,
+    "backend": "GPU",
+    "sun_diff_pp": 3.552913849626596e-11,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5648,
+    "col": 8903,
+    "lat": -86.515625,
+    "lon": 98.234375,
+    "backend": "GPU",
+    "sun_diff_pp": -1.4371520695721784e-06,
+    "earth_diff_pp": -6.610044123167569e-07,
+    "both_diff_pp": 1.762678433769871e-07
+   },
+   {
+    "row": 5649,
+    "col": 9691,
+    "lat": -86.546875,
+    "lon": 122.859375,
+    "backend": "GPU",
+    "sun_diff_pp": -1.0204255551649055e-06,
+    "earth_diff_pp": -3.8844209793165163e-07,
+    "both_diff_pp": -3.3458247977735667e-07
+   },
+   {
+    "row": 5652,
+    "col": 4404,
+    "lat": -86.640625,
+    "lon": -42.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.743212654924946e-08,
+    "earth_diff_pp": 2.0107591036655492e-06,
+    "both_diff_pp": -3.394788089527978e-07
+   },
+   {
+    "row": 5653,
+    "col": 6283,
+    "lat": -86.671875,
+    "lon": 16.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5654,
+    "col": 9365,
+    "lat": -86.703125,
+    "lon": 112.671875,
+    "backend": "GPU",
+    "sun_diff_pp": 1.903199653430221e-07,
+    "earth_diff_pp": 1.1587978562821455e-07,
+    "both_diff_pp": 6.7324522692868705e-09
+   },
+   {
+    "row": 5656,
+    "col": 9866,
+    "lat": -86.765625,
+    "lon": 128.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 6.374376200490861e-08,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5658,
+    "col": 1603,
+    "lat": -86.828125,
+    "lon": -129.890625,
+    "backend": "GPU",
+    "sun_diff_pp": -4.724361631069929e-08,
+    "earth_diff_pp": 1.20123270774819e-06,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5662,
+    "col": 2496,
+    "lat": -86.953125,
+    "lon": -101.984375,
+    "backend": "GPU",
+    "sun_diff_pp": -4.01101732383502e-07,
+    "earth_diff_pp": -1.207761141097663e-07,
+    "both_diff_pp": -4.0802708434206636e-10
+   },
+   {
+    "row": 5663,
+    "col": 6328,
+    "lat": -86.984375,
+    "lon": 17.765625,
+    "backend": "GPU",
+    "sun_diff_pp": -1.2761639347266124e-10,
+    "earth_diff_pp": 1.162062079895776e-06,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5664,
+    "col": 5144,
+    "lat": -87.015625,
+    "lon": -19.234375,
+    "backend": "GPU",
+    "sun_diff_pp": -1.233266697098223e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5668,
+    "col": 2339,
+    "lat": -87.140625,
+    "lon": -106.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 2.3503438084659933e-07,
+    "earth_diff_pp": -2.2849534764279866e-08,
+    "both_diff_pp": 2.244150698604841e-09
+   },
+   {
+    "row": 5669,
+    "col": 9972,
+    "lat": -87.171875,
+    "lon": 131.640625,
+    "backend": "GPU",
+    "sun_diff_pp": 7.179583039196302e-07,
+    "earth_diff_pp": 4.798402397643287e-07,
+    "both_diff_pp": -8.078942792533184e-08
+   },
+   {
+    "row": 5671,
+    "col": 6607,
+    "lat": -87.234375,
+    "lon": 26.484375,
+    "backend": "GPU",
+    "sun_diff_pp": -2.376922079300181e-08,
+    "earth_diff_pp": -1.2044969299740416e-06,
+    "both_diff_pp": 1.6729123988867833e-08
+   },
+   {
+    "row": 5673,
+    "col": 10285,
+    "lat": -87.296875,
+    "lon": 141.421875,
+    "backend": "GPU",
+    "sun_diff_pp": -8.516463645413808e-08,
+    "earth_diff_pp": 4.129237451966361e-07,
+    "both_diff_pp": 2.7949877828836733e-08
+   },
+   {
+    "row": 5675,
+    "col": 1268,
+    "lat": -87.359375,
+    "lon": -140.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 6.268226993011439e-07,
+    "earth_diff_pp": 1.5097014610665482e-08,
+    "both_diff_pp": -2.9479980782898263e-08
+   },
+   {
+    "row": 5676,
+    "col": 866,
+    "lat": -87.390625,
+    "lon": -152.921875,
+    "backend": "GPU",
+    "sun_diff_pp": -4.4029038470672077e-07,
+    "earth_diff_pp": 4.2434851188488665e-07,
+    "both_diff_pp": -1.7789995310213413e-07
+   },
+   {
+    "row": 5679,
+    "col": 3349,
+    "lat": -87.484375,
+    "lon": -75.328125,
+    "backend": "GPU",
+    "sun_diff_pp": 2.43553521794837e-07,
+    "earth_diff_pp": 2.3828801154479606e-07,
+    "both_diff_pp": 6.544759734161687e-07
+   },
+   {
+    "row": 5682,
+    "col": 5051,
+    "lat": -87.578125,
+    "lon": -22.140625,
+    "backend": "GPU",
+    "sun_diff_pp": -2.8925946499169797e-07,
+    "earth_diff_pp": -1.5668252806300131e-07,
+    "both_diff_pp": 1.0078277171143846e-07
+   },
+   {
+    "row": 5686,
+    "col": 8398,
+    "lat": -87.703125,
+    "lon": 82.453125,
+    "backend": "GPU",
+    "sun_diff_pp": 8.456000899492722e-08,
+    "earth_diff_pp": 2.70930206047737e-07,
+    "both_diff_pp": 7.609711298595112e-08
+   },
+   {
+    "row": 5689,
+    "col": 9764,
+    "lat": -87.796875,
+    "lon": 125.140625,
+    "backend": "GPU",
+    "sun_diff_pp": 5.223945126302254e-09,
+    "earth_diff_pp": 2.8153891579174584e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5691,
+    "col": 3011,
+    "lat": -87.859375,
+    "lon": -85.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.2222159728736415e-06,
+    "earth_diff_pp": 2.076043492671431e-06,
+    "both_diff_pp": -2.121742503913282e-08
+   },
+   {
+    "row": 5691,
+    "col": 10012,
+    "lat": -87.859375,
+    "lon": 132.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.7816826486383164e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5695,
+    "col": 10797,
+    "lat": -87.984375,
+    "lon": 157.421875,
+    "backend": "GPU",
+    "sun_diff_pp": 4.0557968095100705e-08,
+    "earth_diff_pp": -3.1336505612600263e-07,
+    "both_diff_pp": -1.3056877246064857e-07
+   },
+   {
+    "row": 5695,
+    "col": 10912,
+    "lat": -87.984375,
+    "lon": 161.015625,
+    "backend": "GPU",
+    "sun_diff_pp": 5.878423137151145e-07,
+    "earth_diff_pp": 3.672246728925188e-07,
+    "both_diff_pp": -7.956534597841625e-08
+   },
+   {
+    "row": 5696,
+    "col": 4602,
+    "lat": -88.015625,
+    "lon": -36.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 5.5463160453239624e-08,
+    "earth_diff_pp": -2.611375560235274e-08,
+    "both_diff_pp": -5.957200253925432e-08
+   },
+   {
+    "row": 5697,
+    "col": 312,
+    "lat": -88.046875,
+    "lon": -170.234375,
+    "backend": "GPU",
+    "sun_diff_pp": 2.1097906199862848e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5697,
+    "col": 9030,
+    "lat": -88.046875,
+    "lon": 102.203125,
+    "backend": "GPU",
+    "sun_diff_pp": -2.2057598109137544e-07,
+    "earth_diff_pp": -8.58489679345098e-07,
+    "both_diff_pp": 3.427430284030919e-08
+   },
+   {
+    "row": 5700,
+    "col": 6281,
+    "lat": -88.140625,
+    "lon": 16.296875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.589054665103063e-07,
+    "earth_diff_pp": -1.240403341151719e-06,
+    "both_diff_pp": 1.3628115719255263e-07
+   },
+   {
+    "row": 5701,
+    "col": 2266,
+    "lat": -88.171875,
+    "lon": -109.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 6.091267712449167e-07,
+    "earth_diff_pp": 2.5501710118613907e-10,
+    "both_diff_pp": 6.120411252460989e-10
+   },
+   {
+    "row": 5701,
+    "col": 8300,
+    "lat": -88.171875,
+    "lon": 79.390625,
+    "backend": "GPU",
+    "sun_diff_pp": 5.263694452528611e-07,
+    "earth_diff_pp": -4.047631951831221e-07,
+    "both_diff_pp": 4.9167303561858944e-08
+   },
+   {
+    "row": 5704,
+    "col": 7132,
+    "lat": -88.265625,
+    "lon": 42.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": -2.5787332547100306e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5708,
+    "col": 4092,
+    "lat": -88.390625,
+    "lon": -52.109375,
+    "backend": "GPU",
+    "sun_diff_pp": -9.75193459318291e-07,
+    "earth_diff_pp": 4.863686786649168e-07,
+    "both_diff_pp": 4.5862281472519584e-07
+   },
+   {
+    "row": 5708,
+    "col": 4187,
+    "lat": -88.390625,
+    "lon": -49.140625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.113765818461232e-06,
+    "earth_diff_pp": -1.4036143081153085e-06,
+    "both_diff_pp": -4.2761273133518074e-07
+   },
+   {
+    "row": 5712,
+    "col": 7980,
+    "lat": -88.515625,
+    "lon": 69.390625,
+    "backend": "GPU",
+    "sun_diff_pp": -9.903134839950312e-08,
+    "earth_diff_pp": 8.356401459685969e-07,
+    "both_diff_pp": 6.528438900588185e-09
+   },
+   {
+    "row": 5714,
+    "col": 1542,
+    "lat": -88.578125,
+    "lon": -131.796875,
+    "backend": "GPU",
+    "sun_diff_pp": -4.438493843295088e-11,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5717,
+    "col": 8776,
+    "lat": -88.671875,
+    "lon": 94.265625,
+    "backend": "GPU",
+    "sun_diff_pp": -4.6498999095589966e-08,
+    "earth_diff_pp": 4.5699072304117294e-08,
+    "both_diff_pp": 2.7745863939721005e-08
+   },
+   {
+    "row": 5723,
+    "col": 5185,
+    "lat": -88.859375,
+    "lon": -17.953125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 5.908236955232127e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5727,
+    "col": 5867,
+    "lat": -88.984375,
+    "lon": 3.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 2.0586018167900733e-07,
+    "earth_diff_pp": 5.777668177220363e-07,
+    "both_diff_pp": -1.836123371401488e-08
+   },
+   {
+    "row": 5729,
+    "col": 6203,
+    "lat": -89.046875,
+    "lon": 13.859375,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": -1.1424767520917811e-07,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5734,
+    "col": 1065,
+    "lat": -89.203125,
+    "lon": -146.703125,
+    "backend": "GPU",
+    "sun_diff_pp": 5.224688293115065e-07,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5735,
+    "col": 4451,
+    "lat": -89.234375,
+    "lon": -40.890625,
+    "backend": "GPU",
+    "sun_diff_pp": 1.0397877489576324e-07,
+    "earth_diff_pp": 8.225832681674206e-07,
+    "both_diff_pp": -1.1016740297797867e-08
+   },
+   {
+    "row": 5736,
+    "col": 6893,
+    "lat": -89.265625,
+    "lon": 35.421875,
+    "backend": "GPU",
+    "sun_diff_pp": 2.1251308907066502e-07,
+    "earth_diff_pp": -7.181282513091247e-07,
+    "both_diff_pp": -2.590974101934762e-08
+   },
+   {
+    "row": 5737,
+    "col": 7397,
+    "lat": -89.296875,
+    "lon": 51.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 5.955432647031245e-07,
+    "earth_diff_pp": -7.572988847126538e-07,
+    "both_diff_pp": -3.4519119368470186e-07
+   },
+   {
+    "row": 5738,
+    "col": 742,
+    "lat": -89.328125,
+    "lon": -156.796875,
+    "backend": "GPU",
+    "sun_diff_pp": 6.507208383244034e-07,
+    "earth_diff_pp": -6.854860568061838e-08,
+    "both_diff_pp": -3.509035700899332e-08
+   },
+   {
+    "row": 5739,
+    "col": 3130,
+    "lat": -89.359375,
+    "lon": -82.171875,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 6.283622198954841e-08,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5741,
+    "col": 1282,
+    "lat": -89.421875,
+    "lon": -139.921875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.4950024995741273e-06,
+    "earth_diff_pp": -3.149971644633709e-07,
+    "both_diff_pp": 3.6559256316737176e-07
+   },
+   {
+    "row": 5741,
+    "col": 3369,
+    "lat": -89.421875,
+    "lon": -74.703125,
+    "backend": "GPU",
+    "sun_diff_pp": 0.0,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5742,
+    "col": 174,
+    "lat": -89.453125,
+    "lon": -174.546875,
+    "backend": "GPU",
+    "sun_diff_pp": -1.2761700918240138e-06,
+    "earth_diff_pp": 0.0,
+    "both_diff_pp": 0.0
+   },
+   {
+    "row": 5752,
+    "col": 7243,
+    "lat": -89.765625,
+    "lon": 46.359375,
+    "backend": "GPU",
+    "sun_diff_pp": 1.3639196994041924e-06,
+    "earth_diff_pp": -2.324124159791552e-06,
+    "both_diff_pp": -1.2240822522269212e-07
+   }
+  ]
+ },
+ "differing_pixels": [],
+ "ephem_sha256": "c0a226391f7a47c2"
+}

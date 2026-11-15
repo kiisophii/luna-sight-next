@@ -167,3 +167,12 @@ html.tv .globe-stage { height: calc(100vh - 13rem); min-height: 480px; }
 html.tv .globe-stage .g3-site, html.tv .globe-stage .g3-label, html.tv .globe-stage .g3-chip { font-size: 18px; }
 html.tv .globe-stage .g3-note { font-size: 17px; }
 html.tv .globe-stage .g3-hud { font-size: 15px; }
+
+/* #90 follow-up: other small controls get the same invisible hit area (>= 32 px mouse, >= 44 px touch).
+   Each one is made relative here, so its ::after never spreads over an ancestor. */
+html { --hit: 32px; }
+@media (pointer: coarse) { html { --hit: 44px; } }
+html body.ls :is(.ls-link.more, .val-badge, .pill, .dd-btn, .c1-add, .ls-add, .gl-zoom button, .cmp-arrows .ls-btn, .copy-link, .why-btn) { position: relative; }
+html body.ls :is(.ls-link.more, .val-badge, .pill, .dd-btn, .c1-add, .ls-add, .gl-zoom button, .cmp-arrows .ls-btn, .copy-link, .why-btn)::after {
+  content: ''; position: absolute; top: min(0px, calc(50% - var(--hit) / 2)); bottom: min(0px, calc(50% - var(--hit) / 2));
+  left: min(0px, calc(50% - var(--hit) / 2)); right: min(0px, calc(50% - var(--hit) / 2)); }

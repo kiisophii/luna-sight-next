@@ -556,6 +556,8 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   .g3-cluster-panel{position:absolute;pointer-events:auto;z-index:8;width:240px;max-width:calc(100% - 24px);max-height:240px;overflow:auto;padding:8px;border:1px solid #666;border-radius:8px;background:#101318f5;color:white}
   .g3-cluster-panel[hidden]{display:none}.g3-cluster-panel button{display:block;width:100%;padding:8px;text-align:left;border:0;background:transparent;color:#fff;cursor:pointer}.g3-cluster-panel button:hover{background:#ffffff20}
   .g3-cluster:focus-visible,.g3-cluster-panel button:focus-visible{outline:2px solid #ffd23f}
+  .g3-cluster-panel.g3-fit{max-height:none}.g3-cluster-panel.g3-fit button{min-height:32px;padding:7px 8px;font-size:13px;line-height:1.35}
+  .g3-cluster-panel.g3-fit button span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
   .g3-site.g3-dotonly{color:transparent!important;text-shadow:none!important}.g3-site.g3-dotonly:hover,.g3-site.g3-dotonly:focus-visible{color:inherit!important;z-index:2}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
@@ -624,12 +626,36 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     activeCluster=button;clusterPanel.replaceChildren();clusterPanel.hidden=false;
     clusterPanel.setAttribute('aria-label',lang==='ko'?'가까운 착륙지 선택':'Choose a nearby landing site');
     const close=document.createElement('button');close.textContent=lang==='ko'?'닫기 ×':'Close ×';close.onclick=()=>closeCluster(true);clusterPanel.append(close);
-    for(const m of members){const row=document.createElement('button');row.textContent=lang==='ko'?(m.s.name_ko||m.s.name):m.s.name;row.dataset.siteId=m.s.id;
+    const fit=window.innerWidth>=1100;   // desktop layout: rows wrap to two lines and the list stays clear of the dock (phone list unchanged)
+    clusterPanel.classList.toggle('g3-fit',fit);clusterPanel.style.maxHeight='';
+    for(const m of members){const row=document.createElement('button');const name=lang==='ko'?(m.s.name_ko||m.s.name):m.s.name;row.dataset.siteId=m.s.id;
+      if(fit){const t=document.createElement('span');t.textContent=name;row.append(t);row.title=name;}else row.textContent=name;
       row.onclick=e=>{e.stopPropagation();closeCluster();focusSite(m.s.id);emit('siteclick',m.s);};clusterPanel.append(row);}
     const x=parseFloat(button.style.left),y=parseFloat(button.style.top);
-    clusterPanel.style.left=`${Math.max(8,Math.min(x,overlay.clientWidth-clusterPanel.offsetWidth-8))}px`;
-    clusterPanel.style.top=`${Math.max(8,Math.min(y+30,overlay.clientHeight-clusterPanel.offsetHeight-8))}px`;
+    if(!fit){
+      clusterPanel.style.left=`${Math.max(8,Math.min(x,overlay.clientWidth-clusterPanel.offsetWidth-8))}px`;
+      clusterPanel.style.top=`${Math.max(8,Math.min(y+30,overlay.clientHeight-clusterPanel.offsetHeight-8))}px`;
+    }else placeClusterPanel(button);
     clusterPanel.querySelector('button[data-site-id]')?.focus();
+  }
+  // Desktop: the list opens below the +N button, or above it when the space under it (down to the dock or another
+  // page box) is too short; if neither side fits the whole list, it takes the larger side and scrolls inside.
+  function placeClusterPanel(button){
+    const o=overlay.getBoundingClientRect(),b=button.getBoundingClientRect(),pw=clusterPanel.offsetWidth;
+    const minX=(labelIns?.left||0)+8,maxX=overlay.clientWidth-(labelIns?.right||0)-8;
+    const left=Math.max(minX,Math.min(b.left-o.left,maxX-pw)),bTop=b.top-o.top,bBot=b.bottom-o.top;
+    let top=(labelIns?.top||0)+8,bot=overlay.clientHeight-8;
+    for(const e of avoidList()){
+      if(!e||e===clusterPanel||e.hidden||e.classList?.contains('g3-cluster')||e.classList?.contains('g3-site'))continue;
+      const r=e.getBoundingClientRect();if(!r.width||!r.height)continue;
+      const x0=r.left-o.left,x1=r.right-o.left,y0=r.top-o.top,y1=r.bottom-o.top;
+      if(x1<=left||x0>=left+pw)continue;              // not in the list's column
+      if(y0>=bBot)bot=Math.min(bot,y0-8);else if(y1<=bTop)top=Math.max(top,y1+8);   // boxes beside the button (side panels) are left to the x clamp
+    }
+    const h=Math.min(clusterPanel.scrollHeight+2,320),below=bot-(bBot+4),above=(bTop-4)-top;
+    const down=h<=below||(h>above&&below>=above),room=Math.max(0,down?below:above),ph=Math.min(h,room);
+    clusterPanel.style.maxHeight=`${Math.floor(ph)}px`;clusterPanel.style.left=`${left}px`;
+    clusterPanel.style.top=`${Math.round(down?bBot+4:bTop-4-ph)}px`;
   }
   function declutter() {
     const origin=overlay.getBoundingClientRect();

@@ -268,6 +268,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   let lang = opts.lang === 'ko' ? 'ko' : 'en';
   let hour = 0;
   let dirty = true;
+  let marks = [];                        // setMarks(): extra icons on the surface (relay towers)
   let fly = null;
   let labelIns = null;            // panels over the stage (opts.labelInsets), refreshed every 30 frames
 
@@ -968,6 +969,15 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     // visible area for site names: the caller may report panels floating over the globe (opts.labelInsets())
     if (typeof opts.labelInsets === 'function' && (frameNo % 30 === 0 || !labelIns)) labelIns = opts.labelInsets() || {};
     const L0 = (labelIns && labelIns.left) || 0, R0 = w - ((labelIns && labelIns.right) || 0), T0 = (labelIns && labelIns.top) || 0;
+    // surface marks (setMarks): icon at its own lat/lon on the terrain, thin line from the 'from' point
+    for (const k of marks) {
+      if (k.h == null || frameNo % 20 === 0) { k.h = heightAt(k.lat, k.lon); k.h0 = heightAt(k.from.lat, k.from.lon); }
+      const p = k.dir.clone().multiplyScalar(R + k.h / 1000 * exag), p0 = k.dir0.clone().multiplyScalar(R + k.h0 / 1000 * exag);
+      const pr = project(p), pr0 = project(p0);
+      const show = k.dir.dot(camPos.clone().sub(p)) > 0 && pr.on && view.range < 9000;
+      k.el.style.display = show ? '' : 'none'; k.line.style.display = show && !pr0.behind ? '' : 'none';
+      if (show) { k.el.style.transform = `translate(${pr.x}px,${pr.y}px)`; k.line.setAttribute('x1', pr0.x); k.line.setAttribute('y1', pr0.y); k.line.setAttribute('x2', pr.x); k.line.setAttribute('y2', pr.y); }
+    }
     for (const m of siteEls) {
       if (m.h == null || frameNo % 20 === 0) m.h = heightAt(m.s.lat, m.s.lon);
       const p = m.dir.clone().multiplyScalar(R + m.h / 1000 * exag);
@@ -1088,8 +1098,22 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     return latLonFromDir(p);
   }
 
+  // setMarks([{lat, lon, from: {lat, lon}, html, color, title}]): replaces all marks; [] removes them
+  const markSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); markSvg.setAttribute('class', 'g3-marklines'); markSvg.setAttribute('aria-hidden', 'true'); overlay.appendChild(markSvg);
+  function setMarks(list) {
+    for (const k of marks) { k.el.remove(); k.line.remove(); }
+    marks = (list || []).map(o => {
+      const el = document.createElement('div'); el.className = 'g3-mark'; el.innerHTML = o.html || ''; el.title = o.title || ''; el.setAttribute('role', 'img'); el.setAttribute('aria-label', o.title || '');
+      if (o.color) el.style.setProperty('--mk', o.color);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line'); line.setAttribute('stroke', o.color || '#3CC6A0'); line.setAttribute('stroke-width', '1.2');
+      overlay.appendChild(el); markSvg.appendChild(line);
+      return { ...o, el, line, dir: dirFromLatLon(o.lat, o.lon), dir0: dirFromLatLon(o.from.lat, o.from.lon), h: null, h0: null };
+    });
+    dirty = true;
+  }
+
   const api = {
-    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, setElevation, screenToLatLon,
+    setTime, flyTo, focusSite, setView, getView, setExaggeration, setLang, setColorMap, setElevation, screenToLatLon, setMarks,
     maxTextureSize: () => renderer.capabilities.maxTextureSize,
     // manual frames (tests / hidden tabs where requestAnimationFrame is paused); also loads tiles until idle
     async step(maxMs = 20000) {

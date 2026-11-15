@@ -62,3 +62,37 @@ body:has(.ls-below) { background:#020306; }
 
 .detail-charts .lg-sw { width:24px; height:12px; }
 #ls-compare > details { display:none; }
+
+/* ---- designer copy 18:41 follow-ups (detail session, on top of #98) ---- */
+/* relay numbers blue like the copy; Yeoju white (colour only where it carries meaning) */
+#ls-compare .detail-table tr.r-relay .val, #ls-compare .detail-table tr.r-relay .val * { color: #56B4E9; }
+#ls-compare .detail-table tr.r-relay .val small { color: #6E6E74; }
+#ls-compare .detail-table tr.r-kdsa .val { color: #EDEDED; }
+/* elevation chart row: 0-60 deg grid, start/end dates, read-out at the selected time, copy legend */
+.detail-table.cmp-tbl .detail-charts td { padding: 0 18px; vertical-align: top; text-align: left; }
+.detail-charts .cw { height: 168px; }
+.detail-charts .cw svg { display: block; width: 100%; height: 168px; }
+.detail-charts .rd-now { display: flex; gap: 14px; margin: 6px 0 8px; font: 400 12px/16px var(--font-num); color: #8D96A4; }
+.detail-charts .rd-now .k-sun { color: var(--sun); }
+.detail-charts .rd-now .k-earth { color: var(--earth); }
+.detail-lg { display: flex; flex-direction: column; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.detail-lg li { display: flex; align-items: center; gap: 8px; font: 400 12px/15.6px var(--font); color: #AEB6C2; }
+.detail-lg .sw { display: inline-block; flex: none; width: 18px; }
+.detail-lg .sw.ln { height: 2px; }
+.detail-lg .sw.ln.thin { height: 1px; }
+.detail-lg .sw.dash { height: 0; border-top: 1px dashed #6E6E74; }
+.detail-lg .sw.vl { width: 2px; height: 12px; margin: 0 8px; background: #FFFFFF; }
+/* timeline hover: name + time, then Sun / Earth / KDSA lines with colour swatches, small note */
+.detail-tooltip.tl-tip { width: 280px; max-width: 280px; padding: 8px 10px; background: #121213; border: 1px solid #2A2A2D; border-radius: 6px; font: 400 12px/1.45 var(--font); }
+.detail-tooltip.tl-tip .tt-h { display: flex; flex-direction: column; margin-bottom: 4px; }
+.detail-tooltip.tl-tip .tt-h b { font-weight: 600; color: #EDEDED; }
+.detail-tooltip.tl-tip .tt-h span { font: 400 11.5px var(--font-num); color: #8D96A4; }
+.detail-tooltip.tl-tip .tt-l { display: grid; grid-template-columns: 14px 44px 1fr; align-items: center; gap: 6px; }
+.detail-tooltip.tl-tip .tt-l i { width: 12px; height: 2px; border-radius: 1px; }
+.detail-tooltip.tl-tip .tt-l b { font-weight: 500; color: #EDEDED; }
+.detail-tooltip.tl-tip .tt-l span { color: #C9C9CE; }
+.detail-tooltip.tl-tip .tt-n { margin: 5px 0 0; font-size: 10.5px; color: #6E6E74; }
+/* section titles never under the fixed top bar: each lower page starts 84 px down (bar 64 + 20), any scroll path */
+.ls-below { padding-top: 0; }
+.ls-below > .ls-section { padding-top: 84px; scroll-margin-top: 0; margin-top: 0; }
+@media (max-width: 760px) { .ls-below > .ls-section { padding-top: 64px; } }

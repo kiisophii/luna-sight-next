@@ -256,11 +256,12 @@ function placeAltNeedles(root) {
 }
 
 // ------------------------------------------------------------ timeline (SVG)
-let bitsKD = null;
+let bitsKD = null, kdLoaded = null;
 async function timelineSVG(sites) {
   const cw = document.querySelector('#ls-compare .tl')?.clientWidth || 1100;
   const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(720, Math.min(1100, Math.round(cw - 34))), LW = W < 900 ? 124 : 150, rowH = 14, gap = 10, top = 22;
   const kd = await (bitsKD ||= stationBits().catch(() => null));
+  kdLoaded = kd;
   const H = top + sites.length * (rowH * 2 + 8 + gap) + 4;
   const X = k => LW + (k / n) * (W - LW - 10);
   const sunC = css('--sun'), earthC = css('--earth'), relayC = css('--relay'), kdC = css('--kdsa');
@@ -281,7 +282,7 @@ async function timelineSVG(sites) {
     if (codes) runsDraw(k => !(bits[k] & 2) && codes[k] === 2, relayC, y + rowH + 2, rowH);
     if (kd?.KDSA) runsDraw(k => (bits[k] & 2) && kd.KDSA[w.i0 + k], kdC, y + rowH * 2 + 4, 3);
   }
-  return `<svg viewBox="0 0 ${W} ${H}" class="tl-svg" role="img" aria-label="${esc(t('tlH'))}">${out}
+  return `<svg viewBox="0 0 ${W} ${H}" class="tl-svg" role="img" aria-label="${esc(t('tlH'))}" data-ids="${esc(sites.map(x => x.id).join(','))}" data-top="${top}" data-pitch="${rowH * 2 + 8 + gap}">${out}
     <g class="tl-needle" data-n="${n}" data-i0="${w.i0}" data-w="${W}" data-lw="${LW}"><line x1="0" x2="0" y1="${top - 6}" y2="${H}" stroke="${css('--text')}" stroke-width="1.6"/><path d="M-5,${top - 10} L5,${top - 10} L0,${top - 3}z" fill="${css('--text')}"/></g></svg>`;
 }
 function placeTlNeedle(root) {
@@ -395,6 +396,48 @@ function detailCell(row, site, w) {
   }
   return { ...original, html: original.html.replace(/<span class="sub">[\s\S]*?<\/span>/g, '') };
 }
+// Elevation chart inside the comparison table: 20° grid, start/end dates, same bounds for every column.
+function detailAltSVG(s, W, H, bounds) {
+  const w = LLSN().window, n = w.i1 - w.i0 + 1, step = Math.max(1, Math.ceil(n / 480));
+  const [lo, hi] = bounds, L = 30, R = 4, T = 8, B = 22;
+  const X = k => L + (k / (n - 1)) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const pts = { sun: [], earth: [], hz: [] };
+  for (let k = 0; k < n; k += step) {
+    const i = w.i0 + k, su = core.sunAzEl(s, i), ea = core.earthAzEl(s, i);
+    const hz = core.terrainPending(s) ? null : core.horizonAt(s, su.az);
+    const c = v => Math.max(lo, Math.min(hi, v));
+    pts.sun.push([k, c(su.el)]); pts.earth.push([k, c(ea.el)]); if (hz != null) pts.hz.push([k, c(hz)]);
+  }
+  const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
+  const font = css('--font-num') || 'monospace';
+  let grid = '';
+  for (let v = 0; v <= hi; v += 20) {
+    grid += `${v === 0 ? '' : `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="rgba(237,237,237,.05)" stroke-width="1"/>`}<text x="0" y="${(Y(v) + 3).toFixed(1)}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${v}°</text>`;
+  }
+  const d0 = core.hourToDate(w.i0).toISOString().slice(5, 10), d1 = core.hourToDate(w.i1).toISOString().slice(5, 10);
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">${grid}
+    <line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#6E6E74" stroke-dasharray="3 3" stroke-width="0.75"/>
+    ${pts.hz.length ? line(pts.hz, '#8D96A4', 0.75) : ''}${line(pts.earth, css('--earth'), 1.8)}${line(pts.sun, css('--sun'), 1.8)}
+    <text x="${L}" y="${H - 6}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d0}</text><text x="${W - R}" y="${H - 6}" text-anchor="end" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d1}</text>
+    <line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="${L}" data-w="${W - L - R}" x1="0" x2="0" y1="${T - 4}" y2="${H - B + 2}" stroke="${css('--text')}" stroke-width="1.5"/></svg>`;
+}
+function placeReadouts(root) {
+  const now = LLSN().now?.(); if (now == null) return;
+  const ko = getLang() === 'ko';
+  root.querySelectorAll('.rd-now').forEach(p => {
+    const s = byId(p.dataset.id); if (!s) return;
+    p.innerHTML = `<span class="k-sun">${ko ? '태양' : 'Sun'} ${core.sunAzEl(s, now).el.toFixed(1)}°</span><span class="k-earth">${ko ? '지구' : 'Earth'} ${core.earthAzEl(s, now).el.toFixed(1)}°</span>`;
+  });
+}
+const altLegend = ko => `<ul class="detail-lg">${[
+  ['<span class="sw ln" style="background:var(--sun)"></span>', ko ? '태양 고도' : 'Sun elevation'],
+  ['<span class="sw ln" style="background:var(--earth)"></span>', ko ? '지구 고도' : 'Earth elevation'],
+  ['<span class="sw ln thin" style="background:#8D96A4"></span>', ko ? '지형 지평선 (태양 방향)' : 'Terrain horizon (Sun direction)'],
+  ['<span class="sw dash"></span>', ko ? '0° 기준선' : '0° level'],
+  ['<span class="sw vl"></span>', ko ? '선택 시각' : 'Selected time']].map(([sw, l]) => `<li>${sw}${esc(l)}</li>`).join('')}</ul>`;
+// timeline legend: same items as the drawing (timelineSVG), worded like the designer copy
+// shared chart scale: floor -15 deg (below-horizon parts sit on it), top at least 70 deg (grid 0-60), higher only when a site goes higher
+function chartBounds(sites) { const hi = elevationBounds(sites)[1]; return [-15, Math.max(70, hi)]; }
 function elevationBounds(sites) {
   const w = LLSN().window, step = Math.max(1, Math.ceil((w.i1 - w.i0 + 1) / 480));
   let low = 0, high = 0;
@@ -422,7 +465,7 @@ async function renderBig() {
     } catch { /* The table explicitly reports unavailable data. */ }
   });
   if (terrainJobs.length) Promise.all(terrainJobs).then(() => renderBig());
-  const bounds = elevationBounds(allSites);
+  const bounds = chartBounds(allSites);
   const head = sites.map((site, index) => `<th scope="col" class="${site.id === LLSN().focus ? 'focus-col' : ''}">
     <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm">${esc(nameOf(site))}</span></button>
     <button class="unpin" data-id="${esc(site.id)}" aria-label="${esc(t('unpin'))} ${esc(nameOf(site))}">×</button></div><span class="detail-group">${esc(t('g_' + site.group))}</span></th>`).join('');
@@ -438,7 +481,7 @@ async function renderBig() {
   const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '상세 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');
   root.classList.add('detail-comparison');
   root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${(LLSN().compare?.() || []).length} ${ko ? '고정 · 표시' : 'pinned · showing'} ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
-    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${LG.alt()}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}">${altSVG(site, 300, 180, bounds)}</td>`).join('')}</tr></tbody></table></div>
+    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
     <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p><div class="tl ls-panel"><div class="tl-wrap"></div></div><div class="detail-tooltip" role="status" hidden></div>`;
   root.querySelectorAll('[data-page-step]').forEach(button => button.addEventListener('click', () => {
     firstColumn = Math.max(0, firstColumn + Number(button.dataset.pageStep) * capacity); renderBig();
@@ -455,16 +498,17 @@ async function renderBig() {
     tip.style.left = Math.min(rect.left, window.innerWidth - 320) + 'px';
     tip.style.top = rect.bottom + 6 + 'px';
   }));
-  placeAltNeedles(root);
+  placeAltNeedles(root); placeReadouts(root);
   const timeline = await timelineSVG(sites);
   if (my !== bigSeq) return;
   const tl = root.querySelector('.tl-wrap'); tl.innerHTML = timeline;
   placeTlNeedle(root); wireTimeline(tl);
   root.querySelectorAll('[data-chart-site]').forEach(box => {
     box.addEventListener('pointermove', event => {
-      const rect = box.getBoundingClientRect(), fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * 300 - 28) / 266));
+      const svgBox = box.querySelector('svg') || box, rect = svgBox.getBoundingClientRect(), fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * 264 - 30) / 230));
       const i = w.i0 + fraction * (w.i1 - w.i0), site = byId(box.dataset.chartSite);
       const tip = root.querySelector('.detail-tooltip');
+      tip.classList.remove('tl-tip');
       tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t('lgSunEl')} ${core.sunAzEl(site,i).el.toFixed(1)}° · ${t('lgEarthEl')} ${core.earthAzEl(site,i).el.toFixed(1)}°`;
       tip.hidden = false; tip.style.left = Math.max(8, Math.min(event.clientX + 12, innerWidth - 320)) + 'px'; tip.style.top = Math.min(event.clientY + 12, innerHeight - 80) + 'px';
     });
@@ -472,6 +516,25 @@ async function renderBig() {
   });
 }
 
+// Timeline hover read-out: state at that hour for the site under the pointer (same bits as the bars).
+const tlTime = i => {
+  const d = core.hourToDate(i), iso = d.toISOString(), hm = iso.slice(11, 16);
+  return getLang() === 'ko' ? `${iso.slice(0, 10)} ${hm} UTC` : `${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })} · ${hm} UTC`;
+};
+function tlTipHTML(site, i) {
+  const ko = getLang() === 'ko', w = LLSN().window, k = i - w.i0;
+  const bits = hourBits(site, w.i0, w.i1), b = bits ? bits[k] : 0;
+  const sunPart = !(b & 1) && core.sunVisibleFraction(site, i) > 0, eEl = core.earthAzEl(site, i).el;
+  const kd = kdLoaded;
+  const line = (col, k1, v) => `<div class="tt-l"><i style="background:${col}"></i><b>${esc(k1)}</b><span>${esc(v)}</span></div>`;
+  const sunTxt = b & 1 ? (ko ? '보임' : 'visible') : sunPart ? (ko ? '일부만 보임' : 'partly visible') : (ko ? '가려짐 (그늘)' : 'hidden (shadow)');
+  const earthTxt = (b & 2 ? (ko ? '보임' : 'in view') : (ko ? '가려짐' : 'hidden')) + ` · ${ko ? '고도' : 'Earth at'} ${eEl.toFixed(1)}°`;
+  const kdOn = kd?.KDSA ? !!kd.KDSA[i] : null;
+  const kdTxt = kdOn == null ? '—' : kdOn ? (ko ? '여주에서 달 ≥ 10°' : 'Moon ≥ 10° at Yeoju') : (ko ? '여주에서 달 < 10°' : 'Moon below 10° at Yeoju');
+  return `<div class="tt-h"><b>${esc(nameOf(site))}</b><span>${esc(tlTime(i))}</span></div>`
+    + line('var(--sun)', ko ? '태양' : 'Sun', sunTxt) + line('var(--earth)', ko ? '지구' : 'Earth', earthTxt) + line('var(--kdsa)', 'KDSA', kdTxt)
+    + `<p class="tt-n">${esc(ko ? '1시간 값. 막대는 화면 폭에 맞춰 묶어 그립니다. 기하만 계산합니다.' : 'Hourly value. Bands are binned to the screen width. Geometry only.')}</p>`;
+}
 function wireTimeline(box) {
   const svg = box.querySelector('svg'); if (!svg) return;
   const toTime = e => {
@@ -491,9 +554,13 @@ function wireTimeline(box) {
     const width = Number(needle.dataset.w), left = Number(needle.dataset.lw);
     const fraction = Math.max(0, Math.min(1, ((e.clientX - rect.left) / rect.width * width - left) / (width - left - 10)));
     const w = LLSN().window, i = Math.min(w.i1, w.i0 + fraction * (w.i1 - w.i0 + 1));
-    const interval = e.target.closest('rect')?.querySelector('title')?.textContent;
-    tip.textContent = core.hourToDate(i).toISOString().slice(0,16).replace('T',' ') + ' UTC' + (interval ? ' · ' + interval : '');
-    tip.hidden = false; tip.style.left = Math.max(8, Math.min(e.clientX + 12, innerWidth - 320)) + 'px';
+    const yv = (e.clientY - rect.top) / rect.height * (svg.viewBox.baseVal.height || rect.height);
+    const ids = (svg.dataset.ids || '').split(','), row = Math.floor((yv - Number(svg.dataset.top)) / Number(svg.dataset.pitch));
+    const site = byId(ids[Math.max(0, Math.min(ids.length - 1, row))]);
+    if (!site) { tip.hidden = true; return; }
+    tip.innerHTML = tlTipHTML(site, Math.floor(i));
+    tip.classList.add('tl-tip');
+    tip.hidden = false; tip.style.left = Math.max(8, Math.min(e.clientX + 14, innerWidth - 296)) + 'px';
     tip.style.top = Math.min(e.clientY + 12, innerHeight - 80) + 'px';
   });
   svg.addEventListener('pointerleave', () => { const tip = sec()?.querySelector('.detail-tooltip'); if (tip) tip.hidden = true; });
@@ -509,7 +576,7 @@ function updateNow(root) {
 function onTime() {
   const t0 = tray(), b = sec();
   if (t0) { updateNow(t0); placeDialNeedles(t0); placeAltNeedles(t0); }
-  if (b) { updateNow(b); placeDialNeedles(b); placeAltNeedles(b); placeTlNeedle(b); }
+  if (b) { updateNow(b); placeDialNeedles(b); placeAltNeedles(b); placeReadouts(b); placeTlNeedle(b); }
 }
 let sumTimer = 0;
 function onTimeSlow() {          // summary cards contain "until sunset" — refresh them less often

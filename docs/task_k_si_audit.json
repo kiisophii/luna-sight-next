@@ -1,0 +1,1209 @@
+{
+  "scope": "Jiyong only; pinned main + three pending branches + current worktree",
+  "snapshots": [
+    {
+      "label": "main snapshot",
+      "ref": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+      "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+      "si_utf8_lf_sha256": "444fe9fdec14fbe880037c8248814c14f12264ca566120f495bd3557f8d46abd",
+      "jiyong_rows": 25,
+      "new_unique_rows": 25
+    },
+    {
+      "label": "PR 66",
+      "ref": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+      "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+      "si_utf8_lf_sha256": "b509954fe20153de577478dd892f2c67d0279594c39f8d128ed1a83d48b1660d",
+      "jiyong_rows": 23,
+      "new_unique_rows": 1
+    },
+    {
+      "label": "PR 67",
+      "ref": "e50d4362f769ff811c8c85509abb027c4f22842a",
+      "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+      "si_utf8_lf_sha256": "47d89b5291938a7e843ae60932d9d6db20ee632fbb5402e406d1c3bf95bd275e",
+      "jiyong_rows": 26,
+      "new_unique_rows": 1
+    },
+    {
+      "label": "PR 68",
+      "ref": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+      "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+      "si_utf8_lf_sha256": "876bc982b1d6df55f30f9b4329fc0a39ede5f8724eba315914af6d570b294f8d",
+      "jiyong_rows": 28,
+      "new_unique_rows": 3
+    },
+    {
+      "label": "this PR",
+      "ref": "WORKTREE",
+      "commit": null,
+      "si_utf8_lf_sha256": "73fd3489d5f3700d38bcc75e57f5b9d11103ff4312e5d74c34e1707661bc9460",
+      "jiyong_rows": 29,
+      "new_unique_rows": 4
+    }
+  ],
+  "unique_rows": 34,
+  "pending_human_cells_rows": 16,
+  "rows": [
+    {
+      "time": "2026-11-14 09:42 (KST)",
+      "member": "Jiyong",
+      "role": "Card 2 Polar terrain",
+      "tool": "Codex (GPT-6, High)",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 16,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 16,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 16,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 16,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 16,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 09:42 (KST) | Jiyong | Card 2 Polar terrain | Codex (GPT-6, High) | Implement and verify resumable PGDA polar terrain downloads for card 2 | pipeline/fetch_polar.py; pipeline/verify_polar.py; pipeline/check_polar_landmark.py; pipeline/requirements-polar.txt; pipeline/tests/test_fetch_polar.py; docs/polar.md; docs/superpowers/plans/2026-11-14-polar.md; data/DATASETS.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 09:47 (KST)",
+      "member": "Jiyong",
+      "role": "Card 2 Polar terrain",
+      "tool": "Codex (GPT-6, High)",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 17,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 17,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 17,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 17,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 17,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 09:47 (KST) | Jiyong | Card 2 Polar terrain | Codex (GPT-6, High) | Verify full-radius terrain caches and current mock catalog integration; record measured limitations | docs/polar-validation.md; docs/polar.md; docs/superpowers/plans/2026-11-14-polar.md; pipeline/fetch_polar.py | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 09:53 (KST)",
+      "member": "Jiyong",
+      "role": "Card 2 Polar terrain",
+      "tool": "Codex (GPT-6, High)",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 18,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 18,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 18,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 18,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 18,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 09:53 (KST) | Jiyong | Card 2 Polar terrain | Codex (GPT-6, High) | Diagnose the 240 m discrepancy and distinguish resolution effects from code errors | pipeline/diagnose_polar_resolution.py; docs/polar-resolution-diagnosis.md; docs/polar-validation.md; docs/polar.md; docs/superpowers/plans/2026-11-14-polar.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 10:07 (KST)",
+      "member": "Jiyong",
+      "role": "Card 2 Polar terrain",
+      "tool": "Codex (GPT-6, High)",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 19,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 19,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 19,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 19,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 19,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 10:07 (KST) | Jiyong | Card 2 Polar terrain | Codex (GPT-6, High) | Finish phase-1 handoff and retain resolution-specific acceptance as a team discussion | docs/polar-handoff.md; docs/polar-resolution-diagnosis.md; docs/polar.md; docs/superpowers/plans/2026-11-14-polar.md; pipeline/tests/fixtures/polar_sites.json | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 11:09 (KST)",
+      "member": "Jiyong",
+      "role": "Card 8 polar horizons",
+      "tool": "Codex",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 29,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 29,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 29,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 29,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 29,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 11:09 (KST) | Jiyong | Card 8 polar horizons | Codex | Execute assigned card 8 with real sites, resolution sensitivity and independent verification | pipeline/fetch_polar.py; pipeline/card8_horizons.py; pipeline/verify_card8_horizons.py; pipeline/tests/; docs/superpowers/plans/2026-11-14-polar-horizon.md; data/DATASETS.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 11:23 (KST)",
+      "member": "Jiyong",
+      "role": "Card 8 polar horizons",
+      "tool": "Codex",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 30,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 30,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 30,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 30,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 30,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 11:23 (KST) | Jiyong | Card 8 polar horizons | Codex | Distinguish unavailable source footprints from download failures; document reproducible horizon and sensitivity methods | pipeline/fetch_polar.py; pipeline/tests/test_fetch_polar.py; docs/polar-horizons.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 11:35 (KST)",
+      "member": "Jiyong",
+      "role": "Card 8 polar horizons",
+      "tool": "Codex; independent agent review",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 35,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 35,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 35,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 35,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 35,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 11:35 (KST) | Jiyong | Card 8 polar horizons | Codex; independent agent review | Deliver 16 real polar masks, three-site resolution sensitivity, independent 20-ray verification and input provenance; integrate phase-3 horizon index and preserve all SI rows | web/data/horizon/*.json; web/data/horizon_index.json; docs/polar-horizon-*.json; docs/polar-horizons.md; pipeline/verify_card8_horizons.py; pipeline/tests/test_verify_card8_horizons.py; docs/superpowers/plans/2026-11-14-polar-horizon.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 13:42 (KST)",
+      "member": "Jiyong",
+      "role": "Card 13 relay analysis",
+      "tool": "OpenAI Codex (High reasoning), independent verification session, GPT-6 Astra code review",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 53,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 53,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 53,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 53,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 53,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 13:42 (KST) | Jiyong | Card 13 relay analysis | OpenAI Codex (High reasoning), independent verification session, GPT-6 Astra code review | Execute assigned phase-3 card: complete 33-site relay analysis, height curves, multi-tower paths, S/Ka Fresnel clearance, Artemis coverage and 80/240 m sensitivity; keep original terrain resolutions | pipeline/relay_tower.py, pipeline/run_relay.py, pipeline/card13_relay.py, pipeline/verify_card13_relay.py, related tests, docs/data_contract.md, docs/card13_relay_report.md, docs/superpowers/plans/2026-11-14-relay-full.md, data/DATASETS.md; production outputs and final evidence follow after batch completion | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 15:04 (KST)",
+      "member": "Jiyong",
+      "role": "Card 13 final results",
+      "tool": "OpenAI Codex (High reasoning), separate verification session, GPT-6 Astra review",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 58,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 58,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 58,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 58,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 58,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 15:04 (KST) | Jiyong | Card 13 final results | OpenAI Codex (High reasoning), separate verification session, GPT-6 Astra review | Finish all 33 real-terrain relay outputs, nine Artemis coverage maps, three-site sensitivity/independent verification; incorporate Card 15 coordinate branch without merging main, regenerate new Shackleton horizon and core.js metrics, record measured runtime | web/data/relay/*.json, web/data/horizon/SHACKLETON_RIM.json, web/data/horizon_index.json, web/data/metrics/SHACKLETON_RIM.json, docs/metrics_cache_report.json, docs/metrics_equivalence_check.json, docs/card13_* | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 15:47 (KST)",
+      "member": "Jiyong",
+      "role": "Card 18 local impact",
+      "tool": "OpenAI Codex (High reasoning), separate verification session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 63,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 63,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 63,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 63,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 63,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 15:47 (KST) | Jiyong | Card 18 local impact | OpenAI Codex (High reasoning), separate verification session | Implement six resumable 21x21 local grids using original horizon engine and actual core.js, expanded DEM windows, all CPU workers and independent five-point verification | pipeline/local_maps.py, pipeline/local_metrics.mjs, pipeline/test_local_maps.py, pipeline/check_contract.py, docs/data_contract.md, docs/superpowers/plans/2026-11-14-local-impact.md, data/DATASETS.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 15:59 (KST)",
+      "member": "Jiyong",
+      "role": "Card 18 impact evidence",
+      "tool": "OpenAI Codex (High reasoning), independent verification session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 64,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 64,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 64,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 64,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 64,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 15:59 (KST) | Jiyong | Card 18 impact evidence | OpenAI Codex (High reasoning), independent verification session | Generate six local maps, radial distributions, adjacent-point contrasts and single-tower threshold/outage evidence; add independent brute-force checker and map figure | web/data/local/*.json, pipeline/local_impact.py, pipeline/plot_local_maps.py, pipeline/test_local_impact.py, pipeline/verify_card18_local.py, pipeline/test_verify_card18_local.py, docs/location_sensitivity.*, docs/location_sensitivity_plot.json, docs/relay_impact.* | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 16:00 (KST)",
+      "member": "Jiyong",
+      "role": "Card 18 integration and verification",
+      "tool": "OpenAI Codex (High reasoning), independent session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 65,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 65,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 65,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 65,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 65,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 16:00 (KST) | Jiyong | Card 18 integration and verification | OpenAI Codex (High reasoning), independent session | Merge latest main, preserve both source/log additions, verify unchanged-input resume and five independent brute-force points, run 137 tests and contract validation, record runtime and reproduction instructions | docs/card18_validation.json, docs/card18_runtime.json, docs/card18_reproduce.md, docs/SI_USAGE.md, data/DATASETS.md (merge union) | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 16:03 (KST)",
+      "member": "Jiyong",
+      "role": "Card 18 final review",
+      "tool": "OpenAI Codex, GPT-6 Astra High",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 66,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 66,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 66,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 66,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 66,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 16:03 (KST) | Jiyong | Card 18 final review | OpenAI Codex, GPT-6 Astra High | Fresh whole-branch review of code, all local statistics and single-tower timelines; no findings; retain scientific scope decisions and elapsed time | docs/card18_review.md, docs/card18_runtime.json | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 19:15 (KST)",
+      "member": "Jiyong",
+      "role": "Card23 coordinate uncertainty and independent verification",
+      "tool": "OpenAI Codex",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 83,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 83,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 83,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 83,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 83,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 19:15 (KST) | Jiyong | Card23 coordinate uncertainty and independent verification | OpenAI Codex | Compute33legacy-compatible121-node site grids with6workers, preserve all catalogue baselines, radial100/300/500m quantiles and300m impact table; independently verify15nodes in another session; isolate5near-field alternatives and document unavailablePGDAcoverage | pipeline/coordinate_uncertainty.py, coordinate_uncertainty_report.py, compare_near_field.py, verify_coordinate_uncertainty.py and tests; web/data/uncertainty/*.json; docs/coordinate_uncertainty*, near_field_comparison*, data_contract.md, superpowers/plans/2026-11-14-coordinate-uncertainty.md; data/DATASETS.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 19:37 (KST)",
+      "member": "Jiyong",
+      "role": "Card 23 polar handoff and near-field follow-up",
+      "tool": "OpenAI Codex; separate verification session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 84,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 84,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 84,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 84,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 84,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 19:37 (KST) | Jiyong | Card 23 polar handoff and near-field follow-up | OpenAI Codex; separate verification session | Narrow delivery to 16 polar sites; align Sua nodes/ranges format; recompute all centres unchanged; inspect original PDS footprints and native SLDEM blocker pixels for five separate alternatives | pipeline/coordinate_uncertainty*, verify_coordinate_uncertainty.py and tests, near_field_check.py and tests; web/data/uncertainty (16 polar only); docs/coordinate_uncertainty*, near_field_check.*, data_contract.md, superpowers/plans/2026-11-14-coordinate-uncertainty.md; data/DATASETS.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 21:04 (KST)",
+      "member": "Jiyong",
+      "role": "Desktop performance audit",
+      "tool": "OpenAI Codex",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 93,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 93,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 93,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 93,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 93,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 21:04 (KST) | Jiyong | Desktop performance audit | OpenAI Codex | Verify merged PR 27 near-field table; measure live version 20 in headed hardware-accelerated Chrome (3 cold/warm runs, whole-Moon and close-terrain drags), profile first south-pole stall and browser-only texture/shadow controls; document sources, limitations and reproduction | pipeline/desktop_performance.py, pipeline/desktop_performance_control.py, docs/desktop_performance.md, docs/desktop_performance/*, docs/SI_USAGE.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 21:28 (KST)",
+      "member": "Jiyong",
+      "role": "GPU CPU verification and near-field recheck",
+      "tool": "OpenAI Codex (High reasoning), separate review session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 100,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 100,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 100,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 100,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 100,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 21:28 (KST) | Jiyong | GPU CPU verification and near-field recheck | OpenAI Codex (High reasoning), separate review session | Recompute 300 latitude-stratified southern cells plus 300 disjoint GPU-only cells with unchanged original CPU pipeline, six threads; hash-check original inputs/delivered files; rerun five-site near-field diagnostics and refetch four original PGDA labels; document definitions, missing coverage and noise limitations | docs/gpu_cpu_300_*, docs/near_field_check.md, docs/near_field_check.json, docs/near_field_labels_recheck.json, docs/superpowers/plans/2026-11-14-gpu-cpu-validation.md, docs/SI_USAGE.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 21:57 (KST)",
+      "member": "Jiyong",
+      "role": "Assumption and polar DEM sensitivity",
+      "tool": "OpenAI Codex (High reasoning), separate GPT-6 Astra High verification session",
+      "human_check": "Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14",
+      "human_changed": "Not recorded",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 106,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 106,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 106,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 106,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 106,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 21:57 (KST) | Jiyong | Assumption and polar DEM sensitivity | OpenAI Codex (High reasoning), separate GPT-6 Astra High verification session | Six-site observer-height 1/2/3/10 m and three-site native LDEM128 versus SLDEM near-field tests; sixteen-site PGDA20/60 alternate chain; exact 19 baseline controls; independent 56 metric loops, six scalar cases, two full horizons and 15 remote pixels; native source/hash records, two-line Limits text, docs-only PR | docs/assumption_sensitivity.*, docs/polar_dem_sensitivity.*, docs/sensitivity_sources.json, docs/sensitivity_reproduce.md, docs/sensitivity_verification.*, docs/superpowers/plans/2026-11-14-assumption-sensitivity.md, docs/SI_USAGE.md | Confirmed by Jiyong — in-person team confirmation relayed by Sua, 2026-11-14 | Not recorded |"
+    },
+    {
+      "time": "2026-11-14 22:49 (KST)",
+      "member": "Jiyong",
+      "role": "First-zoom texture performance fix and 4K comparison",
+      "tool": "OpenAI Codex (High), independent GPT-6 Astra review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 124,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 124,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 124,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 124,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 124,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 22:49 (KST) | Jiyong | First-zoom texture performance fix and 4K comparison | OpenAI Codex (High), independent GPT-6 Astra review | Profile the first 8K colour upload; move JPEG decode/orientation/pixel preparation into a worker while retaining exact imagery and scientific data; measure 24 desktop/limited-profile runs across 8K/4K and legacy/worker paths; verify rendered parity, failure/disposal/context restore and isolate remaining mesh cost | web/js/globe3d.js, web/js/globe_color_worker.js, docs/texture_stall_fix.md, docs/texture_stall/*, docs/superpowers/plans/2026-11-14-texture-stall.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-14 23:21 (KST)",
+      "member": "Jiyong",
+      "role": "Terrain build and zoom-transition performance follow-up",
+      "tool": "OpenAI Codex (High), independent AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 125,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 125,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 125,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 125,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 125,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 23:21 (KST) | Jiyong | Terrain build and zoom-transition performance follow-up | OpenAI Codex (High), independent AI code review | Reuse exact band trigonometry and immutable mesh indices; compare 64 complete mesh outputs and 12 desktop/limited-profile 8K zoom-cycle runs; profile residual 4K mesh cost, report remaining stalls and preserve all scientific values | web/js/globe3d.js, docs/mesh_stall_fix.md, docs/mesh_stall/*, docs/texture_stall/benchmark.py, docs/superpowers/plans/2026-11-14-mesh-stall.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-14 23:39 (KST)",
+      "member": "Jiyong",
+      "role": "Independent 3.8 km map and custom-polar verification",
+      "tool": "OpenAI Codex (High), independent AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 133,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 133,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 133,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 133,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 133,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-14 23:39 (KST) | Jiyong | Independent 3.8 km map and custom-polar verification | OpenAI Codex (High), independent AI review | Independently implement CPU DEM sampling, full horizon marching, ephemeris metrics and PNG interpolation; check 10 random map cells and 3 actual browser Worker polar points, distinguish same-input agreement from DEM-chain sensitivity, append PR 53 ledger evidence | pipeline/independent_map_polar_check.py, pipeline/tests/test_independent_map_polar_check.py, docs/crosscheck_maps_polar.md, docs/crosscheck_maps_polar/*, docs/verification_ledger.md, docs/superpowers/plans/2026-11-14-crosscheck-maps-polar.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 00:39 (KST)",
+      "member": "Jiyong",
+      "role": "South-polar 250 m local grids",
+      "tool": "OpenAI Codex (High), independent AI code/release review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 137,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 66",
+          "line": 137,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        },
+        {
+          "source": "PR 67",
+          "line": 137,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 137,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 137,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 00:39 (KST) | Jiyong | South-polar 250 m local grids | OpenAI Codex (High), independent AI code/release review | Compute 16 polar 41x41 grids with unchanged card18 definitions; benchmark and validate optional FP64 GPU horizons; reserve two physical CPU cores; checkpoint every node; verify 80 CPU/GPU nodes, 16 centres, 1,936 existing-grid overlaps and five independent brute-force nodes; preserve existing local maps and record NASA sources/hashes | pipeline/local250.py, pipeline/local250_gpu.py, pipeline/local250_gpu.cu, pipeline/tests/test_local250.py, web/data/local250/*.json, docs/local250.md, docs/local250_check.json, docs/local250_runtime.json, docs/data_contract.md, docs/superpowers/plans/2026-11-15-local250.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 07:31 (KST)",
+      "member": "Jiyong",
+      "role": "Task B full independent non-polar uncertainty verification",
+      "tool": "OpenAI Codex (High), independent AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 138,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 67",
+          "line": 138,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 138,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 138,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 07:31 (KST) | Jiyong | Task B full independent non-polar uncertainty verification | OpenAI Codex (High), independent AI code review | Prioritize eligible morning tasks in letter order; build a standalone FP64 GPU full-ray verifier with own DEM readers/hourly loop, no repository imports; recompute all 17 sites x 121 nodes and all 1,020 radius statistics, CPU-control 34 nodes, retain unrounded differences; update ledger and preserve production | pipeline/task_b_full_check.py, pipeline/task_b_report.py, pipeline/tests/test_task_b_full_check.py, docs/task_b_full_check.md, docs/task_b_full_check.json, docs/task_b_nodes.csv, docs/task_b_ranges.csv, docs/verification_ledger.md, docs/superpowers/plans/2026-11-15-task-b.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 07:59 (KST)",
+      "member": "Jiyong",
+      "role": "Task F custom polar terrain",
+      "tool": "OpenAI Codex (High), separate AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 139,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 67",
+          "line": 139,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 139,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 139,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 07:59 (KST) | Jiyong | Task F custom polar terrain | OpenAI Codex (High), separate AI code review | Build sparse native PGDA 5/10 m tiles; compare all 16 centres and 32 nearby points with original card8; disclose every regression and payload/local timing costs; preserve baseline/source hashes and catalogue data | pipeline/task_f_*.py, pipeline/task_f_browser.mjs, pipeline/tests/test_task_f_tiles.py, web/data/hterrain/polar_s/index.json and p5/p10 tiles, docs/task_f*, docs/data_contract.md, docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md, docs/superpowers/plans/2026-11-15-task-f.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 08:08 (KST)",
+      "member": "Jiyong",
+      "role": "Task W full assumption sensitivity",
+      "tool": "OpenAI Codex (High), separate AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "main snapshot",
+          "line": 140,
+          "commit": "274e676665d71e56a9fb7ddc7ead13e65d15aecf",
+          "pr": null
+        },
+        {
+          "source": "PR 67",
+          "line": 140,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        },
+        {
+          "source": "PR 68",
+          "line": 140,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        },
+        {
+          "source": "this PR",
+          "line": 140,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 08:08 (KST) | Jiyong | Task W full assumption sensitivity | OpenAI Codex (High), separate AI code review | Independently implement full 33-site x 6-case FP64 GPU sensitivity with original DEMs; own ephemeris loop, no repo imports; verify all production baselines and 18 CPU geometry controls; report all threshold exceedances without treating scenario changes as ground-truth error | pipeline/task_w_sensitivity.py, pipeline/task_w_report.py, pipeline/tests/test_task_w.py, docs/task_w_*.md/json/csv, docs/verification_ledger.md, docs/SI_USAGE.md, data/DATASETS.md, docs/superpowers/plans/2026-11-15-task-w.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 08:20 (KST)",
+      "member": "Jiyong",
+      "role": "Task C full station/window/link verification",
+      "tool": "OpenAI Codex (High), separate AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "PR 66",
+          "line": 138,
+          "commit": "dc140bbd24eff9c1869adda4097f812cdd5ae208",
+          "pr": 66
+        }
+      ],
+      "raw": "| 2026-11-15 08:20 (KST) | Jiyong | Task C full station/window/link verification | OpenAI Codex (High), separate AI code review | Recompute four station five-year minute grids, every rise/set and KST daily row, all 33x4 hourly link series; independently read NASA station sources; record six one-minute KST differences and two invalid NaN JSON files; freeze/check actual-app reference hashes | pipeline/task_c_check.py, pipeline/task_c_browser.mjs, pipeline/task_c_report.py, pipeline/tests/test_task_c.py, docs/task_c_*.json/md/csv, docs/verification_ledger.md, docs/SI_USAGE.md, data/DATASETS.md, docs/superpowers/plans/2026-11-15-task-c.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 08:39 (KST)",
+      "member": "Jiyong",
+      "role": "Task D independent fine globe and albedo verification",
+      "tool": "OpenAI Codex (High), separate AI code review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "PR 67",
+          "line": 141,
+          "commit": "e50d4362f769ff811c8c85509abb027c4f22842a",
+          "pr": 67
+        }
+      ],
+      "raw": "| 2026-11-15 08:39 (KST) | Jiyong | Task D independent fine globe and albedo verification | OpenAI Codex (High), separate AI code review | Use the published 18 native polar origins; independently reconstruct PGDA/SLDEM/LDEM source sampling, check 160 vertices and all target PNGs/shared edges including the longitude wrap; replay NASA TIFF to both JPEGs, record provenance and limits, preserve production | pipeline/task_d_check.py, pipeline/task_d_report.py, pipeline/tests/test_task_d.py, docs/task_d_check.md/json, docs/task_d_vertices.csv, docs/task_d_windows.csv, docs/verification_ledger.md, docs/superpowers/plans/2026-11-15-task-d.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:06 (KST)",
+      "member": "Jiyong",
+      "role": "Task X nonpolar 250 m neighbourhood maps",
+      "tool": "OpenAI Codex (High), parallel CPU verification and separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "PR 68",
+          "line": 141,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        }
+      ],
+      "raw": "| 2026-11-15 09:06 (KST) | Jiyong | Task X nonpolar 250 m neighbourhood maps | OpenAI Codex (High), parallel CPU verification and separate AI review | Compute 17 nonpolar 41x41 grids with FP64 GPU using unchanged card9/core definitions; source-expanded native windows, per-node resume, centre and CPU/GPU controls, separate full-ray developer checks, shared-node/radius summaries; distinguish 10 km coarse statistics and leave another-member verification for team | pipeline/task_x*.py/cu, pipeline/check_local250.py, pipeline/check_contract.py, pipeline/tests/test_task_x.py, web/data/local250 nonpolar files and index, docs/task_x*, docs/data_contract.md, docs/verification_ledger.md, data/DATASETS.md, docs/superpowers/plans/2026-11-15-task-x.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:06 (KST)",
+      "member": "Jiyong",
+      "role": "Task P complete visibility-window verification",
+      "tool": "OpenAI Codex (High), parallel independent implementation and separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "PR 68",
+          "line": 142,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        }
+      ],
+      "raw": "| 2026-11-15 09:06 (KST) | Jiyong | Task P complete visibility-window verification | OpenAI Codex (High), parallel independent implementation and separate AI review | Independently recompute all 33 sites' Sun/Earth/both hourly runs, edges, top gaps and metadata without producer imports; preserve every discrepancy and distinguish source newline differences from numerical errors | pipeline/task_pq_check.py, pipeline/task_pq_report.py, pipeline/tests/test_task_pq.py, docs/task_pq*, docs/verification_ledger.md, data/DATASETS.md, docs/superpowers/plans/2026-11-15-task-pq.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:06 (KST)",
+      "member": "Jiyong",
+      "role": "Task Q complete monthly-season verification",
+      "tool": "OpenAI Codex (High), parallel independent implementation and separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "PR 68",
+          "line": 143,
+          "commit": "cf37fb7db6f758bc0b6a5ecd9bab842685dd58bf",
+          "pr": 68
+        }
+      ],
+      "raw": "| 2026-11-15 09:06 (KST) | Jiyong | Task Q complete monthly-season verification | OpenAI Codex (High), parallel independent implementation and separate AI review | Independently recompute 33 sites x 60 calendar months, lunations, latitude extrema and totals from stored horizons/ephemeris; test equality boundaries and toleranced nonzero-report handling; no production outputs changed | pipeline/task_pq_check.py, pipeline/task_pq_report.py, pipeline/tests/test_task_pq.py, docs/task_pq*, docs/verification_ledger.md, data/DATASETS.md, docs/superpowers/plans/2026-11-15-task-pq.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:34 (KST)",
+      "member": "Jiyong",
+      "role": "Task R independent landing audit",
+      "tool": "OpenAI Codex (High), separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "this PR",
+          "line": 142,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 09:34 (KST) | Jiyong | Task R independent landing audit | OpenAI Codex (High), separate AI review | Verify 18 actual landed missions and five conditional sunset events with independent source transcription, direct Skyfield geometry and Horizons; retain timestamp and document conflicts | pipeline/task_r_*.py, pipeline/tests/test_task_r_audit.py, docs/task_r_*, docs/superpowers/plans/2026-11-15-task-r.md; docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:34 (KST)",
+      "member": "Jiyong",
+      "role": "Task U independent north-polar terrain audit",
+      "tool": "OpenAI Codex (High), separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "this PR",
+          "line": 143,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 09:34 (KST) | Jiyong | Task U independent north-polar terrain audit | OpenAI Codex (High), separate AI review | Fetch original PGDA north-polar windows at 30 stratified points; compare actual browser Worker with a separate full-ray CPU reference, matched-start and same-tile controls; retain all threshold failures | pipeline/task_u_*.py, pipeline/tests/test_task_u.py, docs/task_u_*, docs/superpowers/plans/2026-11-15-task-u.md; docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:34 (KST)",
+      "member": "Jiyong",
+      "role": "Task V independent Earth-definition audit",
+      "tool": "OpenAI Codex (High), separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "this PR",
+          "line": 144,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 09:34 (KST) | Jiyong | Task V independent Earth-definition audit | OpenAI Codex (High), separate AI review | Recompute the 240 PGDA comparison points and both Earth-centre and upper-limb definitions with independent source sampling, horizons and ephemeris loop; quantify residual and definition limits | pipeline/task_v_*.py, pipeline/tests/test_task_v_earth_definition.py, docs/task_v_*, docs/superpowers/plans/2026-11-15-task-v.md; docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    },
+    {
+      "time": "2026-11-15 09:34 (KST)",
+      "member": "Jiyong",
+      "role": "Task K SI record recount",
+      "tool": "OpenAI Codex (High), separate AI review",
+      "human_check": "TO CHECK",
+      "human_changed": "TO CHECK",
+      "locations": [
+        {
+          "source": "this PR",
+          "line": 145,
+          "commit": null,
+          "pr": null
+        }
+      ],
+      "raw": "| 2026-11-15 09:34 (KST) | Jiyong | Task K SI record recount | OpenAI Codex (High), separate AI review | Count Jiyong SI rows on pinned main, current branch and three pending PR branches; deduplicate inherited exact rows, list pending human-review cells and preserve all original entries | pipeline/task_k_si_audit.py, docs/task_k_si_audit.md, docs/task_k_si_audit.json; docs/verification_ledger.md, data/DATASETS.md, docs/SI_USAGE.md | TO CHECK | TO CHECK |"
+    }
+  ]
+}

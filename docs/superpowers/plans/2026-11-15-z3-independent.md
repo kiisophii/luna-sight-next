@@ -28,7 +28,7 @@
 ## Task 2: Full computation and handoff
 - [x] Recompute all 33 sites, every arrival/stay/shift. Save JSON summary, all discrepancies CSV and per-site CSV under docs/z3_independent_jiyong/.
 - [x] Review maxima/medians, explicit leap-day/end-boundary evidence and any failures. Rerun existing focused checks, contract and ledger validation as applicable.
-- [ ] Write report, append ledger/SI, commit and open a PR. No merge.
+- [x] Write report, append ledger/SI, commit and open a PR. No merge.
 
 ## Execution record
 
@@ -36,3 +36,4 @@
 - Task 2 numerical work complete: 33 sites, 13.077 s, 8,315,604 fields, zero differences; 7 existing producer tests pass.
 - Separate AI review: no actionable defects. No additional human verification claimed.
 - Checkout ruling: preserve the production files and byte-hash policy; diagnose CRLF with direct Git blobs and rerun the full contract on an exact LF archive snapshot. Ordinary Windows checkout fails 66 hash checks; Git-LF snapshot passes 0 errors/0 warnings.
+- Handoff complete: PR #85 opened from s8-z3-verify-jiyong; not merged. Final ledger check 0 failures and diff check clean.

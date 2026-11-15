@@ -84,3 +84,11 @@
 @media (min-width: 1100px) { .ls .ls-left .c2-bar .sort-row { flex: 0 0 auto; } }
 @media (min-width: 1100px) and (max-width: 1439px) { .ls .ls-toolbar #utc-chip { order: 3; } }   /* two-row dock: same row as the speed stepper, right after it */
 @media (min-width: 1100px) and (max-width: 1439px) { .ls .ls-toolbar #tb-timewrap { flex: 1 1 0; min-width: 180px; } .ls .ls-toolbar #tb-timewrap .tb-time { flex: 1 1 0; min-width: 0; width: auto; } }   /* the time block gives room so speed + calendar stay on its row */
+
+/* Sua 11/15 23:5x: "All n" and the relay switch on one line (switch at the right), sort control below at the right; tighter gaps */
+@media (min-width: 1100px) {
+  .ls .ls-left .c2-bar { row-gap: 4px; column-gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .ls .ls-left .c2-bar .relay-pill { order: 2; margin: 0 0 0 auto; }
+  .ls .ls-left .c2-bar::after { order: 3; }
+  .ls .ls-left .c2-bar .sort-row { order: 4; margin-left: auto; }
+}

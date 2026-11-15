@@ -1,3 +1,4 @@
+import './design_lower.js';
 // compare_view.js — comparison tray (spec §3.9) + "Compare pinned sites" section (§4): table with best-value marks,
 // lunar-day clock, Sun/Earth elevation, timeline. No limit on pinned sites (horizontal scroll, stable #numbers).
 // Numbers: LLSN.window (core.metrics), core.js instant functions, data/relay (via values.js), data/korea station bits.
@@ -95,7 +96,7 @@ export function verdict(id, ids) {
 
 // ------------------------------------------------------------ table (tray + big)
 const TRAY_ROWS = ['sun', 'earth', 'dark', 'relay', 'now'];
-const BIG_ROWS = ['sun', 'earth', 'both', 'dark', 'relay', 'kdsa', 'now'];
+const BIG_ROWS = ['sun', 'earth', 'both', 'dark', 'slope', 'relay', 'kdsa'];
 const BEST = { sun: 1, earth: 1, both: 1, dark: -1, relay: 1, kdsa: 1 };
 
 function cell(row, s, w, async) {
@@ -222,7 +223,7 @@ function placeDialNeedles(root) {
 }
 
 // ------------------------------------------------------------ Sun/Earth elevation (SVG)
-function altSVG(s, W, H) {
+function altSVG(s, W, H, bounds = null) {
   const w = LLSN().window, n = w.i1 - w.i0 + 1, step = Math.max(1, Math.ceil(n / 480));
   const pts = { sun: [], earth: [], hz: [] };
   let lo = 0, hi = 0;
@@ -232,7 +233,7 @@ function altSVG(s, W, H) {
     pts.sun.push([k, su.el]); pts.earth.push([k, ea.el]); if (hz != null) pts.hz.push([k, hz]);
     lo = Math.min(lo, su.el, ea.el); hi = Math.max(hi, su.el, ea.el, hz ?? 0);
   }
-  lo = Math.floor(lo - 1); hi = Math.ceil(hi + 1);
+  lo = bounds ? bounds[0] : Math.floor(lo - 1); hi = bounds ? bounds[1] : Math.ceil(hi + 1);
   const X = k => 28 + (k / (n - 1)) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
@@ -272,7 +273,7 @@ async function timelineSVG(sites) {
     out += `<text x="0" y="${y + rowH}" font-size="11.5" fill="${css('--text')}">${pn ? `#${pn} ` : ''}${esc(nameOf(s).slice(0, W < 900 ? 16 : 22))}</text>`;
     if (!bits) { out += `<text x="${LW}" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
     const codes = await relayCodes(s.id, w.i0, w.i1).catch(() => null);
-    const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"/>`; st = -1; } } };
+    const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"><title>${esc(nameOf(s))} · ${esc(col === sunC ? t('lgSun') : col === earthC ? t('lgEarth') : col === relayC ? t('lgRelay') : t('lgKdsa'))} · ${k - st} h · ${core.hourToDate(w.i0 + st).toISOString()} – ${core.hourToDate(w.i0 + k).toISOString()}</title></rect>`; st = -1; } } };
     out += `<rect x="${LW}" y="${y}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/><rect x="${LW}" y="${y + rowH + 2}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/>`;
     runsDraw(k => bits[k] & 1, sunC, y, rowH);
     runsDraw(k => !(bits[k] & 1) && core.sunVisibleFraction(s, w.i0 + k) > 0, sunC, y, rowH, 0.35);
@@ -347,36 +348,128 @@ async function renderTray() {
   }
 }
 
-let bigSeq = 0;
+const terrainValues = new Map();
+let bigSeq = 0, firstColumn = 0;
+const detailLabels = {
+  en: ['Sunlit time', 'Earth visibility', 'Sun and Earth together', 'Longest dark period', 'Slope', 'Relay tower', 'Yeoju ground station'],
+  ko: ['햇빛이 비치는 시간', '지구 가시성', '태양과 지구 동시', '최장 연속 어둠', '경사', '중계탑', '여주 지상국'],
+};
+const detailHelp = {
+  en: ['Fraction of the period with at least half the Sun above the terrain horizon.',
+    'Fraction of the period with the Earth centre above the terrain horizon.',
+    'Fraction of the period satisfying both Sun and Earth visibility.',
+    'Longest continuous interval with less than half the Sun visible, in days.',
+    'Stored terrain-Y landing slope. No value is inferred when this product is unavailable.',
+    'Earth visibility before and including the assumed 15 m tower. Geometry only, not radio performance.',
+    'Days when the site sees Earth and Yeoju sees the Moon at 10° or higher. Geometry only.'],
+  ko: ['태양 원반 절반 이상이 지형 지평선 위에 있는 기간의 비율입니다.',
+    '지구 중심이 지형 지평선 위에 있는 기간의 비율입니다.',
+    '태양과 지구 가시 조건을 동시에 만족하는 기간의 비율입니다.',
+    '태양 원반 절반 미만이 보이는 최장 연속 시간을 일로 표시합니다.',
+    '지형 Y 데이터에 저장된 착륙점 경사입니다. 자료가 없으면 추정하지 않습니다.',
+    '15 m 중계탑 가정 전후 지구 가시성입니다. 기하학적 결과이며 무선 성능은 아닙니다.',
+    '착륙지에서 지구가 보이고 여주에서 달 고도가 10° 이상인 시간을 일로 표시합니다.'],
+};
+const detailIcons = ['☼', '⊕', '☍', '☾', '∠', '↟', '◉'];
+const detailDay = hours => `<span class="val num">${(hours / 24).toFixed(1)}<small>${getLang() === 'ko' ? '일' : 'd'}</small></span>`;
+function detailCell(row, site, w) {
+  const original = cell(row, site, w, asyncVals);
+  const m = w.metrics.get(site.id);
+  if (row === 'slope') {
+    const slope = terrainValues.get(site.id)?.landing_slope_deg;
+    return Number.isFinite(slope) ? { v: slope, html: `<span class="val num">${slope.toFixed(1)}<small>°</small></span>` }
+      : { html: `<span class="na">${getLang() === 'ko' ? '데이터 필요' : 'Data needed'}</span>` };
+  }
+  if (!m || m.pending) return original;
+  if (row === 'dark') return { v: m.longest_dark_h, html: detailDay(m.longest_dark_h) };
+  if (row === 'kdsa') {
+    const g = asyncVals.gs.get(site.id);
+    return g && !g.pending && !g.error ? { v: g.kdsa, html: detailDay(g.kdsa) } : original;
+  }
+  if (row === 'relay') {
+    const r = asyncVals.relay.get(site.id);
+    if (r?.state !== 'ok') return original;
+    return { html: r.towers
+      ? `<span class="val num">${pctH(m.earth_frac)} <span class="muted">›</span> ${pctH(r.pct)}</span><span class="sub">${r.distKm.toFixed(1)} km</span>`
+      : `<span class="na">${getLang() === 'ko' ? '중계탑 후보 없음' : 'No tower site'}</span>` };
+  }
+  return { ...original, html: original.html.replace(/<span class="sub">[\s\S]*?<\/span>/g, '') };
+}
+function elevationBounds(sites) {
+  const w = LLSN().window, step = Math.max(1, Math.ceil((w.i1 - w.i0 + 1) / 480));
+  let low = 0, high = 0;
+  for (const site of sites) for (let i = w.i0; i <= w.i1; i += step) {
+    const sun = core.sunAzEl(site, i), earth = core.earthAzEl(site, i);
+    const horizon = core.terrainPending(site) ? 0 : core.horizonAt(site, sun.az);
+    low = Math.min(low, sun.el, earth.el, horizon);
+    high = Math.max(high, sun.el, earth.el, horizon);
+  }
+  return [Math.floor(low - 1), Math.ceil(high + 1)];
+}
 async function renderBig() {
   const root = sec(); if (!root || !LLSN().window) return;
-  const my = ++bigSeq;
-  const pinned = (LLSN().compare?.() || []).length, sites = shown(), ids = sites.map(s => s.id);
-  loadAsync(sites, () => { if (my === bigSeq) renderBig(); });
-  const sm = document.querySelector('#ls-compare > details > summary'); if (sm) sm.textContent = t('allSites');
-  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2></div>
-    <p class="ls-caption">${esc(t('cmpCaption'))}</p>${legendHTML([{ kind: 'line', c: 'var(--earth)', w: 2, label: t('cmpEdge') }], 'lg-cap')}
-    ${pinned ? '' : `<p class="lsn-note" style="margin-bottom:10px">${esc(t('cmpNoPins'))}</p>`}
-    <div class="big-cmp" id="cards">${tableHTML(sites, BIG_ROWS, true, asyncVals)}</div>
-    <div class="sub-h"><h3>${esc(t('changeH'))}</h3><div class="ls-seg" role="tablist">
-      <button type="button" role="tab" data-tab="dial" aria-selected="${bigTab === 'dial'}">${esc(t('tabDial'))}</button><button type="button" role="tab" data-tab="alt" aria-selected="${bigTab === 'alt'}">${esc(t('tabAlt'))}</button></div></div>
-    ${bigTab === 'dial' ? LG.dial() : LG.alt()}<p class="lsn-note">${esc(t(bigTab === 'dial' ? 'dialDesc' : 'altDesc'))}</p>
-    <div class="cards3 big-tab" role="tabpanel" style="margin-top:10px"></div>
-    <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p>
-    <div class="tl ls-panel"><div class="tl-wrap"></div></div>`;
-  updateNow(root);
-  const tab = root.querySelector('.big-tab');
-  for (const s of sites) {
-    if (my !== bigSeq) return;
-    if (bigTab === 'dial') tab.insertAdjacentHTML('beforeend', `<div class="ls-panel dial-card">${await dialSVG(s, 240)}<div class="dial-sum">${await summaryHTML(s, ids)}</div></div>`);
-    else tab.insertAdjacentHTML('beforeend', `<div class="ls-panel alt-card"><div style="font-weight:600">${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</div>${altSVG(s, 420, 160)}<p class="alt-now num" data-id="${s.id}" style="margin:4px 0 0"></p></div>`);
-  }
+  const my = ++bigSeq, allSites = shown(), w = LLSN().window;
+  const capacity = Math.max(1, Math.floor((root.clientWidth - 248) / 300));
+  firstColumn = Math.min(firstColumn, Math.max(0, allSites.length - capacity));
+  const sites = allSites.slice(firstColumn, firstColumn + capacity);
+  const ko = getLang() === 'ko', labels = detailLabels[ko ? 'ko' : 'en'];
+  loadAsync(allSites, () => { if (my === bigSeq) renderBig(); });
+  const terrainJobs = allSites.filter(s => !terrainValues.has(s.id)).map(async site => {
+    terrainValues.set(site.id, null);
+    try {
+      const response = await fetch(`${core.state.base}terrain/${encodeURIComponent(site.id)}.json`);
+      if (response.ok) terrainValues.set(site.id, await response.json());
+    } catch { /* The table explicitly reports unavailable data. */ }
+  });
+  if (terrainJobs.length) Promise.all(terrainJobs).then(() => renderBig());
+  const bounds = elevationBounds(allSites);
+  const head = sites.map((site, index) => `<th scope="col" class="${site.id === LLSN().focus ? 'focus-col' : ''}">
+    <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm">${esc(nameOf(site))}</span></button>
+    <button class="unpin" data-id="${esc(site.id)}" aria-label="${esc(t('unpin'))} ${esc(nameOf(site))}">×</button></div><span class="detail-group">${esc(t('g_' + site.group))}</span></th>`).join('');
+  const rows = BIG_ROWS.map((row, index) => {
+    const cells = sites.map(site => detailCell(row, site, w));
+    const allValues = allSites.map(site => detailCell(row, site, w).v).filter(Number.isFinite);
+    const direction = row === 'slope' || row === 'dark' ? -1 : 1;
+    const best = allValues.length > 1 && row !== 'relay' ? (direction > 0 ? Math.max(...allValues) : Math.min(...allValues)) : null;
+    const unique = best !== null && allValues.filter(v => v === best).length === 1;
+    return `<tr class="r-${row}"><th scope="row" class="lbl"><span class="detail-icon" aria-hidden="true">${detailIcons[index]}</span>${labels[index]}<button class="detail-info" aria-label="${esc(labels[index])}" title="${esc(detailHelp[ko ? 'ko' : 'en'][index])}">◇</button></th>
+    ${cells.map((c, i) => `<td class="${sites[i].id === LLSN().focus ? 'focused ' : ''}${unique && c.v === best ? 'best' : ''}">${c.html}</td>`).join('')}</tr>`;
+  }).join('');
+  const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '상세 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');
+  root.classList.add('detail-comparison');
+  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${(LLSN().compare?.() || []).length} ${ko ? '고정 · 표시' : 'pinned · showing'} ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
+    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${LG.alt()}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}">${altSVG(site, 300, 180, bounds)}</td>`).join('')}</tr></tbody></table></div>
+    <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p><div class="tl ls-panel"><div class="tl-wrap"></div></div><div class="detail-tooltip" role="status" hidden></div>`;
+  root.querySelectorAll('[data-page-step]').forEach(button => button.addEventListener('click', () => {
+    firstColumn = Math.max(0, firstColumn + Number(button.dataset.pageStep) * capacity); renderBig();
+  }));
+  root.querySelectorAll('[data-map]').forEach(button => button.addEventListener('click', () => {
+    setFocus(button.dataset.map);
+    LLSN().globe?.focusSite?.(button.dataset.map, { range: 45, tilt: 55 });
+    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }));
+  root.querySelectorAll('.detail-info').forEach(button => button.addEventListener('click', () => {
+    const tip = root.querySelector('.detail-tooltip');
+    tip.textContent = button.title; tip.hidden = false;
+    const rect = button.getBoundingClientRect();
+    tip.style.left = Math.min(rect.left, window.innerWidth - 320) + 'px';
+    tip.style.top = rect.bottom + 6 + 'px';
+  }));
+  placeAltNeedles(root);
+  const timeline = await timelineSVG(sites);
   if (my !== bigSeq) return;
-  placeDialNeedles(root); placeAltNeedles(root);
-  const tl = root.querySelector('.tl-wrap');
-  tl.innerHTML = await timelineSVG(sites);
-  placeTlNeedle(root);
-  wireTimeline(tl);
+  const tl = root.querySelector('.tl-wrap'); tl.innerHTML = timeline;
+  placeTlNeedle(root); wireTimeline(tl);
+  root.querySelectorAll('[data-chart-site]').forEach(box => {
+    box.addEventListener('pointermove', event => {
+      const rect = box.getBoundingClientRect(), fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * 300 - 28) / 266));
+      const i = w.i0 + fraction * (w.i1 - w.i0), site = byId(box.dataset.chartSite);
+      const tip = root.querySelector('.detail-tooltip');
+      tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t('lgSunEl')} ${core.sunAzEl(site,i).el.toFixed(1)}° · ${t('lgEarthEl')} ${core.earthAzEl(site,i).el.toFixed(1)}°`;
+      tip.hidden = false; tip.style.left = Math.max(8, Math.min(event.clientX + 12, innerWidth - 320)) + 'px'; tip.style.top = Math.min(event.clientY + 12, innerHeight - 80) + 'px';
+    });
+    box.addEventListener('pointerleave', () => { root.querySelector('.detail-tooltip').hidden = true; });
+  });
 }
 
 function wireTimeline(box) {
@@ -390,7 +483,21 @@ function wireTimeline(box) {
   };
   let drag = false;
   svg.addEventListener('pointerdown', e => { drag = true; svg.setPointerCapture(e.pointerId); toTime(e); });
-  svg.addEventListener('pointermove', e => { if (drag) toTime(e); });
+  svg.addEventListener('pointermove', e => {
+    if (drag) toTime(e);
+    const tip = sec()?.querySelector('.detail-tooltip');
+    if (!tip) return;
+    const rect = svg.getBoundingClientRect(), needle = svg.querySelector('.tl-needle');
+    const width = Number(needle.dataset.w), left = Number(needle.dataset.lw);
+    const fraction = Math.max(0, Math.min(1, ((e.clientX - rect.left) / rect.width * width - left) / (width - left - 10)));
+    const w = LLSN().window, i = Math.min(w.i1, w.i0 + fraction * (w.i1 - w.i0 + 1));
+    const interval = e.target.closest('rect')?.querySelector('title')?.textContent;
+    tip.textContent = core.hourToDate(i).toISOString().slice(0,16).replace('T',' ') + ' UTC' + (interval ? ' · ' + interval : '');
+    tip.hidden = false; tip.style.left = Math.max(8, Math.min(e.clientX + 12, innerWidth - 320)) + 'px';
+    tip.style.top = Math.min(e.clientY + 12, innerHeight - 80) + 'px';
+  });
+  svg.addEventListener('pointerleave', () => { const tip = sec()?.querySelector('.detail-tooltip'); if (tip) tip.hidden = true; });
+  svg.addEventListener('pointercancel', () => { drag = false; });
   svg.addEventListener('pointerup', () => { drag = false; });
   svg.style.cursor = 'pointer';
 }
@@ -441,6 +548,8 @@ function wire() {
   window.addEventListener('llsn:lang', all);
   window.addEventListener('llsn:focus', () => { renderTray(); renderBig(); });
   window.addEventListener('llsn:time', () => { onTime(); onTimeSlow(); });
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderBig, 120); });
   all();
 }
 

@@ -127,7 +127,7 @@ document.querySelectorAll('.ls-fold').forEach(b => b.addEventListener('click', (
   const open = phone ? !box.classList.contains('unfolded') : box.classList.contains('folded');
   if (phone) box.classList.toggle('unfolded', open); else box.classList.toggle('folded', !open);
   if (box.id === 'ls-cond' && b.dataset.userClick === '1') {
-    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable input, .ls-foldable .dd-btn, .ls-foldable select')?.focus());
+    if (open) requestAnimationFrame(() => box.querySelector('.ls-foldable .dd-btn, .ls-foldable input:not(#c1-date)')?.focus());
     else b.focus();
   }
   delete b.dataset.userClick;

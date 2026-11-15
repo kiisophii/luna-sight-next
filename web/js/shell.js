@@ -59,11 +59,19 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
     if (failed) { const iv = setInterval(() => { if (failed()) { clearInterval(iv); res(); } }, 250); setTimeout(() => clearInterval(iv), capMs); }
   });
   const globeFailed = () => document.getElementById('globe-stage')?.classList.contains('failed');   // no WebGL: no texture event
-  window.LunaIntro.mount({
+  // While the intro covers the page nothing may scroll it (WebKit scrolled ~890 px down to the comparison on a first
+  // visit: a focus()/scrollIntoView() from start-up code moves the page even with overflow hidden). The page is held
+  // at the top and starts there when the intro ends. A URL hash keeps its own target.
+  const hold = !location.hash;
+  const pin = () => { if (window.scrollY > 0) window.scrollTo(0, 0); };
+  const pinIv = hold ? setInterval(pin, 100) : 0;   // scroll events can be late or missing while the page is busy
+  if (hold) window.addEventListener('scroll', pin, { passive: true });
+  const introH = window.LunaIntro.mount({
+    onDone: () => { if (!hold) return; clearInterval(pinIv); window.removeEventListener('scroll', pin); window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0)); },
     el, label: getLang() === 'ko' ? 'Luna Sight 불러오는 중' : 'Loading Luna Sight',
-    minMs: 1800, fastMs: 0,   // like the designer's demo: the bar is on screen for at least 1.8 s and the landing is never sped up
     waitFor: [when(['llsn:globe', 'llsn:loadfail'], 12000, globeFailed), when(['llsn:ready', 'llsn:loadfail'], 12000)],
   });
+  setTimeout(() => introH?.complete?.(), 15000);   // the window 'load' event has no cap of its own (a hung font or image): finish anyway
 })();
 
 // ------------------------------------------------------------ header background on scroll, scroll hint

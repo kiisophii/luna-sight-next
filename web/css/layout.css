@@ -1285,3 +1285,15 @@ body.on-about { overflow-x: clip; }
 .val-pop details { margin-top: 10px; font-size: 12px; } .val-pop details ul { margin: 4px 0; padding-left: 1.1em; }
 .val-pop .vp-links { margin: 10px 0 0; font-size: 12px; }
 .ls .vp-site span.num { white-space: normal; overflow-wrap: anywhere; }
+
+/* 11-8 … 11-12: type-in box, date label, sort prefix */
+.ls .fc-num { width: 92px; height: 26px; }
+.c1-datebox { position: relative; display: block; }
+.c1-datebox input[type=date] { width: 100%; }
+.c1-datebox:not(:focus-within) input[type=date] { color: transparent; }
+.c1-datebox:not(:focus-within) input[type=date]::-webkit-calendar-picker-indicator { opacity: 0; }
+.ls .c1-datebtn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; border: 0; background: none; color: #EDEDED; font: 13px var(--font-num); border-radius: 8px; cursor: pointer; }
+.c1-datebox:focus-within .c1-datebtn { display: none; }
+.c1-datebtn .ic { width: 14px; height: 14px; color: #9C9CA1; }
+.c2-bar .sort-row { --pre: ''; }
+.c2-bar .sort-row .dd-btn .dd-val::before { content: var(--pre); }

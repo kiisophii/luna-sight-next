@@ -20,10 +20,10 @@ import { relayPeriod, relayPeek, hourBits, TOWER_H } from './values.js';
 addStrings({
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: 'About this tool',
   langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operations period',
-  p7: '7 days', p295: 'One lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
+  p7: '7 days', p295: 'Lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
   c1Clipped: 'Computed only to 2030-12-31 (end of the ephemeris)', collapse: 'Collapse panel', expand: 'Expand panel',
   c1Expand: 'Expand', c1Landing: '{d} landing', c1NoCond: 'No conditions · all sites', c2: 'Candidates', c2All: 'All', relayPillTip: 'Assumption: a 15 m mast near the site, adding the hours the Earth is visible through it. Geometry only; signal strength is not included.', rlTower: 'Tower', rlKm: 'tower {k} km', c1AddCond: '+ Condition', c2Count: '{n}', c2Desc: 'Sites that meet every mission condition. Press + to add one to the comparison.', comparing: 'Comparing', otherCand: 'Other candidates', pinnedEmpty: 'No sites in the comparison yet.', pinMax: 'Up to 10 sites can be compared', pinNoTip: 'Comparison number (colour in the comparison)', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',
-  sortBy: 'Sort by', s_both: 'Sun + Earth together', s_sun: 'Sunlight', s_earth: 'Direct-to-Earth', s_dark: 'Shortest longest-shadow', s_name: 'Name',
+  sortBy: 'Sort by', sortPre: 'Sort: ', s_both: 'Sun + Earth', s_sun: 'Sunlight', s_earth: 'Earth view', s_dark: 'Longest dark', s_name: 'Name',
   relayAssume: 'Relay tower', relayTowerH: 'Assumed · 15 m tower', relayTag: 'with tower', relayNone: 'no tower calc.', relayLoading: 'loading towers…',
   relayHint: '{h} m towers (up to 3) from data/relay — geometric line of sight only',
   sortHelpT: 'Sort order', sortHelp1: '', sortHelp2: 'Sites are ordered by one value only. There is no hidden weighting.',
@@ -56,7 +56,7 @@ addStrings({
   p7: '7일', p295: '달의 하루 (29.5일)', p90: '90일', p365: '1년', pCustom: '{d}일',
   c1Clipped: '2030-12-31까지만 계산됨 (천체력 끝)', collapse: '패널 접기', expand: '패널 펼치기',
   c1Expand: '펼치기', c1Landing: '{d} 착륙', c1NoCond: '조건 없음 · 모든 착륙지', c2: '후보지', c2All: '전체', relayPillTip: '가정: 착륙지 근처 15 m 탑을 세워 그 탑을 거쳐 지구가 보이는 시간을 더합니다. 기하만 보며 신호 세기는 포함하지 않습니다.', rlTower: '탑', rlKm: '탑 {k} km', c1AddCond: '+ 조건', c2Count: '{n}곳', c2Desc: '모든 미션 조건을 만족하는 착륙지입니다. + 를 누르면 비교에 넣습니다.', comparing: '비교 중', otherCand: '다른 후보', pinnedEmpty: '아직 비교 중인 곳이 없습니다.', pinMax: '최대 10곳까지 비교할 수 있습니다', pinNoTip: '비교 번호 (비교에서 쓰는 색)', c2Pinned: '· 비교 {n}곳', c2Pass: '{n}곳이 ① 조건을 모두 만족',
-  sortBy: '정렬 기준', s_both: '해+지구 동시', s_sun: '일조율', s_earth: '지구 가시율', s_dark: '가장 긴 그늘 짧은 순', s_name: '이름순',
+  sortBy: '정렬 기준', sortPre: '정렬: ', s_both: '해+지구 동시', s_sun: '일조율', s_earth: '지구 가시율', s_dark: '가장 긴 그늘 짧은 순', s_name: '이름순',
   relayAssume: '중계탑', relayTowerH: '가정 · 15 m 탑', relayTag: '탑 포함', relayNone: '탑 계산 없음', relayLoading: '탑 자료 불러오는 중…',
   relayHint: '{h} m 탑(최대 3기), data/relay · 기하학적 가시성만',
   sortHelpT: '정렬 기준', sortHelp1: '', sortHelp2: '한 가지 기준으로만 줄 세웁니다. 숨은 가중치는 없습니다.',
@@ -215,11 +215,17 @@ function rowHTML(s, rank) {
   </li>`;
 }
 
+/** Date box shows 'Nov 14, 2026' (the copy); the native date input stays underneath as the real control. */
+function syncDateLabel() {
+  const inp = $('#c1-date'), lab = $('#c1-date-lbl'); if (!inp || !lab || !inp.value) return;
+  lab.textContent = new Date(inp.value + 'T00:00:00Z').toLocaleDateString(getLang() === 'ko' ? 'ko-KR' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
 function renderList() {
   if (!window.LLSN.window) return;
   const sorted = sortedSites(), rank = new Map(sorted.map((s, k) => [s.id, k + 1]));
   const pinned = pins.map(p => byId(p.id)).filter(Boolean);
-  const rest = sorted.filter(s => !pinOf(s.id));
+  const passF = window.LLSN.filterPass;
+  const rest = sorted.filter(s => !pinOf(s.id) && (!passF || passF.has(s.id)));   // conditions shorten the list (the copy)
   const shown = showAll ? rest : rest.slice(0, Math.max(0, LIST_FIRST - pinned.length));
   $('#pk-pinned').innerHTML = pinned.map(s => rowHTML(s, rank.get(s.id))).join('');
   $('#pk-pinned-empty').hidden = true;
@@ -230,7 +236,9 @@ function renderList() {
   const more = $('#pk-more');
   more.hidden = true;
   more.textContent = showAll ? t('less') : fill(t('more'), { n: hidden });
-  $('#c2-count').textContent = fill(t('c2Count'), { n: core.state.sites.length });
+  $('#c2-count').textContent = fill(t('c2Count'), { n: passF ? passF.size : core.state.sites.length });
+  document.querySelector('.c2-bar .sort-row')?.style.setProperty('--pre', JSON.stringify(t('sortPre')));
+  syncDateLabel();
   $('#c2-pinned').textContent = pins.length;
   const pass = window.LLSN.filterPass;
   $('#c2-pass').textContent = pass ? fill(t('c2Pass'), { n: pass.size }) : '';

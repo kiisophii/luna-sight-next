@@ -7,7 +7,7 @@
 // Publishes LLSN.filterPass (Set of ids) and fires 'llsn:filter'.
 import * as core from './core.js';
 import { t } from './i18n.js';
-import { addStrings, whenReady, mountSection, translate, fmtHours, LLSN } from './ui_shared.js';
+import { addStrings, whenReady, mountSection, translate, LLSN } from './ui_shared.js';
 import { getJSON } from './values.js';
 
 addStrings({
@@ -17,7 +17,7 @@ addStrings({
   fiEarth: 'Share of hours with the Earth centre above the local terrain horizon (geometric visibility, not a working link). Minimum.',
   fiSlope: 'Slope at the landing point, maximum. South-polar sites: lander-scale slope (PGDA LOLA 5 m); others: coarse 250 m slope (SLDEM2015). 8° and 15° are reference values only, not landing criteria.',
   fiDark: 'Longest continuous stretch without sunlight in the period. Maximum.',
-  flAny: 'any', flReset: 'Reset all', flDone: 'Done', flNone: 'No site matches. Loosen a condition.', flEdit: 'Type a value',
+  flAny: 'any', flDayUnit: 'd', flReset: 'Reset all', flDone: 'Done', flNone: 'No site matches. Loosen a condition.', flEdit: 'Type a value',
 }, {
   flTitle: '착륙지 거르기', flAria: '미션 조건: 후보 목록 거르기',
   fcSun: '일조', fcEarth: '지구 가시', fcSlope: '경사', fcDark: '최장 어둠',
@@ -25,7 +25,7 @@ addStrings({
   fiEarth: '지구 중심이 지형 지평선 위에 있는 시간 비율 (기하학적 가시, 실제 교신 보장 아님). 최솟값.',
   fiSlope: '착륙 지점 경사, 최댓값. 남극 착륙지는 착륙선 규모 경사(PGDA LOLA 5 m), 나머지는 250 m 거친 경사(SLDEM2015). 8°·15°는 참고값이며 착륙 기준이 아닙니다.',
   fiDark: '기간 중 햇빛이 없는 가장 긴 연속 시간. 최댓값.',
-  flAny: '상관없음', flReset: '모두 초기화', flDone: '완료', flNone: '맞는 착륙지가 없습니다. 조건을 풀어 보세요.', flEdit: '값 직접 입력',
+  flAny: '상관없음', flDayUnit: '일', flReset: '모두 초기화', flDone: '완료', flNone: '맞는 착륙지가 없습니다. 조건을 풀어 보세요.', flEdit: '값 직접 입력',
 });
 
 const IC = {
@@ -38,11 +38,11 @@ const IC = {
 const DEFS = [
   { key: 'sun', label: 'fcSun', info: 'fiSun', field: 'sun_frac', kind: 'ge', col: 'var(--sun)' },
   { key: 'earth', label: 'fcEarth', info: 'fiEarth', field: 'earth_frac', kind: 'ge', col: 'var(--earth)' },
-  { key: 'slope', label: 'fcSlope', info: 'fiSlope', kind: 'le', col: '#EDEDED', step: 0.5, unit: '°' },
-  { key: 'dark', label: 'fcDark', info: 'fiDark', field: 'longest_dark_h', kind: 'le', col: '#EDEDED', step: 1 },
+  { key: 'slope', label: 'fcSlope', info: 'fiSlope', kind: 'le', col: '#EDEDED', min: 1, step: 0.5, unit: '°' },
+  { key: 'dark', label: 'fcDark', info: 'fiDark', field: 'longest_dark_h', kind: 'le', col: '#EDEDED', min: 2, step: 1, unit: 'd' },   // days
 ];
 let sec, inputs = {};
-const max = { dark: 24, slope: 15 };      // 'le' slider maxima (dark = window hours; slope = largest catalogue slope, rounded up)
+const max = { dark: 30, slope: 15 };      // 'le' slider maxima = 'any' (the copy: longest dark 2–30 d, slope 1–15 deg)
 let slopes = new Map();                    // id -> landing-point slope in degrees (terrain/<ID>.json)
 
 /** Landing-point slope (deg) for a catalogue site, or null (custom points have no terrain file). */
@@ -55,9 +55,6 @@ async function loadSlopes() {
     if (v != null && isFinite(v)) out.set(s.id, Number(v));
   }));
   slopes = out;
-  const top = Math.max(1, ...out.values()), wasAny = Number(inputs.slope.value) >= max.slope;
-  max.slope = Math.ceil(top);
-  inputs.slope.max = max.slope; if (wasAny) inputs.slope.value = max.slope;
   apply();
 }
 
@@ -81,7 +78,7 @@ function build() {
     const el = sec.querySelector(`input[data-k="${d.key}"]`);
     inputs[d.key] = el;
     if (d.kind === 'ge') { el.min = 0; el.max = 100; el.step = 1; el.value = 0; }
-    else { el.min = 0; el.max = max[d.key]; el.step = d.step; el.value = max[d.key]; }
+    else { el.min = d.min; el.max = max[d.key]; el.step = d.step; el.value = max[d.key]; }
     el.addEventListener('input', apply);
   }
   sec.querySelector('.fl-reset').addEventListener('click', reset);
@@ -103,14 +100,14 @@ function build() {
   window.addEventListener('llsn:lang', () => { translate(sec); sec.querySelectorAll('.fc-i').forEach(b => b.setAttribute('aria-label', t(b.dataset.tip))); sec.querySelector('.fl-reset').title = t('flReset'); apply(); });
   translate(sec);
   sec.querySelector('.fl-reset').title = t('flReset');
-  if (LLSN().window) onWindow(); else setDarkMax(24 * 30, true);
+  apply();
   loadSlopes();
 }
 
 function editValue(vb) {
   const d = DEFS.find(x => x.key === vb.dataset.k), el = inputs[d.key];
   const any = d.kind === 'ge' ? Number(el.value) === 0 : Number(el.value) >= Number(el.max);
-  vb.innerHTML = `<input type="number" class="fc-num" min="${el.min}" max="${el.max}" step="${el.step}" value="${any ? '' : el.value}" aria-label="${t(d.label)}: ${t('flEdit')}">`;
+  vb.innerHTML = `<input type="number" class="fc-num" min="${el.min}" max="${el.max}" step="${el.step}" value="${any ? '' : el.value}" placeholder="${d.unit || '%'}" aria-label="${t(d.label)}: ${t('flEdit')}">`;
   const inp = vb.firstElementChild; inp.focus(); inp.select();
   const done = ok => {
     if (ok && inp.value !== '') el.value = Math.min(Number(el.max), Math.max(Number(el.min), Number(inp.value)));
@@ -123,19 +120,7 @@ function editValue(vb) {
   inp.addEventListener('click', e => e.stopPropagation());
 }
 
-function setDarkMax(h, atMax) {
-  const el = inputs.dark;
-  max.dark = Math.max(1, Math.ceil(h));
-  el.min = 0; el.max = max.dark; el.step = 1;
-  if (atMax || Number(el.value) > max.dark) el.value = max.dark;
-}
-
-function onWindow() {
-  const w = LLSN().window; if (!w) return;
-  const wasAtMax = Number(inputs.dark.value) >= max.dark;     // "any" stays "any" when the window length changes
-  setDarkMax(w.hours, wasAtMax);
-  apply();
-}
+function onWindow() { apply(); }
 
 function reset() {
   for (const d of DEFS) inputs[d.key].value = d.kind === 'ge' ? 0 : max[d.key];
@@ -148,7 +133,7 @@ function apply() {
   const isAny = d => (d.kind === 'ge' ? v[d.key] === 0 : v[d.key] >= max[d.key]);
   for (const d of DEFS) {
     const out = sec.querySelector(`.fc-val[data-k="${d.key}"]`), el = inputs[d.key], any = isAny(d);
-    const txt = any ? t('flAny') : d.kind === 'ge' ? `≥ ${v[d.key]}%` : d.key === 'slope' ? `≤ ${v.slope}°` : `≤ ${fmtHours(v.dark)}`;
+    const txt = any ? t('flAny') : d.kind === 'ge' ? `≥ ${v[d.key]} %` : d.key === 'slope' ? `≤ ${v.slope.toFixed(1)} °` : `≤ ${v.dark} ${t('flDayUnit')}`;
     if (!out.querySelector('input')) out.textContent = txt;
     out.classList.toggle('unset', any);
     out.setAttribute('aria-label', `${t(d.label)}: ${txt}. ${t('flEdit')}`);
@@ -166,7 +151,7 @@ function apply() {
     const ok = DEFS.every(d => {
       if (isAny(d)) return true;
       if (d.key === 'slope') { const g = slopeOf(s.id); return g != null && g <= v.slope + 1e-9; }
-      return d.kind === 'ge' ? m[d.field] * 100 >= v[d.key] - 1e-9 : m[d.field] <= v[d.key];
+      return d.kind === 'ge' ? m[d.field] * 100 >= v[d.key] - 1e-9 : m[d.field] <= v.dark * 24;   // longest dark: days -> hours
     });
     if (ok) pass.add(s.id);
   }

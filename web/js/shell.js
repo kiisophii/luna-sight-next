@@ -546,3 +546,7 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 (() => { const b = document.getElementById('pdf-btn'); if (!b) return;
   const set = () => { b.title = t('exportPdfTip'); }; ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set();
   b.addEventListener('click', () => window.print()); })();
+
+// date box: the formatted label button opens the native picker; typing still works in the input when it has focus
+(() => { const b = document.getElementById('c1-date-btn'), i = document.getElementById('c1-date'); if (!b || !i) return;
+  b.addEventListener('click', () => { try { i.showPicker(); } catch (e) { i.focus(); } }); })();

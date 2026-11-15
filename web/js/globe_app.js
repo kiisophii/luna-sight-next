@@ -6,7 +6,7 @@
 //   picker / card click, focus ('llsn:focus')   -> globe.focusSite(id)    fly there
 //   globe marker click ('siteclick')            -> LLSN.pick(id)          comparison card + horizon panorama + period table
 //   language ('llsn:lang')                      -> globe.setLang()
-// The display exaggeration stays at ×3 (team decision 11/14); globe3d.js shows the persistent note.
+// The display exaggeration stays at ×3 (team decision 11/14).
 import { addStrings, whenReady, translate, LLSN, mapSiteColors } from './ui_shared.js';
 import { iconSvg } from './icons.js';
 import { t, getLang } from './i18n.js';
@@ -33,6 +33,8 @@ addStrings({
 
 const $ = s => document.querySelector(s);
 const sec = $('#llsn-globe');
+// Keep the minimap clear of the redundant Earth-set/basemap caption.
+$('#hud-1')?.remove();
 const stage = $('#globe-stage');
 let g = null;
 let lastFly = { id: null, t: 0 };

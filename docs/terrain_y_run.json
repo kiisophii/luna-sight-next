@@ -1,0 +1,206 @@
+{
+  "started_utc": "2026-11-15T02:47:38.720266+00:00",
+  "workers": 4,
+  "cpu_workers": 1,
+  "sites": [
+    {
+      "id": "APOLLO11",
+      "seconds": 0.01205419999314472,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO12",
+      "seconds": 0.013118700007908046,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO14",
+      "seconds": 0.012038000044412911,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO15",
+      "seconds": 0.01216690003639087,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO16",
+      "seconds": 0.0113567000371404,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO17",
+      "seconds": 0.01111660001333803,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA16",
+      "seconds": 0.011447199969552457,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA20",
+      "seconds": 0.01111660001333803,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA24",
+      "seconds": 0.013552100048400462,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE3",
+      "seconds": 0.011873900017235428,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE4",
+      "seconds": 0.01076390000525862,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE5",
+      "seconds": 0.011539200029801577,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE6",
+      "seconds": 0.010485399980098009,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "seconds": 0.011938499985262752,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "SLIM",
+      "seconds": 0.011720100010279566,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "IM1",
+      "seconds": 2.8916826999629848,
+      "resumed": false,
+      "dem_resolution_m": 20
+    },
+    {
+      "id": "IM2",
+      "seconds": 1.9474506999831647,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "seconds": 0.01718520000576973,
+      "resumed": false,
+      "dem_resolution_m": null
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "seconds": 1.9232533000176772,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "seconds": 1.5446148000191897,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "seconds": 1.8693408999824896,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "seconds": 2.0397084000287578,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "seconds": 1.8955611000419594,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "seconds": 1.9657088999520056,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "seconds": 1.872740699967835,
+      "resumed": false,
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "seconds": 1.6075976000283845,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "seconds": 1.6636163999792188,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "seconds": 1.547501299995929,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "seconds": 1.6379241999820806,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "seconds": 1.598631100030616,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "seconds": 1.628338300040923,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "seconds": 1.622920099995099,
+      "resumed": false,
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "seconds": 0.01792150002438575,
+      "resumed": false,
+      "dem_resolution_m": null
+    }
+  ],
+  "elapsed_seconds": 29.526525799999945
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "id": "IM1",
+  "lat": -80.13,
+  "lon": 1.44,
+  "frame": "MOON_ME_DE421",
+  "kind": "polar_detailed",
+  "mock": false,
+  "thresholds_deg": [
+    8,
+    15
+  ],
+  "thresholds_label": "reference_only",
+  "source": {
+    "dem_name": "PGDA_LOLA_20M",
+    "resolution_m": 20,
+    "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+    "window_path": "data/processed/terrain_y/raw/20/IM1.npz",
+    "window_sha256": "e8ea5dde8c7fbe73605073e938ff904901f704f5d0eebd8747de5e13cf89ef71",
+    "metadata": {
+      "bounds": [
+        143,
+        264,
+        15516,
+        15637
+      ],
+      "etag": "W/\"a0b2f283-189327867b8\"",
+      "frame": "MOON_ME_DE421",
+      "last_modified": "Fri, 07 Jul 2023 22:28:19 GMT",
+      "pixel_registration": "center",
+      "projection": "+proj=stere +lat_0=-90 +lat_ts=-90 +lon_0=0 +R=1737400.0 +units=m",
+      "radius_m": 1200,
+      "reference_radius_m": 1737400.0,
+      "resolution_m": 20,
+      "site": {
+        "coord_quality": "primary",
+        "elev_m": null,
+        "group": "clps",
+        "id": "IM1",
+        "lat": -80.13,
+        "lon": 1.44,
+        "name": "IM-1 Odysseus",
+        "name_ko": "IM-1 \uc624\ub514\uc138\uc6b0\uc2a4",
+        "note": "Historical landed location. Source publishes only two decimal places; do not infer metre-level accuracy.",
+        "short": "IM-1 Odysseus",
+        "source_url": "https://lroc.im-ldi.com/images/1360"
+      },
+      "source_geotiff": "{'KeyDirectoryVersion': 1, 'KeyRevision': 1, 'KeyRevisionMinor': 0, 'GTModelTypeGeoKey': <ModelType.Projected: 1>, 'GTRasterTypeGeoKey': <RasterPixel.IsArea: 1>, 'GTCitationGeoKey': 'Moon (2015) - Sphere / Ocentric / South Polar', 'GeographicTypeGeoKey': <GCS.User_Defined: 32767>, 'GeogCitationGeoKey': 'GCS Name = Moon (2015) - Sphere / Ocentric|Datum = Moon (2015) - Sphere|Ellipsoid = Moon (2015) - Sphere|Primem = Reference Meridian|', 'GeogGeodeticDatumGeoKey': 32767, 'GeogAngularUnitsGeoKey': <Angular.Degree: 9102>, 'GeogEllipsoidGeoKey': <Ellipse.User_Defined: 32767>, 'GeogSemiMajorAxisGeoKey': 1737400.0, 'GeogSemiMinorAxisGeoKey': 1737400.0, 'GeogPrimeMeridianLongGeoKey': 0.0, 'ProjectedCSTypeGeoKey': <PCS.User_Defined: 32767>, 'ProjectionGeoKey': <Proj.User_Defined: 32767>, 'ProjCoordTransGeoKey': <CT.PolarStereographic: 15>, 'ProjLinearUnitsGeoKey': <Linear.Meter: 9001>, 'ProjNatOriginLatGeoKey': -90.0, 'ProjFalseEastingGeoKey': 0.0, 'ProjFalseNorthingGeoKey': 0.0, 'ProjScaleAtNatOriginGeoKey': 1.0, 'ProjStraightVertPoleLongGeoKey': 0.0, 'ModelPixelScale': [20.0, 20.0, 0.0], 'ModelTiepoint': [0.0, 0.0, 0.0, -304000.0, 304000.0, 0.0]}",
+      "source_size_bytes": 2696082051,
+      "source_url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "units": "m"
+    },
+    "finer_unavailable": [
+      {
+        "resolution_m": 5,
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.tif",
+        "reason": "Requested window has no source coverage"
+      },
+      {
+        "resolution_m": 10,
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_83S_10MPP_ADJ.TIF",
+        "reason": "Requested window has no source coverage"
+      }
+    ]
+  },
+  "method": {
+    "slope": "Least-squares vertical DEM-height plane over 3x3 native-spaced samples; landing samples are bilinear and centred on the exact catalogue coordinate; distributions use native pixel centres.",
+    "slope_window_cells": 3,
+    "slope_center_span_projected_m": 40,
+    "slope_footprint_projected_m": 60,
+    "reference_radius_m": 1737400.0,
+    "slope_ground_scale": "Projected gradient multiplied by stereographic k=1+(rho/(2R))^2 and R/(R+h), with local centre height h.",
+    "radius_rule": "Great-circle distance on the reference sphere; include native sample centres at distance <= radius.",
+    "percentile_rule": "Unweighted sample-centre percentiles; NumPy linear interpolation.",
+    "flat_fraction_rule": "Sum res^2/k^2 for centres with slope <= threshold, divided by summed represented horizontal area on the reference sphere; no fractional boundary pixels.",
+    "roughness": "RMS vertical DEM-height residual about a local least-squares plane, with heights centred before fitting. DEM-derived roughness, not boulder detection or raw laser-spot roughness.",
+    "roughness_window_width_ground_m": 50,
+    "roughness_window_cells": 3,
+    "roughness_sample_center_span_ground_m": 39.70398425960804,
+    "roughness_window_rule": "Include native centres within +/-25m along each projected axis converted to reference-sphere ground distance using site k, held constant for all windows; odd N=2*floor(25*k/res)+1.",
+    "roughness_site_projection_scale": 1.007455567644205,
+    "thresholds_label": "Reference comparisons only; not safe-landing criteria."
+  },
+  "landing_slope_deg": 12.72083862358805,
+  "slope_by_radius_m": {
+    "100": {
+      "n": 80,
+      "median_deg": 12.046644493939592,
+      "p95_deg": 13.316859057854733,
+      "max_deg": 14.419289761920496,
+      "flat_fraction": {
+        "8": 0.0,
+        "15": 1.0
+      },
+      "sampled_area_m2": 31528.12429405805
+    },
+    "500": {
+      "n": 1992,
+      "median_deg": 11.435171870170947,
+      "p95_deg": 16.38091080075375,
+      "max_deg": 18.72936368649801,
+      "flat_fraction": {
+        "8": 0.09839108443386997,
+        "15": 0.86847058739076
+      },
+      "sampled_area_m2": 785050.2795599506
+    },
+    "1000": {
+      "n": 7969,
+      "median_deg": 9.541239744956682,
+      "p95_deg": 16.306553042244214,
+      "max_deg": 20.775167567307715,
+      "flat_fraction": {
+        "8": 0.34370203753746265,
+        "15": 0.8954668570645251
+      },
+      "sampled_area_m2": 3140595.377910993
+    }
+  },
+  "roughness_within_500m": {
+    "n": 1992,
+    "median_m": 0.14143318280600925,
+    "p95_m": 0.3533537110546042
+  },
+  "relay_box": {
+    "slope_deg": 11.5,
+    "box_m": 250,
+    "source_path": "web/data/relay/IM1.json",
+    "source_sha256": "270126731461ac68150a4c685543a6f1b41742a1b9129a3d39be282ac6477500",
+    "candidate_index": 2512,
+    "e_m": 0,
+    "n_m": 0,
+    "provenance": {
+      "description": "Copied existing stored rounded 250m-box slope at relay centre; not recomputed.",
+      "dem_sources": [
+        {
+          "name": "PGDA_LOLA_20M",
+          "res_m": 20.0
+        },
+        {
+          "name": "PGDA_LOLA_60M",
+          "res_m": 60.0
+        },
+        {
+          "name": "PGDA_LOLA_80M",
+          "res_m": 80.0
+        },
+        {
+          "name": "PGDA_LOLA_240M",
+          "res_m": 240.0
+        },
+        {
+          "name": "LDEM_64",
+          "res_m": 473.8
+        },
+        {
+          "name": "LDEM_16",
+          "res_m": 1895.2
+        }
+      ],
+      "input_identity": {
+        "dem": [
+          {
+            "name": "PGDA_LOLA_20M",
+            "radius_km": 25.0,
+            "size": 12367754,
+            "mtime_ns": 1794622302537482800
+          },
+          {
+            "name": "PGDA_LOLA_60M",
+            "radius_km": 60.0,
+            "size": 14198627,
+            "mtime_ns": 1794622068226251100
+          },
+          {
+            "name": "PGDA_LOLA_80M",
+            "radius_km": 60.0,
+            "size": 4309009,
+            "mtime_ns": 1794622791321009800
+          },
+          {
+            "name": "PGDA_LOLA_240M",
+            "radius_km": 200.0,
+            "size": 10204199,
+            "mtime_ns": 1794622945671403000
+          },
+          {
+            "name": "LDEM_64",
+            "radius_km": 300.0,
+            "size": 1061683200,
+            "mtime_ns": 1794623197433035400,
+            "label_sha256": "8dd78e4e20af85ebdb9fab40d69526d675fc8ec6cd6739503b8282b973089e18"
+          },
+          {
+            "name": "LDEM_16",
+            "radius_km": 300.0,
+            "size": 66355200,
+            "mtime_ns": 1794623000270986100,
+            "label_sha256": "b39b1e1ec3d7dbd0ec451f1d4df0304ab383f6ebbc52601b8bf819e0a8d5111a"
+          }
+        ],
+        "ephem_sha256": "da06ed0d1762dd77d0c92d97efefbc47cfd2a63ee01b98b61093090631aa9a52",
+        "start": "2026-01-01T00:00:00Z",
+        "n": 43824,
+        "mock": false
+      }
+    }
+  },
+  "inputs": {
+    "producer_sha256": "940f7beb9b93329cc1b51af0f96f9816bc4ac7b8b178098381a1c7f3db7a8550",
+    "sites_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+    "site_sha256": "a539c673729d5e280d268d517722d4f7d29cac1a1c334f5c227ce26c863990a4",
+    "relay_sha256": "270126731461ac68150a4c685543a6f1b41742a1b9129a3d39be282ac6477500",
+    "source_sha256": "e8ea5dde8c7fbe73605073e938ff904901f704f5d0eebd8747de5e13cf89ef71",
+    "code_sha256": {
+      "fetch_polar.py": "15cd3b79e27038f948a4450a127ba4d778b60ba86fdeee2b2a788b5edbc55245",
+      "polar_prefetch.py": "5e335638d7039ac9140c9d5f97d7374c8161b79d34104ba858f5a253715fde4b"
+    },
+    "parameters": {
+      "thresholds_deg": [
+        8,
+        15
+      ],
+      "thresholds_label": "reference_only",
+      "radii_m": [
+        100,
+        500,
+        1000
+      ],
+      "roughness_radius_m": 500,
+      "roughness_window_width_ground_m": 50,
+      "projected_storage_radius_m": 1200,
+      "resolution_preference_m": [
+        5,
+        10,
+        20
+      ],
+      "source_metadata_sha256": "b31cf71c3af4e8ed77cc07ee8717125827e54fe881f0123b1cfab5e0f8ed9b51"
+    },
+    "signature": "abbfeef004bba153113759ad7e9e5c4b70c6ababc9e82907f6c7bdeb6b66f3b4"
+  },
+  "verification_status": "author_checks_only_team_verification_pending",
+  "content_sha256": "d1304606dc1aefc011d3f63353f0f2f445b29c6027ac2a0996b64d8c8feb6ff5"
+}

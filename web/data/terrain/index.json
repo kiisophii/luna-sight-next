@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "mock": false,
+  "thresholds_deg": [
+    8,
+    15
+  ],
+  "thresholds_label": "reference_only",
+  "sites": [
+    {
+      "id": "APOLLO11",
+      "path": "APOLLO11.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO12",
+      "path": "APOLLO12.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO14",
+      "path": "APOLLO14.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO15",
+      "path": "APOLLO15.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO16",
+      "path": "APOLLO16.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "APOLLO17",
+      "path": "APOLLO17.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA16",
+      "path": "LUNA16.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA20",
+      "path": "LUNA20.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "LUNA24",
+      "path": "LUNA24.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE3",
+      "path": "CHANGE3.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE4",
+      "path": "CHANGE4.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE5",
+      "path": "CHANGE5.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANGE6",
+      "path": "CHANGE6.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "path": "CHANDRAYAAN3.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "SLIM",
+      "path": "SLIM.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "IM1",
+      "path": "IM1.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 20
+    },
+    {
+      "id": "IM2",
+      "path": "IM2.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "path": "BLUE_GHOST1.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "path": "ARTEMIS_CABEUS_B.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "path": "ARTEMIS_HAWORTH.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "path": "ARTEMIS_MALAPERT.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "path": "ARTEMIS_MOUTON_PLATEAU.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "path": "ARTEMIS_MOUTON.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "path": "ARTEMIS_NOBILE_RIM1.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "path": "ARTEMIS_NOBILE_RIM2.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 10
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "path": "ARTEMIS_DE_GERLACHE_RIM2.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "path": "ARTEMIS_SLATER_PLAIN.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "path": "SHACKLETON_RIM.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "path": "CONNECTING_RIDGE.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "path": "PEAK_NEAR_SHACKLETON.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "path": "DE_GERLACHE_RIM1.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "path": "SHOEMAKER_RIM_A.json",
+      "kind": "polar_detailed",
+      "dem_resolution_m": 5
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "path": "IM3_REINER_GAMMA.json",
+      "kind": "coarse_relay_comparison",
+      "dem_resolution_m": null
+    }
+  ]
+}

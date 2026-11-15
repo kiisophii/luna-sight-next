@@ -90,13 +90,13 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
 })();
 
 // ------------------------------------------------------------ header background on scroll, scroll hint
-const head = $('.ls-head'), hint = $('.ls-scrollhint');
+const head = $('.ls-head'), hint = $('.ls-scrollhint');   // the pill was removed (5-1); hint may be null
 function onScroll() {
   const y = window.scrollY;
   head.classList.toggle('scrolled', y > 40 || document.body.classList.contains('on-about'));
   const gone = y > 40 || document.body.classList.contains('on-about');
-  hint.classList.toggle('gone', gone);
-  hint.tabIndex = gone ? -1 : 0;
+  hint?.classList.toggle('gone', gone);
+  if (hint) hint.tabIndex = gone ? -1 : 0;
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
@@ -537,3 +537,7 @@ document.getElementById('sp-btn')?.addEventListener('click', () => document.quer
 document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('pointerdown', () => { b.dataset.userClick = '1'; }, true));
 document.querySelectorAll('.ls-fold[data-fold="ls-cond"]').forEach(b => b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') b.dataset.userClick = '1'; }, true));
 document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const b = document.querySelector('.ls-fold[data-fold="ls-cond"]'); if (b) b.dataset.userClick = '1'; }, true);
+
+// time display info (5-5): the ephemeris note lives in the i button next to the time
+(() => { const b = document.getElementById('hud-i'); if (!b) return; const set = () => { b.title = t('hudSrc'); b.setAttribute('aria-label', t('hudSrc')); };
+  ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set(); })();

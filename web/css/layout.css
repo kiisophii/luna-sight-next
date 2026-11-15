@@ -1179,3 +1179,41 @@ body.on-about { overflow-x: clip; }
 .ls-left > .ls-cond.folded { padding-bottom: 0; }
 .ls .pk-item { padding: 0; }
 .ls-left > .ls-cond.folded { min-height: 113px; box-sizing: border-box; }
+
+/* ================================================================ sync 15:35 bundle 5b: map area (5-1 … 5-8, 5-10) */
+@media (min-width: 1100px) {
+  /* 5-2 dock on the bottom guide (20), at most the map width - 12 */
+  .ls-toolbar { bottom: var(--BOT); max-width: calc(var(--mapW) - 12px); }
+  .ls-layernote { bottom: calc(var(--BOT) + 60px); }
+  .ls-toast { bottom: calc(var(--BOT) + 64px); }
+  /* 5-5 time + i (the ephemeris note is the i's tooltip) */
+  .ls-hud .hud-t { position: absolute; left: var(--mapL); top: var(--TOP); display: inline-flex; align-items: center; gap: 4px; height: 18px; pointer-events: auto; }
+  .ls-hud .hud-t #hud-2 { position: static; }
+  .hud-i { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 1px solid #9C9CA1; background: none; color: #C9CBCE; font: 600 8px/10px var(--font); display: inline-grid; place-items: center; cursor: help; position: relative; }
+  .hud-i::before { content: ''; position: absolute; left: 50%; top: 50%; width: 32px; height: 24px; transform: translate(-50%, -50%); }
+  /* 5-6 the tile-loading text no longer sits behind the South Pole button; 5-10 no orange line under the header */
+  .ls-globe .gl-progress .txt { left: var(--mapL); right: auto; top: 68px; }
+  .ls-globe .gl-progress .bar { display: none; }
+  /* 5-8 the time bubble on the dock only when the dock is wide (the time is at the map's top-left) */
+  .ls-toolbar .tl-now { display: none; }
+  /* 5-3 minimap: 14 px grip on top, box 128 x 164; position set by minimap_drag.js */
+  .ls-minimap { height: 164px; transition: box-shadow .15s; }
+  .ls-minimap.mm-anim { transition: left .18s ease-out, top .18s ease-out, box-shadow .15s; }
+  .ls-minimap.dragging { box-shadow: 0 8px 24px rgba(0, 0, 0, .45); }
+  .ls-minimap.open { height: 240px; }
+  .ls-minimap .mm-exp { top: 22px; }
+}
+@media (min-width: 1600px) { .ls-toolbar .tl-now { display: inline-flex; } }
+.mm-grip { height: 14px; margin: -8px -8px 0; display: grid; place-items: center; cursor: grab; touch-action: none; opacity: .5; transition: opacity .15s; }
+.mm-grip i { display: block; width: 22px; height: 5px; border-top: 1px solid rgba(237, 237, 237, .35); border-bottom: 1px solid rgba(237, 237, 237, .35); }
+.ls-minimap:hover .mm-grip, .mm-grip:focus-visible { opacity: 1; }
+.ls-minimap.dragging .mm-grip { cursor: grabbing; }
+@media (max-width: 1099px) { .mm-grip { display: none; } }
+@media (max-width: 1099px) { .sp-btn { display: none; } }
+@media (min-width: 1100px) { .ls-globe .gl-progress { top: 0; } .ls-globe .gl-progress .txt { top: 134px; } }
+/* 5a leftovers (tracker check): row width 327 (list keeps room for the scrollbar), (+)/(-) radius 7, sort button with no box */
+.pk-scroll { padding: 0 8px 8px; scrollbar-gutter: stable; }
+.pk-scroll .pk-list { margin-right: 0; }
+.ls .pk-row .pk-pin { border-radius: 7px; }
+.ls .c2-bar .dd-text .dd-btn { background: transparent; border: 0; box-shadow: none; font-size: 11px; color: #9C9CA1; }
+.ls .c2-bar .dd-text .dd-btn:hover { background: transparent; color: #EDEDED; }

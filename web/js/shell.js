@@ -143,7 +143,48 @@ tb.addEventListener('pointerover', e => { const b = e.target.closest('button[dat
 tb.addEventListener('focusin', e => { const b = e.target.closest('button[data-tip]'); if (b) showTip(b); });
 tb.addEventListener('pointerleave', () => { tip.hidden = true; });
 tb.addEventListener('focusout', () => { tip.hidden = true; });
-function showTip(b) { tip.textContent = t(b.dataset.tip); tip.hidden = false; }
+// hover / focus name tag = the button's short name (Chaei #21); the long explanation stays for screen readers
+function showTip(b) { tip.textContent = t(b.dataset.i18nAria || b.dataset.tip); tip.hidden = false; tip.style.left = `${b.offsetLeft + b.offsetWidth / 2}px`; }
+function describeToolbar() {
+  tb.querySelectorAll('button[data-tip]').forEach((b, k) => {
+    let d = document.getElementById(`tbd-${k}`);
+    if (!d) { d = document.createElement('span'); d.id = `tbd-${k}`; d.className = 'sr'; tb.append(d); b.setAttribute('aria-describedby', d.id); }
+    d.textContent = t(b.dataset.tip);
+  });
+}
+describeToolbar();
+window.addEventListener('llsn:lang', describeToolbar);
+window.addEventListener('llsn:ready', describeToolbar);
+
+// ------------------------------------------------------------ short status toast (Chaei #35) + new tray column flash (#20)
+let toastT = 0;
+export function toast(msg) {
+  const el = document.getElementById('ls-toast'); if (!el) return;
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 1800);
+}
+window.addEventListener('llsn:toast', e => toast(e.detail?.text || t(e.detail?.key || '')));
+let lastPins = null;
+window.addEventListener('llsn:pins', e => {
+  const now = (e.detail?.pins || []).map(p => p.id);
+  if (lastPins) {
+    const site = id => LL().state?.sites?.find(s => s.id === id);
+    const nm = id => { const s = site(id); return s ? (getLang() === 'ko' && s.name_ko ? s.name_ko : s.name) : id; };
+    const added = now.filter(id => !lastPins.includes(id)), removed = lastPins.filter(id => !now.includes(id));
+    if (added.length === 1) toast(fill(t('toastPinned'), { n: nm(added[0]) }));
+    else if (removed.length === 1 && !added.length) toast(fill(t('toastUnpinned'), { n: nm(removed[0]) }));
+    if (added.length) setTimeout(() => flashColumns(added), 350);
+  }
+  lastPins = now;
+});
+function flashColumns(ids) {
+  for (const id of ids) {
+    const th = document.querySelector(`#tray-body th[data-id="${CSS.escape(id)}"]`); if (!th) continue;
+    const k = th.cellIndex, tbl = th.closest('table');
+    for (const row of tbl.rows) row.cells[k]?.classList.add('col-flash');
+    setTimeout(() => tbl.querySelectorAll('.col-flash').forEach(c => c.classList.remove('col-flash')), 700);
+  }
+}
 
 // 948 m whole-Moon maps (data/gmaps_ppd32, card 14); the 3.8 km set (data/gmaps) is the fallback.
 // Overview first (fast), then the finest tile level from index.json whose width fits the GPU texture limit.
@@ -175,8 +216,19 @@ function stitch(idx, layerId) {
   stitched.set(key, p);
   return p;
 }
-let layer = 'light';
+let layer = 'light', layerNoted = false;
+// a long-term (time-independent) layer is on and the user moves the time: say so once, offer Sunlight (Chaei #22)
+window.addEventListener('llsn:time', () => {
+  if (layer === 'light' || layerNoted) return;
+  layerNoted = true;
+  const n = document.getElementById('ls-layernote'); if (!n) return;
+  n.querySelector('.ln-txt').textContent = t('layerStatic');
+  const b = n.querySelector('.ln-btn'); b.textContent = t('layerToLight');
+  b.onclick = () => { n.hidden = true; setLayer('light'); };
+  n.hidden = false; clearTimeout(n._t); n._t = setTimeout(() => { n.hidden = true; }, 6000);
+});
 async function setLayer(k) {
+  layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
   const g = LL().globe; if (!g) return;
   layer = k;
   tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));

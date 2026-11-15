@@ -54,7 +54,7 @@
     <aside class="ls-left" id="ls-left">
       <section class="ls-card ls-cond" id="ls-cond" aria-labelledby="c1-h">
         <div class="ls-card-head">
-          <h2 id="c1-h"><span class="circ">1</span><span data-i18n="c1">Mission conditions</span></h2>
+          <h2 id="c1-h"><svg class="step-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="5" cy="4" r="1.7" fill="var(--panel)" stroke="currentColor" stroke-width="1.3"/><circle cx="10.5" cy="8" r="1.7" fill="var(--panel)" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="12" r="1.7" fill="var(--panel)" stroke="currentColor" stroke-width="1.3"/></svg><span data-i18n="c1">Mission conditions</span></h2>
           <button type="button" class="ls-icon ls-fold" data-fold="ls-cond" aria-expanded="true" data-i18n-aria="collapse">‹</button>
         </div>
         <div class="ls-foldable">
@@ -70,7 +70,7 @@
 
       <section class="ls-card ls-sites" id="picker" aria-labelledby="c2-h">
         <div class="ls-card-head">
-          <h2 id="c2-h"><span class="circ">2</span><span data-i18n="c2">Sites</span> <span id="c2-count" class="num big-n"></span> <small id="c2-pinned" class="muted"></small></h2>
+          <h2 id="c2-h"><svg class="step-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4h8M6 8h8M6 12h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="2.8" cy="4" r="1" fill="currentColor"/><circle cx="2.8" cy="8" r="1" fill="currentColor"/><circle cx="2.8" cy="12" r="1" fill="currentColor"/></svg><span data-i18n="c2">Sites</span> <span id="c2-count" class="num big-n"></span> <small id="c2-pinned" class="muted"></small></h2>
           <button type="button" class="ls-icon" id="sort-help-btn" aria-expanded="false" aria-controls="sort-help" data-i18n-aria="sortHelpT">i</button>
         </div>
         <div id="sort-help" class="ls-pop" role="dialog" hidden>
@@ -103,7 +103,7 @@
     <!-- R. comparison tray -->
     <aside class="ls-tray empty" id="ls-tray" aria-labelledby="tray-h">
       <div class="ls-card-head">
-        <h2 id="tray-h"><span class="tray-pin" aria-hidden="true"></span><span data-i18n="tray">Compare</span></h2>
+        <h2 id="tray-h"><svg class="step-ic" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="2.5" width="5.4" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="8.8" y="2.5" width="5.4" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span data-i18n="tray">Compare</span></h2>
         <span id="ls-valbadge" class="val-badge-slot"></span>
       </div>
       <!-- empty state (Chaei #15): title + one line only -->
@@ -156,6 +156,8 @@
       <span class="tb-tip" role="tooltip" hidden></span>
     </div>
     <div class="map-legend" id="map-legend" hidden></div>
+    <!-- time-independent layer note (Chaei #22) and short status toast (Chaei #35) -->
+    <div class="ls-layernote" id="ls-layernote" role="status" hidden><span class="ln-txt"></span> <button type="button" class="ls-link ln-btn"></button></div>
     <div class="ls-pickbar" id="ls-pickbar" hidden><span data-i18n="pickOn"></span> <button type="button" class="ls-link" id="pick-cancel" data-i18n="cancel"></button></div>
     <div class="ls-hud"><p id="hud-1" data-i18n="hudLine1"></p><p id="hud-2" class="num"></p></div>
     <a class="ls-scrollhint" href="#ls-compare"><span aria-hidden="true">⌄</span> <span data-i18n="scrollHint">Below: compare pinned sites · why this site</span></a>
@@ -195,6 +197,7 @@
 <!-- A. About (about.js), #about -->
 <section id="view-about" class="ls-about" hidden></section>
 
+<div class="ls-toast" id="ls-toast" role="status" aria-live="polite"></div>
 <footer class="ls-foot">
   <p><span data-i18n="footNote">All times UTC. Sun and Earth disc sizes in the 3D view are enlarged for visibility; elevation axes are exaggerated.</span>
     <a href="#about-sources" data-i18n="footSources">Sources</a> ·

@@ -48,6 +48,7 @@ addStrings({
   tbt_mean: 'Mean visible fraction of the solar disc over 2026–2030 on a 948 m whole-Moon grid (data/gmaps_ppd32). Long-term average, not this period.',
   tbt_earthmap: 'Share of 2026–2030 with the Earth centre above the terrain horizon, 948 m grid (data/gmaps_ppd32). Long-term average.',
   tbt_pick: 'Click the Moon: the point gets its own terrain horizon (computed in your browser) and joins the list.',
+  toastPinned: 'Pinned to compare · {n}', toastUnpinned: 'Removed from comparison · {n}', toastCopied: 'Link copied', layerStatic: 'This map is a 2026–2030 average, so it does not change with time.', layerToLight: 'Switch to Sunlight now',
   legendMean: 'Mean sunlight 2026–2030', legendEarth: 'Mean Earth visibility 2026–2030', rankLbl: 'rank', rankTip: 'Position in the current sort (not the pin number)',
 }, {
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: '이 도구 소개',
@@ -80,7 +81,7 @@ addStrings({
   tbt_mean: '태양 원반이 보이는 시간 비율, 달 전체 2026–2030 평균, 948 m 격자(data/gmaps_ppd32). 이 기간 값이 아닌 장기 평균.',
   tbt_earthmap: '지구 중심이 지형 지평선 위에 있는 시간 비율, 2026–2030, 948 m 격자(data/gmaps_ppd32). 장기 평균.',
   tbt_pick: '달을 누르면 그 지점의 지형 지평선을 브라우저에서 계산해 목록에 넣습니다.',
-  legendMean: '평균 일조 2026–2030', legendEarth: '평균 지구 가시 2026–2030', rankLbl: '순위', rankTip: '지금 정렬 기준에서의 순서 (고정 번호 아님)',
+  toastPinned: '비교에 고정 · {n}', toastUnpinned: '비교에서 뺌 · {n}', toastCopied: '링크를 복사했습니다', layerStatic: '이 지도는 2026–2030 평균이라 시간에 따라 바뀌지 않습니다.', layerToLight: '지금 일조로 바꾸기', legendMean: '평균 일조 2026–2030', legendEarth: '평균 지구 가시 2026–2030', rankLbl: '순위', rankTip: '지금 정렬 기준에서의 순서 (고정 번호 아님)',
 });
 
 const $ = sel => document.querySelector(sel);

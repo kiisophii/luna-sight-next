@@ -164,6 +164,7 @@ async function copyLink(btn) {
   const url = LLSN().shareURL?.() || location.href;
   try { await navigator.clipboard.writeText(url); } catch (e) { const i = $('#ls-brief .share-row input'); i.select(); document.execCommand?.('copy'); }
   const old = btn.textContent; btn.textContent = t('copied'); setTimeout(() => { btn.textContent = old; }, 2000);
+  window.dispatchEvent(new CustomEvent('llsn:toast', { detail: { key: 'toastCopied' } }));
 }
 
 // ------------------------------------------------------------ bento

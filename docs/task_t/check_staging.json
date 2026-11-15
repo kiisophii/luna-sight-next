@@ -1,0 +1,176 @@
+{
+ "dir": "data\\processed\\task_t_release\\gmaps_ppd8_float32_v1",
+ "files": {
+  "sun.npy": {
+   "present": true,
+   "sha256": "b1f39c54e634b62f58066f026b59dd67540931bc526409cb716328cba0347f6c",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "<f4",
+   "dtype_ok": true,
+   "array_equal_nan": true,
+   "bit_patterns_identical": true,
+   "nan_positions_identical": true,
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 0.7604305744171143
+  },
+  "earth.npy": {
+   "present": true,
+   "sha256": "82a7bcdb249c4a5a19a91e36fd39011dcc97a43db7440ea56665d249777c6613",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "<f4",
+   "dtype_ok": true,
+   "array_equal_nan": true,
+   "bit_patterns_identical": true,
+   "nan_positions_identical": true,
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "both.npy": {
+   "present": true,
+   "sha256": "f8d5903ac6a6de957f83cc85c129af9e66a0430b19fe5ef46236a2e1f706d073",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "<f4",
+   "dtype_ok": true,
+   "array_equal_nan": true,
+   "bit_patterns_identical": true,
+   "nan_positions_identical": true,
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": 0.0,
+   "max": 0.5795910954475403
+  },
+  "h0.npy": {
+   "present": true,
+   "sha256": "0075b4dbc7d9fb71ff9ab4016a02f6780910c4461c2440e2d151ee6fdba124a3",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "<f4",
+   "dtype_ok": true,
+   "array_equal_nan": true,
+   "bit_patterns_identical": true,
+   "nan_positions_identical": true,
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": -8956.4248046875,
+   "max": 10689.5654296875
+  },
+  "maskmax.npy": {
+   "present": true,
+   "sha256": "af20e8c2053f1f72b281a9962504107bf341ef8db6b1b7e21d21e0f230d6ce88",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "<f4",
+    "shape": [
+     1440,
+     2880
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "<f4",
+   "dtype_ok": true,
+   "array_equal_nan": true,
+   "bit_patterns_identical": true,
+   "nan_positions_identical": true,
+   "nan_count": 0,
+   "inf_count": 0,
+   "finite_count": 4147200,
+   "min": -0.16269974410533905,
+   "max": 79.03247833251953
+  },
+  "done.npy": {
+   "present": true,
+   "sha256": "0a7b0388f6e4ea09a0a0cd0475110256bfc56bbd2352e6957034e74772c52551",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true,
+   "header": {
+    "version": "1.0",
+    "descr": "|u1",
+    "shape": [
+     1440
+    ],
+    "fortran_order": false,
+    "data_offset": 128
+   },
+   "header_identical": true,
+   "shape_ok": true,
+   "dtype": "|u1",
+   "all_rows_done": true
+  },
+  "meta.json": {
+   "present": true,
+   "sha256": "d6241fe542dca126909fc0cbfc8845b285056168308c8fcabefcad155c4e65d0",
+   "sha256_matches_SHA256SUMS": true,
+   "bytes_identical_to_original": true
+  },
+  "MANIFEST.json": {
+   "present": true,
+   "sha256": "71af31d6737dde975e9ce1530b328fe189fca3951a189227537f8b8085271ff4",
+   "sha256_matches_SHA256SUMS": true
+  }
+ },
+ "all_ok": true
+}

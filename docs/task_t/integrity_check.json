@@ -1,0 +1,135 @@
+{
+ "source_dir": "data\\processed\\task_t_release\\gmaps_ppd8_float32_v1",
+ "pillow": "13.0.0",
+ "layers": {
+  "sun": {
+   "index_stats": {
+    "recomputed": {
+     "min": 0.0,
+     "max": 0.7604305744171143,
+     "area_mean": 0.46562930069206554
+    },
+    "published": {
+     "min": 0.0,
+     "max": 0.7604305744171143,
+     "area_mean": 0.46562930069206554
+    },
+    "exact": true
+   },
+   "values_png": {
+    "shape": [
+     2048,
+     4096
+    ],
+    "identical_pixels": 8388608,
+    "total_pixels": 8388608,
+    "max_abs_dn": 0,
+    "n_diff": 0,
+    "nodata_dn255": 0,
+    "max_abs_residual_pp": 0.20000152587890674
+   },
+   "overview_jpg": {
+    "bytes_identical": true,
+    "decoded_max_abs": 0,
+    "decoded_n_diff": 0
+   },
+   "tiles": {
+    "n": 42,
+    "bytes_identical": 42,
+    "decoded_differs": 0,
+    "decoded_max_abs": 0
+   }
+  },
+  "earth": {
+   "index_stats": {
+    "recomputed": {
+     "min": 0.0,
+     "max": 1.0,
+     "area_mean": 0.46310188157191445
+    },
+    "published": {
+     "min": 0.0,
+     "max": 1.0,
+     "area_mean": 0.46310188157191445
+    },
+    "exact": true
+   },
+   "values_png": {
+    "shape": [
+     2048,
+     4096
+    ],
+    "identical_pixels": 8388608,
+    "total_pixels": 8388608,
+    "max_abs_dn": 0,
+    "n_diff": 0,
+    "nodata_dn255": 0,
+    "max_abs_residual_pp": 0.2000029087066646
+   },
+   "overview_jpg": {
+    "bytes_identical": true,
+    "decoded_max_abs": 0,
+    "decoded_n_diff": 0
+   },
+   "tiles": {
+    "n": 42,
+    "bytes_identical": 42,
+    "decoded_differs": 0,
+    "decoded_max_abs": 0
+   }
+  },
+  "both": {
+   "index_stats": {
+    "recomputed": {
+     "min": 0.0,
+     "max": 0.5795910954475403,
+     "area_mean": 0.22113850283656894
+    },
+    "published": {
+     "min": 0.0,
+     "max": 0.5795910954475403,
+     "area_mean": 0.22113850283656894
+    },
+    "exact": true
+   },
+   "values_png": {
+    "shape": [
+     2048,
+     4096
+    ],
+    "identical_pixels": 8388608,
+    "total_pixels": 8388608,
+    "max_abs_dn": 0,
+    "n_diff": 0,
+    "nodata_dn255": 0,
+    "max_abs_residual_pp": 0.20000147819518865
+   },
+   "overview_jpg": {
+    "bytes_identical": true,
+    "decoded_max_abs": 0,
+    "decoded_n_diff": 0
+   },
+   "tiles": {
+    "n": 42,
+    "bytes_identical": 42,
+    "decoded_differs": 0,
+    "decoded_max_abs": 0
+   }
+  }
+ },
+ "numpy": "2.5.4",
+ "index_other": {
+  "rows_done": true,
+  "ephem_signature_equal": true,
+  "params_equal": true
+ },
+ "published_files_sha256": {
+  "both_overview.jpg": "efe412962c3cce618ee43e9f1f069e5381ec5137492858ff61eba8db4f123c51",
+  "both_values.png": "90f7dbea3e1e1ebb6beb900fb8b4eb53d96a99311085feb61998b3bae3a3bf32",
+  "earth_overview.jpg": "68cd835cdc141a1cf86dbf19347906aaaa467701a7e4265b00e532a3aec28824",
+  "earth_values.png": "e3f8f4b73e977b7e750186cdb1eb6a257874f7e1857701f54e3065776f6822e3",
+  "index.json": "b372643301832f13bd9ee3d2d54226f2826d5aa78b37d0e7b0734d0536a22c97",
+  "sun_overview.jpg": "a6af0d292ee6d8937c7bb97f692738c4f24816639425a6c73a787ffce4e9633c",
+  "sun_values.png": "a1a3c4dbaed9a6684a0b11b3a78600a2ced05d38a5f4fe35d906f2fbe466ad15"
+ }
+}

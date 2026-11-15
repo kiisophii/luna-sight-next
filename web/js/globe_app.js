@@ -174,3 +174,14 @@ async function start() {
 }
 
 whenReady(start);
+
+// compared sites: the 3D label reads '#n name' in the site colour (the copy's selected label); others keep the dot
+function markPinnedLabels() {
+  const L = window.LLSN || {}, sites = L.state?.sites || [];
+  const byTitle = new Map(sites.map(s => [`${s.name} (${s.lat.toFixed(3)}, ${s.lon.toFixed(3)})`, s.id]));
+  document.querySelectorAll('#globe-stage .g3-site').forEach(b => {
+    const id = byTitle.get(b.title), n = id ? L.pinNo?.(id) : null;
+    if (n) { b.dataset.n = n; b.style.setProperty('--sc', `var(--c${n})`); } else { delete b.dataset.n; b.style.removeProperty('--sc'); }
+  });
+}
+['llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:sites'].forEach(ev => window.addEventListener(ev, () => setTimeout(markPinnedLabels, 0)));

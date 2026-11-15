@@ -801,3 +801,17 @@ body.on-about .ls-pages { display: none; }
   .ls-hud { max-width: calc(100vw - var(--left-w) - var(--tray-w) - var(--tray-r) - 48px); }
 }
 .ls-hud { max-width: calc(100vw - var(--left-w) - var(--tray-w) - var(--tray-r) - 48px); }
+
+/* ================================================================ bundle E: tray column chips, compared-site 3D labels, page steps */
+.ls-tray .pin-no.chip { background: var(--sc); border-color: var(--sc); color: #0A0A0B; border-radius: 5px; font-size: 11px; padding: 0 5px; }
+.ls-globe .g3-site[data-n]::before { content: '#' attr(data-n); width: auto; height: auto; background: none; box-shadow: none; border-radius: 0; color: var(--sc); font: 600 12px var(--font-num); margin-right: 5px; vertical-align: 0; }
+.ls-globe .g3-site.g3-flip[data-n]::before { margin: 0 0 0 5px; }
+/* page steps (the copy): 1 px vertical track + 28 x 28 step buttons, name on hover */
+.ls-pages { right: 8px; gap: 46px; padding: 8px 0; }
+.ls-pages::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(237, 237, 237, .12); }
+.ls-pages a { width: 28px; height: 28px; border-radius: 50%; background: none; display: grid; place-items: center; }
+.ls-pages a::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #0B0E14; border: 1px solid rgba(237, 237, 237, .5); }
+.ls-pages a[aria-current="true"] { background: none; }
+.ls-pages a[aria-current="true"]::after { width: 10px; height: 10px; background: var(--n-text); border-color: var(--n-text); box-shadow: 0 0 0 4px rgba(237, 237, 237, .14); }
+.ls-pages a > span { right: 34px; font: 11px var(--font); background: rgba(12, 12, 13, .96); border-color: rgba(237, 237, 237, .14); }
+.ls-pages a > span b { color: var(--n-dim); font-weight: 500; margin-right: 4px; }

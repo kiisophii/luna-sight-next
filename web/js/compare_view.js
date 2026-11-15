@@ -135,7 +135,7 @@ function tableHTML(sites, rows, big, async) {
   const head = sites.map(s => {
     const n = LLSN().pinNo?.(s.id);
     return `<th scope="col" class="cmp-col${s.id === focus ? ' focus-col' : ''}" data-id="${s.id}"><div class="col-h">
-      <span class="nm" role="button" tabindex="0" data-focus="${s.id}">${n ? `<span class="pin-no">#${n}</span>` : ''}${esc(nameOf(s))}</span>
+      <span class="nm" role="button" tabindex="0" data-focus="${s.id}">${n ? (big ? `<span class="pin-no">#${n}</span>` : `<span class="pin-no chip" style="--sc:var(--c${n})">${String(n).padStart(2, '0')}</span>`) : ''}${esc(nameOf(s))}</span>
       ${n ? `<button type="button" class="unpin" data-id="${s.id}" aria-label="${esc(t('unpin'))}: ${esc(nameOf(s))}" title="${esc(t('unpin'))}">${PIN_SVG}</button>` : ''}</div>
       ${big ? `<span class="sub">${esc(t('g_' + s.group))} · ${coordText(s)}</span>` : ''}</th>`;
   }).join('');

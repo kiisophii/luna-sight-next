@@ -158,7 +158,11 @@ async function render() {
 function build() {
   const host = document.getElementById('tray-cat'); if (!host) return;
   host.innerHTML = `<div class="tc-tabs" role="group">${Object.entries(CATS).map(([k, c]) => `<button type="button" data-c="${k}" aria-pressed="${k === cat}" style="--ul:${k === 'sun' ? 'var(--sun)' : 'var(--n-mute)'}">${esc(t(c.tab))}</button>`).join('')}</div>
-    <div class="tc-h"></div><p class="tc-desc"></p><div class="tc-body"></div>`;
+    <div class="tc-scroll"><div class="tc-h"></div><p class="tc-desc"></p><div class="tc-body"></div></div>`;
+  // the middle part scrolls; fade its last 28 px only while more content is below
+  const sc = host.querySelector('.tc-scroll');
+  const fade = () => sc.classList.toggle('more', sc.scrollTop + sc.clientHeight < sc.scrollHeight - 2);
+  sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver(fade).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
   host.addEventListener('click', e => {
     const c = e.target.closest('.tc-tabs button'); if (c) { cat = c.dataset.c; save(); render(); relabel(); return; }
     const s = e.target.closest('.tc-subs button'); if (s) { sub[cat] = s.dataset.s; save(); render(); }

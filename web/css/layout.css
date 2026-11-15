@@ -1052,3 +1052,15 @@ body.ls { background: var(--bg); }
 .pk-scroll .pk-list { flex: none; overflow: visible; min-height: 0; max-height: none; }
 .pk-scroll .ls-link.more { display: block; margin: 8px auto 4px; position: static; }
 #relay-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+
+/* ================================================================ sync 13:03 bundle 3: tray = fixed height (top 64 to bottom 20), three parts */
+@media (min-width: 1100px) {
+  .ls-tray { bottom: var(--BOT); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
+  .ls-tray .tray-main { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .ls-tray .tray-cat { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .ls-tray .tc-tabs { flex: none; }
+  .tc-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; scrollbar-gutter: stable; margin-right: -6px; padding-right: 6px; display: flex; flex-direction: column; gap: 10px; }
+  .tc-scroll.more { -webkit-mask-image: linear-gradient(#000 calc(100% - 28px), transparent); mask-image: linear-gradient(#000 calc(100% - 28px), transparent); }
+  .tc-scroll .tc-body { overflow: visible; }
+  .ls-tray .tray-more { flex: none; margin-top: 12px; box-shadow: none; }
+}

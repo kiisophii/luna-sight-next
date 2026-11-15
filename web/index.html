@@ -160,7 +160,7 @@
     <div class="ls-layernote" id="ls-layernote" role="status" hidden><span class="ln-txt"></span> <button type="button" class="ls-link ln-btn"></button></div>
     <div class="ls-pickbar" id="ls-pickbar" hidden><span data-i18n="pickOn"></span> <button type="button" class="ls-link" id="pick-cancel" data-i18n="cancel"></button></div>
     <div class="ls-hud"><p id="hud-1" data-i18n="hudLine1"></p><p id="hud-2" class="num"></p></div>
-    <a class="ls-scrollhint" href="#ls-compare"><span aria-hidden="true">⌄</span> <span data-i18n="scrollHint">Below: compare pinned sites · why this site</span></a>
+    <a class="ls-scrollhint" href="#ls-compare"><span data-i18n="scrollHint">Compare in detail</span> <span aria-hidden="true">↓</span></a>
 
     <!-- 3.10 add-site drawer (shell.js); custom_site.js mounts its calculator into #llsn-custom -->
     <div class="ls-drawer" id="ls-add" role="dialog" aria-labelledby="add-h" hidden></div>
@@ -198,6 +198,8 @@
 <section id="view-about" class="ls-about" hidden></section>
 
 <div class="ls-toast" id="ls-toast" role="status" aria-live="polite"></div>
+<!-- page indicator for the three screens (Chaei #26): Map / Detailed comparison / Site check -->
+<nav class="ls-pages" id="ls-pages" data-i18n-aria="pagesAria" aria-label="Screens"><a href="#top" data-page="map"><span data-i18n="pgMap">Map</span></a><a href="#ls-compare" data-page="cmp"><span data-i18n="pgCmp">Detailed comparison</span></a><a href="#ls-brief" data-page="brief"><span data-i18n="pgBrief">Site check</span></a></nav>
 <footer class="ls-foot">
   <p><span data-i18n="footNote">All times UTC. Sun and Earth disc sizes in the 3D view are enlarged for visibility; elevation axes are exaggerated.</span>
     <a href="#about-sources" data-i18n="footSources">Sources</a> ·

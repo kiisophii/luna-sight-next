@@ -564,3 +564,30 @@ body:not(.on-about) .ab-next { display: none; }
   .ab-sec { scroll-margin-top: calc(var(--head-h) + 45vh + 8px); }
 }
 @media (max-width: 1099px) { .ab-cards { grid-template-columns: 1fr; grid-auto-rows: auto; } .ab-trust .tr-big b { font-size: 56px; } }
+
+/* ---------------------------------------------------------------- design port 9 (partial): #25 #26 #27 */
+/* #25 'Compare in detail' pill */
+.ls-scrollhint { height: var(--ctl-m); border-radius: var(--r-pill); padding: 0 var(--sp-4); font-weight: 500; font-size: var(--fs-body); border-color: var(--line-2); }
+/* #26 three screens: gentle snap at the start of each screen (proximity, so long sections still scroll freely) */
+@media (min-width: 1100px) {
+  html:not(:has(body.on-about)) { scroll-snap-type: y proximity; }
+  .ls-screen, #ls-compare, #ls-brief { scroll-snap-align: start; }
+  #ls-compare, #ls-brief { scroll-margin-top: var(--head-h); }
+}
+.ls-pages { position: fixed; z-index: 42; right: 4px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: var(--sp-2); }
+.ls-pages a { position: relative; display: block; width: 6px; height: 22px; border-radius: var(--r-pill); background: var(--line-2); }
+.ls-pages a[aria-current="true"] { background: var(--line-3); }
+.ls-pages a span { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 3px 8px; border-radius: var(--r-ctl); background: #0C0E12; border: 1px solid var(--line-2);
+  color: var(--text); font-size: var(--fs-label); opacity: 0; pointer-events: none; transition: opacity var(--t-fast); }
+.ls-pages a:hover span, .ls-pages a:focus-visible span { opacity: 1; }
+body.on-about .ls-pages { display: none; }
+@media (max-width: 1099px) { .ls-pages { display: none; } }
+/* #27 detailed comparison: label column 148 px fixed, site columns 178 px, arrows + drag to move columns */
+.big-cmp { position: relative; }
+.big-cmp .cmp-tbl th.lbl { width: 148px; min-width: 148px; }
+.big-cmp .cmp-tbl td, .big-cmp .cmp-tbl thead th:not(.lbl) { width: 178px; min-width: 178px; max-width: 178px; }
+.cmp-arrows { display: flex; justify-content: flex-end; gap: var(--sp-1); margin-bottom: var(--sp-2); }
+.cmp-arrows .ls-btn { width: var(--ctl-m); padding: 0; font-size: 16px; }
+.big-cmp .cmp-scroll { cursor: grab; scroll-behavior: smooth; }
+.big-cmp .cmp-scroll.dragging { cursor: grabbing; user-select: none; scroll-behavior: auto; }
+#ls-compare #cards.big-cmp { display: block; }

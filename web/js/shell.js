@@ -382,3 +382,50 @@ window.addEventListener('llsn:ready', publish);
 
 // ------------------------------------------------------------ version in the footer
 fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('#ls-ver').textContent = `v${j.v}`; }).catch(() => {});
+
+// ------------------------------------------------------------ three screens (Chaei #26): page indicator on the right edge
+(() => {
+  const nav = document.getElementById('ls-pages'); if (!nav) return;
+  const targets = { map: () => document.querySelector('.ls-screen'), cmp: () => document.getElementById('ls-compare'), brief: () => document.getElementById('ls-brief') };
+  nav.addEventListener('click', e => {
+    const a = e.target.closest('a[data-page]'); if (!a) return;
+    e.preventDefault();
+    const el = targets[a.dataset.page]();
+    if (a.dataset.page === 'map') window.scrollTo({ top: 0, behavior: 'smooth' }); else el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  const mark = () => {
+    const y = window.scrollY + window.innerHeight * 0.4;
+    let cur = 'map';
+    for (const k of ['cmp', 'brief']) { const el = targets[k](); if (el && el.getBoundingClientRect().top + window.scrollY <= y) cur = k; }
+    nav.querySelectorAll('a').forEach(a => { if (a.dataset.page === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); window.addEventListener('resize', mark); mark();
+})();
+
+// ------------------------------------------------------------ detailed comparison table (Chaei #27): arrow buttons + drag to scroll columns
+(() => {
+  const host = document.querySelector('#ls-compare .cmp-dyn'); if (!host) return;
+  const arrows = () => {
+    const wrap = host.querySelector('.big-cmp'); if (!wrap || wrap.querySelector('.cmp-arrows')) return;
+    const sc = wrap.querySelector('.cmp-scroll'); if (!sc) return;
+    wrap.insertAdjacentHTML('afterbegin', `<div class="cmp-arrows"><button type="button" class="ls-btn" data-dir="-1" aria-label="${t('colPrev')}">‹</button><button type="button" class="ls-btn" data-dir="1" aria-label="${t('colNext')}">›</button></div>`);
+    const upd = () => {
+      const [a, b] = wrap.querySelectorAll('.cmp-arrows button');
+      a.disabled = sc.scrollLeft <= 1; b.disabled = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 1;
+      wrap.querySelector('.cmp-arrows').hidden = sc.scrollWidth <= sc.clientWidth + 1;
+    };
+    wrap.querySelector('.cmp-arrows').addEventListener('click', e => {
+      const b = e.target.closest('button[data-dir]'); if (!b) return;
+      const col = sc.querySelector('thead th:not(.lbl)')?.getBoundingClientRect().width || 178;
+      sc.scrollBy({ left: Number(b.dataset.dir) * col, behavior: 'smooth' });
+    });
+    sc.addEventListener('scroll', upd, { passive: true }); new ResizeObserver(upd).observe(sc); upd();
+    // mouse drag (touch already scrolls natively); clicks on buttons/links still work
+    let d = null;
+    sc.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('button, a, [role=button], input, select')) return; d = { x: e.clientX, l: sc.scrollLeft, moved: false }; });
+    window.addEventListener('pointermove', e => { if (!d) return; const dx = e.clientX - d.x; if (Math.abs(dx) > 3) { d.moved = true; sc.classList.add('dragging'); } sc.scrollLeft = d.l - dx; });
+    window.addEventListener('pointerup', () => { if (d) { sc.classList.remove('dragging'); d = null; } });
+  };
+  new MutationObserver(arrows).observe(host, { childList: true, subtree: true }); arrows();
+})();
+addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 열', colNext: '다음 열' });

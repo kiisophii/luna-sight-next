@@ -608,6 +608,9 @@ body.on-about .ls-pages { display: none; }
 .lang-seg { height: 32px; padding: 2px; gap: 2px; background: rgba(6, 8, 12, .72); border: 1px solid rgba(255, 255, 255, .22); border-radius: 6px; box-sizing: border-box; }
 .lang-seg button { width: 35px; height: 24px; padding: 0; font-size: 12.5px; font-weight: 600; color: #8D96A4; border-radius: 4px; }
 .lang-seg button[aria-pressed="true"] { background: #E6EAF2; color: #0B0E14; }
+/* #105: on touch screens the 44 px min-height (pointer: coarse rule above) makes the buttons taller than the 32 px toggle,
+   which centred the label below the visible 26 px. Padding the extra 18 px at the bottom keeps the label centred in view. */
+@media (pointer: coarse) { .lang-seg button { padding: 0 0 18px; } }
 /* 3D site labels: no pill, Oxanium 12/500 + a small dot */
 .ls-globe .g3-site { font: 500 12px/14px var(--font-num); letter-spacing: -0.06px; color: #E6EAF2; text-shadow: 0 0 3px #000, 0 0 2px #000; }
 .ls-globe .g3-site::before { width: 4px; height: 4px; border: 0; border-radius: 50%; background: #E6EAF2; margin-right: 5px; vertical-align: 2px; box-shadow: 0 0 3px #000; }
@@ -935,6 +938,9 @@ body.ls { background: var(--bg); }
 @media (min-width: 1100px) { .ab-hero .ab-art.ab-scene { height: calc(45vh - 96px); aspect-ratio: auto; } .ab-svg { height: 100%; } }
 
 @media (max-width: 700px) { .ls-about .src-tbl { display: block; max-width: 100%; overflow-x: auto; } }
+/* #107: grid items default to min-width:auto, so a wide table or long credit line widened the one-column track
+   (320 px screens: 342–384 px page). Let the items shrink; their own content wraps or scrolls inside. */
+.ab-sec > * { min-width: 0; max-width: 100%; }
 @media (max-width: 1099px) { .ab-sec { grid-template-columns: 1fr; gap: var(--sp-3); } }
 
 /* ================================================================ sync 13:03 bundle 1: one set of screen guides (desktop >= 1100)

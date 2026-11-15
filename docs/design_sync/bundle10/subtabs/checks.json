@@ -6,6 +6,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -80,6 +102,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -154,6 +198,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -228,6 +294,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -302,6 +390,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -376,6 +486,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -450,6 +582,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -524,6 +678,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 253.625,
@@ -598,6 +774,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -672,6 +870,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -746,6 +966,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -820,6 +1062,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -894,6 +1158,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -968,6 +1254,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -1042,6 +1350,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -1116,6 +1446,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1394
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1403
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 252.4375,
@@ -1190,6 +1542,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1264,6 +1638,23 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1263
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1338,6 +1729,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1412,6 +1825,23 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1263
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1486,6 +1916,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1560,6 +2012,23 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1263
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1634,6 +2103,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1708,6 +2199,23 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1263
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 253.625,
@@ -1782,6 +2290,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -1856,6 +2386,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -1930,6 +2482,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2004,6 +2578,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2078,6 +2674,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2152,6 +2770,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2226,6 +2866,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2300,6 +2962,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1234
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1243
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 252.4375,
@@ -2374,6 +3058,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2448,6 +3154,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2522,6 +3250,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2596,6 +3346,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2670,6 +3442,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2744,6 +3538,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2818,6 +3634,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2892,6 +3730,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 275.625,
@@ -2966,6 +3826,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3040,6 +3922,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3114,6 +4018,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3188,6 +4114,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3262,6 +4210,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3336,6 +4306,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3410,6 +4402,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3484,6 +4498,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 1057,
+          "right": 1388
+        },
+        {
+          "class": "tray-main",
+          "left": 1057,
+          "right": 1373
+        },
+        {
+          "class": "ls-tray",
+          "left": 1040,
+          "right": 1418
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1440
+        }
+      ],
       "header": {
         "x": 1057,
         "y": 273.828125,
@@ -3558,6 +4594,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -3632,6 +4690,23 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1238
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -3706,6 +4781,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -3780,6 +4877,23 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1238
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -3854,6 +4968,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -3928,6 +5064,23 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1238
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -4002,6 +5155,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -4076,6 +5251,23 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1238
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 275.625,
@@ -4150,6 +5342,28 @@
     "cat": "sun",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4224,6 +5438,28 @@
     "cat": "sun",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4298,6 +5534,28 @@
     "cat": "earth",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4372,6 +5630,28 @@
     "cat": "earth",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4446,6 +5726,28 @@
     "cat": "relay",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4520,6 +5822,28 @@
     "cat": "relay",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4594,6 +5918,28 @@
     "cat": "terrain",
     "state": "before",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,
@@ -4668,6 +6014,28 @@
     "cat": "terrain",
     "state": "after",
     "metrics": {
+      "clips": [
+        {
+          "class": "tc-scroll",
+          "left": 945,
+          "right": 1228
+        },
+        {
+          "class": "tray-main",
+          "left": 945,
+          "right": 1213
+        },
+        {
+          "class": "ls-tray",
+          "left": 928,
+          "right": 1258
+        },
+        {
+          "class": "ls-screen",
+          "left": 0,
+          "right": 1280
+        }
+      ],
       "header": {
         "x": 945,
         "y": 273.828125,

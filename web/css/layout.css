@@ -1215,3 +1215,20 @@ body.on-about { overflow-x: clip; }
 }
 
 @media (min-width: 1100px) { #ls-tray .tray-cat { margin-top: 3px; } }
+
+/* PR #97 review: reference 17:49, supersedes the earlier equal-width/sub-tab layout. */
+#ls-tray .tc-tabs { grid-template-columns: minmax(0,77fr) minmax(0,89fr) minmax(0,61fr) minmax(0,68fr); }
+#ls-tray .tc-h { flex-wrap: nowrap; gap: 6px; row-gap: 0; }
+#ls-tray .tc-h h4 { flex: none; }
+#ls-tray .tc-subs { flex: 0 1 auto; flex-wrap: nowrap; margin-left: auto; gap: 10px; }
+#ls-tray .tc-subs button { font-size: 14px; white-space: nowrap; }
+#ls-tray .tc-rows { width: calc(100% - 15px); max-width: 100%; }
+#ls-tray .tc-sw { width: 24px; height: 6px; }
+#ls-tray .tc-val { color: #9C9CA1 !important; }
+#ls-tray .val-badge-slot { flex: none; min-width: 0; }
+#ls-tray .val-badge { display: inline-block; visibility: visible; opacity: 1; white-space: nowrap; }
+@media (min-width:1100px) and (max-width:1439px) {
+  #ls-tray > .ls-card-head, #ls-tray > .tray-empty, #ls-tray > .tray-main { margin-right: 30px; }
+  #ls-tray .tc-h { flex-wrap: wrap; }
+  #ls-tray .tc-subs { margin-left: auto; }
+}

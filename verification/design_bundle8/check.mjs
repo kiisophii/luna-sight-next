@@ -1,8 +1,8 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
-const dir='docs/design_sync/bundle8';fs.mkdirSync(dir,{recursive:true});
-const base='be9aeab5b18fbe3d8e86c6295b8af9e5247c8ce2';
+const dir='docs/design_sync/bundle8/review_1749';fs.mkdirSync(dir,{recursive:true});
+const base='9217c2b32b9e24f3d40b3c51b4428053267793fa';
 const oldCss=execFileSync('git',['show',base+':web/css/layout.css'],{maxBuffer:2000000}).toString();
 const oldJs=execFileSync('git',['show',base+':web/js/tray_cat.js'],{maxBuffer:2000000}).toString();
 const browser=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
@@ -26,15 +26,20 @@ for(const state of ['before','after']){
  await page.locator('.tc-subs [data-s="rate"]').click();
  await page.locator('.lang-seg [data-lang="'+lang+'"]').click();
  await page.evaluate(()=>document.fonts.ready);
+ await page.locator('#ls-valbadge .val-badge').waitFor({state:'visible',timeout:60000});
  await page.keyboard.press('Control+Home');
  await page.waitForFunction(()=>window.scrollY<2);
 
  const metrics=await page.evaluate(()=>{
   const rect=s=>{const e=document.querySelector(s),r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
-  return {tray:rect('#ls-tray'),header:rect('#ls-tray .ls-card-head'),main:rect('#ls-tray .tray-main'),title:rect('.tray-sub'),period:rect('#tray-period'),tabs:rect('.tc-tabs'),chart:rect('.tc-chart'),tab:rect('.tc-tabs button'),row:rect('.tc-row'),documentWidth:document.documentElement.scrollWidth,viewport:innerWidth,values:[...document.querySelectorAll('#tray-cat .tc-val')].map(e=>e.textContent)};
+  return {tray:rect('#ls-tray'),header:rect('#ls-tray .ls-card-head'),main:rect('#ls-tray .tray-main'),title:rect('.tray-sub'),period:rect('#tray-period'),tabs:rect('.tc-tabs'),chart:rect('.tc-chart'),tab:rect('.tc-tabs button'),tabWidths:[...document.querySelectorAll('.tc-tabs button')].map(e=>e.getBoundingClientRect().width),subtabs:rect('.tc-subs'),category:rect('.tc-h h4'),subFont:getComputedStyle(document.querySelector('.tc-subs button')).fontSize,swatch:rect('.tc-sw'),valueColor:getComputedStyle(document.querySelector('.tc-val')).color,badge:{...rect('#ls-valbadge .val-badge'),text:document.querySelector('#ls-valbadge .val-badge').textContent},row:rect('.tc-row'),documentWidth:document.documentElement.scrollWidth,viewport:innerWidth,values:[...document.querySelectorAll('#tray-cat .tc-val')].map(e=>e.textContent)};
  });
  await page.screenshot({path:dir+'/'+state+'_'+width+'_'+lang+'.png'});
  await page.locator('#ls-tray').screenshot({path:dir+'/'+state+'_'+width+'_'+lang+'_tray.png'});
+ await page.locator('#ls-valbadge .val-badge').click();
+ await page.locator('#val-pop').waitFor({state:'visible'});
+ await page.screenshot({path:dir+'/'+state+'_'+width+'_'+lang+'_badge.png'});
+ await page.locator('#ls-valbadge .val-badge').click();
  const categories=[];
  for(const cat of ['sun','earth','relay','terrain']){
   await page.locator('.tc-tabs [data-c="'+cat+'"]').click();

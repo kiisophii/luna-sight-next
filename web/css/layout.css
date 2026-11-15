@@ -1244,3 +1244,26 @@ body.on-about { overflow-x: clip; }
   .ls-detail.is-closed { display: none; }
   .ls-foot { border-top: 1px solid #2A2A2D; padding: 8px 0 0; }
 }
+
+/* Bundle 10: desktop dock dimensions. Mobile and minimap are deliberately untouched. */
+@media (min-width: 1600px) {
+  .ls-toolbar { width: 800px; max-width: calc(var(--mapW) - 12px); height: 52px; padding: 6px; flex-wrap: nowrap; }
+}
+@media (min-width: 1100px) and (max-width: 1439px) {
+  .ls-toolbar { width: var(--mapW); max-width: var(--mapW); height: 94px; padding: 6px; gap: 4px 6px; align-content: center; }
+  /* The time block itself starts row two, without an empty flex-break row. */
+  .ls-toolbar::after { display: none; }
+  .ls-toolbar .tb-timewrap { flex: 0 0 calc(100% - 86px); min-width: 0; max-width: none; }
+  .ls-toolbar .tb-time { flex: 1 1 auto; width: auto; min-width: 0; }
+  .ls-toolbar.time-off { width: max-content; height: 52px; }
+  .ls-toolbar.time-off .tb-timewrap { flex-basis: 0; }
+}
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .ls-toolbar { height: 85px; padding: 5px; gap: 3px; }
+  .ls-toolbar .tb-group, .ls-toolbar .tb-timewrap { gap: 3px; }
+  .ls-toolbar button { width: 32px; height: 32px; }
+  .ls-toolbar .tb-time, .ls-toolbar .tb-speed { height: 32px; }
+  .ls-toolbar .tb-speed button { height: 30px !important; }
+  .ls-toolbar .tb-timewrap { flex-basis: calc(100% - 83px); }
+  .ls-toolbar.time-off { height: 44px; }
+}

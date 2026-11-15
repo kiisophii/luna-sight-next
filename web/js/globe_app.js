@@ -8,6 +8,7 @@
 //   language ('llsn:lang')                      -> globe.setLang()
 // The display exaggeration stays at ×3 (team decision 11/14); globe3d.js shows the persistent note.
 import { addStrings, whenReady, translate, LLSN, mapSiteColors } from './ui_shared.js';
+import { iconSvg } from './icons.js';
 import { t, getLang } from './i18n.js';
 
 addStrings({
@@ -211,3 +212,32 @@ function markPinnedLabels() {
   });
 }
 ['llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:sites', 'llsn:sort', 'llsn:window', 'llsn:lang', 'llsn:relay'].forEach(ev => window.addEventListener(ev, () => setTimeout(markPinnedLabels, 0)));
+
+// ------------------------------------------------------------ relay towers on the map (the 'Relay tower' switch)
+// Compared candidates (first three) with tower data get one icon at the best tower of the default-height network
+// (data/relay/<ID>.json -> networks[h].towers[0], a computed candidate position) and a thin line from the site.
+// Sites without a file or without a tower get nothing. window.LLSN.relayMarks + 'llsn:relaymarks' feed the minimap.
+const RELAY_GREEN = '#3CC6A0';
+let relaySeq = 0;
+async function syncRelayMarks() {
+  const L = window.LLSN || {}, seq = ++relaySeq;
+  const out = [];
+  if (L.relayOn?.() && L.state?.sites) {
+    const { relayIndex, relayFor } = await import('./diff_data.js'); const { TOWER_H } = await import('./values.js');
+    const idx = await relayIndex().catch(() => null);
+    for (const pn of (L.pins?.() || []).slice(0, 3)) {
+      const s = L.state.sites.find(x => x.id === pn.id); if (!s || !idx?.ids?.includes(s.id)) continue;
+      const rel = await relayFor(s.id).catch(() => null); if (!rel) continue;
+      const j = rel.params.heights_m.findIndex(x => Number(x) === TOWER_H), tw = j >= 0 ? rel.networks[j]?.towers?.[0] : null;
+      if (!tw || !isFinite(tw.lat) || !isFinite(tw.lon)) continue;
+      const name = getLang() === 'ko' && s.name_ko ? s.name_ko : s.name, km = (tw.dist_m / 1000).toFixed(1);
+      out.push({ id: s.id, n: pn.n, lat: tw.lat, lon: tw.lon, from: { lat: s.lat, lon: s.lon }, color: RELAY_GREEN, distKm: tw.dist_m / 1000, height: TOWER_H,
+        html: iconSvg('relay-tower', { size: 14 }),
+        title: getLang() === 'ko' ? `중계탑 후보 위치 · #${pn.n} ${name} · ${TOWER_H} m 탑 · 착륙지에서 ${km} km (data/relay)` : `Relay tower candidate · #${pn.n} ${name} · ${TOWER_H} m mast · ${km} km from the site (data/relay)` });
+    }
+  }
+  if (seq !== relaySeq) return;
+  L.relayMarks = out; L.globe?.setMarks?.(out);
+  window.dispatchEvent(new CustomEvent('llsn:relaymarks', { detail: { marks: out } }));
+}
+['llsn:relay', 'llsn:pins', 'llsn:globe', 'llsn:ready', 'llsn:lang', 'llsn:sites'].forEach(ev => window.addEventListener(ev, () => setTimeout(syncRelayMarks, 0)));

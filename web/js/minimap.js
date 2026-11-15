@@ -88,6 +88,7 @@ function build() {
   });
   window.addEventListener('llsn:lang', () => { relabel(); lists(); draw(); });
   window.addEventListener('llsn:pins', () => { draw(); lists(); });
+  window.addEventListener('llsn:relaymarks', () => draw());
   for (const event of ['llsn:sort', 'llsn:window', 'llsn:sites', 'llsn:relay']) window.addEventListener(event, () => { lists(); draw(); });
   window.addEventListener('llsn:focus', () => { lists(); draw(); });
   let resizeTimer = 0;
@@ -171,6 +172,14 @@ function draw() {
     const q = project(s.lat, s.lon); if (!q.front) continue;
     g.fillStyle = colors.get(s.id) || '#EDEDED'; g.strokeStyle = '#0a0a0b'; g.lineWidth = dpr;
     g.beginPath(); g.arc(R + q.x * R, R - q.y * R, 2 * dpr, 0, 7); g.fill(); g.stroke();
+  }
+  // relay towers of the compared candidates (Relay tower switch): green ring at the tower's own position, thin line from the site
+  for (const k of LLSN().relayMarks || []) {
+    const q = project(k.lat, k.lon), q0 = project(k.from.lat, k.from.lon); if (!q.front) continue;
+    const x = R + q.x * R, y = R - q.y * R;
+    g.strokeStyle = k.color || '#3CC6A0'; g.lineWidth = 1.5 * dpr;
+    if (q0.front) { g.beginPath(); g.moveTo(R + q0.x * R, R - q0.y * R); g.lineTo(x, y); g.stroke(); }
+    g.beginPath(); g.arc(x, y, 5 * dpr, 0, 7); g.stroke();
   }
   // Pinned labels use separate pills, including nearby polar candidates.
   const pills=[];

@@ -259,30 +259,33 @@ function placeAltNeedles(root) {
 let bitsKD = null, kdLoaded = null;
 async function timelineSVG(sites) {
   const cw = document.querySelector('#ls-compare .tl')?.clientWidth || 1100;
-  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(720, Math.min(1100, Math.round(cw - 34))), LW = W < 900 ? 124 : 150, rowH = 14, gap = 10, top = 22;
+  // copy 18:41: one dark strip (#131822) across the content width, 150 px label column with 'Sun / Earth', 34 px per site, 9 px bars
+  const w = LLSN().window, n = w.i1 - w.i0 + 1, W = Math.max(640, Math.round(cw)), LW = W < 900 ? 124 : 150, rowH = 9, gap = 6, top = 22, pitch = rowH * 2 + 4 + 3 + gap;
   const kd = await (bitsKD ||= stationBits().catch(() => null));
   kdLoaded = kd;
-  const H = top + sites.length * (rowH * 2 + 8 + gap) + 4;
+  const H = top + sites.length * pitch + 2;
+  const fontNum = css('--font-num') || 'monospace', ko = getLang() === 'ko', cutC = css('--cut');
   const X = k => LW + (k / n) * (W - LW - 10);
   const sunC = css('--sun'), earthC = css('--earth'), relayC = css('--relay'), kdC = css('--kdsa');
-  let out = '';
-  const dStep = [1, 2, 7, 14, 30, 60, 120].find(st => ((W - LW - 10) / (n / 24)) * st >= 42) || 240;   // axis labels at least 42 px apart
-  for (let d = 0; d * 24 < n; d += dStep) out += `<line x1="${X(d * 24)}" x2="${X(d * 24)}" y1="${top - 4}" y2="${H}" stroke="${css('--border')}" stroke-width="1"/><text x="${X(d * 24) + 2}" y="12" font-size="11" fill="${css('--muted')}" font-family="Oxanium,monospace">${core.hourToDate(w.i0 + d * 24).toISOString().slice(5, 10)}</text>`;
+  let out = `<defs><pattern id="tl-cut" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.6" height="4" fill="${cutC}"/></pattern></defs><rect x="0" y="0" width="${W}" height="${H}" fill="#131822"/>`;
+  // 12-8: tick labels never overlap — label width ~ 9.5 px font x 5 chars + 12 px margin, checked against the real step width
+  const labelW = 42, dStep = [1, 2, 3, 7, 14, 30, 60, 120].find(st => ((W - LW - 10) / (n / 24)) * st >= labelW) || 240;
+  for (let d = 0; d * 24 < n && X(d * 24) + labelW - 8 <= W; d += dStep) out += `<line x1="${X(d * 24)}" x2="${X(d * 24)}" y1="${top - 7}" y2="${top - 3}" stroke="#767E8E" stroke-width="1"/><text x="${X(d * 24) + 2}" y="11" font-size="9.5" fill="#767E8E" style="font-family:${esc(fontNum)}">${core.hourToDate(w.i0 + d * 24).toISOString().slice(5, 10)}</text>`;
   for (let r = 0; r < sites.length; r++) {
-    const s = sites[r], y = top + r * (rowH * 2 + 8 + gap), bits = hourBits(s, w.i0, w.i1);
-    const pn = LLSN().pinNo?.(s.id);
-    out += `<text x="0" y="${y + rowH}" font-size="11.5" fill="${css('--text')}">${pn ? `#${pn} ` : ''}${esc(nameOf(s).slice(0, W < 900 ? 16 : 22))}</text>`;
+    const s = sites[r], y = top + r * pitch + 2, bits = hourBits(s, w.i0, w.i1);
+    const pn = LLSN().pinNo?.(s.id), nm = nameOf(s), max = LW < 150 ? (ko ? 9 : 16) : (ko ? 12 : 22);
+    out += `<text x="4" y="${y + 9}" font-size="11.5" font-weight="600" fill="#EDEDED">${pn ? `#${pn} ` : ''}${esc(nm.length > max ? nm.slice(0, max - 1) + '…' : nm)}</text><text x="4" y="${y + 22}" font-size="9" fill="#8D96A4">${ko ? '태양 / 지구' : 'Sun / Earth'}</text>`;
     if (!bits) { out += `<text x="${LW}" y="${y + rowH}" font-size="11" fill="${css('--muted')}">${esc(t('pending'))}</text>`; continue; }
     const codes = await relayCodes(s.id, w.i0, w.i1).catch(() => null);
     const runsDraw = (test, col, yy, hh, op = 1) => { let st = -1; for (let k = 0; k <= n; k++) { const on = k < n && test(k); if (on && st < 0) st = k; else if (!on && st >= 0) { out += `<rect x="${X(st).toFixed(1)}" y="${yy}" width="${Math.max(0.8, X(k) - X(st)).toFixed(1)}" height="${hh}" fill="${col}" fill-opacity="${op}"><title>${esc(nameOf(s))} · ${esc(col === sunC ? t('lgSun') : col === earthC ? t('lgEarth') : col === relayC ? t('lgRelay') : t('lgKdsa'))} · ${k - st} h · ${core.hourToDate(w.i0 + st).toISOString()} – ${core.hourToDate(w.i0 + k).toISOString()}</title></rect>`; st = -1; } } };
-    out += `<rect x="${LW}" y="${y}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/><rect x="${LW}" y="${y + rowH + 2}" width="${W - LW - 10}" height="${rowH}" fill="${css('--surface-2')}"/>`;
     runsDraw(k => bits[k] & 1, sunC, y, rowH);
     runsDraw(k => !(bits[k] & 1) && core.sunVisibleFraction(s, w.i0 + k) > 0, sunC, y, rowH, 0.35);
     runsDraw(k => bits[k] & 2, earthC, y + rowH + 2, rowH);
     if (codes) runsDraw(k => !(bits[k] & 2) && codes[k] === 2, relayC, y + rowH + 2, rowH);
+    if (codes) runsDraw(k => !(bits[k] & 2) && codes[k] !== 2, 'url(#tl-cut)', y + rowH + 2, rowH);
     if (kd?.KDSA) runsDraw(k => (bits[k] & 2) && kd.KDSA[w.i0 + k], kdC, y + rowH * 2 + 4, 3);
   }
-  return `<svg viewBox="0 0 ${W} ${H}" class="tl-svg" role="img" aria-label="${esc(t('tlH'))}" data-ids="${esc(sites.map(x => x.id).join(','))}" data-top="${top}" data-pitch="${rowH * 2 + 8 + gap}">${out}
+  return `<svg viewBox="0 0 ${W} ${H}" class="tl-svg" role="img" aria-label="${esc(t('tlH'))}" data-ids="${esc(sites.map(x => x.id).join(','))}" data-top="${top}" data-pitch="${pitch}">${out}
     <g class="tl-needle" data-n="${n}" data-i0="${w.i0}" data-w="${W}" data-lw="${LW}"><line x1="0" x2="0" y1="${top - 6}" y2="${H}" stroke="${css('--text')}" stroke-width="1.6"/><path d="M-5,${top - 10} L5,${top - 10} L0,${top - 3}z" fill="${css('--text')}"/></g></svg>`;
 }
 function placeTlNeedle(root) {
@@ -438,6 +441,14 @@ const altLegend = ko => `<ul class="detail-lg">${[
 // timeline legend: same items as the drawing (timelineSVG), worded like the designer copy
 // shared chart scale: floor -15 deg (below-horizon parts sit on it), top at least 70 deg (grid 0-60), higher only when a site goes higher
 function chartBounds(sites) { const hi = elevationBounds(sites)[1]; return [-15, Math.max(70, hi)]; }
+// timeline legend: copy wording/shape, only the items timelineSVG draws (geometry wording)
+const tlLegend = ko => `<ul class="detail-lg row">${[
+  ['<i class="sw bar" style="background:linear-gradient(90deg,rgba(245,184,65,.35),var(--sun))"></i>', ko ? '태양 보임 (진할수록 원반이 많이 보임)' : 'Sun visible (darker = more of the disk)'],
+  ['<i class="sw bar" style="background:var(--earth)"></i>', ko ? '지구 직접 보임' : 'Direct-to-Earth view'],
+  ['<i class="sw bar" style="background:var(--relay)"></i>', ko ? '중계탑 경유 (15 m 탑)' : 'Via relay tower (15 m)'],
+  ['<i class="sw bar hatch"></i>', ko ? '탑이 있어도 지구 안 보임' : 'No Earth view even via the tower'],
+  ['<i class="sw ln" style="background:var(--kdsa)"></i>', ko ? '여주에서 달 ≥ 10°, 착륙지에서 지구 보임 — 기하만' : 'Yeoju sees the Moon (≥ 10°) while the site sees Earth — geometry only'],
+  ['<i class="sw vl"></i>', ko ? '선택 시각 (끌어서 이동)' : 'Selected time (drag to move)']].map(([sw, l]) => `<li>${sw}${esc(l)}</li>`).join('')}</ul>`;
 function elevationBounds(sites) {
   const w = LLSN().window, step = Math.max(1, Math.ceil((w.i1 - w.i0 + 1) / 480));
   let low = 0, high = 0;
@@ -482,7 +493,7 @@ async function renderBig() {
   root.classList.add('detail-comparison');
   root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${(LLSN().compare?.() || []).length} ${ko ? '고정 · 표시' : 'pinned · showing'} ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
     <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
-    <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p><div class="tl ls-panel"><div class="tl-wrap"></div></div><div class="detail-tooltip" role="status" hidden></div>`;
+    <div class="detail-tl"><h3>${esc(t('tlH'))}</h3>${tlLegend(ko)}<div class="tl"><div class="tl-wrap"></div></div></div><div class="detail-tooltip" role="status" hidden></div>`;
   root.querySelectorAll('[data-page-step]').forEach(button => button.addEventListener('click', () => {
     firstColumn = Math.max(0, firstColumn + Number(button.dataset.pageStep) * capacity); renderBig();
   }));

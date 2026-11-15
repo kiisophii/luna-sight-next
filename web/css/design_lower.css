@@ -96,3 +96,13 @@ body:has(.ls-below) { background:#020306; }
 .ls-below { padding-top: 0; }
 .ls-below > .ls-section { padding-top: 84px; scroll-margin-top: 0; margin-top: 0; }
 @media (max-width: 760px) { .ls-below > .ls-section { padding-top: 64px; } }
+/* timeline (copy 18:41): heading, one-row legend, dark strip without a box */
+.detail-tl { margin-top: 24px; }
+.detail-tl h3 { margin: 0 0 6px; font: 600 16px var(--font); letter-spacing: -0.24px; color: #E6EAF2; }
+.detail-lg.row { flex-direction: row; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; }
+.detail-lg .sw.bar { width: 18px; height: 9px; border-radius: 1px; }
+.detail-lg .sw.bar.hatch { background: repeating-linear-gradient(45deg, var(--cut) 0 1.6px, transparent 1.6px 4px); }
+.detail-lg.row .sw.ln { height: 2px; }
+.detail-lg.row .sw.vl { margin: 0 4px; }
+.detail-tl .tl { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.detail-tl .tl-svg { display: block; width: 100%; height: auto; }

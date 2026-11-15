@@ -9,7 +9,7 @@ import { stationPeriod } from './values.js';
 
 addStrings({
   flTitle: 'Filter sites', flAria: 'Mission conditions: filter the candidate list',
-  fcSun: 'Sunlight', fcEarth: 'Direct-to-Earth', fcBoth: 'Sun + Earth', fcDark: 'Longest shadow', fcGs: 'Ground-station link', fcMatch: 'Matching sites',
+  fcSun: 'Sunlight', fcEarth: 'Direct-to-Earth', fcBoth: 'Sun + Earth', fcDark: 'Longest shadow', fcGs: 'Ground link', fcMatch: 'Matching',
   fiSun: 'Share of hours in the period with at least half of the solar disc above the local terrain horizon. Minimum.',
   fiEarth: 'Share of hours with the Earth centre above the local terrain horizon (direct-to-Earth geometry). Minimum.',
   fiBoth: 'Share of hours that are sunlit AND see the Earth. Minimum.',
@@ -20,7 +20,7 @@ addStrings({
   flNone: 'No site matches. Loosen a condition.', flFoot: 'Changing a condition recalculates the candidate list right away.',
 }, {
   flTitle: '착륙지 거르기', flAria: '미션 조건: 후보 목록 거르기',
-  fcSun: '일조', fcEarth: '직접 교신', fcBoth: '해·지구 동시', fcDark: '최장 그늘', fcGs: '지상국 교신', fcMatch: '맞는 착륙지',
+  fcSun: '일조', fcEarth: '직접 교신', fcBoth: '해·지구 동시', fcDark: '최장 그늘', fcGs: '지상국 교신', fcMatch: '맞는 곳',
   fiSun: '기간 중 태양 원반의 절반 이상이 지형 지평선 위에 있는 시간 비율. 최솟값.',
   fiEarth: '지구 중심이 지형 지평선 위에 있는 시간 비율(직접 교신 기하). 최솟값.',
   fiBoth: '해가 들면서 지구도 보이는 시간 비율. 최솟값.',

@@ -107,6 +107,8 @@ let sortKey = 'both', relayOn = false, showAll = false;
 // ------------------------------------------------------------ formatting
 const byId = id => core.state.sites.find(s => s.id === id);
 const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko : s.name);
+/** Short name for the one-line list rows (full name on hover): catalogue 'short', KR without the group prefix / note. */
+const rowName = s => (getLang() === 'ko' && s.name_ko ? s.name_ko.replace(/^아르테미스 후보:\s*/, '').replace(/\s*\([^)]*\)\s*$/, '') : (s.short || s.name));
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const fmtUTC = i => core.hourToDate(i).toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
@@ -196,7 +198,7 @@ function rowHTML(s, rank) {
   return `<li class="pk-row${p ? ' pinned' : ''}${focus ? ' focus' : ''}${out ? ' out' : ''}" data-id="${s.id}"${p ? ` style="--sc:var(--c${p.n})"` : ''}>
     ${chip}
     <button type="button" class="pk-item" data-id="${s.id}" aria-current="${focus}">
-      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(nameOf(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
+      <span class="pk-main"><span class="pk-name"><span class="nm" title="${esc(nameOf(s))}">${esc(rowName(s))}</span>${rank === 1 && sortKey !== 'name' ? ' <span class="star" aria-label="1st">★</span>' : ''}</span>
         <span class="pk-grp">${t('g_' + s.group)}${siteTags(s)}${tower}</span></span>
       <span class="pk-vals num"><span class="v sun" title="${esc(t('perSun'))}">${SUN_ICON}<span class="n">${sunV}</span></span><i class="pk-div" aria-hidden="true"></i><span class="v earth" title="${esc(t(relayOn ? 'relayTag' : 'perEarth'))}">${EARTH_ICON}<span class="n">${earthV}</span></span></span>
     </button>

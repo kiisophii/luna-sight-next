@@ -521,6 +521,7 @@ if (uLayerA > 0.0) {
   .g3-site.g3-polar_peak::before,.g3-site.g3-artemis3_region::before{background:#2ee59d}
   .g3-site.g3-flip{display:inline-flex;flex-direction:row-reverse;align-items:center}.g3-site.g3-flip::before{margin:0 0 0 4px}
   .g3-site:focus-visible{outline:2px solid #ffd23f}
+  .g3-site.g3-dotonly{color:transparent!important;text-shadow:none!important}.g3-site.g3-dotonly:hover,.g3-site.g3-dotonly:focus-visible{color:inherit!important;z-index:2}
   .g3-chip{position:absolute;left:0;top:0;padding:3px 8px;border-radius:12px;font-weight:600;white-space:nowrap;box-shadow:0 1px 4px #0008}
   .g3-chip.sun{background:#ffd23f;color:#222}.g3-chip.earth{background:#3b8cff;color:#fff}
   .g3-label{position:absolute;left:0;top:0;font-weight:600;white-space:nowrap;text-shadow:0 0 3px #000}
@@ -820,12 +821,24 @@ if (uLayerA > 0.0) {
       m.el.style.display = show ? '' : 'none';
       if (show) {
         // keep the name inside the view: flip it to the left of the dot near the right edge, fade it near top/bottom
-        const lw = m.lw || (m.lw = m.el.offsetWidth || 80);
+        const lw = (frameNo % 60 === 0 || !m.lw) ? (m.lw = m.el.offsetWidth || 80) : m.lw;
         const flip = pr.x + lw > R0 - 6 && pr.x - lw > L0;
         if (flip !== !!m.flip) { m.flip = flip; m.el.classList.toggle('g3-flip', flip); }
         m.el.style.transform = flip ? `translate(${pr.x - lw + 7}px,${pr.y - 7}px)` : `translate(${pr.x - 7}px,${pr.y - 7}px)`;
         const edge = Math.min(pr.y - 4 - T0, h - pr.y - 4, flip ? pr.x - lw - L0 : R0 - pr.x - lw, pr.x - L0, R0 - pr.x);
         m.el.style.opacity = edge < 18 ? String(Math.max(0.25, edge / 18)) : '';
+        m.box = { x0: flip ? pr.x - lw + 7 : pr.x - 7, y0: pr.y - 7, w: lw, h: 14 };
+      } else m.box = null;
+    }
+    // declutter: names must not overlap. Compared sites (data-n, set by the app) first, then catalogue order;
+    // a name that would overlap one already placed shows only its dot (the dot stays on the site).
+    if (frameNo % 3 === 0) {
+      const kept = [], order = siteEls.filter(m => m.box).sort((a, b) => (b.el.dataset.n ? 1 : 0) - (a.el.dataset.n ? 1 : 0));
+      for (const m of order) {
+        const q = m.el.getBoundingClientRect();                     // real box (fonts / language change the width)
+        const r = { x0: q.left, y0: q.top, w: q.width, h: q.height }, hit = kept.some(k => r.x0 < k.x0 + k.w + 3 && k.x0 < r.x0 + r.w + 3 && r.y0 < k.y0 + k.h + 1 && k.y0 < r.y0 + r.h + 1);
+        m.el.classList.toggle('g3-dotonly', hit);
+        if (!hit) kept.push(r);
       }
     }
     const placedSun = edgeChip(chipSun, sunSprite.position, labSun, null);

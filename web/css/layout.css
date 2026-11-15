@@ -842,3 +842,16 @@ body.ls { background: var(--bg); }
 .lg-sw { width: 24px; height: 12px; flex: none; overflow: visible; }
 .lg-row.lg-cap { margin-top: -10px; }
 .ls-tray .lg-row { gap: 4px 12px; font-size: 11.5px; }
+
+/* candidate names: one line, ellipsis (no mid-word breaks); value cells a bit narrower to give the name room */
+.pk-name .nm { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; -webkit-line-clamp: unset; }
+.pk-grp { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pk-vals { gap: 6px; }
+.pk-vals .v { width: 50px; }
+.pk-item { gap: 8px; }
+.pk-row { column-gap: 8px; }
+/* condition cell titles: full short name, no ellipsis */
+.fc-lbl { overflow: visible; text-overflow: clip; letter-spacing: -0.1px; }
+.fc-top { gap: 5px; }
+.fc-i { width: 18px; height: 18px; }
+.fc-cell { padding: 12px 12px 14px; }

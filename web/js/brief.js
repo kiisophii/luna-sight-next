@@ -207,9 +207,9 @@ addStrings({
   yH: 'Terrain at the landing point', ySlope: 'Lander-scale slope', ySlopeTip: 'Least-squares plane over 3 × 3 terrain samples centred on the catalogue coordinate ({f} m footprint, {r} m DEM). data/terrain/',
   yRad: 'Within', yN: 'samples', yMed: 'median', yP95: '95th %', yMax: 'max', yFlat: 'area ≤ {d}°', yRef: 'reference',
   yFlatTip: '8° and 15° are reference values for comparison only — not landing-safety criteria. Area-weighted share of terrain samples at or below the value.',
-  yRough: 'Roughness (500 m)', yRoughTxt: 'median {a} m · 95th % {b} m', yRoughTip: 'RMS height deviation from a best-fit plane in 50 m windows, from the DEM. Not boulder detection.',
+  yRough: 'Roughness (500 m)', yRoughNa: 'Not computed (59 m DEM is coarser than the 50 m window)', yRoughTxt: 'median {a} m · 95th % {b} m', yRoughTip: 'RMS height deviation from a best-fit plane in 50 m windows, from the DEM. Not boulder detection.',
   yBox: '250 m box slope', yBoxTip: 'Coarse slope of the 250 m box at the site, copied from the relay-tower file (data/relay/). Shown for comparison.',
-  yCoarse: 'Not computed for this site (south-polar sites only).', yUser: 'Not computed for your own point (catalogue sites only).',
+  yCoarse: 'Not computed for this site (south-polar sites and Apollo 17 only).', yUser: 'Not computed for your own point (catalogue sites only).',
   ySrc: 'Source', yFiner: 'finer DEM not available here',
   psrH: 'Nearest permanently shadowed region (PSR)', psrIn: 'Inside a PSR', psrOut: 'Outside PSR', psrDist: 'Distance to PSR edge', psrBear: 'Bearing',
   psrNone: 'No PSR within {r} km (> {r} km)', psrInc: 'Search coverage incomplete — no distance shown.', psrNotG: 'not guaranteed nearest',
@@ -239,9 +239,9 @@ addStrings({
   yH: '착륙 지점 지형', ySlope: '착륙선 규모 경사', ySlopeTip: '카탈로그 좌표 중심 3 × 3 지형 표본에 맞춘 최소제곱 평면({f} m 범위, {r} m DEM). data/terrain/',
   yRad: '반경', yN: '표본', yMed: '중앙값', yP95: '95 %', yMax: '최대', yFlat: '{d}° 이하 면적', yRef: '참고값',
   yFlatTip: '8°·15°는 비교용 참고값이며 착륙 안전 기준이 아닙니다. 그 값 이하인 지형 표본의 면적 비율.',
-  yRough: '거칠기 (500 m)', yRoughTxt: '중앙값 {a} m · 95 % {b} m', yRoughTip: '50 m 창에서 최적 평면과의 높이 차 RMS(DEM 기준). 바위 탐지가 아님.',
+  yRough: '거칠기 (500 m)', yRoughNa: '계산하지 않음 (59 m DEM이 50 m 창보다 거침)', yRoughTxt: '중앙값 {a} m · 95 % {b} m', yRoughTip: '50 m 창에서 최적 평면과의 높이 차 RMS(DEM 기준). 바위 탐지가 아님.',
   yBox: '250 m 칸 경사', yBoxTip: '착륙지 250 m 칸의 거친 경사. 중계탑 파일(data/relay/) 값을 그대로 옮김. 비교용.',
-  yCoarse: '이 착륙지는 계산하지 않음 (남극 착륙지만).', yUser: '사용자 지점은 계산하지 않음 (카탈로그 착륙지만).',
+  yCoarse: '이 착륙지는 계산하지 않음 (남극 착륙지와 아폴로 17호만).', yUser: '사용자 지점은 계산하지 않음 (카탈로그 착륙지만).',
   ySrc: '자료', yFiner: '여기는 더 고운 DEM 없음',
   psrH: '가장 가까운 영구음영지역(PSR)', psrIn: 'PSR 안', psrOut: 'PSR 밖', psrDist: 'PSR 경계까지 거리', psrBear: '방위',
   psrNone: '{r} km 안에 PSR 없음 (> {r} km)', psrInc: '탐색 범위가 불완전해 거리를 표시하지 않음.', psrNotG: '최근접 보장 안 됨',
@@ -635,19 +635,20 @@ async function terrainBlock(s) {
   if (current !== s.id) return;
   // Y
   let y;
-  if (Y?.kind === 'polar_detailed' && Y.slope_by_radius_m) {
+  if ((Y?.kind === 'polar_detailed' || Y?.kind === 'nonpolar_detailed') && Y.slope_by_radius_m) {
     const src = Y.source, th = Y.thresholds_deg, R = Y.roughness_within_500m;
+    const srcName = Y.kind === 'polar_detailed' ? `PGDA LOLA ${src.resolution_m} m` : `${src.dem_name} ${src.resolution_m} m`;
     const rows = Object.keys(Y.slope_by_radius_m).sort((a, b) => a - b).map(r => {
       const q = Y.slope_by_radius_m[r];
       return `<tr><td>${r} m</td><td>${nf(q.n)}</td><td>${deg1(q.median_deg)}</td><td>${deg1(q.p95_deg)}</td><td>${deg1(q.max_deg)}</td>${th.map(d => `<td>${P1(q.flat_fraction[String(d)])}</td>`).join('')}</tr>`;
     }).join('');
     y = `<div class="det-kv">
         ${kv(t('ySlope'), deg1(Y.landing_slope_deg), infoT(fill(t('ySlopeTip'), { f: Y.method.slope_footprint_projected_m, r: src.resolution_m })))}
-        ${kv(t('yRough'), esc(fill(t('yRoughTxt'), { a: R.median_m.toFixed(2), b: R.p95_m.toFixed(2) })), info('yRoughTip'))}
+        ${R ? kv(t('yRough'), esc(fill(t('yRoughTxt'), { a: R.median_m.toFixed(2), b: R.p95_m.toFixed(2) })), info('yRoughTip')) : kv(t('yRough'), `<span class="muted" style="font:400 var(--fs-label) var(--font)">${esc(t('yRoughNa'))}</span>`)}
         ${kv(t('yBox'), deg1(Y.relay_box?.slope_deg), info('yBoxTip'))}</div>
       <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('yRad'))}</th><th>${esc(t('yN'))}</th><th>${esc(t('yMed'))}</th><th>${esc(t('yP95'))}</th><th>${esc(t('yMax'))}</th>${th.map(d => `<th>${esc(fill(t('yFlat'), { d }))} <small class="muted">(${esc(t('yRef'))})</small></th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
       <p class="lsn-note">${esc(t('yFlatTip'))}</p>
-      <p class="lsn-note">${esc(t('ySrc'))}: <a href="${esc(src.url)}" target="_blank" rel="noopener">PGDA LOLA ${src.resolution_m} m</a> (${esc(src.dem_name)})${src.finer_unavailable?.length ? ` · ${esc(t('yFiner'))}` : ''} · data/terrain/${esc(s.id)}.json</p>`;
+      <p class="lsn-note">${esc(t('ySrc'))}: <a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(srcName)}</a>${Y.kind === 'polar_detailed' ? ` (${esc(src.dem_name)})` : ''}${src.finer_unavailable?.length ? ` · ${esc(t('yFiner'))}` : ''} · data/terrain/${esc(s.id)}.json</p>`;
   } else if (Y) {
     y = `<div class="det-kv">${kv(t('ySlope'), `<span class="muted" style="font:400 var(--fs-label) var(--font)">${esc(t('yCoarse'))}</span>`)}
         ${kv(t('yBox'), `${deg1(Y.relay_box?.slope_deg)} <span class="chip-st">${esc(Y.source?.label || 'coarse')}</span>`, info('yBoxTip'))}</div>

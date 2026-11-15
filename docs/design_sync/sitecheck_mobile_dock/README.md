@@ -1,6 +1,6 @@
 # Site check mobile readability and compact UTC picker
 
-Started from integ-1915 at 13010bc; integrated and revalidated 005bcc2 (accessibility and Korean wording updates). No data or calculation changes.
+Started from integ-1915 at 13010bc; integrated 005bcc2 (accessibility and Korean wording updates) and cd7524e (comparison follow-up), then revalidated the integrated result. No data or calculation changes.
 
 - Phone time KPI labels wrap at word boundaries with space for two lines; every label has a localized full-name title.
 - Phone time-bar axes show start / middle / end (three ticks); larger screens retain five.

@@ -7,6 +7,7 @@ import { headline, PGDA_URL, PAPER_URL } from './trust.js';
 import { hindcast, validation } from './values.js';
 import { RULE } from './compare_view.js';
 import { CREDITS } from './credits.js';
+import { mountHero } from './about_hero.js';
 
 addStrings({
   abExplore: 'Explore the Moon', abKicker: 'Lunar Landing Site Navigator',
@@ -79,39 +80,6 @@ addStrings({
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
 const E = k => esc(t(k));
-/** Hero illustration (decorative): Earth limb with atmosphere glow, a small rocket, a dotted path to a dark Moon
- *  with a soft grey halo, stars. Drawn here as SVG; the rocket travels and the path draws in unless the viewer
- *  prefers reduced motion (then a still picture). Not data, not to scale. */
-function scene() {
-  const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  let x = 11, st = ''; const r = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
-  for (let k = 0; k < 70; k++) { const big = r() > 0.9; st += `<circle cx="${(r() * 600).toFixed(1)}" cy="${(r() * 300).toFixed(1)}" r="${big ? 1.1 : 0.6}" fill="#fff" opacity="${(0.2 + r() * 0.6).toFixed(2)}"/>`; }
-  const path = 'M292 318 C 316 268, 352 214, 372 160';
-  const anim = still ? '' : `<animate attributeName="stroke-dashoffset" values="230;0;0" keyTimes="0;0.7;1" dur="7s" repeatCount="indefinite"/>`;
-  const move = still ? '' : `<animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear" rotate="auto"><mpath href="#ab-traj"/></animateMotion>`;
-  const fade = still ? '' : `<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.68;0.74;1" dur="7s" repeatCount="indefinite"/>`;
-  return `<svg class="ab-svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${E('abArtAria')}">
-  <defs>
-    <radialGradient id="ab-sky" cx="50%" cy="100%" r="80%"><stop offset="0" stop-color="#0d1622"/><stop offset="0.55" stop-color="#05070b"/><stop offset="1" stop-color="#020203"/></radialGradient>
-    <radialGradient id="ab-air" cx="50%" cy="100%" r="55%"><stop offset="0.5" stop-color="#6cb4f0" stop-opacity=".7"/><stop offset="0.75" stop-color="#3a78b8" stop-opacity=".25"/><stop offset="1" stop-color="#3a78b8" stop-opacity="0"/></radialGradient>
-    <radialGradient id="ab-halo" cx="50%" cy="50%" r="50%"><stop offset="0.72" stop-color="#cfd3da" stop-opacity=".0"/><stop offset="0.80" stop-color="#cfd3da" stop-opacity=".45"/><stop offset="1" stop-color="#cfd3da" stop-opacity="0"/></radialGradient>
-    <mask id="ab-reveal"><path d="${path}" fill="none" stroke="#fff" stroke-width="6" stroke-dasharray="230" stroke-dashoffset="${still ? 0 : 230}">${anim}</path></mask>
-  </defs>
-  <rect width="600" height="360" fill="url(#ab-sky)"/>
-  <g>${st}</g>
-  <ellipse cx="300" cy="372" rx="330" ry="70" fill="url(#ab-air)"/>
-  <circle cx="300" cy="1260" r="930" fill="#06090e" stroke="#7fb4e6" stroke-opacity=".75" stroke-width="1.2"/>
-  <circle cx="390" cy="100" r="86" fill="url(#ab-halo)"/>
-  <circle cx="390" cy="100" r="62" fill="#040506" stroke="#b9bec7" stroke-opacity=".55" stroke-width="1.4"/>
-  <path id="ab-traj" d="${path}" fill="none" stroke="none"/>
-  <path d="${path}" fill="none" stroke="#e6eaf2" stroke-opacity=".65" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="0.1 6" mask="url(#ab-reveal)"/>
-  <g class="ab-rocket"${still ? ' transform="translate(292 318) rotate(-58)"' : ''}>${move}<g>${fade}
-    <path d="M9 0 C 5 -3, -3 -3, -7 -2.4 L -7 2.4 C -3 3, 5 3, 9 0 Z" fill="#f4f6fa"/>
-    <path d="M-4 -2.2 L -9 -6 L -7 -1.8 Z M-4 2.2 L -9 6 L -7 1.8 Z" fill="#c9ced6"/>
-    <circle cx="2.5" cy="0" r="1.1" fill="#0b0e14"/>
-    <path d="M-7.5 -1.2 L -12 0 L -7.5 1.2 Z" fill="#f5b841" opacity=".9"/></g></g>
-</svg>`;
-}
 // about 40 fixed stars for the picture band (seeded, same every load)
 const STARS = (() => { let x = 7, out = ''; const r = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
   for (let k = 0; k < 40; k++) out += `<i style="left:${(r() * 100).toFixed(1)}%;top:${(r() * 100).toFixed(1)}%;opacity:${(0.25 + r() * 0.6).toFixed(2)};${r() > 0.85 ? 'width:2px;height:2px;' : ''}"></i>`;
@@ -140,11 +108,11 @@ async function render() {
   const inRange = v?.named ? v.named.filter(n => n.ours_sun >= n.pgda_sun_min300 && n.ours_sun <= n.pgda_sun_max300).length : null;
   const ap = h?.apollo_sun_elevation || [], rb = h?.robotic_sunset || [];
   root.innerHTML = `
-  <div class="ab-hero"><div class="ab-stars" aria-hidden="true">${STARS}</div>
-    <div><div class="ab-kicker">${E('abKicker')}</div><h1 tabindex="-1">${E('abH1')}</h1><p>${E('abLead')}</p>
-      <p style="margin-top:20px"><a class="ls-btn primary" href="#" data-explore style="height:40px;border-radius:999px;padding:0 1.4em">${E('abExplore')} →</a></p></div>
-    <figure style="margin:0"><div class="ab-art ab-scene">${scene()}</div>
-      <figcaption class="ls-caption"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</figcaption></figure>
+  <div class="ab-hero" id="ab-hero">
+    <div class="abh-scene"></div><div class="abh-shade" aria-hidden="true"></div>
+    <div class="abh-text"><h1 tabindex="-1">${E('abH1')}</h1><p class="abh-lead">${E('abLead')}</p>
+      <p class="abh-btns"><a class="ls-btn primary" href="#" data-explore>${E('abExplore')} →</a></p></div>
+    <p class="abh-cap"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</p>
   </div>
   <section class="ab-sec" id="about-why"><h2>${E('abWhy')}</h2><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.why[k - 1]}<h3>${E('abW' + k)}</h3><p>${E('abW' + k + 't')}</p></div>`).join('')}</div></section>
   <section class="ab-sec" id="about-how"><h2>${E('abHow')}</h2><div><div class="ab-cards">${[1, 2, 3].map(k => `<div class="ls-panel">${IC.how[k - 1]}<h3>${E('abH' + k + 's')}</h3><p>${E('abH' + k + 't')}</p></div>`).join('')}</div>
@@ -172,6 +140,7 @@ async function render() {
       <p>${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>
   </div></section>
   <section class="ab-sec"><h2>${E('abCTA')}</h2><div><a class="ls-btn primary" href="#" data-mine style="height:40px;border-radius:999px;padding:0 1.4em">${E('abCTAb')}</a></div></section>`;
+  mountHero(root.querySelector('.abh-scene'), E('abArtAria'));
   root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`);
   const nextBtn = root.querySelector('.ab-next');
   const secs = () => [...root.querySelectorAll('.ab-sec')];

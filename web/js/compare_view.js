@@ -414,16 +414,18 @@ function detailCell(row, site, w) {
   return { ...original, html: original.html.replace(/<span class="sub">[\s\S]*?<\/span>/g, '') };
 }
 // Elevation chart inside the comparison table: 20° grid, start/end dates, same bounds for every column.
-function detailAltSVG(s, W, H, bounds) {
+function detailAltSVG(s, W, H, bounds, body = altBody) {
   const w = LLSN().window, n = w.i1 - w.i0 + 1, step = Math.max(1, Math.ceil(n / 480));
   const [lo, hi] = bounds, L = 30, R = 4, T = 8, B = 22;
   const X = k => L + ((k+.5) / n) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
-  const pts = { sun: [], earth: [], hz: [] };
+  // Detailed comparison, 2nd section: the selected body's elevation and the terrain horizon read from the
+  // data/horizon mask at that body's azimuth for the same hour (Sun or Earth direction).
+  const pts = { el: [], hz: [] }, sun = body !== 'earth';
   for (let k = 0; k < n; k += step) {
-    const i = w.i0 + k, su = core.sunAzEl(s, i), ea = core.earthAzEl(s, i);
-    const hz = core.terrainPending(s) ? null : core.horizonAt(s, su.az);
+    const i = w.i0 + k, b = sun ? core.sunAzEl(s, i) : core.earthAzEl(s, i);
+    const hz = core.terrainPending(s) ? null : core.horizonAt(s, b.az);
     const c = v => Math.max(lo, Math.min(hi, v));
-    pts.sun.push([k, c(su.el)]); pts.earth.push([k, c(ea.el)]); if (hz != null) pts.hz.push([k, c(hz)]);
+    pts.el.push([k, c(b.el)]); if (hz != null) pts.hz.push([k, c(hz)]);
   }
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
   const font = css('--font-num') || 'monospace';
@@ -432,12 +434,12 @@ function detailAltSVG(s, W, H, bounds) {
     grid += `${v === 0 ? '' : `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="rgba(237,237,237,.05)" stroke-width="1"/>`}<text x="0" y="${(Y(v) + 3).toFixed(1)}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${v}°</text>`;
   }
   const d0 = core.hourToDate(w.i0).toISOString().slice(5, 10), d1 = core.hourToDate(w.i1).toISOString().slice(5, 10);
-  const bits=hourBits(s,w.i0,w.i1), strips=bits?visibilityRows(bits,[{key:'sun',on:b=>!!(b&1)},{key:'earth',on:b=>!!(b&2)}],{x:L,y:H+2,width:W-L-R}):'';
-  return `<svg class="alt-geometry" viewBox="0 0 ${W} ${H+34}" width="100%" height="${H+34}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">${grid}
+  const bits=hourBits(s,w.i0,w.i1), strips=bits?visibilityRows(bits,[{key:sun?'sun':'earth',on:b=>!!(b&(sun?1:2))}],{x:L,y:H+2,width:W-L-R,height:9}):'';
+  return `<svg class="alt-geometry" viewBox="0 0 ${W} ${H+20}" width="100%" height="${H+20}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t(sun ? 'altAriaSun' : 'altAriaEarth'))}">${grid}
     <line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#6E6E74" stroke-dasharray="3 3" stroke-width="0.75"/>
-    ${pts.hz.length ? line(pts.hz, '#8D96A4', 0.75) : ''}${line(pts.earth, css('--earth'), 1.8)}${line(pts.sun, css('--sun'), 1.8)}
+    ${pts.hz.length ? line(pts.hz, '#8D96A4', 0.9) : ''}${line(pts.el, css(sun ? '--sun' : '--earth'), 1.8)}
     <text x="${L}" y="${H - 6}" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d0}</text><text x="${W - R}" y="${H - 6}" text-anchor="end" font-size="9.5" fill="#6E6E74" style="font-family:${esc(font)}">${d1}</text>
-    ${strips}<line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="${L}" data-w="${W - L - R}" x1="0" x2="0" y1="${T - 4}" y2="${H+26}" stroke="${css('--text')}" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><div class="geometry-legend"><i class="sun-swatch"></i>${esc(t('visSun'))}<i class="earth-swatch"></i>${esc(t('visEarth'))}</div>`;
+    ${strips}<line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="${L}" data-w="${W - L - R}" x1="0" x2="0" y1="${T - 4}" y2="${H+13}" stroke="${css('--text')}" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><div class="geometry-legend"><i class="${sun ? 'sun' : 'earth'}-swatch"></i>${esc(t(sun ? 'altBarSun' : 'altBarEarth'))}</div>`;
 }
 function placeReadouts(root) {
   const now = LLSN().now?.(); if (now == null) return;
@@ -447,34 +449,45 @@ function placeReadouts(root) {
     p.innerHTML = `<span class="k-sun">${iconSvg('sun', { size: 12, cls: 'ic rd-ic' })}${ko ? '태양' : 'Sun'} ${core.sunAzEl(s, now).el.toFixed(1)}°</span><span class="k-earth">${iconSvg('earth', { size: 12, cls: 'ic rd-ic' })}${ko ? '지구' : 'Earth'} ${core.earthAzEl(s, now).el.toFixed(1)}°</span>`;
   });
 }
-const altLegend = ko => `<ul class="detail-lg">${[
-  ['<span class="sw ln" style="background:var(--sun)"></span>' + iconSvg('sun', { size: 14, cls: 'ic lg-ic k-sun' }), ko ? '태양 고도' : 'Sun elevation'],
-  ['<span class="sw ln" style="background:var(--earth)"></span>' + iconSvg('earth', { size: 14, cls: 'ic lg-ic k-earth' }), ko ? '지구 고도' : 'Earth elevation'],
-  ['<span class="sw ln thin" style="background:#8D96A4"></span>', ko ? '지형 지평선 (태양 방향)' : 'Terrain horizon (Sun direction)'],
+const altLegend = (ko, body = altBody) => `<ul class="detail-lg">${[
+  body === 'earth'
+    ? ['<span class="sw ln" style="background:var(--earth)"></span>' + iconSvg('earth', { size: 14, cls: 'ic lg-ic k-earth' }), ko ? '지구 고도' : 'Earth elevation']
+    : ['<span class="sw ln" style="background:var(--sun)"></span>' + iconSvg('sun', { size: 14, cls: 'ic lg-ic k-sun' }), ko ? '태양 고도' : 'Sun elevation'],
+  ['<span class="sw ln thin" style="background:#8D96A4"></span>', body === 'earth' ? (ko ? '지형 지평선 (지구 방향)' : 'Terrain horizon (Earth direction)') : (ko ? '지형 지평선 (태양 방향)' : 'Terrain horizon (Sun direction)')],
   ['<span class="sw dash"></span>', ko ? '0° 기준선' : '0° level'],
   ['<span class="sw vl"></span>', ko ? '선택 시각' : 'Selected time']].map(([sw, l]) => `<li>${sw}${esc(l)}</li>`).join('')}</ul>`;
 // timeline legend: same items as the drawing (timelineSVG), worded like the designer copy
 // shared chart scale: floor -15 deg (below-horizon parts sit on it), top at least 70 deg (grid 0-60), higher only when a site goes higher
 function chartBounds(sites) { const hi = elevationBounds(sites)[1]; return [-15, Math.max(70, hi)]; }
 // timeline legend: copy wording/shape, only the items timelineSVG draws (geometry wording)
-const tlLegend = ko => `<ul class="detail-lg row">${[
-  ['<i class="sw bar" style="background:linear-gradient(90deg,rgba(245,184,65,.35),var(--sun))"></i>', ko ? '태양 보임 (진할수록 원반이 많이 보임)' : 'Sun visible (darker = more of the disk)'],
-  ['<i class="sw bar" style="background:var(--earth)"></i>', ko ? '지구 직접 보임' : 'Direct-to-Earth view'],
-  ['<i class="sw bar" style="background:var(--relay)"></i>', ko ? '중계탑 경유 (15 m 탑)' : 'Via relay tower (15 m)'],
-  ['<i class="sw bar hatch"></i>', ko ? '탑이 있어도 지구 안 보임' : 'No Earth view even via the tower'],
-  ['<i class="sw ln" style="background:var(--kdsa)"></i>', ko ? '여주에서 달 ≥ 10°, 착륙지에서 지구 보임 — 기하만' : 'Yeoju sees the Moon (≥ 10°) while the site sees Earth — geometry only'],
-  ['<i class="sw vl"></i>', ko ? '선택 시각 (끌어서 이동)' : 'Selected time (drag to move)']].map(([sw, l]) => `<li>${sw}${esc(l)}</li>`).join('')}</ul>`;
+const tlLegend = ko => `<ul class="detail-lg tl-grid">${[
+  ['<i class="sw bar" style="background:linear-gradient(90deg,rgba(245,184,65,.35),var(--sun))"></i>', ko ? '태양 보임' : 'Sun visible', ko ? '진할수록 태양 원반이 많이 보입니다. 옅은 칸 = 원반 일부만 지형 위.' : 'Darker = more of the solar disc above the terrain; pale = only part of the disc.'],
+  ['<i class="sw bar" style="background:var(--earth)"></i>', ko ? '지구 직접 보임' : 'Earth directly in view', ko ? '지구 중심이 착륙지 지형 지평선 위에 있는 시간.' : 'Earth centre above the site’s terrain horizon.'],
+  ['<i class="sw bar" style="background:var(--relay)"></i>', ko ? '중계탑 경유' : 'Via relay tower', ko ? '착륙지에서 지구가 가려졌지만 15 m 탑이 착륙지와 지구를 모두 보는 시간 (시선만 계산).' : 'Earth hidden from the site, but a 15 m tower sees both the site and Earth (line of sight only).'],
+  ['<i class="sw vl"></i>', ko ? '선택 시각' : 'Selected time', ko ? '누르거나 끌어서 옮깁니다.' : 'Click or drag to move it.'],
+  ['<i class="sw bar hatch"></i>', ko ? '탑이 있어도 지구 안 보임' : 'No Earth even via the tower', ko ? '착륙지에서도 탑에서도 지구까지 시선이 없는 시간.' : 'No line of sight to Earth from the site or through the tower.'],
+  ['<i class="sw kd" style="background:var(--kdsa)"></i>', ko ? '여주 지상국 조건 충족' : 'Yeoju station condition met', ko ? '여주(KDSA)에서 달이 10° 이상이고 착륙지에서 지구가 보이는 시간 — 기하만.' : 'Moon ≥ 10° above Yeoju (KDSA) while the site sees Earth — geometry only.']]
+  .map(([sw, l, tip]) => `<li title="${esc(tip)}">${sw}<span class="tx">${esc(l)}<span class="sr-only"> — ${esc(tip)}</span></span></li>`).join('')}</ul>`;
 function elevationBounds(sites) {
   const w = LLSN().window, step = Math.max(1, Math.ceil((w.i1 - w.i0 + 1) / 480));
   let low = 0, high = 0;
   for (const site of sites) for (let i = w.i0; i <= w.i1; i += step) {
     const sun = core.sunAzEl(site, i), earth = core.earthAzEl(site, i);
-    const horizon = core.terrainPending(site) ? 0 : core.horizonAt(site, sun.az);
-    low = Math.min(low, sun.el, earth.el, horizon);
-    high = Math.max(high, sun.el, earth.el, horizon);
+    const pend = core.terrainPending(site), horizon = pend ? 0 : core.horizonAt(site, sun.az), hzE = pend ? 0 : core.horizonAt(site, earth.az);
+    low = Math.min(low, sun.el, earth.el, horizon, hzE);
+    high = Math.max(high, sun.el, earth.el, horizon, hzE);
   }
   return [Math.floor(low - 1), Math.ceil(high + 1)];
 }
+let altBody = (() => { try { return localStorage.getItem('ls.altBody') === 'earth' ? 'earth' : 'sun'; } catch (e) { return 'sun'; } })();
+addStrings({ altPick: 'Show the Sun or the Earth', altShowSun: 'Sun', altShowEarth: 'Earth', altBarSun: 'Sunlit hours', altBarEarth: 'Earth in view',
+  altDescSun: 'Sun elevation and the terrain horizon toward the Sun · same period and scale for every candidate',
+  altDescEarth: 'Earth elevation and the terrain horizon toward the Earth · same period and scale for every candidate',
+  altAriaSun: 'Sun elevation with the terrain horizon toward the Sun over the period', altAriaEarth: 'Earth elevation with the terrain horizon toward the Earth over the period', lgHzEarth: 'terrain horizon (Earth direction)' },
+{ altPick: '태양 또는 지구 보기', altShowSun: '태양', altShowEarth: '지구', altBarSun: '햇빛이 드는 시간', altBarEarth: '지구가 보이는 시간',
+  altDescSun: '태양 고도와 태양 방향 지형 지평선 · 모든 후보에 같은 기간과 눈금',
+  altDescEarth: '지구 고도와 지구 방향 지형 지평선 · 모든 후보에 같은 기간과 눈금',
+  altAriaSun: '기간 동안의 태양 고도와 태양 방향 지형 지평선', altAriaEarth: '기간 동안의 지구 고도와 지구 방향 지형 지평선', lgHzEarth: '지형 지평선 (지구 방향)' });
 async function renderBig() {
   const root = sec(); if (!root || !LLSN().window) return;
   const my = ++bigSeq, allSites = shown(), w = LLSN().window;
@@ -508,8 +521,8 @@ async function renderBig() {
   const actions = sites.map(site => `<td class="${site.id === LLSN().focus ? 'focused' : ''}"><button class="detail-map" data-map="${esc(site.id)}">${ko ? '지도에서 보기' : 'Show on map'}<span aria-hidden="true">◫</span></button><button class="detail-see" data-why="${esc(site.id)}">${ko ? '자세히 보기' : 'See details'}<span aria-hidden="true">↓</span></button></td>`).join('');
   root.classList.add('detail-comparison');
   root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><div class="detail-pager"><span class="num">${ko ? `고정한 후보 <b>${(LLSN().compare?.() || []).length}</b>곳 · ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length} 보는 중` : `<b>${(LLSN().compare?.() || []).length}</b> pinned · showing ${sites.length ? firstColumn + 1 : 0}–${firstColumn + sites.length}`}</span><button data-page-step="-1" aria-label="${ko ? '이전 후보' : 'Previous candidates'}" ${firstColumn === 0 ? 'disabled' : ''}>‹</button><button data-page-step="1" aria-label="${ko ? '다음 후보' : 'Next candidates'}" ${firstColumn + capacity >= allSites.length ? 'disabled' : ''}>›</button></div></div>
-    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}">${esc(t('changeH'))}<span>${ko ? '태양·지구 고도 · 모든 후보에 같은 기간과 눈금 적용' : 'Sun and Earth elevation · same period and scale for every candidate'}</span></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, innerWidth <= 760 ? 150 : 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
-    <div class="detail-tl"><h3>${esc(t('tlH'))}</h3>${tlLegend(ko)}<div class="tl"><div class="tl-wrap"></div></div></div><div class="detail-tooltip" role="status" hidden></div>`;
+    <div class="detail-table-wrap"><table class="cmp-tbl detail-table" style="--detail-count:${sites.length}"><colgroup><col class="measure-col">${sites.map(() => '<col class="site-col">').join('')}</colgroup><thead><tr><th class="lbl" scope="col">${ko ? '측정 항목' : 'Measure'}</th>${head}</tr></thead><tbody>${rows}<tr class="detail-actions"><th class="lbl"></th>${actions}</tr><tr class="detail-chart-heading"><th colspan="${sites.length + 1}"><div class="dch"><h3 class="detail-sech">${esc(t('changeH'))}</h3><span class="alt-body" role="group" aria-label="${esc(t('altPick'))}">${['sun', 'earth'].map(b => `<button type="button" data-alt-body="${b}" aria-pressed="${altBody === b}" aria-label="${esc(t(b === 'sun' ? 'altShowSun' : 'altShowEarth'))}" title="${esc(t(b === 'sun' ? 'altShowSun' : 'altShowEarth'))}">${iconSvg(b, { size: 16, cls: 'ic' })}</button>`).join('')}</span><span class="detail-desc">${esc(t(altBody === 'earth' ? 'altDescEarth' : 'altDescSun'))}</span></div></th></tr><tr class="detail-charts"><th class="lbl">${altLegend(ko)}</th>${sites.map(site => `<td data-chart-site="${esc(site.id)}"><div class="cw">${detailAltSVG(site, innerWidth <= 760 ? 150 : 264, 168, bounds)}</div><p class="rd-now num" data-id="${esc(site.id)}"></p></td>`).join('')}</tr></tbody></table></div>
+    <div class="detail-tl"><h3 class="detail-sech">${esc(t('tlH'))}</h3>${tlLegend(ko)}<div class="tl"><div class="tl-wrap"></div></div></div><div class="detail-tooltip" role="status" hidden></div>`;
   root.querySelectorAll('[data-page-step]').forEach(button => button.addEventListener('click', () => {
     firstColumn = Math.max(0, firstColumn + Number(button.dataset.pageStep) * capacity); renderBig();
   }));
@@ -525,6 +538,11 @@ async function renderBig() {
     tip.style.left = Math.min(rect.left, window.innerWidth - 320) + 'px';
     tip.style.top = rect.bottom + 6 + 'px';
   }));
+  root.querySelectorAll('[data-alt-body]').forEach(button => button.addEventListener('click', () => {
+    if (altBody === button.dataset.altBody) return;
+    altBody = button.dataset.altBody; try { localStorage.setItem('ls.altBody', altBody); } catch (er) { /* ignore */ }
+    renderBig().then(() => sec()?.querySelector(`[data-alt-body="${altBody}"]`)?.focus());
+  }));
   placeAltNeedles(root); placeReadouts(root);
   const timeline = await timelineSVG(sites);
   if (my !== bigSeq) return;
@@ -537,7 +555,8 @@ async function renderBig() {
       const i = w.i0 + Math.max(0,Math.min(w.i1-w.i0,fraction*(w.i1-w.i0+1)-.5)), site = byId(box.dataset.chartSite);
       const tip = root.querySelector('.detail-tooltip');
       tip.classList.remove('tl-tip');
-      tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t('lgSunEl')} ${core.sunAzEl(site,i).el.toFixed(1)}° · ${t('lgEarthEl')} ${core.earthAzEl(site,i).el.toFixed(1)}°`;
+      const bd = altBody === 'earth' ? core.earthAzEl(site, i) : core.sunAzEl(site, i), hzv = core.terrainPending(site) ? null : core.horizonAt(site, bd.az);
+      tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t(altBody === 'earth' ? 'lgEarthEl' : 'lgSunEl')} ${bd.el.toFixed(1)}°${hzv == null ? '' : ` · ${t(altBody === 'earth' ? 'lgHzEarth' : 'lgHzSun')} ${hzv.toFixed(1)}°`}`;
       tip.hidden = false; tip.style.left = Math.max(8, Math.min(event.clientX + 12, innerWidth - 320)) + 'px'; tip.style.top = Math.min(event.clientY + 12, innerHeight - 80) + 'px';
     });
     box.addEventListener('pointerleave', () => { root.querySelector('.detail-tooltip').hidden = true; });

@@ -1,0 +1,33 @@
+{
+  "normalized_exit_code": 0,
+  "normalized_tail": [
+    "uncertainty: 33 site file(s) checked",
+    "",
+    "PASS: 0 errors, 0 warnings"
+  ],
+  "raw_errors": 33,
+  "raw_issue": "Historical windows producer hashes use LF; actual checkout CRLF. Only core.js/build_windows.mjs temporarily normalized; original bytes restored.",
+  "restored_hashes": {
+    "web\\js\\core.js": "50a431098cf74afac8fd0dd6e390e33ff4a53885f931b906ac49245080a5c394",
+    "pipeline\\build_windows.mjs": "33caf6932f93eec2784bfd78f597b5386000cba3e3d105a98a4b1c68a86ea5fa"
+  },
+  "tests": 21,
+  "test_result": "21 passed, 1 warning in 1.94s",
+  "test_command": "python -m pytest pipeline/tests/test_task_x.py pipeline/tests/test_local250.py pipeline/tests/test_task_pq.py -q",
+  "warning": "CuPy CUDA_PATH autodetection warning; compiled CUDA test and full computation succeeded.",
+  "ledger": "FAILURES: 0; 18 products = 9 integrator + 9 other member",
+  "index_hash_rule": "CRLF_to_LF (scientific source provenance remains execution bytes)",
+  "reviewed_nodes": 28577,
+  "reviewed_index_entries": 33,
+  "reviewed_shared_nodes": 2057,
+  "reviewed_radius_rows": 272,
+  "human_independent_data_signoff": false,
+  "file_sha256": {
+    "pipeline/check_local250.py": "c07b6ab56d8a0874ae51ffe3c9f38f4ef8385f387c318efeff2718b1b516cc77",
+    "pipeline/task_x_report.py": "b71b9d95f82674d44400a7b0d3e4c5e41087ff0bb3e0ea38974196e468a726b7",
+    "pipeline/tests/test_task_x.py": "65fd87b4f9a38469f41d2e0867cabf9e64f182657bd89d41e7eecfb7eb1e000d",
+    "pipeline/check_contract.py": "07bf5933be3a08ff57e7f01be10a0eda3ea2d88844650fb135b6afb1ab6f0530",
+    "docs/task_x_results.json": "642b5bcf5968a04654bc8959ac20666cc0bbbf16ca9d22369e25224bf883f633",
+    "docs/task_x_check.json": "86ff2fb42904ae66eb4205763254aa956adb22ee9771dfb7c511ede2503e8757"
+  }
+}

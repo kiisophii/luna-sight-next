@@ -1,0 +1,924 @@
+{
+  "inputs": [
+    {
+      "path": "web\\data\\sites.json",
+      "sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017"
+    },
+    {
+      "path": "web\\data\\hindcast.json",
+      "sha256": "59e0a58c0cbbea62288a7089e148494a436e19196d211ce4a4eb1fbd685d465f"
+    },
+    {
+      "path": "pipeline\\task_r_sources.py",
+      "sha256": "a0b12f8863c1cea34d4181a1e4c042c792d742ff7897b9c0706a812a258a9c37"
+    },
+    {
+      "path": "pipeline\\task_r_audit.py",
+      "sha256": "92db1add82dd8bd75253086c045221c3fb46e7ca3403865febd37f528ce3887f"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO11.json",
+      "sha256": "5edc3fd2659d7e5a351cc32e4a6e32fcad3a69501ee1d178cde94923383da6b1"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO12.json",
+      "sha256": "c3196f8934510a5a43c7f743503b037368e50a55432f19e7811db20c69f28ded"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO14.json",
+      "sha256": "e05a2fd81d520dab184bb45d32c018f692ee1a4f4c154eb7561ac8a8b9e1a413"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO15.json",
+      "sha256": "1bf4f6d15c75a7fffe6647d924afdf6d49b7ea638470e2836b6a6d6267628d64"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO16.json",
+      "sha256": "e824dc2babe4fb459ba7663556cc4a27fbbd5a61741f4b3701fc25c12d84d8cb"
+    },
+    {
+      "path": "web\\data\\horizon\\APOLLO17.json",
+      "sha256": "a4eac336dfbc703ba64fad76aa98fe423211a8935660738429fd151b54ab8dda"
+    },
+    {
+      "path": "web\\data\\horizon\\LUNA16.json",
+      "sha256": "22cfde335f0e7fed5e774e50ef6d51e9305a4fdcb1bb6aeb6721bb0b06a61577"
+    },
+    {
+      "path": "web\\data\\horizon\\LUNA20.json",
+      "sha256": "075312b3acb1c0a24ad0a03f1ced0e5bbe0f8e2b69959c8e00c70365ffb3c781"
+    },
+    {
+      "path": "web\\data\\horizon\\LUNA24.json",
+      "sha256": "fd56cec2c8ec25ba69b288b0461875dbbc7833e3095236576a5ba355f3808a8a"
+    },
+    {
+      "path": "web\\data\\horizon\\CHANGE3.json",
+      "sha256": "a0d88ebf110f087ef37ff24839b6477900287eb8f585cd3b301328aa4383ebfa"
+    },
+    {
+      "path": "web\\data\\horizon\\CHANGE4.json",
+      "sha256": "de93a094170b18f94d3923a2787f9a154dc3a600e308d4b167012274f8222d21"
+    },
+    {
+      "path": "web\\data\\horizon\\CHANGE5.json",
+      "sha256": "f136c3a712db9d5376bd151612b86b0c239203aa4e34048a598399f22c7d2fb1"
+    },
+    {
+      "path": "web\\data\\horizon\\CHANGE6.json",
+      "sha256": "6d277cdc7617cab663768c711fc52cbc76c29783cef8f224727e09df442c2375"
+    },
+    {
+      "path": "web\\data\\horizon\\CHANDRAYAAN3.json",
+      "sha256": "e5b1829ee6c4cfdd58f482275410dfdee5b68a6080ba0bcc615e9bac28a5bcf4"
+    },
+    {
+      "path": "web\\data\\horizon\\SLIM.json",
+      "sha256": "25173b32dc20f8183b95c2f0b6d8e2c9bc62b1c3b08a350866d5470ef096e9fb"
+    },
+    {
+      "path": "web\\data\\horizon\\IM1.json",
+      "sha256": "a38e0bd619d235f929532c9d0f8a5370b4cb9052d3a90017ce1b4274f634f06b"
+    },
+    {
+      "path": "web\\data\\horizon\\IM2.json",
+      "sha256": "9e341663e268fa31f0d35427e42c5f7606abb47a743f8dd1402fde527e68e281"
+    },
+    {
+      "path": "web\\data\\horizon\\BLUE_GHOST1.json",
+      "sha256": "3d8d34d30b5be66253ec11b50b87cce527bbad7648d51329fc556b9183cf7d68"
+    }
+  ],
+  "kernels": [
+    {
+      "name": "de440s.bsp",
+      "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2"
+    },
+    {
+      "name": "moon_080317.tf",
+      "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993"
+    },
+    {
+      "name": "moon_pa_de421_1900-2050.bpc",
+      "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf"
+    },
+    {
+      "name": "pck00008.tpc",
+      "sha256": "ca07df56e9f1bca85a4c6748b618a46c0bf8e081f96f81e324896f2fdc54ea27"
+    }
+  ],
+  "kernel_base_url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/",
+  "runtime": {
+    "skyfield": "1.54",
+    "numpy": "2.2.6",
+    "timescale": "Skyfield built-in; leap date and offset arrays hashed separately",
+    "leap_dates_sha256": "41f015ccdacd1f277317f3e867c4a513fc76988db46830f89b41dda7b4e7960d",
+    "leap_offsets_sha256": "ed133604b0d98ca4302db6301742f9f4980e4fa211497556eb5a4ee9673fc3fb"
+  },
+  "sources": [
+    {
+      "url": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "resolved_url": "https://apollojournals.org/alsj/alsj-EarthSun_AltAz.html",
+      "sha256": "cd1545deb6cb95a97396abe07f8e43a896e762b3e4fb5a50240d107a862118c3",
+      "bytes": 28131,
+      "retrieved_utc": "2026-11-15T00:28:44.700847Z",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://fireflyspace.com/missions/blue-ghost-mission-1/",
+      "resolved_url": "https://fireflyspace.com/missions/blue-ghost-mission-1/",
+      "sha256": "30a029bd7e25f8559c4fac8f9226cb88a904a3656b7e48b33829160d848a840f",
+      "bytes": 154280,
+      "retrieved_utc": "2026-11-15T00:28:45.051568Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1168",
+      "resolved_url": "https://lroc.im-ldi.com/images/1168",
+      "sha256": "5dc514f147159218058ca7d6ad93832e25562d4ea4c046ae756d3fb311e066bd",
+      "bytes": 47784,
+      "retrieved_utc": "2026-11-15T00:28:46.009296Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1172.2020",
+      "resolved_url": "https://lroc.im-ldi.com/images/1172.2020",
+      "sha256": "842b2a6cbcafadb0d1706028185bd21253d5502aa94b2897f753dca0d48d8e99",
+      "bytes": 45490,
+      "retrieved_utc": "2026-11-15T00:28:46.955186Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1314",
+      "resolved_url": "https://lroc.im-ldi.com/images/1314",
+      "sha256": "33995bed7248c4c17e364c931284a6ba1bcd0cc8eb6aefdbc64431206414d889",
+      "bytes": 44871,
+      "retrieved_utc": "2026-11-15T00:28:47.928970Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1358",
+      "resolved_url": "https://lroc.im-ldi.com/images/1358",
+      "sha256": "e8d41e820ceb39ff50567ec245a84c99df884607ab062dfe5632185c1accd772",
+      "bytes": 44745,
+      "retrieved_utc": "2026-11-15T00:28:48.841128Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1360",
+      "resolved_url": "https://lroc.im-ldi.com/images/1360",
+      "sha256": "ade23f45283ad2e32f03fcf52d6015d3ab6e1621c966354476ac920c923998d8",
+      "bytes": 44385,
+      "retrieved_utc": "2026-11-15T00:28:49.833317Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1374",
+      "resolved_url": "https://lroc.im-ldi.com/images/1374",
+      "sha256": "73e20bebfac8a8c0422fcd7935439bcc720379382c012ab503286404686be9f6",
+      "bytes": 48673,
+      "retrieved_utc": "2026-11-15T00:28:50.797264Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1406",
+      "resolved_url": "https://lroc.im-ldi.com/images/1406",
+      "sha256": "a3c357c3814d4c31d37903e8a378bdce70c8f6f626bcc17ba2d49bb7af39d505",
+      "bytes": 44950,
+      "retrieved_utc": "2026-11-15T00:28:51.725117Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/1408",
+      "resolved_url": "https://lroc.im-ldi.com/images/1408",
+      "sha256": "5c59dcc63e2d21a7a8065d25242e36d88139cbf69f35e627e1e2035b5566ece1",
+      "bytes": 45135,
+      "retrieved_utc": "2026-11-15T00:28:52.709391Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lroc.im-ldi.com/images/637",
+      "resolved_url": "https://lroc.im-ldi.com/images/637",
+      "sha256": "d20507b1ba7dcb0cebef4876aca2c2b1e183997457ed7d41e6dfb2846d225e6e",
+      "bytes": 52075,
+      "retrieved_utc": "2026-11-15T00:28:53.752584Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "resolved_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "sha256": "586aef752114a651b5a056299fdf2d850b6dfbb418580f49b6c099dfe70e705f",
+      "bytes": 77567,
+      "retrieved_utc": "2026-11-15T00:28:55.585865Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "resolved_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "sha256": "3ad39d623fd72b9debe1e70d74ed8c031daa6dc97b0d3458b1c760a1b56fece9",
+      "bytes": 5220,
+      "retrieved_utc": "2026-11-15T00:28:56.472240Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html",
+      "resolved_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html",
+      "sha256": "89c0c12955ef0bd9550ba3e59e93d45114aaae82957c62e4920b2b1ecdadd7bb",
+      "bytes": 8447,
+      "retrieved_utc": "2026-11-15T00:28:57.371395Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+      "resolved_url": "https://ntrs.nasa.gov/api/citations/20260003150/downloads/MSolo%20PRIME-1%20overview%20and%20results%20-%20LSSW.pdf",
+      "sha256": "d924722fdcd1152f72cff3db8fefce7559bf03047f67c64d4b7476bfcb892fb3",
+      "bytes": 3037725,
+      "retrieved_utc": "2026-11-15T00:28:59.520607Z",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://rhodesmill.org/skyfield/planetary.html",
+      "resolved_url": "https://rhodesmill.org/skyfield/planetary.html",
+      "sha256": "85fe2876b496ee605c35a90feca944a52601553d047b0494be3bc74a90a6997c",
+      "bytes": 22638,
+      "retrieved_utc": "2026-11-15T00:28:59.878141Z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html",
+      "resolved_url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html",
+      "sha256": "6ca45d9c222d6e5c425ae3e0a3c44225cf8b6d30c4a14892b0f1157b0ab4cfe4",
+      "bytes": 112553,
+      "retrieved_utc": "2026-11-15T00:29:00.747935Z",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+      "resolved_url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10541444/content.html",
+      "sha256": "4a02c365d5cb65fe34c22f35f197c0fcacb025bb8f7bdfd9a44b686ea4e5ce60",
+      "bytes": 40551,
+      "retrieved_utc": "2026-11-15T00:30:18.495670Z",
+      "content_type": "text/html",
+      "transport": "urllib TLS"
+    },
+    {
+      "url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+      "resolved_url": "https://www.cnsa.gov.cn/n6758968/n6758972/c6798565/content.html",
+      "sha256": "a8422e65fdacd4e91a514bef295f53fb033d8bafcde51b3eb2ccd834d1290413",
+      "bytes": 39344,
+      "retrieved_utc": "2026-11-15T00:29:02.646841Z",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.eoibahrain.gov.in/pdf/PR-%20Chandrayaan%203sd.pdf",
+      "resolved_url": "https://www.eoibahrain.gov.in/pdf/PR-%20Chandrayaan%203sd.pdf",
+      "sha256": "8242170865e890b978a146fc29c38fd2d48606104ca2166aded5acd674caa313",
+      "bytes": 91771,
+      "retrieved_utc": "2026-11-15T00:30:19.393883Z",
+      "content_type": "application/pdf",
+      "transport": "urllib TLS"
+    },
+    {
+      "url": "https://www.nasa.gov/blogs/missions/2025/03/06/intuitive-machines-mission-lands-near-south-pole-carrying-nasa-science/",
+      "resolved_url": "https://www.nasa.gov/blogs/missions/2025/03/06/intuitive-machines-mission-lands-near-south-pole-carrying-nasa-science/",
+      "sha256": "52468ddb1f9bb7d69651e7d0e49117cfd2b974379abe39615ebd122eab5f5a37",
+      "bytes": 264732,
+      "retrieved_utc": "2026-11-15T00:29:04.099537Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nasa.gov/history/alsj-and-afj/",
+      "resolved_url": "https://www.nasa.gov/history/alsj-and-afj/",
+      "sha256": "d8a46ea54e6d96aa07762738e2b05ef7143b3ed363026d75b93ca10ab903da3c",
+      "bytes": 296543,
+      "retrieved_utc": "2026-11-15T00:29:04.471841Z",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf",
+      "resolved_url": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf",
+      "sha256": "02f129b0477f8b1a257a8a0a5e36e9be5c7c6cb866e8f18c2aa113b04f1c856b",
+      "bytes": 9158814,
+      "retrieved_utc": "2026-11-15T00:29:05.650569Z",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://www.nasa.gov/wp-content/uploads/2023/04/1976.pdf",
+      "resolved_url": "https://www.nasa.gov/wp-content/uploads/2023/04/1976.pdf",
+      "sha256": "cdc3299c3ef2d7d8fafc3caeb2a57f2b17c39eba1f873f857cb6742ec26ca110",
+      "bytes": 9214980,
+      "retrieved_utc": "2026-11-15T00:29:06.802461Z",
+      "content_type": "application/pdf"
+    }
+  ],
+  "horizons": [
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2723.47314%2C0.67416%2C-1.9279600000000001%27&TLIST=%272440423.3455902776%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2723.47314%2C0.67416%2C-1.9279600000000001%27&TLIST=%272440423.3455902776%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "79dfb930cebb9e634242d130e814bde19cce4fd58e102845d521824ad7cde7cf",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:07.377961Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2723.4333%2C0.6875%2C-1.9279600000000001%27&TLIST=%272440423.3455902776%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2723.4333%2C0.6875%2C-1.9279600000000001%27&TLIST=%272440423.3455902776%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "0bc1a209da0124a8860d9a00ebbc01df876f3f3798a8f81b7614b954a285b077",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:07.953943Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-23.4219%2C-3.0128%2C-1.42292%27&TLIST=%272440544.7879166668%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-23.4219%2C-3.0128%2C-1.42292%27&TLIST=%272440544.7879166668%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "328eb9541ae625692769ae09c35674f6e73ae9b7076db5044a16146a957914fb",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:08.511071Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-23.3856%2C-3.1975%2C-1.42292%27&TLIST=%272440544.7879166668%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-23.3856%2C-3.1975%2C-1.42292%27&TLIST=%272440544.7879166668%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "37c5feeb85d1f2709d5a5f22a1d4c1c288764ed419c8c5f82860359370e94aa7",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:09.110727Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-17.47194%2C-3.64589%2C-1.06126%27&TLIST=%272440987.8876504628%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-17.47194%2C-3.64589%2C-1.06126%27&TLIST=%272440987.8876504628%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "796d892e3a796ebdd7a73f2b2120dd6f57c323a70b957b44451b9ce5d1c0d49e",
+      "bytes": 6336,
+      "retrieved_utc": "2026-11-15T00:29:09.641114Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-17.4653%2C-3.6733%2C-1.06126%27&TLIST=%272440987.8876504628%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-17.4653%2C-3.6733%2C-1.06126%27&TLIST=%272440987.8876504628%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "0ece0e1420d21178ce0e99afb34409a05ffaba51d3510cecd3232760637856ee",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:10.218955Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%273.6333%2C26.13239%2C-1.92595%27&TLIST=%272441163.4281134261%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%273.6333%2C26.13239%2C-1.92595%27&TLIST=%272441163.4281134261%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "6add4369a7602040bb9c36e9f05bbb2c5a7ccb3c55e10c8a6880d74a643291ee",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:10.772624Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%273.6528%2C26.1008%2C-1.92595%27&TLIST=%272441163.4281134261%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%273.6528%2C26.1008%2C-1.92595%27&TLIST=%272441163.4281134261%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "3c20d021b76b90018fbc93139e92cdccecd8343673c67f8cd191799a6cba1cfd",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:11.348314Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2715.5011%2C-8.9734%2C0.01323%27&TLIST=%272441428.5997106479%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2715.5011%2C-8.9734%2C0.01323%27&TLIST=%272441428.5997106479%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "974122ad337dd89ec596d55ecbb5fbe862ef3bfaf7dcba316c7ba359f0e3ad5d",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:11.916104Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2715.5144%2C-8.9914%2C0.01323%27&TLIST=%272441428.5997106479%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2715.5144%2C-8.9914%2C0.01323%27&TLIST=%272441428.5997106479%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "4fa299876a824196ef8e222525254693712be911da7e5fd70504f88d3ad45217",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:12.485930Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7723%2C20.1911%2C-2.62599%27&TLIST=%272441663.3298379630%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7723%2C20.1911%2C-2.62599%27&TLIST=%272441663.3298379630%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "5ffe21a52a721dc576ec007d7b4d3b32670797ef40246d6a1763b568a1e6eed7",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:13.037611Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7658%2C20.1653%2C-2.62599%27&TLIST=%272441663.3298379630%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2730.7658%2C20.1653%2C-2.62599%27&TLIST=%272441663.3298379630%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "ce86b386132474d1691589e27bffa2adac4e5ce362144251b927e9d82e211897",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:13.615144Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.3638%2C-0.5137%2C-2.45%27&TLIST=%272440849.7208333332%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.3638%2C-0.5137%2C-2.45%27&TLIST=%272440849.7208333332%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "c2bc33066d8cf57ba53e6643c191af5e3cb760a478fb961617281ac6c2d809e2",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:14.168952Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.6242%2C3.7863%2C-1.77414%27&TLIST=%272441369.3048611111%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.6242%2C3.7863%2C-1.77414%27&TLIST=%272441369.3048611111%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "1d14aef6313fce6a62010ed9c9ba451136f53dd50e66137bf05c21f7ca64d944",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:14.724737Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.6242%2C3.7863%2C-1.77414%27&TLIST=%272441369.3049652777%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2756.6242%2C3.7863%2C-1.77414%27&TLIST=%272441369.3049652777%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "d5e12c304529435dcd15d733d8513f62d76bc5f70f27b1b340199547c2144e2a",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:15.298226Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2762.2129%2C12.7142%2C-3.6716100000000003%27&TLIST=%272443008.7749999999%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2762.2129%2C12.7142%2C-3.6716100000000003%27&TLIST=%272443008.7749999999%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "1a011c4969ef9fde3a219370a935c623ac2d36917daeb9da2b2e50099a817130",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:15.869534Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2762.2129%2C12.7142%2C-3.6716100000000003%27&TLIST=%272443008.5833333335%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2762.2129%2C12.7142%2C-3.6716100000000003%27&TLIST=%272443008.5833333335%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "c4d81d4e4f390c1640c2938b5e2ea3cfc8caccf6f374afa38cdfbd2e510c816c",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:16.412817Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-19.5116%2C44.1214%2C-2.6257800000000002%27&TLIST=%272456641.0493055554%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-19.5116%2C44.1214%2C-2.6257800000000002%27&TLIST=%272456641.0493055554%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "8c918d5784e3325ca313f773ae1c207836221dc4eb12d7806eee8a8b09aa63a0",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:16.977646Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C-5.9264399999999995%27&TLIST=%272458486.6013888889%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C-5.9264399999999995%27&TLIST=%272458486.6013888889%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "20c7b19b1808d09c268f4354747e4c20820b0b6d47d36d7be90a0c71d78512d2",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:17.555714Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-51.9161%2C43.0576%2C-2.5420700000000003%27&TLIST=%272459185.1326388889%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-51.9161%2C43.0576%2C-2.5420700000000003%27&TLIST=%272459185.1326388889%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "31a0e7c6863f0a33302ced1f5cfc6973ac17439c76ecc900f2511071814cfd32",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:18.109449Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-153.9852%2C-41.6385%2C-5.25422%27&TLIST=%272460463.4326388887%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-153.9852%2C-41.6385%2C-5.25422%27&TLIST=%272460463.4326388887%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "36ed02e5c37f445666c4e58d76474ff1b0ff1938a5a67aa5e60ce6294b00cc43",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:18.688891Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.53091%27&TLIST=%272460180.0236111111%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.53091%27&TLIST=%272460180.0236111111%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "87d0c6a459cfd8d22c9ed753f95fc60b03d6fee527a0d079067091b160149969",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:19.265738Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C-0.91037%27&TLIST=%272460329.1388888890%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C-0.91037%27&TLIST=%272460329.1388888890%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "b80f52801d05223409b107e97bd001c399bc9d6ed64f03d293d126b0158b7669",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:19.840811Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C2.5939699999999997%27&TLIST=%272460363.4749189815%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C2.5939699999999997%27&TLIST=%272460363.4749189815%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "7f707715328fbaf3c6072a864296d08c8a726c8bb8eab969340560f8f896ac31",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:20.398303Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2729.1957%2C-84.7906%2C5.32375%27&TLIST=%272460741.2277777777%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2729.1957%2C-84.7906%2C5.32375%27&TLIST=%272460741.2277777777%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "29285f0d139f3a2ed491269ac081af35a7b5756ef619a338052e4cc4883c85d9",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:20.943882Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2729.1957%2C-84.7906%2C5.32375%27&TLIST=%272460741.2291666665%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2729.1957%2C-84.7906%2C5.32375%27&TLIST=%272460741.2291666665%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "28a02cd0f7879141ba4b0dfad17e1bd9e4325200f1d640af8a53a0044d524809",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:21.507299Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2761.81%2C18.562%2C-3.65027%27&TLIST=%272460736.8569444446%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2761.81%2C18.562%2C-3.65027%27&TLIST=%272460736.8569444446%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "54ccae3667ff331a7565740a2b2ff1e3fd6f5ebbc7156cf310f4c543755d9933",
+      "bytes": 6335,
+      "retrieved_utc": "2026-11-15T00:29:22.049949Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.53091%27&TLIST=%272460191.7597222221%2C2460191.7604166665%2C2460191.7611111109%2C2460191.7618055558%2C2460191.7625000002%2C2460191.7631944446%2C2460191.7638888890%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2732.32%2C-69.3741%2C0.53091%27&TLIST=%272460191.7597222221%2C2460191.7604166665%2C2460191.7611111109%2C2460191.7618055558%2C2460191.7625000002%2C2460191.7631944446%2C2460191.7638888890%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "c59d9752f56d465115405fcb99c35d34a12851f0a175df170cdcc898f4f3946b",
+      "bytes": 6689,
+      "retrieved_utc": "2026-11-15T00:29:23.149197Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C-0.91037%27&TLIST=%272460340.6680555558%2C2460340.6687500002%2C2460340.6694444446%2C2460340.6701388890%2C2460340.6708333334%2C2460340.6715277778%2C2460340.6722222222%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%2725.251%2C-13.316%2C-0.91037%27&TLIST=%272460340.6680555558%2C2460340.6687500002%2C2460340.6694444446%2C2460340.6701388890%2C2460340.6708333334%2C2460340.6715277778%2C2460340.6722222222%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "ed688c3e99285ebef33d82c291bdb8dfcfbb783b9e5d94b9918fcad250ae92f5",
+      "bytes": 6689,
+      "retrieved_utc": "2026-11-15T00:29:24.224411Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C2.5939699999999997%27&TLIST=%272460372.0777777778%2C2460372.0784722222%2C2460372.0791666666%2C2460372.0798611110%2C2460372.0805555554%2C2460372.0812499998%2C2460372.0819444442%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%271.44%2C-80.13%2C2.5939699999999997%27&TLIST=%272460372.0777777778%2C2460372.0784722222%2C2460372.0791666666%2C2460372.0798611110%2C2460372.0805555554%2C2460372.0812499998%2C2460372.0819444442%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "3babc321c0f52ba7dba731ba350d7c32b99e9948dcb07be75e8bf48998b625e1",
+      "bytes": 6689,
+      "retrieved_utc": "2026-11-15T00:29:25.275850Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-19.5116%2C44.1214%2C-2.6257800000000002%27&TLIST=%272456653.1652777777%2C2456653.1659722221%2C2456653.1666666665%2C2456653.1673611109%2C2456653.1680555558%2C2456653.1687500002%2C2456653.1694444446%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27-19.5116%2C44.1214%2C-2.6257800000000002%27&TLIST=%272456653.1652777777%2C2456653.1659722221%2C2456653.1666666665%2C2456653.1673611109%2C2456653.1680555558%2C2456653.1687500002%2C2456653.1694444446%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "8db3c53effc3a0d95f48d16d02a586ea0f89798b25097612c8c6ceb798a3d26f",
+      "bytes": 6689,
+      "retrieved_utc": "2026-11-15T00:29:26.342311Z",
+      "content_type": "application/json",
+      "signature": {
+        "version": "1.2",
+        "source": "NASA/JPL Horizons API"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C-5.9264399999999995%27&TLIST=%272458497.3020833335%2C2458497.3027777779%2C2458497.3034722223%2C2458497.3041666667%2C2458497.3048611111%2C2458497.3055555555%2C2458497.3062499999%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "resolved_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27coord%40301%27&COORD_TYPE=%27GEODETIC%27&SITE_COORD=%27177.5885%2C-45.4562%2C-5.9264399999999995%27&TLIST=%272458497.3020833335%2C2458497.3027777779%2C2458497.3034722223%2C2458497.3041666667%2C2458497.3048611111%2C2458497.3055555555%2C2458497.3062499999%27&TLIST_TYPE=%27JD%27&TIME_TYPE=%27UT%27&QUANTITIES=%274%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&APPARENT=%27AIRLESS%27&TIME_DIGITS=%27FRACSEC%27&CAL_FORMAT=%27JD%27&OBJ_DATA=%27NO%27",
+      "sha256": "da931493b21eac343428e8c594985014d3edb46c0db4839462ec203e0b2669ef",
+      "bytes": 6689,
+      "retrieved_utc": "2026-11-15T00:29:27.410498Z",
+      "content_type": "application/json",
+      "signature": {
+        "source": "NASA/JPL Horizons API",
+        "version": "1.2"
+      },
+      "model": [
+        "Target body name: Sun (10)                        {source: DE441}",
+        "Center body name: Moon (301)                      {source: DE441}",
+        "Center radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       ",
+        "Vis. interferer : EARTH (R_eq= 6378.137) km       {source: DE441}",
+        "Rel. light bend : Sun, EARTH                      {source: DE441}"
+      ]
+    }
+  ]
+}

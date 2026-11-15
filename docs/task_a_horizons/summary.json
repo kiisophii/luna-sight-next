@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "sites_completed": 33,
+  "sites_missing": [],
+  "angles_compared": 23760,
+  "angle_failures": 1,
+  "sun_failures": [],
+  "max_abs_deg": 0.06046302810083656,
+  "median_abs_deg": 0.00015040598244903808,
+  "max_abs_sun_pp": 0.011409273457463343,
+  "passed": false,
+  "input_commit": "89a9af12d2b1b59490546f4409eb5b88debf8eca",
+  "checker": "Minchul Kim",
+  "verification_scope": "All 33 sites, all 720 published azimuth bins; full 43824-hour sunlight per site; independent finite-step brute force on original DEMs; no production imports",
+  "previous_run_id": "43655358830",
+  "current_run_id": "43655770217",
+  "near_refined_sites": 33,
+  "near_refinement_complete": true,
+  "initial_angle_failures": 19,
+  "initial_max_abs_deg": 0.11259736280829724
+}

@@ -1,0 +1,57 @@
+name: Independent task A horizons
+on:
+  push:
+    branches: [s5-a-horizons-minchul]
+    paths:
+      - 'verification/task_a/**'
+      - '.github/workflows/verify-task-a.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      LLSN_VERIFICATION_ROOT: ${{ github.workspace }}
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r verification/task_a/requirements-independent.txt
+      - name: Independent analytic and isolation controls
+        run: python -m unittest discover -s verification/task_a -p test_independent_geometry.py -v
+      - name: Recover complete original computation including all failures
+        uses: actions/download-artifact@v4
+        with:
+          name: task-a-horizons-full
+          run-id: 43655770217
+          github-token: ${{ github.token }}
+          path: .
+      - name: Validate every result and publish durable evidence
+        run: python verification/task_a/finalize_task_a.py
+      - name: Verify historical ledger citations and snapshot counts
+        run: python pipeline/verify_ledger.py
+      - name: Preserve all team changes and commit evidence on task branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/task_a_horizons docs/verification_ledger.md docs/SI_USAGE.md
+          git diff --cached --quiet || git commit -m "Publish complete task A evidence with one retained angular failure"
+          git push origin HEAD:s5-a-horizons-minchul
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task-a-final-evidence
+          retention-days: 30
+          path: docs/task_a_horizons/
+      - name: Numerical acceptance (failure remains visible)
+        run: |
+          python -c "import json; s=json.load(open('docs/task_a_horizons/summary.json')); print(s); assert s['passed'], 'Complete verification: angular discrepancy retained; see report'"

@@ -596,6 +596,8 @@ def main():
     check_korea(data, sites)
     check_hterrain(data)
     check_local(data, sites)
+    from check_local250 import check_local250
+    check_local250(data, sites, err, warn)
     check_monthly(data, sites)
     check_uncertainty(data, sites)
     for line in warns + errors:

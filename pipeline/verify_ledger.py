@@ -121,7 +121,7 @@ AUTH = {
     "web/data/gmaps": {"Soyun Jeong"}, "web/data/gmaps_ppd32": {"Soyun Jeong"},
     "web/data/date_slip": {"Dongju Kim"}, "web/data/monthly": {"kiisophii"},
     "web/data/windows": {"hmkmc9095-cell"}, "web/data/hindcast.json": {"Dongju Kim"},
-    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii", "Jiyong"},
+    "web/data/hterrain/tiles": {"kiisophii"}, "web/data/hterrain/polar_s": {"kiisophii", "Jiyong"},  # task F, PR #63
     "web/data/local": {"Jiyong", "Dongju Kim"}, "web/data/uncertainty": {"Jiyong", "kiisophii"},
     "web/data/korea": {"kiisophii", "hmkmc9095-cell"}, "web/data/globe": {"kiisophii", "Soyun Jeong"},
 }
@@ -138,7 +138,7 @@ n_oth = sum(s.startswith("Independently verified (other member") for s in st)
 n_int = sum(s.startswith("Independently") and not s.startswith("Independently verified (other member") for s in st)
 n_auth = sum(s.startswith("Author-verified only") for s in st)
 print("  rows", len(rows), "integrator", n_int, "other member", n_oth, "author only", n_auth)
-ok((len(rows), n_int, n_oth, n_auth) == (18, 10, 8, 0), "count table 18 = 10 + 8 + 0")
-ok("| Independently verified by another team member | 8 |" in L and "| Author-verified only | 0 |" in L, "count table text matches the rows")
+ok((len(rows), n_int, n_oth, n_auth) == (18, 7, 11, 0), "count table 18 = 7 + 11 + 0")
+ok("| Independently verified by another team member | 11 |" in L and "| Author-verified only | 0 |" in L, "count table text matches the rows")
 print("FAILURES:", bad)
 sys.exit(1 if bad else 0)

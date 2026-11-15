@@ -487,3 +487,27 @@ Written by `pipeline/local250.py`. Same fields and metric definitions as section
 - Only complete site files are exported. Centre metrics must exactly equal the
   catalogue metrics file. Node checkpoints and progress/ETA remain git-ignored.
 
+### 22.1 Task X extension — remaining 17 nonpolar catalogue sites (2026-11-15)
+
+Extends section 22 to all 33 catalogue sites; the existing 16 polar files and
+their 5 m / 8,001-distance sampling remain unchanged. New nonpolar files use
+`pipeline/task_x.py` with card9/card20 settings: `params:{min_km:0.2,max_km:300,
+n_steps:4000,obs_height_m:2}` (4,001 range samples), 720 azimuths and curvature.
+SLDEM2015 ~59 m applies within 150 km for abs(lat)<60; otherwise, including
+CHANDRAYAAN3, the existing LDEM64/16 fallback applies. Expanded 166 km raw windows
+are storage envelopes, not changes to the observer-centred source gates.
+
+The grid, node fields, ephemeris window, 4-decimal-degree mask serialization,
+centre-equality requirement and complete-file-only export match section 22.
+`web/data/local250/index.json` is an optional discovery manifest:
+`{schema_version:1,sha256_normalization:"CRLF_to_LF",sites:[{id,file,center,grid,sha256}]}`. Each entry refers to a
+complete sibling `<ID>.json`; `center` and `grid` match that map, and `sha256`
+identifies its UTF-8 file bytes after CRLF-to-LF normalization for portability
+between Windows checkouts and GitHub Pages. The manifest includes existing polar maps without
+rewriting them. `check_contract.py` checks both maps and the index.
+
+The requested +/-5 km grid supports complete circular 1/3/5 km statistics.
+Task X's 10 km summary uses the existing section 15 1 km grid, explicitly
+labelled `spacing_m:1000`; it is not a 10 km fine-grid estimate. Same spacing
+does not imply the same underlying DEM resolution between different sites.
+

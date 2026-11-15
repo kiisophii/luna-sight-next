@@ -72,7 +72,7 @@ STATIONS = [
      "lat": 37.20723347, "lon": 127.62181206, "height_m": 145.359,
      "ellipsoid": "6378.1366 / 6356.7519 km (kdsa01.tf); ITRF93 per file, ITRF version unconfirmed in the file",
      "source": "NAIF kdsa01.tf (PINPOINT site definition by KARI, 2021-03-08)", "source_url": KERNEL_URLS["kdsa01.tf"],
-     "terms": "PENDING: question to Seoul ops/SMEs on use of KDSA coordinates (owner: Dongju Kim)"},
+     "terms": "Station coordinates taken from the publicly released SPICE frame kernel kdsa01.tf (KARI, 2021-03-08), distributed by NASA/JPL NAIF at https://naif.jpl.nasa.gov/pub/naif/pds/wgc/lessons/event_finding_kplo/kernels/fk/kdsa01.tf; factual coordinates used with citation; no separate permission was requested."},
     {"id": "DSN_GOLDSTONE", "name": "NASA DSN Goldstone (DSS-14, 70 m)", "name_ko": "NASA DSN 골드스톤(DSS-14, 70 m)",
      "antenna": "DSS 14", "country": "US",
      "lat": dms(35, 25, 33.24312), "lon": dms(243, 6, 37.66244) - 360, "height_m": 1001.390,
@@ -130,7 +130,7 @@ def unpack_bits(s, n):
 
 def write_json(path, obj):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    path.write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":"), allow_nan=False), encoding="utf-8")
     log("wrote", path.relative_to(ROOT), f"{path.stat().st_size / 1024:.1f} KB")
 
 
@@ -207,7 +207,8 @@ def station_windows(E, st, start, stop):
     res = []
     for a, b in out:
         peaks = [v for d, v in mx if a <= d <= b]
-        res.append((a, b, round(float(max(peaks)) if peaks else float("nan"), 2)))
+        # A window clipped at the analysis start/end can contain no interior maximum: write null (JSON has no NaN).
+        res.append((a, b, round(float(max(peaks)), 2) if peaks else None))
     return res
 
 

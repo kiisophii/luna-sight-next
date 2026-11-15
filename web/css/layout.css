@@ -1692,3 +1692,5 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   #utc-chip #utc-val { display: none; }
   #utc-chip .ic-calendar { display: block; flex: none; }
 }
+/* ---- a site shown as a dot only (its name would overlap another) uses the same 4 px dot as every other site, in its own colour */
+.ls-globe .g3-site.g3-dotonly::before { width: 4px !important; height: 4px !important; border: 0; background: var(--map-site-color, #E6EAF2); box-shadow: 0 0 3px #000; }

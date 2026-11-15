@@ -718,8 +718,10 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     for(const [key,button]of clusterButtons)if(!used.has(key)){if(activeCluster===button)closeCluster();button.remove();clusterButtons.delete(key);}
     const order=candidates.filter(m=>!clustered.has(m)).sort((a,b)=>(b.el.dataset.n?1:0)-(a.el.dataset.n?1:0));
     for(const m of order){const q=m.el.getBoundingClientRect(),r={x0:q.left,y0:q.top,w:q.width,h:q.height};const collision=kept.some(k=>overlaps(r,k));
-      m.el.classList.toggle('g3-dotonly',collision);
-      if(collision)m.el.style.transform=`translate(${m.point.x-7}px,${m.point.y-7}px)`;else kept.push(r);
+      // a name only changes between label and dot after the same answer three runs in a row (no flicker at the threshold)
+      m.dn=(m.dwant===collision)?(m.dn||0)+1:1;m.dwant=collision;const dot=(m.dstate===undefined||m.dn>=3)?collision:m.dstate;m.dstate=dot;
+      m.el.classList.toggle('g3-dotonly',dot);
+      if(dot)m.el.style.transform=`translate(${m.point.x-7}px,${m.point.y-7}px)`;else kept.push(r);
     }
   }
   const declutterTimer=setInterval(()=>{if(!stopped)declutter();},400);
@@ -988,7 +990,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
       m.el.style.display = show ? '' : 'none';
       if (show) {
         // keep the name inside the view: flip it to the left of the dot near the right edge, fade it near top/bottom
-        const lw = (frameNo % 60 === 0 || !m.lw) ? (m.lw = m.el.offsetWidth || 80) : m.lw;
+        const lw = ((frameNo % 60 === 0 && !m.el.classList.contains('g3-dotonly')) || !m.lw) ? (m.lw = m.el.offsetWidth || 80) : m.lw;   // never measure a dot-only label: its 14 px width made the name flip side and blink about once a second
         const flip = pr.x + lw > R0 - 6 && pr.x - lw > L0;
         if (flip !== !!m.flip) { m.flip = flip; m.el.classList.toggle('g3-flip', flip); }
         m.el.style.transform = flip && !m.el.classList.contains('g3-dotonly') ? `translate(${pr.x - lw + 7}px,${pr.y - 7}px)` : `translate(${pr.x - 7}px,${pr.y - 7}px)`;

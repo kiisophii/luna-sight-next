@@ -492,7 +492,7 @@ async function renderBig() {
   if (terrainJobs.length) Promise.all(terrainJobs).then(() => renderBig());
   const bounds = chartBounds(allSites);
   const head = sites.map((site, index) => `<th scope="col" class="${site.id === LLSN().focus ? 'focus-col' : ''}">
-    <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm">${esc(nameOf(site))}</span></button>
+    <div class="col-h"><button class="detail-name" data-focus="${esc(site.id)}" title="${esc(nameOf(site))}"><span class="pin-no">#${firstColumn + index + 1}</span><span class="nm" title="${esc(nameOf(site))}">${esc(nameOf(site))}</span></button>
     <button class="unpin" data-id="${esc(site.id)}" aria-label="${esc(t('unpin'))} ${esc(nameOf(site))}">×</button></div><span class="detail-group">${esc(t('g_' + site.group))}</span></th>`).join('');
   const rows = BIG_ROWS.map((row, index) => {
     const cells = sites.map(site => detailCell(row, site, w));

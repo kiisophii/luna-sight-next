@@ -602,6 +602,8 @@ def main():
     check_uncertainty(data, sites)
     from check_detail import check_detail
     check_detail(data, sites, err, warn)
+    from check_terrain_y import check_terrain_y
+    check_terrain_y(data, sites, err)
     for line in warns + errors:
         print(line)
     print(f"\n{'FAIL' if errors else 'PASS'}: {len(errors)} errors, {len(warns)} warnings")

@@ -1,0 +1,33 @@
+name: Bundle 8 visual verification
+on:
+  push:
+    branches: [s12-design-bundle8-minchul]
+    paths: ['web/css/layout.css', 'web/js/tray_cat.js', 'verification/design_bundle8/**', '.github/workflows/design-bundle8.yml']
+permissions:
+  contents: write
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          sparse-checkout: |
+            web
+            verification/design_bundle8
+            docs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: python -m http.server 8788 --directory web > /tmp/bundle8-server.log 2>&1 &
+      - run: node verification/design_bundle8/check.mjs
+      - name: Save screenshots and results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse docs/design_sync/bundle8
+          git commit -m "Record bundle 8 before-after screenshots and responsive checks"
+          git push

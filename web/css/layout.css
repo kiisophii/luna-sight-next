@@ -1361,7 +1361,8 @@ body.on-about .ls-export { display: none; }
 
 /* Bundle 10 follow-up: compact English tray headings below 1440; keep 14px labels. */
 @media (min-width: 1280px) and (max-width: 1439px) {
-  html:lang(en) #ls-tray .tc-h { flex-wrap: nowrap; gap: 2px; }
+  html:lang(en) #ls-tray .tc-scroll { margin-right: -35px; padding-right: 25px; }
+  html:lang(en) #ls-tray .tc-h { width: calc(var(--tray-w) - 42px); flex-wrap: nowrap; gap: 2px; }
   html:lang(en) #ls-tray .tc-h h4 { flex: none; }
   html:lang(en) #ls-tray .tc-i { width: 16px; padding: 0; flex: none; }
   html:lang(en) #ls-tray .tc-subs { flex: 0 1 auto; min-width: 0; flex-wrap: nowrap; margin-left: auto; gap: 2px; }

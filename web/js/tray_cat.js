@@ -199,7 +199,7 @@ async function render() {
       const ts = await Promise.all(list.map(it => getJSON(`${core.state.base}terrain/${it.s.id}.json`).catch(() => null))); if (my !== seq) return;
       html = `<ul class="tc-rows terr">${list.map((it, j) => { const d = ts[j];
         if (!d) return row(it, '—', `<span class="tc-note">${esc(t('tNoTerrain'))}</span>`);
-        if (d.kind === 'polar_detailed') {
+        if ((d.kind === 'polar_detailed' || d.kind === 'nonpolar_detailed') && d.landing_slope_deg != null) {
           const r = d.slope_by_radius_m?.['500'], f = r?.flat_fraction || {}, rough = d.roughness_within_500m?.median_m;
           return row(it, `${d.landing_slope_deg.toFixed(1)}°`, `<span class="tc-tag fine">${esc(t('tFine'))} ${d.source?.resolution_m ?? '?'} m</span><span class="tc-sub2 num">${esc(t('tFlat'))}: ${pct(f['8'])}% / ${pct(f['15'])}% <em>${esc(t('tRef'))}</em> · ${esc(t('tRough'))} ${rough != null ? rough.toFixed(2) : '—'} m</span>`);
         }

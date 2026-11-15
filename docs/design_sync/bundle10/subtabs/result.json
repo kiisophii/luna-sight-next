@@ -3,142 +3,36 @@
   "cases": 64,
   "failures": [
     {
-      "mode": "production",
+      "mode": "pr97",
       "width": 1280,
       "lang": "en",
-      "cat": "earth",
-      "reason": "inline/font/containment",
-      "metrics": {
-        "header": {
-          "x": 945,
-          "y": 253.625,
-          "width": 283,
-          "height": 33,
-          "right": 1228,
-          "bottom": 286.625
-        },
-        "title": {
-          "x": 945,
-          "y": 255,
-          "width": 77,
-          "height": 23.25,
-          "right": 1022,
-          "bottom": 278.25
-        },
-        "info": {
-          "x": 1024,
-          "y": 257.625,
-          "width": 16,
-          "height": 18,
-          "right": 1040,
-          "bottom": 275.625
-        },
-        "subs": {
-          "x": 1042,
-          "y": 253.625,
-          "width": 186,
-          "height": 26,
-          "right": 1228,
-          "bottom": 279.625
-        },
-        "buttons": [
-          {
-            "x": 1042,
-            "y": 253.625,
-            "width": 87,
-            "height": 26,
-            "right": 1129,
-            "bottom": 279.625,
-            "font": "14px",
-            "text": "Visible share"
-          },
-          {
-            "x": 1131,
-            "y": 253.625,
-            "width": 104,
-            "height": 26,
-            "right": 1235,
-            "bottom": 279.625,
-            "font": "14px",
-            "text": "Longest hidden"
-          }
-        ],
-        "overflow": false,
-        "values": [
-          "44%",
-          "51%",
-          "100%"
-        ]
-      }
+      "cat": "sun",
+      "reason": "errors/overflow",
+      "errors": []
     },
     {
       "mode": "pr97",
       "width": 1280,
       "lang": "en",
       "cat": "earth",
-      "reason": "inline/font/containment",
-      "metrics": {
-        "header": {
-          "x": 945,
-          "y": 275.625,
-          "width": 268,
-          "height": 33,
-          "right": 1213,
-          "bottom": 308.625
-        },
-        "title": {
-          "x": 945,
-          "y": 277,
-          "width": 77,
-          "height": 23.25,
-          "right": 1022,
-          "bottom": 300.25
-        },
-        "info": {
-          "x": 1024,
-          "y": 277.625,
-          "width": 16,
-          "height": 22,
-          "right": 1040,
-          "bottom": 299.625
-        },
-        "subs": {
-          "x": 1042,
-          "y": 275.625,
-          "width": 171,
-          "height": 26,
-          "right": 1213,
-          "bottom": 301.625
-        },
-        "buttons": [
-          {
-            "x": 1042,
-            "y": 275.625,
-            "width": 87,
-            "height": 26,
-            "right": 1129,
-            "bottom": 301.625,
-            "font": "14px",
-            "text": "Visible share"
-          },
-          {
-            "x": 1131,
-            "y": 275.625,
-            "width": 104,
-            "height": 26,
-            "right": 1235,
-            "bottom": 301.625,
-            "font": "14px",
-            "text": "Longest hidden"
-          }
-        ],
-        "overflow": false,
-        "values": [
-          "44%",
-          "51%",
-          "100%"
-        ]
-      }
+      "reason": "errors/overflow",
+      "errors": []
+    },
+    {
+      "mode": "pr97",
+      "width": 1280,
+      "lang": "en",
+      "cat": "relay",
+      "reason": "errors/overflow",
+      "errors": []
+    },
+    {
+      "mode": "pr97",
+      "width": 1280,
+      "lang": "en",
+      "cat": "terrain",
+      "reason": "errors/overflow",
+      "errors": []
     }
   ]
 }

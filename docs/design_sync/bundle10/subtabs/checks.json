@@ -60,6 +60,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -130,6 +134,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -200,6 +208,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -270,6 +282,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -340,6 +356,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -410,6 +430,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -480,6 +504,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -550,6 +578,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -620,6 +652,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -690,6 +726,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -760,6 +800,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -830,6 +874,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -900,6 +948,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -970,6 +1022,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -1040,6 +1096,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -1110,6 +1170,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 337,
+        "client": 337
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -1180,6 +1244,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -1199,9 +1267,9 @@
       "header": {
         "x": 945,
         "y": 253.625,
-        "width": 283,
+        "width": 290,
         "height": 33,
-        "right": 1228,
+        "right": 1235,
         "bottom": 286.625
       },
       "title": {
@@ -1221,35 +1289,39 @@
         "bottom": 275.625
       },
       "subs": {
-        "x": 1064,
+        "x": 1071,
         "y": 253.625,
         "width": 164,
         "height": 26,
-        "right": 1228,
+        "right": 1235,
         "bottom": 279.625
       },
       "buttons": [
         {
-          "x": 1064,
+          "x": 1071,
           "y": 253.625,
           "width": 72,
           "height": 26,
-          "right": 1136,
+          "right": 1143,
           "bottom": 279.625,
           "font": "14px",
           "text": "Sunlit time"
         },
         {
-          "x": 1138,
+          "x": 1145,
           "y": 253.625,
           "width": 90,
           "height": 26,
-          "right": 1228,
+          "right": 1235,
           "bottom": 279.625,
           "font": "14px",
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 318,
+        "client": 318
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -1320,6 +1392,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -1339,9 +1415,9 @@
       "header": {
         "x": 945,
         "y": 253.625,
-        "width": 283,
+        "width": 290,
         "height": 33,
-        "right": 1228,
+        "right": 1235,
         "bottom": 286.625
       },
       "title": {
@@ -1363,9 +1439,9 @@
       "subs": {
         "x": 1042,
         "y": 253.625,
-        "width": 186,
+        "width": 193,
         "height": 26,
-        "right": 1228,
+        "right": 1235,
         "bottom": 279.625
       },
       "buttons": [
@@ -1390,6 +1466,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 318,
+        "client": 318
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -1460,6 +1540,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -1479,9 +1563,9 @@
       "header": {
         "x": 945,
         "y": 253.625,
-        "width": 283,
+        "width": 290,
         "height": 33,
-        "right": 1228,
+        "right": 1235,
         "bottom": 286.625
       },
       "title": {
@@ -1501,35 +1585,39 @@
         "bottom": 275.625
       },
       "subs": {
-        "x": 1074,
+        "x": 1081,
         "y": 253.625,
         "width": 154,
         "height": 26,
-        "right": 1228,
+        "right": 1235,
         "bottom": 279.625
       },
       "buttons": [
         {
-          "x": 1074,
+          "x": 1081,
           "y": 253.625,
           "width": 68,
           "height": 26,
-          "right": 1142,
+          "right": 1149,
           "bottom": 279.625,
           "font": "14px",
           "text": "Link share"
         },
         {
-          "x": 1144,
+          "x": 1151,
           "y": 253.625,
           "width": 84,
           "height": 26,
-          "right": 1228,
+          "right": 1235,
           "bottom": 279.625,
           "font": "14px",
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 318,
+        "client": 318
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -1600,6 +1688,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -1619,9 +1711,9 @@
       "header": {
         "x": 945,
         "y": 253.625,
-        "width": 283,
+        "width": 290,
         "height": 33,
-        "right": 1228,
+        "right": 1235,
         "bottom": 286.625
       },
       "title": {
@@ -1641,35 +1733,39 @@
         "bottom": 275.625
       },
       "subs": {
-        "x": 1136,
+        "x": 1143,
         "y": 253.625,
         "width": 92,
         "height": 26,
-        "right": 1228,
+        "right": 1235,
         "bottom": 279.625
       },
       "buttons": [
         {
-          "x": 1136,
+          "x": 1143,
           "y": 253.625,
           "width": 38,
           "height": 26,
-          "right": 1174,
+          "right": 1181,
           "bottom": 279.625,
           "font": "14px",
           "text": "Slope"
         },
         {
-          "x": 1176,
+          "x": 1183,
           "y": 253.625,
           "width": 52,
           "height": 26,
-          "right": 1228,
+          "right": 1235,
           "bottom": 279.625,
           "font": "14px",
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 318,
+        "client": 318
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -1740,6 +1836,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -1810,6 +1910,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -1880,6 +1984,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -1950,6 +2058,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -2020,6 +2132,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -2090,6 +2206,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -2160,6 +2280,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -2230,6 +2354,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 289,
+        "client": 289
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -2300,6 +2428,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -2370,6 +2502,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -2440,6 +2576,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -2510,6 +2650,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -2580,6 +2724,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -2650,6 +2798,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -2720,6 +2872,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -2790,6 +2946,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -2860,6 +3020,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -2930,6 +3094,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -3000,6 +3168,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -3070,6 +3242,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -3140,6 +3316,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -3210,6 +3390,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -3280,6 +3464,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -3350,6 +3538,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 331,
+        "client": 331
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -3420,6 +3612,10 @@
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -3439,9 +3635,9 @@
       "header": {
         "x": 945,
         "y": 275.625,
-        "width": 268,
+        "width": 290,
         "height": 33,
-        "right": 1213,
+        "right": 1235,
         "bottom": 308.625
       },
       "title": {
@@ -3461,35 +3657,39 @@
         "bottom": 299.625
       },
       "subs": {
-        "x": 1042,
+        "x": 1064,
         "y": 275.625,
         "width": 171,
         "height": 26,
-        "right": 1213,
+        "right": 1235,
         "bottom": 301.625
       },
       "buttons": [
         {
-          "x": 1042,
+          "x": 1064,
           "y": 275.625,
           "width": 79,
           "height": 26,
-          "right": 1121,
+          "right": 1143,
           "bottom": 301.625,
           "font": "14px",
           "text": "Sunlit share"
         },
         {
-          "x": 1123,
+          "x": 1145,
           "y": 275.625,
           "width": 90,
           "height": 26,
-          "right": 1213,
+          "right": 1235,
           "bottom": 301.625,
           "font": "14px",
           "text": "Longest dark"
         }
       ],
+      "scroll": {
+        "width": 315,
+        "client": 293
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -3560,6 +3760,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -3579,9 +3783,9 @@
       "header": {
         "x": 945,
         "y": 275.625,
-        "width": 268,
+        "width": 290,
         "height": 33,
-        "right": 1213,
+        "right": 1235,
         "bottom": 308.625
       },
       "title": {
@@ -3603,9 +3807,9 @@
       "subs": {
         "x": 1042,
         "y": 275.625,
-        "width": 171,
+        "width": 193,
         "height": 26,
-        "right": 1213,
+        "right": 1235,
         "bottom": 301.625
       },
       "buttons": [
@@ -3630,6 +3834,10 @@
           "text": "Longest hidden"
         }
       ],
+      "scroll": {
+        "width": 315,
+        "client": 293
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -3700,6 +3908,10 @@
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -3719,9 +3931,9 @@
       "header": {
         "x": 945,
         "y": 275.625,
-        "width": 268,
+        "width": 290,
         "height": 33,
-        "right": 1213,
+        "right": 1235,
         "bottom": 308.625
       },
       "title": {
@@ -3741,35 +3953,39 @@
         "bottom": 299.625
       },
       "subs": {
-        "x": 1059,
+        "x": 1081,
         "y": 275.625,
         "width": 154,
         "height": 26,
-        "right": 1213,
+        "right": 1235,
         "bottom": 301.625
       },
       "buttons": [
         {
-          "x": 1059,
+          "x": 1081,
           "y": 275.625,
           "width": 68,
           "height": 26,
-          "right": 1127,
+          "right": 1149,
           "bottom": 301.625,
           "font": "14px",
           "text": "Link share"
         },
         {
-          "x": 1129,
+          "x": 1151,
           "y": 275.625,
           "width": 84,
           "height": 26,
-          "right": 1213,
+          "right": 1235,
           "bottom": 301.625,
           "font": "14px",
           "text": "Longest gap"
         }
       ],
+      "scroll": {
+        "width": 315,
+        "client": 293
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -3840,6 +4056,10 @@
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -3859,9 +4079,9 @@
       "header": {
         "x": 945,
         "y": 275.625,
-        "width": 268,
+        "width": 290,
         "height": 33,
-        "right": 1213,
+        "right": 1235,
         "bottom": 308.625
       },
       "title": {
@@ -3881,35 +4101,39 @@
         "bottom": 299.625
       },
       "subs": {
-        "x": 1121,
+        "x": 1143,
         "y": 275.625,
         "width": 92,
         "height": 26,
-        "right": 1213,
+        "right": 1235,
         "bottom": 301.625
       },
       "buttons": [
         {
-          "x": 1121,
+          "x": 1143,
           "y": 275.625,
           "width": 38,
           "height": 26,
-          "right": 1159,
+          "right": 1181,
           "bottom": 301.625,
           "font": "14px",
           "text": "Slope"
         },
         {
-          "x": 1161,
+          "x": 1183,
           "y": 275.625,
           "width": 52,
           "height": 26,
-          "right": 1213,
+          "right": 1235,
           "bottom": 301.625,
           "font": "14px",
           "text": "Horizon"
         }
       ],
+      "scroll": {
+        "width": 315,
+        "client": 293
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -3980,6 +4204,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -4050,6 +4278,10 @@
           "text": "최장 어둠"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "100%",
@@ -4120,6 +4352,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -4190,6 +4426,10 @@
           "text": "최장 안 보임"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "44%",
@@ -4260,6 +4500,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -4330,6 +4574,10 @@
           "text": "최장 끊김"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "47%",
@@ -4400,6 +4648,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "2.1°",
@@ -4470,6 +4722,10 @@
           "text": "지평선"
         }
       ],
+      "scroll": {
+        "width": 283,
+        "client": 283
+      },
       "overflow": false,
       "values": [
         "2.1°",

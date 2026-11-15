@@ -1,0 +1,112 @@
+{
+  "testedAt": "2026-11-15T13:39:00.890Z",
+  "baseline": "abb09f5",
+  "scope": "Local integration app, fixed camera; Windows WebKit is not actual Safari/iOS hardware",
+  "results": [
+    {
+      "name": "chromium-1440-en-light",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "light",
+      "fold": false,
+      "status": "OBSERVED",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [
+        "[.WebGL-0x25a4036c7c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x25a4036c7c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x25a4036c7c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x25a4036c7c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 667.34375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 667.34375,
+          "right": 750.015625,
+          "bottom": 693.34375,
+          "left": 708.46875
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": false,
+        "childReplacements": 2
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 709.078125,
+          "y": 392,
+          "width": 240,
+          "height": 271,
+          "top": 392,
+          "right": 949.078125,
+          "bottom": 663,
+          "left": 709.078125
+        },
+        "button": {
+          "x": 708.453125,
+          "y": 668.4375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 668.4375,
+          "right": 750,
+          "bottom": 694.4375,
+          "left": 708.453125
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "PEAK_NEAR_SHACKLETON",
+      "lastRowHit": true,
+      "selected": "PEAK_NEAR_SHACKLETON"
+    },
+    {
+      "name": "webkit-1440-en-light",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "layer": "light",
+      "fold": false,
+      "status": "OBSERVED",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 708.46875,
+          "y": 667.34375,
+          "width": 41.546875,
+          "height": 26,
+          "top": 667.34375,
+          "right": 750.015625,
+          "bottom": 693.34375,
+          "left": 708.46875
+        },
+        "legend": null,
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": false,
+        "childReplacements": 3
+      },
+      "firstClickOpened": false
+    }
+  ]
+}

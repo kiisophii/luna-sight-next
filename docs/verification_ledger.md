@@ -157,3 +157,14 @@ With these two checks alone added to PR #53, **14/18 products have independent s
 and global hterrain tiles. Other team members' pending checks are not counted here. The custom-polar
 control verifies implementation agreement, **not high-resolution equivalence or a universal <1 pp accuracy**.
 All values above are sample results, not bounds on absolute physical accuracy. No production numbers changed.
+
+## Task E — independent check of `local250/` (Soyun Jeong, 2026-11-15)
+
+`local250/` (PR #61, merged in `827478e`) is newer than the 18-row table above, so it has no numbered row there. This entry is added the same way as C1/C2 and does not change the 18 rows or the Count table; the integrator may add a numbered row from it.
+Run on main `89a9af1` (web version 34) with `python pipeline/verify_local250_independent.py shared|dem|full|report` → `docs/local250_independent_check.json`; details, all per-site tables and limits: `docs/local250_independent_check.md`. No producer code is imported or run (`local250.py`, `local250_gpu.*`, `local_maps.py`, `horizon.py`, `fetch_polar.py`, `verify_card18_local.py`, `core.js` adapters), and the producer's DEM windows, horizons and checkpoints are not used; DEM windows are read again from the NASA PGDA originals over HTTP and LDEM_64/16 from the PDS images (same SHA-256 as the producer's provenance).
+
+| # | Product | Producer | Checker | Method | Shared-node samples | DEM samples | Full-node coverage | Max difference | Criterion | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| E1 | `local250/` (16 south-polar 250 m grids, 41 × 41 nodes) | Jiyong Sung | Soyun Jeong | Independent shared-node comparison and DEM brute-force recomputation (720 azimuths × 8,001 samples to 300 km, no early stop; PGDA 5/10/20/60/80/240 m gates 3/25/25/60/60/200 km + LDEM_64/16; 2 m observer, curvature; `ephem.bin` 43,824 h; Sun disc ≥ 0.5, Earth centre) | 1,936 (16 × 121 identical offsets): 0 mismatching nodes, max 0 pp, 0 h | 5 independently selected nodes (seed 2026111505; 5 sites; none on the 1 km grid or among the producer's 5): 5/5 PASS, max 0 pp, 0 h | **26,896 / 26,896** recomputed: 26,896 PASS, 0 FAIL; all four metrics exactly equal at every node | 0 pp fractions, 0 h longest darkness (with unrounded masks instead of the stored 0.0001° rounding: max 0.004564 pp, 2,412 nodes change by 1–2 h of 43,824, darkness ≤ 4 h at 24 nodes) | ≤ 1 pp (fractions); darkness reported separately | PASS (full) |
+
+Limits: same inputs as production (NASA DEMs, gates, `ephem.bin`), so this confirms the published values follow from them as documented, not the DEMs' or the ephemeris' physical accuracy; masks are not published, so the four metrics, h0 (0.00 m max), ground resolution (26,896 equal) and source names are compared; the 1,936-node equality is a consistency check between two products of the same pipeline; definitions' fine details were read (not run) from the producer's code.

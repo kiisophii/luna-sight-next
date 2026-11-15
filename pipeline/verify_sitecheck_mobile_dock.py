@@ -32,4 +32,3 @@ async def main():
   await browser.close()
  (OUT/'checks.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf8')
 asyncio.run(main())
-

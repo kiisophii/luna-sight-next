@@ -118,3 +118,9 @@ Existing PGDA [5 m](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/87S/ldem_87s_5mpp.
 ### Task W assumption sensitivity (Jiyong, 2026-11-15)
 
 Reuses the cited PGDA 5/10/20/60/80/240 m polar windows, SLDEM2015 512 ppd windows and original LOLA LDEM_64/16 float rasters for all 33 catalogue coordinates; no new data product acquisition. Source metadata, direct URLs, raw-file and label hashes, and gates are retained per site in docs/task_w_sensitivity.json. Production NAIF-derived ephem.bin/ephem.json hashes and definitions are pinned there. All modified-height/near-field results are scenario calculations, not physical-error measurements.
+
+### Tasks X, P and Q (Jiyong, 2026-11-15)
+
+Task X acquires 166 km storage windows of the original SLDEM2015 512 ppd float product for 16 nonpolar sites (https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/). The existing 150 km observer-centred application gate is unchanged. CHANDRAYAAN3 uses the existing LOLA LDEM64/16 fallback; original global float grids: https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/float_img/ . Each public map records individual source URLs, frame, native resolution, source metadata and raw/code hashes. Raw inputs remain ignored; historical 151 km and polar caches are preserved.
+
+P/Q reuse the published NAIF-derived ephemeris (https://naif.jpl.nasa.gov/pub/naif/generic_kernels/) and published catalogue horizons, with separate NumPy geometry/time-window calculations. Their checks establish agreement on the stated inputs, not independent verification of the ephemeris or DEM against reality. Evidence includes exact input hashes and explicit Windows CRLF/LF equivalence of historical source-code hashes; no source-code difference is silently treated as byte equality.

@@ -591,3 +591,35 @@ body.on-about .ls-pages { display: none; }
 .big-cmp .cmp-scroll { cursor: grab; scroll-behavior: smooth; }
 .big-cmp .cmp-scroll.dragging { cursor: grabbing; user-select: none; scroll-behavior: auto; }
 #ls-compare #cards.big-cmp { display: block; }
+
+/* ================================================================ first screen = Chaei's copy (measured spec, 11/15) — bundle A:
+   panel surface, header, 3D labels / chips / notes / zoom, 'Compare in detail' */
+.ls-card, .ls-tray { border-color: var(--panel-line); box-shadow: none; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+/* header 48: white text wordmark (no image), box x20 y10 h34 */
+.ls-head { height: var(--head-h); padding: 8px 20px; }
+.ls-brand { align-items: center; height: 34px; gap: 4px; text-shadow: none; }
+.ls-word { color: #E6EAF2; font-weight: 500; letter-spacing: 1.5px; font-size: 15px; }
+.ls-sub { color: var(--n-dim); font-size: 11px; letter-spacing: 0; margin-left: 6px; order: 3; }
+.ls-out { width: 14px; height: 14px; order: 2; }
+.lang-seg { height: 32px; padding: 2px; gap: 2px; background: rgba(6, 8, 12, .72); border: 1px solid rgba(255, 255, 255, .22); border-radius: 6px; box-sizing: border-box; }
+.lang-seg button { width: 35px; height: 24px; padding: 0; font-size: 12.5px; font-weight: 600; color: #8D96A4; border-radius: 4px; }
+.lang-seg button[aria-pressed="true"] { background: #E6EAF2; color: #0B0E14; }
+/* 3D site labels: no pill, Oxanium 12/500 + a small dot */
+.ls-globe .g3-site { font: 500 12px/14px var(--font-num); letter-spacing: -0.06px; color: #E6EAF2; text-shadow: 0 0 3px #000, 0 0 2px #000; }
+.ls-globe .g3-site::before { width: 4px; height: 4px; border: 0; border-radius: 50%; background: #E6EAF2; margin-right: 5px; vertical-align: 2px; box-shadow: 0 0 3px #000; }
+.ls-globe .g3-site.g3-polar_peak::before, .ls-globe .g3-site.g3-artemis3_region::before { background: #E6EAF2; }
+.ls-globe .g3-site.g3-flip::before { margin: 0 0 0 5px; }
+/* Sun / Earth direction chips: palette tokens, dark text */
+.ls-globe .g3-chip { font: 500 12px var(--font); padding: 4px 9px 4px 6px; border-radius: 14px; box-shadow: 0 2px 10px rgba(0, 0, 0, .5); }
+.ls-globe .g3-chip.sun { background: var(--sun); color: #0B0E14; }
+.ls-globe .g3-chip.earth { background: var(--earth); color: #0B0E14; }
+/* 'Height x3' note: kept, in the copy's caption-box style */
+.ls-globe .g3-note { font: 400 12px var(--font); color: #9AA4B5; background: rgba(12, 14, 18, .82); border: 1px solid var(--panel-line); border-radius: 6px; padding: 6px 12px; }
+/* data captions (HUD): kept, in the copy's caption style */
+.ls-hud p { background: rgba(0, 0, 0, .45); border-radius: 4px; padding: 6px 9px; font: 11px var(--font-num); color: #E6EAF2; opacity: .9; }
+.ls-hud #hud-1 { font-family: var(--font); }
+/* + / - zoom: kept, in the toolbar button style */
+.ls-globe .gl-zoom button { width: 38px; height: 38px; border-radius: 9px; background: rgba(12, 12, 13, .82); border: 1px solid rgba(237, 237, 237, .10); color: var(--n-mute); font-size: 18px; backdrop-filter: blur(14px); }
+.ls-globe .gl-zoom button:hover { color: var(--n-text); }
+/* 'Compare in detail' pill */
+.ls .ls-scrollhint { color: #E6EAF2; font-size: 12.5px; font-weight: 500; background: rgba(11, 13, 16, .55); border-color: rgba(230, 234, 242, .28); padding: 0 14px; backdrop-filter: blur(6px); }

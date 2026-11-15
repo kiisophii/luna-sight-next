@@ -19,3 +19,14 @@
   --border: var(--line-1); --radius: var(--r-card); --gap: var(--sp-4); --fs-base: var(--fs-body);
 }
 @media (prefers-reduced-motion: reduce) { :root { --t-fast: 0ms; --t-mid: 0ms; --t-slow: 0ms; } }
+
+/* ---------------------------------------------------------------- first screen, matched to Chaei's copy (measured spec 11/15)
+   neutral (achromatic) palette for the inside of the panels; Inter 14 as the Latin UI font, Pretendard for Korean */
+:root {
+  --n-0: #0A0A0B; --n-1: #1B1B1D; --n-line: #2A2A2D; --n-text: #EDEDED; --n-mute: #9C9CA1; --n-dim: #6E6E74; --n-sw: #232325;
+  --panel-line: rgba(230, 234, 242, .10);
+  --font: "Inter", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
+  --fs-body: 14px; --head-h: 48px;
+  /* compared-site colours 01–10 (chips and left bars); none is the Sun yellow, Earth blue or relay green */
+  --c1: #B9A6FF; --c2: #FF9F6B; --c3: #D4E86B; --c4: #FF7EB6; --c5: #8FA8FF; --c6: #E8A6FF; --c7: #FFB98A; --c8: #A9E2C9; --c9: #F3A6B6; --c10: #A6C8FF;
+}

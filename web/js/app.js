@@ -41,7 +41,7 @@ addStrings({
   scrubFor: 'Bands: {s} · top band = sunlit, bottom band = Earth in view', details: 'See details below ↓', collapseTray: 'Collapse tray',
   periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site check',
   hudLine1: 'Earth-set edge (Earth-visibility limit) · LROC color · LOLA terrain',
-  hudLine2: '{t} · Sun/Earth positions DE440s', pickOn: 'Click the Moon to place a point · Esc to cancel', cancel: 'Cancel',
+  exportPdf: 'Export PDF', exportPdfTip: 'Print or save this comparison as a PDF (browser print dialog)', hudLine2: '{t}', hudSrc: 'Sun and Earth positions: JPL DE440s ephemeris (selected time, UTC)', pickOn: 'Click the Moon to place a point · Esc to cancel', cancel: 'Cancel',
   spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
   tb_whole: 'Whole Moon', tb_south: 'South pole', tb_pick: 'Place a point on the Moon',
   tbt_light: 'Shadows for the Sun direction at the selected time (not necessarily the real current time).',
@@ -74,7 +74,7 @@ addStrings({
   scrubFor: '띠: {s} · 위 띠 = 햇빛, 아래 띠 = 지구 보임', details: '아래 상세 보기 ↓', collapseTray: '비교 접기',
   periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증',
   hudLine1: '지구가 지는 경계 · LROC 컬러 · LOLA 지형',
-  hudLine2: '{t} · 태양·지구 위치 DE440s', pickOn: '달을 눌러 지점을 고르세요 · Esc 취소', cancel: '취소',
+  exportPdf: 'PDF로 내보내기', exportPdfTip: '이 비교를 인쇄하거나 PDF로 저장합니다 (브라우저 인쇄 창)', hudLine2: '{t}', hudSrc: '태양·지구 위치: JPL DE440s 천체력 (선택 시각, UTC)', pickOn: '달을 눌러 지점을 고르세요 · Esc 취소', cancel: '취소',
   spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_light: '선택 시각의 햇빛', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
   tb_whole: '달 전체', tb_south: '남극', tb_pick: '달에서 지점 찍기',
   tbt_light: '선택 시각의 태양 방향으로 그림자. 실제 현재 시각이 아닐 수 있음.',
@@ -124,10 +124,11 @@ export const PIN_ICON = '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true">
 
 // ------------------------------------------------------------ pins (no limit; stable numbers)
 const pinOf = id => pins.find(p => p.id === id);
-function nextNumber() { const used = new Set(pins.map(p => p.n)); let n = 1; while (used.has(n)) n++; return n; }
+function nextNumber() { return pins.length + 1; }
+function renumber() { pins.forEach((p, k) => { p.n = k + 1; }); }   // 01, 02, … in comparison order (the copy)
 function savePins() { store.set('pins', pins); }
 function pinsChanged() {
-  savePins(); renderList(); saveURL();
+  renumber(); savePins(); renderList(); saveURL();
   window.dispatchEvent(new CustomEvent('llsn:pins', { detail: { pins: pins.slice() } }));
 }
 export const PIN_MAX = 10;             // the copy compares up to 10 sites (colours 01-10)
@@ -444,6 +445,7 @@ async function main() {
   window.LLSN.pick = pick;
   window.LLSN.pin = pin; window.LLSN.unpin = unpin; window.LLSN.togglePin = togglePin;
   window.LLSN.pins = () => pins.slice();
+  renumber();
   window.LLSN.pinNo = id => pinOf(id)?.n ?? null;
   window.LLSN.compare = () => pins.map(p => p.id);
   window.LLSN.relayOn = () => relayOn;

@@ -6,6 +6,7 @@ Data: main `673e250` (web version 37); `sites.json` SHA-256 `bc98c7ce…4b64017`
 - Evidence (quotes, page references, feature claims): `pipeline/sites_audit_evidence_soyun.json`.
 - Results: `docs/sites_full_independent_audit_soyun.json`.
 - Ledger: row 1 of `docs/verification_ledger.md`.
+- Pull request: https://github.com/kiisophii/lunar-landing-site-navigator/pull/76
 
 ## Summary
 

@@ -1426,3 +1426,21 @@ body.on-about .ls-export { display: none; }
 .ls-tray .val-badge { padding: 2px 0; }
 .ls .ls-add { border-radius: 0 0 14px 14px; }
 @media (min-width: 1100px) { .ls-tray .tray-more { width: calc(100% - 30px); align-self: flex-start; } }
+
+/* ---- About band (integration 2026-11-15): Chaei's final copy is 30 % band / 70 % content below the header
+   (#view-about already starts under the header, so 30 % of it is the band). Inside the band, Chaei's prompt
+   "띠 3대7 조정" §2-3: title clamp(26px,2.6vw,40px) / 1.1 / 8 px, lead 14 px with 14 px below, 36 px buttons,
+   text block centred; the content column starts on the same 4vw line as the band title. Copy = team text. */
+@media screen {
+  #view-about:not([hidden]) { grid-template-rows: 30% minmax(0, 1fr); }
+  #view-about .ab-hero { min-height: 200px; }
+  #view-about .abh-text h1 { font-size: clamp(26px, 2.6vw, 40px); line-height: 1.1; margin: 0 0 8px; }
+  #view-about .abh-name { margin: 0 0 8px; }
+  #view-about .abh-lead { font-size: 14px; line-height: 1.45; margin: 0 0 4px; }
+  #view-about .abh-lead:last-of-type { margin-bottom: 14px; }
+  #view-about .abh-btns { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  #view-about .abh-btns .ls-btn { height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 8px 16px; font-size: 13px; }
+  #abScroll { padding-left: 4vw; padding-right: 4vw; }
+  @media (max-height: 760px) and (min-width: 861px) { #view-about .abh-lead { display: none; } }
+  @media (max-width: 860px) { #view-about .abh-text h1 { font-size: 20px; } #view-about .abh-lead { display: none; } }
+}

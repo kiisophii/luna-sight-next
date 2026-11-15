@@ -129,7 +129,7 @@ async function render() {
   root.innerHTML = `
   <div class="ab-hero" id="ab-hero">
     <div class="abh-scene" id="heroJourney"></div><div class="abh-shade" aria-hidden="true"></div>
-    <div class="abh-text"><h1 tabindex="-1">${X(C.hero.h1)}</h1>${C.hero.lead.map(x => `<p class="abh-lead">${X(x)}</p>`).join('')}
+    <div class="abh-text"><h1 tabindex="-1">${X(C.hero.h1)}</h1><div class="abh-name">${X(C.hero.name)}</div>${C.hero.lead.map(x => `<p class="abh-lead">${X(x)}</p>`).join('')}
       <p class="abh-btns"><a class="ls-btn primary" href="#" data-act="explore">${X(C.hero.btns[0])} →</a><a class="ls-btn" href="#about-steps" data-act="how">${X(C.hero.btns[1])}</a></p></div>
   </div>
   <div id="abScroll" class="ab-scroll at-top" tabindex="0">

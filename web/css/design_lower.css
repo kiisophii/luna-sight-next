@@ -232,3 +232,11 @@ html .ls #ls-brief .sc-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); g
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(odd) { border-left: 0; padding-left: 0; }
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 1px solid var(--sc-line); padding-left: 16px; }
 @media (max-width: 600px) { html .ls #ls-brief .sc-sum { grid-template-columns: minmax(0, 1fr); } html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 0; padding-left: 0; } }
+
+/* Site check analysis cards as a two-column dashboard (Sua 11/15 23:50); the time card spans both columns, phones one column */
+@media (min-width:1100px) {
+  html .ls #ls-brief .sc-box .sc-cards { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; align-items:start; }
+  html .ls #ls-brief .sc-box .sc-cards > .ls-detail { min-width:0; margin:0; grid-column:auto; }
+  html .ls #ls-brief .sc-box .sc-cards > .ls-detail[data-block="time"], html .ls #ls-brief .sc-box .sc-cards > .ls-detail[data-block="more"] { grid-column:1 / -1; }
+  html .ls #ls-brief .sc-box .sc-cards > .ls-detail .blk-body { overflow-x:auto; }
+}

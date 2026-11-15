@@ -57,11 +57,13 @@ const pct = (x, d = 0) => `${(100 * x).toFixed(d)}%`;
 const stName = (st, lang) => (lang === 'ko' && st.name_ko ? st.name_ko : st.name);
 
 function build() {
+  // 11/15 23:50 (Sua): the ShadowCam / Korean-instrument extras and the station-source note are no longer shown on
+  // screen (full credits stay in About/Credits and data/DATASETS.md); the station numbers and timeline stay.
   sec = document.getElementById('llsn-korea');
   sec.dataset.i18nAria = 'krAria';
   sec.innerHTML = `<div class="panel-head"><h2 data-i18n="krTitle"></h2><span class="kr-period num muted"></span></div>
-    <div class="kr-st"></div><div class="kr-ln"></div><div class="kr-sc"></div>
-    <p class="hint" data-i18n="krSrc"></p>`;
+    <div class="kr-st"></div><div class="kr-ln"></div><div class="kr-sc" hidden style="display:none"></div>
+    <p class="hint" data-i18n="krSrc" hidden style="display:none"></p>`;
   const st = document.createElement('style');
   st.dataset.owner = 'korea_panel.js';
   st.textContent = `

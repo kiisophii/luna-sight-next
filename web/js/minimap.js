@@ -96,6 +96,22 @@ function build() {
   let resizeTimer = 0;
   new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(sizeBall, 60); }).observe(box);
   sizeBall();
+  // Left alone the ball turns slowly (designer reference): it stops while hovered, focused or dragged, never with
+  // reduced motion, and only turns the minimap picture (the 3D view, time and results stay).
+  let hover = false, spinT = 0;
+  box.addEventListener('pointerenter', () => { hover = true; }); box.addEventListener('pointerleave', () => { hover = false; });
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const spin = now => {
+    requestAnimationFrame(spin);
+    if (!spinT) { spinT = now; return; }
+    if (now - spinT < 66) return;   // ~15 frames a second is enough for a slow turn
+    const dt = (now - spinT) / 1000; spinT = now;
+    if (hover || drag || still.matches || document.hidden || box.contains(document.activeElement) || !pix) return;
+    const c = own || { lat: view.lat, lon: view.lon };
+    own = { lat: c.lat, lon: ((c.lon + 6 * dt + 540) % 360) - 180 };   // 6 deg per second
+    draw();
+  };
+  requestAnimationFrame(spin);
   window.dispatchEvent(new Event('llsn:minimap-ready'));
   setInterval(() => { const g = LLSN().globe; if (!g) return; const v = g.getView(); if (Math.abs(v.lat - view.lat) + Math.abs(v.lon - view.lon) + Math.abs(v.range - view.range) / 50 > 0.05) { view = v; if (!box.classList.contains('open')) own = null; draw(); } }, 400);   // folded: a hand-turned ball goes back to following the 3D view when that view moves
 }

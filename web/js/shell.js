@@ -601,3 +601,32 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
   if (window.matchMedia('(min-width: 1100px)').matches) { if (saved.includes('l')) set('l', true); if (saved.includes('r')) set('r', true); }
   ['llsn:lang', 'llsn:pins', 'llsn:ready', 'llsn:sites', 'llsn:filter'].forEach(ev => window.addEventListener(ev, () => setTimeout(label, 60))); label();
 })();
+
+// ------------------------------------------------------------ 18-3: static-layer legend as one row (title, range, colour band, i).
+// The assumptions / grid text is not dropped: it moves into the tooltip of the i button (hover, keyboard focus or click).
+(() => { const leg = document.getElementById('map-legend'); if (!leg) return;
+  const wide = window.matchMedia('(min-width: 1100px)');
+  const compact = () => {
+    if (!wide.matches || leg.hidden || leg.querySelector('.lg-row')) return;
+    const first = leg.firstElementChild; if (!first) return;
+    const bar = leg.querySelector(':scope > .bar'), ends = [...leg.querySelectorAll(':scope > .ends span')].map(e => e.textContent.trim());
+    const title = ([...first.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join(' ').trim()) || first.textContent.trim();
+    const extra = [...first.querySelectorAll('*')].map(e => e.textContent.trim()).filter(Boolean);
+    const notes = [...leg.querySelectorAll(':scope > .muted')].map(e => e.textContent.trim()).filter(Boolean);
+    const tip = [title, ...extra, ends.length ? ends.join(' · ') : '', ...notes].filter(Boolean);
+    // short range for the row ('−4.5 → +5.5 km'); the full end labels stay in the tooltip
+    const lo = (ends[0] || '').replace(/^[≤≥]\s*/, ''), hi = (ends[ends.length - 1] || '').replace(/^[≤≥]\s*/, '');
+    const unit = (hi.match(/\s*[a-zA-Z°]+$/) || [''])[0];
+    const range = ends.length ? `${unit && lo.endsWith(unit) ? lo.slice(0, -unit.length) : lo} → ${hi}` : '';
+    const ko = getLang() === 'ko';
+    const short = title.replace(/\s*\d{4}\s*[–-]\s*\d{4}$/, '');   // the row drops the trailing years; the tooltip keeps the full title
+    leg.innerHTML = `<div class="lg-row"><span class="lg-t" title="${esc(title)}">${esc(short)}</span>${range ? `<span class="lg-r num">${esc(range)}</span>` : ''}${bar ? `<i class="lg-bar" style="${esc(bar.getAttribute('style') || '')}"></i>` : ''}
+      <button type="button" class="lg-i" aria-expanded="false" aria-controls="lg-tip" aria-label="${ko ? '범례 설명' : 'About this legend'}"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.3v3.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="4.9" r=".9" fill="currentColor"/></svg></button></div>
+      <div class="lg-tip" id="lg-tip" role="tooltip">${tip.map(x => `<p>${esc(x)}</p>`).join('')}</div>`;
+  };
+  new MutationObserver(compact).observe(leg, { childList: true, attributes: true, attributeFilter: ['hidden'] });
+  leg.addEventListener('click', e => { const b = e.target.closest('.lg-i'); if (!b) return; const on = !leg.classList.contains('tip-on'); leg.classList.toggle('tip-on', on); b.setAttribute('aria-expanded', String(on)); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
+  document.addEventListener('click', e => { if (!leg.contains(e.target) && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
+  compact();
+})();

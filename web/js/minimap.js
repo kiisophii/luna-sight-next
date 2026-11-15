@@ -174,7 +174,8 @@ function draw() {
   }
   // Pinned labels use separate pills, including nearby polar candidates.
   const pills=[];
-  g.font = `${10 * dpr}px Oxanium, monospace`; g.textBaseline = 'middle';
+  // pin numbers in the screen's number font (Geist Mono in English, Oxanium in Korean)
+  g.font = `${10 * dpr}px ${getComputedStyle(document.documentElement).getPropertyValue('--font-num').trim() || 'Oxanium, monospace'}`; g.textBaseline = 'middle';
   for (const pn of pins) {
     const s = LLSN().state.sites.find(x => x.id === pn.id); if (!s) continue;
     const q = project(s.lat, s.lon); if (!q.front) continue;

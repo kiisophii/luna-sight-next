@@ -51,4 +51,5 @@ jobs:
           retention-days: 30
           path: docs/task_a_horizons/
       - name: Numerical acceptance (failure remains visible)
-        run: python -c "import json; s=json.load(open('docs/task_a_horizons/summary.json')); print(s); assert s['passed'], 'Complete verification: angular discrepancy retained; see report'"
+        run: |
+          python -c "import json; s=json.load(open('docs/task_a_horizons/summary.json')); print(s); assert s['passed'], 'Complete verification: angular discrepancy retained; see report'"

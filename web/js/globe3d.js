@@ -573,6 +573,18 @@ if (uLayerA > 0.0) {
     return out;
   };
   const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+  function declutter() {
+      // page boxes floating over the stage (legend, captions, minimap ...) count as already placed (opts.labelBlockers)
+    const kept = (typeof opts.labelBlockers === 'function' ? opts.labelBlockers() : []).map(q => ({ x0: q.left, y0: q.top, w: q.width, h: q.height }));
+    const order = siteEls.filter(m => m.box).sort((a, b) => (b.el.dataset.n ? 1 : 0) - (a.el.dataset.n ? 1 : 0));
+    for (const m of order) {
+      const q = m.el.getBoundingClientRect();                     // real box incl. the '#n' prefix (fonts / language change the width)
+      const r = { x0: q.left, y0: q.top, w: q.width, h: q.height }, hit = kept.some(k => r.x0 < k.x0 + k.w + 4 && k.x0 < r.x0 + r.w + 4 && r.y0 < k.y0 + k.h + 3 && k.y0 < r.y0 + r.h + 3);
+      m.el.classList.toggle('g3-dotonly', hit);
+      if (!hit) kept.push(r);
+    }
+  }
+  setInterval(() => { if (!stopped) declutter(); }, 400);   // also when the camera is still (legend / caption boxes come and go)
   function edgeChip(el, worldP, labelEl, placed) {
     const pr = project(worldP);
     if (pr.on) { el.style.display = 'none'; labelEl.style.display = ''; labelEl.style.transform = `translate(${pr.x + 14}px,${pr.y - 8}px)`; return null; }
@@ -836,15 +848,7 @@ if (uLayerA > 0.0) {
     }
     // declutter: names must not overlap. Compared sites (data-n, set by the app) first, then catalogue order;
     // a name that would overlap one already placed shows only its dot (the dot stays on the site).
-    if (frameNo % 3 === 0) {
-      const kept = [], order = siteEls.filter(m => m.box).sort((a, b) => (b.el.dataset.n ? 1 : 0) - (a.el.dataset.n ? 1 : 0));
-      for (const m of order) {
-        const q = m.el.getBoundingClientRect();                     // real box (fonts / language change the width)
-        const r = { x0: q.left, y0: q.top, w: q.width, h: q.height }, hit = kept.some(k => r.x0 < k.x0 + k.w + 3 && k.x0 < r.x0 + r.w + 3 && r.y0 < k.y0 + k.h + 1 && k.y0 < r.y0 + r.h + 1);
-        m.el.classList.toggle('g3-dotonly', hit);
-        if (!hit) kept.push(r);
-      }
-    }
+    if (frameNo % 3 === 0) declutter();
     const placedSun = edgeChip(chipSun, sunSprite.position, labSun, null);
     edgeChip(chipEarth, earthSprite.position, labEarth, placedSun);
     if (now - hudT > 250) {

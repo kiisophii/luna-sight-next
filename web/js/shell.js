@@ -4,6 +4,8 @@
 import { t, getLang } from './i18n.js';
 import { addStrings } from './ui_shared.js';
 import { enhanceSelect, autoEnhance } from './ui_select.js';
+// ?gv= (shared camera) is read here, before app.js rewrites the address bar, so the late-loading globe still gets it
+window.__llsnGV = new URLSearchParams(location.search).get('gv');
 
 // sort = text-button dropdown (Chaei #8); every other select = the one box dropdown (Chaei #12)
 enhanceSelect(document.getElementById('sort'), { variant: 'text', align: 'left' });

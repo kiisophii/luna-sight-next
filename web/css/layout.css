@@ -1744,3 +1744,26 @@ html.pn-resizing,html.pn-resizing * { cursor:col-resize !important; user-select:
   .ls-left #ls-cond .c1-tog::before { inset: 0; transform: none; width: 100%; height: 100%; }
   .ls-left #ls-cond.folded { min-height: 113px; }
 }
+
+/* ---- print / Export PDF clean-up (QA 2026-11-15, v49 button check): print only, the screen is unchanged.
+   Screen controls are hidden, the long-term statistics table fits the page width, the "Change over time" title
+   stays with its charts under the candidate names, and big Site check cards may break inside (no near-empty page). */
+@media print {
+  .detail-actions, .detail-pager, .unpin, .sc-act, .sc-dem, .sc-pick, .sc-mv { display: none !important; }
+  #ls-brief .tbl-x { overflow: visible !important; }
+  #ls-brief .tbl-x .mini-tbl { width: 100% !important; min-width: 0 !important; table-layout: auto; }
+  #ls-brief .tbl-x .mini-tbl th, #ls-brief .tbl-x .mini-tbl td { white-space: normal !important; padding: 3px 4px; font-size: 10px; }
+  /* candidate names: plain text (a button is not repainted in the header row Chrome repeats on the next page), full name, no clamp */
+  #ls-compare .detail-table .col-h, #ls-compare .detail-table .detail-name { display: contents; }
+  #ls-compare .detail-table.cmp-tbl .col-h .nm, #ls-compare .detail-table.cmp-tbl .nm { display: block !important; -webkit-line-clamp: unset !important; line-clamp: none !important;
+    overflow: visible !important; text-overflow: clip !important; padding-right: 0 !important; word-break: normal !important; overflow-wrap: break-word !important; font-size: 13px !important; }
+  .detail-table tr.detail-charts > * { vertical-align: top; padding-top: 6px; padding-bottom: 6px; }
+  #ls-compare .detail-table tbody tr[class^="r-"] > * { padding-top: 7px !important; padding-bottom: 7px !important; height: auto !important; }   /* shorter value rows so the charts fit on page 1 */
+  .detail-table tr.detail-chart-heading { break-after: avoid; page-break-after: avoid; }
+  .detail-table tr.detail-charts { break-inside: avoid; page-break-inside: avoid; }
+  .detail-charts .rd-now { flex-wrap: wrap !important; white-space: normal !important; gap: 0 6px; font-size: 9px; line-height: 13px; letter-spacing: -0.02em; }
+  #ls-brief .sc-box, #ls-brief .ls-detail { break-inside: auto; page-break-inside: auto; }
+  #ls-compare .detail-tl { break-inside: avoid; page-break-inside: avoid; }   /* timeline legend stays with its bars */
+  #ls-brief h4 { break-after: avoid; page-break-after: avoid; }   /* a small heading stays with what follows */
+  #ls-brief .sc-sum, #ls-brief .mini-tbl, #ls-brief .ls-detail .ls-panel { break-inside: avoid; page-break-inside: avoid; }
+}

@@ -1,0 +1,108 @@
+{
+  "sources": {
+    "glaser": {
+      "url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
+      "accessed_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
+      "status": 200,
+      "sha256": "e6db2fcfcabf09f0541e0f2e7ff8ec1217b2e8edee0d2797016b6dd89ed1a2f7",
+      "accessed_utc": "2026-11-15T03:52:03.353280+00:00",
+      "raw_path": "data/processed/task_s_jiyong/polar/glaser.pdf"
+    },
+    "databook": {
+      "url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "accessed_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "status": 200,
+      "sha256": "2095bb6b89a19cbf12d5d2d8c720e413df2bfc88dabab6a2500225c6517455b2",
+      "accessed_utc": "2026-11-15T03:52:05.343908+00:00",
+      "raw_path": "data/processed/task_s_jiyong/polar/databook.pdf"
+    },
+    "usgs_shoemaker": {
+      "url": "https://planetarynames.wr.usgs.gov/Feature/5494",
+      "accessed_url": "https://planetarynames.wr.usgs.gov/Feature/5494",
+      "status": 200,
+      "sha256": "043ea3ab7e6fb6555c20eb53735cc1e25985b896d210790d63e795478f7ba92f",
+      "raw_path": "data/processed/task_s_jiyong/polar/shoemaker.html",
+      "accessed_utc": "2026-11-15T03:55:35.758523+00:00"
+    },
+    "usgs_shackleton": {
+      "url": "https://planetarynames.wr.usgs.gov/Feature/5450",
+      "accessed_url": "https://planetarynames.wr.usgs.gov/Feature/5450",
+      "status": 200,
+      "sha256": "727673c7587e56a11cc1660a107c05ddb9d44e086a8871331434aa3f18e663be",
+      "raw_path": "data/processed/task_s_jiyong/polar/shackleton.html",
+      "accessed_utc": "2026-11-15T03:55:36.267096+00:00"
+    }
+  },
+  "rows": [
+    {
+      "id": "SHACKLETON_RIM",
+      "catalogue_lat": -89.6866,
+      "catalogue_lon": -162.81,
+      "source_lat_decimal": "-89.6866",
+      "source_lon_decimal": "197.19",
+      "source_key": "glaser",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
+      "locator": "Table 2, printed/PDF p.12, first Shackleton S row",
+      "short_quote": "-89.6866 197.19",
+      "point_role": "Research high-average-illumination point at 2 m, not a lander or claimed summit",
+      "visual_check": "Fresh PDF page rendered with PyMuPDF and visually inspected",
+      "frame_precision_caveat": "Published 20-year illumination numbers are not the app 2026-2030 validation target; coordinate selection and measurement accuracy are separate."
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "catalogue_lat": -89.4632,
+      "catalogue_lon": -137.49,
+      "source_lat_decimal": "-89.4632",
+      "source_lon_decimal": "-137.49",
+      "source_key": "databook",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R01/Site01",
+      "short_quote": "-89.4632 -137.49",
+      "point_role": "Published DEM-polygon centre",
+      "visual_check": "Fresh PDF page rendered with PyMuPDF and visually inspected",
+      "frame_precision_caveat": "Exact published decimals confirmed; physical geodetic accuracy and exact frame transformation not independently re-established. Data Book p57 describes polygon-centre accuracy as 5-10 m; this is not crest accuracy."
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "catalogue_lat": -88.811,
+      "catalogue_lon": 123.6901,
+      "source_lat_decimal": "-88.811",
+      "source_lon_decimal": "123.6901",
+      "source_key": "databook",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R07/Site07",
+      "short_quote": "-88.811 123.6901",
+      "point_role": "Published DEM-polygon centre",
+      "visual_check": "Fresh PDF page rendered with PyMuPDF and visually inspected",
+      "frame_precision_caveat": "Exact published decimals confirmed; physical geodetic accuracy and exact frame transformation not independently re-established. Data Book p57 describes polygon-centre accuracy as 5-10 m; this is not crest accuracy."
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "catalogue_lat": -88.6834,
+      "catalogue_lon": -67.9321,
+      "source_lat_decimal": "-88.6834",
+      "source_lon_decimal": "-67.9321",
+      "source_key": "databook",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R11/Site11",
+      "short_quote": "-88.6834 -67.9321",
+      "point_role": "Published DEM-polygon centre",
+      "visual_check": "Fresh PDF page rendered with PyMuPDF and visually inspected",
+      "frame_precision_caveat": "Exact published decimals confirmed; physical geodetic accuracy and exact frame transformation not independently re-established. Data Book p57 describes polygon-centre accuracy as 5-10 m; this is not crest accuracy."
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "catalogue_lat": -88.0792,
+      "catalogue_lon": 11.88866,
+      "source_lat_decimal": "-88.0792",
+      "source_lon_decimal": "11.88866",
+      "source_key": "databook",
+      "source_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.57, LM2",
+      "short_quote": "-88.0792 11.88866",
+      "point_role": "Published DEM-polygon centre; no assertion of exact crest or summit",
+      "visual_check": "Fresh PDF page rendered with PyMuPDF and visually inspected",
+      "frame_precision_caveat": "Exact published decimals confirmed; physical geodetic accuracy and exact frame transformation not independently re-established. Data Book p57 describes polygon-centre accuracy as 5-10 m; this is not crest accuracy."
+    }
+  ]
+}

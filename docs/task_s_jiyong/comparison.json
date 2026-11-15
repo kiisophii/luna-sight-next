@@ -1,0 +1,389 @@
+{
+  "scope": "All 33 cited coordinate pairs; not physical accuracy or exhaustive alternate-source search",
+  "catalogue_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
+  "evidence_sha256": {
+    "docs\\task_s_jiyong\\historical.json": "f09174f2adb22a123fed8e4f7078a2867a0e354d7b81cd7b7cdd1c4a2b66ec12",
+    "docs\\task_s_jiyong\\robotic.json": "23f592db9ff2297db5f3fda9193d4aa7f8063de749282afb00a778e10c8d1f1e",
+    "docs\\task_s_jiyong\\polar.json": "08428bcc30f7187b4785213d955b9392efe2c8e08a66a62fa1207881aaeb5c2d",
+    "docs\\task_s_jiyong\\artemis.json": "f849d5a0c4adcf72cf36c063ec7713fd1d94a7235ef520bfb965783096228e82"
+  },
+  "reference_radius_m": 1737400,
+  "matches": 33,
+  "max_delta_m": 0.0,
+  "rows": [
+    {
+      "id": "APOLLO11",
+      "source_lat": "0.67416",
+      "source_lon_normalized": "23.47314",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 11, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "APOLLO12",
+      "source_lat": "-3.0128",
+      "source_lon_normalized": "-23.4219",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 12, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "APOLLO14",
+      "source_lat": "-3.64589",
+      "source_lon_normalized": "-17.47194",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 14, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "APOLLO15",
+      "source_lat": "26.13239",
+      "source_lon_normalized": "3.63330",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 15, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "APOLLO16",
+      "source_lat": "-8.9734",
+      "source_lon_normalized": "15.5011",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 16, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "APOLLO17",
+      "source_lat": "20.1911",
+      "source_lon_normalized": "30.7723",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "locator": "Apollo Landing Site Coordinates table, Apollo 17, Lunar Module row (not LRRR or ALSEP)."
+    },
+    {
+      "id": "LUNA16",
+      "source_lat": "-0.5137",
+      "source_lon_normalized": "56.3638",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 16 Soft Landing row; note d."
+    },
+    {
+      "id": "LUNA20",
+      "source_lat": "3.7863",
+      "source_lon_normalized": "56.6242",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 20 Soft Landing row; note d."
+    },
+    {
+      "id": "LUNA24",
+      "source_lat": "12.7142",
+      "source_lon_normalized": "62.2129",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "locator": "Table of Anthropogenic Impacts and Spacecraft on the Moon, Luna 24 Soft Landing row; note d."
+    },
+    {
+      "id": "CHANGE3",
+      "source_lat": "44.1214",
+      "source_lon_normalized": "-19.5116",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/637",
+      "locator": "Paragraph beginning Since the rover; lander coordinates sentence"
+    },
+    {
+      "id": "CHANGE4",
+      "source_lat": "-45.4562",
+      "source_lon_normalized": "177.5885",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1168",
+      "locator": "Final paragraph after rover distance table"
+    },
+    {
+      "id": "CHANGE5",
+      "source_lat": "43.0576",
+      "source_lon_normalized": "-51.9161",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1172.2020",
+      "locator": "First body paragraph after opening image"
+    },
+    {
+      "id": "CHANGE6",
+      "source_lat": "-41.6385",
+      "source_lon_normalized": "-153.9852",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1374",
+      "locator": "Second body paragraph: coordinates computed by the LROC team"
+    },
+    {
+      "id": "CHANDRAYAAN3",
+      "source_lat": "-69.3741",
+      "source_lon_normalized": "32.32",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1314",
+      "locator": "Caption below annotated orbital image, before Full NAC image"
+    },
+    {
+      "id": "SLIM",
+      "source_lat": "-13.3160",
+      "source_lon_normalized": "25.2510",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1358",
+      "locator": "Opening image caption"
+    },
+    {
+      "id": "IM1",
+      "source_lat": "-80.13",
+      "source_lon_normalized": "1.44",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1360",
+      "locator": "Second image caption: Odysseus came to rest"
+    },
+    {
+      "id": "IM2",
+      "source_lat": "-84.7906",
+      "source_lon_normalized": "29.1957",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1408",
+      "locator": "Second image caption: lander on its side in crater"
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "source_lat": "18.562",
+      "source_lon_normalized": "61.810",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://lroc.im-ldi.com/images/1406",
+      "locator": "Second image caption: lander pixel in the middle of the box"
+    },
+    {
+      "id": "ARTEMIS_CABEUS_B",
+      "source_lat": "-83.7630",
+      "source_lon_normalized": "-69.9830",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "PCB01",
+        "region_label": "Peak Near Cabeus B",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      }
+    },
+    {
+      "id": "ARTEMIS_HAWORTH",
+      "source_lat": "-86.7680",
+      "source_lon_normalized": "-20.5140",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "HW01",
+        "region_label": "Haworth",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      }
+    },
+    {
+      "id": "ARTEMIS_MALAPERT",
+      "source_lat": "-85.9420",
+      "source_lon_normalized": "-0.9440",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMA01",
+        "region_label": "Mons Malapert",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON_PLATEAU",
+      "source_lat": "-85.1110",
+      "source_lon_normalized": "26.7100",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMP01",
+        "region_label": "Mons Mouton Plateau",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      }
+    },
+    {
+      "id": "ARTEMIS_MOUTON",
+      "source_lat": "-85.4160",
+      "source_lon_normalized": "31.8510",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "MMO01",
+        "region_label": "Mons Mouton",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM1",
+      "source_lat": "-85.2950",
+      "source_lon_normalized": "36.9170",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "NR101",
+        "region_label": "Nobile Rim 1",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      }
+    },
+    {
+      "id": "ARTEMIS_NOBILE_RIM2",
+      "source_lat": "-84.0540",
+      "source_lon_normalized": "56.4810",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "NR201",
+        "region_label": "Nobile Rim 2",
+        "printed_article_page": 26,
+        "eth_pdf_page_1based": 27
+      }
+    },
+    {
+      "id": "ARTEMIS_DE_GERLACHE_RIM2",
+      "source_lat": "-88.3890",
+      "source_lon_normalized": "-68.8650",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "dGR201",
+        "region_label": "de Gerlache Rim 2",
+        "printed_article_page": 25,
+        "eth_pdf_page_1based": 26
+      }
+    },
+    {
+      "id": "ARTEMIS_SLATER_PLAIN",
+      "source_lat": "-87.4780",
+      "source_lon_normalized": "124.5210",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025JE009434",
+      "locator": {
+        "table": "A1",
+        "cls_row_id": "SP01",
+        "region_label": "Slater Plain",
+        "printed_article_page": 27,
+        "eth_pdf_page_1based": 28
+      }
+    },
+    {
+      "id": "SHACKLETON_RIM",
+      "source_lat": "-89.6866",
+      "source_lon_normalized": "-162.81",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://ntrs.nasa.gov/api/citations/20170007365/downloads/20170007365.pdf",
+      "locator": "Table 2, printed/PDF p.12, first Shackleton S row"
+    },
+    {
+      "id": "CONNECTING_RIDGE",
+      "source_lat": "-89.4632",
+      "source_lon_normalized": "-137.49",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R01/Site01"
+    },
+    {
+      "id": "PEAK_NEAR_SHACKLETON",
+      "source_lat": "-88.811",
+      "source_lon_normalized": "123.6901",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R07/Site07"
+    },
+    {
+      "id": "DE_GERLACHE_RIM1",
+      "source_lat": "-88.6834",
+      "source_lon_normalized": "-67.9321",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.58, R11/Site11"
+    },
+    {
+      "id": "SHOEMAKER_RIM_A",
+      "source_lat": "-88.0792",
+      "source_lon_normalized": "11.88866",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://ntrs.nasa.gov/api/citations/20230007818/downloads/ACD-50044%20Lunar%20Surface%20Data%20Book%20Rev%20A.pdf",
+      "locator": "Table A2-2 p.57, LM2"
+    },
+    {
+      "id": "IM3_REINER_GAMMA",
+      "source_lat": "7.585",
+      "source_lon_normalized": "-58.725",
+      "match": true,
+      "delta_m": 0.0,
+      "evidence_url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2022.926018/full",
+      "locator": "Figure 3 caption; same numeric coordinates appear in Figures 9 and 10 captions."
+    }
+  ],
+  "alternate_source_differences": [
+    {
+      "id": "CHANGE3",
+      "source_lat": "44.1214",
+      "source_lon": "-19.5117",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "delta_m": 2.1768112098205736
+    },
+    {
+      "id": "CHANGE4",
+      "source_lat": "-45.4561",
+      "source_lon": "177.5885",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
+      "delta_m": 3.032335042445622
+    },
+    {
+      "id": "BLUE_GHOST1",
+      "source_lat": "18.5623",
+      "source_lon": "61.8103",
+      "url": "https://lroc.im-ldi.com/images/1407",
+      "delta_m": 12.534946913724642
+    }
+  ]
+}

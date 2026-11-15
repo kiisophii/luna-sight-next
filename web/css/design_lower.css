@@ -175,3 +175,12 @@ html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions butto
     white-space: normal; overflow-wrap: normal; word-break: keep-all; display: -webkit-box; -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; text-overflow: ellipsis; padding-right: 28px; }
 }
+
+/* designer review (v47): tray 'Detailed comparison' button spans the tray content width like the copy (316 px at 380 px) */
+@media (min-width: 1100px) { #ls-tray .tray-more, .ls-tray .tray-more { width: 100%; align-self: stretch; } }
+/* elevation chart: Sun / Earth icons in the legend and the read-out; the read-out stays on one line on desktop */
+.detail-lg .lg-ic { flex: none; margin-left: -2px; }
+.detail-lg .lg-ic.k-sun { color: var(--sun); }
+.detail-lg .lg-ic.k-earth { color: var(--earth); }
+.detail-charts .rd-now .rd-ic { display: inline-block; vertical-align: -2px; margin-right: 3px; }
+@media (min-width: 761px) and (pointer: fine) { .detail-charts .rd-now { flex-wrap: nowrap; white-space: nowrap; gap: 12px; } }

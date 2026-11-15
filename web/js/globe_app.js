@@ -178,6 +178,12 @@ async function start() {
     else if (v === 'south') g.flyTo({ lat: -89, lon: 0, range: 420, tilt: 35, heading: 0 });
     else if (v === 'focus') flySite(LLSN().focus, true);
   });
+  // 18-1: the dock's − / + buttons zoom by the same step as the keyboard + / − keys
+  document.addEventListener('click', e => {
+    const z = e.target.closest?.('.ls-toolbar [data-zoom]')?.dataset.zoom; if (!z) return;
+    const v = g.getView();
+    g.flyTo({ range: Math.max(0.3, Math.min(25000, v.range * (z === 'in' ? 0.8 : 1.25))) }, 180);
+  });
   stage.querySelector('.gl-zoom')?.addEventListener('click', e => {
     const z = e.target.closest('button')?.dataset.zoom; if (!z) return;
     const v = g.getView();

@@ -170,12 +170,13 @@ function draw() {
     const s = LLSN().state.sites.find(x => x.id === pn.id); if (!s) continue;
     const q = project(s.lat, s.lon); if (!q.front) continue;
     const x = R + q.x * R, y = R - q.y * R;
-    g.fillStyle = '#fff'; g.beginPath(); g.arc(x, y, 2.4 * dpr, 0, 7); g.fill();
+    const pc = getComputedStyle(document.documentElement).getPropertyValue('--c' + pn.n).trim() || '#ededed';   // 18-2: the candidate's own colour
+    g.fillStyle = pc; g.beginPath(); g.arc(x, y, 2.4 * dpr, 0, 7); g.fill();
     const label=`#${pn.n}`, tw=g.measureText(label).width, tx=Math.min(W-tw-8*dpr,Math.max(4*dpr,x+4*dpr));
     let ty=Math.max(8*dpr,Math.min(H-8*dpr,y));
     while(pills.some(p=>Math.abs(p.y-ty)<16*dpr&&tx<p.x+p.w&&tx+tw+6*dpr>p.x)&&ty>24*dpr)ty-=16*dpr;
     pills.push({x:tx,y:ty,w:tw+6*dpr});
-    g.fillStyle='#ededed'; g.beginPath(); g.roundRect(tx-3*dpr,ty-7*dpr,tw+6*dpr,14*dpr,7*dpr); g.fill();g.fillStyle='#0a0a0b';g.fillText(label,tx,ty);
+    g.fillStyle=pc; g.beginPath(); g.roundRect(tx-3*dpr,ty-7*dpr,tw+6*dpr,14*dpr,7*dpr); g.fill();g.fillStyle='#0a0a0b';g.fillText(label,tx,ty);
   }
   if(lastPick){const q=project(lastPick.lat,lastPick.lon);if(q.front){g.fillStyle='#fff';g.font=`${16*dpr}px sans-serif`;g.fillText('★',R+q.x*R-7*dpr,R-q.y*R);}}
   const f = LLSN().state.sites.find(x => x.id === LLSN().focus);

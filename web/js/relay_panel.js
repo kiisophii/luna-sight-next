@@ -6,11 +6,11 @@
 // Listens: llsn:window, llsn:focus, llsn:time, llsn:lang. Colours: CSS variables only.
 import * as core from './core.js';
 import { t } from './i18n.js';
-import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, LLSN } from './ui_shared.js';
+import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, roundShares, legendHTML, LLSN } from './ui_shared.js';
 import { relayIndex, relayFor, segmentHours, longestNone } from './diff_data.js';
 
 addStrings({
-  rlTitle: 'Relay tower — restore the Earth link', rlAria: 'Relay tower analysis for the focused site',
+  rlTitle: 'Relay tower — restore the direct-to-Direct-to-Earth', rlAria: 'Relay tower analysis for the focused site',
   rlFor: 'Site', rlPeriod: 'Period', rlHeight: 'Tower height',
   rlDirect: 'Direct to Earth', rlVia: 'Added via tower', rlTotal: 'Link with tower(s)', rlNone: 'No link',
   rlLongestNone: 'Longest no-link stretch', rlOfPeriod: 'of the period',
@@ -22,17 +22,17 @@ addStrings({
   rlFresnel: 'first-Fresnel clearance (≥ 0.6 = clear)', rlYes: 'yes', rlNo: 'no',
   rlNoGain: 'No buildable tower within the search radius improves this site at this height.',
   rlAlways: 'This site already sees Earth all the time in the 5-year data window — no tower needed.',
-  rlMap: 'Where a tower would help (search area)', rlMapLegend: 'colour = lander link % with one tower at that spot (this height); grey = no line of sight or too steep; ● lander, ◆ towers',
+  rlMap: 'Where a tower would help (search area)', rlMapLegend: '', rlLgGain: 'link gain with one tower at that spot (stronger = more)', rlLgNo: 'no line of sight or too steep', rlLgLander: 'lander', rlLgTower: 'towers',
   rlByN: 'Whole 2026–2030 window: link % with 0 / 1 / 2 / 3 towers',
   rlBudget: 'Link budget tower → Earth (ESTIMATE)', rlBudgetNote: 'Rough estimate with our own assumptions (not a specification): ',
   rlStation: 'station', rlBand: 'band', rlRange: 'range', rlCn0: 'C/N₀', rlRate: 'power-limited rate (ignores bandwidth)',
   rlPending: 'Terrain pending — the relay tower is computed only from real LOLA terrain. This site has no DEM cache yet, so nothing is shown (never a flat-horizon result).',
   rlNotYet: 'Relay results not computed yet for this site.',
-  rlAssume: 'Assumptions: concept after NASA Glenn\'s BEACON lunar relay demonstrator (15 m deployed boom, users up to ~10 km; NTRS 20240014584). Search radius 10 km, 250 m grid, slope ≤ 15°. Link = geometric line of sight between the lander antenna (2 m) and the tower top over LOLA terrain with lunar curvature; first-Fresnel clearance (S 2.2 GHz, Ka 26 GHz) is reported, not required. Tower sees Earth = Earth centre above the tower-top horizon. The link budget is an estimate.',
+  rlAssume: 'Assumptions: concept after NASA Glenn\'s BEACON lunar relay demonstrator (15 m deployed boom, users up to ~10 km; NTRS 20240014584). Search radius 10 km, 250 m grid, slope ≤ 15°. Link = geometric line of sight between the lander antenna (2 m) and the tower top over LOLA terrain with lunar curvature; first-Fresnel clearance (S 2.2 GHz, Ka 26 GHz) is reported, not required. Tower sees Earth = Earth center above the tower-top horizon. The link budget is an estimate.',
   rlSrc: 'Terrain: PGDA LOLA 20 m / 60 m / 80 m (near) + LOLA LDEM_16 (far, to 300 km). Ephemeris: NAIF DE440s + DE421 Moon orientation.',
   rlNetN: 'towers', rlAt: 'at',
 }, {
-  rlTitle: '중계 타워 — 지구 통신 되살리기', rlAria: '선택한 착륙지의 중계 타워 분석',
+  rlTitle: '중계 타워 — 직접 교신 되살리기', rlAria: '선택한 착륙지의 중계 타워 분석',
   rlFor: '착륙지', rlPeriod: '기간', rlHeight: '타워 높이',
   rlDirect: '지구 직접 통신', rlVia: '타워로 추가', rlTotal: '타워 포함 통신', rlNone: '통신 불가',
   rlLongestNone: '가장 긴 통신 불가 구간', rlOfPeriod: '(기간 대비)',
@@ -44,7 +44,7 @@ addStrings({
   rlFresnel: '1차 프레넬 여유 (0.6 이상 = 여유 충분)', rlYes: '있음', rlNo: '없음',
   rlNoGain: '이 높이에서는 탐색 반경 안에 세울 수 있는 타워로 개선되지 않는다.',
   rlAlways: '이 착륙지는 5년 데이터 내내 지구가 보인다 — 타워가 필요 없다.',
-  rlMap: '타워가 도움이 되는 곳 (탐색 범위)', rlMapLegend: '색 = 그 자리에 타워 1기를 세웠을 때 착륙선 통신 % (이 높이); 회색 = 가시선 없음 또는 너무 가파름; ● 착륙선, ◆ 타워',
+  rlMap: '타워가 도움이 되는 곳 (탐색 범위)', rlMapLegend: '', rlLgGain: '그 자리에 탑 1기를 세울 때 늘어나는 교신 (진할수록 많음)', rlLgNo: '가시선 없음 또는 너무 가파름', rlLgLander: '착륙선', rlLgTower: '탑',
   rlByN: '2026–2030 전체: 타워 0 / 1 / 2 / 3기일 때 통신 %',
   rlBudget: '타워 → 지구 링크 버짓 (추정치)', rlBudgetNote: '우리 가정으로 낸 대략적 추정치 (규격 아님): ',
   rlStation: '지상국', rlBand: '대역', rlRange: '거리', rlCn0: 'C/N₀', rlRate: '전력 기준 전송률 (대역폭 무시)',
@@ -148,12 +148,14 @@ function render() {
   const gap = longestNone(net.timeline.segments, w.i0, w.i1);
   const nT = net.towers.length;
   const always = rel.lander.earth_frac >= 0.9999;
+  // direct + via + none = 100 % exactly (largest-remainder rounding, issue #44); total = direct + via.
+  const [pD, pV, pN] = roundShares([seg.direct, seg.via, seg.none]);
   body.innerHTML = `
     <div class="rl-kpis">
-      <div class="kpi direct"><span class="label">${t('rlDirect')}</span><span class="value">${pct(seg.direct / T)}</span><span class="sub">${fmtHours(seg.direct)}</span></div>
-      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pct(seg.via / T)}</span><span class="sub">${fmtHours(seg.via)}</span></div>
-      <div class="kpi total"><span class="label">${t('rlTotal')}</span><span class="value">${pct((seg.direct + seg.via) / T)}</span><span class="sub">${fmtHours(seg.direct + seg.via)}</span></div>
-      <div class="kpi none"><span class="label">${t('rlNone')}</span><span class="value">${pct(seg.none / T)}</span><span class="sub">${t('rlLongestNone')}: ${fmtHours(gap)}</span></div>
+      <div class="kpi direct"><span class="label">${t('rlDirect')}</span><span class="value">${pD}%</span><span class="sub">${fmtHours(seg.direct)}</span></div>
+      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pV}%</span><span class="sub">${fmtHours(seg.via)}</span></div>
+      <div class="kpi total"><span class="label">${t('rlTotal')}</span><span class="value">${pD + pV}%</span><span class="sub">${fmtHours(seg.direct + seg.via)}</span></div>
+      <div class="kpi none"><span class="label">${t('rlNone')}</span><span class="value">${pN}%</span><span class="sub">${t('rlLongestNone')}: ${fmtHours(gap)}</span></div>
     </div>
     <h3>${t('rlStrip')}</h3>
     <canvas class="rl-strip" height="34" role="img" aria-label="${esc(t('rlStrip'))}"></canvas>
@@ -164,7 +166,7 @@ function render() {
     ${always ? `<p class="note">${t('rlAlways')}</p>` : ''}
     <div class="rl-grid">
       <div><h3>${t('rlMap')}</h3><canvas class="rl-map" width="420" height="420" role="img" aria-label="${esc(t('rlMap'))}"></canvas>
-        <p class="hint">${t('rlMapLegend')}</p></div>
+        ${legendHTML([{ kind: 'square', c: 'var(--relay)', op: 0.9, label: t('rlLgGain') }, { kind: 'square', c: 'var(--off)', op: 0.5, label: t('rlLgNo') }, { kind: 'dot', c: 'var(--earth)', label: t('rlLgLander') }, { kind: 'diamond', c: 'var(--text)', label: t('rlLgTower') }])}</div>
       <div>${towerHTML(net, best, rel)}</div>
     </div>
     <h3>${t('rlByN')}</h3>

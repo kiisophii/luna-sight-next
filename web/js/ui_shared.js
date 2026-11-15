@@ -80,6 +80,17 @@ export function fmtHours(h) {
 }
 export const fmtDeg = x => `${x >= 0 ? '+' : '−'}${Math.abs(x).toFixed(1)}°`;
 
+/** Whole-number percentages of parts that add up to exactly 100 (largest-remainder / Hamilton rounding).
+ *  Rounding each share on its own can give 101 % (issue #44). Returns [] for an empty or zero total. */
+export function roundShares(parts) {
+  const tot = parts.reduce((a, b) => a + b, 0);
+  if (!(tot > 0)) return parts.map(() => 0);
+  const raw = parts.map(p => (100 * p) / tot), out = raw.map(Math.floor);
+  let left = 100 - out.reduce((a, b) => a + b, 0);
+  raw.map((r, k) => [r - Math.floor(r), k]).sort((a, b) => b[0] - a[0] || a[1] - b[1]).forEach(([, k]) => { if (left > 0) { out[k]++; left--; } });
+  return out;
+}
+
 /** Read a CSS custom property (theme.css may override base.css). */
 export const cssVar = (name, el = document.documentElement) => getComputedStyle(el).getPropertyValue(name).trim();
 
@@ -116,4 +127,24 @@ function ensureStyles() {
   st.dataset.owner = 'ui_shared.js';
   st.textContent = css;
   document.head.appendChild(st);
+}
+
+/** Graphic legend: each item = a short swatch drawn with the chart's own colour and stroke style + its name.
+ *  kinds: line {c, w, dash}, bar {c, h, op}, dot {c, op}, area {c (stroke), fill}, vline {c, w}, square {c, op}, diamond {c}.
+ *  Colours are CSS values (var(--sun) etc.). Labels are plain text (escaped here). */
+export function legendHTML(items, cls = '') {
+  const e = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const sw = it => {
+    const { kind, c = 'currentColor', w = 2, dash = '', h = 6, op = 1, fill = 'none' } = it;
+    let g = '';
+    if (kind === 'line') g = `<line x1="1" y1="6" x2="23" y2="6" stroke="${c}" stroke-width="${w}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`;
+    else if (kind === 'bar') g = `<rect x="1" y="${6 - h / 2}" width="22" height="${h}" rx="1" fill="${c}" fill-opacity="${op}"/>`;
+    else if (kind === 'dot') g = `<circle cx="7" cy="6" r="2.4" fill="${c}" fill-opacity="${op}"/><circle cx="16" cy="6" r="2.4" fill="${c}" fill-opacity="${op}"/>`;
+    else if (kind === 'area') g = `<path d="M1 11.5V8l5-3 4 2 5-4 8 4v4.5z" fill="${fill}" stroke="${c}" stroke-width="1.5" stroke-linejoin="round"/>`;
+    else if (kind === 'vline') g = `<line x1="12" y1="0.5" x2="12" y2="11.5" stroke="${c}" stroke-width="${w}"/>`;
+    else if (kind === 'square') g = `<rect x="7" y="1" width="10" height="10" rx="1.5" fill="${c}" fill-opacity="${op}"/>`;
+    else if (kind === 'diamond') g = `<path d="M12 1l5 5-5 5-5-5z" fill="${c}"/>`;
+    return `<svg class="lg-sw" viewBox="0 0 24 12" aria-hidden="true">${g}</svg>`;
+  };
+  return `<div class="lg-row ${cls}">${items.map(it => `<span>${sw(it)}${e(it.label)}</span>`).join('')}</div>`;
 }

@@ -382,7 +382,9 @@ async function route() {
   $('#view-about').hidden = !on;
   if (on) {
     if (!aboutLoaded) { aboutLoaded = true; await import('./about.js').catch(e => console.error('about failed', e)); }
+    if (!wasOn || location.hash === '#about') { const sc = document.getElementById('abScroll'); if (sc) sc.scrollTop = 0; }
     window.dispatchEvent(new CustomEvent('llsn:about'));
+    window.dispatchEvent(new Event('resize'));
     const target = location.hash.length > 6 ? document.getElementById(location.hash.slice(1)) : null;
     if (target) { target.closest('details')?.setAttribute('open', ''); target.scrollIntoView(); } else window.scrollTo(0, 0);
     $('#view-about h1')?.focus({ preventScroll: true });

@@ -103,19 +103,24 @@ const md = x => esc(x).replace(/\*([^*]+)\*/g, '<i>$1</i>');
 const TEAM = [['Dongju Kim', 'team lead · validation'], ['Sua Kim', 'integrator · Korea links · custom points'], ['Minchul Kim', 'ephemeris · site catalogue'],
   ['Jiyong Sung', 'terrain · horizons · local grids'], ['Soyun Jeong', 'whole-Moon maps'], ['Chaei Oh', 'visual design']];
 
+let disposeHero = () => {};
+let renderVersion = 0;
 async function render() {
+  const version = ++renderVersion;
   const root = document.getElementById('view-about');
   const H = await headline(), v = await validation(), h = await hindcast();
+  if (version !== renderVersion) return;
+  disposeHero();
   const inRange = v?.named ? v.named.filter(n => n.ours_sun >= n.pgda_sun_min300 && n.ours_sun <= n.pgda_sun_max300).length : null;
   const ap = h?.apollo_sun_elevation || [], rb = h?.robotic_sunset || [];
   const C = ABOUT_COPY[getLang() === 'ko' ? 'ko' : 'en'], X = esc;
   root.innerHTML = `
   <div class="ab-hero" id="ab-hero">
-    <div class="abh-scene"></div><div class="abh-shade" aria-hidden="true"></div>
-    <div class="abh-text"><div class="abh-name">${X(C.hero.name)}</div><h1 tabindex="-1">${X(C.hero.h1)}</h1>${C.hero.lead.map(x => `<p class="abh-lead">${X(x)}</p>`).join('')}
+    <div class="abh-scene" id="heroJourney"></div><div class="abh-shade" aria-hidden="true"></div>
+    <div class="abh-text"><h1 tabindex="-1">${X(C.hero.h1)}</h1>${C.hero.lead.map(x => `<p class="abh-lead">${X(x)}</p>`).join('')}
       <p class="abh-btns"><a class="ls-btn primary" href="#" data-act="explore">${X(C.hero.btns[0])} →</a><a class="ls-btn" href="#about-steps" data-act="how">${X(C.hero.btns[1])}</a></p></div>
-    <p class="abh-cap"><span class="chip-st">${getLang() === 'ko' ? '그림' : 'Picture'}</span> ${E('abArtCap')}</p>
   </div>
+  <div id="abScroll" class="ab-scroll at-top" tabindex="0">
   <section class="ab-sec" id="about-why"><div><span class="ab-no num">01</span><h2>${X(C.why.h2)}</h2></div><div class="ab-body">${C.why.p.map((x, k) => `<p${k === C.why.p.length - 1 ? ' class="ab-strong"' : ''}>${X(x)}</p>`).join('')}</div></section>
   <section class="ab-sec" id="about-steps"><div><span class="ab-no num">02</span><h2>${X(C.steps.h2)}</h2></div><div class="ab-steps">${C.steps.items.map(it => `<div class="ls-panel"><h3><span class="circ">${X(it.n)}</span> ${X(it.h)}</h3><p>${X(it.p)}</p></div>`).join('')}</div></section>
   <section class="ab-sec" id="about-what"><div><span class="ab-no num">03</span><h2>${X(C.what.h2)}</h2></div><div class="ab-cards">${C.what.items.map((it, k) => `<div class="ls-panel"><h3>${X(it.h)}</h3><p>${X(it.p)}</p><a class="ls-btn ab-act" href="#" data-act="${['dates', 'near', 'relay'][k]}">${X(it.btn)} →</a></div>`).join('')}</div></section>
@@ -151,19 +156,38 @@ async function render() {
     <details id="about-team"><summary>${E('abTeam')}</summary><p>${E('abTeamLead')}</p><ul>${TEAM.map(([n, r]) => `<li><b>${esc(n)}</b> — <span class="muted">${esc(r)}</span></li>`).join('')}</ul>
       <p id="about-si">${E('abSI')}</p><p><a href="https://github.com/kiisophii/lunar-landing-site-navigator/blob/main/docs/SI_USAGE.md" target="_blank" rel="noopener">docs/SI_USAGE.md</a> · <a href="https://github.com/kiisophii/lunar-landing-site-navigator" target="_blank" rel="noopener">source (Apache-2.0)</a></p></details>
   </div></section>
+  </div>
 `;
-  mountHero(root.querySelector('.abh-scene'), E('abArtAria'));
-  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next" aria-label="${E('abNext')}" title="${E('abNext')}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`);
+  const sc = root.querySelector('#abScroll');
+  const stopHero = mountHero(root.querySelector('.abh-scene'), t('abArtAria'), sc);
+  const header = document.querySelector('.ls-head');
+  const size = () => root.style.setProperty('--about-head', `${header.getBoundingClientRect().height}px`);
+  const observer = new ResizeObserver(size); observer.observe(header); size();
+  disposeHero = () => { stopHero(); observer.disconnect(); };
+  root.insertAdjacentHTML('beforeend', `<button type="button" class="ab-next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V18M6.5 12.5L12 18L17.5 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>`);
   const nextBtn = root.querySelector('.ab-next');
-  const secs = () => [...root.querySelectorAll('.ab-sec')];
-  const upcoming = () => { const line = (document.querySelector('.ab-hero')?.getBoundingClientRect().bottom || 0) + 12; return secs().find(x => x.getBoundingClientRect().top > line + 4); };
-  nextBtn.addEventListener('click', () => upcoming()?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
-  const sync = () => { nextBtn.hidden = !upcoming(); };
-  window.addEventListener('scroll', sync, { passive: true }); sync();
-  // buttons: leave About for the app (and open the right block / tab), or jump inside About
-  const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  const behavior = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+  const upcoming = () => [...sc.querySelectorAll(':scope > section')].find(el => el.getBoundingClientRect().top > sc.getBoundingClientRect().top + 40);
+  const toSection = el => sc.scrollTo({top: sc.scrollTop + el.getBoundingClientRect().top - sc.getBoundingClientRect().top - 32, behavior: behavior()});
+  const atEnd = () => sc.scrollTop + sc.clientHeight >= sc.scrollHeight - 4;
+  const sync = () => {
+    sc.classList.toggle('at-top', sc.scrollTop < 4);
+    const back = atEnd();
+    nextBtn.classList.toggle('back-top', back);
+    const label = back ? (getLang() === 'ko' ? '맨 위로' : 'Back to top') : (getLang() === 'ko' ? '다음 내용으로' : 'Next section');
+    nextBtn.setAttribute('aria-label', label); nextBtn.title = label;
+  };
+  nextBtn.addEventListener('click', () => {
+    if (atEnd()) sc.scrollTo({top:0, behavior:behavior()});
+    else if (upcoming()) toSection(upcoming());
+    else sc.scrollTo({top:sc.scrollHeight, behavior:behavior()});
+  });
+  sc.addEventListener('scroll', sync, {passive:true}); sync();
+  const goIn = (sel, openDetails) => { const el = root.querySelector(sel); if (!el) return; if (openDetails) { const d = el.closest('details') || (el.tagName === 'DETAILS' ? el : null); if (d) d.open = true; } toSection(el); };
+  const anchor = location.hash.length > 6 ? root.querySelector(`[id="${CSS.escape(location.hash.slice(1))}"]`) : null;
+  if (anchor) { anchor.closest('details')?.setAttribute('open', ''); toSection(anchor); }
   const openBlock = k => setTimeout(() => { const b = document.querySelector(`#ls-brief [data-open="${k}"]`); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); document.getElementById(`blk-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
-  root.addEventListener('click', e => {
+  root.onclick = e => {
     const a = e.target.closest('[data-act]'); if (!a) return; e.preventDefault();
     const act = a.dataset.act;
     if (act === 'explore') leave();
@@ -177,7 +201,7 @@ async function render() {
     else if (act === 'limits') goIn('#about-limits', true);
     else if (act === 'team') goIn('#about-team', true);
     else if (act === 'ai') goIn('#about-si', true);
-  });
+  };
 }
 function leave() { history.pushState(null, '', location.pathname + location.search); window.dispatchEvent(new HashChangeEvent('hashchange')); }
 /** The hero picture: the same colour map as the 3D view, orthographic, lit from the side. */

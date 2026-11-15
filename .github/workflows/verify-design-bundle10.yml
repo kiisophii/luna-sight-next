@@ -25,7 +25,7 @@ jobs:
       - name: Verify integrated main
         run: |
           python -m http.server 8788 --directory web >/tmp/bundle10-server.log 2>&1 &
-          node verification/design_bundle10/smoke.mjs
+          BASELINE=58bbc449692185698f2d9eb6a2d52cb2a4707293 node verification/design_bundle10/subtabs.mjs
       - name: Save evidence
         if: always()
         run: |

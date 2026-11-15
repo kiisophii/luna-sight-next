@@ -185,3 +185,10 @@ html:not([lang="ko"]) body > .sc-pop, html:not([lang="ko"]) body > .sc-tip { --f
   #ls-brief #blk-time .sc-axis span:nth-child(2),
   #ls-brief #blk-time .sc-axis span:nth-child(4) { display: none; }
 }
+@media (max-width: 760px) { #ls-brief .sc-kpis.ac { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* copy v49 16-3: the hidden-items line (12 px grey) and the revealed chips, dimmed, in the same row */
+#ls-brief .sc-hidden-toggle { display: block; margin-top: 10px; padding: 0; min-height: 18px; font-size: 12px; line-height: 18px; color: var(--sc-dim, var(--muted)); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(154,164,181,.4); }
+#ls-brief .sc-hidden-toggle:hover { color: var(--text); }
+#ls-brief .sc-chip.sc-off { opacity: .45; }
+/* copy v49 16-4: plain-language lines under the ground-station and relay charts */
+#ls-brief .sc-plain { margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); max-width: 760px; }

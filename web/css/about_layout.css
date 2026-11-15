@@ -93,7 +93,7 @@
   #view-about #abScroll > .ab-sec { grid-template-columns: minmax(0,round(down,calc(100% / 3 - 16px),1px)) minmax(0,1fr); }
 }
 #view-about #abScroll > .ab-sec > :is(:first-child,:nth-child(2)) { grid-column: auto; }
-#view-about #abScroll > #about-why { border-top: 0; }
+#view-about #abScroll > #about-why { border-top: 0; padding-top: 40px; } /* copy v49: 40 px above the first section */
 #view-about .ab-sec h2 { font-size:30px; font-weight:600; line-height:44px; margin:0; }
 #view-about .ab-sec p { line-height:25px; }
 #view-about .ab-sec p.ab-strong { line-height:28px; }

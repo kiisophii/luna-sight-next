@@ -341,7 +341,12 @@ function renderSum(s) {
   $('#ls-brief .sc-sum').innerHTML = cell('sumSun', pc(m?.sun_frac), 'var(--sun)') + cell('sumEarth', pc(m?.earth_frac), 'var(--earth)')
     + cell('sumBoth', pc(m?.both_frac)) + cell('sumDark', ok ? dh(m.longest_dark_h) : '—');
 }
-addStrings({hiddenAnalyses:'{n} items not needed for this candidate are hidden',noAnalysisData:'No data for this candidate; this does not mean the analysis is unnecessary.'},{hiddenAnalyses:'이 후보에는 필요 없는 항목 {n}개를 숨겼어요',noAnalysisData:'이 후보의 자료가 없는 항목입니다. 분석이 필요 없다는 뜻은 아닙니다.'});
+addStrings({hiddenAnalyses:'{n} items hidden. Not relevant for this site',noAnalysisData:'No data for this candidate; this does not mean the analysis is unnecessary.',
+  plainGs:'Each bar marks the hours when the Moon is at least 10° above that station; the lower bars also need Earth above the site’s terrain horizon. Earth’s rotation splits them into daily passes.',
+  plainRelay:'From higher ground, Earth stays in view longer. When terrain hides Earth from the lander, a tower that sees both the lander and Earth adds hours with a line of sight to Earth.'},
+  {hiddenAnalyses:'이 후보에는 필요 없는 항목 {n}개를 숨겼어요',noAnalysisData:'이 후보의 자료가 없는 항목입니다. 분석이 필요 없다는 뜻은 아닙니다.',
+  plainGs:'막대는 각 지상국에서 달이 10° 이상 떠 있는 시간이고, 아래 막대는 착륙지 지형 위로 지구도 보여야 합니다. 지구가 자전해서 하루 단위로 끊겨 나타납니다.',
+  plainRelay:'높은 곳일수록 지형 너머로 지구가 더 오래 보입니다. 지형이 지구를 가릴 때 착륙선과 지구가 모두 보이는 탑을 거치면 지구까지 시선이 이어지는 시간이 늘어납니다.'});
 let available = new Set(PICKABLE), showUnavailable = false;
 async function updateAvailability(s) {
   const valid=!core.terrainPending(s)&&!core.horizonMock(s);
@@ -365,8 +370,8 @@ function renderPick() {
   const visible=PICK.filter(([k])=>available.has(k)), missing=PICK.filter(([k])=>!available.has(k));
   const n=visible.filter(([k])=>open.has(k)).length;
   $('#ls-brief .sc-pick').innerHTML = `<p class="sc-pick-h"><b>${esc(t('pickH'))}</b> <span>${esc(fill(t('pickSub'), { n, m:visible.length }))}</span></p>
-    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${visible.map(([k])=>`<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_'+k))}</button>`).join('')}</div>
-    ${missing.length?`<button type="button" class="sc-hidden-toggle" aria-expanded="${showUnavailable}" aria-controls="sc-unavailable">${esc(fill(t('hiddenAnalyses'),{n:missing.length}))}</button><div id="sc-unavailable" class="sc-unavailable"${showUnavailable?'':' hidden'}><p>${esc(t('noAnalysisData'))}</p><div class="sc-chips">${missing.map(([k])=>`<span class="sc-chip soon" aria-disabled="true">${esc(t('c_'+k))}</span>`).join('')}</div></div>`:''}`;
+    <div class="sc-chips" id="sc-chiprow" role="group" aria-label="${esc(t('pickH'))}">${visible.map(([k])=>`<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_'+k))}</button>`).join('')}${showUnavailable?missing.map(([k])=>`<span class="sc-chip soon sc-off" aria-disabled="true" title="${esc(t('noAnalysisData'))}"><i class="box"></i>${esc(t('c_'+k))}</span>`).join(''):''}</div>
+    ${missing.length?`<button type="button" class="sc-hidden-toggle" aria-expanded="${showUnavailable}" aria-controls="sc-chiprow">${esc(fill(t('hiddenAnalyses'),{n:missing.length}))}</button>`:''}`;
   PICK.forEach(([k])=>document.getElementById(`blk-${k}`)?.classList.toggle('data-unavailable',!available.has(k)));
 }
 /** Card numbers 01, 02 … follow the order of the open cards. */
@@ -464,6 +469,15 @@ function blockShell(k, chips) {
   // 7-6 card shell: number + title (the chip label) · body · "Assumptions & limits" · sources line + "Method & validation"
   el.querySelector('header').innerHTML = `<span class="sc-no" aria-hidden="true"></span><h3>${esc(t(chipped ? 'c_' + k : 'd_' + k))}</h3>${k === 'gs' || k === 'relay' ? `<button type="button" class="sc-info" data-tip="${k}" aria-label="${esc(fill(t('aboutX'), { x: t('c_' + k) }))}" aria-expanded="false">${IC.info}</button>` : ''}${chipped ? '' : `<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">${iconSvg('close')}</button>`}`;
   el.querySelector('.desc').textContent = '';
+  if (k === 'gs' || k === 'relay') {
+    let pl = el.querySelector('.sc-plain');
+    if (!pl) { pl = document.createElement('p'); pl.className = 'sc-plain'; }
+    pl.textContent = t(k === 'gs' ? 'plainGs' : 'plainRelay');
+    placePlain(el, pl);
+    // the panels re-render their own HTML; keep the line right under their chart (after its geometry note)
+    const panel = el.querySelector(':scope > .panel');
+    if (panel && !panel.dataset.plainObs) { panel.dataset.plainObs = '1'; new MutationObserver(() => placePlain(el, pl)).observe(panel, { childList: true, subtree: true }); }
+  }
   let f = el.querySelector(':scope > .sc-foot');
   if (!f) { f = document.createElement('footer'); f.className = 'sc-foot'; el.appendChild(f); }
   const s = target(), mvOpen = f.querySelector('.sc-mv')?.getAttribute('aria-expanded') === 'true';
@@ -473,6 +487,13 @@ function blockShell(k, chips) {
     ${k === 'trust' || k === 'more' ? '' : `<div class="sc-mvbody" id="mv-${k}"${mvOpen ? '' : ' hidden'}>${mvHTML}</div>`}`;
   renumber();
   return el.querySelector('.blk-body');
+}
+/** 16-4: the plain-language line sits right after the chart's geometry note, else just above the card footer. */
+function placePlain(el, pl) {
+  const anchor = el.querySelector('.geometry-explanation');
+  if (anchor) { if (anchor.nextElementSibling !== pl) anchor.after(pl); return; }
+  const ft = el.querySelector(':scope > .sc-foot');
+  if (pl.parentNode !== el || (ft && pl.nextElementSibling !== ft)) ft ? el.insertBefore(pl, ft) : el.appendChild(pl);
 }
 let mvHTML = '';
 

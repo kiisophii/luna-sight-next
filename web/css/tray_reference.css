@@ -87,3 +87,16 @@ html body.ls #ls-tray.tray-reference .tc-rows { margin-top:8px; }
 html body.ls #ls-tray.tray-reference .tc-row { border-top-color:rgba(237,237,237,.08); }
 html body.ls #ls-tray.tray-reference .tc-nm { font-size:14px; font-weight:500; }
 html body.ls #ls-tray.tray-reference .tc-val { font-size:18px; font-weight:500; }
+
+/* Sua's final hover spec (Luna_Sight_Compare_Hover_Update.md): other lines 30 % (spec 25-35 %), highlighted line 2.4 px;
+   terrain: area under the highlighted horizon line filled in the site's colour at 18 %; the highlighted mini card gets
+   its own colour at 10 % with chip, swatch and text at full strength; the other cards keep their normal style. */
+html body.ls #ls-tray.tray-reference .tc-chart .ar { opacity:0; stroke:none; pointer-events:none; transition:opacity .2s; }
+html body.ls #ls-tray.tray-reference .tc-body.tc-dim .tc-chart .ar.hl { opacity:.18; }
+html body.ls #ls-tray.tray-reference .tc-body.tc-dim .tc-chart .ln { opacity:.3; }
+html body.ls #ls-tray.tray-reference .tc-body.tc-dim .tc-chart .ln.hl { opacity:1; stroke-width:2.4; }
+html body.ls #ls-tray.tray-reference .tc-body.tc-dim .tc-row { opacity:1; }
+html body.ls #ls-tray.tray-reference .tc-body.tc-dim .tc-row.hl { background:color-mix(in srgb, var(--rc) 10%, transparent); box-shadow:inset 2px 0 0 var(--rc); }
+html body.ls #ls-tray.tray-reference .tc-row.hl .tc-nm { color:#FFFFFF; }
+html body.ls #ls-tray.tray-reference .tc-row.hl .tc-sw line { stroke-width:3; stroke-opacity:1; }
+html body.ls #ls-tray.tray-reference .tc-row.hl .tc-chip { box-shadow:0 0 0 1px var(--rc); }

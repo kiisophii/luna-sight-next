@@ -1663,3 +1663,5 @@ html:not([data-kbd]) .ls [tabindex="-1"]:focus, html:not([data-kbd]) .ls [tabind
   .ls .map-legend .ends, .ls .map-legend .muted { flex: 0 0 100%; margin: 0 !important; font-size: 11px; }
 }
 @media (min-width: 1440px) { .ls .ls-toolbar .tb-time { width: clamp(60px, calc(var(--mapW) - 554px), 280px); min-width: 0; flex: 0 0 auto; } }   /* the time axis gives up the room of the two zoom buttons; the dock stays one row */
+/* Chaei review: minimap expand icon centred in its 30 px box (the 11 px side padding pushed the 14 px icon right) */
+.ls-minimap .mm-exp, .ls-minimap.open .mm-exp { padding: 0; }

@@ -3,7 +3,8 @@ import { t } from './i18n.js';
 import { addStrings, whenReady } from './ui_shared.js';
 addStrings({mmMove:'Move minimap (arrow keys to move, double-click to reset)',mmResize:'Resize minimap'}, {mmMove:'미니맵 옮기기 (방향키로 이동, 더블클릭하면 원래 자리)',mmResize:'미니맵 크기 조절'});
 const KEY='ls.minimapPos', SIZE_KEY='ls.minimapSizes.v13';
-const defaults={closed:{w:222,h:228},open:{w:580,h:358}};
+// below 1200 px the map area is only ~400 px wide: a 222 px box would cover the time read-out, so the default folded box is smaller there
+const defaults={closed:window.innerWidth<1200?{w:158,h:164}:{w:222,h:228},open:{w:580,h:358}};
 let box, grip, pos={fx:1,fy:0}, sizes=structuredClone(defaults), lastOpen=false, frame=0;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;

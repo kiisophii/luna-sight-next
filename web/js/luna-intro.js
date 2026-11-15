@@ -243,7 +243,7 @@
     var completed = false;       // loading is truly finished
     var finAt = null;            // time the bar reached 100%
     var finScale = 1;            // < 1 when loading was fast: the landing plays quicker
-    var start = null, lastT = 0;
+    var start = null, lastT = 0, clock = 0, lastNow = 0;
 
     function bump(v) { target = Math.max(target, clamp(v, 0, 1)); }
 
@@ -511,8 +511,12 @@
     }
 
     function frame(now) {
-      if (start === null) start = now;
-      var t = now - start;
+      // The timeline runs on its own clock: each drawn frame advances it by at most 100 ms. While the app is
+      // starting up the main thread stalls for long stretches; on the wall clock those stalls skipped the bar,
+      // the craft and the wordmark (only the Moon disc was ever drawn). Now a stall pauses the intro instead.
+      if (start === null) { start = now; lastNow = now; }
+      clock += Math.min(100, Math.max(0, now - lastNow)); lastNow = now;
+      var t = clock;
       var dt = Math.min(64, Math.max(0, t - lastT));
       lastT = t;
       if (!hudShown && t > 120) { hudShown = true; hudClock.classList.add("is-on"); hudStat.classList.add("is-on"); }

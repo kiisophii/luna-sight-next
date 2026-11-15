@@ -50,7 +50,8 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
   const el = $('#ls-intro');
   const q = new URLSearchParams(location.search);
   let seen = false; try { seen = localStorage.getItem('ls.introSeen') === '1'; } catch (e) { /* storage blocked */ }
-  if (!el || !window.LunaIntro || seen || q.has('sites') || q.has('nointro') || location.hash) return;
+  const force = q.get('intro') === '1';   // ?intro=1: play again even when seen before, with sites= or a hash (for checking)
+  if (!el || !window.LunaIntro || (!force && (seen || q.has('sites') || q.has('nointro') || location.hash))) return;
   try { localStorage.setItem('ls.introSeen', '1'); } catch (e) { /* ignore */ }
   const when = (events, capMs, failed) => new Promise(res => {
     events.forEach(ev => window.addEventListener(ev, res, { once: true }));
@@ -60,6 +61,7 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
   const globeFailed = () => document.getElementById('globe-stage')?.classList.contains('failed');   // no WebGL: no texture event
   window.LunaIntro.mount({
     el, label: getLang() === 'ko' ? 'Luna Sight 불러오는 중' : 'Loading Luna Sight',
+    minMs: 1800, fastMs: 0,   // like the designer's demo: the bar is on screen for at least 1.8 s and the landing is never sped up
     waitFor: [when(['llsn:globe', 'llsn:loadfail'], 12000, globeFailed), when(['llsn:ready', 'llsn:loadfail'], 12000)],
   });
 })();

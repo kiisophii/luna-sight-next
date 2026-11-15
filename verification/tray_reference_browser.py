@@ -18,6 +18,10 @@ with sync_playwright() as pw:
    p.locator('.tc-row').first.wait_for();p.locator('#ls-tray').scroll_into_view_if_needed()
    p.locator('#ls-tray').screenshot(path=str(O/f'tray_{w}_{lang}_{cat}.png'))
    checks.append({'w':w,'lang':lang,'cat':cat,'values':p.locator('.tc-val').all_text_contents(),'errors':list(errors),'layout':p.evaluate('''()=>{let q=s=>{let r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}};return {tray:q('#ls-tray'),tabs:q('.tc-tabs'),heading:q('.tc-h'),rows:q('.tc-rows'),footer:q('.tray-more'),overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,desc:document.querySelector('.tc-desc').textContent}}''')})
+  for cat,sub in [('sun','dark'),('earth','gap'),('earth','both'),('relay','added')]:
+   p.locator('.tc-tabs [data-c="'+cat+'"]').click();p.locator('.tc-subs [data-s="'+sub+'"]').click();p.wait_for_timeout(200)
+   p.locator('#ls-tray').screenshot(path=str(O/f'tray_{w}_{lang}_{cat}_{sub}.png'))
+   assert p.locator('.tc-row').count()==3
   if w==1440 and lang=='en':
    p.locator('.tc-tabs [data-c=earth]').click();p.locator('.tc-subs [data-s=both]').click();p.wait_for_timeout(100)
    checks.append({'both':p.locator('.tc-val').all_text_contents(),'expected':p.evaluate("['SHACKLETON_RIM','ARTEMIS_HAWORTH','APOLLO17'].map(id=>window.LLSN.window.metrics.get(id).both_frac)")})

@@ -1159,3 +1159,4 @@ body.on-about { overflow-x: clip; }
 .tl svg { min-width: 720px; }
 .lg-row > span { white-space: normal; min-width: 0; }
 .lg-row .lg-sw { align-self: flex-start; margin-top: 3px; }
+.ls-minimap .mm-exp { position: absolute; }

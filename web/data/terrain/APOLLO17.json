@@ -4,7 +4,7 @@
   "lat": 20.1911,
   "lon": 30.7723,
   "frame": "MOON_ME_DE421",
-  "kind": "coarse_relay_comparison",
+  "kind": "nonpolar_detailed",
   "mock": false,
   "thresholds_deg": [
     8,
@@ -12,7 +12,28 @@
   ],
   "thresholds_label": "reference_only",
   "source": {
-    "dem_sources": [
+    "dem_name": "SLDEM2015",
+    "resolution_m": 59.2,
+    "resolution_note": "512 px/deg; 59.2 m north-south, 59.2*cos(lat) m east-west on the 1737.4 km sphere.",
+    "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/sldem2015_512_00n_30n_000_045_float.img",
+    "tile": "sldem2015_512_00n_30n_000_045_float.img",
+    "window_path": "data/raw/terrain_nonpolar/APOLLO17_SLDEM2015.npz",
+    "window_sha256": "1367ee18707eca86791a881c6c1a875f7f1e743ca5f520a77852f129e95d8e5e",
+    "download_sha256": "65247f9d1e5c9df7b975f3045e5b9b0ea164176781843684d8249fce023a1d70",
+    "window_rows_cols": [
+      4961,
+      15690,
+      122,
+      130
+    ],
+    "http": {
+      "etag": "\"063425a47bed01:0\"",
+      "last_modified": "Tue, 14 Jul 2015 15:11:26 GMT",
+      "content_range": "bytes 457205760-468449279/1415577600"
+    },
+    "label_url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/sldem2015/tiles/float_img/sldem2015_512_00n_30n_000_045_float.lbl",
+    "citation": "Barker et al. 2016, Icarus 273, 346-355, doi:10.1016/j.icarus.2015.07.039",
+    "coarse_dem_sources": [
       {
         "name": "SLDEM2015",
         "res_m": 59.2
@@ -26,11 +47,58 @@
         "res_m": 1895.2
       }
     ],
-    "label": "coarse (SLDEM2015 59 m / LDEM_64)"
+    "label": "SLDEM2015 59 m (lander-scale 3x3 plane)"
   },
-  "method": null,
-  "landing_slope_deg": null,
-  "slope_by_radius_m": null,
+  "method": {
+    "slope": "Least-squares vertical DEM-height plane over 3x3 native-spaced samples (1/512 deg apart); landing samples are bilinear and centred on the exact catalogue coordinate; distributions use native pixel centres.",
+    "slope_window_cells": 3,
+    "slope_center_span_projected_m": 118.5,
+    "slope_footprint_projected_m": 177.7,
+    "reference_radius_m": 1737400.0,
+    "slope_ground_scale": "Simple cylindrical grid: pixel ground spacing (R+h)*dphi north-south and (R+h)*cos(phi)*dlambda east-west, with local centre height h.",
+    "radius_rule": "Great-circle distance on the reference sphere; include native sample centres at distance <= radius.",
+    "percentile_rule": "Unweighted sample-centre percentiles; NumPy linear interpolation.",
+    "flat_fraction_rule": "Sum R^2*dphi*dlambda*cos(phi) for centres with slope <= threshold, divided by the summed area; no fractional boundary pixels.",
+    "roughness": "Not computed: the 50 m roughness window used for the polar sites is narrower than one 59 m SLDEM2015 pixel.",
+    "thresholds_label": "Reference comparisons only; not safe-landing criteria.",
+    "producer": "pipeline/nonpolar_slope.py"
+  },
+  "landing_slope_deg": 2.1366758451870154,
+  "slope_by_radius_m": {
+    "100": {
+      "n": 10,
+      "median_deg": 1.8413572485370016,
+      "p95_deg": 3.2114839191773727,
+      "max_deg": 3.329553660541878,
+      "flat_fraction": {
+        "8": 1.0,
+        "15": 1.0
+      },
+      "sampled_area_m2": 32920.8537916731
+    },
+    "500": {
+      "n": 237,
+      "median_deg": 2.1481853933753614,
+      "p95_deg": 7.359413415929792,
+      "max_deg": 11.186276222646844,
+      "flat_fraction": {
+        "8": 0.9620226453255621,
+        "15": 1.0
+      },
+      "sampled_area_m2": 780223.4596228588
+    },
+    "1000": {
+      "n": 954,
+      "median_deg": 2.495667967015998,
+      "p95_deg": 9.387035155898731,
+      "max_deg": 20.18816523200487,
+      "flat_fraction": {
+        "8": 0.9266192558740192,
+        "15": 0.9706471904339578
+      },
+      "sampled_area_m2": 3140644.692235667
+    }
+  },
   "roughness_within_500m": null,
   "relay_box": {
     "slope_deg": 2.0,
@@ -87,38 +155,28 @@
     }
   },
   "inputs": {
-    "producer_sha256": "940f7beb9b93329cc1b51af0f96f9816bc4ac7b8b178098381a1c7f3db7a8550",
+    "producer_sha256": "3672903bc7ae685602d6ea02c2cd60d76682ce4744aeaf896e8ac52fe90bf1c5",
     "sites_sha256": "bc98c7cef1ed53720c298517d21fe9cc70727cc6da8179525da7b5e5a4b64017",
     "site_sha256": "89b25205ba2bf90e5caf6689f4107a232b99b63e6c7f5f7cc897ca971c750285",
     "relay_sha256": "1930edce8c1af443c3c2082371b110fd0a24e50645010c69bf7211390e355bf4",
-    "source_sha256": "2d46aecc3fd7c58c65c404e9d6dccea6e4cf17a5dbe024000a7cfcbcc58ce0d5",
-    "code_sha256": {
-      "fetch_polar.py": "15cd3b79e27038f948a4450a127ba4d778b60ba86fdeee2b2a788b5edbc55245",
-      "polar_prefetch.py": "5e335638d7039ac9140c9d5f97d7374c8161b79d34104ba858f5a253715fde4b"
-    },
+    "source_sha256": "1367ee18707eca86791a881c6c1a875f7f1e743ca5f520a77852f129e95d8e5e",
     "parameters": {
       "thresholds_deg": [
         8,
         15
       ],
-      "thresholds_label": "reference_only",
       "radii_m": [
         100,
         500,
         1000
       ],
-      "roughness_radius_m": 500,
-      "roughness_window_width_ground_m": 50,
-      "projected_storage_radius_m": 1200,
-      "resolution_preference_m": [
-        5,
-        10,
-        20
-      ],
-      "source_metadata_sha256": "2d46aecc3fd7c58c65c404e9d6dccea6e4cf17a5dbe024000a7cfcbcc58ce0d5"
+      "ppd": 512,
+      "window_half_rows": 60,
+      "window_half_cols": 64
     },
-    "signature": "84184acbc173e5d8f101c3b17413e2beb412629f28d8775b38e5ccb5ac7614e0"
+    "previous_kind": "coarse_relay_comparison",
+    "signature": "8a0403329b47912c4844f43204fa4337b6fc86fc1d8de4de96b8a57896c1bb02"
   },
   "verification_status": "author_checks_only_team_verification_pending",
-  "content_sha256": "5b6123c8e94ed73a149d5e95ffb57708a6416f0057357ccfacf1b8814d703e50"
+  "content_sha256": "15c29a3c9fb5217028e4cc737487fa3881787fd3be2d57c10c5d8d8032fa7c45"
 }

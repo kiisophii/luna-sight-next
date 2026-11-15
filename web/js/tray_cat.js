@@ -93,7 +93,7 @@ function chartSVG(series, n, i0) {
   return `<svg class="tc-chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
 }
 const bar = (f, col, n) => `<span class="tc-bar"><i style="width:${Math.max(0, Math.min(100, f * 100)).toFixed(1)}%;background:${col}"></i></span>`;
-const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row" data-n="${it.n}" tabindex="0"><svg class="tc-sw" viewBox="0 0 24 6" aria-hidden="true"><line x1="0" y1="3" x2="24" y2="3" ${lineAttr(it.n)} stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
+const row = (it, val, extra = '', col = 'var(--n-text)') => `<li class="tc-row" data-n="${it.n}" tabindex="0" style="--rc:var(--c${it.n})"><svg class="tc-sw" viewBox="0 0 24 6" aria-hidden="true"><line x1="0" y1="3" x2="24" y2="3" ${lineAttr(it.n)} stroke-width="2"/></svg>${chip(it.n)}<span class="tc-nm" title="${esc(it.s.name)}">${esc(nameOf(it.s))}</span>${extra}<span class="tc-val num" style="color:${col}">${val}</span></li>`;
 
 const HM = i => { const d = new Date(H0 + i * 3600e3); return `${p2(d.getUTCMonth() + 1)}.${p2(d.getUTCDate())} ${p2(d.getUTCHours())}:00 UTC`; };
 /** Longest run of hours where test(k) is false: [start, end) or null. */
@@ -165,10 +165,22 @@ async function render() {
     const ticks = [low, (low + high) / 2, high];
     let g = ticks.map(v => `<line x1="18" x2="295" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--n-line)" stroke-dasharray="2 3"/><text x="14" y="${Y(v)+3}" text-anchor="end">${v}°</text>`).join('');
     g += [0,90,180,270,360].map((az,j) => `<text x="${X(az)}" y="98" text-anchor="${j===0?'start':j===4?'end':'middle'}">${['N','E','S','W','N'][j]} ${az}°</text>`).join('');
+    g += data.filter(d => d.pts.length).map(({it,pts}) => `<polygon class="ar" data-n="${it.n}" points="${X(0)},${Y(low)} ${pts.map(([az,el])=>`${X(az).toFixed(2)},${Y(el).toFixed(2)}`).join(' ')} ${X(360)},${Y(low)}" fill="var(--c${it.n})"/>`).join('');
     g += data.map(({it,pts}) => `<polyline class="ln" data-n="${it.n}" points="${pts.map(([az,el])=>`${X(az).toFixed(2)},${Y(el).toFixed(2)}`).join(' ')}" fill="none" ${lineAttr(it.n)} stroke-width="1"/>`).join('');
     html = `<svg class="tc-chart tc-horizon" viewBox="0 0 301 104" role="img" aria-label="${esc(t('tProfile'))}">${g}</svg><ul class="tc-rows horizon-rows">${data.map(({it,pts})=>row(it,pts.length?esc(t('tProfile')):'—')).join('')}</ul>`;
   }
-  if (my === seq) { body.innerHTML = html; body.classList.remove('tc-dim'); }
+  if (my === seq) { body.innerHTML = html; applyHl(); }
+}
+
+let hoverN = null;
+/** Pin number of the site selected (focused) in the left list, when it is being compared. */
+const selectedN = () => { const L = LLSN(), id = L.focus; const p = id && (L.pins?.() || []).find(x => (x.id || x) === id); return p ? String(p.n || L.pinNo?.(id)) : null; };
+function applyHl() {
+  const body = document.querySelector('#tray-cat .tc-body'); if (!body) return;
+  const nn = hoverN || selectedN();
+  body.querySelectorAll('.hl').forEach(x => x.classList.remove('hl'));
+  body.classList.toggle('tc-dim', !!nn);
+  if (nn) body.querySelectorAll(`[data-n="${nn}"]`).forEach(x => x.classList.add('hl'));
 }
 
 function build() {
@@ -183,16 +195,23 @@ function build() {
   const fade = () => sc.classList.toggle('more', sc.scrollTop + sc.clientHeight < sc.scrollHeight - 2);
   sc.addEventListener('scroll', fade, { passive: true }); new ResizeObserver((f => { let q = 0; return () => { if (!q) q = requestAnimationFrame(() => { q = 0; f(); }); }; })(() => fade())).observe(sc); new MutationObserver(fade).observe(sc, { childList: true, subtree: true });
   // hover / keyboard focus on a row or a chart line: that site's line stays, the other lines and rows fade (copy 20:51)
+  // Highlight state (Sua's final hover spec): the site selected in the left list is the default highlight; hovering /
+  // focusing / tapping another row or line highlights it only for that moment, then the selection comes back.
   const body = host.querySelector('.tc-body');
-  const focusSite = nn => {
-    body.querySelectorAll('.hl').forEach(x => x.classList.remove('hl'));
-    body.classList.toggle('tc-dim', !!nn);
-    if (nn) body.querySelectorAll(`[data-n="${nn}"]`).forEach(x => x.classList.add('hl'));
-  };
-  body.addEventListener('mouseover', e => { const x = e.target.closest('.tc-row, .tc-chart .ln'); focusSite(x?.dataset.n || null); });
-  body.addEventListener('mouseleave', () => focusSite(null));
-  body.addEventListener('focusin', e => { const x = e.target.closest('.tc-row'); focusSite(x?.dataset.n || null); });
-  body.addEventListener('focusout', e => { if (!body.contains(e.relatedTarget)) focusSite(null); });
+  let lastTouch = 0;
+  const focusSite = nn => { hoverN = nn; applyHl(); };
+  body.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'touch') return;
+    lastTouch = Date.now();
+    const x = e.target.closest('.tc-row, .tc-chart .ln, .tc-chart .ar'), nn = x?.dataset.n || null;
+    focusSite(nn && nn !== hoverN ? nn : null);           // tap = highlight, same site or empty space again = release
+  });
+  body.addEventListener('mouseover', e => { if (Date.now() - lastTouch < 800) return; const x = e.target.closest('.tc-row, .tc-chart .ln'); focusSite(x?.dataset.n || null); });
+  body.addEventListener('mouseleave', () => { if (Date.now() - lastTouch < 800) return; focusSite(null); });
+  body.addEventListener('focusin', e => { if (Date.now() - lastTouch < 800) return; const x = e.target.closest('.tc-row'); focusSite(x?.dataset.n || null); });
+  body.addEventListener('focusout', e => { if (Date.now() - lastTouch < 800) return; if (!body.contains(e.relatedTarget)) focusSite(null); });
+  document.addEventListener('pointerdown', e => { if (e.pointerType === 'touch' && hoverN && !body.contains(e.target)) focusSite(null); });
+  window.addEventListener('llsn:focus', applyHl);
   host.addEventListener('click', e => {
     const c = e.target.closest('.tc-tabs button'); if (c) { cat = c.dataset.c; save(); render(); relabel(); return; }
     const s = e.target.closest('.tc-subs button'); if (s) { sub[cat] = s.dataset.s; save(); render(); }

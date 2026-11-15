@@ -143,15 +143,15 @@ export async function createGlobe(container, opts = {}) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.0005, 1e8);
-  // Moon look matched to the designer's copy (Chaei, 18:41): warm sunlight 0xfff4e2 at 2.5 and a faint blue earthshine,
+  // Moon look matched to the designer's copy (Chaei, 18:41): warm sunlight 0xfff4e2 and a faint blue earthshine,
   // applied to the colour map in display (sRGB) space like her three.js r128 page; see the moon shader below.
-  const sun = new THREE.DirectionalLight(new THREE.Color().setRGB(1, 0xf4 / 255, 0xe2 / 255, THREE.LinearSRGBColorSpace), 2.5 * Math.PI);
+  const sun = new THREE.DirectionalLight(new THREE.Color().setRGB(1, 0xf4 / 255, 0xe2 / 255, THREE.LinearSRGBColorSpace), 3.2 * Math.PI);   // 3.2: day side measured ~25 % darker than the copy at 2.5
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
   scene.add(sun, sun.target);
-  // night side: ambient ~0.25 of the colour map (copy dark-side median ~44/255) + earthshine from the Earth for crater relief
-  const ambient = new THREE.AmbientLight(0xffffff, 0.25 * Math.PI);
-  const earthshine = new THREE.DirectionalLight(0xffffff, 0.12 * Math.PI);
+  // night side: nearly black like the copy (its ambient 0.012 + earthshine 0.07 from the Earth, which keeps a hint of crater relief)
+  const ambient = new THREE.AmbientLight(0xffffff, 0.012 * Math.PI);
+  const earthshine = new THREE.DirectionalLight(new THREE.Color().setRGB(0x9f / 255, 0xb8 / 255, 1, THREE.LinearSRGBColorSpace), 0.07 * Math.PI);
   scene.add(ambient, earthshine, earthshine.target);
 
   // colour map: 2k first (0.4 MB), the 8k (6.6 MB) only once the camera comes closer than HIRES_RANGE km (lazy)
@@ -253,7 +253,9 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   vec3 L = normalize(up * 0.70711 + (no - ea) * 0.5);
   float relief = clamp(1.0 + 1.6 * (dot(nW, L) / 0.70711 - 1.0), 0.08, 1.8);   // 1 on level ground, steeper contrast on slopes
   vec3 ground = vec3(clamp(0.05 + 1.6 * gLum, 0.04, 0.5)) * relief;
-  gl_FragColor.rgb = mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uElev > 0.5 ? ${LAYER_OPACITY.toFixed(2)} : uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
+  gl_FragColor.rgb = uElev > 0.5
+    ? gLayer * mix(1.0, relief, 0.35)                                            // elevation: full colour, light relief (as vivid as the copy)
+    : mix(ground, gLayer * LAYER_DIM * mix(1.0, relief, 0.75), uLayerA);   // LAYER_DIM: team asked for a darker mean map (11/14)
 }`);
     };
     m.customProgramCacheKey = () => 'moon-' + (kind === 'band' ? 'b' : 'c');

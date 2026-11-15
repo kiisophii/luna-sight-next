@@ -1,0 +1,878 @@
+[
+  {
+    "width": 1920,
+    "lang": "en",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1492,
+        "y": -2897,
+        "width": 380,
+        "height": 996
+      },
+      "header": {
+        "x": 1509,
+        "y": -2880,
+        "width": 346,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 1509,
+        "y": -2833.703125,
+        "width": 346,
+        "height": 915.703125
+      },
+      "title": {
+        "x": 1509,
+        "y": -2833.703125,
+        "width": 346,
+        "height": 28
+      },
+      "period": {
+        "x": 1509,
+        "y": -2799.703125,
+        "width": 346,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1509,
+        "y": -2767.5625,
+        "width": 346,
+        "height": 49
+      },
+      "chart": {
+        "x": 1509,
+        "y": -2638.171875,
+        "width": 331,
+        "height": 143.421875
+      },
+      "row": {
+        "x": 1509,
+        "y": -2490.75,
+        "width": 331,
+        "height": 40
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1920,
+    "lang": "en",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1492,
+        "y": -2897,
+        "width": 380,
+        "height": 996
+      },
+      "header": {
+        "x": 1509,
+        "y": -2880,
+        "width": 316,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 1509,
+        "y": -2821.3125,
+        "width": 316,
+        "height": 903.3125
+      },
+      "title": {
+        "x": 1509,
+        "y": -2821.3125,
+        "width": 316,
+        "height": 28
+      },
+      "period": {
+        "x": 1509,
+        "y": -2784.3125,
+        "width": 316,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1509,
+        "y": -2749.171875,
+        "width": 316,
+        "height": 49
+      },
+      "chart": {
+        "x": 1509,
+        "y": -2602.390625,
+        "width": 291,
+        "height": 100
+      },
+      "row": {
+        "x": 1509,
+        "y": -2498.390625,
+        "width": 306,
+        "height": 42
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1920,
+    "lang": "ko",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1492,
+        "y": -2862,
+        "width": 380,
+        "height": 996
+      },
+      "header": {
+        "x": 1509,
+        "y": -2845,
+        "width": 346,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 1509,
+        "y": -2798.703125,
+        "width": 346,
+        "height": 915.703125
+      },
+      "title": {
+        "x": 1509,
+        "y": -2798.703125,
+        "width": 346,
+        "height": 28
+      },
+      "period": {
+        "x": 1509,
+        "y": -2764.703125,
+        "width": 346,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1509,
+        "y": -2732.5625,
+        "width": 346,
+        "height": 49
+      },
+      "chart": {
+        "x": 1509,
+        "y": -2603.171875,
+        "width": 331,
+        "height": 143.421875
+      },
+      "row": {
+        "x": 1509,
+        "y": -2455.75,
+        "width": 331,
+        "height": 40
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  },
+  {
+    "width": 1920,
+    "lang": "ko",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1492,
+        "y": -2862,
+        "width": 380,
+        "height": 996
+      },
+      "header": {
+        "x": 1509,
+        "y": -2845,
+        "width": 316,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 1509,
+        "y": -2786.3125,
+        "width": 316,
+        "height": 903.3125
+      },
+      "title": {
+        "x": 1509,
+        "y": -2786.3125,
+        "width": 316,
+        "height": 28
+      },
+      "period": {
+        "x": 1509,
+        "y": -2749.3125,
+        "width": 316,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1509,
+        "y": -2714.171875,
+        "width": 316,
+        "height": 49
+      },
+      "chart": {
+        "x": 1509,
+        "y": -2584.78125,
+        "width": 291,
+        "height": 100
+      },
+      "row": {
+        "x": 1509,
+        "y": -2480.78125,
+        "width": 306,
+        "height": 42
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1012,
+        "y": -2635,
+        "width": 380,
+        "height": 816
+      },
+      "header": {
+        "x": 1029,
+        "y": -2618,
+        "width": 346,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 1029,
+        "y": -2571.703125,
+        "width": 346,
+        "height": 735.703125
+      },
+      "title": {
+        "x": 1029,
+        "y": -2571.703125,
+        "width": 346,
+        "height": 28
+      },
+      "period": {
+        "x": 1029,
+        "y": -2537.703125,
+        "width": 346,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1029,
+        "y": -2505.5625,
+        "width": 346,
+        "height": 49
+      },
+      "chart": {
+        "x": 1029,
+        "y": -2376.171875,
+        "width": 331,
+        "height": 143.421875
+      },
+      "row": {
+        "x": 1029,
+        "y": -2228.75,
+        "width": 331,
+        "height": 40
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1440,
+    "lang": "en",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1012,
+        "y": -2635,
+        "width": 380,
+        "height": 816
+      },
+      "header": {
+        "x": 1029,
+        "y": -2618,
+        "width": 316,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 1029,
+        "y": -2559.3125,
+        "width": 316,
+        "height": 723.3125
+      },
+      "title": {
+        "x": 1029,
+        "y": -2559.3125,
+        "width": 316,
+        "height": 28
+      },
+      "period": {
+        "x": 1029,
+        "y": -2522.3125,
+        "width": 316,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1029,
+        "y": -2487.171875,
+        "width": 316,
+        "height": 49
+      },
+      "chart": {
+        "x": 1029,
+        "y": -2340.390625,
+        "width": 291,
+        "height": 100
+      },
+      "row": {
+        "x": 1029,
+        "y": -2236.390625,
+        "width": 306,
+        "height": 42
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1440,
+    "lang": "ko",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1012,
+        "y": -2658,
+        "width": 380,
+        "height": 816
+      },
+      "header": {
+        "x": 1029,
+        "y": -2641,
+        "width": 346,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 1029,
+        "y": -2594.703125,
+        "width": 346,
+        "height": 735.703125
+      },
+      "title": {
+        "x": 1029,
+        "y": -2594.703125,
+        "width": 346,
+        "height": 28
+      },
+      "period": {
+        "x": 1029,
+        "y": -2560.703125,
+        "width": 346,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1029,
+        "y": -2528.5625,
+        "width": 346,
+        "height": 49
+      },
+      "chart": {
+        "x": 1029,
+        "y": -2399.171875,
+        "width": 331,
+        "height": 143.421875
+      },
+      "row": {
+        "x": 1029,
+        "y": -2251.75,
+        "width": 331,
+        "height": 40
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  },
+  {
+    "width": 1440,
+    "lang": "ko",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 1012,
+        "y": -2658,
+        "width": 380,
+        "height": 816
+      },
+      "header": {
+        "x": 1029,
+        "y": -2641,
+        "width": 316,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 1029,
+        "y": -2582.3125,
+        "width": 316,
+        "height": 723.3125
+      },
+      "title": {
+        "x": 1029,
+        "y": -2582.3125,
+        "width": 316,
+        "height": 28
+      },
+      "period": {
+        "x": 1029,
+        "y": -2545.3125,
+        "width": 316,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 1029,
+        "y": -2510.171875,
+        "width": 316,
+        "height": 49
+      },
+      "chart": {
+        "x": 1029,
+        "y": -2380.78125,
+        "width": 291,
+        "height": 100
+      },
+      "row": {
+        "x": 1029,
+        "y": -2276.78125,
+        "width": 306,
+        "height": 42
+      },
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  },
+  {
+    "width": 1280,
+    "lang": "en",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 900,
+        "y": -2511,
+        "width": 332,
+        "height": 716
+      },
+      "header": {
+        "x": 917,
+        "y": -2494,
+        "width": 298,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 917,
+        "y": -2447.703125,
+        "width": 298,
+        "height": 635.703125
+      },
+      "title": {
+        "x": 917,
+        "y": -2447.703125,
+        "width": 298,
+        "height": 28
+      },
+      "period": {
+        "x": 917,
+        "y": -2413.703125,
+        "width": 298,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 917,
+        "y": -2381.5625,
+        "width": 298,
+        "height": 49
+      },
+      "chart": {
+        "x": 917,
+        "y": -2234.78125,
+        "width": 283,
+        "height": 122.625
+      },
+      "row": {
+        "x": 917,
+        "y": -2108.15625,
+        "width": 283,
+        "height": 40
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1280,
+    "lang": "en",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 900,
+        "y": -2511,
+        "width": 332,
+        "height": 716
+      },
+      "header": {
+        "x": 917,
+        "y": -2494,
+        "width": 268,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 917,
+        "y": -2435.3125,
+        "width": 268,
+        "height": 623.3125
+      },
+      "title": {
+        "x": 917,
+        "y": -2435.3125,
+        "width": 268,
+        "height": 28
+      },
+      "period": {
+        "x": 917,
+        "y": -2398.3125,
+        "width": 268,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 917,
+        "y": -2363.171875,
+        "width": 268,
+        "height": 49
+      },
+      "chart": {
+        "x": 917,
+        "y": -2185.140625,
+        "width": 243,
+        "height": 100
+      },
+      "row": {
+        "x": 917,
+        "y": -2081.140625,
+        "width": 258,
+        "height": 42
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "Sunlight",
+      "Sunlight",
+      "Earth view",
+      "Earth view",
+      "Relay tower",
+      "Relay tower",
+      "Terrain",
+      "Terrain"
+    ]
+  },
+  {
+    "width": 1280,
+    "lang": "ko",
+    "state": "before",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 900,
+        "y": -2493,
+        "width": 332,
+        "height": 716
+      },
+      "header": {
+        "x": 917,
+        "y": -2476,
+        "width": 298,
+        "height": 22.296875
+      },
+      "main": {
+        "x": 917,
+        "y": -2429.703125,
+        "width": 298,
+        "height": 635.703125
+      },
+      "title": {
+        "x": 917,
+        "y": -2429.703125,
+        "width": 298,
+        "height": 28
+      },
+      "period": {
+        "x": 917,
+        "y": -2395.703125,
+        "width": 298,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 917,
+        "y": -2363.5625,
+        "width": 298,
+        "height": 49
+      },
+      "chart": {
+        "x": 917,
+        "y": -2234.171875,
+        "width": 283,
+        "height": 122.625
+      },
+      "row": {
+        "x": 917,
+        "y": -2107.546875,
+        "width": 283,
+        "height": 40
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  },
+  {
+    "width": 1280,
+    "lang": "ko",
+    "state": "after",
+    "errors": [],
+    "metrics": {
+      "tray": {
+        "x": 900,
+        "y": -2493,
+        "width": 332,
+        "height": 716
+      },
+      "header": {
+        "x": 917,
+        "y": -2476,
+        "width": 268,
+        "height": 21.6875
+      },
+      "main": {
+        "x": 917,
+        "y": -2417.3125,
+        "width": 268,
+        "height": 623.3125
+      },
+      "title": {
+        "x": 917,
+        "y": -2417.3125,
+        "width": 268,
+        "height": 28
+      },
+      "period": {
+        "x": 917,
+        "y": -2380.3125,
+        "width": 268,
+        "height": 20.140625
+      },
+      "tabs": {
+        "x": 917,
+        "y": -2345.171875,
+        "width": 268,
+        "height": 49
+      },
+      "chart": {
+        "x": 917,
+        "y": -2198.390625,
+        "width": 243,
+        "height": 100
+      },
+      "row": {
+        "x": 917,
+        "y": -2094.390625,
+        "width": 258,
+        "height": 42
+      },
+      "documentWidth": 1280,
+      "viewport": 1280,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "categories": [
+      "일조",
+      "일조",
+      "지구 가시",
+      "지구 가시",
+      "중계탑",
+      "중계탑",
+      "지형",
+      "지형"
+    ]
+  }
+]

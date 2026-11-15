@@ -494,15 +494,17 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const p2 = n => String(n).padStart(2, '0');
   const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const md = i => { const x = d(i); return getLang() === 'ko' ? `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}` : `${MON[x.getUTCMonth()]} ${x.getUTCDate()}`; };
-  const mdShort = i => { const x = d(i); return getLang() === 'ko' ? `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}` : `${x.getUTCMonth() + 1}/${x.getUTCDate()}`; };   // short axis: 11/15
   const ticks = () => {
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
     const span = w.i1 - w.i0 || 1, days = Math.floor(span / 24);
     let html = '';
     for (let dd = 0; dd <= days; dd++) { const f = (dd * 24) / span; html += `<i class="tk${dd % 7 === 0 ? ' big' : ''}" style="left:${(f * 100).toFixed(2)}%"></i>`; }
     const few = el.clientWidth > 0 && el.clientWidth < 150;   // a short axis (1440 dock: 66-83 px) has room for the first and last date only
-    html += (few ? [0, 1] : [0, 0.5, 1]).map(f => `<span class="lb${few ? (f ? ' end' : ' start') : ''}" style="left:${f * 100}%">${(few ? mdShort : md)(Math.round(w.i0 + span * f))}</span>`).join('');
+    html += (few ? [0, 1] : [0, 0.5, 1]).map(f => `<span class="lb${few ? (f ? ' end' : ' start') : ''}" style="left:${f * 100}%">${md(Math.round(w.i0 + span * f))}</span>`).join('');
     el.innerHTML = html;
+    // safety: if two neighbouring labels would still touch, step the label size down (10.5 -> 9.5 -> 8.5 px)
+    { const lbs = [...el.querySelectorAll('.lb')]; const touch = () => lbs.some((e, i) => i && e.getBoundingClientRect().left - lbs[i - 1].getBoundingClientRect().right < 5);
+      for (const fs of ['9.5px', '8.5px']) { if (!lbs.length || !touch()) break; lbs.forEach(e => { e.style.fontSize = fs; }); } }
     const per = document.getElementById('tray-period');
     if (per) { const a = d(w.i0), b = d(w.i1), days = Math.round(w.days * 10) / 10;
       per.textContent = getLang() === 'ko' ? `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${days}일`

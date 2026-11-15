@@ -56,3 +56,13 @@ def test_report_refuses_stale_verified_input(tmp_path,monkeypatch):
     with pytest.raises(AssertionError,match='Stale input'):
         report.main()
     assert not (tmp_path/'web').exists()
+
+def test_index_hash_is_portable_across_git_newlines(tmp_path):
+    import hashlib
+    from check_local250 import index_hash
+    path=tmp_path/'map.json'
+    path.write_bytes(b'{"id":"X"}\r\n')
+    expected=hashlib.sha256(b'{"id":"X"}\n').hexdigest()
+    assert index_hash(path)==expected
+    path.write_bytes(b'{"id":"X"}\n')
+    assert index_hash(path)==expected

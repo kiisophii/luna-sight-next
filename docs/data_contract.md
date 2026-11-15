@@ -500,9 +500,10 @@ are storage envelopes, not changes to the observer-centred source gates.
 The grid, node fields, ephemeris window, 4-decimal-degree mask serialization,
 centre-equality requirement and complete-file-only export match section 22.
 `web/data/local250/index.json` is an optional discovery manifest:
-`{schema_version:1,sites:[{id,file,center,grid,sha256}]}`. Each entry refers to a
+`{schema_version:1,sha256_normalization:"CRLF_to_LF",sites:[{id,file,center,grid,sha256}]}`. Each entry refers to a
 complete sibling `<ID>.json`; `center` and `grid` match that map, and `sha256`
-identifies its file bytes. The manifest includes existing polar maps without
+identifies its UTF-8 file bytes after CRLF-to-LF normalization for portability
+between Windows checkouts and GitHub Pages. The manifest includes existing polar maps without
 rewriting them. `check_contract.py` checks both maps and the index.
 
 The requested +/-5 km grid supports complete circular 1/3/5 km statistics.

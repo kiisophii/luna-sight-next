@@ -6,6 +6,10 @@ import numpy as np
 from local250 import GRID,grid_points
 from local_maps import params_for,valid_metrics,METRICS
 
+def index_hash(path):
+    """Portable digest for Git text files on Windows and deployed LF checkouts."""
+    return hashlib.sha256(Path(path).read_bytes().replace(b'\r\n',b'\n')).hexdigest()
+
 def validate_record(obj,site,baseline):
     def require(condition,message):
         if not condition:raise ValueError(message)
@@ -36,11 +40,11 @@ def check_local250(data,sites,err,warn):
     if index.exists():
         try:
             obj=json.loads(index.read_text(encoding='utf-8'));rows=obj['sites']
-            if obj['schema_version']!=1 or len(rows)!=len(paths) or {r['id'] for r in rows}!={p.stem for p in paths}:
+            if obj['schema_version']!=1 or obj['sha256_normalization']!='CRLF_to_LF' or len(rows)!=len(paths) or {r['id'] for r in rows}!={p.stem for p in paths}:
                 raise ValueError('index IDs/count do not match complete map files')
             for row in rows:
                 p=folder/(row['id']+'.json')
-                if row['file']!=p.name or row['sha256']!=hashlib.sha256(p.read_bytes()).hexdigest():raise ValueError('index path/hash mismatch')
+                if row['file']!=p.name or row['sha256']!=index_hash(p):raise ValueError('index path/hash mismatch')
                 if row['grid']!=GRID or row['center']!={k:sites[row['id']][k] for k in ('lat','lon')}:raise ValueError('index grid/centre mismatch')
         except (ValueError,KeyError,TypeError,OSError) as e:err('local250/index.json',str(e))
     print(f'local250: {len(paths)} site maps checked')

@@ -9,15 +9,15 @@ import { addStrings, whenReady, mountSection, translate, siteName, setFocus, fmt
 
 addStrings({
   wmTitle: 'Period results — all sites', wmAria: 'Period results for every site',
-  wmSite: 'Site', wmSun: 'Sunlight', wmEarth: 'Earth link', wmBoth: 'Both', wmDark: 'Longest dark',
+  wmSite: 'Site', wmSun: 'Sunlight', wmEarth: 'Direct-to-Earth', wmBoth: 'Sun + Earth together', wmDark: 'Longest shadow',
   wmOf: 'of', wmDays: 'days',
-  wmHint: 'Sunlight = ≥ 50% of the solar disk above the horizon. Earth link = Earth centre above the horizon. Both = at the same hour. Longest dark = longest continuous run without sunlight inside the period. Hourly samples; days = fraction × period length.',
+  wmHint: 'Sunlight = ≥ 50% of the solar disk above the horizon. Direct-to-Earth = Earth center above the horizon. Both = at the same hour. Longest shadow = longest continuous run without sunlight inside the period. Hourly samples; days = fraction × period length.',
   wmFocus: 'Click a row to show that site in the horizon panorama.',
 }, {
   wmTitle: '기간 결과 — 전체 착륙지', wmAria: '착륙지별 기간 결과',
-  wmSite: '착륙지', wmSun: '햇빛', wmEarth: '지구 통신', wmBoth: '둘 다', wmDark: '가장 긴 어둠',
+  wmSite: '착륙지', wmSun: '햇빛', wmEarth: '직접 교신', wmBoth: '해·지구 동시', wmDark: '최장 그늘',
   wmOf: '/', wmDays: '일',
-  wmHint: '햇빛 = 태양 원반 50% 이상이 지평선 위. 지구 통신 = 지구 중심이 지평선 위. 둘 다 = 같은 시각에 둘 다. 가장 긴 어둠 = 기간 안에서 햇빛 없이 이어진 가장 긴 시간. 1시간 간격, 일수 = 비율 × 기간 길이.',
+  wmHint: '햇빛 = 태양 원반 50% 이상이 지평선 위. 직접 교신 = 지구 중심이 지평선 위. 둘 다 = 같은 시각에 둘 다. 최장 그늘 = 기간 안에서 햇빛 없이 이어진 가장 긴 시간. 1시간 간격, 일수 = 비율 × 기간 길이.',
   wmFocus: '줄을 누르면 지평선 파노라마에 그 착륙지가 나온다.',
 });
 

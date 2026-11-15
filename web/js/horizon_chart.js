@@ -13,7 +13,7 @@ addStrings({
   hzFlat: 'TERRAIN PENDING — no LOLA horizon has been computed for this site yet. Sun and Earth positions are shown, but no visibility is judged (the 0° line is only a reference).',
   hzSun: 'Sun', hzEarth: 'Earth', hzMask: 'terrain mask', hzEl: 'el',
   hzVisible: 'Visible', hzPartial: 'Partly visible', hzBlocked: 'Blocked by terrain', hzBelow: 'Below horizon',
-  hzDisk: 'of disk', hzTrack: 'track', hzCentre: 'centred on',
+  hzDisk: 'of disk', hzTrack: 'track', hzCentre: 'centered on',
   hzTrackDays: 'Tracks', hzDays: 'days', hzAt: 'az',
   N: 'N', E: 'E', S: 'S', W: 'W',
 }, {

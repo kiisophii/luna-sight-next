@@ -6,14 +6,14 @@ import { t } from './i18n.js';
 import { addStrings, whenReady, mountSection, translate, siteName, fmtHours, LLSN } from './ui_shared.js';
 
 addStrings({
-  flTitle: 'Filter sites', flAria: 'Filter sites by sunlight, Earth link and darkness',
-  flSun: 'Sunlight ≥', flEarth: 'Earth link ≥', flBoth: 'Both ≥', flDark: 'Longest dark ≤',
+  flTitle: 'Filter sites', flAria: 'Filter sites by sunlight, direct-to-Earth and shadow',
+  flSun: 'Sunlight ≥', flEarth: 'Direct-to-Earth ≥', flBoth: 'Sun + Earth together ≥', flDark: 'Longest shadow ≤',
   flAny: 'any', flReset: 'Reset filters', flMatch: 'sites match', flOf: 'of',
   flNone: 'No site matches. Loosen a slider.',
   flHint: 'Thresholds apply to the period results of the analysis window above. Sites that fail are removed from the site list; compared cards stay but are marked. Reset brings everything back.',
 }, {
-  flTitle: '착륙지 거르기', flAria: '햇빛·지구 통신·어둠으로 착륙지 거르기',
-  flSun: '햇빛 ≥', flEarth: '지구 통신 ≥', flBoth: '둘 다 ≥', flDark: '가장 긴 어둠 ≤',
+  flTitle: '착륙지 거르기', flAria: '햇빛·직접 교신·어둠으로 착륙지 거르기',
+  flSun: '햇빛 ≥', flEarth: '직접 교신 ≥', flBoth: '해·지구 동시 ≥', flDark: '최장 그늘 ≤',
   flAny: '상관없음', flReset: '거르기 초기화', flMatch: '곳이 맞음', flOf: '/',
   flNone: '맞는 착륙지가 없다. 슬라이더를 풀어 보자.',
   flHint: '기준은 위 분석 기간의 기간 결과에 적용된다. 맞지 않는 곳은 착륙지 목록에서 빠지고, 비교 카드는 남지만 표시가 붙는다. 초기화하면 모두 돌아온다.',

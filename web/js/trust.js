@@ -18,7 +18,7 @@ addStrings({
   vNotNasa: 'A comparison with public data — not a NASA approval or endorsement.',
   vAlt: 'Other definitions (details)', vAltRow: '{k}: MAE {m} pp, r {r}',
   alt_sun_mean_disc_fraction: 'Sun, mean disc fraction (headline)', alt_sun_any_part: 'Sun, any part of the disc', alt_sun_half_disc: 'Sun, ≥ half disc',
-  alt_earth_centre: 'Earth, centre above the horizon', alt_earth_any_part: 'Earth, any part of the disc (headline)',
+  alt_earth_centre: 'Earth, center above the horizon', alt_earth_any_part: 'Earth, any part of the disc (headline)',
   hcApollo: 'Sun elevation at landing: recorded {r}° · this tool {o}° (difference {d}°)',
   hcRobot: '{txt}', hcProxy: 'End of operations is only an approximate proxy for local sunset.', hcNoSrc: 'No public source for this event.',
   hcEphem: 'Ephemeris check: max difference {d}° over {n} samples', hcTitle: 'Mission hindcast',

@@ -17,7 +17,7 @@ addStrings({
   glLoading: 'Loading 3D Moon…', glTiles: 'Loading terrain', glFail: '3D view unavailable in this browser (WebGL). All numbers below still work.',
   glWheel: 'Click the globe first, then scroll to zoom (or use + / −).',
   glToAnalysis: 'Analysis window ↓',
-  glHint: 'Drag = move · right-drag or Shift-drag = rotate & tilt · wheel / pinch = zoom (click the globe first) · click a site marker to analyse it below. ' +
+  glHint: 'Drag = move · right-drag or Shift-drag = rotate & tilt · wheel / pinch = zoom (click the globe first) · click a site marker to analyze it below. ' +
     'Lighting and shadows use the selected time. Sun/Earth icons are enlarged. Terrain: LOLA LDEM_64 (1 km) everywhere, SLDEM2015 / PGDA patches (to 34–67 m) around catalogue sites.',
 }, {
   glTitle: '3D 달 — 확대할수록 지형이 자세해진다',

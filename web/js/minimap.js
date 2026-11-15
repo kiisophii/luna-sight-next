@@ -7,8 +7,8 @@ import { addStrings, whenReady, setFocus, LLSN } from './ui_shared.js';
 
 addStrings({
   mmAria: 'Mini map: where the 3D view is looking. Open for coordinate search.', mmSearch: 'Coordinates', mmPh: 'e.g. −89.45, −136.2 or 89.45S 136.2W',
-  mmGo: 'Go', mmAnalyse: 'Analyse this point', mmBadLat: 'Latitude must be −90…90', mmBadLon: 'Longitude must be −180…180', mmBad: 'Use “lat, lon” or “89.45S 136.2W”',
-  mmOpen: 'Expand the minimap', mmClose: 'Shrink the minimap', mmPinned: 'Pinned', mmTop: 'Top 5 (current sort)', mmRecent: 'Recently viewed', mmHere: 'Moved to {c}. Press “Analyse this point” to compute its terrain horizon.',
+  mmGo: 'Go', mmAnalyse: 'Analyze this point', mmBadLat: 'Latitude must be −90…90', mmBadLon: 'Longitude must be −180…180', mmBad: 'Use “lat, lon” or “89.45S 136.2W”',
+  mmOpen: 'Expand the minimap', mmClose: 'Shrink the minimap', mmPinned: 'Pinned', mmTop: 'Top 5 (current sort)', mmRecent: 'Recently viewed', mmHere: 'Moved to {c}. Press “Analyze this point” to compute its terrain horizon.',
 }, {
   mmAria: '미니맵: 3D가 보고 있는 곳. 열면 좌표 검색.', mmSearch: '좌표', mmPh: '예: −89.45, −136.2 또는 89.45S 136.2W',
   mmGo: '이동', mmAnalyse: '이 지점 분석', mmBadLat: '위도는 −90~90', mmBadLon: '경도는 −180~180', mmBad: '"위도, 경도" 또는 "89.45S 136.2W" 형식',

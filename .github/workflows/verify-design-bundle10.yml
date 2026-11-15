@@ -22,10 +22,10 @@ jobs:
           node-version: 22
       - run: npm install --no-save playwright
       - run: npx playwright install --with-deps chromium
-      - name: Capture and measure
+      - name: Verify integrated main
         run: |
           python -m http.server 8788 --directory web >/tmp/bundle10-server.log 2>&1 &
-          node verification/design_bundle10/check.mjs
+          node verification/design_bundle10/smoke.mjs
       - name: Save evidence
         if: always()
         run: |

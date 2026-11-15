@@ -1,8 +1,8 @@
 # Follow-up: 1280 English inline sub-tabs
 
 - Baseline: `58bbc449692185698f2d9eb6a2d52cb2a4707293`.
-- Fix/test commit: `5e5c383160112100e377bf0212584259669597c3`.
-- [Passing browser run](https://github.com/kiisophii/lunar-landing-site-navigator/actions/runs/43704438587).
+- Fix/test commit: `4f2e241d248d17f8c605b14196af3e8c9c73e361`.
+- [Passing browser run](https://github.com/kiisophii/lunar-landing-site-navigator/actions/runs/43704903902).
 - Request: keep 1280 English sub-tabs to the right of the heading, retain 14px text, preserve 1440 EN/KR. Same branch / PR #117.
 
 ## Scope and implementation
@@ -45,3 +45,7 @@ BASELINE=58bbc449692185698f2d9eb6a2d52cb2a4707293 node verification/design_bundl
 ```
 
 `checks.json` contains all rectangles, fonts, scroll/client widths and values. `initial_failure.json` records the long Earth labels exceeding the header; `scroll_failure.json` records the intermediate internal overflow. Both were fixed, not suppressed. The final test explicitly checks the scroller as well as the document. The existing fixed-head PR #97 snapshots are test fixtures, not production code.
+
+## Visual QA follow-up
+
+Manual inspection caught the longest Earth label being clipped by the outer tray-main despite fitting the heading and scroller. At 1280–1439 English only, tray-main now uses visible overflow (it is still not a scroll container); the tray and inner scroller retain their bounds. The final test additionally checks each sub-tab against **every clipping ancestor**, and all 64 states pass. 1440 EN/KR header-strip before/after PNGs also have identical SHA-256 within each language. No typography was reduced or text abbreviated.

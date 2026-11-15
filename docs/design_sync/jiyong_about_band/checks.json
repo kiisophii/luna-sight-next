@@ -1,0 +1,14 @@
+[
+  {
+    "width": 1440,
+    "checks": "band, internal scroll, fade, next/back, enter/leave, no errors"
+  },
+  {
+    "width": 1024,
+    "checks": "band, internal scroll, fade, next/back, enter/leave, no errors"
+  },
+  {
+    "width": 390,
+    "checks": "band, internal scroll, fade, next/back, enter/leave, no errors"
+  }
+]

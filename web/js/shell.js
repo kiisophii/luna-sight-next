@@ -59,11 +59,19 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
     if (failed) { const iv = setInterval(() => { if (failed()) { clearInterval(iv); res(); } }, 250); setTimeout(() => clearInterval(iv), capMs); }
   });
   const globeFailed = () => document.getElementById('globe-stage')?.classList.contains('failed');   // no WebGL: no texture event
-  window.LunaIntro.mount({
+  // While the intro covers the page nothing may scroll it (WebKit scrolled ~890 px down to the comparison on a first
+  // visit: a focus()/scrollIntoView() from start-up code moves the page even with overflow hidden). The page is held
+  // at the top and starts there when the intro ends. A URL hash keeps its own target.
+  const hold = !location.hash;
+  const pin = () => { if (window.scrollY > 0) window.scrollTo(0, 0); };
+  const pinIv = hold ? setInterval(pin, 100) : 0;   // scroll events can be late or missing while the page is busy
+  if (hold) window.addEventListener('scroll', pin, { passive: true });
+  const introH = window.LunaIntro.mount({
+    onDone: () => { if (!hold) return; clearInterval(pinIv); window.removeEventListener('scroll', pin); window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0)); },
     el, label: getLang() === 'ko' ? 'Luna Sight 불러오는 중' : 'Loading Luna Sight',
-    minMs: 1800, fastMs: 0,   // like the designer's demo: the bar is on screen for at least 1.8 s and the landing is never sped up
     waitFor: [when(['llsn:globe', 'llsn:loadfail'], 12000, globeFailed), when(['llsn:ready', 'llsn:loadfail'], 12000)],
   });
+  setTimeout(() => introH?.complete?.(), 15000);   // the window 'load' event has no cap of its own (a hung font or image): finish anyway
 })();
 
 // ------------------------------------------------------------ header background on scroll, scroll hint
@@ -203,6 +211,16 @@ function stitch(idx, layerId) {
   return p;
 }
 let layer = 'light', layerNoted = false;
+// elevation layer: colour scale of the designer's copy (Chaei: navy -4.5 km -> pink +5.5 km), values beyond the ends clamp.
+// The legend also states the real min / max of the LOLA tiles in use (data/globe/index.json, all levels).
+const ELEV_MIN = -4.5, ELEV_MAX = 5.5;
+const ELEV_RAMP = ['#0E2147', '#2A4677', '#56729F', '#4F8C8E', '#9CB463', '#E3D46C', '#E9A55F', '#DE7C64', '#F2D2C6'];
+let elevR = null;
+const elevRange = () => (elevR ||= fetch(`${LL().state?.base || 'data/'}globe/index.json`).then(r => r.json()).then(j => {
+  let a = Infinity, b = -Infinity;
+  for (const list of Object.values(j.tiles || {})) for (const t of list) { if (t[3] < a) a = t[3]; if (t[4] > b) b = t[4]; }
+  return isFinite(a) ? [a / 1000, b / 1000] : null;
+}).catch(() => null));
 // a long-term (time-independent) layer is on and the user moves the time: say so once, offer Sunlight (Chaei #22)
 window.addEventListener('llsn:time', () => {
   if (layer === 'light' || layerNoted) return;
@@ -216,6 +234,22 @@ window.addEventListener('llsn:time', () => {
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
   tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  LL().globe?.setElevation?.(null);
+  { const h1 = document.getElementById('hud-1'); if (h1) h1.style.display = k === 'light' ? '' : 'none'; }   // one legend at a time: the LROC/Earth-set line belongs to the Sunlight view
+  if (k === 'elev') {                                              // elevation: LOLA height colour over the same fixed-light hillshade (relief merged in)
+    layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
+    const g0 = LL().globe; if (!g0) return;
+    await g0.setColorMap(null);
+    g0.setElevation({ min: ELEV_MIN, max: ELEV_MAX, stops: ELEV_RAMP });
+    const r = await elevRange();
+    if (layer !== 'elev') return;
+    const leg = $('#map-legend'); leg.hidden = false;
+    const km = x => `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x).toFixed(1)}`;
+    leg.innerHTML = `<div>${esc(t('lgElev'))}</div>
+      <div class="bar" style="background:linear-gradient(90deg, ${ELEV_RAMP.join(', ')})"></div><div class="ends"><span>≤ ${km(ELEV_MIN)} km</span><span>${km((ELEV_MIN + ELEV_MAX) / 2)}</span><span>≥ ${km(ELEV_MAX)} km</span></div>
+      <div class="muted" style="margin-top:3px">${esc(fill(t('lgElevNote'), { x: 3, a: r ? km(r[0]) : '—', b: r ? km(r[1]) : '—' }))}</div>`;
+    return;
+  }
   if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
     layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
     const g0 = LL().globe; if (!g0) return;

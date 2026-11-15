@@ -58,7 +58,7 @@ function build() {
   const exp = box.querySelector('.mm-exp');
   const closeIt = () => { box.classList.remove('open'); box.querySelector('.mm-side').hidden = true; own = null; sizeBall(); expLabel(); };
   exp.addEventListener('click', () => { if (box.classList.contains('open')) closeIt(); else { openIt(); expLabel(); } });
-  box.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) { closeIt(); exp.focus(); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('open')) { e.preventDefault(); closeIt(); exp.focus(); } });
   document.addEventListener('pointerdown', e => { if (!box.contains(e.target) && box.classList.contains('open')) closeIt(); });
   // drag rotates the minimap only; a click flies the 3D view there
   let drag = null;
@@ -113,7 +113,7 @@ function relabel() {
     s.querySelector(`#mm-${axis}`).closest('.mm-coord').querySelector('[role="group"]').setAttribute('aria-label',label);
   }
   s.querySelector('.mm-submit').textContent = t('mmGo'); s.querySelector('.mm-an').textContent = t('mmAnalyse');
-  s.querySelector('.mm-list-title').textContent = `⌖ ${t('mmGoto')}`;
+  s.querySelector('.mm-list-title').innerHTML = `${miniIcon('pin')}<span>${esc(t('mmGoto'))}</span>`;
 }
 function sizeBall() {
   const open = box.classList.contains('open'), width = box.clientWidth, height = box.clientHeight;
@@ -159,17 +159,10 @@ function draw() {
     g.putImageData(im, 0, 0);
   } else { g.fillStyle = '#555'; g.beginPath(); g.arc(R, R, R, 0, 7); g.fill(); }
   const dpr = W / parseFloat(cv.style.width || W);
-  g.strokeStyle = 'rgba(237,237,237,.18)'; g.lineWidth = .6 * dpr;
+  g.strokeStyle = 'rgba(237,237,237,.28)'; g.lineWidth = .75 * dpr;
   const curve = points => { g.beginPath(); let pen=false; for(const [lat,lon] of points) { const q=project(lat,lon); if(!q.front){pen=false;continue;} const x=R+q.x*R,y=R-q.y*R; if(pen)g.lineTo(x,y);else g.moveTo(x,y);pen=true; } g.stroke(); };
   for(let lat=-60;lat<=60;lat+=30)curve(Array.from({length:181},(_,i)=>[lat,i*2-180]));
   for(let lon=-180;lon<180;lon+=30)curve(Array.from({length:91},(_,i)=>[i*2-90,lon]));
-  // current 3D view: ring sized by the camera range (≈ half the visible width), centre dot
-  const p = project(view.lat, view.lon);
-  if (p.front) {
-    const ang = Math.min(1.4, Math.atan2(view.range * Math.tan(22.5 * D2R), 1737.4));
-    const rr = Math.max(3 * dpr, Math.sin(ang) * R);
-    g.strokeStyle = '#fff'; g.lineWidth = 1.5 * dpr; g.beginPath(); g.ellipse(R + p.x * R, R - p.y * R, rr, rr * 0.8, 0, 0, 7); g.stroke();
-  }
   // Pinned labels use separate pills, including nearby polar candidates.
   const pills=[];
   g.font = `${10 * dpr}px Oxanium, monospace`; g.textBaseline = 'middle';
@@ -204,15 +197,16 @@ function go() {
   err.style.color = 'var(--muted)'; err.textContent = fill(t('mmHere'), { c: `${r.lat.toFixed(4)}°, ${r.lon.toFixed(4)}°` });
   setTimeout(() => { err.style.color = ''; }, 0);
 }
+const miniIcon = kind => `<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">${kind==='mountain'?'<path d="M1 13 6 3l4 7 2-4 3 7H1Z M4.5 6l1.5 2 1.5-2"/>':kind==='pin'?'<path d="M8 15s5-5 5-9a5 5 0 1 0-10 0c0 4 5 9 5 9Z"/><circle cx="8" cy="6" r="1.5"/>':'<path d="M3 14V2m0 1c3-3 6 3 10 0v6C9 12 6 6 3 9"/>'}</svg>`;
 function lists() {
   const el = box?.querySelector('.mm-lists'); if (!el || !box.classList.contains('open')) return;
   const st = LLSN().state, pins = LLSN().pins?.() || [];
-  const coord = s => `${Math.abs(s.lat).toFixed(2)}°${s.lat<0?'S':'N'} ${Math.abs(s.lon).toFixed(2)}°${s.lon<0?'W':'E'}`;
-  const row = (s, tag) => `<button type="button" class="mm-destination" data-site="${esc(s.id)}"><span class="mm-dest-icon" aria-hidden="true">${tag===t('mmPast')?'⚑':'△'}</span><span class="mm-dest-copy"><span>${esc(nameOf(s))}</span><small>${coord(s)}</small></span><span class="mm-tag">${esc(tag)}</span></button>`;
+  const coord = s => `${Math.abs(s.lat).toFixed(2)}°${s.lat<0?'S':'N'}, ${Math.abs(s.lon).toFixed(2)}°${s.lon<0?'W':'E'}`;
+  const row = (s, tag) => `<button type="button" class="mm-destination" data-site="${esc(s.id)}"><span class="mm-dest-icon" aria-hidden="true">${miniIcon(tag===t('mmPast')?'flag':'mountain')}</span><span class="mm-dest-copy"><span>${esc(nameOf(s))}</span><small>${coord(s)}</small></span><span class="mm-tag">${esc(tag)}</span></button>`;
   const past = s => ['apollo','luna','change','chandrayaan','slim','clps'].includes(s.group);
   const ordered = [...pins.map(p => st.sites.find(s => s.id===p.id)), ...(LLSN().sortedSites?.() || []).slice(0,5), ...st.sites.filter(past)].filter(Boolean);
   const seen = new Set();
-  el.innerHTML = [-90,90].map(lat => `<button type="button" class="mm-destination" data-pole="${lat}"><span class="mm-dest-icon" aria-hidden="true">⚑</span><span class="mm-dest-copy"><span>${esc(t(lat<0?'mmSouth':'mmNorth'))}</span><small>90°${lat<0?'S':'N'} 0°E</small></span><span class="mm-tag">${esc(t('mmPole'))}</span></button>`).join('') + ordered.filter(s=>{if(seen.has(s.id))return false;seen.add(s.id);return true;}).map(s=>row(s,pins.some(p=>p.id===s.id)?`#${pins.find(p=>p.id===s.id).n}`:past(s)?t('mmPast'):t('mmTerrain'))).join('');
+  el.innerHTML = [-90,90].map(lat => `<button type="button" class="mm-destination" data-pole="${lat}"><span class="mm-dest-icon" aria-hidden="true">${miniIcon('flag')}</span><span class="mm-dest-copy"><span>${esc(t(lat<0?'mmSouth':'mmNorth'))}</span><small>90.00°${lat<0?'S':'N'}</small></span><span class="mm-tag">${esc(t('mmPole'))}</span></button>`).join('') + ordered.filter(s=>{if(seen.has(s.id))return false;seen.add(s.id);return true;}).map(s=>row(s,past(s)?t('mmPast'):t('mmTerrain'))).join('');
 
 }
 

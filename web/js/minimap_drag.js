@@ -7,6 +7,7 @@ const KEY='ls.minimapPos', SIZE_KEY='ls.minimapSizes.v13';
 const defaults={closed:window.innerWidth<1200?{w:158,h:164}:{w:222,h:228},open:{w:580,h:358}};
 let box, grip, pos={fx:1,fy:0}, sizes=structuredClone(defaults), lastOpen=false, frame=0;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const compact=()=>innerWidth<=899;
 const still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function load(){try{const p=JSON.parse(localStorage.getItem(KEY));if(p&&Number.isFinite(p.fx)&&Number.isFinite(p.fy))pos={fx:clamp(p.fx,0,1),fy:clamp(p.fy,0,1)};
  const s=JSON.parse(localStorage.getItem(SIZE_KEY));for(const mode of ['closed','open'])if(s?.[mode]&&Number.isFinite(s[mode].w)&&Number.isFinite(s[mode].h))sizes[mode]={w:clamp(s[mode].w,mode==='open'?304:142,2000),h:clamp(s[mode].h,mode==='open'?228:148,1500)};
@@ -27,6 +28,12 @@ function followers(bx,by,w,h,a){
 }
 function place(animate=false){
  if(!box)return;
+ if(compact()){
+  const open=box.classList.contains('open');
+  Object.assign(box.style,{left:'',top:'',right:'',bottom:'',width:`${Math.min(open?580:222,innerWidth-32)}px`,height:`${open?358:228}px`});
+  for(const selector of ['#hud-1','#globe-stage .g3-dock','#map-legend']){const el=document.querySelector(selector);if(el)for(const key of ['left','top','right','bottom'])el.style[key]='';}
+  return;
+ }
  const a=area(),d=dimensions(a,box.classList.contains('open')?'open':'closed');
  let x=a.l+pos.fx*Math.max(0,a.r-a.l-d.w),y=a.t+pos.fy*Math.max(0,a.b-a.t-d.h);
  x=clamp(x,a.l,a.r-d.w);y=clamp(y,a.t,a.b-d.h);
@@ -43,6 +50,7 @@ function init(){
  const label=()=>{grip.setAttribute('aria-label',t('mmMove'));grip.title=t('mmMove');handles.forEach(h=>h.setAttribute('aria-label',`${t('mmResize')} (${h.dataset.edge})`));};label();window.addEventListener('llsn:lang',label);
  let drag=null;
  box.addEventListener('pointerdown',e=>{
+  if(compact())return;
   const handle=e.target.closest('.mm-resize'),moving=e.target.closest('.mm-grip');if((!handle&&!moving)||e.button!==0)return;
   const r=box.getBoundingClientRect(),a=area();drag={edge:handle?.dataset.edge,x:e.clientX,y:e.clientY,l:r.left-a.sc.left,t:r.top-a.sc.top,w:r.width,h:r.height,a};
   (handle||moving).setPointerCapture(e.pointerId);box.classList.add('dragging');e.preventDefault();e.stopPropagation();
@@ -64,11 +72,13 @@ function init(){
  };box.addEventListener('pointerup',end);box.addEventListener('pointercancel',end);
  const reset=()=>{pos={fx:1,fy:0};save();place(true);};grip.addEventListener('dblclick',reset);
  grip.addEventListener('keydown',e=>{
+  if(compact())return;
   if(e.key==='Home'){e.preventDefault();reset();return;}const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!delta)return;
   e.preventDefault();const a=area(),r=box.getBoundingClientRect(),step=e.shiftKey?40:10;positionFromRect(r.left-a.sc.left+delta[0]*step,r.top-a.sc.top+delta[1]*step,r.width);save();place();
  });
  handles.forEach(h=>h.addEventListener('keydown',e=>{const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!delta)return;e.preventDefault();const a=area(),r=box.getBoundingClientRect();drag={edge:h.dataset.edge,l:r.left-a.sc.left,t:r.top-a.sc.top,w:r.width,h:r.height,a};change(delta[0]*(e.shiftKey?40:10),delta[1]*(e.shiftKey?40:10));end();}));
  new MutationObserver(()=>{const open=box.classList.contains('open');if(open!==lastOpen){
+  if(compact()){lastOpen=open;place(true);return;}
   const a=area(),old=dimensions(a,lastOpen?'open':'closed'),next=dimensions(a,open?'open':'closed');
   const x=a.l+pos.fx*Math.max(0,a.r-a.l-old.w)+old.w-next.w,y=a.t+pos.fy*Math.max(0,a.b-a.t-old.h);
   lastOpen=open;positionFromRect(x,y,next.w);place(true);

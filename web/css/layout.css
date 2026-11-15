@@ -827,3 +827,18 @@ body.on-about .ls-pages { display: none; }
 .c1-chips i { font-style: normal; height: 22px; line-height: 20px; padding: 0 7px; font-size: 11px; color: var(--n-mute); background: rgba(237, 237, 237, .06); border: 1px solid rgba(237, 237, 237, .08); border-radius: 6px; box-sizing: border-box; }
 .c1-sum-x { flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--n-mute); }
 .c1-sum-x .ic { width: 12px; height: 12px; }
+
+/* ================================================================ fixes 1-4 */
+/* 1. header always fixed with its own background once the page scrolls; anchors land below it */
+.ls-head.scrolled { background: rgba(10, 10, 11, .92); border-bottom-color: var(--n-line); }
+.ls [id] { scroll-margin-top: calc(var(--head-h) + 12px); }
+.ls-detail { scroll-margin-top: calc(var(--head-h) + 110px); }
+body.ls { background: var(--bg); }
+.brief-head { background: rgba(10, 10, 11, .94); }
+.cmp-tbl thead th, .cmp-tbl th.lbl { background: #0E0E10; }
+/* 4. graphic legends: short swatch in the chart's own colour and line style + the name */
+.lg-row { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 6px 0 8px; font-size: 12px; color: var(--muted); }
+.lg-row > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.lg-sw { width: 24px; height: 12px; flex: none; overflow: visible; }
+.lg-row.lg-cap { margin-top: -10px; }
+.ls-tray .lg-row { gap: 4px 12px; font-size: 11.5px; }

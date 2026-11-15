@@ -3,13 +3,14 @@
 // over the selected window (LLSN.window from window_metrics.js; default 30 days from the current time).
 // Uses only core.js API + CSS variables. Listens: llsn:time, llsn:window, llsn:focus, llsn:lang.
 import * as core from './core.js';
+import { legendHTML } from './ui_shared.js';
 import { t } from './i18n.js';
 import { addStrings, whenReady, mountSection, translate, siteName, getFocus, setFocus, fmtDeg, cssVar, throttle, LLSN } from './ui_shared.js';
 
 addStrings({
   hzTitle: 'Horizon panorama', hzAria: 'Horizon panorama of the focused site',
   hzSite: 'Site', hzScale: 'Vertical scale',
-  hzHint: 'Grey = terrain horizon mask (LOLA). Dots = hourly Sun / Earth positions over the selected window; faded dots are hidden behind the mask. Pick a site above or click a card / table row to change it.',
+  hzHint: 'Pick a site above or click a card / table row to change it.', hzLgMask: 'terrain horizon mask (LOLA)', hzLgSun: 'Sun, hourly', hzLgEarth: 'Earth, hourly', hzLgHidden: 'hidden behind the terrain',
   hzFlat: 'TERRAIN PENDING — no LOLA horizon has been computed for this site yet. Sun and Earth positions are shown, but no visibility is judged (the 0° line is only a reference).',
   hzSun: 'Sun', hzEarth: 'Earth', hzMask: 'terrain mask', hzEl: 'el',
   hzVisible: 'Visible', hzPartial: 'Partly visible', hzBlocked: 'Blocked by terrain', hzBelow: 'Below horizon',
@@ -19,7 +20,7 @@ addStrings({
 }, {
   hzTitle: '지평선 파노라마', hzAria: '선택한 착륙지의 지평선 파노라마',
   hzSite: '착륙지', hzScale: '세로 배율',
-  hzHint: '회색 = 지형 지평선 마스크(LOLA). 점 = 선택한 기간의 시간별 해·지구 위치, 흐린 점은 지형에 가려진 시각. 위에서 착륙지를 고르거나 카드·표의 줄을 누르면 바뀐다.',
+  hzHint: '위에서 착륙지를 고르거나 카드·표의 줄을 누르면 바뀐다.', hzLgMask: '지형 지평선 마스크 (LOLA)', hzLgSun: '태양, 1시간마다', hzLgEarth: '지구, 1시간마다', hzLgHidden: '지형에 가려짐',
   hzFlat: '지형 계산 중 — 이 착륙지의 LOLA 지평선이 아직 없다. 태양·지구 위치는 보여 주지만 보이는지는 판정하지 않는다 (0° 선은 참고용).',
   hzSun: '해', hzEarth: '지구', hzMask: '지형 마스크', hzEl: '고도',
   hzVisible: '보임', hzPartial: '일부 보임', hzBlocked: '지형에 가려짐', hzBelow: '지평선 아래',
@@ -49,7 +50,7 @@ function build() {
     </div>
     <p class="hz-hover hint" aria-hidden="true">&nbsp;</p>
     <div class="hz-read" aria-live="polite" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5em var(--gap)"></div>
-    <p class="hint" data-i18n="hzHint"></p>`;
+    <div class="hz-lg"></div><p class="hint" data-i18n="hzHint"></p>`;
   canvas = sec.querySelector('canvas'); ctx = canvas.getContext('2d');
   readout = sec.querySelector('.hz-read'); hoverLine = sec.querySelector('.hz-hover');
   flatNote = sec.querySelector('.hz-flat'); siteSel = sec.querySelector('.hz-site');
@@ -284,3 +285,12 @@ function niceStep(raw) {
 }
 
 whenReady(build);
+
+// graphic legend (same colours and marks as the chart): terrain fill + outline, hourly dots, faded = hidden
+function hzLegend() {
+  const el = document.querySelector('#llsn-horizon .hz-lg'); if (!el) return;
+  el.innerHTML = legendHTML([{ kind: 'area', c: 'var(--muted)', fill: 'var(--surface-2)', label: t('hzLgMask') }, { kind: 'dot', c: 'var(--sun)', op: 0.85, label: t('hzLgSun') },
+    { kind: 'dot', c: 'var(--earth)', op: 0.85, label: t('hzLgEarth') }, { kind: 'dot', c: 'var(--text)', op: 0.22, label: t('hzLgHidden') }]);
+}
+['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, () => setTimeout(hzLegend, 0)));
+setTimeout(hzLegend, 0);

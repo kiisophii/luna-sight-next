@@ -6,7 +6,7 @@
 // Listens: llsn:window, llsn:focus, llsn:time, llsn:lang. Colours: CSS variables only.
 import * as core from './core.js';
 import { t } from './i18n.js';
-import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, roundShares, LLSN } from './ui_shared.js';
+import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, cssVar, roundShares, legendHTML, LLSN } from './ui_shared.js';
 import { relayIndex, relayFor, segmentHours, longestNone } from './diff_data.js';
 
 addStrings({
@@ -22,7 +22,7 @@ addStrings({
   rlFresnel: 'first-Fresnel clearance (≥ 0.6 = clear)', rlYes: 'yes', rlNo: 'no',
   rlNoGain: 'No buildable tower within the search radius improves this site at this height.',
   rlAlways: 'This site already sees Earth all the time in the 5-year data window — no tower needed.',
-  rlMap: 'Where a tower would help (search area)', rlMapLegend: 'color = lander link % with one tower at that spot (this height); gray = no line of sight or too steep; ● lander, ◆ towers',
+  rlMap: 'Where a tower would help (search area)', rlMapLegend: '', rlLgGain: 'link gain with one tower at that spot (stronger = more)', rlLgNo: 'no line of sight or too steep', rlLgLander: 'lander', rlLgTower: 'towers',
   rlByN: 'Whole 2026–2030 window: link % with 0 / 1 / 2 / 3 towers',
   rlBudget: 'Link budget tower → Earth (ESTIMATE)', rlBudgetNote: 'Rough estimate with our own assumptions (not a specification): ',
   rlStation: 'station', rlBand: 'band', rlRange: 'range', rlCn0: 'C/N₀', rlRate: 'power-limited rate (ignores bandwidth)',
@@ -44,7 +44,7 @@ addStrings({
   rlFresnel: '1차 프레넬 여유 (0.6 이상 = 여유 충분)', rlYes: '있음', rlNo: '없음',
   rlNoGain: '이 높이에서는 탐색 반경 안에 세울 수 있는 타워로 개선되지 않는다.',
   rlAlways: '이 착륙지는 5년 데이터 내내 지구가 보인다 — 타워가 필요 없다.',
-  rlMap: '타워가 도움이 되는 곳 (탐색 범위)', rlMapLegend: '색 = 그 자리에 타워 1기를 세웠을 때 착륙선 통신 % (이 높이); 회색 = 가시선 없음 또는 너무 가파름; ● 착륙선, ◆ 타워',
+  rlMap: '타워가 도움이 되는 곳 (탐색 범위)', rlMapLegend: '', rlLgGain: '그 자리에 탑 1기를 세울 때 늘어나는 교신 (진할수록 많음)', rlLgNo: '가시선 없음 또는 너무 가파름', rlLgLander: '착륙선', rlLgTower: '탑',
   rlByN: '2026–2030 전체: 타워 0 / 1 / 2 / 3기일 때 통신 %',
   rlBudget: '타워 → 지구 링크 버짓 (추정치)', rlBudgetNote: '우리 가정으로 낸 대략적 추정치 (규격 아님): ',
   rlStation: '지상국', rlBand: '대역', rlRange: '거리', rlCn0: 'C/N₀', rlRate: '전력 기준 전송률 (대역폭 무시)',
@@ -166,7 +166,7 @@ function render() {
     ${always ? `<p class="note">${t('rlAlways')}</p>` : ''}
     <div class="rl-grid">
       <div><h3>${t('rlMap')}</h3><canvas class="rl-map" width="420" height="420" role="img" aria-label="${esc(t('rlMap'))}"></canvas>
-        <p class="hint">${t('rlMapLegend')}</p></div>
+        ${legendHTML([{ kind: 'square', c: 'var(--relay)', op: 0.9, label: t('rlLgGain') }, { kind: 'square', c: 'var(--off)', op: 0.5, label: t('rlLgNo') }, { kind: 'dot', c: 'var(--earth)', label: t('rlLgLander') }, { kind: 'diamond', c: 'var(--text)', label: t('rlLgTower') }])}</div>
       <div>${towerHTML(net, best, rel)}</div>
     </div>
     <h3>${t('rlByN')}</h3>

@@ -3,6 +3,7 @@
 // Numbers: LLSN.window (core.metrics), core.js instant functions, data/relay (via values.js), data/korea station bits.
 // Verdicts use ONLY the published example rule (longest shadow 72 h, direct link 50 % / 90 %).
 import * as core from './core.js';
+import { legendHTML } from './ui_shared.js';
 import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, setFocus, fmtHours, LLSN } from './ui_shared.js';
 import { relayPeriod, stationPeriod, instant, hourBits, gapStats, TOWER_H } from './values.js';
@@ -10,40 +11,40 @@ import { relayFor, relayIndex } from './diff_data.js';
 import { stationBits } from './korea.js';
 
 addStrings({
-  cmpH: 'Detailed comparison', cmpSub: 'Pinned sites side by side over the same analysis period. A comparison tool, not a recommendation.',
+  cmpH: 'Detailed comparison', cmpSub: '',
   cmpNoPins: 'No site is pinned, so this shows the site you are looking at in 3D. Pin sites with the pin buttons in the list on the left.',
   cmpEmptyTray: 'No pinned sites yet. Press a pin in Candidates on the left to compare them here side by side.',
-  cmpCaption: 'Whole Moon: LROC color (NASA SVS CGI Moon Kit) on LOLA terrain, lit by the real Sun at the selected time. Blue line = where the Earth sets (moves with libration).',
+  cmpCaption: 'Whole Moon: LROC color (NASA SVS CGI Moon Kit) on LOLA terrain, lit by the real Sun at the selected time.', cmpEdge: 'Earth-set edge (moves with libration)',
   r_item: 'Item', r_sun: 'Sunlight (period)', r_earth: 'Direct-to-Earth', r_both: 'Sun + Earth together', r_dark: 'Longest shadow',
   r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA link', r_gs: 'NASA DSN (any of 3):',
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
   noChange: 'no change in data', why: 'Site check ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
   tabDial: '◷ Lunar-day clock', tabAlt: '↗ Sun & Earth elevation', changeH: 'Change over time',
-  dialDesc: 'One turn = the analysis period, 12 o’clock = start. Outer ring = sunlight (brighter = more of the solar disc visible); inner ring = direct-to-Earth (blue), via relay tower (green), still no link (thin pink); needle = selected time.',
+  dialDesc: 'One turn = the analysis period, 12 o’clock = start.',
   lgSun: 'sunlight', lgEarth: 'direct-to-Earth', lgRelay: 'via relay tower', lgCut: 'no link even with the tower', lgNeedle: 'selected time', lgKdsa: 'Yeoju KDSA can receive',
-  altDesc: 'Yellow = Sun elevation, blue = Earth elevation, gray = terrain horizon in the Sun’s direction, white line = selected time. A body is visible only above the terrain line.',
-  tlH: 'Timeline', tlDesc: 'Yellow = sunlit, blue = direct-to-Earth, green = gap filled via a relay tower, purple = Yeoju KDSA can receive. Click or drag to move the selected time.',
+  altDesc: 'A body is visible only above the terrain line.', lgSunEl: 'Sun elevation', lgEarthEl: 'Earth elevation', lgHzSun: 'terrain horizon (Sun direction)', lgZero: '0° (flat horizon)', lgSunPart: 'Sun partly visible', lgSunDial: 'sunlight (stronger = more of the disc)', altAria: 'Sun and Earth elevation with the terrain horizon over the period',
+  tlH: 'Timeline', tlDesc: 'Click or drag to move the selected time.',
   sNextSet: 'Until sunset', sNextRise: 'Until sunrise', sNextESet: 'Until Earthset', sNextERise: 'Until Earthrise', sDark: 'Longest shadow',
   sRelayNeed: 'Longest direct-link gap', sTower: 'Via tower ({h} m)', sCut: 'Still no link with tower', sKdsa: 'Yeoju KDSA link',
   vGood: '✓ No flags', vCond: '! Check conditions', vRuleTip: 'Example thresholds only (published rule): caution if longest shadow > 72 h, direct link < 50 %, or last among the pinned sites; strength if direct link ≥ 90 % or first among the pinned sites.',
   sumLine: '{n}: {s} strength(s), {c} caution(s) under the example rule.', allSites: 'All sites — period table',
   coordsH: '{c} · h {h} m',
 }, {
-  cmpH: '상세 비교', cmpSub: '고정한 후보를 같은 분석 기간으로 나란히 봅니다. 비교 도구이며 추천이 아닙니다.',
+  cmpH: '상세 비교', cmpSub: '',
   cmpNoPins: '고정한 후보가 없어서 지금 3D에서 보는 곳을 보여 줍니다. 왼쪽 목록의 핀으로 후보를 고정하세요.',
   cmpEmptyTray: '아직 고정한 후보지가 없습니다. 왼쪽 ② 후보지의 핀을 누르면 여기서 나란히 비교합니다.',
-  cmpCaption: '달 전체: LROC 컬러(NASA SVS CGI Moon Kit)에 LOLA 지형, 선택한 시각의 실제 태양. 파란 선 = 지구가 지는 경계(칭동으로 출렁임).',
+  cmpCaption: '달 전체: LROC 컬러(NASA SVS CGI Moon Kit)에 LOLA 지형, 선택한 시각의 실제 태양.', cmpEdge: '지구가 지는 경계 (칭동으로 출렁임)',
   r_item: '항목', r_sun: '햇빛 (운용 기간)', r_earth: '지구 직접 교신', r_both: '해+지구 동시', r_dark: '최장 연속 그늘',
   r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 교신', r_gs: 'NASA DSN (3곳 중 하나):',
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '교신 · {x} 남음', nowNoEarth: '교신 없음 · 뜨기까지 {x}',
   noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
   tabDial: '◷ 달의 하루 시계', tabAlt: '↗ 태양·지구 고도', changeH: '시간에 따른 변화',
-  dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작. 바깥 고리 = 햇빛(진할수록 태양 원반이 많이 보임), 안쪽 고리 = 지구 직접 교신(파랑), 중계탑 경유(초록), 그래도 끊김(얇은 분홍), 바늘 = 선택 시각.',
+  dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작.',
   lgSun: '햇빛', lgEarth: '지구 직접 교신', lgRelay: '중계탑 경유', lgCut: '탑이 있어도 끊김', lgNeedle: '선택 시각', lgKdsa: '여주 KDSA 수신 가능',
-  altDesc: '노랑 = 태양 고도, 파랑 = 지구 고도, 회색 = 태양 방향 지형 지평선, 흰 선 = 선택 시각. 지형 선보다 위에 있어야 보입니다.',
-  tlH: '타임라인', tlDesc: '노랑 = 햇빛, 파랑 = 지구 직접 교신, 초록 = 중계탑으로 메운 구간, 보라 = 여주 KDSA로 교신 가능. 누르거나 끌어서 선택 시각을 옮깁니다.',
+  altDesc: '지형 선보다 위에 있어야 보입니다.', lgSunEl: '태양 고도', lgEarthEl: '지구 고도', lgHzSun: '지형 지평선 (태양 방향)', lgZero: '0° (평평한 지평선)', lgSunPart: '태양 일부만 보임', lgSunDial: '햇빛 (진할수록 원반이 많이 보임)', altAria: '기간 동안의 태양·지구 고도와 지형 지평선',
+  tlH: '타임라인', tlDesc: '누르거나 끌어서 선택 시각을 옮깁니다.',
   sNextSet: '다음 일몰까지', sNextRise: '다음 일출까지', sNextESet: '다음 지구몰까지', sNextERise: '다음 지구돋이까지', sDark: '최장 연속 그늘',
   sRelayNeed: '직접 교신 최장 끊김', sTower: '탑 경유 ({h} m)', sCut: '탑 있어도 끊김', sKdsa: '여주 KDSA 교신',
   vGood: '✓ 주의 없음', vCond: '! 조건 확인', vRuleTip: '예시 기준값(공개 규칙)만 사용: 최장 그늘 > 72시간, 직접 교신 < 50 %, 고정한 곳 중 꼴찌면 주의. 직접 교신 ≥ 90 % 또는 고정한 곳 중 1위면 강점.',
@@ -129,6 +130,15 @@ function nowHTML(s, i) {
   return `<span class="now-dot"><i style="background:${x.lit ? 'var(--sun)' : 'var(--off)'}"></i>${esc(fill(t(x.lit ? 'nowSun' : 'nowDark'), { x: until(x.sunNext) }))}</span>
     <span class="now-dot"><i style="background:${x.up ? 'var(--earth)' : 'var(--off)'}"></i>${esc(fill(t(x.up ? 'nowEarth' : 'nowNoEarth'), { x: until(x.earthNext) }))}</span>`;
 }
+
+const LG = {
+  dial: () => legendHTML([{ kind: 'bar', c: 'var(--sun)', h: 5, label: t('lgSunDial') }, { kind: 'bar', c: 'var(--earth)', h: 5, label: t('lgEarth') },
+    { kind: 'bar', c: 'var(--relay)', h: 5, label: t('lgRelay') }, { kind: 'bar', c: 'var(--cut)', h: 1.6, label: t('lgCut') }, { kind: 'vline', c: 'var(--text)', w: 2, label: t('lgNeedle') }]),
+  alt: () => legendHTML([{ kind: 'line', c: 'var(--sun)', w: 1.6, label: t('lgSunEl') }, { kind: 'line', c: 'var(--earth)', w: 1.6, label: t('lgEarthEl') },
+    { kind: 'line', c: 'var(--muted)', w: 1, label: t('lgHzSun') }, { kind: 'line', c: 'var(--muted)', w: 1, dash: '3 3', label: t('lgZero') }, { kind: 'vline', c: 'var(--text)', w: 1.5, label: t('lgNeedle') }]),
+  tl: () => legendHTML([{ kind: 'bar', c: 'var(--sun)', h: 8, label: t('lgSun') }, { kind: 'bar', c: 'var(--sun)', h: 8, op: 0.35, label: t('lgSunPart') }, { kind: 'bar', c: 'var(--earth)', h: 8, label: t('lgEarth') },
+    { kind: 'bar', c: 'var(--relay)', h: 8, label: t('lgRelay') }, { kind: 'bar', c: 'var(--kdsa)', h: 3, label: t('lgKdsa') }, { kind: 'vline', c: 'var(--text)', w: 1.6, label: t('lgNeedle') }]),
+};
 
 function tableHTML(sites, rows, big, async) {
   const w = LLSN().window, focus = LLSN().focus;
@@ -225,7 +235,7 @@ function altSVG(s, W, H) {
   lo = Math.floor(lo - 1); hi = Math.ceil(hi + 1);
   const X = k => 28 + (k / (n - 1)) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altDesc'))}">
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
     <line x1="28" x2="${W - 6}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--muted')}" stroke-dasharray="3 3" stroke-width="1"/>
     <text x="2" y="${Y(hi) + 8}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${hi}°</text><text x="2" y="${Y(lo)}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${lo}°</text><text x="2" y="${Y(0) + 3}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">0°</text>
     ${pts.hz.length ? line(pts.hz, css('--muted'), 1) : ''}${line(pts.earth, css('--earth'), 1.6)}${line(pts.sun, css('--sun'), 1.6)}
@@ -323,7 +333,7 @@ async function renderTray() {
     root.innerHTML = tableHTML(sites, TRAY_ROWS, false, asyncVals);
     updateNow(root);
   } else if (trayView === 'dial') {
-    root.innerHTML = `<div class="legend-row"><span><i style="background:var(--sun)"></i>${esc(t('lgSun'))}</span><span><i style="background:var(--earth)"></i>${esc(t('lgEarth'))}</span><span><i style="background:var(--relay)"></i>${esc(t('lgRelay'))}</span><span><i style="background:var(--cut);height:2px"></i>${esc(t('lgCut'))}</span></div><div class="tray-dials" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px"></div>`;
+    root.innerHTML = `${LG.dial()}<div class="tray-dials" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px"></div>`;
     const box = root.querySelector('.tray-dials');
     for (const s of sites) {
       const svg = await dialSVG(s, 160); if (my !== seq) return;
@@ -331,7 +341,7 @@ async function renderTray() {
     }
     placeDialNeedles(root);
   } else {
-    root.innerHTML = sites.map(s => `<div class="ls-panel alt-card" style="padding:8px;margin-bottom:8px"><div style="font-size:12px;font-weight:600">${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</div>${altSVG(s, 360, 120)}<p class="alt-now num" data-id="${s.id}" style="margin:2px 0 0;font-size:12px"></p></div>`).join('');
+    root.innerHTML = LG.alt() + sites.map(s => `<div class="ls-panel alt-card" style="padding:8px;margin-bottom:8px"><div style="font-size:12px;font-weight:600">${LLSN().pinNo?.(s.id) ? `<span class="pin-no">#${LLSN().pinNo(s.id)}</span>` : ''}${esc(nameOf(s))}</div>${altSVG(s, 360, 120)}<p class="alt-now num" data-id="${s.id}" style="margin:2px 0 0;font-size:12px"></p></div>`).join('');
     placeAltNeedles(root);
   }
 }
@@ -343,16 +353,15 @@ async function renderBig() {
   const pinned = (LLSN().compare?.() || []).length, sites = shown(), ids = sites.map(s => s.id);
   loadAsync(sites, () => { if (my === bigSeq) renderBig(); });
   const sm = document.querySelector('#ls-compare > details > summary'); if (sm) sm.textContent = t('allSites');
-  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2><p>${esc(t('cmpSub'))}</p></div>
-    <p class="ls-caption">${esc(t('cmpCaption'))}</p>
+  root.innerHTML = `<div class="sec-head"><h2 id="cmp-h">${esc(t('cmpH'))}</h2></div>
+    <p class="ls-caption">${esc(t('cmpCaption'))}</p>${legendHTML([{ kind: 'line', c: 'var(--earth)', w: 2, label: t('cmpEdge') }], 'lg-cap')}
     ${pinned ? '' : `<p class="lsn-note" style="margin-bottom:10px">${esc(t('cmpNoPins'))}</p>`}
     <div class="big-cmp" id="cards">${tableHTML(sites, BIG_ROWS, true, asyncVals)}</div>
     <div class="sub-h"><h3>${esc(t('changeH'))}</h3><div class="ls-seg" role="tablist">
       <button type="button" role="tab" data-tab="dial" aria-selected="${bigTab === 'dial'}">${esc(t('tabDial'))}</button><button type="button" role="tab" data-tab="alt" aria-selected="${bigTab === 'alt'}">${esc(t('tabAlt'))}</button></div></div>
-    <p class="lsn-note">${esc(t(bigTab === 'dial' ? 'dialDesc' : 'altDesc'))}</p>
+    ${bigTab === 'dial' ? LG.dial() : LG.alt()}<p class="lsn-note">${esc(t(bigTab === 'dial' ? 'dialDesc' : 'altDesc'))}</p>
     <div class="cards3 big-tab" role="tabpanel" style="margin-top:10px"></div>
-    <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div><p class="lsn-note">${esc(t('tlDesc'))}</p>
-    <div class="legend-row"><span><i style="background:var(--sun)"></i>${esc(t('lgSun'))}</span><span><i style="background:var(--earth)"></i>${esc(t('lgEarth'))}</span><span><i style="background:var(--relay)"></i>${esc(t('lgRelay'))}</span><span><i style="background:var(--kdsa);height:3px"></i>${esc(t('lgKdsa'))}</span></div>
+    <div class="sub-h"><h3>${esc(t('tlH'))}</h3></div>${LG.tl()}<p class="lsn-note">${esc(t('tlDesc'))}</p>
     <div class="tl ls-panel"><div class="tl-wrap"></div></div>`;
   updateNow(root);
   const tab = root.querySelector('.big-tab');

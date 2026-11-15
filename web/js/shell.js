@@ -457,7 +457,7 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   const trayInfo = () => {
     const n = document.getElementById('tray-n'); if (n) n.textContent = (LL().pins?.() || []).length;
     const v = document.querySelector('#tray-view [aria-pressed="true"]')?.dataset.v || 'table';
-    const desc = document.getElementById('tray-desc'); if (desc) desc.textContent = t(v === 'table' ? 'trayDescTable' : v === 'dial' ? 'dialDesc' : 'altDesc');
+    const desc = document.getElementById('tray-desc'); if (desc) desc.textContent = v === 'table' ? t('trayDescTable') : '';
   };
   ['llsn:pins', 'llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, trayInfo));
   document.getElementById('tray-view')?.addEventListener('click', () => setTimeout(trayInfo, 0));

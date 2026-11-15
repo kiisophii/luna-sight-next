@@ -30,3 +30,6 @@
   /* compared-site colours 01–10 (chips and left bars); none is the Sun yellow, Earth blue or relay green */
   --c1: #B9A6FF; --c2: #FF9F6B; --c3: #D4E86B; --c4: #FF7EB6; --c5: #8FA8FF; --c6: #E8A6FF; --c7: #FFB98A; --c8: #A9E2C9; --c9: #F3A6B6; --c10: #A6C8FF;
 }
+
+/* below the first screen: the same achromatic dark as the top (no blue tint) */
+:root { --bg: #0A0A0B; --surface: #111113; --surface-2: #1B1B1D; --off: #3A3A3F; }

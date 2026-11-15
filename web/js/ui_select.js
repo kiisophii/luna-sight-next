@@ -8,7 +8,7 @@ const CHEV = iconSvg('chevron-updown', { size: 14, cls: 'dd-chev' });
 const all = new Set();
 let uid = 0;
 
-export function enhanceSelect(sel, { variant = 'box', align = 'left' } = {}) {
+export function enhanceSelect(sel, { variant = 'box', align = 'left', renderValue = null } = {}) {
   if (!sel || sel.dataset.dd) return null;
   sel.dataset.dd = '1';
   const id = `dd-${++uid}`;
@@ -33,7 +33,7 @@ export function enhanceSelect(sel, { variant = 'box', align = 'left' } = {}) {
   const label = () => sel.getAttribute('aria-label') || sel.closest('label')?.querySelector('[data-i18n]')?.textContent || '';
   function refresh() {
     const o = sel.options[sel.selectedIndex];
-    btn.innerHTML = `<span class="dd-val">${o ? escape(o.textContent) : ''}</span>${CHEV}`;
+    btn.innerHTML = `${renderValue ? renderValue(o) : `<span class="dd-val">${o ? escape(o.textContent) : ''}</span>`}${CHEV}`;
     const l = label(); if (l) btn.setAttribute('aria-label', `${l}: ${o ? o.textContent : ''}`);
     btn.disabled = sel.disabled;
   }

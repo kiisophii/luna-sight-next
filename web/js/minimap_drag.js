@@ -16,7 +16,9 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(pos));localStorage.s
 function area(){
  const sc=document.querySelector('.ls-screen').getBoundingClientRect(),R=s=>document.querySelector(s)?.getBoundingClientRect();
  const wide=innerWidth>=1100,L=R('.ls-left'),T=R('.ls-tray'),D=R('.ls-toolbar'),head=R('.ls-head');
- return {sc,l:wide&&L?L.right-sc.left+20:12,r:wide&&T?T.left-sc.left-20:sc.width-12,
+ const root=document.documentElement,gap=parseFloat(getComputedStyle(root).getPropertyValue('--G'))||20;
+ const leftOff=root.classList.contains('lp-off'),rightOff=root.classList.contains('rp-off');
+ return {sc,l:wide&&L?(leftOff?gap+28:L.right-sc.left+gap):12,r:wide&&T?(rightOff?sc.width-gap-28:T.left-sc.left-gap):sc.width-12,
  t:(head?.height||48),b:wide&&D&&D.height?D.top-sc.top-8:Math.min(sc.height,innerHeight)-20};
 }
 function dimensions(a,mode){const s=sizes[mode];return {w:Math.min(s.w,Math.max(1,a.r-a.l)),h:Math.min(s.h,Math.max(1,a.b-a.t))};}
@@ -84,7 +86,14 @@ function init(){
   lastOpen=open;positionFromRect(x,y,next.w);place(true);
  }}).observe(box,{attributes:true,attributeFilter:['class']});
  window.addEventListener('resize',later);
- ['llsn:ready','llsn:lang','llsn:pins','llsn:globe'].forEach(ev=>window.addEventListener(ev,later));
+ // Transforms do not trigger ResizeObserver; remeasure after the side panel settles.
+ for(const selector of ['.ls-left','.ls-tray']){
+  const panel=document.querySelector(selector);if(!panel)continue;
+  for(const event of ['transitionend','transitioncancel'])panel.addEventListener(event,e=>{
+   if(e.target===panel&&e.propertyName==='transform')later();
+  });
+ }
+ ['llsn:ready','llsn:lang','llsn:pins','llsn:globe','llsn:layout'].forEach(ev=>window.addEventListener(ev,later));
  for(const s of ['.ls-toolbar','#map-legend','#hud-1','.ls-left','.ls-tray']){const e=document.querySelector(s);if(e)new ResizeObserver(later).observe(e);}
  const legend=document.getElementById('map-legend');if(legend)new MutationObserver(later).observe(legend,{attributes:true,attributeFilter:['hidden'],childList:true});
  place();

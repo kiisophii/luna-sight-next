@@ -1143,3 +1143,19 @@ body.on-about { overflow-x: clip; }
 /* (9) Add a site (text button) hover */
 .ls .ls-add:hover { color: #EDEDED; background: rgba(237, 237, 237, .04); }
 .ls-toolbar .tb-tip { bottom: 100%; margin-bottom: 0; }
+
+/* ================================================================ Issues #90 #91 (live QA) */
+/* #90 small buttons keep their look but get a larger hit area: >= 32 px with a mouse, >= 44 px on touch screens */
+.cmp-tbl .col-h .unpin, .info, .fc-i, .tc-i, .info-i, .mm-exp, .c1-tog, .ls-detail > header .x { position: relative; }
+.cmp-tbl .col-h .unpin::before, .info::before, .fc-i::before, .tc-i::before, .info-i::before, .mm-exp::before, .c1-tog::before, .ls-detail > header .x::before {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 32px; height: 32px; transform: translate(-50%, -50%); }
+@media (pointer: coarse) {
+  .cmp-tbl .col-h .unpin::before, .info::before, .fc-i::before, .tc-i::before, .info-i::before, .mm-exp::before, .c1-tog::before, .ls-detail > header .x::before, .pk-pin::before { width: 44px; height: 44px; }
+  .pk-pin { position: relative; }
+  .pk-pin::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .cmp-tbl .col-h .unpin { min-width: 24px; min-height: 24px; }
+}
+/* #91 timeline drawn at about 1 px per unit (min 720 wide, scrolls sideways on phones) so labels stay >= 11 px */
+.tl svg { min-width: 720px; }
+.lg-row > span { white-space: normal; min-width: 0; }
+.lg-row .lg-sw { align-self: flex-start; margin-top: 3px; }

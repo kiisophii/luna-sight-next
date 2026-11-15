@@ -1,0 +1,4482 @@
+[
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 59,
+        "height": 23.25,
+        "right": 1116,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1124,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1142,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1231,
+        "y": 253.625,
+        "width": 157,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1231,
+          "y": 253.625,
+          "width": 66,
+          "height": 26,
+          "right": 1297,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Sunlit time"
+        },
+        {
+          "x": 1307,
+          "y": 253.625,
+          "width": 81,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 59,
+        "height": 23.25,
+        "right": 1116,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1124,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1142,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1231,
+        "y": 253.625,
+        "width": 157,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1231,
+          "y": 253.625,
+          "width": 66,
+          "height": 26,
+          "right": 1297,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Sunlit time"
+        },
+        {
+          "x": 1307,
+          "y": 253.625,
+          "width": 81,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 77,
+        "height": 23.25,
+        "right": 1134,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1142,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1160,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1205,
+        "y": 253.625,
+        "width": 183,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1205,
+          "y": 253.625,
+          "width": 80,
+          "height": 26,
+          "right": 1285,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1295,
+          "y": 253.625,
+          "width": 93,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 77,
+        "height": 23.25,
+        "right": 1134,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1142,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1160,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1205,
+        "y": 253.625,
+        "width": 183,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1205,
+          "y": 253.625,
+          "width": 80,
+          "height": 26,
+          "right": 1285,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1295,
+          "y": 253.625,
+          "width": 93,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 41,
+        "height": 23.25,
+        "right": 1098,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1106,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1124,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1237,
+        "y": 253.625,
+        "width": 151,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1237,
+          "y": 253.625,
+          "width": 65,
+          "height": 26,
+          "right": 1302,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Link share"
+        },
+        {
+          "x": 1312,
+          "y": 253.625,
+          "width": 76,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 41,
+        "height": 23.25,
+        "right": 1098,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1106,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1124,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1237,
+        "y": 253.625,
+        "width": 151,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1237,
+          "y": 253.625,
+          "width": 65,
+          "height": 26,
+          "right": 1302,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Link share"
+        },
+        {
+          "x": 1312,
+          "y": 253.625,
+          "width": 76,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 50,
+        "height": 23.25,
+        "right": 1107,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1115,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1133,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1294,
+        "y": 253.625,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 253.625,
+          "width": 37,
+          "height": 26,
+          "right": 1331,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Slope"
+        },
+        {
+          "x": 1341,
+          "y": 253.625,
+          "width": 47,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 253.625,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 255,
+        "width": 50,
+        "height": 23.25,
+        "right": 1107,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1115,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1133,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1294,
+        "y": 253.625,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 253.625,
+          "width": 37,
+          "height": 26,
+          "right": 1331,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Slope"
+        },
+        {
+          "x": 1341,
+          "y": 253.625,
+          "width": 47,
+          "height": 26,
+          "right": 1388,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1091,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1109,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1294,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1329,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "일조율"
+        },
+        {
+          "x": 1339,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1091,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1109,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1294,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1329,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "일조율"
+        },
+        {
+          "x": 1339,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1113,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1121,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1139,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1280,
+        "y": 252.4375,
+        "width": 108,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1280,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1315,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "가시율"
+        },
+        {
+          "x": 1325,
+          "y": 252.4375,
+          "width": 63,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1113,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1121,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1139,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1280,
+        "y": 252.4375,
+        "width": 108,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1280,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1315,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "가시율"
+        },
+        {
+          "x": 1325,
+          "y": 252.4375,
+          "width": 63,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 39,
+        "height": 23.25,
+        "right": 1096,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1104,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1122,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1294,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1329,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "교신율"
+        },
+        {
+          "x": 1339,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 39,
+        "height": 23.25,
+        "right": 1096,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1104,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1122,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1294,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1294,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1329,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "교신율"
+        },
+        {
+          "x": 1339,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1091,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1109,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1319,
+        "y": 252.4375,
+        "width": 69,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1319,
+          "y": 252.4375,
+          "width": 24,
+          "height": 26,
+          "right": 1343,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "경사"
+        },
+        {
+          "x": 1353,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 252.4375,
+        "width": 331,
+        "height": 33,
+        "right": 1388,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 1057,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1091,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1109,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1319,
+        "y": 252.4375,
+        "width": 69,
+        "height": 26,
+        "right": 1388,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1319,
+          "y": 252.4375,
+          "width": 24,
+          "height": 26,
+          "right": 1343,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "경사"
+        },
+        {
+          "x": 1353,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1388,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 59,
+        "height": 23.25,
+        "right": 1004,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1012,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1030,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1071,
+        "y": 253.625,
+        "width": 157,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1071,
+          "y": 253.625,
+          "width": 66,
+          "height": 26,
+          "right": 1137,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Sunlit time"
+        },
+        {
+          "x": 1147,
+          "y": 253.625,
+          "width": 81,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 59,
+        "height": 23.25,
+        "right": 1004,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1006,
+        "y": 257.625,
+        "width": 16,
+        "height": 18,
+        "right": 1022,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1064,
+        "y": 253.625,
+        "width": 164,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1064,
+          "y": 253.625,
+          "width": 72,
+          "height": 26,
+          "right": 1136,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Sunlit time"
+        },
+        {
+          "x": 1138,
+          "y": 253.625,
+          "width": 90,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 53.5,
+        "right": 1228,
+        "bottom": 307.125
+      },
+      "title": {
+        "x": 945,
+        "y": 253.625,
+        "width": 73.75,
+        "height": 46.5,
+        "right": 1018.75,
+        "bottom": 300.125
+      },
+      "info": {
+        "x": 1026.75,
+        "y": 267.875,
+        "width": 18,
+        "height": 18,
+        "right": 1044.75,
+        "bottom": 285.875
+      },
+      "subs": {
+        "x": 1052.75,
+        "y": 263.875,
+        "width": 175.25,
+        "height": 26,
+        "right": 1228,
+        "bottom": 289.875
+      },
+      "buttons": [
+        {
+          "x": 1052.75,
+          "y": 263.875,
+          "width": 76.421875,
+          "height": 26,
+          "right": 1129.171875,
+          "bottom": 289.875,
+          "font": "12.5px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1139.171875,
+          "y": 263.875,
+          "width": 88.828125,
+          "height": 26,
+          "right": 1228,
+          "bottom": 289.875,
+          "font": "12.5px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 77,
+        "height": 23.25,
+        "right": 1022,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1024,
+        "y": 257.625,
+        "width": 16,
+        "height": 18,
+        "right": 1040,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1042,
+        "y": 253.625,
+        "width": 186,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1042,
+          "y": 253.625,
+          "width": 87,
+          "height": 26,
+          "right": 1129,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1131,
+          "y": 253.625,
+          "width": 104,
+          "height": 26,
+          "right": 1235,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 41,
+        "height": 23.25,
+        "right": 986,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 994,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1012,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1077,
+        "y": 253.625,
+        "width": 151,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1077,
+          "y": 253.625,
+          "width": 65,
+          "height": 26,
+          "right": 1142,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Link share"
+        },
+        {
+          "x": 1152,
+          "y": 253.625,
+          "width": 76,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 41,
+        "height": 23.25,
+        "right": 986,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 988,
+        "y": 257.625,
+        "width": 16,
+        "height": 18,
+        "right": 1004,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1074,
+        "y": 253.625,
+        "width": 154,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1074,
+          "y": 253.625,
+          "width": 68,
+          "height": 26,
+          "right": 1142,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Link share"
+        },
+        {
+          "x": 1144,
+          "y": 253.625,
+          "width": 84,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 50,
+        "height": 23.25,
+        "right": 995,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 1003,
+        "y": 257.625,
+        "width": 18,
+        "height": 18,
+        "right": 1021,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1134,
+        "y": 253.625,
+        "width": 94,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1134,
+          "y": 253.625,
+          "width": 37,
+          "height": 26,
+          "right": 1171,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Slope"
+        },
+        {
+          "x": 1181,
+          "y": 253.625,
+          "width": 47,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "12.5px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 253.625,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 286.625
+      },
+      "title": {
+        "x": 945,
+        "y": 255,
+        "width": 50,
+        "height": 23.25,
+        "right": 995,
+        "bottom": 278.25
+      },
+      "info": {
+        "x": 997,
+        "y": 257.625,
+        "width": 16,
+        "height": 18,
+        "right": 1013,
+        "bottom": 275.625
+      },
+      "subs": {
+        "x": 1136,
+        "y": 253.625,
+        "width": 92,
+        "height": 26,
+        "right": 1228,
+        "bottom": 279.625
+      },
+      "buttons": [
+        {
+          "x": 1136,
+          "y": 253.625,
+          "width": 38,
+          "height": 26,
+          "right": 1174,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Slope"
+        },
+        {
+          "x": 1176,
+          "y": 253.625,
+          "width": 52,
+          "height": 26,
+          "right": 1228,
+          "bottom": 279.625,
+          "font": "14px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 979,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 997,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1134,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1134,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1169,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "일조율"
+        },
+        {
+          "x": 1179,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 979,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 997,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1134,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1134,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1169,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "일조율"
+        },
+        {
+          "x": 1179,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1001,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1009,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1027,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1120,
+        "y": 252.4375,
+        "width": 108,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1120,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1155,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "가시율"
+        },
+        {
+          "x": 1165,
+          "y": 252.4375,
+          "width": 63,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1001,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 1009,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1027,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1120,
+        "y": 252.4375,
+        "width": 108,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1120,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1155,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "가시율"
+        },
+        {
+          "x": 1165,
+          "y": 252.4375,
+          "width": 63,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 39,
+        "height": 23.25,
+        "right": 984,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 992,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1010,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1134,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1134,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1169,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "교신율"
+        },
+        {
+          "x": 1179,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 39,
+        "height": 23.25,
+        "right": 984,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 992,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 1010,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1134,
+        "y": 252.4375,
+        "width": 94,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1134,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1169,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "교신율"
+        },
+        {
+          "x": 1179,
+          "y": 252.4375,
+          "width": 49,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 979,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 997,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1159,
+        "y": 252.4375,
+        "width": 69,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1159,
+          "y": 252.4375,
+          "width": 24,
+          "height": 26,
+          "right": 1183,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "경사"
+        },
+        {
+          "x": 1193,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "production",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 252.4375,
+        "width": 283,
+        "height": 33,
+        "right": 1228,
+        "bottom": 285.4375
+      },
+      "title": {
+        "x": 945,
+        "y": 253.8125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 277.0625
+      },
+      "info": {
+        "x": 979,
+        "y": 256.4375,
+        "width": 18,
+        "height": 18,
+        "right": 997,
+        "bottom": 274.4375
+      },
+      "subs": {
+        "x": 1159,
+        "y": 252.4375,
+        "width": 69,
+        "height": 26,
+        "right": 1228,
+        "bottom": 278.4375
+      },
+      "buttons": [
+        {
+          "x": 1159,
+          "y": 252.4375,
+          "width": 24,
+          "height": 26,
+          "right": 1183,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "경사"
+        },
+        {
+          "x": 1193,
+          "y": 252.4375,
+          "width": 35,
+          "height": 26,
+          "right": 1228,
+          "bottom": 278.4375,
+          "font": "12.5px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 59,
+        "height": 23.25,
+        "right": 1116,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1122,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1144,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1190,
+        "y": 275.625,
+        "width": 183,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1190,
+          "y": 275.625,
+          "width": 81,
+          "height": 26,
+          "right": 1271,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Sunlit share"
+        },
+        {
+          "x": 1281,
+          "y": 275.625,
+          "width": 92,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 59,
+        "height": 23.25,
+        "right": 1116,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1122,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1144,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1190,
+        "y": 275.625,
+        "width": 183,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1190,
+          "y": 275.625,
+          "width": 81,
+          "height": 26,
+          "right": 1271,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Sunlit share"
+        },
+        {
+          "x": 1281,
+          "y": 275.625,
+          "width": 92,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 77,
+        "height": 23.25,
+        "right": 1134,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1140,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1162,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1168,
+        "y": 275.625,
+        "width": 205,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1168,
+          "y": 275.625,
+          "width": 89,
+          "height": 26,
+          "right": 1257,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1267,
+          "y": 275.625,
+          "width": 106,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 77,
+        "height": 23.25,
+        "right": 1134,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1140,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1162,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1168,
+        "y": 275.625,
+        "width": 205,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1168,
+          "y": 275.625,
+          "width": 89,
+          "height": 26,
+          "right": 1257,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1267,
+          "y": 275.625,
+          "width": 106,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 88,
+        "height": 23.25,
+        "right": 1145,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1151,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1173,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1207,
+        "y": 275.625,
+        "width": 166,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1207,
+          "y": 275.625,
+          "width": 70,
+          "height": 26,
+          "right": 1277,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Link share"
+        },
+        {
+          "x": 1287,
+          "y": 275.625,
+          "width": 86,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 88,
+        "height": 23.25,
+        "right": 1145,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1151,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1173,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1207,
+        "y": 275.625,
+        "width": 166,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1207,
+          "y": 275.625,
+          "width": 70,
+          "height": 26,
+          "right": 1277,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Link share"
+        },
+        {
+          "x": 1287,
+          "y": 275.625,
+          "width": 86,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 50,
+        "height": 23.25,
+        "right": 1107,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1113,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1135,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1269,
+        "y": 275.625,
+        "width": 104,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1269,
+          "y": 275.625,
+          "width": 40,
+          "height": 26,
+          "right": 1309,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Slope"
+        },
+        {
+          "x": 1319,
+          "y": 275.625,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 275.625,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 1057,
+        "y": 277,
+        "width": 50,
+        "height": 23.25,
+        "right": 1107,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1113,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1135,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1269,
+        "y": 275.625,
+        "width": 104,
+        "height": 26,
+        "right": 1373,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1269,
+          "y": 275.625,
+          "width": 40,
+          "height": 26,
+          "right": 1309,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Slope"
+        },
+        {
+          "x": 1319,
+          "y": 275.625,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1089,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1111,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1271,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1271,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1309,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "일조율"
+        },
+        {
+          "x": 1319,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1089,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1111,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1271,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1271,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1309,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "일조율"
+        },
+        {
+          "x": 1319,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1113,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1119,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1141,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1255,
+        "y": 273.828125,
+        "width": 118,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1255,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1293,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "가시율"
+        },
+        {
+          "x": 1303,
+          "y": 273.828125,
+          "width": 70,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1113,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1119,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1141,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1255,
+        "y": 273.828125,
+        "width": 118,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1255,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1293,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "가시율"
+        },
+        {
+          "x": 1303,
+          "y": 273.828125,
+          "width": 70,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 39,
+        "height": 23.25,
+        "right": 1096,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1102,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1124,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1271,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1271,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1309,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "교신율"
+        },
+        {
+          "x": 1319,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 39,
+        "height": 23.25,
+        "right": 1096,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1102,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1124,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1271,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1271,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1309,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "교신율"
+        },
+        {
+          "x": 1319,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1089,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1111,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1299,
+        "y": 273.828125,
+        "width": 74,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1299,
+          "y": 273.828125,
+          "width": 26,
+          "height": 26,
+          "right": 1325,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "경사"
+        },
+        {
+          "x": 1335,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1440,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 1057,
+        "y": 273.828125,
+        "width": 316,
+        "height": 33,
+        "right": 1373,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 1057,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 1083,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1089,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1111,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1299,
+        "y": 273.828125,
+        "width": 74,
+        "height": 26,
+        "right": 1373,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1299,
+          "y": 273.828125,
+          "width": 26,
+          "height": 26,
+          "right": 1325,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "경사"
+        },
+        {
+          "x": 1335,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1373,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 56.25,
+        "right": 1213,
+        "bottom": 331.875
+      },
+      "title": {
+        "x": 945,
+        "y": 275.625,
+        "width": 59,
+        "height": 23.25,
+        "right": 1004,
+        "bottom": 298.875
+      },
+      "info": {
+        "x": 1010,
+        "y": 276.25,
+        "width": 22,
+        "height": 22,
+        "right": 1032,
+        "bottom": 298.25
+      },
+      "subs": {
+        "x": 1030,
+        "y": 298.875,
+        "width": 183,
+        "height": 26,
+        "right": 1213,
+        "bottom": 324.875
+      },
+      "buttons": [
+        {
+          "x": 1030,
+          "y": 298.875,
+          "width": 81,
+          "height": 26,
+          "right": 1111,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Sunlit share"
+        },
+        {
+          "x": 1121,
+          "y": 298.875,
+          "width": 92,
+          "height": 26,
+          "right": 1213,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 945,
+        "y": 277,
+        "width": 59,
+        "height": 23.25,
+        "right": 1004,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1006,
+        "y": 277.625,
+        "width": 16,
+        "height": 22,
+        "right": 1022,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1042,
+        "y": 275.625,
+        "width": 171,
+        "height": 26,
+        "right": 1213,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1042,
+          "y": 275.625,
+          "width": 79,
+          "height": 26,
+          "right": 1121,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Sunlit share"
+        },
+        {
+          "x": 1123,
+          "y": 275.625,
+          "width": 90,
+          "height": 26,
+          "right": 1213,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest dark"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 56.25,
+        "right": 1213,
+        "bottom": 331.875
+      },
+      "title": {
+        "x": 945,
+        "y": 275.625,
+        "width": 77,
+        "height": 23.25,
+        "right": 1022,
+        "bottom": 298.875
+      },
+      "info": {
+        "x": 1028,
+        "y": 276.25,
+        "width": 22,
+        "height": 22,
+        "right": 1050,
+        "bottom": 298.25
+      },
+      "subs": {
+        "x": 1008,
+        "y": 298.875,
+        "width": 205,
+        "height": 26,
+        "right": 1213,
+        "bottom": 324.875
+      },
+      "buttons": [
+        {
+          "x": 1008,
+          "y": 298.875,
+          "width": 89,
+          "height": 26,
+          "right": 1097,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1107,
+          "y": 298.875,
+          "width": 106,
+          "height": 26,
+          "right": 1213,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 945,
+        "y": 277,
+        "width": 77,
+        "height": 23.25,
+        "right": 1022,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1024,
+        "y": 277.625,
+        "width": 16,
+        "height": 22,
+        "right": 1040,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1042,
+        "y": 275.625,
+        "width": 171,
+        "height": 26,
+        "right": 1213,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1042,
+          "y": 275.625,
+          "width": 87,
+          "height": 26,
+          "right": 1129,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Visible share"
+        },
+        {
+          "x": 1131,
+          "y": 275.625,
+          "width": 104,
+          "height": 26,
+          "right": 1235,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest hidden"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 56.25,
+        "right": 1213,
+        "bottom": 331.875
+      },
+      "title": {
+        "x": 945,
+        "y": 275.625,
+        "width": 88,
+        "height": 23.25,
+        "right": 1033,
+        "bottom": 298.875
+      },
+      "info": {
+        "x": 1039,
+        "y": 276.25,
+        "width": 22,
+        "height": 22,
+        "right": 1061,
+        "bottom": 298.25
+      },
+      "subs": {
+        "x": 1047,
+        "y": 298.875,
+        "width": 166,
+        "height": 26,
+        "right": 1213,
+        "bottom": 324.875
+      },
+      "buttons": [
+        {
+          "x": 1047,
+          "y": 298.875,
+          "width": 70,
+          "height": 26,
+          "right": 1117,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Link share"
+        },
+        {
+          "x": 1127,
+          "y": 298.875,
+          "width": 86,
+          "height": 26,
+          "right": 1213,
+          "bottom": 324.875,
+          "font": "14px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 945,
+        "y": 277,
+        "width": 88,
+        "height": 23.25,
+        "right": 1033,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1035,
+        "y": 277.625,
+        "width": 16,
+        "height": 22,
+        "right": 1051,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1059,
+        "y": 275.625,
+        "width": 154,
+        "height": 26,
+        "right": 1213,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1059,
+          "y": 275.625,
+          "width": 68,
+          "height": 26,
+          "right": 1127,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Link share"
+        },
+        {
+          "x": 1129,
+          "y": 275.625,
+          "width": 84,
+          "height": 26,
+          "right": 1213,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Longest gap"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 945,
+        "y": 277,
+        "width": 50,
+        "height": 23.25,
+        "right": 995,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 1001,
+        "y": 277.625,
+        "width": 22,
+        "height": 22,
+        "right": 1023,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1109,
+        "y": 275.625,
+        "width": 104,
+        "height": 26,
+        "right": 1213,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1109,
+          "y": 275.625,
+          "width": 40,
+          "height": 26,
+          "right": 1149,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Slope"
+        },
+        {
+          "x": 1159,
+          "y": 275.625,
+          "width": 54,
+          "height": 26,
+          "right": 1213,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "en",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 275.625,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 308.625
+      },
+      "title": {
+        "x": 945,
+        "y": 277,
+        "width": 50,
+        "height": 23.25,
+        "right": 995,
+        "bottom": 300.25
+      },
+      "info": {
+        "x": 997,
+        "y": 277.625,
+        "width": 16,
+        "height": 22,
+        "right": 1013,
+        "bottom": 299.625
+      },
+      "subs": {
+        "x": 1121,
+        "y": 275.625,
+        "width": 92,
+        "height": 26,
+        "right": 1213,
+        "bottom": 301.625
+      },
+      "buttons": [
+        {
+          "x": 1121,
+          "y": 275.625,
+          "width": 38,
+          "height": 26,
+          "right": 1159,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Slope"
+        },
+        {
+          "x": 1161,
+          "y": 275.625,
+          "width": 52,
+          "height": 26,
+          "right": 1213,
+          "bottom": 301.625,
+          "font": "14px",
+          "text": "Horizon"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 977,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 999,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1111,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1111,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1149,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "일조율"
+        },
+        {
+          "x": 1159,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "sun",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 977,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 999,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1111,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1111,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1149,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "일조율"
+        },
+        {
+          "x": 1159,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 어둠"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "100%",
+        "82%",
+        "48%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1001,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1007,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1029,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1095,
+        "y": 273.828125,
+        "width": 118,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1095,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1133,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "가시율"
+        },
+        {
+          "x": 1143,
+          "y": 273.828125,
+          "width": 70,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "earth",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 56,
+        "height": 23.25,
+        "right": 1001,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 1007,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1029,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1095,
+        "y": 273.828125,
+        "width": 118,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1095,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1133,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "가시율"
+        },
+        {
+          "x": 1143,
+          "y": 273.828125,
+          "width": 70,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 안 보임"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "44%",
+        "51%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 39,
+        "height": 23.25,
+        "right": 984,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 990,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1012,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1111,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1111,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1149,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "교신율"
+        },
+        {
+          "x": 1159,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "relay",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 39,
+        "height": 23.25,
+        "right": 984,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 990,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 1012,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1111,
+        "y": 273.828125,
+        "width": 102,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1111,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1149,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "교신율"
+        },
+        {
+          "x": 1159,
+          "y": 273.828125,
+          "width": 54,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "최장 끊김"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "47%",
+        "77%",
+        "100%"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "before",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 977,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 999,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1139,
+        "y": 273.828125,
+        "width": 74,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1139,
+          "y": 273.828125,
+          "width": 26,
+          "height": 26,
+          "right": 1165,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "경사"
+        },
+        {
+          "x": 1175,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  },
+  {
+    "mode": "pr97",
+    "width": 1280,
+    "lang": "ko",
+    "cat": "terrain",
+    "state": "after",
+    "metrics": {
+      "header": {
+        "x": 945,
+        "y": 273.828125,
+        "width": 268,
+        "height": 33,
+        "right": 1213,
+        "bottom": 306.828125
+      },
+      "title": {
+        "x": 945,
+        "y": 275.203125,
+        "width": 26,
+        "height": 23.25,
+        "right": 971,
+        "bottom": 298.453125
+      },
+      "info": {
+        "x": 977,
+        "y": 275.828125,
+        "width": 22,
+        "height": 22,
+        "right": 999,
+        "bottom": 297.828125
+      },
+      "subs": {
+        "x": 1139,
+        "y": 273.828125,
+        "width": 74,
+        "height": 26,
+        "right": 1213,
+        "bottom": 299.828125
+      },
+      "buttons": [
+        {
+          "x": 1139,
+          "y": 273.828125,
+          "width": 26,
+          "height": 26,
+          "right": 1165,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "경사"
+        },
+        {
+          "x": 1175,
+          "y": 273.828125,
+          "width": 38,
+          "height": 26,
+          "right": 1213,
+          "bottom": 299.828125,
+          "font": "14px",
+          "text": "지평선"
+        }
+      ],
+      "overflow": false,
+      "values": [
+        "2.1°",
+        "4.2°",
+        "2.0°"
+      ]
+    },
+    "errors": []
+  }
+]

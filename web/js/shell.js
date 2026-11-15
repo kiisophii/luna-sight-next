@@ -541,3 +541,8 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 // time display info (5-5): the ephemeris note lives in the i button next to the time
 (() => { const b = document.getElementById('hud-i'); if (!b) return; const set = () => { b.title = t('hudSrc'); b.setAttribute('aria-label', t('hudSrc')); };
   ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set(); })();
+
+// Export PDF (5-9): the browser's print dialog; @media print in layout.css lays out the comparison, details and sources
+(() => { const b = document.getElementById('pdf-btn'); if (!b) return;
+  const set = () => { b.title = t('exportPdfTip'); }; ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set();
+  b.addEventListener('click', () => window.print()); })();

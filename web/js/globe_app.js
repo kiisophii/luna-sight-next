@@ -15,7 +15,7 @@ addStrings({
   glWhole: 'Whole Moon', glSouth: 'South pole', glFocus: 'Focused site',
   glZoomIn: 'Zoom in', glZoomOut: 'Zoom out', glViews: 'Globe views',
   glLoading: 'Loading 3D Moon…', glTiles: 'Loading terrain', glFail: '3D view unavailable in this browser (WebGL). All numbers below still work.',
-  glWheel: 'Click the globe first, then scroll to zoom (or use + / −).',
+  glWheel: 'Ctrl + scroll to zoom', glWheelMac: '⌘ + scroll to zoom',
   glToAnalysis: 'Analysis window ↓',
   glHint: 'Drag = move · right-drag or Shift-drag = rotate & tilt · wheel / pinch = zoom (click the globe first) · click a site marker to analyze it below. ' +
     'Lighting and shadows use the selected time. Sun/Earth icons are enlarged. Terrain: LOLA LDEM_64 (1 km) everywhere, SLDEM2015 / PGDA patches (to 34–67 m) around catalogue sites.',
@@ -24,7 +24,7 @@ addStrings({
   glWhole: '달 전체', glSouth: '남극', glFocus: '선택한 착륙지',
   glZoomIn: '확대', glZoomOut: '축소', glViews: '지구본 보기',
   glLoading: '3D 달 불러오는 중…', glTiles: '지형 불러오는 중', glFail: '이 브라우저에서는 3D 보기를 쓸 수 없다(WebGL). 아래 수치는 그대로 쓸 수 있다.',
-  glWheel: '지구본을 먼저 클릭한 뒤 스크롤하면 확대된다 (+ / − 버튼도 가능).',
+  glWheel: 'Ctrl + 스크롤로 확대', glWheelMac: '⌘ + 스크롤로 확대',
   glToAnalysis: '분석 기간 ↓',
   glHint: '드래그 = 이동 · 오른쪽 드래그 또는 Shift 드래그 = 회전·기울이기 · 휠/핀치 = 확대 (먼저 지구본 클릭) · 착륙지 표시를 누르면 아래에서 분석. ' +
     '빛과 그림자는 선택한 시각 기준. 해·지구 아이콘은 크게 그림. 지형: 전체 LOLA LDEM_64(1 km), 착륙지 주변은 SLDEM2015 / PGDA(34–67 m).',
@@ -72,7 +72,7 @@ function wheelHint() {
   if (now - hintLast < 4000) return;
   hintLast = now;
   const h = stage.querySelector('.gl-hint');
-  h.textContent = t('glWheel'); h.hidden = false;
+  h.textContent = t(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? 'glWheelMac' : 'glWheel'); h.hidden = false;
   clearTimeout(hintTimer); hintTimer = setTimeout(() => { h.hidden = true; }, 2200);
 }
 
@@ -110,7 +110,7 @@ async function start() {
       hour: LLSN().now(),
       sites: st.sites, ephem: st.ephem, ephemMeta: st.ephemMeta,
       lang: getLang(),
-      wheelNeedsFocus: true,
+      wheelNeedsFocus: true, wheelNeedsCtrl: true,
       hud: false,
       // site names stay clear of the floating panels (3-column layout): px covered at the left / right / top of the stage
       // map area = between the left panel and the tray (desktop layout); chips stay inside it, the 3D centre sits in its middle

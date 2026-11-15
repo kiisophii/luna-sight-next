@@ -1,0 +1,160 @@
+{
+  "testedAt": "2026-11-15T13:51:49.251Z",
+  "baseline": null,
+  "scope": "Local integration app, fixed camera; Windows WebKit is not actual Safari/iOS hardware",
+  "results": [
+    {
+      "name": "chromium-1280-en-elev",
+      "engine": "chromium",
+      "browserVersion": "151.0.7922.34",
+      "width": 1280,
+      "height": 800,
+      "lang": "en",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [
+        "[.WebGL-0x2c9c02ab6400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x2c9c02ab6400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x2c9c02ab6400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x2c9c02ab6400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": {
+          "x": 656,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 908,
+          "bottom": 370,
+          "left": 656
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.234375,
+          "y": 378,
+          "width": 240,
+          "height": 211,
+          "top": 378,
+          "right": 877.234375,
+          "bottom": 589,
+          "left": 637.234375
+        },
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    },
+    {
+      "name": "webkit-1280-en-elev",
+      "engine": "webkit",
+      "browserVersion": "26.5",
+      "width": 1280,
+      "height": 800,
+      "lang": "en",
+      "layer": "elev",
+      "fold": false,
+      "status": "PASS",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "warnings": [],
+      "before": {
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "legend": {
+          "x": 656,
+          "y": 338,
+          "width": 252,
+          "height": 32,
+          "top": 338,
+          "right": 908,
+          "bottom": 370,
+          "left": 656
+        },
+        "legendOverlap": false,
+        "hitTargetIsButton": true
+      },
+      "nodeDuringPress": {
+        "sameButton": true,
+        "sameTextNode": true,
+        "childReplacements": 0
+      },
+      "firstClickOpened": true,
+      "panel": {
+        "rect": {
+          "x": 637.25,
+          "y": 378,
+          "width": 240,
+          "height": 211,
+          "top": 378,
+          "right": 877.25,
+          "bottom": 589,
+          "left": 637.25
+        },
+        "button": {
+          "x": 636.625,
+          "y": 593.28125,
+          "width": 41.546875,
+          "height": 26,
+          "top": 593.28125,
+          "right": 678.171875,
+          "bottom": 619.28125,
+          "left": 636.625
+        },
+        "rows": 16,
+        "overlaps": [],
+        "direction": "above",
+        "minRowHeight": 32,
+        "scrollable": true
+      },
+      "expectedSelection": "ARTEMIS_SLATER_PLAIN",
+      "lastRowHit": true,
+      "selected": "ARTEMIS_SLATER_PLAIN"
+    }
+  ]
+}

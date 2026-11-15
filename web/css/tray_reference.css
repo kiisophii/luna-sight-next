@@ -1,0 +1,60 @@
+/* Jiyong: four approved comparison-tray screenshots, 2026-11-15.
+   Scoped surface; other panels and scientific data are unchanged. */
+html body.ls #ls-tray.tray-reference { padding:16px; }
+html body.ls #ls-tray.tray-reference > .ls-card-head { margin-right:0; }
+html body.ls #ls-tray.tray-reference .tray-main { margin-right:30px; margin-top:33px; gap:15px; overflow:clip; min-width:0; }
+html body.ls #ls-tray.tray-reference .tray-period { margin:-12px 0 0; }
+html body.ls #ls-tray.tray-reference .tray-cat { margin-top:11px; gap:20px; }
+html body.ls #ls-tray.tray-reference .tc-tabs { grid-template-columns:77fr 89fr 61fr 68fr; }
+html body.ls #ls-tray.tray-reference .tc-tabs button { white-space:nowrap; }
+html body.ls #ls-tray.tray-reference .tc-tabs button::after { background:#777; }
+html body.ls #ls-tray.tray-reference .tc-tabs button[aria-pressed="true"]::after { background:var(--ul); }
+html body.ls #ls-tray.tray-reference .tc-scroll { margin-right:-24px; padding-right:24px; gap:10px; overflow-x:hidden; overflow-y:auto; scrollbar-gutter:stable; }
+html body.ls #ls-tray.tray-reference .tc-h { width:auto; margin:0; gap:6px; padding-bottom:10px; flex-wrap:nowrap; }
+html body.ls #ls-tray.tray-reference .tc-i { width:22px; padding:0; }
+html body.ls #ls-tray.tray-reference .tc-subs { margin-left:auto; gap:10px; flex:0 1 auto; flex-wrap:nowrap; }
+html body.ls #ls-tray.tray-reference .tc-subs button { font-size:14px; white-space:nowrap; }
+html body.ls #ls-tray.tray-reference [data-category="earth"] .tc-h,
+html body.ls #ls-tray.tray-reference [data-category="relay"] .tc-h { flex-wrap:wrap; row-gap:20px; }
+html body.ls #ls-tray.tray-reference [data-category="earth"] .tc-subs,
+html body.ls #ls-tray.tray-reference [data-category="relay"] .tc-subs { flex-basis:100%; margin-left:0; justify-content:space-between; gap:8px; }
+html body.ls #ls-tray.tray-reference .tc-desc,
+html body.ls #ls-tray.tray-reference .tc-body { margin:0; flex:none; overflow:visible; }
+html body.ls #ls-tray.tray-reference .tc-chart { width:100%; height:100px; }
+html body.ls #ls-tray.tray-reference .tc-rows { width:100%; }
+html body.ls #ls-tray.tray-reference .tc-row { display:grid; grid-template-columns:24px 24px minmax(0,1fr) max-content; column-gap:10px; min-height:42px; padding:4px; border-radius:6px 6px 0 0; }
+html body.ls #ls-tray.tray-reference .tc-sw { width:24px; height:6px; grid-column:1; grid-row:1; }
+html body.ls #ls-tray.tray-reference .tc-chip { grid-column:2; grid-row:1; }
+html body.ls #ls-tray.tray-reference .tc-nm { grid-column:3; grid-row:1; font-size:13.5px; }
+html body.ls #ls-tray.tray-reference .tc-val { grid-column:4; grid-row:1; margin:0; color:var(--n-mute) !important; }
+html body.ls #ls-tray.tray-reference [data-category="sun"] .tc-val { color:var(--sun) !important; }
+html body.ls #ls-tray.tray-reference [data-category="earth"] .tc-val { color:var(--earth) !important; }
+html body.ls #ls-tray.tray-reference [data-category="relay"] .tc-val { color:var(--relay) !important; }
+html body.ls #ls-tray.tray-reference .tc-note { grid-column:3 / -1; grid-row:2; margin:0; max-width:none; font:12px/16px var(--font-num); }
+html body.ls #ls-tray.tray-reference .relay-rows .tc-row { min-height:55px; }
+html body.ls #ls-tray.tray-reference .horizon-rows .tc-val { font-size:12px; }
+html body.ls #ls-tray.tray-reference .tc-bar { grid-column:2 / -1; grid-row:2; width:auto; max-width:none; margin:0; }
+html body.ls #ls-tray.tray-reference .tray-more { width:100%; align-self:stretch; }
+@media(max-width:1350px) {
+ html body.ls #ls-tray.tray-reference .tc-h { flex-wrap:wrap; }
+ html body.ls #ls-tray.tray-reference .tc-subs { flex-wrap:wrap; margin-left:0; }
+ html body.ls #ls-tray.tray-reference .tc-subs button { font-size:12px; }
+}
+@media(max-width:1099px) {
+ html body.ls #ls-tray.tray-reference .tray-main { margin-right:0; }
+ html body.ls #ls-tray.tray-reference .tc-scroll { margin-right:0; padding-right:0; overflow:visible; }
+}
+
+/* Use the reference's numeric face for candidate names and readouts. */
+html:lang(en) body.ls #ls-tray.tray-reference { --font-num:"Geist Mono",ui-monospace,Consolas,monospace; }
+html body.ls #ls-tray.tray-reference .tc-nm { font-family:var(--font-num); font-weight:600; }
+
+@media(min-width:1100px) and (max-width:1350px) {
+ html body.ls #ls-tray.tray-reference .tray-main { margin-right:16px; }
+ html body.ls #ls-tray.tray-reference .tray-period { font-size:12px; }
+}
+html body.ls #ls-tray.tray-reference .relay-rows .tc-val { grid-row:1 / 3; align-self:center; }
+
+html body.ls #ls-tray.tray-reference .strips .tc-strip { grid-column:1 / -1; grid-row:2; }
+html body.ls #ls-tray.tray-reference .strips .tc-sub2 { grid-column:1 / -1; grid-row:3; white-space:normal; }
+html body.ls #ls-tray.tray-reference .strips .tc-note { grid-column:3 / -1; }

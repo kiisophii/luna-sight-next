@@ -239,10 +239,10 @@ function compute(lat, lon, label, focus) {
         statusEl.className = 'cu-status err'; statusEl.textContent = `${t('cuErr')}: ${msg.message}`;
         console.warn('custom horizon failed', msg.message); resolve(null); return;
       }
-      const c = `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'} ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;
+      const c = `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'}, ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;   // both hemispheres always shown
       const site = {
         id, group: 'custom', user: true, lat, lon, elev_m: Math.round(msg.h0_m * 10) / 10,
-        name: label || `Point ${c}`, name_ko: label || `내 지점 ${c}`, short: (label || c).slice(0, 14),
+        name: label || `Point ${c}`, name_ko: label || `내 지점 ${c}`, short: label ? label.slice(0, 14) : c,
         source_url: '', coord_quality: 'primary',
         note: msg.polar ? 'User-defined point; horizon computed in the browser from NASA PGDA south-polar terrain + LOLA LDEM_64/16.'
           : 'User-defined point; horizon computed in the browser from LOLA LDEM_64 (~948 m) + LDEM_16.',

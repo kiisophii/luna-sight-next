@@ -78,7 +78,9 @@ export const STR = {
 };
 
 let lang = 'en';
-try { const q = new URLSearchParams(location.search).get('lang'); lang = q || localStorage.getItem('llsn.lang') || 'en'; } catch (e) { /* storage blocked */ }
+try { const q = new URLSearchParams(location.search).get('lang'); lang = q || localStorage.getItem('llsn.lang') || 'en';
+  // a shared link's language is kept: app.js drops ?lang= from the address bar, so a reload would otherwise fall back to the stored one
+  if (q && STR[q]) localStorage.setItem('llsn.lang', q); } catch (e) { /* storage blocked */ }
 if (!STR[lang]) lang = 'en';
 
 export const getLang = () => lang;

@@ -394,8 +394,12 @@ function detailCell(row, site, w) {
   const original = cell(row, site, w, asyncVals);
   const m = w.metrics.get(site.id);
   if (row === 'slope') {
-    const slope = terrainValues.get(site.id)?.landing_slope_deg;
-    return Number.isFinite(slope) ? { v: slope, html: `<span class="val num">${slope.toFixed(1)}<small>°</small></span>` }
+    const d = terrainValues.get(site.id), slope = d?.landing_slope_deg;
+    if (Number.isFinite(slope)) return { v: slope, html: `<span class="val num">${slope.toFixed(1)}<small>°</small></span>` };
+    // outside the fine south-polar DEMs: the coarse 250 m box slope (same fallback as the tray and filters.js)
+    const box = Number(d?.relay_box?.slope_deg);
+    return d?.relay_box?.slope_deg != null && Number.isFinite(box)
+      ? { v: box, html: `<span class="val num">${box.toFixed(1)}<small>°</small></span> <small class="sub">${getLang() === 'ko' ? '250 m 칸' : '250 m box'}</small>` }
       : { html: `<span class="na">${getLang() === 'ko' ? '데이터 필요' : 'Data needed'}</span>` };
   }
   if (!m || m.pending) return original;

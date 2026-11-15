@@ -6,7 +6,7 @@
 // World frame = MOON_ME (x -> lon 0, y -> lon 90E, z -> north), units = km.
 //
 // API (see createGlobe): setTime(hourIndex|Date), flyTo({lat,lon,range,tilt,heading}), focusSite(id),
-//   setExaggeration(k) [display default x3, shown in a persistent note; calculations always use true heights],
+//   setExaggeration(k) [display default x3; calculations always use true heights],
 //   setLang('en'|'ko'), getView(), on(event, fn) [events: 'siteclick', 'view', 'time'], dispose(),
 //   setColorMap(url|null) [data layer instead of the colour kit], screenToLatLon(clientX, clientY).
 // Options: base, hour, view, exaggeration (3), lang ('en'), hud (true),
@@ -606,15 +606,8 @@ if (uLayerA > 0.0 || uElev > 0.5) {
   const chipSun = mk('g3-chip sun', 'Sun'), chipEarth = mk('g3-chip earth', 'Earth');
   const labSun = mk('g3-label sun', 'Sun'), labEarth = mk('g3-label earth', 'Earth');
   const dock = mk('g3-dock', '');
-  const note = document.createElement('div'); note.className = 'g3-note'; note.setAttribute('role', 'note'); dock.appendChild(note);
   const hud = document.createElement('div'); hud.className = 'g3-hud'; dock.appendChild(hud);
   if (opts.hud === false) hud.style.display = 'none';
-  function updateNote() {
-    note.textContent = exag === 1
-      ? (lang === 'ko' ? '실제 높이 (과장 없음)' : 'True heights (no exaggeration)')
-      : (lang === 'ko' ? `높이 ${exag}배 과장 · 보기용 (계산은 실제 높이)` : `Height ×${exag} (display only; calculations use true heights)`);
-  }
-  updateNote();
   for (const [c, t, ic] of [[chipSun, lang === 'ko' ? '태양' : 'Sun', 'sun'], [chipEarth, lang === 'ko' ? '지구' : 'Earth', 'earth']]) c.innerHTML = `<span class="g3-arr">${iconSvg('marker-down', { size: 12 })}</span>${iconSvg(ic, { size: 12 })} ${t}`;
 
   const tmp = v3();
@@ -676,12 +669,22 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     clusterPanel.style.maxHeight=`${Math.floor(ph)}px`;clusterPanel.style.left=`${left}px`;
     clusterPanel.style.top=`${Math.round(down?bBot+4:bTop-4-ph)}px`;
   }
-  // a group of selected candidates shows their numbers in the list colours ('#1 #2'); otherwise '+N'
-  function clusterText(button,members){
+  // declutter() runs every few frames and every 400 ms: rewriting the +N text each time replaced the text node under a
+  // pressed mouse, and the browser then fired no click (first click on +16 sometimes did nothing). Write only on change.
+  // A group made of selected candidates only (up to 4) shows their numbers in the list colours ('#1 #2'); otherwise '+N'.
+  function clusterLab(members){
     const ns=members.map(m=>m.el.dataset.n).filter(Boolean).sort((x,y)=>x-y);
-    const lab=ns.length===members.length&&ns.length<=4?ns.join(','):'+'+members.length;
-    if(button.dataset.lab===lab)return;button.dataset.lab=lab;
-    if(lab[0]==='+')button.textContent=lab;else button.innerHTML=ns.map(n=>`<b style="color:var(--c${n});font-weight:600">#${n}</b>`).join(' ');
+    return ns.length===members.length&&ns.length<=4?{text:ns.map(n=>'#'+n).join(' '),html:ns.map(n=>`<b style="color:var(--c${n});font-weight:600">#${n}</b>`).join(' ')}:{text:'+'+members.length};
+  }
+  function setClusterButton(button,text,members,label,html){
+    if(button.dataset.lab!==text){button.dataset.lab=text;if(html)button.innerHTML=html;else button.textContent=text;}
+    if(button.dataset.members!==members)button.dataset.members=members;
+    if(button.getAttribute('aria-label')!==label)button.setAttribute('aria-label',label);
+  }
+  function placeClusterButton(button,x,y){   // sub-pixel jitter is ignored so a pressed button does not creep away
+    const ox=parseFloat(button.style.left),oy=parseFloat(button.style.top);
+    if(!(Math.abs(ox-x)<0.5))button.style.left=`${x}px`;
+    if(!(Math.abs(oy-y)<0.5))button.style.top=`${y}px`;
   }
   function declutter() {
     const origin=overlay.getBoundingClientRect();
@@ -708,20 +711,19 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     for(const members of groups.filter(g=>g.length>1)){
       const key=members.map(m=>m.s.id).sort().join('|');used.add(key);
       let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster';overlay.append(button);clusterButtons.set(key,button);}
-      clusterText(button,members);button.dataset.members=key;button.setAttribute('aria-label',lang==='ko'?`가까운 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} nearby landing sites`);
+      {const cl=clusterLab(members);setClusterButton(button,cl.text,key,lang==='ko'?`가까운 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} nearby landing sites`,cl.html);}
       button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
       const x=members.reduce((n,m)=>n+m.point.x,0)/members.length,y=members.reduce((n,m)=>n+m.point.y,0)/members.length;
       const bw=button.offsetWidth,bh=button.offsetHeight;
       let px=Math.max(8,Math.min(x,overlay.clientWidth-bw-8)),py=Math.max(8,Math.min(y,overlay.clientHeight-bh-8));
       for(const [dx,dy]of [[0,0],[-bw-8,0],[0,-bh-8],[0,bh+8],[-bw-8,-bh-8]]){const a={x0:origin.left+px+dx,y0:origin.top+py+dy,w:bw,h:bh};if(!kept.some(k=>overlaps(a,k))&&px+dx>=0&&py+dy>=0){px+=dx;py+=dy;break;}}
-      button.style.left=`${px}px`;button.style.top=`${py}px`;kept.push({x0:origin.left+px,y0:origin.top+py,w:bw,h:bh});
+      placeClusterButton(button,px,py);kept.push({x0:origin.left+px,y0:origin.top+py,w:bw,h:bh});
       for(const m of members){clustered.add(m);m.el.style.visibility='hidden';}
     }
     for(const [bi,members]of blocked){
       const key='under:'+bi+':'+members.map(m=>m.s.id).sort().join('|');used.add(key);
       let button=clusterButtons.get(key);if(!button){button=document.createElement('button');button.type='button';button.className='g3-cluster g3-under';overlay.append(button);clusterButtons.set(key,button);}
-      clusterText(button,members);button.dataset.members=members.map(m=>m.s.id).join('|');
-      button.setAttribute('aria-label',lang==='ko'?`패널·상자에 가려진 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} landing sites hidden under a panel`);
+      {const cl=clusterLab(members);setClusterButton(button,cl.text,members.map(m=>m.s.id).join('|'),lang==='ko'?`패널·상자에 가려진 착륙지 ${members.length}곳 선택`:`Choose among ${members.length} landing sites hidden under a panel`,cl.html);}
       button.onclick=e=>{e.stopPropagation();openCluster(button,members);};
       const bw=button.offsetWidth||34,bh=button.offsetHeight||26;
       const mx=members.reduce((n,m)=>n+m.point.x,0)/members.length+origin.left, my=members.reduce((n,m)=>n+m.point.y,0)/members.length+origin.top;   // keep the button near the hidden dots
@@ -736,7 +738,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
         for(let i=1;i<40&&!pick;i++)for(const sg of [1,-1]){const py=ay+sg*i*(bh/2+2);if(py<origin.top+(labelIns?.top||0)+4||py>origin.top+overlay.clientHeight-bh-8)continue;
           if(!kept.some(q=>overlaps({x0:ax,y0:py,w:bw,h:bh},q))){pick=[ax,py];break;}}
         if(!pick)pick=[ax,Math.min(ay,origin.top+overlay.clientHeight-bh-8)];}
-      button.style.left=`${pick[0]-origin.left}px`;button.style.top=`${pick[1]-origin.top}px`;kept.push({x0:pick[0],y0:pick[1],w:bw,h:bh});
+      placeClusterButton(button,pick[0]-origin.left,pick[1]-origin.top);kept.push({x0:pick[0],y0:pick[1],w:bw,h:bh});
     }
     for(const [key,button]of clusterButtons)if(!used.has(key)){if(activeCluster===button)closeCluster();button.remove();clusterButtons.delete(key);}
     const order=candidates.filter(m=>!clustered.has(m)).sort((a,b)=>(b.el.dataset.n?1:0)-(a.el.dataset.n?1:0));
@@ -1059,7 +1061,7 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     hour = hNew;
     updateBodies(); dirty = true; emit('time', hour);
   }
-  function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; updateNote(); dirty = true; }
+  function setExaggeration(x) { exag = x; elevExag.value = x; for (const s of siteEls) s.h = null; dirty = true; }
   function setLang(l) {
     closeCluster();
     lang = l === 'ko' ? 'ko' : 'en';
@@ -1067,7 +1069,6 @@ if (uLayerA > 0.0 || uElev > 0.5) {
       updateSiteLabel(m.s, m.el);
       m.lw = 0;
     }
-    updateNote();
     chipSun.lastChild.textContent = lang === 'ko' ? ' 태양' : ' Sun';
     chipEarth.lastChild.textContent = lang === 'ko' ? ' 지구' : ' Earth';
     dirty = true;

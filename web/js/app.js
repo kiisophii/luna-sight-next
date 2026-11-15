@@ -182,7 +182,7 @@ export function sortedSites() {
 function siteTags(s) {
   const out = [];
   const hz = core.state.horizons.get(s.id);
-  if (s.user) out.push(`<span class="tag user">${t('g_custom')}</span>`);
+  if (s.user && s.group !== 'custom') out.push(`<span class="tag user">${t('g_custom')}</span>`);   // the group label already says "Your sites"
   if (hz && hz.browser && hz.accuracy && hz.accuracy.lower) out.push(`<span class="tag warn" title="${esc(hz.accuracy.text || '')}">${t('lowerAccuracy')}</span>`);
   if (core.horizonMock(s)) out.push(`<span class="tag warn">${t('mockTerrain')}</span>`);
   else if (core.terrainPending(s)) out.push(`<span class="tag warn" title="${esc(t('terrainPendingTip'))}">${t('pendingShort')}</span>`);

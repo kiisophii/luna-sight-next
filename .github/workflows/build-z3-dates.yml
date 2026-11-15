@@ -54,7 +54,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/data/detail/dates docs/z3_dates.md docs/z3_dates_generation.json docs/z3_dates_author_check.json docs/z3_checks docs/verification_ledger.md docs/SI_USAGE.md submission/checkin_update_2026-11-15_ko.md
+          git add web/data/detail/dates docs/z3_dates.md docs/z3_dates_generation.json docs/z3_dates_author_check.json docs/z3_checks docs/verification_ledger.md docs/SI_USAGE.md
           git commit -m "Generate complete Z3 exact-hour daily stays and signed slip changes for all 33 sites"
           git push origin HEAD:s7-z3-dates-minchul
       - uses: actions/upload-artifact@v4

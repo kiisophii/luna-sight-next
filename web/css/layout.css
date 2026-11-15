@@ -1336,3 +1336,48 @@ body.on-about .ls-export { display: none; }
 @media (min-width: 1440px) { .ls-toolbar .tb-time { width: clamp(80px, calc(var(--mapW) - 465px), 280px); } }
 .ls-tabs-top { gap: 26px; }
 .c2-bar .info-i { display: none; }   /* the copy has no i here; sort definitions are in the condition i texts and About */
+
+/* Bundle 13 — minimap only. Dimensions/position are constrained by minimap_drag.js. */
+.ls-minimap { width:222px; height:228px; padding:0; border-radius:8px; background:rgba(18,18,19,.86); border:1px solid rgba(255,255,255,.10); box-shadow:0 10px 30px rgba(0,0,0,.45); transition:width .26s,height .26s,left .26s,top .26s,box-shadow .26s; }
+.ls-minimap.open { width:580px; height:358px; box-shadow:0 14px 36px rgba(0,0,0,.65); }
+.ls-minimap.mm-anim { transition:width .26s,height .26s,left .26s,top .26s,box-shadow .26s; }
+.ls-minimap.dragging { transition:none; }
+.ls-minimap .mm-grip { position:absolute; top:0; left:7px; right:7px; height:17px; margin:0; display:grid; opacity:1; z-index:4; }
+.ls-minimap .mm-grip i { width:28px; height:2px; border:0; border-radius:1px; background:rgba(237,237,237,.35); }
+.ls-minimap .mm-ball { position:absolute; top:16px; left:10px; margin:0; display:block; background:#05070b; cursor:pointer; touch-action:none; }
+.ls-minimap .mm-exp, .ls-minimap.open .mm-exp { left:calc(var(--mm-ball,200px) - 35px); right:auto; top:22px; width:30px; height:30px; border-radius:4px; border:0; background:rgba(58,58,62,.72); color:#ededed; z-index:3; }
+.ls-minimap .mm-exp .ic { width:14px; height:14px; }
+.ls-minimap .mm-side { position:absolute; right:11px; top:17px; bottom:11px; width:var(--mm-panel,214px); display:flex; flex-direction:column; gap:7px; min-height:0; overflow:hidden; }
+.ls-minimap .mm-side[hidden] { display:none; }
+.ls-minimap .mm-coords { display:grid; gap:7px; margin:0; }
+.ls-minimap .mm-coord { display:flex; align-items:center; gap:4px; height:34px; padding:0 6px; border:1px solid rgba(255,255,255,.12); border-radius:6px; min-width:0; }
+.ls-minimap .mm-coord label { font-size:11px; color:#6e6e74; }
+.ls-minimap .mm-coord input { width:0; min-width:0; flex:1; height:28px; border:0; background:transparent; text-align:right; padding:0; font:500 13.5px var(--font-num); appearance:textfield; }
+.ls-minimap .mm-coord input::-webkit-inner-spin-button { appearance:none; }
+.ls-minimap .mm-coord > span { color:#6e6e74; }
+.ls-minimap .mm-hemis { display:flex; gap:2px; }
+.ls-minimap .mm-hemis button { width:22px; height:22px; padding:0; border:0; border-radius:3px; background:transparent; color:#6e6e74; font-size:11px; }
+.ls-minimap .mm-hemis button[aria-pressed=true] { background:#ededed; color:#0a0a0b; }
+.ls-minimap .mm-list-title { border-top:1px solid rgba(255,255,255,.1); padding-top:8px; font-size:12px; font-weight:600; color:#a3a3a8; }
+.ls-minimap .mm-lists { overflow-y:auto; min-height:0; flex:1; overscroll-behavior:contain; }
+.ls-minimap .mm-destination { display:flex; gap:7px; align-items:center; width:100%; min-height:45px; border:0; border-radius:6px; padding:5px 3px; background:transparent; text-align:left; color:#ededed; }
+.ls-minimap .mm-destination:hover { background:rgba(255,255,255,.07); }
+.ls-minimap .mm-dest-icon { font-size:16px; flex:none; }
+.ls-minimap .mm-dest-copy { display:flex; flex-direction:column; min-width:0; flex:1; font-size:13px; font-weight:500; }
+.ls-minimap .mm-dest-copy > span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ls-minimap .mm-dest-copy small { font:400 11px var(--font-num); color:#6e6e74; white-space:nowrap; }
+.ls-minimap .mm-tag { font-size:10.5px; color:#6e6e74; max-width:45px; }
+.ls-minimap .mm-err { margin:0; color:var(--bad); font-size:11px; max-height:44px; overflow:auto; }
+.ls-minimap .mm-err:empty { display:none; }
+.ls-minimap .mm-an { font-size:11px; min-height:26px; padding:3px; }
+.ls-minimap .mm-resize { position:absolute; z-index:5; touch-action:none; }
+.ls-minimap .mm-n,.ls-minimap .mm-s { left:16px; right:16px; height:6px; cursor:ns-resize; }
+.ls-minimap .mm-n { top:0; } .ls-minimap .mm-s { bottom:0; }
+.ls-minimap .mm-e,.ls-minimap .mm-w { top:16px; bottom:16px; width:6px; cursor:ew-resize; }
+.ls-minimap .mm-e { right:0; } .ls-minimap .mm-w { left:0; }
+.ls-minimap .mm-ne,.ls-minimap .mm-nw,.ls-minimap .mm-se,.ls-minimap .mm-sw { width:16px; height:16px; }
+.ls-minimap .mm-ne,.ls-minimap .mm-nw { top:0; } .ls-minimap .mm-se,.ls-minimap .mm-sw { bottom:0; }
+.ls-minimap .mm-ne,.ls-minimap .mm-se { right:0; } .ls-minimap .mm-nw,.ls-minimap .mm-sw { left:0; }
+.ls-minimap .mm-nw,.ls-minimap .mm-se { cursor:nwse-resize; } .ls-minimap .mm-ne,.ls-minimap .mm-sw { cursor:nesw-resize; }
+.ls-minimap :focus-visible { outline:2px solid #ededed; outline-offset:-2px; }
+@media (prefers-reduced-motion:reduce) { .ls-minimap,.ls-minimap.mm-anim { transition:none; } }

@@ -1,0 +1,82 @@
+1440 en closed PASS
+1440 en open PASS
+1440 ko closed PASS
+1440 ko open PASS
+1280 en closed PASS
+1280 en open PASS
+1280 ko closed PASS
+1280 ko open PASS
+[
+  {
+    "width": 1440,
+    "language": "en",
+    "closed": {
+      "x": 798,
+      "y": 64,
+      "width": 222,
+      "height": 228
+    },
+    "expanded": {
+      "x": 440,
+      "y": 64,
+      "width": 580,
+      "height": 358
+    },
+    "page_errors": [],
+    "checks": "8 pointer resize handles, independent size persistence, coordinate validation/hemispheres, flyTo arguments, poles/catalogue, Escape, keyboard move/reset, no overflow"
+  },
+  {
+    "width": 1440,
+    "language": "ko",
+    "closed": {
+      "x": 798,
+      "y": 64,
+      "width": 222,
+      "height": 228
+    },
+    "expanded": {
+      "x": 440,
+      "y": 64,
+      "width": 580,
+      "height": 358
+    },
+    "page_errors": [],
+    "checks": "8 pointer resize handles, independent size persistence, coordinate validation/hemispheres, flyTo arguments, poles/catalogue, Escape, keyboard move/reset, no overflow"
+  },
+  {
+    "width": 1280,
+    "language": "en",
+    "closed": {
+      "x": 686,
+      "y": 64,
+      "width": 222,
+      "height": 228
+    },
+    "expanded": {
+      "x": 368,
+      "y": 64,
+      "width": 540,
+      "height": 358
+    },
+    "page_errors": [],
+    "checks": "8 pointer resize handles, independent size persistence, coordinate validation/hemispheres, flyTo arguments, poles/catalogue, Escape, keyboard move/reset, no overflow"
+  },
+  {
+    "width": 1280,
+    "language": "ko",
+    "closed": {
+      "x": 686,
+      "y": 64,
+      "width": 222,
+      "height": 228
+    },
+    "expanded": {
+      "x": 368,
+      "y": 64,
+      "width": 540,
+      "height": 358
+    },
+    "page_errors": [],
+    "checks": "8 pointer resize handles, independent size persistence, coordinate validation/hemispheres, flyTo arguments, poles/catalogue, Escape, keyboard move/reset, no overflow"
+  }
+]

@@ -10,7 +10,17 @@ hydrateIcons();
 window.__llsnGV = new URLSearchParams(location.search).get('gv');
 
 // sort = text-button dropdown (Chaei #8); every other select = the one box dropdown (Chaei #12)
-enhanceSelect(document.getElementById('sort'), { variant: 'text', align: 'left' });
+enhanceSelect(document.getElementById('sort'), {
+  variant: 'text', align: 'left',
+  renderValue: option => {
+    if (!option) return '<span class="dd-val"></span>';
+    const [icons, key] = {
+      both: [['sun', 'earth'], 'leftSortBoth'], sun: [['sun'], 'leftSortSun'],
+      earth: [['earth'], 'leftSortEarth'], dark: [['shadow'], 'leftSortDark'], name: [['sort'], 'leftSortName'],
+    }[option.value] || [['sort'], 'leftSortName'];
+    return `<span class="dd-val left-sort-value"><span class="left-sort-icons" aria-hidden="true">${icons.map(name => iconSvg(name, { size: 12 })).join('')}</span><span>${t(key)}</span></span>`;
+  },
+});
 autoEnhance(document.body);
 
 addStrings({
@@ -24,6 +34,8 @@ addStrings({
   pickOnMap: '⌖ Pick on the 3D Moon', coordNote: 'The point gets its own terrain horizon, computed in your browser from LOLA / PGDA terrain, then joins the list and the comparison. No flat-horizon numbers are ever shown.',
   introSkip: 'SKIP', introLoading: 'LOADING', introTouch: 'TOUCHDOWN', computing: 'Computing the terrain horizon for your point…',
   loadFail: 'Data could not be loaded.', openTray: 'Open comparison',
+  leftSortBoth: 'Together', leftSortSun: 'Sunlit', leftSortEarth: 'Earth', leftSortDark: 'Dark', leftSortName: 'Name',
+  leftEditDate: 'Edit landing date', leftEditPeriod: 'Edit operations period', leftAddCondition: 'Add a condition',
 }, {
   skipBelow: '비교로 건너뛰기', footSources: '출처',
   footNote: '모든 시각은 UTC. 3D의 태양·지구 원반은 보기 쉽게 크게 그렸고, 고도 축은 과장했습니다.',
@@ -35,6 +47,8 @@ addStrings({
   pickOnMap: '⌖ 3D 달에서 찍기', coordNote: '그 지점의 지형 지평선을 LOLA / PGDA 지형으로 브라우저에서 계산한 뒤 목록과 비교에 넣습니다. 평평한 지평선 숫자는 보여 주지 않습니다.',
   introSkip: 'SKIP', introLoading: 'LOADING', introTouch: 'TOUCHDOWN', computing: '내 지점의 지형 지평선 계산 중…',
   loadFail: '자료를 불러오지 못했습니다.', openTray: '비교 열기',
+  leftSortBoth: '동시', leftSortSun: '일조', leftSortEarth: '지구 가시', leftSortDark: '어둠', leftSortName: '이름',
+  leftEditDate: '착륙 날짜 수정', leftEditPeriod: '운용 기간 수정', leftAddCondition: '조건 추가',
 });
 
 const $ = s => document.querySelector(s);
@@ -519,22 +533,35 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
     const day = getLang() === 'ko' ? `${x.getUTCMonth() + 1}월 ${x.getUTCDate()}일` : `${MON.en[x.getUTCMonth()]} ${x.getUTCDate()}`;
     const per = document.getElementById('c1-period'); const pt = per?.options[per.selectedIndex]?.textContent || '';
     void pt; const days = Math.round(w.days * 10) / 10;
-    document.getElementById('c1-sum-1').textContent = `${fill(t('c1Landing'), { d: day })} · ${days}${getLang() === 'ko' ? '일' : ' d'}`;
+    document.getElementById('c1-sum-1').innerHTML = `<button type="button" data-cond-edit="date" aria-label="${esc(t('leftEditDate'))}">${esc(fill(t('c1Landing'), { d: day }))}</button><span aria-hidden="true">·</span><button type="button" data-cond-edit="period" aria-label="${esc(t('leftEditPeriod'))}">${days}${getLang() === 'ko' ? '일' : ' d'}</button>`;
+    const icons = { sun: 'sun', earth: 'earth', dark: 'shadow', slope: 'slope' };
     const on = [...document.querySelectorAll('#llsn-filters .fc-val')].filter(o => !o.classList.contains('unset') && o.dataset.k)
-      .map(o => `${o.closest('.fc-cell').querySelector('.fc-lbl').textContent} ${o.textContent}`);
-    document.getElementById('c1-sum-2').innerHTML = (on.length ? on : [t('c1NoCond')]).map(c => `<i>${c.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]))}</i>`).join('') + `<button type="button" class="c1-add">${t('c1AddCond')}</button>`;
+      .sort((a, b) => ['sun', 'earth', 'dark', 'slope'].indexOf(a.dataset.k) - ['sun', 'earth', 'dark', 'slope'].indexOf(b.dataset.k))
+      .map(o => {
+        const key = o.dataset.k, label = o.closest('.fc-cell').querySelector('.fc-lbl').textContent;
+        const value = o.textContent.replace(/([≥≤])\s+/g, '$1').replace(/\s+(?=[%°])/g, '');
+        return `<button type="button" class="c1-condition" data-cond-edit="${key}" aria-label="${esc(`${label}: ${value}`)}" title="${esc(`${label}: ${value}`)}">${iconSvg(icons[key], { size: 12 })}<span>${esc(value)}</span></button>`;
+      });
+    document.getElementById('c1-sum-2').innerHTML = (on.length ? on.join('') : `<span class="c1-no-condition">${esc(t('c1NoCond'))}</span>`) + `<button type="button" class="c1-add" aria-label="${esc(t('leftAddCondition'))}">${esc(t('c1AddCond'))}</button>`;
   };
   const sync = () => { const folded = box.classList.contains('folded'); sum.hidden = !folded; if (folded) fillS(); };
   new MutationObserver(sync).observe(box, { attributes: true, attributeFilter: ['class'] });
-  // "+ Condition": open the editor and move focus to its first field; when the editor folds again, focus returns here (a11y)
-  let fromAdd = false;
+  // Keep the integrator's focus return when an editor opened from the summary closes.
+  let returnToSummary = null;
   sum.addEventListener('click', e => {
-    if (!e.target.closest('.c1-add')) return;
-    fromAdd = true; fb.click();
-    requestAnimationFrame(() => box.querySelector('.ls-foldable')?.querySelector('input, select, button, [tabindex]:not([tabindex="-1"])')?.focus());
+    const button = e.target.closest('[data-cond-edit], .c1-add'); if (!button) return;
+    const key = button.dataset.condEdit;
+    returnToSummary = key ? `[data-cond-edit="${key}"]` : '.c1-add';
+    const selector = key === 'date' ? '#c1-date' : key === 'period'
+      ? '#c1-period + .dd-btn' : `#llsn-filters .fc-val${key ? `[data-k="${key}"]` : ''}`;
+    fb.dataset.userClick = '0'; fb.click();
+    requestAnimationFrame(() => box.querySelector(selector)?.focus());
   });
   new MutationObserver(() => {
-    if (fromAdd && box.classList.contains('folded')) { fromAdd = false; requestAnimationFrame(() => sum.querySelector('.c1-add')?.focus()); }
+    if (returnToSummary && box.classList.contains('folded')) {
+      const selector = returnToSummary; returnToSummary = null;
+      requestAnimationFrame(() => sum.querySelector(selector)?.focus());
+    }
   }).observe(box, { attributes: true, attributeFilter: ['class'] });
   foldLabel(fb, !box.classList.contains('folded'));
   // first view: when sites are already in the comparison, start with the conditions folded (the copy)

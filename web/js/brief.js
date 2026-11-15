@@ -6,8 +6,8 @@
 import * as core from './core.js';
 import { t, getLang } from './i18n.js';
 import { addStrings, whenReady, setFocus, fmtHours, LLSN } from './ui_shared.js';
-import { relayPeriod, stationPeriod, instant, hourBits, gapStats, runs, siteFile, validation, TOWER_H, localGrid, spacingText, getJSON } from './values.js';
-import { verdict, RULE, coordText } from './compare_view.js';
+import { hourBits, gapStats, runs, siteFile, validation, TOWER_H, localGrid, spacingText, getJSON } from './values.js';
+import { coordText } from './compare_view.js';
 import { headline, namedFor, siteLine, hindcastFor, PGDA_URL } from './trust.js';
 
 addStrings({
@@ -108,11 +108,64 @@ addStrings({
   hcTblH: '아폴로: 착륙 순간 태양 고도', hcRobH: '로봇 착륙선: 첫 일몰 vs 보고된 운용 종료',
 });
 
+// ------------------------------------------------------------ design sync bundle 7: Site check shell (one box: head → summary → choose analyses → cards)
+// Shape only, measured from the design reference; numbers come from this build's data. Wording that would claim power or
+// radio performance is replaced (exception ④): "Earth-contact" → "Earth-view", "Ground-station links" → "Ground stations in view".
+addStrings({
+  scKick: 'Site check', scLatLon: 'Latitude/Longitude', scPeriod: 'Analysis period', scChange: 'Change site', scCompare: 'Compare with other sites',
+  sumSun: 'Sunlight', sumEarth: 'Earth view', sumBoth: 'Sun + Earth', sumDark: 'Longest dark',
+  pickH: 'Choose analyses', pickSub: 'Pick as many as you like · {n}/{m}', soon: 'Coming soon',
+  c_time: 'Sunlight & Earth-view time', c_near: 'Nearby-location sensitivity', c_date: 'Landing date & delays', c_relay: 'Relay tower benefit',
+  c_gs: 'Ground stations in view', c_hz: 'Horizon & blocking', c_terrain: 'Slope, roughness & flat areas', c_history: 'Past missions nearby',
+  c_seasons: 'Seasons 2026–2030', c_access: 'Access to science targets', c_routes: 'Routes & obstacles',
+  limH: 'Assumptions & limits', limBase: 'Observer 2 m · hourly steps · terrain {dem}.', srcH: 'Sources', mv: 'Method & validation',
+  mvAll: 'Full validation details', mvNot: 'Not analyzed yet',
+  legSunUp: 'Sun up', legEarthIn: 'Earth in view', legBothIn: 'Sun + Earth', legNone: 'Not visible', rSun: 'Sun', rEarth: 'Earth', rBoth: 'Both',
+  d_history: 'Past missions nearby', d_historyD: 'Three nearest of the 18 actual landers up to 2026-11-15. Great-circle distance on the reference sphere; not route length, access or infrastructure.',
+  src_time: 'NASA LOLA terrain horizons · NAIF DE440s / DE421 ephemeris · data/windows, data/detail/time_stats',
+  src_near: 'NASA LOLA terrain · data/local250, data/local, data/uncertainty · NASA PGDA ±300 m range',
+  src_date: 'NAIF ephemeris + terrain horizons · data/detail/dates, data/date_slip',
+  src_relay: 'NASA LOLA terrain · BEACON concept, NASA Glenn (NTRS 20240014584) · data/relay',
+  src_gs: 'KDSA: KARI kdsa01.tf (NASA NAIF) · DSN: NASA 810-005 · data/korea',
+  src_hz: 'NASA LOLA / PGDA / SLDEM2015 terrain · data/horizon',
+  src_terrain: 'NASA PGDA LOLA DEMs · PGDA 20 m PSR map · data/terrain, data/detail/psr',
+  src_history: 'NASA NSSDCA / LROC and official mission pages · data/detail/history.json',
+  src_seasons: 'NAIF ephemeris + terrain horizons · data/monthly',
+  src_trust: 'NASA PGDA AVGVISIB maps (Mazarico et al. 2011) · ALSJ and mission reports · data/validation.json, data/hindcast.json',
+  src_more: 'This tool’s own data inventory',
+}, {
+  scKick: '착륙지 검증', scLatLon: '위도/경도', scPeriod: '분석 기간', scChange: '착륙지 바꾸기', scCompare: '다른 착륙지와 비교',
+  sumSun: '일조', sumEarth: '지구 보임', sumBoth: '해+지구', sumDark: '최장 어둠',
+  pickH: '분석 고르기', pickSub: '여러 개 고를 수 있어요 · {n}/{m}', soon: '준비 중',
+  c_time: '햇빛·지구 보임 시간', c_near: '주변 위치 민감도', c_date: '착륙일과 지연', c_relay: '중계탑 효과',
+  c_gs: '지상국 가시 시간', c_hz: '지평선·가림', c_terrain: '경사·거칠기·평탄 면적', c_history: '가까운 과거 임무',
+  c_seasons: '계절 2026–2030', c_access: '과학 목표 접근', c_routes: '이동 경로·장애물',
+  limH: '가정과 한계', limBase: '관측 높이 2 m · 1시간 간격 · 지형 {dem}.', srcH: '출처', mv: '방법과 검증',
+  mvAll: '검증 자세히', mvNot: '아직 하지 않은 분석',
+  legSunUp: '햇빛', legEarthIn: '지구 보임', legBothIn: '해+지구', legNone: '안 보임', rSun: '해', rEarth: '지구', rBoth: '둘 다',
+  d_history: '가까운 과거 임무', d_historyD: '2026-11-15까지 실제 착륙한 18개 착륙선 중 가장 가까운 3곳. 기준 구면 위 대원 거리이며 이동 경로·접근성·기반 시설을 뜻하지 않음.',
+  src_time: 'NASA LOLA 지형 지평선 · NAIF DE440s / DE421 천체력 · data/windows, data/detail/time_stats',
+  src_near: 'NASA LOLA 지형 · data/local250, data/local, data/uncertainty · NASA PGDA ±300 m 범위',
+  src_date: 'NAIF 천체력 + 지형 지평선 · data/detail/dates, data/date_slip',
+  src_relay: 'NASA LOLA 지형 · BEACON 개념, NASA Glenn (NTRS 20240014584) · data/relay',
+  src_gs: 'KDSA: KARI kdsa01.tf (NASA NAIF) · DSN: NASA 810-005 · data/korea',
+  src_hz: 'NASA LOLA / PGDA / SLDEM2015 지형 · data/horizon',
+  src_terrain: 'NASA PGDA LOLA DEM · PGDA 20 m PSR 지도 · data/terrain, data/detail/psr',
+  src_history: 'NASA NSSDCA / LROC와 각 임무 공식 페이지 · data/detail/history.json',
+  src_seasons: 'NAIF 천체력 + 지형 지평선 · data/monthly',
+  src_trust: 'NASA PGDA AVGVISIB 지도 (Mazarico et al. 2011) · ALSJ와 임무 보고 · data/validation.json, data/hindcast.json',
+  src_more: '이 도구의 자료 목록',
+});
+// chips in the reference order; 'soon' = no data in this build (shown dimmed, not selectable)
+const PICK = [['time'], ['near'], ['date'], ['relay'], ['gs'], ['hz'], ['terrain'], ['access', 'soon'], ['history'], ['routes', 'soon'], ['seasons']];
+const PICKABLE = PICK.filter(p => !p[1]).map(p => p[0]);
+const CARD_ORDER = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'history', 'seasons', 'trust', 'more'];
+
 // ------------------------------------------------------------ 11/15 detail products (Y terrain, Z1 time stats, Z2 PSR, Z3 dates, Z4 history)
 // Values are read from the files and only rounded for display; nothing is recomputed here.
 addStrings({
   pTerr: 'Landing terrain ▾', d_terrain: 'Landing terrain and surroundings',
-  d_terrainD: 'Slope and roughness from LOLA terrain, the nearest permanently shadowed region and the nearest past landings. Reference values only — not a landing-safety assessment.',
+  d_terrainD: 'Slope and roughness from LOLA terrain and the nearest permanently shadowed region. Reference values only — not a landing-safety assessment.',
   yH: 'Terrain at the landing point', ySlope: 'Lander-scale slope', ySlopeTip: 'Least-squares plane over 3 × 3 terrain samples centred on the catalogue coordinate ({f} m footprint, {r} m DEM). data/terrain/',
   yRad: 'Within', yN: 'samples', yMed: 'median', yP95: '95th %', yMax: 'max', yFlat: 'area ≤ {d}°', yRef: 'reference',
   yFlatTip: '8° and 15° are reference values for comparison only — not landing-safety criteria. Area-weighted share of terrain samples at or below the value.',
@@ -145,7 +198,7 @@ addStrings({
   ndDone: 'now in “Landing terrain”', ndPsrPart: 'PSR distance: 16 south-polar sites; access to targets not analyzed',
 }, {
   pTerr: '착륙 지형 ▾', d_terrain: '착륙 지형과 주변',
-  d_terrainD: 'LOLA 지형으로 본 경사·거칠기, 가장 가까운 영구음영지역, 가장 가까운 과거 착륙지. 참고값이며 착륙 안전성 판정이 아닙니다.',
+  d_terrainD: 'LOLA 지형으로 본 경사·거칠기와 가장 가까운 영구음영지역. 참고값이며 착륙 안전성 판정이 아닙니다.',
   yH: '착륙 지점 지형', ySlope: '착륙선 규모 경사', ySlopeTip: '카탈로그 좌표 중심 3 × 3 지형 표본에 맞춘 최소제곱 평면({f} m 범위, {r} m DEM). data/terrain/',
   yRad: '반경', yN: '표본', yMed: '중앙값', yP95: '95 %', yMax: '최대', yFlat: '{d}° 이하 면적', yRef: '참고값',
   yFlatTip: '8°·15°는 비교용 참고값이며 착륙 안전 기준이 아닙니다. 그 값 이하인 지형 표본의 면적 비율.',
@@ -190,7 +243,7 @@ const P1 = f => (f == null || !isFinite(f) ? '—' : `${(f * 100).toFixed(1)}%`)
 const darkTxt = h => (h < 48 ? `${Math.round(h)} ${getLang() === 'ko' ? '시간' : 'h'}` : `${(h / 24).toFixed(1)} ${getLang() === 'ko' ? '일' : 'd'}`);
 const chip = (k, cls) => `<span class="chip-st ${cls}">${esc(t(k))}</span>`;
 const info = k => `<button type="button" class="info" aria-label="${esc(t(k))}">i<span class="tipx" role="tooltip">${esc(t(k))}</span></button>`;
-const BLOCKS = ['time', 'near', 'terrain', 'date', 'seasons', 'relay', 'gs', 'hz', 'more', 'trust'];
+const BLOCKS = ['time', 'near', 'terrain', 'history', 'date', 'seasons', 'relay', 'gs', 'hz', 'more', 'trust'];
 const open = new Set();
 let current = null, seq = 0;
 
@@ -212,18 +265,56 @@ function demChain(s) {
 }
 
 // ------------------------------------------------------------ head + share
+const IC = {
+  swap: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h9.5M10 2.5 12.5 5 10 7.5M13 11H3.5M6 8.5 3.5 11 6 13.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  bars: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 13.5h11M4.5 11V6.5M8 11V3.5M11.5 11V8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+  link: '<svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.6 9.4a2.6 2.6 0 0 0 3.7 0l2.4-2.4a2.6 2.6 0 0 0-3.7-3.7l-.9.9M9.4 6.6a2.6 2.6 0 0 0-3.7 0L3.3 9a2.6 2.6 0 0 0 3.7 3.7l.9-.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
+  check: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 5 8.6l4.6-5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  chev: '<svg class="ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5l3-3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+const dot = i => isoDay(i).replace(/-/g, '.');
+const ll = s => `${Math.abs(s.lat).toFixed(2)}°${s.lat >= 0 ? 'N' : 'S'} ${Math.abs(s.lon).toFixed(2)}°${s.lon >= 0 ? 'E' : 'W'}`;
+/** "14 d 11 h" with small units (hours below one day: "11 h"). */
+function dh(h) {
+  const ko = getLang() === 'ko', H = Math.round(h), d = Math.floor(H / 24), r = H % 24;
+  const u = x => `<small>${ko ? (x === 'd' ? '일' : '시간') : x}</small>`;
+  return d ? `${d}${u('d')} ${r}${u('h')}` : `${r}${u('h')}`;
+}
 function renderHead(s) {
-  const w = LLSN().window, n = LLSN().pinNo?.(s.id);
+  const w = LLSN().window, hours = w.i1 - w.i0 + 1;
   const opts = [...new Set([...(LLSN().compare?.() || []), s.id])].map(byId).filter(Boolean);
-  $('#ls-brief .brief-head').innerHTML = `<div class="row1">
-      <h2 id="brief-h">${esc(t('briefH'))} : ${n ? `<span class="pin-no">#${n}</span>` : ''}${s.user ? `${esc(t('userPoint'))} (${s.lat.toFixed(2)}°, ${s.lon.toFixed(2)}°)` : esc(nameOf(s))}</h2>
-      <label><span class="sr">${esc(t('briefSel'))}</span><select class="brief-sel" aria-label="${esc(t('briefSel'))}">${opts.map(o => `<option value="${o.id}"${o.id === s.id ? ' selected' : ''}>${LLSN().pinNo?.(o.id) ? `#${LLSN().pinNo(o.id)} ` : ''}${esc(nameOf(o))}</option>`).join('')}</select></label>
-      <button type="button" class="ls-btn copy-link">${esc(t('copyLink'))}</button>
-      <a class="ls-btn" href="#ls-compare">${esc(t('backCmp'))}</a></div>
-    <p class="meta"><span><b>${esc(t('mCoords'))}</b><span class="num">${s.lat.toFixed(4)}°, ${s.lon.toFixed(4)}°</span></span>
-      <span><b>${esc(t('mPeriod'))}</b><span class="num">${isoDay(w.i0)} → ${isoDay(w.i1)} (${(w.days).toFixed(w.days % 1 ? 1 : 0)} d, UTC)</span></span>
-      <span><b>${esc(t('mTime'))}</b><span class="num brief-now">${fmtUTC(LLSN().now())}</span></span>
-      <span><b>${esc(t('mAssume'))}</b>${esc(fill(t('mAssumeTxt'), { dem: demChain(s) }))}</span></p>`;
+  const grp = s.user ? t('userPoint') : (t('g_' + s.group) !== 'g_' + s.group ? t('g_' + s.group) : s.group);
+  $('#ls-brief .brief-head').innerHTML = `<div class="sc-top">
+      <div class="sc-id"><p class="sc-kick">${esc(t('scKick'))} · ${esc(grp)}</p>
+        <h2 id="brief-h" class="sc-name">${s.user ? `${esc(t('userPoint'))} (${s.lat.toFixed(2)}°, ${s.lon.toFixed(2)}°)` : esc(nameOf(s))}</h2>
+        <p class="sc-meta"><span><span class="k">${esc(t('scLatLon'))}</span> <span class="v">${ll(s)}</span></span>
+          <span><span class="k">${esc(t('scPeriod'))}</span> <span class="v">${dot(w.i0)} – ${dot(w.i1)}</span> <small class="v">(${dh(hours)})</small></span></p></div>
+      <div class="sc-act">
+        <span class="sc-change"><span class="sc-btn primary" aria-hidden="true">${IC.swap}${esc(t('scChange'))}</span>
+          <select class="brief-sel" data-dd-skip aria-label="${esc(t('scChange'))}">${opts.map(o => `<option value="${o.id}"${o.id === s.id ? ' selected' : ''}>${LLSN().pinNo?.(o.id) ? `#${LLSN().pinNo(o.id)} ` : ''}${esc(nameOf(o))}</option>`).join('')}</select></span>
+        <a class="sc-btn" href="#ls-compare">${IC.bars}${esc(t('scCompare'))}</a>
+        <button type="button" class="sc-btn ghost copy-link">${IC.link}<span class="lbl">${esc(t('copyLink'))}</span></button></div></div>`;
+}
+/** 7-4: four period values, the same numbers as the comparison table (window metrics). */
+function renderSum(s) {
+  const m = LLSN().window.metrics.get(s.id), ok = m && !m.pending;
+  const pc = f => (ok ? `${Math.round(f * 100)}<small>%</small>` : '—');
+  const cell = (k, v, c) => `<div class="sc-cell"><span class="k">${esc(t(k))}</span><span class="v"${c ? ` style="color:${c}"` : ''}>${v}</span></div>`;
+  $('#ls-brief .sc-sum').innerHTML = cell('sumSun', pc(m?.sun_frac), 'var(--sun)') + cell('sumEarth', pc(m?.earth_frac), 'var(--earth)')
+    + cell('sumBoth', pc(m?.both_frac)) + cell('sumDark', ok ? dh(m.longest_dark_h) : '—');
+}
+/** 7-5: analysis chips; on = card shown below. */
+function renderPick() {
+  const n = PICKABLE.filter(k => open.has(k)).length;
+  $('#ls-brief .sc-pick').innerHTML = `<p class="sc-pick-h"><b>${esc(t('pickH'))}</b> <span>${esc(fill(t('pickSub'), { n, m: PICKABLE.length }))}</span></p>
+    <div class="sc-chips" role="group" aria-label="${esc(t('pickH'))}">${PICK.map(([k, soon]) => (soon
+      ? `<span class="sc-chip soon" aria-disabled="true"><i class="box"></i>${esc(t('c_' + k))}<em>${esc(t('soon'))}</em></span>`
+      : `<button type="button" class="sc-chip" data-chip="${k}" aria-pressed="${open.has(k)}" aria-controls="blk-${k}"><i class="box">${IC.check}</i>${esc(t('c_' + k))}</button>`)).join('')}</div>`;
+}
+/** Card numbers 01, 02 … follow the order of the open cards. */
+function renumber() {
+  let i = 0;
+  CARD_ORDER.forEach(k => { const el = document.getElementById(`blk-${k}`); const no = el?.querySelector('.sc-no'); if (no) no.textContent = el.classList.contains('is-closed') ? '' : String(++i).padStart(2, '0'); });
 }
 function renderShare() {
   const url = LLSN().shareURL?.() || location.href;
@@ -233,29 +324,19 @@ function renderShare() {
 async function copyLink(btn) {
   const url = LLSN().shareURL?.() || location.href;
   try { await navigator.clipboard.writeText(url); } catch (e) { const i = $('#ls-brief .share-row input'); i.select(); document.execCommand?.('copy'); }
-  const old = btn.textContent; btn.textContent = t('copied'); setTimeout(() => { btn.textContent = old; }, 2000);
+  const lbl = btn.querySelector('.lbl') || btn;
+  const old = lbl.textContent; lbl.textContent = t('copied'); setTimeout(() => { lbl.textContent = old; }, 2000);
   window.dispatchEvent(new CustomEvent('llsn:toast', { detail: { key: 'toastCopied' } }));
 }
 
 // ------------------------------------------------------------ bento
-function dailyBars(bits, mask, color, dark = false) {
-  const days = Math.ceil(bits.length / 24), bars = [];
-  for (let d = 0; d < days; d++) {
-    let on = 0, n = 0;
-    for (let k = d * 24; k < Math.min(bits.length, d * 24 + 24); k++) { n++; if ((bits[k] & mask) === mask) on++; }
-    const f = dark ? 1 - on / n : on / n;
-    bars.push(`<i style="height:${Math.max(2, f * 100)}%"></i>`);
-  }
-  const w = LLSN().window;
-  return `<div class="daybars" style="color:${color}" aria-hidden="true">${bars.join('')}</div><div class="daybars-ends"><span>${isoDay(w.i0).slice(5)}</span><span>${esc(t('daily'))}</span><span>${isoDay(w.i1).slice(5)}</span></div>`;
-}
 function pill(k, blk) { return `<button type="button" class="pill" data-open="${blk}" aria-expanded="${open.has(blk)}" aria-controls="blk-${blk}">${esc(t(k))}</button>`; }
 
-async function mapCard(s) {
+async function mapCard(s, inCard = false) {
   const LG = s.user ? null : await localGrid(s.id), loc = LG?.data;
   if (!loc) {
     return `<h3>${esc(t('bMap'))} <span class="r">${chip(s.user ? 'chipUser' : 'chipNone', s.user ? 'user' : 'none')}</span></h3>
-      <p class="lsn-note">${esc(t('bMapNo'))}</p><p class="num">${coordText(s)}</p><div class="pills">${pill('pNear', 'near')}${pill('pTerr', 'terrain')}${pill('pHz', 'hz')}</div>`;
+      <p class="lsn-note">${esc(t('bMapNo'))}</p><p class="num">${coordText(s)}</p>${inCard ? '' : `<div class="pills">${pill('pNear', 'near')}${pill('pTerr', 'terrain')}${pill('pHz', 'hz')}</div>`}`;
   }
   const G = loc.grid, pts = loc.points, N = G.cols, S = 300, cs = S / N;
   const HK = LG.half_km, sp = G.spacing_m, resTxt = t(LG.fine ? 'resFine' : LG.fellBack ? 'resFall' : 'resStd');
@@ -297,78 +378,15 @@ async function mapCard(s) {
     <div style="display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--muted);margin-top:6px"><b style="color:var(--text);font-weight:600">${esc(t('legSun'))}</b> <span class="map-res">${esc(fill(t('resLeg'), { s: spacingText(sp) }))}</span><span class="num">0</span><i style="flex:1;height:8px;border-radius:3px;background:linear-gradient(90deg,${col(0)},${col(.5)},${col(1)})"></i><span class="num">100</span></div>
     <p class="lsn-note" style="margin:2px 0 0">${esc(fill(t('legRange'), { a: P1(Math.min(...vals)), b: P1(Math.max(...vals)) }))}</p>
     <p class="ls-caption" style="margin:6px 0 0">${esc(capTxt)}</p>
-    <div class="pills">${pill('pNear', 'near')}${pill('pTerr', 'terrain')}${pill('pHz', 'hz')}</div>`;
+    ${inCard ? '' : `<div class="pills">${pill('pNear', 'near')}${pill('pTerr', 'terrain')}${pill('pHz', 'hz')}</div>`}`;
 }
 
-function summaryCard(s, ids) {
-  const v = verdict(s.id, ids), m = LLSN().window.metrics.get(s.id);
-  const vf = { sun_frac: x => P(x), earth_frac: x => P(x), both_frac: x => P(x), longest_dark_h: x => darkTxt(x) };
-  const line = (it, plus) => {
-    const val = vf[it.k](m[it.k]);
-    if (it.rule === 'high') return fill(t('sHigh'), { v: val, hi: RULE.directHigh * 100 });
-    if (it.rule === 'dark') return fill(t('sDarkRule'), { v: val, dark: RULE.darkH });
-    if (it.rule === 'low') return fill(t('sLow'), { v: val, lo: RULE.directLow * 100 });
-    return fill(t(plus ? 'sFirst' : 'sLast'), { l: t(it.lbl), v: val, n: it.n });
-  };
-  const n = ids.length;
-  return `<h3><span>${esc(t('bSum'))} · ${esc(fill(t('bSumHead'), { s: v.plus.length, c: v.bang.length }))}</span><span class="r"><span class="verdict${v.good ? '' : ' cond'}">${esc(t(v.good ? 'vGood' : 'vCond'))}</span>${chip('chipWhole', 'period')}</span></h3>
-    <p class="lsn-note" style="margin:0 0 8px">${esc(fill(t('bSumSub'), { n }))}</p>
-    <div class="sum-cols"><ul>${v.plus.length ? v.plus.map(x => `<li class="plus">${esc(line(x, true))}</li>`).join('') : `<li class="muted">${esc(t('bNoneS'))}</li>`}</ul>
-      <ul>${v.bang.length ? v.bang.map(x => `<li class="bang">${esc(line(x, false))}</li>`).join('') : `<li class="muted">${esc(t('bNoneS'))}</li>`}</ul></div>
-    ${n < 2 ? `<p class="lsn-note">${esc(t('bSumOne'))}</p>` : ''}
-    <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">${esc(t('bRule'))}</summary><p class="lsn-note">${esc(fill(t('bRuleTxt'), { hi: RULE.directHigh * 100, lo: RULE.directLow * 100, dark: RULE.darkH }))}</p></details>`;
-}
-
-function nowCard(s) {
-  const i = LLSN().now(), x = instant(s, i), w = LLSN().window;
-  const head = `<h3><span>${esc(t('bNow'))}</span>${chip('chipNow', 'period')}</h3><p class="num lsn-note" style="margin:-4px 0 8px">${fmtUTC(i)}</p>`;
-  if (x.pending) return `${head}<p class="na">${esc(t('terrainPending'))}</p>`;
-  const nx = h => (h == null || i + h > w.i1 ? t('nNone') : fill(t('nNext'), { x: fmtHours(h) }));
-  return `${head}<div class="now-cells">
-    <div class="now-cell sun${x.lit ? ' on' : ''}"><span style="color:var(--sun)">☼ ${esc(t('sunEl'))} <span class="num">${x.sun.el.toFixed(1)}°</span></span><b>${esc(t(x.lit ? 'nSun' : 'nDark'))}</b><span>${esc(nx(x.sunNext))}</span></div>
-    <div class="now-cell earth${x.up ? ' on' : ''}"><span style="color:var(--earth)">◍ ${esc(t('earthEl'))} <span class="num">${x.earth.el.toFixed(1)}°</span></span><b>${esc(t(x.up ? 'nEarth' : 'nNoEarth'))}</b><span>${esc(nx(x.earthNext))}</span></div></div>`;
-}
-
-function kpiCards(s, unc) {
-  const w = LLSN().window, m = w.metrics.get(s.id), bits = hourBits(s, w.i0, w.i1);
-  if (!m || m.pending || !bits) return ['kSun', 'kEarth', 'kBoth', 'kDark'].map(k => `<div class="ls-panel b-kpi"><h3>${esc(t(k))}</h3><p class="na">${esc(t('terrainPending'))}</p></div>`).join('');
-  const gs = gapStats(bits, 1), ge = gapStats(bits, 2), gb = gapStats(bits, 3);
-  const r300 = unc?.ranges?.['300'];
-  const rng = k => (r300 ? `<p class="kpi-range" title="${esc(t('chipLong'))}">${esc(fill(t('kUnc'), { a: k === 'longest_dark_h' ? darkTxt(r300[k].p10) : P1(r300[k].p10), b: k === 'longest_dark_h' ? darkTxt(r300[k].p90) : P1(r300[k].p90) }))}</p>` : '');
-  const big = f => `<div class="kpi-big">${Math.round(f * 100)}<small>%</small></div>`;
-  const dk = m.longest_dark_h;
-  return `
-    <div class="ls-panel b-kpi"><h3><span>${esc(t('kSun'))}</span><span class="r">${info('tipSun')}</span></h3><div style="color:var(--sun)">${big(m.sun_frac)}</div>
-      <p class="kpi-sub">${esc(fill(t('kSunSub'), { h: gs.on, g: gs.count }))}</p>${rng('sun_frac')}${dailyBars(bits, 1, 'var(--sun)')}<div class="pills">${pill('pTime', 'time')}</div></div>
-    <div class="ls-panel b-kpi"><h3><span>${esc(t('kEarth'))}</span><span class="r">${info('tipEarth')}</span></h3><div style="color:var(--earth)">${big(m.earth_frac)}</div>
-      <p class="kpi-sub">${esc(fill(t('kEarthSub'), { g: ge.count, x: darkTxt(ge.longest) }))}</p>${rng('earth_frac')}${dailyBars(bits, 2, 'var(--earth)')}<div class="pills">${pill('pGs', 'gs')}</div></div>
-    <div class="ls-panel b-kpi"><h3><span>${esc(t('kBoth'))}</span><span class="r">${info('tipBoth')}</span></h3><div>${big(m.both_frac)}</div>
-      <p class="kpi-sub">${esc(fill(t('kBothSub'), { h: gb.on }))}</p>${rng('both_frac')}${dailyBars(bits, 3, 'var(--text)')}<div class="pills">${pill('pTime', 'time')}</div></div>
-    <div class="ls-panel b-kpi"><h3><span>${esc(t('kDark'))}</span><span class="r">${info('tipDark')}</span></h3>
-      <div class="kpi-big">${dk < 48 ? Math.round(dk) : (dk / 24).toFixed(1)}<small>${dk < 48 ? (getLang() === 'ko' ? '시간' : 'h') : (getLang() === 'ko' ? '일' : 'd')}</small></div>
-      <p class="kpi-sub" style="color:${dk > RULE.darkH ? 'var(--warn)' : ''}">${esc(fill(t(dk > RULE.darkH ? 'kDarkSub' : 'kDarkOk'), { dark: RULE.darkH }))}</p>${rng('longest_dark_h')}${dailyBars(bits, 1, 'var(--off)', true)}<div class="pills">${pill('pDate', 'date')}</div></div>`;
-}
-
-async function commCard(s) {
-  const w = LLSN().window, m = w.metrics.get(s.id);
-  const r = await relayPeriod(s.id, w.i0, w.i1), g = await stationPeriod(s, w.i0, w.i1);
-  const left = m && !m.pending && r.state === 'ok'
-    ? `<p class="lsn-note" style="margin:0">${esc(t('cDirect'))}</p><div class="kpi-big"><span style="color:var(--earth)">${Math.round(m.earth_frac * 100)}<small>%</small></span> <span style="font-size:.6em;color:var(--muted)">→</span> <span style="color:var(--relay)">${Math.round(r.pct * 100)}<small>%</small></span></div>
-       <p class="kpi-sub">${r.towers ? esc(fill(t('cTowerTxt'), { h: TOWER_H, k: r.distKm.toFixed(1) })) : esc(t('cNoTowerNeed'))}</p>`
-    : `<p class="lsn-note">${esc(t('cNoTower'))}</p>`;
-  const right = g && !g.pending && !g.error
-    ? `<p class="lsn-note" style="margin:0">${esc(t('cKdsa'))}</p><div class="kpi-big" style="color:var(--kdsa)">${g.kdsa}<small>${esc(t('hrs'))}</small></div><p class="kpi-sub gs-union">${esc(fill(t('cAny'), { h: '…' }))}</p>`
-    : `<p class="na">—</p>`;
-  return `<h3><span>${esc(t('bComm'))}</span><span class="r">${chip('chipPeriod', 'period')}</span></h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div>${left}</div><div>${right}</div></div>
-    <div class="pills">${pill('pRelay', 'relay')}${pill('pGs', 'gs')}</div>`;
-}
-
-async function trustCard(s) {
+async function trustCard(s, embed = false) {
   const H = await headline();
   const hz = LLSN().state.horizons.get(s.id);
   const named = s.user ? null : await namedFor(s.id);
   const hc = s.user ? [] : await hindcastFor(s.id);
-  return `<h3><span>${esc(t('bTrust'))}</span>${info('vNotNasa')}</h3>
+  return `${embed ? '' : `<h3><span>${esc(t('bTrust'))}</span>${info('vNotNasa')}</h3>`}
     <dl class="kv" style="grid-template-columns:auto 1fr">
       <dt>${esc(t('tCoord'))}</dt><dd style="text-align:left">${s.user ? esc(t('tCoordUser')) : `${esc(s.coord_quality === 'primary' ? t('tCoordOk') : s.coord_quality)}${s.source_url ? ` · <a href="${esc(s.source_url)}" target="_blank" rel="noopener">${esc(new URL(s.source_url).hostname)}</a>` : ''}`}</dd>
       <dt>${esc(t('tPgda'))}</dt><dd style="text-align:left">${named ? esc(fill(t('pgdaRange'), { o: P1(named.ours_sun), p: P1(named.pgda_sun), a: P1(named.pgda_sun_min300), b: P1(named.pgda_sun_max300) })) + ' <span class="muted">(18.6 y)</span>' : chip('chipNone', 'none')}</dd>
@@ -378,15 +396,36 @@ async function trustCard(s) {
     </dl>
     <div class="pills" style="margin-top:8px">${['aObs', 'aHour', 'aGeo'].map(k => `<span class="chip-st">${esc(t(k))}</span>`).join('')}<span class="chip-st">${esc(fill(t('aTower'), { h: TOWER_H }))}</span></div>
     ${hz?.browser && hz.accuracy?.text ? `<p class="lsn-note warn">${esc(hz.accuracy.text)}</p>` : ''}
-    <div class="pills">${pill('pSrc', 'trust')}${pill('pMore', 'more')}</div>`;
+    ${embed ? `<p class="lsn-note">${esc(t('vNotNasa'))}</p><div class="pills"><button type="button" class="pill" data-open="trust">${esc(t('mvAll'))}</button><button type="button" class="pill" data-open="more">${esc(t('mvNot'))}</button></div>`
+    : `<div class="pills">${pill('pSrc', 'trust')}${pill('pMore', 'more')}</div>`}`;
 }
 
 // ------------------------------------------------------------ detail blocks
 function blockShell(k, chips) {
-  const el = document.getElementById(`blk-${k}`);
-  el.querySelector('header').innerHTML = `<h3>${esc(t('d_' + k))}</h3>${chips}<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">×</button>`;
-  el.querySelector('.desc').textContent = t(`d_${k}D`);
+  const el = document.getElementById(`blk-${k}`), chipped = PICKABLE.includes(k);
+  // 7-6 card shell: number + title (the chip label) · body · "Assumptions & limits" · sources line + "Method & validation"
+  el.querySelector('header').innerHTML = `<span class="sc-no" aria-hidden="true"></span><h3>${esc(t(chipped ? 'c_' + k : 'd_' + k))}</h3>${chipped ? '' : `<button type="button" class="ls-icon x" data-close="${k}" aria-label="${esc(t('close'))}">×</button>`}`;
+  el.querySelector('.desc').textContent = '';
+  let f = el.querySelector(':scope > .sc-foot');
+  if (!f) { f = document.createElement('footer'); f.className = 'sc-foot'; el.appendChild(f); }
+  const s = target(), mvOpen = f.querySelector('.sc-mv')?.getAttribute('aria-expanded') === 'true';
+  f.innerHTML = `<p class="sc-lim"><b>${esc(t('limH'))}</b> ${esc(t(`d_${k}D`))} ${s ? esc(fill(t('limBase'), { dem: demChain(s) })) : ''}</p>
+    <div class="sc-src"><span>${esc(t('srcH'))}: ${esc(t('src_' + k))}</span>${k === 'trust' || k === 'more' ? ''
+      : `<button type="button" class="sc-mv" aria-expanded="${mvOpen}" aria-controls="mv-${k}">${esc(t('mv'))}${IC.chev}</button>`}</div>
+    ${k === 'trust' || k === 'more' ? '' : `<div class="sc-mvbody" id="mv-${k}"${mvOpen ? '' : ' hidden'}>${mvHTML}</div>`}`;
+  renumber();
   return el.querySelector('.blk-body');
+}
+let mvHTML = '';
+
+/** Sun / Earth / Both over the analysis period, one rect per visible run (hourly bits of this build). */
+function periodBars(bits) {
+  const n = bits.length, w = LLSN().window;
+  const row = (lbl, m, col) => `<div class="sc-row"><span>${esc(t(lbl))}</span><svg viewBox="0 0 ${n} 1" preserveAspectRatio="none" aria-hidden="true"><rect width="${n}" height="1" fill="var(--sc-off)"/>${runs(bits, m).map(r => `<rect x="${r.start}" width="${r.len}" height="1" fill="${col}"/>`).join('')}</svg></div>`;
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => `<span style="left:${f * 100}%">${esc(isoDay(w.i0 + Math.min(n - 1, Math.round(f * (n - 1)))).slice(5).replace('-', '.'))}</span>`).join('');
+  return `<div class="sc-bars" role="img" aria-label="${esc(t('c_time'))}">
+    <div class="sc-leg"><span><i style="background:var(--sun)"></i>${esc(t('legSunUp'))}</span><span><i style="background:var(--earth)"></i>${esc(t('legEarthIn'))}</span><span><i style="background:var(--n-text)"></i>${esc(t('legBothIn'))}</span><span><i style="background:var(--sc-off)"></i>${esc(t('legNone'))}</span></div>
+    ${row('rSun', 1, 'var(--sun)')}${row('rEarth', 2, 'var(--earth)')}${row('rBoth', 3, 'var(--n-text)')}<div class="sc-axis">${ticks}</div></div>`;
 }
 
 async function timeBlock(s) {
@@ -413,7 +452,7 @@ async function timeBlock(s) {
           <table class="mini-tbl"><thead><tr><th>◍ ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01 · data/windows/${esc(s.id)}.json</p></details>`;
   }
-  body.innerHTML = `<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
+  body.innerHTML = `${periodBars(bits)}<table class="mini-tbl"><thead><tr><th>${esc(t('tRunsH'))}</th><th>${esc(t('tOn'))}</th><th>${esc(t('tGaps'))}</th><th>${esc(t('tLong'))}</th><th>${esc(t('tMean'))}</th></tr></thead><tbody>${rows}</tbody></table>
     <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">${esc(fill(t('tRuns'), { n: sr.length }))}</summary>
       <table class="mini-tbl"><thead><tr><th>${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${sr.map(r => `<tr><td class="num">${fmtUTC(w.i0 + r.start)}</td><td>${fmtUTC(w.i0 + r.start + r.len)}</td><td>${fmtHours(r.len)}</td></tr>`).join('')}</tbody></table></details>${five}${await z1Html(s)}`;
   body.querySelector('.five-strip')?.addEventListener('click', e => {
@@ -449,7 +488,9 @@ async function nearBlock(s) {
     }).join('')}</tbody></table>`;
   }
   const named = s.user ? null : await namedFor(s.id);
-  body.innerHTML = `<h4 style="font-size:13px;margin:0 0 6px">${esc(t('nNearH'))} ${chip('chipPeriod', 'period')}</h4>${nearTbl}
+  const mapHtml = await mapCard(s, true);
+  if (current !== s.id) return;
+  body.innerHTML = `<div class="sc-map">${mapHtml}</div><h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nNearH'))} ${chip('chipPeriod', 'period')}</h4>${nearTbl}
     <h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nUncH'))} ${chip('chipLong', 'long')}</h4>${uncTbl}
     ${loc ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(fill(t('nLocH'), { r: LG.half_km, s: spacingText(LG.spacing_m), d: `data/${LG.dir}` }))} ${chip('chipLong', 'long')}</h4>${locTbl}` : ''}
     ${named ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nPgdaH'))} ${chip('chipLong', 'long')}</h4><p class="num">${esc(fill(t('pgdaRange'), { o: P1(named.ours_sun), p: P1(named.pgda_sun), a: P1(named.pgda_sun_min300), b: P1(named.pgda_sun_max300) }))}</p>` : ''}`;
@@ -518,10 +559,10 @@ const kv = (label, val, tip = '') => `<div><span class="k">${esc(label)}${tip}</
 async function terrainBlock(s) {
   const body = blockShell('terrain', '');
   if (s.user) {
-    body.innerHTML = `${h4('yH')}<p class="lsn-note">${esc(t('yUser'))}</p>${h4('psrH')}<p class="lsn-note">${esc(t('psrUser'))}</p>${h4('hisH')}<p class="lsn-note">${esc(t('hisNo'))}</p>`;
+    body.innerHTML = `${h4('yH')}<p class="lsn-note">${esc(t('yUser'))}</p>${h4('psrH')}<p class="lsn-note">${esc(t('psrUser'))}</p>`;
     return;
   }
-  const [Y, Z2, H] = await Promise.all([detailFile('terrain', s.id), detailFile('detail/psr', s.id), historyFile()]);
+  const [Y, Z2] = await Promise.all([detailFile('terrain', s.id), detailFile('detail/psr', s.id)]);
   if (current !== s.id) return;
   // Y
   let y;
@@ -555,7 +596,16 @@ async function terrainBlock(s) {
     p = `<div class="det-kv">${kv('PSR', esc(t(inside === true ? 'psrIn' : inside === false ? 'psrOut' : 'chipNone')))}${kv(t('psrDist'), dist)}${kv(t('psrBear'), bear)}</div>
       <p class="lsn-note"><b>PSR ≠ ${getLang() === 'ko' ? '확인된 얼음' : 'confirmed ice'}.</b> <a href="${esc(Z2.source.product_page)}" target="_blank" rel="noopener">NASA PGDA</a> · LPSR_80S_20MPP_ADJ (20 m) · data/detail/psr/${esc(s.id)}.json</p>`;
   }
-  // Z4
+  body.innerHTML = `${h4('yH', ` ${Y?.kind === 'polar_detailed' ? vChip('terrain') : ''}`)}${y}
+    ${h4('psrH', ` ${infoT(t('psrTip'))} ${Z2 ? vChip('psr') : ''}`)}${p}`;
+}
+
+// Z4 (own card, "Past missions nearby")
+async function historyBlock(s) {
+  const body = blockShell('history', '');
+  if (s.user) { body.innerHTML = `${h4('hisH')}<p class="lsn-note">${esc(t('hisNo'))}</p>`; return; }
+  const H = await historyFile();
+  if (current !== s.id) return;
   const rec = H?.sites?.find(x => x.id === s.id);
   let hs;
   if (!rec) hs = `<p class="lsn-note">${esc(t('hisNo'))}</p>`;
@@ -567,9 +617,7 @@ async function terrainBlock(s) {
     hs = `<div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('hisMission'))}</th><th>${esc(t('hisDist'))}</th><th>${esc(t('hisBear'))}</th><th>${esc(t('hisLink'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="lsn-note">data/detail/history.json</p>`;
   }
-  body.innerHTML = `${h4('yH', ` ${Y?.kind === 'polar_detailed' ? vChip('terrain') : ''}`)}${y}
-    ${h4('psrH', ` ${infoT(t('psrTip'))} ${Z2 ? vChip('psr') : ''}`)}${p}
-    ${h4('hisH', ` ${info('hisTip')} ${rec ? vChip('history') : ''}`)}${hs}`;
+  body.innerHTML = `${h4('hisH', ` ${info('hisTip')} ${rec ? vChip('history') : ''}`)}${hs}`;
 }
 
 // Z1 (inside "Sunlight and link over time")
@@ -649,47 +697,22 @@ function drawZ3(body, s, D) {
 async function render() {
   const s = target(); if (!s || !LLSN().window) return;
   const my = ++seq; current = s.id;
-  const ids = (LLSN().compare?.() || []).length ? LLSN().compare() : [s.id];
-  const vIds = ids.includes(s.id) ? ids : [...ids, s.id];
-  renderHead(s); renderShare();
-  const unc = s.user ? null : await siteFile('uncertainty', s.id);
-  const [map, comm, trust] = await Promise.all([mapCard(s), commCard(s), trustCard(s)]);
+  renderHead(s); renderSum(s); renderPick(); renderShare();
+  mvHTML = await trustCard(s, true);
   if (my !== seq) return;
-  $('#ls-brief .bento').innerHTML = `
-    <div class="ls-panel b-map">${map}</div>
-    <div class="ls-panel b-sum">${summaryCard(s, vIds)}</div>
-    <div class="ls-panel b-now">${nowCard(s)}</div>
-    ${kpiCards(s, unc)}
-    <div class="ls-panel b-comm">${comm}</div>
-    <div class="ls-panel b-trust">${trust}</div>`;
-  fillUnion(s, my);
-  await Promise.all([timeBlock(s), nearBlock(s), terrainBlock(s), dateBlock(s), moreBlock(s), trustBlock(s)]);
+  await Promise.all([timeBlock(s), nearBlock(s), terrainBlock(s), historyBlock(s), dateBlock(s), moreBlock(s), trustBlock(s)]);
   simpleBlock('seasons', chip('chipLong', 'long'));
   simpleBlock('relay', chip('chipPeriod', 'period') + ' ' + chip('chipEst', 'est'));
   simpleBlock('gs', chip('chipPeriod', 'period'));
   simpleBlock('hz', chip('chipPeriod', 'period'));
 }
-/** "any ground station" = hours the site sees the Earth AND (KDSA OR any DSN) — union from the hourly station bits. */
-async function fillUnion(s, my) {
-  const w = LLSN().window, el = document.querySelector('#ls-brief .b-comm .gs-union');
-  if (!el || core.terrainPending(s)) return;
-  const { stationBits } = await import('./korea.js');
-  const b = await stationBits().catch(() => null); if (!b || my !== seq) return;
-  let u = 0;
-  for (let k = w.i0; k <= w.i1; k++) if (core.earthVisible(s, k) && (b.KDSA[k] | b.DSN_GOLDSTONE[k] | b.DSN_MADRID[k] | b.DSN_CANBERRA[k])) u++;
-  el.textContent = fill(t('cAny'), { h: u });
-}
-function updateNow() {
-  const s = target(); if (!s) return;
-  const n = document.querySelector('#ls-brief .brief-now'); if (n) n.textContent = fmtUTC(LLSN().now());
-  const c = document.querySelector('#ls-brief .b-now'); if (c) c.innerHTML = nowCard(s);
-}
-
 function setOpen(k, on, scroll = true) {
   const el = document.getElementById(`blk-${k}`); if (!el) return;
   if (on) open.add(k); else open.delete(k);
   el.classList.toggle('is-closed', !on); el.setAttribute('aria-hidden', String(!on));
   document.querySelectorAll(`#ls-brief [data-open="${k}"]`).forEach(b => b.setAttribute('aria-expanded', String(on)));
+  if (PICKABLE.includes(k) && $('#ls-brief .sc-pick')) renderPick();
+  renumber();
   if (on) {
     if (k === 'date') dateBlock(target());
     window.dispatchEvent(new Event('resize'));
@@ -700,11 +723,25 @@ function setOpen(k, on, scroll = true) {
 
 function wire() {
   const root = $('#ls-brief');
-  if (!document.getElementById('blk-terrain')) {
+  for (const k of ['terrain', 'history']) {
+    if (document.getElementById(`blk-${k}`)) continue;
     const sec = document.createElement('section');
-    sec.className = 'ls-detail is-closed'; sec.dataset.block = 'terrain'; sec.id = 'blk-terrain'; sec.setAttribute('aria-hidden', 'true');
+    sec.className = 'ls-detail is-closed'; sec.dataset.block = k; sec.id = `blk-${k}`; sec.setAttribute('aria-hidden', 'true');
     sec.innerHTML = '<header></header><p class="desc"></p><div class="blk-body"></div>';
-    document.getElementById('blk-near')?.after(sec);
+    document.querySelector('#ls-brief .ls-details')?.appendChild(sec);
+  }
+  // 7-1: one box — head → summary → choose analyses → cards (cards in chip order)
+  const box = document.createElement('div'); box.className = 'sc-box';
+  const head = root.querySelector('.brief-head'), det = root.querySelector('.ls-details');
+  head.before(box);
+  const sum = document.createElement('div'); sum.className = 'sc-sum';
+  const pick = document.createElement('div'); pick.className = 'sc-pick';
+  det.classList.add('sc-cards');
+  box.append(head, sum, pick, det);
+  CARD_ORDER.forEach(k => { const el = document.getElementById(`blk-${k}`); if (el) det.appendChild(el); });
+  root.querySelector('.bento')?.setAttribute('hidden', '');
+  if (!document.querySelector('link[data-owner="site_check"]')) {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'css/site_check.css'; l.dataset.owner = 'site_check'; document.head.appendChild(l);
   }
   const st = document.createElement('style');
   st.dataset.owner = 'brief.js';
@@ -722,6 +759,8 @@ function wire() {
     #ls-brief .z3-ctl .pill[aria-pressed="true"] { background: var(--text); color: var(--bg); }`;
   document.head.appendChild(st);
   root.addEventListener('click', e => {
+    const ch = e.target.closest('[data-chip]'); if (ch) { const k = ch.dataset.chip; setOpen(k, !open.has(k), false); return; }
+    const mv = e.target.closest('.sc-mv'); if (mv) { const on = mv.getAttribute('aria-expanded') !== 'true'; mv.setAttribute('aria-expanded', String(on)); document.getElementById(mv.getAttribute('aria-controls'))?.toggleAttribute('hidden', !on); return; }
     const o = e.target.closest('[data-open]'); if (o) { const k = o.dataset.open; setOpen(k, o.closest('.bento') ? !open.has(k) : true); return; }
     const c = e.target.closest('[data-close]'); if (c) { setOpen(c.dataset.close, false); document.querySelector(`#ls-brief [data-open="${c.dataset.close}"]`)?.focus(); return; }
     const cp = e.target.closest('.copy-link'); if (cp) { copyLink(cp); return; }
@@ -737,10 +776,11 @@ function wire() {
   LLSN().shareExtra = () => ({ open: [...open].join(',') });
   const q = LLSN().initialParams;
   (q?.get('open') || '').split(',').filter(k => BLOCKS.includes(k)).forEach(k => setOpen(k, true, false));
+  if (!q?.has('open')) setOpen('time', true, false);   // 7-5: first chip on
   let tm = 0; const later = () => { clearTimeout(tm); tm = setTimeout(render, 30); };
   ['llsn:focus', 'llsn:window', 'llsn:pins', 'llsn:lang', 'llsn:sites'].forEach(ev => window.addEventListener(ev, later));
   let tt = 0;
-  window.addEventListener('llsn:time', () => { clearTimeout(tt); tt = setTimeout(() => { updateNow(); renderShareURL(); }, 120); });
+  window.addEventListener('llsn:time', () => { clearTimeout(tt); tt = setTimeout(renderShareURL, 120); });
   render().then(() => { if (q?.has('sites') && q.has('focus') && q.has('t')) setTimeout(() => LLSN().goTo?.('#ls-brief'), 600); });
 }
 function renderShareURL() { const i = document.querySelector('#ls-brief .share-row input'); if (i) i.value = LLSN().shareURL?.() || location.href; }

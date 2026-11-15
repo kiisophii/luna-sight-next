@@ -573,3 +573,28 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 // last input was the keyboard? (used to hide the focus ring on headings that receive script focus after a mouse click)
 (() => { const h = document.documentElement; window.addEventListener('keydown', e => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ' || e.key.startsWith('Arrow')) h.dataset.kbd = '1'; }, true);
   for (const ev of ['pointerdown', 'mousedown', 'touchstart']) window.addEventListener(ev, () => { delete h.dataset.kbd; }, { capture: true, passive: true }); })();
+
+// ------------------------------------------------------------ 17-1: fold either side panel; a vertical tab stays on the screen edge
+(() => { const root = document.documentElement, KEY = 'ls.panelsOff';
+  const btn = { l: document.getElementById('pn-fold-l'), r: document.getElementById('pn-fold-r') }, edge = { l: document.getElementById('pn-edge-l'), r: document.getElementById('pn-edge-r') };
+  if (!btn.l || !btn.r || !edge.l || !edge.r) return;
+  const ko = () => getLang() === 'ko';
+  const pins = () => document.querySelectorAll('#pk-pinned .pk-row').length;
+  const label = () => {
+    btn.l.title = ko() ? '조건 패널 접기' : 'Hide the conditions panel'; btn.r.title = ko() ? '비교 패널 접기' : 'Hide the comparison panel';
+    btn.l.setAttribute('aria-label', btn.l.title); btn.r.setAttribute('aria-label', btn.r.title);
+    edge.l.textContent = (ko() ? '조건' : 'Conditions') + ' ›'; edge.r.textContent = '‹ ' + (ko() ? '비교' : 'Compare') + ' · ' + pins();
+    edge.l.setAttribute('aria-label', ko() ? '조건 패널 펼치기' : 'Show the conditions panel'); edge.r.setAttribute('aria-label', ko() ? '비교 패널 펼치기' : 'Show the comparison panel');
+  };
+  const set = (side, off, user) => {
+    root.classList.toggle(side === 'l' ? 'lp-off' : 'rp-off', off); edge[side].hidden = !off; btn[side].setAttribute('aria-expanded', String(!off));
+    try { localStorage.setItem(KEY, (root.classList.contains('lp-off') ? 'l' : '') + (root.classList.contains('rp-off') ? 'r' : '')); } catch (e) { /* storage blocked */ }
+    // the map area changed: minimap, dock, legend, chips and the globe centre follow the new edges
+    for (const ms of [0, 120, 260]) setTimeout(() => window.dispatchEvent(new Event('resize')), ms);
+    if (user) (off ? edge[side] : btn[side]).focus({ preventScroll: true });
+  };
+  for (const side of ['l', 'r']) { btn[side].addEventListener('click', () => set(side, true, true)); edge[side].addEventListener('click', () => set(side, false, true)); }
+  let saved = ''; try { saved = localStorage.getItem(KEY) || ''; } catch (e) { /* ignore */ }
+  if (window.matchMedia('(min-width: 1100px)').matches) { if (saved.includes('l')) set('l', true); if (saved.includes('r')) set('r', true); }
+  ['llsn:lang', 'llsn:pins', 'llsn:ready', 'llsn:sites', 'llsn:filter'].forEach(ev => window.addEventListener(ev, () => setTimeout(label, 60))); label();
+})();

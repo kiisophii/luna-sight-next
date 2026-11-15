@@ -52,6 +52,12 @@
 - C19. three.js r170 — Copyright © 2010–2024 three.js authors, MIT License.
 - C20. Luna Sight source code: Apache License 2.0, github.com/kiisophii/lunar-landing-site-navigator.
 
+**New detail-analysis sources — 15 November 2026**
+
+- C22. Local terrain descriptors: NASA LRO LOLA / NASA GSFC PGDA, native 5 m mosaic ([product 81](https://pgda.gsfc.nasa.gov/products/81)) and adjusted 10/20 m DEMs ([product 90](https://pgda.gsfc.nasa.gov/products/90)). Barker et al. (2021), doi:10.1016/j.pss.2020.105119; Barker et al. (2023), doi:10.3847/PSJ/acf3e1; data doi:10.60903/gsfcpgda-lola-spole. Slopes, flat-area reference fractions and DEM plane-residual roughness are team-derived, not certified landing-safety values.
+- C23. Permanent-shadow proximity: NASA GSFC PGDA product 90, [20 m PSR raster](https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LPSR_80S_20MPP_ADJ.TIF); Barker et al. (2023), doi:10.3847/PSJ/acf3e1; data doi:10.60903/gsfcpgda-lola-spole. Nearest-region distances are team-derived. **PSR does not mean confirmed water ice.**
+- C24. Historical landing context: NASA NSSDCA / LROC and official CNSA, ISRO, JAXA and NASA mission records; [all 18 mission links and coordinate/time sources](resources_en.md#actual-landing-missions-official-context-and-numeric-provenance). The nearest-three rankings are team-derived from Task R's actual landers, excluding self and planned targets; proximity does not imply usable infrastructure. Official context links do not replace coordinate/time sources.
+
 **Disclaimer**
 
 - C21. Luna Sight uses public NASA data and imagery and credits NASA as the source. No NASA logos or insignia are used. NASA has not reviewed, approved or endorsed this project.
@@ -92,3 +98,10 @@ Checked against `46cd9a2`, for the integrator to decide; nothing in that branch 
 - Oxanium row says "Severin Meyer / Google Fonts"; the licence names "The Oxanium Project Authors" (C18).
 - PGDA AVGVISIB row says "NASA data, public domain" and the ALSJ row says "public"; the repository inventory keeps both as REVIEW (C4, C15). Suggest "cite Mazarico et al. 2011" and "numbers only".
 - Missing from that table: SLDEM2015 / JAXA as its own credit (C3), Apollo/Luna NSSDCA and LROC lander credits (C8, C9), Waller et al. CC BY (C12).
+
+
+## Afternoon source check — 15 November 2026 (not for the page)
+
+C22: PGDA products 81 and 90 opened; provider-requested Barker 2021/2023 and dataset DOI retained. Exact raster URLs and numerical scope are listed in resources_en.md and data/DATASETS.md. C23: product 90 and stored source metadata identify the 20 m native PSR raster; class 0=not PSR, 1=PSR, NaN=unknown, MOON_ME_DE421 south stereographic, R=1737400 m. These metadata do not establish ice content.
+
+C24: all four CNSA context pages opened successfully during the Z4 follow-up on this date. Chang'e-5 is an Earth-return article, suitable only for mission context; it is not a lunar-touchdown coordinate/time source. Other agency pages retain their prior documented checks; no new blanket permissions or mandatory-credit wording is asserted. The linked full inventory provides the official URL for every actual mission. Existing C1–C21 audit rows are preserved. C22–C24 are copy for integrator publication, not evidence of live About deployment.

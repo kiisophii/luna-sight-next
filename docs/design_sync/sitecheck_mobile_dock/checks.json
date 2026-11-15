@@ -1,0 +1,1042 @@
+[
+  {
+    "width": 390,
+    "language": "en",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "Sunlight",
+        "title": "Sunlight",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Total sunlight",
+        "title": "Total sunlight",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Earth view",
+        "title": "Earth view",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Total Earth view",
+        "title": "Total Earth view",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Longest Earth gap",
+        "title": "Longest Earth gap",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Average Earth gap",
+        "title": "Average Earth gap",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Earth gaps",
+        "title": "Earth gaps",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Longest dark",
+        "title": "Longest dark",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Dark spells",
+        "title": "Dark spells",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Longest sunlit run",
+        "title": "Longest sunlit run",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "Sun + Earth",
+        "title": "Sun + Earth",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 102,
+        "right": 141.609375
+      },
+      {
+        "left": 205.1953125,
+        "right": 244.8046875
+      },
+      {
+        "left": 308.390625,
+        "right": 348
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 390,
+    "language": "ko",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "일조율",
+        "title": "일조율",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "일조 총시간",
+        "title": "일조 총시간",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "지구 가시",
+        "title": "지구 가시",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "지구 가시 총시간",
+        "title": "지구 가시 총시간",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "최장 지구 안 보임",
+        "title": "최장 지구 안 보임",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "평균 지구 안 보임",
+        "title": "평균 지구 안 보임",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "지구 안 보임 횟수",
+        "title": "지구 안 보임 횟수",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "최장 어둠",
+        "title": "최장 어둠",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "어둠 횟수",
+        "title": "어둠 횟수",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "최장 연속 일조",
+        "title": "최장 연속 일조",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      },
+      {
+        "text": "해·지구 함께 보임",
+        "title": "해·지구 함께 보임",
+        "h": 32,
+        "scroll": 32,
+        "w": 88,
+        "scrollW": 88,
+        "white": "normal"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 102,
+        "right": 130.296875
+      },
+      {
+        "left": 210.8515625,
+        "right": 239.1484375
+      },
+      {
+        "left": 319.703125,
+        "right": 348
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1100,
+    "language": "en",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "Sunlight",
+        "title": "Sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total sunlight",
+        "title": "Total sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth view",
+        "title": "Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total Earth view",
+        "title": "Total Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest Earth gap",
+        "title": "Longest Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Average Earth gap",
+        "title": "Average Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth gaps",
+        "title": "Earth gaps",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest dark",
+        "title": "Longest dark",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Dark spells",
+        "title": "Dark spells",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest sunlit run",
+        "title": "Longest sunlit run",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "Sun + Earth",
+        "title": "Sun + Earth",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 183.609375
+      },
+      {
+        "left": 337.6953125,
+        "right": 377.3046875
+      },
+      {
+        "left": 551.1953125,
+        "right": 590.8046875
+      },
+      {
+        "left": 768,
+        "right": 801
+      },
+      {
+        "left": 958.390625,
+        "right": 998
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1100,
+    "language": "ko",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "일조율",
+        "title": "일조율",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "일조 총시간",
+        "title": "일조 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시",
+        "title": "지구 가시",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시 총시간",
+        "title": "지구 가시 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 지구 안 보임",
+        "title": "최장 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "평균 지구 안 보임",
+        "title": "평균 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 안 보임 횟수",
+        "title": "지구 안 보임 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 어둠",
+        "title": "최장 어둠",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "어둠 횟수",
+        "title": "어둠 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 연속 일조",
+        "title": "최장 연속 일조",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      },
+      {
+        "text": "해·지구 함께 보임",
+        "title": "해·지구 함께 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 143,
+        "scrollW": 143,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 172.296875
+      },
+      {
+        "left": 343.3515625,
+        "right": 371.6484375
+      },
+      {
+        "left": 556.8515625,
+        "right": 585.1484375
+      },
+      {
+        "left": 770.3515625,
+        "right": 798.6484375
+      },
+      {
+        "left": 969.703125,
+        "right": 998
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1280,
+    "language": "en",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "Sunlight",
+        "title": "Sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total sunlight",
+        "title": "Total sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth view",
+        "title": "Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total Earth view",
+        "title": "Total Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest Earth gap",
+        "title": "Longest Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Average Earth gap",
+        "title": "Average Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth gaps",
+        "title": "Earth gaps",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest dark",
+        "title": "Longest dark",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Dark spells",
+        "title": "Dark spells",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest sunlit run",
+        "title": "Longest sunlit run",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "Sun + Earth",
+        "title": "Sun + Earth",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 183.609375
+      },
+      {
+        "left": 382.6953125,
+        "right": 422.3046875
+      },
+      {
+        "left": 641.1953125,
+        "right": 680.8046875
+      },
+      {
+        "left": 903,
+        "right": 936
+      },
+      {
+        "left": 1138.390625,
+        "right": 1178
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1280,
+    "language": "ko",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "일조율",
+        "title": "일조율",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "일조 총시간",
+        "title": "일조 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시",
+        "title": "지구 가시",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시 총시간",
+        "title": "지구 가시 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 지구 안 보임",
+        "title": "최장 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "평균 지구 안 보임",
+        "title": "평균 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 안 보임 횟수",
+        "title": "지구 안 보임 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 어둠",
+        "title": "최장 어둠",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "어둠 횟수",
+        "title": "어둠 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 연속 일조",
+        "title": "최장 연속 일조",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      },
+      {
+        "text": "해·지구 함께 보임",
+        "title": "해·지구 함께 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 110,
+        "scrollW": 110,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 172.296875
+      },
+      {
+        "left": 388.3515625,
+        "right": 416.6484375
+      },
+      {
+        "left": 646.8515625,
+        "right": 675.1484375
+      },
+      {
+        "left": 905.3515625,
+        "right": 933.6484375
+      },
+      {
+        "left": 1149.703125,
+        "right": 1178
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1440,
+    "language": "en",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "Sunlight",
+        "title": "Sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total sunlight",
+        "title": "Total sunlight",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth view",
+        "title": "Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Total Earth view",
+        "title": "Total Earth view",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest Earth gap",
+        "title": "Longest Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Average Earth gap",
+        "title": "Average Earth gap",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Earth gaps",
+        "title": "Earth gaps",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest dark",
+        "title": "Longest dark",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Dark spells",
+        "title": "Dark spells",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Longest sunlit run",
+        "title": "Longest sunlit run",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "Sun + Earth",
+        "title": "Sun + Earth",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 183.609375
+      },
+      {
+        "left": 422.6953125,
+        "right": 462.3046875
+      },
+      {
+        "left": 721.1953125,
+        "right": 760.8046875
+      },
+      {
+        "left": 1023,
+        "right": 1056
+      },
+      {
+        "left": 1298.390625,
+        "right": 1338
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  },
+  {
+    "width": 1440,
+    "language": "ko",
+    "errors": [],
+    "overflow": false,
+    "labels": [
+      {
+        "text": "일조율",
+        "title": "일조율",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "일조 총시간",
+        "title": "일조 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시",
+        "title": "지구 가시",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 가시 총시간",
+        "title": "지구 가시 총시간",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 지구 안 보임",
+        "title": "최장 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "평균 지구 안 보임",
+        "title": "평균 지구 안 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "지구 안 보임 횟수",
+        "title": "지구 안 보임 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 어둠",
+        "title": "최장 어둠",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "어둠 횟수",
+        "title": "어둠 횟수",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "최장 연속 일조",
+        "title": "최장 연속 일조",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      },
+      {
+        "text": "해·지구 함께 보임",
+        "title": "해·지구 함께 보임",
+        "h": 15.5,
+        "scroll": 16,
+        "w": 128,
+        "scrollW": 128,
+        "white": "nowrap"
+      }
+    ],
+    "ticks": [
+      {
+        "left": 144,
+        "right": 172.296875
+      },
+      {
+        "left": 428.3515625,
+        "right": 456.6484375
+      },
+      {
+        "left": 726.8515625,
+        "right": 755.1484375
+      },
+      {
+        "left": 1025.3515625,
+        "right": 1053.6484375
+      },
+      {
+        "left": 1309.703125,
+        "right": 1338
+      }
+    ],
+    "utcPicker": true,
+    "preciseTime": 13.25,
+    "internalStatusRemoved": true
+  }
+]

@@ -233,7 +233,7 @@ window.addEventListener('llsn:time', () => {
 });
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
-  tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
+  tb.classList.toggle('time-off', k !== 'light');   // time part only for live Sunlight; static layers (average sunlight, Earth view, elevation) fold it and stop playback
   if (tb.classList.contains('time-off')) { const pb = document.getElementById('play'); if (pb?.getAttribute('aria-pressed') === 'true') pb.click(); }   // 18-4: folding the time part stops playback
   LL().globe?.setElevation?.(null);
   { const el = document.getElementById('elev-legend'); if (el) el.hidden = true; }
@@ -487,7 +487,13 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   };
   const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
   window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
-  popover($('#utc-chip'), $('#utc-pop'));
+  // Keep the precise UTC picker reachable when the dock uses a compact label.
+  $('#utc-chip')?.insertAdjacentHTML('afterbegin', iconSvg('calendar', { size: 16 }));
+  const utcButton = $('#utc-chip'), utcPop = $('#utc-pop'), utcHome = utcButton.parentElement;
+  const compactUTC = matchMedia('(min-width: 1100px) and (max-width: 1599px)');
+  const placeUTC = () => (compactUTC.matches ? $('.ls-toolbar') : utcHome).append(utcButton, utcPop);
+  compactUTC.addEventListener('change', placeUTC); placeUTC();
+  popover(utcButton, $('#utc-pop'));
   // speed: ‹ 6h/s › stepper over the native select (app.js keeps reading #speed)
   const sel = document.getElementById('speed'), val = document.getElementById('speed-val');
   const show = () => { const x = sel.options[sel.selectedIndex]?.textContent || ''; val.textContent = getLang() === 'ko' ? x.replace(' ', '') : x; };

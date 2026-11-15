@@ -232,7 +232,6 @@ addStrings({
   z3Tip: 'Every landing day 2026-01-01 … 2030-12-31 at 00:00 UTC, stays of exactly 7, 14 or 29.5 days. Change = new − original, in percentage points (pp) of the stay and hours of the longest shadow.',
   z3Load: 'Loading…', z3NoUser: 'Not computed for your own point (catalogue sites only). Use the landing-date scan below.',
   z3Days: '{n} d',
-  vMember: 'checked by another team member', vIntg: 'integrator re-check · member check pending', vAuthor: 'author checks · member check pending',
   ndDone: 'now in “Landing terrain”', ndPsrPart: 'PSR distance: 16 south-polar sites; access to targets not analyzed',
 }, {
   pTerr: '착륙 지형 ▾', d_terrain: '착륙 지형과 주변',
@@ -265,7 +264,6 @@ addStrings({
   z3Tip: '2026-01-01 … 2030-12-31 매일 00:00 UTC 착륙, 체류 정확히 7·14·29.5일. 변화 = 바뀐 값 − 원래 값, 체류 기간 대비 %p와 최장 그늘 시간.',
   z3Load: '불러오는 중…', z3NoUser: '사용자 지점은 계산하지 않음 (카탈로그 착륙지만). 아래 착륙 날짜 훑어보기를 쓰세요.',
   z3Days: '{n}일',
-  vMember: '다른 팀원 검증 완료', vIntg: '통합 담당 재계산 · 팀원 검증 대기', vAuthor: '작성자 확인 · 팀원 검증 대기',
   ndDone: '이제 ‘착륙 지형’에 있음', ndPsrPart: 'PSR 거리: 남극 16곳. 목표 접근은 분석 안 함',
 });
 
@@ -483,7 +481,7 @@ function timeKpis(bits) {
   const n = bits.length, g1 = gapStats(bits, 1), g2 = gapStats(bits, 2), g3 = gapStats(bits, 3);
   const sunRun = runs(bits, 1).reduce((a, r) => Math.max(a, r.len), 0);
   const pct = h => `${Math.round((h / n) * 100)}<small>%</small>`;
-  const kv = (k, v, c) => `<div class="sc-kv"><span>${esc(t(k))}</span><b class="num"${c ? ` style="color:${c}"` : ''}>${v}</b></div>`;
+  const kv = (k, v, c) => `<div class="sc-kv"><span title="${esc(t(k))}">${esc(t(k))}</span><b class="num"${c ? ` style="color:${c}"` : ''}>${v}</b></div>`;
   return `<div class="sc-kpis">${kv('kSun', pct(g1.on), 'var(--sun)')}${kv('kSunT', dh(g1.on))}${kv('kEarth', pct(g2.on), 'var(--earth)')}${kv('kEarthT', dh(g2.on))}`
     + `${kv('kEgap', dh(g2.count ? g2.longest : 0), g2.count ? '#E07BB0' : '')}${kv('kEgapM', g2.count ? dh(Math.round(g2.mean)) : '—')}${kv('kEgapN', g2.count)}`
     + `${kv('kDark', dh(g1.count ? g1.longest : 0))}${kv('kDarkN', g1.count)}${kv('kSunRun', dh(sunRun), 'var(--sun)')}${kv('kBoth', pct(g3.on))}</div>`;
@@ -609,11 +607,7 @@ async function trustBlock(s) {
 }
 
 // ------------------------------------------------------------ 11/15 detail products (read-only; display rounding only)
-// Verification state as recorded in docs/verification_ledger.md on main v40 (aa1e1fb): terrain/ and detail/psr/ were
-// re-computed by another member (PR #77, PR #81); time_stats and history have integrator samples, member check pending;
-// detail/dates/ has author checks only.
-const VERIF = { terrain: 'vMember', psr: 'vMember', time_stats: 'vIntg', history: 'vIntg', dates: 'vAuthor' };
-const vChip = k => `<span class="chip-st">${esc(t(VERIF[k]))}</span>`;
+// Internal review status remains in docs/verification_ledger.md, not in the public UI.
 const infoT = txt => `<button type="button" class="info" aria-label="${esc(txt)}">${iconSvg('info')}<span class="tipx" role="tooltip">${esc(txt)}</span></button>`;
 const idxIds = dir => getJSON(`${core.state.base}${dir}/index.json`).then(j => new Set(j.ids || (j.sites || []).map(x => x.id))).catch(() => new Set());
 /** Per-site detail file, only when its index lists the site (no 404 requests for sites outside the product). */
@@ -671,8 +665,8 @@ async function terrainBlock(s) {
     p = `<div class="det-kv">${kv('PSR', esc(t(inside === true ? 'psrIn' : inside === false ? 'psrOut' : 'chipNone')))}${kv(t('psrDist'), dist)}${kv(t('psrBear'), bear)}</div>
       <p class="lsn-note"><b>PSR ≠ ${getLang() === 'ko' ? '확인된 얼음' : 'confirmed ice'}.</b> <a href="${esc(Z2.source.product_page)}" target="_blank" rel="noopener">NASA PGDA</a> · LPSR_80S_20MPP_ADJ (20 m) · data/detail/psr/${esc(s.id)}.json</p>`;
   }
-  body.innerHTML = `${h4('yH', ` ${Y?.kind === 'polar_detailed' ? vChip('terrain') : ''}`)}${y}
-    ${h4('psrH', ` ${infoT(t('psrTip'))} ${Z2 ? vChip('psr') : ''}`)}${p}`;
+  body.innerHTML = `${h4('yH')}${y}
+    ${h4('psrH', ` ${infoT(t('psrTip'))}`)}${p}`;
 }
 
 // Access to science targets: nearest PSR (data/detail/psr, read as stored; rounded for display only)
@@ -692,7 +686,7 @@ async function accessBlock(s) {
   }
   body.innerHTML = `<div class="sc-kpis ac">${[[t('acDist'), dist], [t('acIn'), esc(t(inside === true ? 'acYes' : inside === false ? 'acNo' : 'chipNone'))], [t('acBear'), bear], [t('acEdge'), edge]]
       .map(([k, v]) => `<div class="sc-kv"><span>${esc(k)}</span><b class="num">${v}</b></div>`).join('')}</div>
-    <p class="sc-d"><b class="warn-ice">${esc(t('acWarn'))}</b> ${vChip('psr')} · <a href="${esc(Z2.source.product_page)}" target="_blank" rel="noopener">NASA PGDA</a> · LPSR_80S_20MPP_ADJ (20 m) · data/detail/psr/${esc(s.id)}.json</p>`;
+    <p class="sc-d"><b class="warn-ice">${esc(t('acWarn'))}</b> · <a href="${esc(Z2.source.product_page)}" target="_blank" rel="noopener">NASA PGDA</a> · LPSR_80S_20MPP_ADJ (20 m) · data/detail/psr/${esc(s.id)}.json</p>`;
 }
 
 // Routes & obstacles: NO route is computed — obstacle indicators from data/terrain (slope by radius, roughness), as stored
@@ -711,7 +705,7 @@ async function routesBlock(s) {
   body.innerHTML = `${h4('rtH')}
     <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('rtRad'))}</th><th>${esc(t('rtSteep'))}</th><th>${esc(t('rtP95'))}</th><th>${esc(t('rtMax'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="sc-kpis ac"><div class="sc-kv"><span>${esc(t('rtRough'))}</span><b class="num">${R?.p95_m != null ? `${R.p95_m.toFixed(2)}<small> m</small>` : '—'}</b></div></div>
-    <p class="sc-d"><span class="chip-st">${esc(t('rtRef'))} (${esc(Y.thresholds_label)})</span> ${vChip('terrain')} · data/terrain/${esc(s.id)}.json</p>`;
+    <p class="sc-d"><span class="chip-st">${esc(t('rtRef'))} (${esc(Y.thresholds_label)})</span> · data/terrain/${esc(s.id)}.json</p>`;
 }
 
 // Z4 (own card, "Past missions nearby")
@@ -731,7 +725,7 @@ async function historyBlock(s) {
     hs = `<div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('hisMission'))}</th><th>${esc(t('hisDist'))}</th><th>${esc(t('hisBear'))}</th><th>${esc(t('hisLink'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="lsn-note">data/detail/history.json</p>`;
   }
-  body.innerHTML = `${h4('hisH', ` ${info('hisTip')} ${rec ? vChip('history') : ''}`)}${hs}`;
+  body.innerHTML = `${h4('hisH', ` ${info('hisTip')}`)}${hs}`;
 }
 
 // Z1 (inside "Sunlight and link over time")
@@ -744,7 +738,7 @@ async function z1Html(s) {
   const rows = R.map(([k, r, c]) => `<tr><td style="color:${c}">${esc(t(k))}</td><td>${hd(r.total_h)}</td><td>${nf(r.count)}</td><td>${r.mean_h == null ? '—' : hd(r.mean_h)}</td><td>${hd(r.longest_h)}</td><td>${cut(r)}</td></tr>`).join('');
   const comp = R.filter(([, r]) => r.clipped_runs.length).map(([k, r]) => (r.complete_count ? `${t(k)}: ${t('z1Mean')} ${r.complete_mean_h == null ? '—' : hd(r.complete_mean_h)}, ${t('z1Long')} ${hd(r.complete_longest_h)}` : `${t(k)}: ${t('z1NoComp')}`)).join(' · ');
   const L = Z.station_link_h;
-  return `${h4('z1H', ` <span class="muted" style="font-weight:400">2026-01-01 → 2031-01-01</span> ${full ? chip('chipWhole', 'period') : chip('chipLong', 'long')} ${infoT(t('z1Tip'))} ${vChip('time_stats')}`)}
+  return `${h4('z1H', ` <span class="muted" style="font-weight:400">2026-01-01 → 2031-01-01</span> ${full ? chip('chipWhole', 'period') : chip('chipLong', 'long')} ${infoT(t('z1Tip'))}`)}
     <div class="tbl-x"><table class="mini-tbl"><thead><tr><th></th><th>${esc(t('z1Total'))}</th><th>${esc(t('z1Runs'))}</th><th>${esc(t('z1Mean'))}</th><th>${esc(t('z1Long'))}</th><th>${esc(t('z1Cut'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="lsn-note">${esc(t('z1Note'))}${comp ? ` ${esc(fill(t('z1Comp'), { x: comp }))}` : ''}</p>
     <p class="lsn-note">${esc(fill(t('z1Hours'), { a: nf(Z.sunlit_h), b: nf(Z.earth_visible_h), c: nf(Z.both_h), n: nf(Z.window.n) }))}</p>
@@ -792,7 +786,7 @@ function drawZ3(body, s, D) {
     const pp = k => `${P1(tr[C[k + '_frac']])} <small class="muted">(${sgn(r[X['delta_' + k + '_h']] / den * 100, 1)} pp)</small>`;
     return `<tr><td>${lbl}</td><td>${tgDate}</td><td>${pp('sun')}</td><td>${pp('earth')}</td><td>${pp('both')}</td><td>${darkCell(tr)} <small class="muted">(${sgn(r[X.delta_longest_dark_h], 0)} ${esc(t('h'))})</small></td></tr>`;
   }).join('');
-  body.innerHTML = `<div class="z3">${h4('z3H', ` ${infoT(t('z3Tip'))} ${vChip('dates')}`)}
+  body.innerHTML = `<div class="z3">${h4('z3H', ` ${infoT(t('z3Tip'))}`)}
     <div class="z3-ctl"><label>${esc(t('z3Day'))} <input type="date" class="z3-day" min="${D.first_landing}" max="${D.last_landing}" value="${iso(day)}"></label>
       <span role="group" aria-label="${esc(t('z3Stay'))}">${esc(t('z3Stay'))} ${D.stays.map((x, j) => `<button type="button" class="pill" data-z3stay="${j}" aria-pressed="${x === st}">${esc(fill(t('z3Days'), { n: x.stay_days }))}</button>`).join(' ')}</span></div>
     <p class="lsn-note" style="margin:0 0 6px">${esc(fill(t('z3Base'), { d: `${iso(day)} 00:00 UTC`, n: stayTxt }))}</p>${base}

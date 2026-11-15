@@ -13,3 +13,7 @@ Base: `integ-1915` `abb09f5` (v49). B was cancelled by Jiyong while work was in 
 Chromium: 1920 / 1440 / 1280 / 1100 / 390 × EN/KR. All 10 cases: console/page errors 0, document horizontal overflow 0, detected clipped/outside controls 0. Both 390 cases: controls under 24 px 0. See `results.json` and the accompanying captures. Screenshots were visually inspected; geometry measurements do not substitute for scientific validation.
 
 JavaScript syntax checks passed for the two changed modules. `git diff --exit-code -- web/data pipeline web/index.html` confirms protected paths are unchanged. B interactions are deliberately excluded from acceptance for this PR. Post-PR D regression is performed separately against the refreshed integration branch; this report describes this PR's branch only.
+
+## Integration refresh
+
+Merged the new integration base `1675728` (version 51) while final regression was running. Preserved both SI log additions. Reran 390/1100 × EN/KR on the combined PR branch: all four cases passed errors, overflow, clipping and outside-control checks; both mobile cases passed the 24 px check. Separately checked that the About disclosure arrows remain visible and the summaries are at least 24 px in EN/KR. See `refreshed-results.json`. The original 10-case evidence above remains labelled with its original base.

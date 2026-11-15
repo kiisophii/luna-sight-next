@@ -47,7 +47,8 @@ body.ls .lang-seg button { padding-block: 0; display: inline-flex; align-items: 
   .ls #ls-brief .sc-act { max-width: 100%; }
   .ls #ls-brief .sc-btn { height: auto; min-height: 34px; white-space: normal; text-align: left; }
   .ls #ls-brief .sc-id, .ls #ls-brief .sc-name { max-width: 100%; overflow-wrap: anywhere; }
-  .ls #view-about :is(.ab-links a, summary) { display: inline-flex; align-items: center; min-height: 24px; }
+  .ls #view-about .ab-links a { display: inline-flex; align-items: center; min-height: 24px; }
+  .ls #view-about summary { min-height: 24px; line-height: 24px; }
   .ls #view-about :is(.ab-links, .ab-by) { overflow-wrap: anywhere; }
 }
 

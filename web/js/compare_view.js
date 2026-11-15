@@ -1,3 +1,4 @@
+import { visibilityRows } from './visibility_graph.js';
 // compare_view.js — comparison tray (spec §3.9) + "Compare pinned sites" section (§4): table with best-value marks,
 // lunar-day clock, Sun/Earth elevation, timeline. No limit on pinned sites (horizontal scroll, stable #numbers).
 // Numbers: LLSN.window (core.metrics), core.js instant functions, data/relay (via values.js), data/korea station bits.
@@ -19,7 +20,7 @@ addStrings({
   r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA in view', r_gs: 'NASA DSN (any of 3):',
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
-  noChange: 'no change in data', why: 'Site check ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
+  noChange: 'no change in data', why: 'See details', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
   tabDial: '◷ Lunar-day clock', tabAlt: '↗ Sun & Earth elevation', changeH: 'Change over time',
   dialDesc: 'One turn = the analysis period, 12 o’clock = start.',
   lgSun: 'sunlight', lgEarth: 'Earth in view (direct-to-Earth geometry)', lgRelay: 'via relay tower', lgCut: 'no link even with the tower', lgNeedle: 'selected time', lgKdsa: 'Yeoju sees the Moon (≥ 10°) while the site sees Earth — geometry only',
@@ -39,7 +40,7 @@ addStrings({
   r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 가시', r_gs: 'NASA DSN (3곳 중 하나):',
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '지구 보임 · {x} 남음', nowNoEarth: '지구 안 보임 · 뜨기까지 {x}',
-  noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
+  noChange: '자료 안에서 변화 없음', why: '상세 보기', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
   tabDial: '◷ 달의 하루 시계', tabAlt: '↗ 태양·지구 고도', changeH: '시간에 따른 변화',
   dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작.',
   lgSun: '햇빛', lgEarth: '지구 보임 (직접 교신 기하)', lgRelay: '중계탑 경유', lgCut: '탑이 있어도 끊김', lgNeedle: '선택 시각', lgKdsa: '여주에서 달 ≥ 10° 이고 착륙지에서 지구가 보임 — 기하만',
@@ -233,18 +234,20 @@ function altSVG(s, W, H) {
     lo = Math.min(lo, su.el, ea.el); hi = Math.max(hi, su.el, ea.el, hz ?? 0);
   }
   lo = Math.floor(lo - 1); hi = Math.ceil(hi + 1);
-  const X = k => 28 + (k / (n - 1)) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
+  const X = k => 28 + ((k + .5) / n) * (W - 34), Y = v => 6 + (1 - (v - lo) / (hi - lo)) * (H - 20);
   const line = (arr, col, wd, dash = '') => `<polyline points="${arr.map(([k, v]) => `${X(k).toFixed(1)},${Y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${col}" stroke-width="${wd}" ${dash}/>`;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
+  const bits=hourBits(s,w.i0,w.i1);
+  const strips=bits?visibilityRows(bits,[{key:'sun',on:b=>!!(b&1)},{key:'earth',on:b=>!!(b&2)}],{x:28,y:H+2,width:W-34}):'';
+  return `<svg class="alt-geometry" viewBox="0 0 ${W} ${H+34}" role="img" aria-label="${esc(nameOf(s))}: ${esc(t('altAria'))}">
     <line x1="28" x2="${W - 6}" y1="${Y(0)}" y2="${Y(0)}" stroke="${css('--muted')}" stroke-dasharray="3 3" stroke-width="1"/>
     <text x="2" y="${Y(hi) + 8}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${hi}°</text><text x="2" y="${Y(lo)}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">${lo}°</text><text x="2" y="${Y(0) + 3}" font-size="9" fill="${css('--muted')}" font-family="Oxanium,monospace">0°</text>
     ${pts.hz.length ? line(pts.hz, css('--muted'), 1) : ''}${line(pts.earth, css('--earth'), 1.6)}${line(pts.sun, css('--sun'), 1.6)}
-    <line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="28" data-w="${W - 34}" x1="0" x2="0" y1="4" y2="${H - 12}" stroke="${css('--text')}" stroke-width="1.5"/></svg>`;
+    ${strips}<line class="alt-needle" data-n="${n}" data-i0="${w.i0}" data-x0="28" data-w="${W - 34}" x1="0" x2="0" y1="4" y2="${H+26}" stroke="${css('--text')}" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><div class="geometry-legend"><i class="sun-swatch"></i>${esc(t('visSun'))}<i class="earth-swatch"></i>${esc(t('visEarth'))}</div><p class="hint">${esc(t('visGeometry'))}</p>`;
 }
 function placeAltNeedles(root) {
   const now = LLSN().now();
   root.querySelectorAll('.alt-needle').forEach(l => {
-    const x = Number(l.dataset.x0) + ((now - Number(l.dataset.i0)) / (Number(l.dataset.n) - 1)) * Number(l.dataset.w);
+    const x = Number(l.dataset.x0) + ((now - Number(l.dataset.i0) + .5) / Number(l.dataset.n)) * Number(l.dataset.w);
     l.setAttribute('x1', x); l.setAttribute('x2', x);
   });
   root.querySelectorAll('.alt-now').forEach(p => {

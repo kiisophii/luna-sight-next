@@ -1,0 +1,11 @@
+{
+  "needle": {
+    "x": 82.79237288135593,
+    "expected": 82.79237288135593
+  },
+  "available": [
+    "gs"
+  ],
+  "unavailable": 10,
+  "errors": []
+}

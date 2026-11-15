@@ -1336,3 +1336,18 @@ body.on-about .ls-export { display: none; }
 @media (min-width: 1440px) { .ls-toolbar .tb-time { width: clamp(80px, calc(var(--mapW) - 465px), 280px); } }
 .ls-tabs-top { gap: 26px; }
 .c2-bar .info-i { display: none; }   /* the copy has no i here; sort definitions are in the condition i texts and About */
+/* Detailed visibility follow-up: geometry, never power or link performance. */
+.big-cmp .r-why .why-btn { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.28); font-weight:600; }
+.geometry-strip { display:block; width:100%; height:12px; margin-top:8px; }
+.geometry-legend { display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-size:12px; color:var(--muted); margin:6px 0; }
+.geometry-legend i { display:inline-block; width:20px; height:8px; flex:none; }
+.sun-swatch { background:var(--sun); }
+.earth-swatch { background:repeating-linear-gradient(135deg,transparent 0 3px,var(--earth) 3px 5px); }
+.blocked-swatch { background:repeating-linear-gradient(135deg,transparent 0 3px,#999 3px 5px); }
+#ls-brief .sc-hidden-toggle { display:block; margin-top:10px; background:none; border:0; padding:4px 0; color:var(--muted); text-align:left; cursor:pointer; }
+#ls-brief .sc-unavailable { margin-top:8px; opacity:.55; }
+#ls-brief .sc-unavailable[hidden], #ls-brief .data-unavailable { display:none; }
+@media (max-width:600px) {
+  #ls-brief :is(.rl-period,.kr-period,.sa-period,.now-link) { white-space:normal; overflow-wrap:anywhere; max-width:100%; }
+  #ls-brief .panel-head { flex-wrap:wrap; }
+}

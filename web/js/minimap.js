@@ -15,7 +15,7 @@ addStrings({
   mmOpen: '미니맵 크게 보기', mmClose: '미니맵 작게', mmPinned: '고정한 후보', mmTop: '대표 후보 (지금 정렬 상위 5)', mmRecent: '최근 방문', mmHere: '{c}(으)로 이동했습니다. "이 지점 분석"을 누르면 지형 지평선을 계산합니다.',
 });
 
-addStrings({mmLat:'Lat',mmLon:'Lon',mmGoto:'Go to',mmSouth:'South Pole',mmNorth:'North Pole',mmPole:'Pole',mmTerrain:'Terrain',mmPast:'Past landing',mmLatitude:'Latitude',mmLongitude:'Longitude'}, {mmLat:'위도',mmLon:'경도',mmGoto:'이동 목록',mmSouth:'남극',mmNorth:'북극',mmPole:'극',mmTerrain:'지형',mmPast:'지난 착륙지',mmLatitude:'위도',mmLongitude:'경도'});
+addStrings({mmLat:'Lat',mmLon:'Lon',mmGoto:'Go to',mmSouth:'South Pole',mmNorth:'North Pole',mmPole:'Pole',mmTerrain:'Terrain',mmPast:'Past landing',mmLatitude:'Latitude',mmLongitude:'Longitude'}, {mmLat:'위도',mmLon:'경도',mmGoto:'바로 가기',mmSouth:'남극점',mmNorth:'북극점',mmPole:'극지',mmTerrain:'지형',mmPast:'역대 착륙지',mmLatitude:'위도',mmLongitude:'경도'});
 
 const D2R = Math.PI / 180, R2D = 180 / Math.PI;
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));

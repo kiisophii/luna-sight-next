@@ -28,7 +28,7 @@ addStrings({
   skipBelow: '비교로 건너뛰기', footSources: '출처',
   footNote: '모든 시각은 UTC. 3D의 태양·지구 원반은 보기 쉽게 크게 그렸고, 고도 축은 과장했습니다.',
   verdictNote: '다른 곳의 판정 배지는 공개한 예시 기준값만 씁니다(최장 그늘 72시간, 직접 교신 50 % / 90 %).',
-  tbAria: '지도 레이어와 카메라',
+  tbAria: '지도 보기와 시간',
   addT: '착륙지 추가', close: '닫기', tabCat: '카탈로그', tabCoord: '좌표',
   catSearch: '이름으로 찾기', catAll: '모든 종류', catN: '{n}곳',
   catNote: '값은 ① 미션 조건의 분석 기간 기준이며, 조건 밖은 흐리게 보입니다.',
@@ -465,7 +465,7 @@ fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('
   };
   new MutationObserver(arrows).observe(host, { childList: true, subtree: true }); arrows();
 })();
-addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 열', colNext: '다음 열' });
+addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: '이전 후보 열', colNext: '다음 후보 열' });
 
 // ------------------------------------------------------------ bottom toolbar time parts (the copy's bar): ticks, UTC chip, speed stepper
 (() => {
@@ -526,7 +526,16 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
   };
   const sync = () => { const folded = box.classList.contains('folded'); sum.hidden = !folded; if (folded) fillS(); };
   new MutationObserver(sync).observe(box, { attributes: true, attributeFilter: ['class'] });
-  sum.addEventListener('click', e => { if (e.target.closest('.c1-add')) fb.click(); });
+  // "+ Condition": open the editor and move focus to its first field; when the editor folds again, focus returns here (a11y)
+  let fromAdd = false;
+  sum.addEventListener('click', e => {
+    if (!e.target.closest('.c1-add')) return;
+    fromAdd = true; fb.click();
+    requestAnimationFrame(() => box.querySelector('.ls-foldable')?.querySelector('input, select, button, [tabindex]:not([tabindex="-1"])')?.focus());
+  });
+  new MutationObserver(() => {
+    if (fromAdd && box.classList.contains('folded')) { fromAdd = false; requestAnimationFrame(() => sum.querySelector('.c1-add')?.focus()); }
+  }).observe(box, { attributes: true, attributeFilter: ['class'] });
   foldLabel(fb, !box.classList.contains('folded'));
   // first view: when sites are already in the comparison, start with the conditions folded (the copy)
   window.addEventListener('llsn:ready', () => setTimeout(() => {
@@ -629,4 +638,24 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
   document.addEventListener('click', e => { if (!leg.contains(e.target) && leg.classList.contains('tip-on')) { leg.classList.remove('tip-on'); leg.querySelector('.lg-i')?.setAttribute('aria-expanded', 'false'); } });
   compact();
+})();
+
+// ------------------------------------------------------------ keyboard tooltip for the tray and map info buttons (a11y)
+// Mouse users see the native title; keyboard focus now shows the same text in a visible tooltip, linked by aria-describedby.
+(() => {
+  const tipEl = document.createElement('div'); tipEl.id = 'kbd-tip'; tipEl.className = 'kbd-tip'; tipEl.setAttribute('role', 'tooltip'); tipEl.hidden = true;
+  document.body.appendChild(tipEl);
+  const SEL = '.tc-i, #hud-i';
+  document.addEventListener('focusin', e => {
+    const b = e.target.closest?.(SEL); if (!b) return;
+    const txt = b.getAttribute('title') || b.getAttribute('aria-label') || ''; if (!txt) return;
+    tipEl.textContent = txt; tipEl.hidden = false; b.setAttribute('aria-describedby', 'kbd-tip');
+    const r = b.getBoundingClientRect(), w = Math.min(280, innerWidth - 16);
+    tipEl.style.maxWidth = w + 'px';
+    const tw = tipEl.offsetWidth, th = tipEl.offsetHeight;
+    tipEl.style.left = Math.max(8, Math.min(innerWidth - tw - 8, r.left + r.width / 2 - tw / 2)) + 'px';
+    tipEl.style.top = (r.bottom + 6 + th > innerHeight ? r.top - th - 6 : r.bottom + 6) + 'px';
+  });
+  document.addEventListener('focusout', e => { if (e.target.closest?.(SEL)) tipEl.hidden = true; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') tipEl.hidden = true; });
 })();

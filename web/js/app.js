@@ -19,11 +19,11 @@ import { relayPeriod, relayPeek, hourBits, TOWER_H } from './values.js';
 
 addStrings({
   appName: 'Luna Sight', appSub: 'Lunar Landing Site Navigator', toAbout: 'About this tool',
-  langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operating period',
-  p7: '7 days', p295: 'One lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
+  langAria: 'Language', c1: 'Mission conditions', c1Date: 'Landing date (UTC)', c1Period: 'Operations period',
+  p7: '7 days', p295: 'Lunar day (29.5 d)', p90: '90 days', p365: '1 year', pCustom: '{d} days',
   c1Clipped: 'Computed only to 2030-12-31 (end of the ephemeris)', collapse: 'Collapse panel', expand: 'Expand panel',
   c1Expand: 'Expand', c1Landing: '{d} landing', c1NoCond: 'No conditions · all sites', c2: 'Candidates', c2All: 'All', relayPillTip: 'Assumption: a 15 m mast near the site, adding the hours the Earth is visible through it. Geometry only; signal strength is not included.', rlTower: 'Tower', rlKm: 'tower {k} km', c1AddCond: '+ Condition', c2Count: '{n}', c2Desc: 'Sites that meet every mission condition. Press + to add one to the comparison.', comparing: 'Comparing', otherCand: 'Other candidates', pinnedEmpty: 'No sites in the comparison yet.', pinMax: 'Up to 10 sites can be compared', pinNoTip: 'Comparison number (colour in the comparison)', c2Pinned: '· comparing {n}', c2Pass: '{n} meet all ① conditions',
-  sortBy: 'Sort by', s_both: 'Sun + Earth together', s_sun: 'Sunlight', s_earth: 'Direct-to-Earth', s_dark: 'Shortest longest-shadow', s_name: 'Name',
+  sortBy: 'Sort by', sortPre: 'Sort: ', s_both: 'Sun + Earth', s_sun: 'Sunlight', s_earth: 'Earth view', s_dark: 'Longest dark', s_name: 'Name',
   relayAssume: 'Relay tower', relayTowerH: 'Assumed · 15 m tower', relayTag: 'with tower', relayNone: 'no tower calc.', relayLoading: 'loading towers…',
   relayHint: '{h} m towers (up to 3) from data/relay — geometric line of sight only',
   sortHelpT: 'Sort order', sortHelp1: '', sortHelp2: 'Sites are ordered by one value only. There is no hidden weighting.',
@@ -39,7 +39,7 @@ addStrings({
   selTimeUTC: 'Selected time (UTC)', speedAria: 'Playback speed (animation only)', speedNote: 'speed changes the animation only',
   play: 'Play', pause: 'Pause', scrubAria: 'Selected time within the period. Arrow keys = 1 hour, Shift + arrow = 1 day.',
   scrubFor: 'Bands: {s} · top band = sunlit, bottom band = Earth in view', details: 'See details below ↓', collapseTray: 'Collapse tray',
-  periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site check',
+  periodIs: 'Period', days: 'days', pinnedFull: '', scrollHint: 'Compare in detail', pagesAria: 'Screens', pgMap: 'Map', pgCmp: 'Detailed comparison', pgBrief: 'Site checks', expH: 'Export this analysis', expLead: 'Save the current conditions, candidates, and comparison as a file.', expPdf: 'PDF report', expPdfSub: 'For print and sharing',
   hudLine1: 'Earth-set edge (Earth-visibility limit) · LROC color · LOLA terrain',
   exportPdf: 'Export PDF', exportPdfTip: 'Print or save this comparison as a PDF (browser print dialog)', hudLine2: '{t}', hudSrc: 'Sun and Earth positions: JPL DE440s ephemeris (selected time, UTC)', pickOn: 'Click the Moon to place a point · Esc to cancel', cancel: 'Cancel',
   spBtn: 'South Pole', tb_relief: 'Terrain relief (LOLA)', tbt_relief: 'LOLA terrain shading with a fixed light from the north-west. No data values and no time dependence.', lgRelief: 'Terrain relief, LOLA', lgReliefNote: 'shading only, fixed light from the north-west; no values', tb_light: 'Sunlight now', tb_mean: 'Mean sunlight 2026–2030', tb_earthmap: 'Mean Earth visibility 2026–2030', tb_focus: 'Zoom to the focused site',
@@ -56,7 +56,7 @@ addStrings({
   p7: '7일', p295: '달의 하루 (29.5일)', p90: '90일', p365: '1년', pCustom: '{d}일',
   c1Clipped: '2030-12-31까지만 계산됨 (천체력 끝)', collapse: '패널 접기', expand: '패널 펼치기',
   c1Expand: '펼치기', c1Landing: '{d} 착륙', c1NoCond: '조건 없음 · 모든 착륙지', c2: '후보지', c2All: '전체', relayPillTip: '가정: 착륙지 근처 15 m 탑을 세워 그 탑을 거쳐 지구가 보이는 시간을 더합니다. 기하만 보며 신호 세기는 포함하지 않습니다.', rlTower: '탑', rlKm: '탑 {k} km', c1AddCond: '+ 조건', c2Count: '{n}곳', c2Desc: '모든 미션 조건을 만족하는 착륙지입니다. + 를 누르면 비교에 넣습니다.', comparing: '비교 중', otherCand: '다른 후보', pinnedEmpty: '아직 비교 중인 곳이 없습니다.', pinMax: '최대 10곳까지 비교할 수 있습니다', pinNoTip: '비교 번호 (비교에서 쓰는 색)', c2Pinned: '· 비교 {n}곳', c2Pass: '{n}곳이 ① 조건을 모두 만족',
-  sortBy: '정렬 기준', s_both: '해+지구 동시', s_sun: '일조율', s_earth: '지구 가시율', s_dark: '가장 긴 그늘 짧은 순', s_name: '이름순',
+  sortBy: '정렬 기준', sortPre: '정렬: ', s_both: '해+지구 동시', s_sun: '일조율', s_earth: '지구 가시율', s_dark: '가장 긴 그늘 짧은 순', s_name: '이름순',
   relayAssume: '중계탑', relayTowerH: '가정 · 15 m 탑', relayTag: '탑 포함', relayNone: '탑 계산 없음', relayLoading: '탑 자료 불러오는 중…',
   relayHint: '{h} m 탑(최대 3기), data/relay · 기하학적 가시성만',
   sortHelpT: '정렬 기준', sortHelp1: '', sortHelp2: '한 가지 기준으로만 줄 세웁니다. 숨은 가중치는 없습니다.',
@@ -72,7 +72,7 @@ addStrings({
   selTimeUTC: '선택 시간 (UTC)', speedAria: '재생 속도 (애니메이션만)', speedNote: '속도는 애니메이션만 바꿈',
   play: '재생', pause: '일시정지', scrubAria: '기간 안의 선택 시각. 화살표 = 1시간, Shift + 화살표 = 1일.',
   scrubFor: '띠: {s} · 위 띠 = 햇빛, 아래 띠 = 지구 보임', details: '아래 상세 보기 ↓', collapseTray: '비교 접기',
-  periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증',
+  periodIs: '기간', days: '일', scrollHint: '상세 비교 보기', pagesAria: '화면', pgMap: '지도', pgCmp: '상세 비교', pgBrief: '착륙지 검증', expH: '이 분석 내보내기', expLead: '지금 조건, 후보, 비교를 파일로 저장합니다.', expPdf: 'PDF 보고서', expPdfSub: '인쇄·공유용',
   hudLine1: '지구가 지는 경계 · LROC 컬러 · LOLA 지형',
   exportPdf: 'PDF로 내보내기', exportPdfTip: '이 비교를 인쇄하거나 PDF로 저장합니다 (브라우저 인쇄 창)', hudLine2: '{t}', hudSrc: '태양·지구 위치: JPL DE440s 천체력 (선택 시각, UTC)', pickOn: '달을 눌러 지점을 고르세요 · Esc 취소', cancel: '취소',
   spBtn: '남극', tb_relief: '지형 음영 (LOLA)', tbt_relief: 'LOLA 지형 음영, 북서쪽 고정 조명. 값이 없고 시간에 따라 바뀌지 않습니다.', lgRelief: '지형 음영, LOLA', lgReliefNote: '음영만 표시, 북서쪽 고정 조명; 값 없음', tb_light: '선택 시각의 햇빛', tb_mean: '평균 일조 2026–2030', tb_earthmap: '평균 지구 가시 2026–2030', tb_focus: '보고 있는 착륙지로 확대',
@@ -111,7 +111,10 @@ const nameOf = s => (getLang() === 'ko' && s.name_ko ? s.name_ko : s.name);
 const rowName = s => (getLang() === 'ko' && s.name_ko ? s.name_ko.replace(/^아르테미스 후보:\s*/, '').replace(/\s*\([^)]*\)\s*$/, '') : (s.short || s.name));
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k] ?? '');
-const fmtUTC = i => core.hourToDate(i).toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** Selected time: EN 'Nov 15, 2026 · 04:00 UTC', KR '2026-11-15 04:00 UTC'. */
+const fmtUTC = i => { const d = core.hourToDate(i), iso = d.toISOString();
+  return getLang() === 'ko' ? iso.replace('T', ' ').slice(0, 16) + ' UTC' : `${MON[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()} · ${iso.slice(11, 16)} UTC`; };
 const isoDay = i => core.hourToDate(i).toISOString().slice(0, 10);
 const dayStart = i => Math.floor(i / 24) * 24;
 const fmtDaysShort = d => (Math.abs(d - Math.round(d)) < 0.05 ? String(Math.round(d)) : d.toFixed(1));
@@ -215,11 +218,17 @@ function rowHTML(s, rank) {
   </li>`;
 }
 
+/** Date box shows 'Nov 14, 2026' (the copy); the native date input stays underneath as the real control. */
+function syncDateLabel() {
+  const inp = $('#c1-date'), lab = $('#c1-date-lbl'); if (!inp || !lab || !inp.value) return;
+  lab.textContent = new Date(inp.value + 'T00:00:00Z').toLocaleDateString(getLang() === 'ko' ? 'ko-KR' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
 function renderList() {
   if (!window.LLSN.window) return;
   const sorted = sortedSites(), rank = new Map(sorted.map((s, k) => [s.id, k + 1]));
   const pinned = pins.map(p => byId(p.id)).filter(Boolean);
-  const rest = sorted.filter(s => !pinOf(s.id));
+  const passF = window.LLSN.filterPass;
+  const rest = sorted.filter(s => !pinOf(s.id) && (!passF || passF.has(s.id)));   // conditions shorten the list (the copy)
   const shown = showAll ? rest : rest.slice(0, Math.max(0, LIST_FIRST - pinned.length));
   $('#pk-pinned').innerHTML = pinned.map(s => rowHTML(s, rank.get(s.id))).join('');
   $('#pk-pinned-empty').hidden = true;
@@ -230,7 +239,9 @@ function renderList() {
   const more = $('#pk-more');
   more.hidden = true;
   more.textContent = showAll ? t('less') : fill(t('more'), { n: hidden });
-  $('#c2-count').textContent = fill(t('c2Count'), { n: core.state.sites.length });
+  $('#c2-count').textContent = fill(t('c2Count'), { n: passF ? passF.size : core.state.sites.length });
+  document.querySelector('.c2-bar .sort-row')?.style.setProperty('--pre', JSON.stringify(t('sortPre')));
+  syncDateLabel();
   $('#c2-pinned').textContent = pins.length;
   const pass = window.LLSN.filterPass;
   $('#c2-pass').textContent = pass ? fill(t('c2Pass'), { n: pass.size }) : '';

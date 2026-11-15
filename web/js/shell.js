@@ -238,7 +238,7 @@ window.addEventListener('llsn:time', () => {
 });
 async function setLayer(k) {
   layerNoted = false; const ln = document.getElementById('ls-layernote'); if (ln && k === 'light') ln.hidden = true;
-  tb.classList.toggle('time-off', k !== 'light');                // the time block folds for time-independent layers
+  tb.classList.toggle('time-off', k !== 'light' && k !== 'sun');   // open for Sunlight and Average sunlight (the copy); folds for the others
   if (k === 'relief') {                                            // terrain shading only: neutral grey over the LOLA hillshade
     layer = k; tb.querySelectorAll('button[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === k)));
     const g0 = LL().globe; if (!g0) return;
@@ -404,23 +404,25 @@ window.addEventListener('llsn:ready', publish);
 // ------------------------------------------------------------ version in the footer
 fetch('version.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { $('#ls-ver').textContent = `v${j.v}`; }).catch(() => {});
 
-// ------------------------------------------------------------ three screens (Chaei #26): page indicator on the right edge
+// ------------------------------------------------------------ three screens: tabs next to the wordmark (the copy 17:49)
 (() => {
   const nav = document.getElementById('ls-pages'); if (!nav) return;
   const targets = { map: () => document.querySelector('.ls-screen'), cmp: () => document.getElementById('ls-compare'), brief: () => document.getElementById('ls-brief') };
   nav.addEventListener('click', e => {
     const a = e.target.closest('a[data-page]'); if (!a) return;
     e.preventDefault();
+    if (document.body.classList.contains('on-about')) { history.pushState(null, '', location.pathname + location.search); window.dispatchEvent(new HashChangeEvent('hashchange')); }
     const el = targets[a.dataset.page]();
-    if (a.dataset.page === 'map') window.scrollTo({ top: 0, behavior: 'smooth' }); else el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    requestAnimationFrame(() => { if (a.dataset.page === 'map') window.scrollTo({ top: 0, behavior: 'smooth' }); else el?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   });
   const mark = () => {
     const y = window.scrollY + window.innerHeight * 0.4;
     let cur = 'map';
     for (const k of ['cmp', 'brief']) { const el = targets[k](); if (el && el.getBoundingClientRect().top + window.scrollY <= y) cur = k; }
+    if (document.body.classList.contains('on-about')) cur = '';
     nav.querySelectorAll('a').forEach(a => { if (a.dataset.page === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
   };
-  window.addEventListener('scroll', mark, { passive: true }); window.addEventListener('resize', mark); mark();
+  window.addEventListener('scroll', mark, { passive: true }); window.addEventListener('resize', mark); window.addEventListener('hashchange', () => setTimeout(mark, 50)); mark();
 })();
 
 // ------------------------------------------------------------ detailed comparison table (Chaei #27): arrow buttons + drag to scroll columns
@@ -455,7 +457,8 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
 (() => {
   const H0 = Date.UTC(2026, 0, 1), d = i => new Date(H0 + i * 3600e3);
   const p2 = n => String(n).padStart(2, '0');
-  const md = i => { const x = d(i); return `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}`; };
+  const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const md = i => { const x = d(i); return getLang() === 'ko' ? `${p2(x.getUTCMonth() + 1)}.${p2(x.getUTCDate())}` : `${MON[x.getUTCMonth()]} ${x.getUTCDate()}`; };
   const ticks = () => {
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
     const span = w.i1 - w.i0 || 1, days = Math.floor(span / 24);
@@ -464,14 +467,17 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
     html += [0, 0.5, 1].map(f => `<span class="lb" style="left:${f * 100}%">${md(Math.round(w.i0 + span * f))}</span>`).join('');
     el.innerHTML = html;
     const per = document.getElementById('tray-period');
-    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)}${getLang() === 'ko' ? '일' : ' d'}`; }
+    if (per) { const a = d(w.i0), b = d(w.i1), days = Math.round(w.days * 10) / 10;
+      per.textContent = getLang() === 'ko' ? `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${days}일`
+        : `${MON[a.getUTCMonth()]} ${a.getUTCDate()} – ${MON[b.getUTCMonth()]} ${b.getUTCDate()}, ${b.getUTCFullYear()} · UTC · ${days} d`; }
   };
   const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
   window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });
   popover($('#utc-chip'), $('#utc-pop'));
   // speed: ‹ 6h/s › stepper over the native select (app.js keeps reading #speed)
   const sel = document.getElementById('speed'), val = document.getElementById('speed-val');
-  const show = () => { val.textContent = sel.options[sel.selectedIndex]?.textContent || ''; };
+  const show = () => { const x = sel.options[sel.selectedIndex]?.textContent || ''; val.textContent = getLang() === 'ko' ? x.replace(' ', '') : x; };
+  window.addEventListener('llsn:lang', show);
   document.querySelector('.tb-speed')?.addEventListener('click', e => {
     const b = e.target.closest('button[data-sp]'); if (!b) return;
     sel.selectedIndex = Math.max(0, Math.min(sel.options.length - 1, sel.selectedIndex + Number(b.dataset.sp)));
@@ -548,3 +554,7 @@ document.getElementById('c1-sum')?.addEventListener('pointerdown', () => { const
 (() => { const b = document.getElementById('pdf-btn'); if (!b) return;
   const set = () => { b.title = t('exportPdfTip'); }; ['llsn:ready', 'llsn:lang'].forEach(ev => window.addEventListener(ev, set)); set();
   b.addEventListener('click', () => window.print()); })();
+
+// date box: the formatted label button opens the native picker; typing still works in the input when it has focus
+(() => { const b = document.getElementById('c1-date-btn'), i = document.getElementById('c1-date'); if (!b || !i) return;
+  b.addEventListener('click', () => { try { i.showPicker(); } catch (e) { i.focus(); } }); })();

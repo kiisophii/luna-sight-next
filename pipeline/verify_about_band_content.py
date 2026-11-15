@@ -23,7 +23,7 @@ async def main():
   assert not errors,errors
   print('normal motion, Korean, resize, How it works, exit: PASS')
   await b.close()
-base=subprocess.check_output(['git','show','490c024:web/js/about.js']).decode('utf-8');now=Path('web/js/about.js').read_text(encoding='utf-8')
+base=subprocess.check_output(['git','show','9ce8b52:web/js/about.js']).decode('utf-8');now=Path('web/js/about.js').read_text(encoding='utf-8')
 a=base[base.index('  <section class="ab-sec" id="about-why"'):base.index('\n`;')]
 b=now[now.index('  <section class="ab-sec" id="about-why"'):now.index('\n  </div>\n`;')]
 assert a==b,'Body markup changed'

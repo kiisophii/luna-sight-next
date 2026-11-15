@@ -1,6 +1,6 @@
 # About: original journey in a 25% band
 
-Jiyong; base 490c024. User-supplied `luna-sight-About상단 인터렉션.zip`, `about-journey.js` and its accompanying prompt are the source. Original renderer SHA-256: `2fcf5d8a3745a6e73341ce340ccdaa1ea0b4ac9ca6091f58c1244d108a3f953f`.
+Jiyong; base 490c024, integrated and revalidated against main 9ce8b52 (new team wording, credits, navigation and styles preserved). User-supplied `luna-sight-About상단 인터렉션.zip`, `about-journey.js` and its accompanying prompt are the source. Original renderer SHA-256: `2fcf5d8a3745a6e73341ce340ccdaa1ea0b4ac9ca6091f58c1244d108a3f953f`.
 
 The user's later instruction supersedes the prompt's 40% desktop / 30% mobile sizing: the band is 25dvh at every width. To keep the illustration legible, the original craft height is 40 virtual units (was 32), Moon radius 115 (was 100), padding 20/65, focus 72% desktop / 78% mobile. All dependent path/landing geometry uses those sizes. Earth stays visible along the lower edge. The original canvas renderer replaces the prior SVG reconstruction; the adapter drives its supplied timeline with the prompt's 12% interpolation and final 15% hold.
 

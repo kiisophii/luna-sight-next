@@ -968,6 +968,15 @@ if (uLayerA > 0.0 || uElev > 0.5) {
     dirty = true; stats.quality = quality;
   }
 
+  // Sharp when still (Sua 11/15): the adaptive step above drops the pixel ratio while moving; once nothing has
+  // rendered for 0.6 s the full ratio comes back for the still image (it may step down again on the next motion).
+  setInterval(() => {
+    const full = Math.min(window.devicePixelRatio || 1, 2);
+    if (quality >= 1 && renderer.getPixelRatio() < full && performance.now() - lastRender > 600 && !document.hidden) {
+      renderer.setPixelRatio(full); resize(); quality = 0; slowN = 0; stats.quality = 0; dirty = true;
+    }
+  }, 300);
+
   // Render on demand: only when something changed (camera, time, tiles, flight) plus a short tail so the HUD settles.
   let raf = 0, fps = 0, fpsT = performance.now(), fpsN = 0, hudT = 0, stopped = false, tailUntil = 0;
   const stats = { fps: 0, tiles: 0, loaded: 0, triangles: 0, geometries: 0, textures: 0, pending: 0, quality: 0, renders: 0 };

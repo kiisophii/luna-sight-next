@@ -121,11 +121,14 @@
         <div class="tray-sub"><h3 data-i18n="trayCmpH">Compare candidates</h3><span class="cmp-n num"><b id="tray-n">0</b><small>/ 10</small></span></div>
         <p class="tray-period num" id="tray-period"></p>
         <!-- view tabs (the copy's tab block; labels = this build's three views) -->
-        <div class="tray-tabs" id="tray-view" role="group" data-i18n-aria="trayView">
+        <!-- category view (Chaei, after 11:49): Sunlight / Earth view / Relay tower / Terrain -->
+        <div id="tray-cat" class="tray-cat"></div>
+        <!-- previous table / clock / elevation views: kept in the detailed comparison below; hidden here -->
+        <div class="tray-tabs" id="tray-view" role="group" data-i18n-aria="trayView" hidden>
           <button type="button" data-v="table" aria-pressed="true" data-i18n="tv_table">Table</button><button type="button" data-v="dial" aria-pressed="false" data-i18n="tv_dial">Lunar-day clock</button><button type="button" data-v="alt" aria-pressed="false" data-i18n="tv_alt">Sun & Earth elevation</button>
         </div>
-        <p class="tray-desc" id="tray-desc"></p>
-        <div id="tray-body" class="tray-body" aria-live="off"></div>
+        <p class="tray-desc" id="tray-desc" hidden></p>
+        <div id="tray-body" class="tray-body" aria-live="off" hidden></div>
         <a class="tray-more" href="#ls-compare"><span data-i18n="trayMore">Detailed comparison</span> <span aria-hidden="true">↓</span></a>
       </div>
     </aside>

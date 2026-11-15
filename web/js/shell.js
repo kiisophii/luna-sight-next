@@ -439,7 +439,7 @@ addStrings({ colPrev: 'Previous columns', colNext: 'Next columns' }, { colPrev: 
     const w = LL().window, el = document.getElementById('tl-ticks'); if (!w || !el) return;
     const n = 5; el.innerHTML = Array.from({ length: n }, (_, k) => `<span>${md(Math.round(w.i0 + (w.i1 - w.i0) * k / (n - 1)))}</span>`).join('');
     const per = document.getElementById('tray-period');
-    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)} d`; }
+    if (per) { const a = d(w.i0), b = d(w.i1); per.textContent = `${a.toISOString().slice(0, 10)} – ${p2(b.getUTCMonth() + 1)}-${p2(b.getUTCDate())} · UTC · ${(Math.round(w.days * 10) / 10)}${getLang() === 'ko' ? '일' : ' d'}`; }
   };
   const chip = e => { const i = e?.detail?.i ?? LL().time; if (i == null) return; const x = d(Math.floor(i)); const el = document.getElementById('utc-val'); if (el) el.textContent = `${md(i)} ${p2(x.getUTCHours())}h`; };
   window.addEventListener('llsn:window', ticks); window.addEventListener('llsn:time', chip); window.addEventListener('llsn:ready', () => { ticks(); chip(); });

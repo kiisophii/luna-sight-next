@@ -541,7 +541,7 @@ async function renderBig() {
   }));
   root.querySelectorAll('.detail-info').forEach(button => button.addEventListener('click', () => {
     const tip = root.querySelector('.detail-tooltip');
-    tip.textContent = button.title; tip.hidden = false;
+    tip.classList.remove('tl-tip', 'alt-tip'); tip.textContent = button.title; tip.hidden = false;
     const rect = button.getBoundingClientRect();
     tip.style.left = Math.min(rect.left, window.innerWidth - 320) + 'px';
     tip.style.top = rect.bottom + 6 + 'px';
@@ -563,17 +563,29 @@ async function renderBig() {
     box.addEventListener('pointermove', event => {
       const svgBox = box.querySelector('svg') || box, rect = svgBox.getBoundingClientRect(), vbW = svgBox.viewBox?.baseVal?.width || 264;
       const fraction = Math.max(0, Math.min(1, ((event.clientX - rect.left) / rect.width * vbW - 30) / (vbW - 34)));
-      const i = w.i0 + Math.max(0,Math.min(w.i1-w.i0,fraction*(w.i1-w.i0+1)-.5)), site = byId(box.dataset.chartSite);
+      const i = Math.round(w.i0 + Math.max(0,Math.min(w.i1-w.i0,fraction*(w.i1-w.i0+1)-.5))), site = byId(box.dataset.chartSite);
       const tip = root.querySelector('.detail-tooltip');
-      tip.classList.remove('tl-tip');
-      const bd = altBody === 'earth' ? core.earthAzEl(site, i) : core.sunAzEl(site, i), hzv = core.terrainPending(site) ? null : core.horizonAt(site, bd.az);
-      tip.textContent = `${nameOf(site)} · ${core.hourToDate(i).toISOString().slice(0,16).replace('T',' ')} UTC · ${t(altBody === 'earth' ? 'lgEarthEl' : 'lgSunEl')} ${bd.el.toFixed(1)}°${hzv == null ? '' : ` · ${t(altBody === 'earth' ? 'lgHzEarth' : 'lgHzSun')} ${hzv.toFixed(1)}°`}`;
-      tip.hidden = false; tip.style.left = Math.max(8, Math.min(event.clientX + 12, innerWidth - 320)) + 'px'; tip.style.top = Math.min(event.clientY + 12, innerHeight - 80) + 'px';
+      tip.innerHTML = altTipHTML(site, i); tip.classList.add('tl-tip', 'alt-tip');
+      tip.hidden = false; tip.style.left = Math.max(8, Math.min(event.clientX + 12, innerWidth - 296)) + 'px'; tip.style.top = Math.min(event.clientY + 12, innerHeight - 140) + 'px';
     });
     box.addEventListener('pointerleave', () => { root.querySelector('.detail-tooltip').hidden = true; });
   });
 }
 
+// Elevation-chart hover read-out (Chaei copy 6-12): name and time, then one line each for the body's elevation,
+// the terrain horizon in that direction and the margin between them. Same core functions as the chart itself.
+function altTipHTML(site, i) {
+  const ko = getLang() === 'ko', earth = altBody === 'earth';
+  const bd = earth ? core.earthAzEl(site, i) : core.sunAzEl(site, i), hzv = core.terrainPending(site) ? null : core.horizonAt(site, bd.az);
+  const line = (col, k1, v) => `<div class="tt-l"><i style="background:${col}"></i><b>${esc(k1)}</b><span class="num">${esc(v)}</span></div>`;
+  const m = hzv == null ? null : bd.el - hzv;
+  const mTxt = m == null ? '—' : ko ? `지형보다 ${Math.abs(m).toFixed(1)}° ${m >= 0 ? '위' : '아래'}` : `${Math.abs(m).toFixed(1)}° ${m >= 0 ? 'above' : 'below'} the terrain`;
+  return `<div class="tt-h"><b>${esc(nameOf(site))}</b><span>${esc(tlTime(i))}</span></div>`
+    + line(earth ? 'var(--earth)' : 'var(--sun)', t(earth ? 'lgEarthEl' : 'lgSunEl'), `${bd.el.toFixed(1)}°`)
+    + line('var(--muted)', t(earth ? 'lgHzEarth' : 'lgHzSun'), hzv == null ? '—' : `${hzv.toFixed(1)}°`)
+    + line('transparent', ko ? '여유각' : 'Margin', mTxt)
+    + `<p class="tt-n">${esc(ko ? '1시간 값. 여유각 = 천체 고도 − 그 방향 지형 높이. 기하만 계산합니다.' : 'Hourly value. Margin = elevation − terrain height in that direction. Geometry only.')}</p>`;
+}
 // Timeline hover read-out: state at that hour for the site under the pointer (same bits as the bars).
 const tlTime = i => {
   const d = core.hourToDate(i), iso = d.toISOString(), hm = iso.slice(11, 16);
@@ -617,7 +629,7 @@ function wireTimeline(box) {
     const site = byId(ids[Math.max(0, Math.min(ids.length - 1, row))]);
     if (!site) { tip.hidden = true; return; }
     tip.innerHTML = tlTipHTML(site, Math.floor(i));
-    tip.classList.add('tl-tip');
+    tip.classList.add('tl-tip'); tip.classList.remove('alt-tip');
     tip.hidden = false; tip.style.left = Math.max(8, Math.min(e.clientX + 14, innerWidth - 296)) + 'px';
     tip.style.top = Math.min(e.clientY + 12, innerHeight - 80) + 'px';
   });

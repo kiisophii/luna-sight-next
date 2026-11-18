@@ -229,5 +229,6 @@ html .ls #ls-brief .sc-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); g
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(odd) { border-left: 0; padding-left: 0; }
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 1px solid var(--sc-line); padding-left: 16px; }
 @media (max-width: 600px) { html .ls #ls-brief .sc-sum { grid-template-columns: minmax(0, 1fr); } html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 0; padding-left: 0; } }
-
-
+/* elevation-chart hover (copy 6-12): longer labels, value right-aligned */
+.detail-tooltip.alt-tip .tt-l { grid-template-columns: 14px minmax(0, 1fr) auto; }
+.detail-tooltip.alt-tip .tt-l span { font-family: var(--font-num); text-align: right; }

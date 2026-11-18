@@ -200,7 +200,8 @@ body.ls .ls-below > #ls-brief {
 }
 #ls-brief .sc-box .sc-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; padding: 16px; }
 #ls-brief .sc-cards > .ls-detail { min-width: 0; padding: 20px 20px 0; container-type: inline-size; }
-#ls-brief .sc-cards > :is(#blk-time, #blk-terrain, #blk-access, #blk-history, #blk-routes, #blk-seasons, #blk-trust, #blk-more) { grid-column: 1 / -1; }
+/* Sua 11/15 23:59: the detailed parts below also sit two per row; only the time card spans both columns */
+#ls-brief .sc-cards > #blk-time { grid-column: 1 / -1; }
 #ls-brief .sc-cards > .is-closed { grid-column: auto; }
 #ls-brief .sc-box .ls-detail > header h3 { font-size: 16px; line-height: 24px; font-weight: 700; }
 #ls-brief :is(.blk-body, .panel) { font-family: var(--font); font-size: 14px; line-height: 1.5; }

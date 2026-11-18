@@ -119,7 +119,7 @@ function init() {
     else if ((e.key === 'Enter' || e.key === ' ') && cursor >= 0) { e.preventDefault(); send(cursor); }
   });
   window.addEventListener('llsn:focus', () => follow());
-  window.addEventListener('llsn:lang', () => { translate(sec); fillSites(); draw(); });
+  window.addEventListener('llsn:lang', () => { translate(sec); fillSites(); renderNote(); draw(); });
   follow();
 }
 
@@ -140,11 +140,14 @@ function follow() {
   else show(siteId || IDS[0], true, f);
 }
 
+let noteSite = null;
+function renderNote() { if (noteSite) noteEl.textContent = fill(t('lmNoGrid'), { s: typeof noteSite === 'string' ? noteSite : siteName(noteSite) }); }
 async function show(id, fallback, focus) {
   siteId = id; siteSel.value = id;
   const s = LLSN().state.sites.find(x => x.id === id);
   noteEl.hidden = !(fallback && focus);
-  if (fallback && focus) noteEl.textContent = fill(t('lmNoGrid'), { s: s ? siteName(s) : id });
+  noteSite = fallback && focus ? (s || id) : null;   // issue #33: kept so a language switch can re-render the note
+  renderNote();
   readout.textContent = t('lmLoading');
   try { LG = await load(id); grid = LG.data; }
   catch (e) { grid = null; LG = null; readout.textContent = t('lmFail'); svg.innerHTML = ''; statsEl.innerHTML = ''; return; }

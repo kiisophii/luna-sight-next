@@ -25,7 +25,7 @@ addStrings({
   rlAlways: 'This site already sees Earth all the time in the 5-year data window — no tower needed.',
   rlMap: 'Where a tower would help (search area)', rlMapLegend: '', rlLgGain: 'link gain with one tower at that spot (stronger = more)', rlLgNo: 'no line of sight or too steep', rlLgLander: 'lander', rlLgTower: 'towers',
   rlByN: 'Whole 2026–2030 window: link % with 0 / 1 / 2 / 3 towers',
-  rlBudget: 'Link budget tower → Earth (ESTIMATE)', rlBudgetNote: 'Rough estimate using assumed equipment parameters, not a specification.',
+  rlBudget: 'Link budget tower → Earth', rlPp: ' pp', rlEst: 'ESTIMATE', rlSupport: 'band support (assumed / unverified)', rlBudgetNote: 'Rough estimate using assumed equipment parameters, not a specification.',
   rlStation: 'station', rlBand: 'band', rlRange: 'range', rlCn0: 'C/N₀', rlRate: 'power-limited rate (ignores bandwidth)',
   rlPending: 'Terrain pending — the relay tower is computed only from real LOLA terrain. This site has no DEM cache yet, so nothing is shown (never a flat-horizon result).',
   rlNotYet: 'Relay results not computed yet for this site.',
@@ -47,7 +47,7 @@ addStrings({
   rlAlways: '이 착륙지는 5년 데이터 내내 지구가 보인다 — 타워가 필요 없다.',
   rlMap: '타워가 도움이 되는 곳 (탐색 범위)', rlMapLegend: '', rlLgGain: '그 자리에 탑 1기를 세울 때 늘어나는 교신 (진할수록 많음)', rlLgNo: '가시선 없음 또는 너무 가파름', rlLgLander: '착륙선', rlLgTower: '탑',
   rlByN: '2026–2030 전체: 타워 0 / 1 / 2 / 3기일 때 통신 %',
-  rlBudget: '타워 → 지구 링크 버짓 (추정치)', rlBudgetNote: '장비 매개변수를 가정한 대략적 추정치이며 실제 규격이 아닙니다.',
+  rlBudget: '타워 → 지구 링크 버짓', rlPp: '%p', rlEst: '추정치', rlSupport: '대역 지원 (가정 / 미검증)', rlBudgetNote: '장비 매개변수를 가정한 대략적 추정치이며 실제 규격이 아닙니다.',
   rlStation: '지상국', rlBand: '대역', rlRange: '거리', rlCn0: 'C/N₀', rlRate: '전력 기준 전송률 (대역폭 무시)',
   rlPending: '지형 대기 중 — 중계 타워는 실제 LOLA 지형으로만 계산한다. 이 착륙지는 아직 DEM이 없어서 아무것도 보여 주지 않는다 (평평한 지평선 결과는 절대 쓰지 않음).',
   rlNotYet: '이 착륙지는 아직 중계 결과가 계산되지 않았다.',
@@ -154,7 +154,7 @@ function render() {
   body.innerHTML = `
     <div class="rl-kpis">
       <div class="kpi direct"><span class="label">${t('rlDirect')}</span><span class="value">${pD}%</span><span class="sub">${fmtHours(seg.direct)}</span></div>
-      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pV}%</span><span class="sub">${fmtHours(seg.via)}</span></div>
+      <div class="kpi via"><span class="label">${t('rlVia')} (${nT} ${t('rlNetN')}, ${height} m)</span><span class="value">+${pV}${t('rlPp')}</span><span class="sub">${fmtHours(seg.via)}</span></div>
       <div class="kpi total"><span class="label">${t('rlTotal')}</span><span class="value">${pD + pV}%</span><span class="sub">${fmtHours(seg.direct + seg.via)}</span></div>
       <div class="kpi none"><span class="label">${t('rlNone')}</span><span class="value">${pN}%</span><span class="sub">${t('rlLongestNone')}: ${fmtHours(gap)}</span></div>
     </div>
@@ -208,8 +208,8 @@ function budgetHTML(rel) {
     <td>${lb.range_km?.mean ? Math.round(lb.range_km.mean).toLocaleString() + ' km' : '—'}</td>
     <td>${r.cn0_dbhz?.toFixed(1)} dB-Hz</td><td>${fmtRate(r.max_rate_bps)}</td><td class="muted">${esc(r.band_support || '')}</td></tr>`).join('');
   const as = budgetAssumptions(lb.assumptions);
-  return `<h3>${t('rlBudget')}<span class="est">ESTIMATE</span></h3>
-    <div class="scroll"><table><thead><tr><th>${t('rlStation')}</th><th>${t('rlBand')}</th><th>${t('rlRange')}</th><th>${t('rlCn0')}</th><th>${t('rlRate')}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+  return `<h3>${t('rlBudget')}<span class="est">${t('rlEst')}</span></h3>
+    <div class="scroll"><table><thead><tr><th>${t('rlStation')}</th><th>${t('rlBand')}</th><th>${t('rlRange')}</th><th>${t('rlCn0')}</th><th>${t('rlRate')}</th><th>${t('rlSupport')}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="hint">${t('rlBudgetNote')}</p>${as}`;
 }
 

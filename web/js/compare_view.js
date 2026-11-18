@@ -22,6 +22,7 @@ addStrings({
   r_relay: 'Link incl. relay tower', r_now: 'At the selected time', r_kdsa: 'Yeoju KDSA in view', r_gs: 'NASA DSN (any of 3):',
   dOfN: '{a} of {b} d', km: 'km', towerAt: 'nearest tower {k} km', noTower: 'no tower placed', noTowerCalc: 'no tower calc.',
   nowSun: 'sunlit · {x} left', nowDark: 'dark · {x} to sunrise', nowEarth: 'Earth · {x} left', nowNoEarth: 'no Earth · {x} to rise',
+  nowSunL: 'sunlit', nowDarkL: 'dark', nowEarthL: 'Earth', nowNoEarthL: 'no Earth',
   noChange: 'no change in data', why: 'Site check ↓', whyOn: 'Shown below', pending: 'terrain pending', hoursN: '{h} h',
   tabDial: 'Lunar-day clock', tabAlt: 'Sun & Earth elevation', changeH: 'Change over time',
   dialDesc: 'One turn = the analysis period, 12 o’clock = start.',
@@ -42,6 +43,7 @@ addStrings({
   r_relay: '중계탑 포함 교신', r_now: '선택 시각', r_kdsa: '여주 KDSA 가시', r_gs: 'NASA DSN (3곳 중 하나):',
   dOfN: '{b}일 중 {a}일', km: 'km', towerAt: '가장 가까운 탑 {k} km', noTower: '탑 설치 안 함', noTowerCalc: '탑 계산 없음',
   nowSun: '햇빛 · {x} 남음', nowDark: '그늘 · 해 뜨기까지 {x}', nowEarth: '지구 보임 · {x} 남음', nowNoEarth: '지구 안 보임 · 뜨기까지 {x}',
+  nowSunL: '햇빛', nowDarkL: '그늘', nowEarthL: '지구 보임', nowNoEarthL: '지구 안 보임',
   noChange: '자료 안에서 변화 없음', why: '이 후보 따져 보기 ↓', whyOn: '아래에 표시 중', pending: '지형 계산 전', hoursN: '{h}시간',
   tabDial: '달의 하루 시계', tabAlt: '태양·지구 고도', changeH: '시간에 따른 변화',
   dialDesc: '한 바퀴 = 선택한 기간, 12시 = 기간 시작.',
@@ -65,6 +67,8 @@ const pctH = f => (f == null || !isFinite(f) ? '<span class="na">—</span>' : `
 const daysTxt = h => { const d = h / 24; return d < 1.95 ? `${h.toFixed(0)} h` : `${(Math.round(d * 10) / 10).toFixed(1)} d`; };
 const darkH = h => (getLang() === 'ko' ? (h < 48 ? `${h}시간` : `${(h / 24).toFixed(1)}일`) : (h < 48 ? `${h} h` : `${(h / 24).toFixed(1)} d`));
 const until = h => (h == null ? t('noChange') : fmtHours(h));
+// Issue #84: with no transition in the data, show the state and 'no change in data' without the 'left' / '남음' suffix.
+const nowTxt = (k, h) => (h == null ? `${t(k + 'L')} · ${t('noChange')}` : fill(t(k), { x: fmtHours(h) }));
 export const coordText = s => `${Math.abs(s.lat).toFixed(3)}°${s.lat >= 0 ? 'N' : 'S'}, ${Math.abs(s.lon).toFixed(3)}°${s.lon >= 0 ? 'E' : 'W'}`;
 const PIN_SVG = iconSvg('pushpin-filled', { size: 14 });
 const whyLbl = on => on ? esc(t('whyOn')) : `${esc(t('why').replace(/ ↓$/, ''))} ${iconSvg('arrow-down', { size: 14 })}`;
@@ -131,8 +135,8 @@ function cell(row, s, w, async) {
 function nowHTML(s, i) {
   const x = instant(s, i);
   if (x.pending) return `<span class="na">${t('pending')}</span>`;
-  return `<span class="now-dot"><i style="background:${x.lit ? 'var(--sun)' : 'var(--off)'}"></i>${esc(fill(t(x.lit ? 'nowSun' : 'nowDark'), { x: until(x.sunNext) }))}</span>
-    <span class="now-dot"><i style="background:${x.up ? 'var(--earth)' : 'var(--off)'}"></i>${esc(fill(t(x.up ? 'nowEarth' : 'nowNoEarth'), { x: until(x.earthNext) }))}</span>`;
+  return `<span class="now-dot"><i style="background:${x.lit ? 'var(--sun)' : 'var(--off)'}"></i>${esc(nowTxt(x.lit ? 'nowSun' : 'nowDark', x.sunNext))}</span>
+    <span class="now-dot"><i style="background:${x.up ? 'var(--earth)' : 'var(--off)'}"></i>${esc(nowTxt(x.up ? 'nowEarth' : 'nowNoEarth', x.earthNext))}</span>`;
 }
 
 const LG = {

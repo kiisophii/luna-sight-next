@@ -11,7 +11,7 @@ import { addStrings, whenReady, translate, siteName, getFocus, fmtHours, LLSN } 
 import { stationHours, stationsMeta, kdsaWindows, siteStationLink, koreaInfo, STATION_IDS } from './diff_data.js';
 
 addStrings({
-  krTitle: 'Korea links — Yeoju antenna, ShadowCam', krAria: 'Korea links',
+  krTitle: 'Korea link — Yeoju antenna', krAria: 'Korea links',
   krPeriod: 'Period',
   krStTitle: 'Total time with Moon ≥ 10° above each antenna',
   krStHint: 'Hours in the analysis period with the Moon center at least 10° above each antenna\'s horizon (no refraction, no local terrain). A lander signal still needs a direct or relayed line of sight to Earth.',
@@ -29,7 +29,7 @@ addStrings({
   krSrc: 'Station coordinates: DSN 810-005 module 301 (NASA/JPL); KDSA from public NASA/JPL NAIF SPICE antenna coordinates. Moon positions: NAIF DE440s via Skyfield.',
   krCP11: 'Korean payload on the Moon',
 }, {
-  krTitle: '한국 연결 — 여주 안테나, 섀도캠', krAria: '한국 연결',
+  krTitle: '한국 연결 — 여주 안테나', krAria: '한국 연결',
   krPeriod: '기간',
   krStTitle: '지상국별 달 가시 시간 합계 (안테나 위 달 고도 ≥ 10°)',
   krStHint: '분석 기간 중 달 중심이 각 안테나 지평선 위 10° 이상인 시간 (굴절 없음, 주변 지형 무시). 착륙선 신호는 여전히 지구까지 직접 또는 중계 가시선이 필요하다.',

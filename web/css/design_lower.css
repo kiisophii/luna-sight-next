@@ -224,19 +224,10 @@ html[lang="ko"] .detail-table.cmp-tbl .nm, html[lang="ko"] .detail-actions butto
 html .ls #ls-tray .tc-h.wide, #ls-tray .tc-h.wide { flex-wrap: wrap; row-gap: 10px; }
 html .ls #ls-tray .tc-h.wide .tc-subs, #ls-tray .tc-h.wide .tc-subs { flex: 1 0 100%; margin-left: 0; gap: 14px; }
 
-/* Site check page: one centred body column, max 1392 px with at least 24 px each side (Chaei 23:00 request); text stays left-aligned */
-@media (min-width: 761px) { html .ls #ls-brief { box-sizing: border-box; width: auto; max-width: 1392px; margin-left: max(24px, calc((100% - 1392px) / 2)); margin-right: max(24px, calc((100% - 1392px) / 2)); } }
-
 /* Site check summary numbers: two per row like a dashboard (Sua 23:3x); one column on phones; values and labels unchanged */
 html .ls #ls-brief .sc-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(odd) { border-left: 0; padding-left: 0; }
 html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 1px solid var(--sc-line); padding-left: 16px; }
 @media (max-width: 600px) { html .ls #ls-brief .sc-sum { grid-template-columns: minmax(0, 1fr); } html .ls #ls-brief .sc-sum .sc-cell:nth-child(even) { border-left: 0; padding-left: 0; } }
 
-/* Site check analysis cards as a two-column dashboard (Sua 11/15 23:50); the time card spans both columns, phones one column */
-@media (min-width:1100px) {
-  html .ls #ls-brief .sc-box .sc-cards { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; align-items:start; }
-  html .ls #ls-brief .sc-box .sc-cards > .ls-detail { min-width:0; margin:0; grid-column:auto; }
-  html .ls #ls-brief .sc-box .sc-cards > .ls-detail[data-block="time"], html .ls #ls-brief .sc-box .sc-cards > .ls-detail[data-block="more"] { grid-column:1 / -1; }
-  html .ls #ls-brief .sc-box .sc-cards > .ls-detail .blk-body { overflow-x:auto; }
-}
+

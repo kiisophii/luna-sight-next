@@ -39,14 +39,14 @@ addStrings({
   pTime: 'Time change ▾', pGs: 'Ground stations ▾', pDate: 'Date change ▾', pNear: 'Nearby ▾', pHz: 'Horizon & blocking ▾', pRelay: 'Relay tower ▾', pSrc: 'Sources & method ▾', pMore: 'More analysis ▾',
   close: 'Close', legSun: 'Sunlight (%)', legRange: 'This grid: {a} – {b} (same 0–100 % scale for every site)', shadowPatch: 'mostly shadow (< 5 % sunlight)',
   d_time: 'Sunlight and link over time', d_timeD: 'Gaps are counted inside the analysis period; gaps cut by the start or end count with their clipped length.',
-  d_near: 'If the spot moves a little', d_nearD: 'Values around the site. Rows ② ③ ④ are long-term averages (2026–2030 / 18.6 years): do not compare them directly with this period’s values.',
-  d_date: 'If the landing date slips', d_dateD: 'Full 2026–2030 landing-date table, the landing-day scan (computed in the browser from the ephemeris and the terrain horizon) and the 2026–2027 date-slip file.',
+  d_near: 'If the spot moves a little', d_nearD: 'Values around the site. Uncertainty, grid and PGDA results are long-term averages (2026–2030 / 18.6 years): do not compare them directly with this period’s values.',
+  d_date: 'If the landing date slips', d_dateD: 'Landing-date table: 2026–2030. Date scan uses the terrain horizon and ephemeris; delay comparisons cover 2026–2027. These have separate analysis periods.',
   d_seasons: 'Seasons 2026–2030', d_seasonsD: 'Monthly values for 60 months. Click a month to start the analysis period there.',
   d_relay: 'With a relay tower', d_relayD: 'Geometric visibility only (lander ↔ tower line of sight, tower sees the Earth). Radio strength and equipment are estimates. Concept: NASA Glenn BEACON (NTRS 20240014584).',
-  d_gs: 'Ground stations in view (geometry only)', d_gsD: 'Site sees the Earth AND the Moon is ≥ 10° above the station. Geometry only — reception was not modelled. Totals are unions. Coordinates: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
+  d_gs: 'Ground stations in view (geometry only)', d_gsD: 'Site sees the Earth AND the Moon is ≥ 10° above the station. Geometry only — reception was not modelled. Totals are unions. Coordinates: KDSA = KARI antenna coordinates (NAIF), DSN = NASA 810-005.',
   d_hz: 'Horizon and what blocks the view', d_hzD: 'Margin = body elevation − terrain height in that direction; positive = visible (Sun: disc center).',
   d_more: 'More analysis and readiness', d_moreD: 'What this tool has NOT analyzed yet, said plainly — no invented numbers.',
-  d_trust: 'Can I trust these numbers?', d_trustD: 'Comparison with NASA PGDA maps, mission hindcast and the files used for this site.',
+  d_trust: 'Can I trust these numbers?', d_trustD: 'Comparison with NASA PGDA maps, mission hindcast and the terrain data used for this site.',
   demBtn: 'View terrain data', demH: 'Terrain data', aboutX: 'About: {x}',
   tipGs: ['<sw style="background:var(--earth)"></sw><b>Bars</b> show the hours when the Moon is at least 10° above each antenna (Yeoju in <sw style="background:var(--relay)"></sw><b>green</b>), so the station can point at the landing region.',
     'As Earth rotates, the Moon rises and sets at each station, so the hours come in daily passes.',
@@ -57,13 +57,14 @@ addStrings({
     '※ Results vary with the tower\'s location and height. Geometry only (line of sight), not radio performance.'],
   rawT: 'Raw table', sumPer: 'Analysis period {a} – {b} ({h} h).', sumGap: 'Longest Earth gap: {g}', sumDarkL: 'longest dark: {d}.', tRunsH: 'Item', tOn: 'Available', tGaps: 'Gaps', tLong: 'Longest gap', tMean: 'Mean gap', tRuns: 'Sunlit stretches ({n})', tFive: 'Longest 10 gaps in 2026–2030', tFiveStrip: '2026–2030 visibility — click a year position to move the analysis period there',
   rowSun: 'Sunlight', rowEarth: 'Direct-to-Earth', rowBoth: 'Sun + Earth together', startUTC: 'Start (UTC)', endUTC: 'End (UTC)', dur: 'Length',
-  nNearH: '① Registered sites within 20 km', nNearNone: 'No other catalogue site within 20 km.', nDist: 'Distance', nDiff: 'vs this site',
-  nUncH: '② Coordinate uncertainty (100 m grid)', nUncR: 'Radius', nUncNo: 'No coordinate-uncertainty file for this site.',
-  nLocH: '③ ±{r} km grid summary ({s} spacing)', nLocR: 'Within', nPgdaH: '④ PGDA ±300 m range (18.6 years)', nMin: 'min', nP10: 'p10', nMed: 'median', nP90: 'p90', nMax: 'max',
+  nSouth: 'South-polar samples (latitude ≤ −75°)', nNonpolar: 'Non-polar samples (latitude > −75°)', nRegistered: 'Registered sites within 20 km:', nNearest: 'Nearest:', nRadiusRule: 'Circular neighbourhood in the local east/north grid; long-term samples, not area averages.',
+  nNearH: 'Registered sites within 20 km', nNearNone: 'No other catalogue site within 20 km.', nDist: 'Distance', nDiff: 'vs this site',
+  nUncH: 'Coordinate uncertainty (100 m grid)', nUncR: 'Radius', nUncNo: 'No coordinate-uncertainty file for this site.',
+  nLocH: '±{r} km grid summary ({s} spacing)', nLocR: 'Within', nPgdaH: 'PGDA ±300 m range (18.6 years)', nMin: 'min', nP10: 'p10', nMed: 'median', nP90: 'p90', nMax: 'max',
   moreLinks: 'Related', toSeasons: 'Seasons 2026–2030 →', toHind: 'Mission hindcast →', nearMission: 'Nearest earlier landing: {n} ({d} km)',
-  notDone: 'Not analyzed yet', ndSlope: 'Slope, roughness and flat area', ndSlopeWhy: 'No slope values in the data (slope_deg is empty for all 33 sites).',
+  notDone: 'Not analyzed yet', ndSlope: 'Slope, roughness and flat area', ndSlopeWhy: 'No slope values are available in this dataset.',
   ndPsr: 'Permanently shadowed regions and access to targets', ndTherm: 'Temperature and power budget', ndRoute: 'Traverse routes and hazards', ndNeed: 'needs more data / models',
-  fFiles: 'Files used for this site', fDem: 'Terrain (DEM) chain',
+  fFiles: 'Terrain coverage', fDem: 'Terrain (DEM) chain',
   shareTxt: 'This link reopens the current conditions, pins, selected time, this brief and the open blocks.',
   pgdaRange: 'ours {o} · PGDA {p} (±300 m {a}–{b})', notNasa: 'A comparison with public data — not a NASA approval or endorsement.',
   hcTblH: 'Apollo: Sun elevation at landing', hcRobH: 'Robotic landers: first sunset vs reported end of operations',
@@ -95,14 +96,14 @@ addStrings({
   pTime: '시간 변화 ▾', pGs: '지상국 ▾', pDate: '날짜 변화 ▾', pNear: '주변 위치 ▾', pHz: '지평선·가림 ▾', pRelay: '중계탑 가정 ▾', pSrc: '출처·방법 ▾', pMore: '추가 분석 ▾',
   close: '닫기', legSun: '일조율 (%)', legRange: '이 격자: {a} – {b} (모든 착륙지 같은 0–100 % 색 범위)', shadowPatch: '대부분 그늘 (일조 5 % 미만)',
   d_time: '햇빛과 교신, 시간에 따라', d_timeD: '끊김은 분석 기간 안에서 셈. 기간 시작·끝에 걸친 끊김은 잘린 길이로 셈.',
-  d_near: '주변 위치를 조금 옮기면', d_nearD: '착륙지 주변 값. ②③④는 장기 평균(2026–2030 / 18.6년)이라 이 기간 값과 직접 비교하지 마세요.',
-  d_date: '착륙 날짜·일정 지연', d_dateD: '2026–2030 전체 착륙일 표, 착륙일 훑기(천체력과 지형 지평선으로 브라우저에서 계산), 2026–2027 날짜 밀림 파일.',
+  d_near: '주변 위치를 조금 옮기면', d_nearD: '착륙지 주변 값. 불확실성·격자·PGDA 값은 장기 평균(2026–2030 / 18.6년)이라 이 기간 값과 직접 비교하지 마세요.',
+  d_date: '착륙 날짜·일정 지연', d_dateD: '착륙일 표는 2026–2030년, 일정 지연 비교는 2026–2027년 자료입니다. 날짜 훑기는 지형 지평선과 천체력을 사용합니다. 분석 기간을 구분해서 읽어 주세요.',
   d_seasons: '계절 2026–2030', d_seasonsD: '60개월의 월별 값. 달을 누르면 분석 기간이 그 달에서 시작합니다.',
   d_relay: '중계탑을 세우면', d_relayD: '기하학적 가시성만 계산(착륙선↔탑 시선, 탑에서 지구가 지평선 위). 전파 세기·장비 성능은 추정. 개념: NASA Glenn BEACON (NTRS 20240014584).',
-  d_gs: '지상국이 보이는 시간 (기하만)', d_gsD: '착륙지에서 지구가 지평선 위이고 지상국에서 달이 10° 이상일 때. 기하만 — 수신 성능은 계산하지 않음. 합계는 합집합. 좌표: KDSA = KARI kdsa01.tf (NAIF), DSN = NASA 810-005.',
+  d_gs: '지상국이 보이는 시간 (기하만)', d_gsD: '착륙지에서 지구가 지평선 위이고 지상국에서 달이 10° 이상일 때. 기하만 — 수신 성능은 계산하지 않음. 합계는 합집합. 좌표: KDSA = KARI antenna coordinates (NAIF), DSN = NASA 810-005.',
   d_hz: '지평선·차폐 원인', d_hzD: '여유각 = 천체 고도 − 그 방향 지형 높이. 양수면 보임(태양은 원반 중심 기준).',
   d_more: '추가 분석과 준비 상태', d_moreD: '이 도구가 아직 분석하지 않은 것을 솔직하게 적습니다 — 숫자를 지어내지 않습니다.',
-  d_trust: '이 숫자 믿어도 되나', d_trustD: 'NASA PGDA 지도 비교, 실제 임무 되짚기, 이 착륙지에 쓴 파일.',
+  d_trust: '이 숫자 믿어도 되나', d_trustD: 'NASA PGDA 지도 비교, 실제 임무 되짚기, 이 착륙지에 사용한 지형 자료.',
   demBtn: '지형 자료 보기', demH: '지형 자료', aboutX: '설명 보기: {x}',
   tipGs: ['<sw style="background:var(--earth)"></sw><b>막대</b>는 각 안테나에서 달이 10° 이상 떠 있는 시간입니다(여주는 <sw style="background:var(--relay)"></sw><b>초록</b>). 이때 지상국이 착륙 지역 쪽을 향할 수 있습니다.',
     '지구가 자전하면서 지상국마다 달이 뜨고 지기 때문에 시간이 하루 단위로 끊겨 나타납니다.',
@@ -113,13 +114,14 @@ addStrings({
     '※ 탑의 위치와 높이에 따라 결과가 달라집니다. 기하(시선)만 계산했고 전파 성능은 아닙니다.'],
   rawT: '원자료 표', sumPer: '분석 기간 {a} – {b} ({h}시간).', sumGap: '최장 지구 끊김: {g}', sumDarkL: '최장 어둠: {d}.', tRunsH: '항목', tOn: '가능 시간', tGaps: '끊김 횟수', tLong: '최장 끊김', tMean: '평균 끊김', tRuns: '연속 햇빛 구간 ({n}개)', tFive: '2026–2030 중 가장 긴 공백 10개', tFiveStrip: '2026–2030 가시 구간 — 누르면 분석 기간이 그 위치로 이동',
   rowSun: '햇빛', rowEarth: '지구 직접 교신', rowBoth: '해+지구 동시', startUTC: '시작 (UTC)', endUTC: '끝 (UTC)', dur: '길이',
-  nNearH: '① 반경 20 km 안의 등록 착륙지', nNearNone: '20 km 안에 다른 카탈로그 착륙지가 없습니다.', nDist: '거리', nDiff: '이곳 대비',
-  nUncH: '② 좌표 불확실성 (100 m 격자)', nUncR: '반경', nUncNo: '이 착륙지는 좌표 불확실성 파일이 없습니다.',
-  nLocH: '③ ±{r} km 격자 요약 ({s} 간격)', nLocR: '반경', nPgdaH: '④ PGDA ±300 m 범위 (18.6년)', nMin: '최소', nP10: 'p10', nMed: '중앙', nP90: 'p90', nMax: '최대',
+  nSouth: '남극 표본 (위도 ≤ −75°)', nNonpolar: '비극지 표본 (위도 > −75°)', nRegistered: '20 km 안 등록 착륙지:', nNearest: '가장 가까운 곳:', nRadiusRule: '지역 동·북 격자에서 원형 반경에 포함되는 지점을 사용합니다. 장기 표본 값이며 면적 평균이 아닙니다.',
+  nNearH: '반경 20 km 안의 등록 착륙지', nNearNone: '20 km 안에 다른 카탈로그 착륙지가 없습니다.', nDist: '거리', nDiff: '이곳 대비',
+  nUncH: '좌표 불확실성 (100 m 격자)', nUncR: '반경', nUncNo: '이 착륙지는 좌표 불확실성 파일이 없습니다.',
+  nLocH: '±{r} km 격자 요약 ({s} 간격)', nLocR: '반경', nPgdaH: 'PGDA ±300 m 범위 (18.6년)', nMin: '최소', nP10: 'p10', nMed: '중앙', nP90: 'p90', nMax: '최대',
   moreLinks: '관련', toSeasons: '계절 2026–2030 →', toHind: '실제 임무 되짚기 →', nearMission: '가장 가까운 이전 착륙: {n} ({d} km)',
-  notDone: '아직 하지 않은 분석', ndSlope: '경사·거칠기·평탄 면적', ndSlopeWhy: '자료에 경사 값이 없습니다(33곳 모두 slope_deg 비어 있음).',
+  notDone: '아직 하지 않은 분석', ndSlope: '경사·거칠기·평탄 면적', ndSlopeWhy: '이 자료에는 경사 값이 없습니다.',
   ndPsr: '영구음영지역·목표 접근', ndTherm: '온도·전력 예산', ndRoute: '이동 경로·장애물', ndNeed: '추가 데이터·모델 필요',
-  fFiles: '이 착륙지 계산에 쓴 파일', fDem: '지형(DEM) 사슬',
+  fFiles: '지형 자료의 범위', fDem: '지형(DEM) 사슬',
   shareTxt: '지금 조건·고정·선택 시각·이 근거 화면·열린 블록을 다시 여는 링크입니다.',
   pgdaRange: '우리 {o} · PGDA {p} (±300 m {a}–{b})', notNasa: '공개 자료와 비교한 결과이며 NASA의 승인이나 보증이 아닙니다.',
   hcTblH: '아폴로: 착륙 순간 태양 고도', hcRobH: '로봇 착륙선: 첫 일몰 vs 보고된 운용 종료',
@@ -145,12 +147,12 @@ addStrings({
   src_near: 'NASA LOLA terrain · NASA PGDA ±300 m range',
   src_date: 'NAIF ephemeris + terrain horizons',
   src_relay: 'NASA LOLA terrain · BEACON concept, NASA Glenn (NTRS 20240014584)',
-  src_gs: 'KDSA: KARI kdsa01.tf (NASA NAIF) · DSN: NASA 810-005',
+  src_gs: 'KDSA: KARI antenna coordinates (NASA NAIF) · DSN: NASA 810-005',
   src_hz: 'NASA LOLA / PGDA / SLDEM2015 terrain',
   src_terrain: 'NASA PGDA LOLA DEMs · PGDA 20 m PSR map',
   src_history: 'NASA NSSDCA / LROC and official mission pages',
   src_access: 'NASA PGDA 20 m PSR map (LPSR_80S_20MPP_ADJ)',
-  src_routes: 'NASA PGDA LOLA DEMs (slope and roughness around the site)',
+  src_routes: 'NASA PGDA LOLA DEMs · slope and roughness around the site',
   d_accessD: 'Distance to the nearest permanently shadowed region (PSR) on the NASA PGDA 20 m map. Great-circle distance only; no route, slope or ice content.',
   d_routesD: 'Obstacle indicators around the site from LOLA slope and roughness. No route is computed; 15° is a reference value, not a landing or driving criterion.',
   acDist: 'Nearest PSR', acIn: 'Inside a PSR', acBear: 'Direction', acEdge: 'Nearest PSR edge', acSouth: 'South polar region only (PSR map covers 80°S to the pole).',
@@ -177,12 +179,12 @@ addStrings({
   src_near: 'NASA LOLA 지형 · NASA PGDA ±300 m 범위',
   src_date: 'NAIF 천체력 + 지형 지평선',
   src_relay: 'NASA LOLA 지형 · BEACON 개념, NASA Glenn (NTRS 20240014584)',
-  src_gs: 'KDSA: KARI kdsa01.tf (NASA NAIF) · DSN: NASA 810-005',
+  src_gs: 'KDSA: KARI antenna coordinates (NASA NAIF) · DSN: NASA 810-005',
   src_hz: 'NASA LOLA / PGDA / SLDEM2015 지형',
   src_terrain: 'NASA PGDA LOLA DEM · PGDA 20 m PSR 지도',
   src_history: 'NASA NSSDCA / LROC와 각 임무 공식 페이지',
   src_access: 'NASA PGDA 20 m PSR 지도 (LPSR_80S_20MPP_ADJ)',
-  src_routes: 'NASA PGDA LOLA DEM (착륙지 주변 경사·거칠기)',
+  src_routes: 'NASA PGDA LOLA DEM · 착륙지 주변 경사·거칠기',
   d_accessD: 'NASA PGDA 20 m 지도에서 가장 가까운 영구음영지역(PSR)까지의 거리입니다. 대원 거리만이며 이동 경로·경사·얼음 양은 반영하지 않습니다.',
   d_routesD: 'LOLA 경사·거칠기로 본 착륙지 주변 장애물 지표입니다. 경로는 계산하지 않았고, 15°는 착륙·주행 기준이 아닌 참고값입니다.',
   acDist: '가장 가까운 PSR', acIn: 'PSR 안', acBear: '방향', acEdge: '가장 가까운 PSR 경계', acSouth: '남극 지역만 해당합니다 (PSR 지도는 남위 80°부터 극까지).',
@@ -204,11 +206,11 @@ const CARD_ORDER = ['time', 'near', 'date', 'relay', 'gs', 'hz', 'terrain', 'acc
 addStrings({
   pTerr: 'Landing terrain ▾', d_terrain: 'Landing terrain and surroundings',
   d_terrainD: 'Slope and roughness from LOLA terrain and the nearest permanently shadowed region. Reference values only — not a landing-safety assessment.',
-  yH: 'Terrain at the landing point', ySlope: 'Lander-scale slope', ySlopeTip: 'Least-squares plane over 3 × 3 terrain samples centred on the catalogue coordinate ({f} m footprint, {r} m DEM)',
+  yH: 'Terrain at the landing point', ySlope: 'Lander-scale slope', ySlopeTip: 'Least-squares plane over 3 × 3 terrain samples centred on the catalogue coordinate ({f} m footprint, {r} m DEM).',
   yRad: 'Within', yN: 'samples', yMed: 'median', yP95: '95th %', yMax: 'max', yFlat: 'area ≤ {d}°', yRef: 'reference',
   yFlatTip: '8° and 15° are reference values for comparison only — not landing-safety criteria. Area-weighted share of terrain samples at or below the value.',
   yRough: 'Roughness (500 m)', yRoughNa: 'Not computed (59 m DEM is coarser than the 50 m window)', yRoughTxt: 'median {a} m · 95th % {b} m', yRoughTip: 'RMS height deviation from a best-fit plane in 50 m windows, from the DEM. Not boulder detection.',
-  yBox: '250 m box slope', yBoxTip: 'Coarse slope of the 250 m box at the site, copied from the relay-tower file. Shown for comparison.',
+  yBox: '250 m box slope', yBoxTip: 'Coarse slope of the 250 m box at the site, from the relay-tower analysis. Shown for comparison.',
   yCoarse: 'Not computed for this site (south-polar sites and Apollo 17 only).', yUser: 'Not computed for your own point (catalogue sites only).',
   ySrc: 'Source', yFiner: 'finer DEM not available here',
   psrH: 'Nearest permanently shadowed region (PSR)', psrIn: 'Inside a PSR', psrOut: 'Outside PSR', psrDist: 'Distance to PSR edge', psrBear: 'Bearing',
@@ -236,11 +238,11 @@ addStrings({
 }, {
   pTerr: '착륙 지형 ▾', d_terrain: '착륙 지형과 주변',
   d_terrainD: 'LOLA 지형으로 본 경사·거칠기와 가장 가까운 영구음영지역. 참고값이며 착륙 안전성 판정이 아닙니다.',
-  yH: '착륙 지점 지형', ySlope: '착륙선 규모 경사', ySlopeTip: '카탈로그 좌표 중심 3 × 3 지형 표본에 맞춘 최소제곱 평면({f} m 범위, {r} m DEM)',
+  yH: '착륙 지점 지형', ySlope: '착륙선 규모 경사', ySlopeTip: '카탈로그 좌표 중심 3 × 3 지형 표본에 맞춘 최소제곱 평면({f} m 범위, {r} m DEM).',
   yRad: '반경', yN: '표본', yMed: '중앙값', yP95: '95 %', yMax: '최대', yFlat: '{d}° 이하 면적', yRef: '참고값',
   yFlatTip: '8°·15°는 비교용 참고값이며 착륙 안전 기준이 아닙니다. 그 값 이하인 지형 표본의 면적 비율.',
   yRough: '거칠기 (500 m)', yRoughNa: '계산하지 않음 (59 m DEM이 50 m 창보다 거침)', yRoughTxt: '중앙값 {a} m · 95 % {b} m', yRoughTip: '50 m 창에서 최적 평면과의 높이 차 RMS(DEM 기준). 바위 탐지가 아님.',
-  yBox: '250 m 칸 경사', yBoxTip: '착륙지 250 m 칸의 거친 경사. 중계탑 파일 값을 그대로 옮김. 비교용.',
+  yBox: '250 m 칸 경사', yBoxTip: '착륙지 250 m 칸의 거친 경사. 중계탑 분석에서 사용한 값. 비교용.',
   yCoarse: '이 착륙지는 계산하지 않음 (남극 착륙지와 아폴로 17호만).', yUser: '사용자 지점은 계산하지 않음 (카탈로그 착륙지만).',
   ySrc: '자료', yFiner: '여기는 더 고운 DEM 없음',
   psrH: '가장 가까운 영구음영지역(PSR)', psrIn: 'PSR 안', psrOut: 'PSR 밖', psrDist: 'PSR 경계까지 거리', psrBear: '방위',
@@ -464,6 +466,19 @@ async function trustCard(s, embed = false) {
 }
 
 // ------------------------------------------------------------ detail blocks
+// Official sources supplement the dataset names; internal build paths are not citations.
+function sourceLinks(k) {
+  const pgda = ['NASA PGDA / LOLA', 'https://pgda.gsfc.nasa.gov/products/90'];
+  const ephem = ['NASA NAIF', 'https://naif.jpl.nasa.gov/pub/naif/generic_kernels/'];
+  const links = {
+    time: [pgda, ephem], near: [pgda, ['NASA PGDA visibility maps', PGDA_URL]], date: [pgda, ephem],
+    relay: [pgda, ['NASA Glenn BEACON', 'https://ntrs.nasa.gov/citations/20240014584']],
+    gs: [['NASA/JPL DSN 810-005', 'https://deepspace.jpl.nasa.gov/dsndocs/810-005/'], ephem],
+    hz: [pgda], terrain: [pgda], access: [pgda], routes: [pgda], seasons: [ephem], trust: [['NASA PGDA', PGDA_URL]],
+  };
+  return (links[k] || []).map(([label, url]) => ` · <a href="${url}" target="_blank" rel="noopener">${label}</a>`).join('');
+}
+
 function blockShell(k, chips) {
   const el = document.getElementById(`blk-${k}`), chipped = PICKABLE.includes(k);
   // 7-6 card shell: number + title (the chip label) · body · "Assumptions & limits" · sources line + "Method & validation"
@@ -481,10 +496,10 @@ function blockShell(k, chips) {
   let f = el.querySelector(':scope > .sc-foot');
   if (!f) { f = document.createElement('footer'); f.className = 'sc-foot'; el.appendChild(f); }
   const s = target(), mvOpen = f.querySelector('.sc-mv')?.getAttribute('aria-expanded') === 'true';
-  f.innerHTML = `<p class="sc-lim"><b>${esc(t('limH'))}</b> ${esc(t(`d_${k}D`))} ${s ? esc(fill(t('limBase'), { dem: demChain(s) })) : ''}</p>
-    <div class="sc-src"><span>${esc(t('srcH'))}: ${esc(t('src_' + k))}</span>${k === 'trust' || k === 'more' ? ''
+  f.innerHTML = `<p class="sc-lim"><b>${esc(t('limH'))}</b> ${esc(t(`d_${k}D`))}</p>
+    <div class="sc-src"><span>${esc(t('srcH'))}: ${esc(t('src_' + k))}${sourceLinks(k)}</span>${k === 'trust' || k === 'more' ? ''
       : `<button type="button" class="sc-mv" aria-expanded="${mvOpen}" aria-controls="mv-${k}">${esc(t('mv'))}${IC.chev}</button>`}</div>
-    ${k === 'trust' || k === 'more' ? '' : `<div class="sc-mvbody" id="mv-${k}"${mvOpen ? '' : ' hidden'}>${mvHTML}</div>`}`;
+    ${k === 'trust' || k === 'more' ? '' : `<div class="sc-mvbody" id="mv-${k}"${mvOpen ? '' : ' hidden'}><p class="lsn-note">${s ? esc(fill(t('limBase'), { dem: demChain(s) })) : ''}</p>${k === 'relay' ? `<p class="lsn-note">${esc(t('rlAssume'))}</p>` : ''}${mvHTML}</div>`}`;
   renumber();
   return el.querySelector('.blk-body');
 }
@@ -537,7 +552,7 @@ async function timeBlock(s) {
         <text x="2" y="10" font-size="9" fill="var(--sun)">☼</text>${strip(win.sun.visible, 'var(--sun)', 2)}${strip(win.earth.visible, 'var(--earth)', 18)}<text x="2" y="26" font-size="9" fill="var(--earth)">◍</text>
         ${years}<rect x="${p0}" y="0" width="${Math.max(2, p1 - p0)}" height="32" fill="none" stroke="var(--text)" stroke-width="1.5"/></svg>
       <details><summary style="cursor:pointer;font-size:12.5px">${esc(t('tFive'))} (${esc(t('rowSun'))} · ${esc(t('rowEarth'))})</summary>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:6px">
+        <div class="sc-gap-tables">
           <table class="mini-tbl"><thead><tr><th>${iconSvg('sun', { size: 12 })} ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.sun.longest_gaps)}</tbody></table>
           <table class="mini-tbl"><thead><tr><th>${iconSvg('earth', { size: 12 })} ${esc(t('startUTC'))}</th><th>${esc(t('endUTC'))}</th><th>${esc(t('dur'))}</th></tr></thead><tbody>${gapRows(win.earth.longest_gaps)}</tbody></table></div>
         <p class="lsn-note">* clipped by 2026-01-01 / 2031-01-01</p></details>`;
@@ -572,7 +587,7 @@ async function nearBlock(s) {
   const bar = (k, q, col) => { const lo = k === 'longest_dark_h' ? 0 : 0, hi = k === 'longest_dark_h' ? Math.max(q.max, 1) : 1, x = v => ((v - lo) / (hi - lo)) * 100; return `<div class="rangebar"><i style="left:${x(q.min)}%;width:${Math.max(1, x(q.max) - x(q.min))}%;background:${col}"></i><b style="left:${x(q.median)}%"></b></div>`; };
   const uncTbl = unc ? `<table class="mini-tbl"><thead><tr><th>${esc(t('nUncR'))}</th><th></th><th>${esc(t('nMin'))}</th><th>${esc(t('nP10'))}</th><th>${esc(t('nMed'))}</th><th>${esc(t('nP90'))}</th><th>${esc(t('nMax'))}</th><th style="width:120px"></th></tr></thead><tbody>${['100', '300', '500'].map(r => K.map(([k, l, c], j) => {
     const q = unc.ranges[r][k]; return `<tr>${j === 0 ? `<td rowspan="4">${r} m <small class="muted">(n=${unc.ranges[r].n_nodes})</small></td>` : ''}<td style="text-align:left;font-family:var(--font);color:${c}">${esc(t(l))}</td><td>${fmtK(k, q.min)}</td><td>${fmtK(k, q.p10)}</td><td>${fmtK(k, q.median)}</td><td>${fmtK(k, q.p90)}</td><td>${fmtK(k, q.max)}</td><td>${bar(k, q, c)}</td></tr>`;
-  }).join('')).join('')}</tbody></table><p class="lsn-note">${esc(unc.radius_rule || '')} · ${esc(unc.part || '')}</p>` : `<p class="lsn-note">${esc(t('nUncNo'))}</p>`;
+  }).join('')).join('')}</tbody></table><p class="lsn-note">${esc(t('nRadiusRule'))} · ${esc(t(s.lat <= -75 ? 'nSouth' : 'nNonpolar'))}</p>` : `<p class="lsn-note">${esc(t('nUncNo'))}</p>`;
   let locTbl = '';
   if (loc) {
     const quant = (arr, q) => { const a = arr.slice().sort((x, y) => x - y), p = (a.length - 1) * q, f = Math.floor(p); return a[f] + (a[Math.min(a.length - 1, f + 1)] - a[f]) * (p - f); };
@@ -584,10 +599,10 @@ async function nearBlock(s) {
   const named = s.user ? null : await namedFor(s.id);
   const mapHtml = await mapCard(s, true);
   if (current !== s.id) return;
-  body.innerHTML = `<div class="sc-map">${mapHtml}</div><h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nNearH'))} ${chip('chipPeriod', 'period')}</h4>${nearTbl}
-    <h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nUncH'))} ${chip('chipLong', 'long')}</h4>${uncTbl}
-    ${loc ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(fill(t('nLocH'), { r: LG.half_km, s: spacingText(LG.spacing_m), d: `data/${LG.dir}` }))} ${chip('chipLong', 'long')}</h4>${locTbl}` : ''}
-    ${named ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nPgdaH'))} ${chip('chipLong', 'long')}</h4><p class="num">${esc(fill(t('pgdaRange'), { o: P1(named.ours_sun), p: P1(named.pgda_sun), a: P1(named.pgda_sun_min300), b: P1(named.pgda_sun_max300) }))}</p>` : ''}`;
+  body.innerHTML = `<div class="sc-near-summary"><span>${esc(t('nRegistered'))} <b>${near.length}</b></span>${near.length ? `<span>${esc(t('nNearest'))} <button type="button" class="ls-link" data-go="${near[0].o.id}">${esc(nameOf(near[0].o))}</button> · <b class="num">${near[0].d.toFixed(1)} km</b></span>` : ''}</div><h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nNearH'))} ${chip('chipPeriod', 'period')}</h4><div class="tbl-x">${nearTbl}</div><div class="sc-map">${mapHtml}</div>
+    <h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nUncH'))} ${chip('chipLong', 'long')}</h4><div class="tbl-x">${uncTbl}</div>
+    ${loc ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(fill(t('nLocH'), { r: LG.half_km, s: spacingText(LG.spacing_m), d: `data/${LG.dir}` }))} ${chip('chipLong', 'long')}</h4><div class="tbl-x">${locTbl}</div>` : ''}
+    ${named ? `<h4 style="font-size:13px;margin:16px 0 6px">${esc(t('nPgdaH'))}</h4><div class="sc-pgda-range" role="img" aria-label="${esc(fill(t('pgdaRange'), { o: P1(named.ours_sun), p: P1(named.pgda_sun), a: P1(named.pgda_sun_min300), b: P1(named.pgda_sun_max300) }))}"><i style="left:${named.pgda_sun_min300 * 100}%;width:${(named.pgda_sun_max300 - named.pgda_sun_min300) * 100}%"></i><b style="left:${named.pgda_sun * 100}%"></b></div><p class="sc-d">${esc(fill(t('pgdaRange'), { o: P1(named.ours_sun), p: P1(named.pgda_sun), a: P1(named.pgda_sun_min300), b: P1(named.pgda_sun_max300) }))}</p>` : ''}`;
 }
 
 function simpleBlock(k, chips) { blockShell(k, chips); }
@@ -611,7 +626,6 @@ async function trustBlock(s) {
   const body = blockShell('trust', chip('chipPeriod', 'period'));
   const H = await headline(), v = H?.v, h = await (await import('./values.js')).hindcast();
   const hz = LLSN().state.horizons.get(s.id), LG = s.user ? null : await localGrid(s.id);
-  const files = s.user ? ['(browser) hterrain/'] : ['sites.json', `horizon/${s.id}.json`, `metrics/${s.id}.json`, `${LG?.dir || 'local'}/${s.id}.json`, `uncertainty/${s.id}.json`, `windows/${s.id}.json`, `relay/${s.id}.json`, `monthly/${s.id}.json`, `date_slip/${s.id}.json`, `terrain/${s.id}.json`, `detail/time_stats/${s.id}.json`, `detail/dates/${s.id}.json`, 'detail/history.json', ...(s.lat <= -80 ? [`detail/psr/${s.id}.json`] : []), 'ephem.bin + ephem.json', 'korea/stations.json', 'validation.json', 'hindcast.json'];
   const apollo = h?.apollo_sun_elevation || [], robot = h?.robotic_sunset || [];
   body.innerHTML = `${v ? `<p>${esc(fill(t('vMetricTxt'), { s: H.sun, sr: H.sunR, e: H.earth, er: H.earthR }))} — ${esc(fill(t('vScopeTxt'), { n: v.n_points, seed: v.seed }))}</p>
       <p class="num">${await siteLine(s)}</p>` : ''}
@@ -623,7 +637,7 @@ async function trustBlock(s) {
     <table class="mini-tbl"><thead><tr><th></th><th>${esc(t('startUTC'))}</th><th></th></tr></thead><tbody>${robot.map(r => `<tr${r.id === s.id ? ' style="background:rgba(255,255,255,.06)"' : ''}><td>${esc(r.mission)}</td><td>${esc((r.landing_utc || '').slice(0, 16).replace('T', ' '))}</td><td style="text-align:left;font-family:var(--font)">${r.difference_text ? esc(r.difference_text) : esc(t('hcNoSrc'))}${r.source_url ? ` · <a href="${esc(r.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}</tbody></table>
     <p class="lsn-note warn">${esc(t('hcProxy'))}</p>
     ${h?.ephemeris_check ? `<p class="lsn-note">${esc(fill(t('hcEphem'), { d: h.ephemeris_check.max_deg.toExponential(1), n: h.ephemeris_check.sample_hours }))}</p>` : ''}
-    <details style="margin-top:10px"><summary style="cursor:pointer;font-size:12.5px">${esc(t('fFiles'))}</summary><p class="num lsn-note">${files.map(esc).join(' · ')}</p>
+    <details style="margin-top:10px"><summary style="cursor:pointer;font-size:12.5px">${esc(t('fFiles'))}</summary>
       <p class="lsn-note"><b>${esc(t('fDem'))}:</b> ${esc(demChain(s))}${hz?.max_range_km ? ` · ≤ ${hz.max_range_km} km` : ''}</p></details>`;
 }
 
@@ -673,7 +687,7 @@ async function terrainBlock(s) {
   } else if (Y) {
     y = `<div class="det-kv">${kv(t('ySlope'), `<span class="muted" style="font:400 var(--fs-label) var(--font)">${esc(t('yCoarse'))}</span>`)}
         ${kv(t('yBox'), `${deg1(Y.relay_box?.slope_deg)} <span class="chip-st">${esc(Y.source?.label || 'coarse')}</span>`, info('yBoxTip'))}</div>
-`;
+      `;
   } else y = `<p class="lsn-note">${esc(t('yCoarse'))}</p>`;
   // Z2
   let p;
@@ -727,7 +741,7 @@ async function routesBlock(s) {
   body.innerHTML = `${h4('rtH')}
     <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('rtRad'))}</th><th>${esc(t('rtSteep'))}</th><th>${esc(t('rtP95'))}</th><th>${esc(t('rtMax'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="sc-kpis ac"><div class="sc-kv"><span>${esc(t('rtRough'))}</span><b class="num">${R?.p95_m != null ? `${R.p95_m.toFixed(2)}<small> m</small>` : '—'}</b></div></div>
-    <p class="sc-d"><span class="chip-st">${esc(t('rtRef'))} (${esc(Y.thresholds_label)})</span></p>`;
+    <p class="sc-d"><span class="chip-st">${esc(t('rtRef'))}</span></p>`;
 }
 
 // Z4 (own card, "Past missions nearby")
@@ -745,7 +759,7 @@ async function historyBlock(s) {
       return `<tr><td>${n.rank}. ${esc(site ? nameOf(site) : m?.name || n.id)}</td><td>${(n.distance_m / 1000).toFixed(1)} km</td><td>${n.bearing_status === 'defined' ? bearTxt(n.bearing_deg) : esc(n.bearing_status)}</td><td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(new URL(url).hostname)}</a>` : '—'}</td></tr>`;
     }).join('');
     hs = `<div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('hisMission'))}</th><th>${esc(t('hisDist'))}</th><th>${esc(t('hisBear'))}</th><th>${esc(t('hisLink'))}</th></tr></thead><tbody>${rows}</tbody></table></div>
-`;
+      `;
   }
   body.innerHTML = `${h4('hisH', ` ${info('hisTip')}`)}${hs}`;
 }
@@ -765,7 +779,7 @@ async function z1Html(s) {
     <p class="lsn-note">${esc(t('z1Note'))}${comp ? ` ${esc(fill(t('z1Comp'), { x: comp }))}` : ''}</p>
     <p class="lsn-note">${esc(fill(t('z1Hours'), { a: nf(Z.sunlit_h), b: nf(Z.earth_visible_h), c: nf(Z.both_h), n: nf(Z.window.n) }))}</p>
     <p class="lsn-note">${esc(fill(t('z1Gs'), { k: nf(L.kdsa_h), o: nf(L.at_least_1_h), t: nf(L.at_least_2_h) }))}</p>
-`;
+    `;
 }
 
 // Z3 (inside "If the landing date slips"); the ~1 MB file loads only while the block is open
@@ -813,7 +827,7 @@ function drawZ3(body, s, D) {
       <span role="group" aria-label="${esc(t('z3Stay'))}">${esc(t('z3Stay'))} ${D.stays.map((x, j) => `<button type="button" class="pill" data-z3stay="${j}" aria-pressed="${x === st}">${esc(fill(t('z3Days'), { n: x.stay_days }))}</button>`).join(' ')}</span></div>
     <p class="lsn-note" style="margin:0 0 6px">${esc(fill(t('z3Base'), { d: `${iso(day)} 00:00 UTC`, n: stayTxt }))}</p>${base}
     <div class="tbl-x"><table class="mini-tbl"><thead><tr><th>${esc(t('z3Shift'))}</th><th>${esc(t('z3Target'))}</th><th>${iconSvg('sun', { size: 12 })} ${esc(t('rowSun'))}</th><th>${iconSvg('earth', { size: 12 })} ${esc(t('rowEarth'))}</th><th>${esc(t('rowBoth'))}</th><th>${esc(t('z3Dark'))}</th></tr></thead><tbody>${slipRows}</tbody></table></div>
-</div>`;
+    </div>`;
   body.onclick = e => { const b = e.target.closest('[data-z3stay]'); if (!b) return; z3.stay = Number(b.dataset.z3stay); drawZ3(body, s, D); body.querySelector(`[data-z3stay="${z3.stay}"]`)?.focus(); };
   body.onchange = e => {
     if (!e.target.matches('.z3-day') || !e.target.value) return;

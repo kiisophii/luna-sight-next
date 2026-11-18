@@ -17,7 +17,7 @@ export function enhanceSelect(sel, { variant = 'box', align = 'left', renderValu
   // keep the select's footprint: full width where it filled its box, otherwise its own width
   const r = sel.getBoundingClientRect(), pr = sel.parentElement?.getBoundingClientRect();
   if (variant === 'box' && r.width > 0) {
-    if (pr && r.width >= pr.width - 4) wrap.classList.add('dd-fill'); else wrap.style.minWidth = `${Math.round(r.width)}px`;
+    if (pr && r.width >= pr.width - 4) wrap.classList.add('dd-fill'); else wrap.style.minWidth = `min(${Math.round(r.width)}px, 100%)`;   // never wider than its container after a resize (390 px overflow)
   }
   sel.after(wrap);
   wrap.append(sel);

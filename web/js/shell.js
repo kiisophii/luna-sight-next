@@ -7,7 +7,7 @@ import { enhanceSelect, autoEnhance } from './ui_select.js';
 import { iconSvg, hydrateIcons } from './icons.js';
 // Isolate final presentation overrides from the comparison work in progress.
 const finalUI = document.createElement('link');
-finalUI.rel = 'stylesheet'; finalUI.href = 'css/final_ui.css?v=74';
+finalUI.rel = 'stylesheet'; finalUI.href = 'css/final_ui.css?v=75';
 document.head.appendChild(finalUI);
 hydrateIcons();
 // ?gv= (shared camera) is read here, before app.js rewrites the address bar, so the late-loading globe still gets it
